@@ -5,7 +5,8 @@
       "Bash(python3:*)",
       "Bash(pip3 install:*)",
       "Bash(find:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
