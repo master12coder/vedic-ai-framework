@@ -370,5 +370,91 @@ def export_cmd(name: str, dob: str, tob: str, place: str, gender: str, fmt: str,
         click.echo(content)
 
 
+@main.command(name="ashtakavarga")
+@click.option("--name", required=True, help="Full name")
+@click.option("--dob", required=True, help="Date of birth (DD/MM/YYYY)")
+@click.option("--tob", required=True, help="Time of birth (HH:MM)")
+@click.option("--place", required=True, help="Place of birth")
+def ashtakavarga_cmd(name: str, dob: str, tob: str, place: str):
+    """Compute Ashtakavarga bindu table."""
+    from jyotish.compute.chart import compute_chart
+    from jyotish.compute.ashtakavarga import compute_ashtakavarga
+
+    chart_data = compute_chart(name=name, dob=dob, tob=tob, place=place)
+    result = compute_ashtakavarga(chart_data)
+
+    from jyotish.utils.constants import SIGNS
+    lines = [f"# Ashtakavarga — {name}", ""]
+    lines.append("## Sarvashtakavarga (Total: {})".format(result.total))
+    lines.append("| Sign | Bindus |")
+    lines.append("|------|--------|")
+    for i, b in enumerate(result.sarva):
+        lines.append(f"| {SIGNS[i]} | {b} |")
+    lines.append("")
+    lines.append("## Bhinnashtakavarga")
+    for planet, bindus in result.bhinna.items():
+        lines.append(f"### {planet}")
+        lines.append("| " + " | ".join(SIGNS) + " |")
+        lines.append("| " + " | ".join(["---"] * 12) + " |")
+        lines.append("| " + " | ".join(str(b) for b in bindus) + " |")
+        lines.append("")
+
+    md = Markdown("\n".join(lines))
+    console.print(md)
+
+
+@main.command(name="kp")
+@click.option("--name", required=True, help="Full name")
+@click.option("--dob", required=True, help="Date of birth (DD/MM/YYYY)")
+@click.option("--tob", required=True, help="Time of birth (HH:MM)")
+@click.option("--place", required=True, help="Place of birth")
+def kp_cmd(name: str, dob: str, tob: str, place: str):
+    """Compute KP (Krishnamurti) sub-lord positions."""
+    from jyotish.compute.chart import compute_chart
+    from jyotish.compute.kp import compute_kp_positions
+
+    chart_data = compute_chart(name=name, dob=dob, tob=tob, place=place)
+    positions = compute_kp_positions(chart_data)
+
+    lines = [f"# KP Sub-Lord Positions — {name}", ""]
+    lines.append("| Planet | Nakshatra | Star Lord | Sub Lord | Sub-Sub Lord |")
+    lines.append("|--------|-----------|-----------|----------|--------------|")
+    for p in positions:
+        lines.append(f"| {p.name} | {p.nakshatra} | {p.nakshatra_lord} | {p.sub_lord} | {p.sub_sub_lord} |")
+
+    md = Markdown("\n".join(lines))
+    console.print(md)
+
+
+@main.command(name="predictions")
+@click.option("--category", default=None, help="Filter by category")
+def predictions_cmd(category: str):
+    """Show prediction accuracy dashboard."""
+    from jyotish.learn.prediction_tracker import PredictionTracker
+
+    tracker = PredictionTracker()
+    dashboard = tracker.get_accuracy_dashboard()
+    tracker.close()
+
+    lines = ["# Prediction Accuracy Dashboard", ""]
+    lines.append(f"**Total predictions:** {dashboard['total_predictions']}")
+    lines.append(f"**Pending:** {dashboard['pending']}")
+    lines.append(f"**Overall accuracy:** {dashboard['overall_accuracy']}%")
+    lines.append("")
+
+    if dashboard["categories"]:
+        lines.append("| Category | Confirmed | Total Decided | Accuracy |")
+        lines.append("|----------|-----------|---------------|----------|")
+        for cat, data in dashboard["categories"].items():
+            if category and cat != category:
+                continue
+            lines.append(f"| {cat} | {data['confirmed']} | {data['total_decided']} | {data['accuracy']}% |")
+    else:
+        lines.append("No decided predictions yet.")
+
+    md = Markdown("\n".join(lines))
+    console.print(md)
+
+
 if __name__ == "__main__":
     main()

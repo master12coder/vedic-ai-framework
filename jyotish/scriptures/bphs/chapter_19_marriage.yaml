@@ -1,0 +1,102 @@
+book: BPHS
+chapter: 19
+title: "Marriage and Spouse Indicators"
+rules:
+  - verse: 1
+    topic: marriage
+    planets: [Venus]
+    houses: [7]
+    text_sanskrit: "Saptama Bhava Kalatra Sthaanam"
+    text_english: "The 7th house is the primary house of marriage and spouse. Its lord, planets placed in it, and planets aspecting it determine the nature, timing, and quality of marriage. Venus is the natural karaka of marriage."
+    text_hindi: "सप्तम भाव विवाह और जीवनसाथी का प्रमुख भाव है। इसका स्वामी, इसमें स्थित ग्रह और इसे देखने वाले ग्रह विवाह का स्वरूप, समय और गुणवत्ता निर्धारित करते हैं। शुक्र विवाह का नैसर्गिक कारक है।"
+    rule_type: general
+
+  - verse: 2
+    topic: marriage
+    planets: [Venus, Jupiter]
+    houses: [7]
+    text_sanskrit: "Shubha Graha Saptame Sukha Vivahaha"
+    text_english: "Benefic planets (Jupiter, Venus, unafflicted Mercury, strong Moon) in or aspecting the 7th house give a happy marriage, a virtuous and beautiful spouse. Jupiter's aspect on the 7th house is considered the best protection for marriage."
+    text_hindi: "शुभ ग्रह (गुरु, शुक्र, अपीड़ित बुध, बलवान चन्द्रमा) सप्तम में या सप्तम को देखने पर सुखी विवाह, गुणवान और सुन्दर जीवनसाथी देते हैं। सप्तम भाव पर गुरु की दृष्टि विवाह की सर्वोत्तम रक्षा मानी जाती है।"
+    rule_type: general
+
+  - verse: 3
+    topic: marriage
+    planets: [Saturn]
+    houses: [7]
+    text_sanskrit: "Shani Saptame Vivaha Vilambaha"
+    text_english: "Saturn in or aspecting the 7th house causes delay in marriage. If Saturn is in the 7th, marriage typically occurs after age 28-30. The spouse may be older, mature, or from a modest background. Saturn does not deny marriage but demands patience."
+    text_hindi: "शनि सप्तम में या सप्तम को देखने पर विवाह में देरी करता है। शनि सप्तम में हो तो विवाह सामान्यतः 28-30 वर्ष के बाद होता है। जीवनसाथी बड़ी उम्र का, परिपक्व या साधारण पृष्ठभूमि का हो सकता है। शनि विवाह अस्वीकार नहीं करता किन्तु धैर्य माँगता है।"
+    rule_type: general
+
+  - verse: 4
+    topic: marriage
+    planets: [Mars]
+    houses: [7, 8, 1, 4, 12, 2]
+    text_sanskrit: "Kuja Dosha Vicharaha — Mangalik Yoga"
+    text_english: "Mangal Dosha (Kuja Dosha): Mars in the 1st, 2nd, 4th, 7th, 8th, or 12th house from Lagna, Moon, or Venus creates Mangal Dosha. This can cause discord, separation, or health issues for the spouse. Cancelled if the partner also has Mangal Dosha, or if specific cancellation conditions are met."
+    text_hindi: "मांगलिक दोष (कुज दोष): मंगल लग्न, चन्द्रमा या शुक्र से 1, 2, 4, 7, 8, 12वें भाव में हो तो मांगलिक दोष बनता है। जीवनसाथी में कलह, वियोग या स्वास्थ्य समस्या हो सकती है। दोनों मांगलिक हों या विशिष्ट भंग स्थितियाँ हों तो निवारण होता है।"
+    rule_type: general
+
+  - verse: 5
+    topic: marriage
+    planets: [Rahu]
+    houses: [7]
+    text_sanskrit: "Rahu Saptame Vivaha Vichitraha"
+    text_english: "Rahu in the 7th house can indicate an unconventional marriage — inter-caste, inter-religion, or a foreign spouse. It can also indicate deception or dissatisfaction in marriage unless well-aspected by Jupiter."
+    text_hindi: "राहु सप्तम में अपारम्परिक विवाह — अन्तर्जातीय, अन्तर्धार्मिक या विदेशी जीवनसाथी — का संकेत दे सकता है। गुरु की शुभ दृष्टि न हो तो विवाह में छल या असन्तोष भी हो सकता है।"
+    rule_type: general
+
+  - verse: 6
+    topic: marriage
+    planets: [Venus]
+    houses: [7]
+    text_sanskrit: "Shukra Asta Vivaha Kashtha"
+    text_english: "Combust Venus (too close to the Sun) weakens marriage prospects. The native may face difficulty finding a suitable partner or experience lack of marital happiness. Venus combustion within 8 degrees of the Sun is considered significant for marriage."
+    text_hindi: "अस्त शुक्र (सूर्य के अत्यन्त निकट) विवाह की सम्भावनाओं को कमज़ोर करता है। उपयुक्त जीवनसाथी ढूँढने में कठिनाई या वैवाहिक सुख में कमी हो सकती है। सूर्य से 8 अंश के भीतर शुक्र का अस्त होना विवाह हेतु महत्वपूर्ण माना जाता है।"
+    rule_type: general
+
+  - verse: 7
+    topic: marriage
+    planets: []
+    houses: [7, 2, 11]
+    text_sanskrit: "Vivaha Samaya Dasha Vicharaha"
+    text_english: "Marriage timing from Dasha: Marriage most likely during the Dasha/Antardasha of the 7th lord, Venus, planets in the 7th house, or planets aspecting the 7th house. Also during Dasha of lords of the 2nd (family) and 11th (fulfilment) houses."
+    text_hindi: "दशा से विवाह का समय: विवाह सर्वाधिक सम्भावित 7वें भाव के स्वामी, शुक्र, 7वें भाव में स्थित ग्रहों, या 7वें भाव को देखने वाले ग्रहों की दशा/अन्तर्दशा में। 2 (परिवार) और 11 (इच्छापूर्ति) भाव के स्वामियों की दशा में भी।"
+    rule_type: dasha
+
+  - verse: 8
+    topic: marriage
+    planets: [Jupiter]
+    houses: [7, 2]
+    text_sanskrit: "Guru Gochar Vivaha Samayaha"
+    text_english: "Jupiter's transit over the 7th house, 7th lord, or Venus from Lagna or Moon sign is a strong trigger for marriage. Double transit of Jupiter and Saturn over the 7th house or its lord confirms marriage timing."
+    text_hindi: "गुरु का लग्न या चन्द्र राशि से 7वें भाव, 7वें भाव के स्वामी या शुक्र पर गोचर विवाह का प्रबल संकेत है। गुरु और शनि का दोहरा गोचर 7वें भाव या उसके स्वामी पर हो तो विवाह समय की पुष्टि होती है।"
+    rule_type: transit
+
+  - verse: 9
+    topic: marriage
+    planets: []
+    houses: [7, 1]
+    text_sanskrit: "Navamsha Saptama Vicharaha"
+    text_english: "For detailed spouse analysis, examine the 7th house of the Navamsha chart (D9). The Navamsha Lagna and its lord reveal the native's approach to marriage. The sign and lord of the 7th in Navamsha describe the spouse's personality and appearance."
+    text_hindi: "विस्तृत जीवनसाथी विश्लेषण के लिए नवमांश कुण्डली (D9) का 7वाँ भाव देखें। नवमांश लग्न और उसका स्वामी जातक का विवाह के प्रति दृष्टिकोण दर्शाता है। नवमांश में 7वें भाव की राशि और स्वामी जीवनसाथी के व्यक्तित्व और रूप का वर्णन करते हैं।"
+    rule_type: general
+
+  - verse: 10
+    topic: marriage
+    planets: [Venus, Jupiter]
+    houses: [7, 8, 12]
+    text_sanskrit: "Dvitiya Vivaha Yogaha"
+    text_english: "Second marriage indicators: 7th lord in dual signs (Gemini, Virgo, Sagittarius, Pisces), Rahu in the 7th, Venus afflicted by Mars and Saturn simultaneously, or 7th lord in the 8th or 12th house. Jupiter's influence on the 7th can prevent multiple marriages."
+    text_hindi: "द्वितीय विवाह संकेत: 7वें भाव का स्वामी द्विस्वभाव राशि (मिथुन, कन्या, धनु, मीन) में, राहु सप्तम में, शुक्र पर मंगल और शनि की एक साथ पीड़ा, या 7वें भाव का स्वामी 8वें या 12वें में। गुरु का 7वें पर प्रभाव बहु-विवाह रोक सकता है।"
+    rule_type: general
+
+  - verse: 11
+    topic: marriage
+    planets: [Ketu]
+    houses: [7]
+    text_sanskrit: "Ketu Saptame Vairagya Yogaha"
+    text_english: "Ketu in the 7th house indicates detachment from marriage. The native may delay marriage, be spiritually inclined, or feel dissatisfied in partnership. If well-aspected, gives a spiritual spouse. Can indicate separation or unconventional arrangement."
+    text_hindi: "केतु सप्तम में विवाह से वैराग्य दर्शाता है। जातक विवाह में विलम्ब कर सकता है, आध्यात्मिक झुकाव रखता है, या साझेदारी में असन्तुष्ट हो सकता है। शुभ दृष्टि हो तो आध्यात्मिक जीवनसाथी मिलता है। वियोग या अपारम्परिक व्यवस्था का संकेत भी हो सकता है।"
+    rule_type: general

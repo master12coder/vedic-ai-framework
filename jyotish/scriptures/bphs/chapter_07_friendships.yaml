@@ -1,0 +1,138 @@
+book: BPHS
+chapter: 7
+title: "Planetary Friendships and Enmities"
+rules:
+  - verse: 1
+    topic: friendship
+    planets: [Sun]
+    houses: []
+    text_sanskrit: "Suryasya Mitraha Chandro Guru Kujaha"
+    text_english: "The Sun's natural friends are Moon, Mars, and Jupiter. Mercury is neutral. Venus, Saturn, Rahu, and Ketu are enemies of the Sun."
+    text_hindi: "सूर्य के नैसर्गिक मित्र चन्द्रमा, मंगल और गुरु हैं। बुध सम है। शुक्र, शनि, राहु और केतु सूर्य के शत्रु हैं।"
+    rule_type: friendship
+
+  - verse: 2
+    topic: friendship
+    planets: [Moon]
+    houses: []
+    text_sanskrit: "Chandrasya Mitraha Surya Budhaha"
+    text_english: "The Moon's natural friends are Sun and Mercury. Mars, Jupiter, Venus, and Saturn are neutral. Rahu and Ketu are enemies. Moon has no natural planetary enemies."
+    text_hindi: "चन्द्रमा के नैसर्गिक मित्र सूर्य और बुध हैं। मंगल, गुरु, शुक्र और शनि सम हैं। राहु और केतु शत्रु हैं। चन्द्रमा का कोई नैसर्गिक ग्रह शत्रु नहीं है।"
+    rule_type: friendship
+
+  - verse: 3
+    topic: friendship
+    planets: [Mars]
+    houses: []
+    text_sanskrit: "Kujasya Mitraha Surya Chandra Guruh"
+    text_english: "Mars' natural friends are Sun, Moon, and Jupiter. Venus and Saturn are neutral. Mercury is an enemy. Rahu and Ketu are enemies."
+    text_hindi: "मंगल के नैसर्गिक मित्र सूर्य, चन्द्रमा और गुरु हैं। शुक्र और शनि सम हैं। बुध शत्रु है। राहु और केतु शत्रु हैं।"
+    rule_type: friendship
+
+  - verse: 4
+    topic: friendship
+    planets: [Mercury]
+    houses: []
+    text_sanskrit: "Budhasya Mitraha Surya Shukraha"
+    text_english: "Mercury's natural friends are Sun and Venus. Mars, Jupiter, and Saturn are neutral. The Moon is an enemy. Rahu and Ketu have mixed relation."
+    text_hindi: "बुध के नैसर्गिक मित्र सूर्य और शुक्र हैं। मंगल, गुरु और शनि सम हैं। चन्द्रमा शत्रु है। राहु और केतु का मिश्रित सम्बन्ध है।"
+    rule_type: friendship
+
+  - verse: 5
+    topic: friendship
+    planets: [Jupiter]
+    houses: []
+    text_sanskrit: "Guroscha Mitraha Surya Chandra Kujaha"
+    text_english: "Jupiter's natural friends are Sun, Moon, and Mars. Saturn is neutral. Mercury and Venus are enemies. Rahu is an enemy."
+    text_hindi: "गुरु के नैसर्गिक मित्र सूर्य, चन्द्रमा और मंगल हैं। शनि सम है। बुध और शुक्र शत्रु हैं। राहु शत्रु है।"
+    rule_type: friendship
+
+  - verse: 6
+    topic: friendship
+    planets: [Venus]
+    houses: []
+    text_sanskrit: "Shukrasya Mitraha Budha Shanee"
+    text_english: "Venus' natural friends are Mercury and Saturn. Mars and Jupiter are neutral. The Sun and Moon are enemies. Rahu is a friend of Venus."
+    text_hindi: "शुक्र के नैसर्गिक मित्र बुध और शनि हैं। मंगल और गुरु सम हैं। सूर्य और चन्द्रमा शत्रु हैं। राहु शुक्र का मित्र है।"
+    rule_type: friendship
+
+  - verse: 7
+    topic: friendship
+    planets: [Saturn]
+    houses: []
+    text_sanskrit: "Shaneh Mitraha Budha Shukraha"
+    text_english: "Saturn's natural friends are Mercury and Venus. Jupiter is neutral. Sun, Moon, and Mars are enemies. Rahu is a friend of Saturn."
+    text_hindi: "शनि के नैसर्गिक मित्र बुध और शुक्र हैं। गुरु सम है। सूर्य, चन्द्रमा और मंगल शत्रु हैं। राहु शनि का मित्र है।"
+    rule_type: friendship
+
+  - verse: 8
+    topic: friendship
+    planets: []
+    houses: []
+    text_sanskrit: "Tatkalika Maitri Niyamaha"
+    text_english: "Temporary (Tatkalika) friendship rule: A planet in the 2nd, 3rd, 4th, 10th, 11th, or 12th house from another planet becomes its temporary friend. In the 1st, 5th, 6th, 7th, 8th, or 9th, it becomes a temporary enemy."
+    text_hindi: "तात्कालिक मैत्री नियम: किसी ग्रह से 2, 3, 4, 10, 11, 12 भाव में स्थित ग्रह उसका तात्कालिक मित्र होता है। 1, 5, 6, 7, 8, 9 भाव में स्थित ग्रह तात्कालिक शत्रु होता है।"
+    rule_type: friendship
+
+  - verse: 9
+    topic: friendship
+    planets: []
+    houses: []
+    text_sanskrit: "Pancha Vidha Maitri Vicharaha"
+    text_english: "Five-fold relationship (combining natural + temporary): Natural friend + Temporary friend = Intimate friend (Ati Mitra). Natural friend + Temporary enemy = Neutral (Sama). Natural neutral + Temporary friend = Friend (Mitra). Natural neutral + Temporary enemy = Enemy (Shatru). Natural enemy + Temporary friend = Neutral (Sama). Natural enemy + Temporary enemy = Bitter enemy (Ati Shatru)."
+    text_hindi: "पंचविध मैत्री (नैसर्गिक + तात्कालिक): नैसर्गिक मित्र + तात्कालिक मित्र = अधिमित्र। नैसर्गिक मित्र + तात्कालिक शत्रु = सम। नैसर्गिक सम + तात्कालिक मित्र = मित्र। नैसर्गिक सम + तात्कालिक शत्रु = शत्रु। नैसर्गिक शत्रु + तात्कालिक मित्र = सम। नैसर्गिक शत्रु + तात्कालिक शत्रु = अधिशत्रु।"
+    rule_type: friendship
+
+  - verse: 10
+    topic: friendship
+    planets: []
+    houses: []
+    text_sanskrit: "Mitra Kshetram Shubha Phalam"
+    text_english: "A planet placed in the sign of its friend gives good results. In its own sign, it gives excellent results. In an enemy sign, results are diminished or adverse."
+    text_hindi: "मित्र राशि में स्थित ग्रह शुभ फल देता है। स्वराशि में उत्तम फल देता है। शत्रु राशि में फल कम या प्रतिकूल होते हैं।"
+    rule_type: friendship
+
+  - verse: 11
+    topic: friendship
+    planets: []
+    houses: []
+    text_sanskrit: "Naisargika Bala Kramaha"
+    text_english: "Dignity hierarchy for planetary strength: Exalted > Mooltrikona > Own sign > Intimate friend sign > Friend sign > Neutral sign > Enemy sign > Bitter enemy sign > Debilitated."
+    text_hindi: "ग्रह बल क्रम: उच्च > मूलत्रिकोण > स्वराशि > अधिमित्र राशि > मित्र राशि > सम राशि > शत्रु राशि > अधिशत्रु राशि > नीच।"
+    rule_type: friendship
+
+  - verse: 12
+    topic: friendship
+    planets: [Sun, Saturn]
+    houses: []
+    text_sanskrit: "Surya Shani Parasparika Shatruta"
+    text_english: "Sun and Saturn share a fundamental enmity — father vs servant, authority vs rebellion. Their conjunction or mutual aspect creates tension in any chart. This is the strongest natural enmity."
+    text_hindi: "सूर्य और शनि में मूलभूत शत्रुता है — पिता बनाम सेवक, अधिकार बनाम विद्रोह। इनकी युति या परस्पर दृष्टि किसी भी कुण्डली में तनाव उत्पन्न करती है। यह सबसे प्रबल नैसर्गिक शत्रुता है।"
+    rule_type: friendship
+
+  - verse: 13
+    topic: friendship
+    planets: [Jupiter, Venus]
+    houses: []
+    text_sanskrit: "Guru Shukra Parasparika Shatruta"
+    text_english: "Jupiter and Venus are natural enemies — the guru of Devas vs the guru of Asuras. Their enmity reflects the tension between spiritual wisdom and material pleasure."
+    text_hindi: "गुरु और शुक्र नैसर्गिक शत्रु हैं — देवगुरु बनाम दैत्यगुरु। इनकी शत्रुता आध्यात्मिक ज्ञान और भौतिक सुख के बीच तनाव दर्शाती है।"
+    rule_type: friendship
+
+  - verse: 14
+    topic: friendship
+    planets: [Sun, Moon]
+    houses: []
+    text_sanskrit: "Surya Chandra Maitri Deepakaha"
+    text_english: "Sun and Moon are friends — the luminaries. Their conjunction (Amavasya) weakens the Moon. Their opposition (Poornima) strengthens the Moon. Their relationship governs the mind-soul connection."
+    text_hindi: "सूर्य और चन्द्रमा मित्र हैं — दोनों प्रकाशक। इनकी युति (अमावस्या) चन्द्रमा को दुर्बल करती है। इनकी प्रतियुति (पूर्णिमा) चन्द्रमा को बलवान करती है। इनका सम्बन्ध मन-आत्मा सम्बन्ध को नियन्त्रित करता है।"
+    rule_type: friendship
+
+  - verse: 15
+    topic: friendship
+    planets: [Mercury, Moon]
+    houses: []
+    text_sanskrit: "Budha Chandra Eka Pakshiya Shatruta"
+    text_english: "Mercury considers Moon an enemy but Moon considers Mercury a friend. This one-sided enmity reflects the intellectual mind (Mercury) being disturbed by fluctuating emotions (Moon)."
+    text_hindi: "बुध चन्द्रमा को शत्रु मानता है परन्तु चन्द्रमा बुध को मित्र मानता है। यह एकपक्षीय शत्रुता बौद्धिक मन (बुध) का भावनात्मक उतार-चढ़ाव (चन्द्रमा) से विचलित होना दर्शाती है।"
+    rule_type: friendship

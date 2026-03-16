@@ -1,0 +1,84 @@
+book: BPHS
+chapter: 80
+title: "Gemstone Recommendations"
+rules:
+  - verse: 1
+    topic: gemstone
+    planets: [Sun]
+    houses: []
+    text_sanskrit: "Surya Ratnam Manikya"
+    text_english: "Ruby (Manikya) is the gemstone for Sun. Wear in gold on ring finger of right hand on Sunday during Sun hora. Minimum 3 ratti. Strengthens vitality, authority, father."
+    text_hindi: "माणिक्य सूर्य का रत्न है। सोने में दाहिने हाथ की अनामिका में रविवार को सूर्य होरा में धारण करें। न्यूनतम 3 रत्ती। जीवनशक्ति, अधिकार, पिता को बल देता है।"
+    rule_type: gemstone
+
+  - verse: 2
+    topic: gemstone
+    planets: [Moon]
+    houses: []
+    text_sanskrit: "Chandra Ratnam Moti"
+    text_english: "Pearl (Moti) is the gemstone for Moon. Wear in silver on little finger of right hand on Monday. Minimum 4 ratti. Strengthens mind, emotions, mother."
+    text_hindi: "मोती चन्द्रमा का रत्न है। चाँदी में दाहिने हाथ की कनिष्ठिका में सोमवार को धारण करें। न्यूनतम 4 रत्ती। मन, भावनाएँ, माता को बल देता है।"
+    rule_type: gemstone
+
+  - verse: 3
+    topic: gemstone
+    planets: [Mars]
+    houses: []
+    text_sanskrit: "Mangala Ratnam Moonga"
+    text_english: "Red Coral (Moonga) is the gemstone for Mars. Wear in gold or copper on ring finger on Tuesday. Minimum 6 ratti. Strengthens courage, property, siblings."
+    text_hindi: "मूंगा मंगल का रत्न है। सोने या ताँबे में अनामिका में मंगलवार को धारण करें। न्यूनतम 6 रत्ती। साहस, सम्पत्ति, भाई-बहन को बल देता है।"
+    rule_type: gemstone
+
+  - verse: 4
+    topic: gemstone
+    planets: [Mercury]
+    houses: []
+    text_sanskrit: "Budha Ratnam Panna"
+    text_english: "Emerald (Panna) is the gemstone for Mercury. Wear in gold on little finger on Wednesday. Minimum 3.5 ratti. Strengthens intellect, speech, commerce."
+    text_hindi: "पन्ना बुध का रत्न है। सोने में कनिष्ठिका में बुधवार को धारण करें। न्यूनतम 3.5 रत्ती। बुद्धि, वाणी, व्यापार को बल देता है।"
+    rule_type: gemstone
+
+  - verse: 5
+    topic: gemstone
+    planets: [Jupiter]
+    houses: []
+    text_sanskrit: "Guru Ratnam Pukhraj"
+    text_english: "Yellow Sapphire (Pukhraj) is the gemstone for Jupiter. Wear in gold on index finger on Thursday. Minimum 3 ratti. Strengthens wisdom, children, fortune."
+    text_hindi: "पुखराज गुरु का रत्न है। सोने में तर्जनी में गुरुवार को धारण करें। न्यूनतम 3 रत्ती। ज्ञान, सन्तान, भाग्य को बल देता है।"
+    rule_type: gemstone
+
+  - verse: 6
+    topic: gemstone
+    planets: [Venus]
+    houses: []
+    text_sanskrit: "Shukra Ratnam Heera"
+    text_english: "Diamond (Heera) is the gemstone for Venus. Wear in platinum or silver on middle finger on Friday. Minimum 0.5 carat. Strengthens marriage, luxury, arts."
+    text_hindi: "हीरा शुक्र का रत्न है। प्लैटिनम या चाँदी में मध्यमा में शुक्रवार को धारण करें। न्यूनतम 0.5 कैरट। विवाह, विलास, कला को बल देता है।"
+    rule_type: gemstone
+
+  - verse: 7
+    topic: gemstone
+    planets: [Saturn]
+    houses: []
+    text_sanskrit: "Shani Ratnam Neelam"
+    text_english: "Blue Sapphire (Neelam) is the gemstone for Saturn. MUST trial for 3 days before wearing. Wear in silver on middle finger on Saturday. Very powerful — can give instant results both positive and negative."
+    text_hindi: "नीलम शनि का रत्न है। धारण करने से पहले 3 दिन का परीक्षण अनिवार्य। चाँदी में मध्यमा में शनिवार को धारण करें। अत्यन्त शक्तिशाली — सकारात्मक और नकारात्मक दोनों तत्काल परिणाम दे सकता है।"
+    rule_type: gemstone
+
+  - verse: 8
+    topic: gemstone
+    planets: [Rahu]
+    houses: []
+    text_sanskrit: "Rahu Ratnam Gomed"
+    text_english: "Hessonite (Gomed) is the gemstone for Rahu. Wear in panchdhatu on middle finger on Saturday. Helps with Rahu-related confusion, foreign matters, technology."
+    text_hindi: "गोमेद राहु का रत्न है। पञ्चधातु में मध्यमा में शनिवार को धारण करें। राहु-सम्बन्धित भ्रम, विदेशी मामले, प्रौद्योगिकी में सहायक।"
+    rule_type: gemstone
+
+  - verse: 9
+    topic: gemstone
+    planets: [Ketu]
+    houses: []
+    text_sanskrit: "Ketu Ratnam Lehsuniya"
+    text_english: "Cat's Eye (Lehsuniya) is the gemstone for Ketu. Wear in panchdhatu on ring finger. Helps with spiritual growth, sudden events, moksha-related matters."
+    text_hindi: "लहसुनिया केतु का रत्न है। पञ्चधातु में अनामिका में धारण करें। आध्यात्मिक विकास, अचानक घटनाएँ, मोक्ष-सम्बन्धित मामलों में सहायक।"
+    rule_type: gemstone

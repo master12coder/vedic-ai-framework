@@ -1,0 +1,84 @@
+book: BPHS
+chapter: 25
+title: "Dasha Effects of Planets"
+rules:
+  - verse: 1
+    topic: dasha_effects
+    planets: [Sun]
+    houses: []
+    text_sanskrit: "Surya Dasha Phalam"
+    text_english: "Sun Mahadasha (6 years): Gives authority, government favor, fame, health vitality. If Sun is weak: ego conflicts, father's health issues, eye problems."
+    text_hindi: "सूर्य महादशा (6 वर्ष): अधिकार, शासकीय अनुग्रह, यश, स्वास्थ्य प्राप्ति। सूर्य दुर्बल हो तो अहंकार संघर्ष, पिता का स्वास्थ्य, नेत्र समस्या।"
+    rule_type: dasha
+
+  - verse: 2
+    topic: dasha_effects
+    planets: [Moon]
+    houses: []
+    text_sanskrit: "Chandra Dasha Phalam"
+    text_english: "Moon Mahadasha (10 years): Emotional growth, mother's influence, public popularity, travel. If Moon is weak: mental stress, fluid-related health issues, instability."
+    text_hindi: "चन्द्र महादशा (10 वर्ष): भावनात्मक विकास, माता का प्रभाव, जनप्रियता, यात्रा। चन्द्र दुर्बल हो तो मानसिक तनाव, जल-सम्बन्धित रोग, अस्थिरता।"
+    rule_type: dasha
+
+  - verse: 3
+    topic: dasha_effects
+    planets: [Mars]
+    houses: []
+    text_sanskrit: "Mangala Dasha Phalam"
+    text_english: "Mars Mahadasha (7 years): Energy, courage, property, siblings. If Mars is weak: accidents, surgeries, conflicts, blood disorders, legal troubles."
+    text_hindi: "मंगल महादशा (7 वर्ष): ऊर्जा, साहस, सम्पत्ति, भाई-बहन। मंगल दुर्बल हो तो दुर्घटना, शल्यक्रिया, विवाद, रक्त विकार, कानूनी समस्या।"
+    rule_type: dasha
+
+  - verse: 4
+    topic: dasha_effects
+    planets: [Mercury]
+    houses: []
+    text_sanskrit: "Budha Dasha Phalam"
+    text_english: "Mercury Mahadasha (17 years): Intelligence, communication skills, business success, education. If weak: nervous disorders, skin issues, indecision, speech problems."
+    text_hindi: "बुध महादशा (17 वर्ष): बुद्धि, संवाद कौशल, व्यापार सफलता, शिक्षा। दुर्बल हो तो स्नायु विकार, त्वचा रोग, अनिर्णय, वाक् दोष।"
+    rule_type: dasha
+
+  - verse: 5
+    topic: dasha_effects
+    planets: [Jupiter]
+    houses: []
+    text_sanskrit: "Guru Dasha Phalam"
+    text_english: "Jupiter Mahadasha (16 years): Wisdom, spiritual growth, children, wealth expansion, guru's blessings. If weak: liver issues, weight gain, false hopes, financial overextension."
+    text_hindi: "गुरु महादशा (16 वर्ष): ज्ञान, आध्यात्मिक विकास, सन्तान, धन विस्तार, गुरु कृपा। दुर्बल हो तो यकृत रोग, भार वृद्धि, मिथ्या आशा, वित्तीय अतिविस्तार।"
+    rule_type: dasha
+
+  - verse: 6
+    topic: dasha_effects
+    planets: [Venus]
+    houses: []
+    text_sanskrit: "Shukra Dasha Phalam"
+    text_english: "Venus Mahadasha (20 years): Luxury, romance, marriage, arts, vehicles, comfort. If weak: relationship problems, reproductive issues, excess indulgence, kidney problems."
+    text_hindi: "शुक्र महादशा (20 वर्ष): विलासिता, प्रेम, विवाह, कला, वाहन, सुख-सुविधा। दुर्बल हो तो सम्बन्ध समस्या, प्रजनन दोष, अतिभोग, गुर्दा रोग।"
+    rule_type: dasha
+
+  - verse: 7
+    topic: dasha_effects
+    planets: [Saturn]
+    houses: []
+    text_sanskrit: "Shani Dasha Phalam"
+    text_english: "Saturn Mahadasha (19 years): Discipline, karmic lessons, steady progress, service. If weak: delays, depression, chronic disease, joint pain, obstacles, isolation."
+    text_hindi: "शनि महादशा (19 वर्ष): अनुशासन, कर्म-शिक्षा, स्थिर प्रगति, सेवा। दुर्बल हो तो विलम्ब, अवसाद, दीर्घ रोग, जोड़ों का दर्द, बाधाएँ, एकाकीपन।"
+    rule_type: dasha
+
+  - verse: 8
+    topic: dasha_effects
+    planets: [Rahu]
+    houses: []
+    text_sanskrit: "Rahu Dasha Phalam"
+    text_english: "Rahu Mahadasha (18 years): Foreign connections, unconventional success, technology, sudden changes. If afflicted: confusion, deception, addiction, phobias, scandals."
+    text_hindi: "राहु महादशा (18 वर्ष): विदेशी सम्बन्ध, अपारम्परिक सफलता, प्रौद्योगिकी, अचानक परिवर्तन। पीड़ित हो तो भ्रम, छल, व्यसन, भय, कलंक।"
+    rule_type: dasha
+
+  - verse: 9
+    topic: dasha_effects
+    planets: [Ketu]
+    houses: []
+    text_sanskrit: "Ketu Dasha Phalam"
+    text_english: "Ketu Mahadasha (7 years): Spiritual awakening, detachment, research, healing. If afflicted: sudden losses, accidents, mysterious illnesses, isolation, past karma surfacing."
+    text_hindi: "केतु महादशा (7 वर्ष): आध्यात्मिक जागृति, वैराग्य, शोध, चिकित्सा। पीड़ित हो तो अचानक हानि, दुर्घटना, रहस्यमयी रोग, एकांत, पूर्व कर्म उभरना।"
+    rule_type: dasha

@@ -1,0 +1,210 @@
+book: BPHS
+chapter: 3
+title: "Nature of Planets"
+rules:
+  - verse: 1
+    topic: planet_nature
+    planets: [Sun]
+    houses: []
+    text_sanskrit: "Atma Karako Dineshaha"
+    text_english: "The Sun is the soul (Atma) of all beings. He has a square body, is bilious in nature, intelligent, has limited hair, and his eyes are honey-coloured."
+    text_hindi: "सूर्य सभी जीवों की आत्मा है। उसका शरीर चौकोर, पित्त प्रकृति, बुद्धिमान, अल्प केश और मधु वर्ण नेत्र वाला है।"
+    rule_type: general
+
+  - verse: 2
+    topic: planet_nature
+    planets: [Moon]
+    houses: []
+    text_sanskrit: "Mano Devi Himaamshuhu"
+    text_english: "The Moon is the mind (Manas). She is round-bodied, has a mix of vata and kapha constitution, is learned, and has beautiful eyes. She is of satvic nature."
+    text_hindi: "चन्द्रमा मन का कारक है। वह गोलाकार शरीर, वात-कफ प्रकृति, विद्वान और सुन्दर नेत्र वाला है। सात्विक स्वभाव का है।"
+    rule_type: general
+
+  - verse: 3
+    topic: planet_nature
+    planets: [Mars]
+    houses: []
+    text_sanskrit: "Bhoomi Putra Karaha Kujaha"
+    text_english: "Mars is the significator of courage and strength. He has a youthful appearance, is cruel, bilious, and has a slender waist. He is the son of Earth (Bhoomi Putra)."
+    text_hindi: "मंगल साहस और बल का कारक है। युवा रूप, क्रूर, पित्त प्रकृति और पतली कमर वाला है। वह भूमि पुत्र कहलाता है।"
+    rule_type: general
+
+  - verse: 4
+    topic: planet_nature
+    planets: [Mercury]
+    houses: []
+    text_sanskrit: "Vaak Karako Budhaha"
+    text_english: "Mercury is the significator of speech (Vaani). He has an attractive physique, is witty, fond of humour, and has a mix of all three doshas. He is rajasic in nature."
+    text_hindi: "बुध वाणी का कारक है। आकर्षक शरीर, बुद्धिमान, हास्य प्रिय और त्रिदोष प्रकृति वाला है। राजसिक स्वभाव का है।"
+    rule_type: general
+
+  - verse: 5
+    topic: planet_nature
+    planets: [Jupiter]
+    houses: []
+    text_sanskrit: "Jnana Karako Guruh"
+    text_english: "Jupiter is the significator of knowledge and wisdom. He has a large body, is of kapha and vata constitution, intelligent, and proficient in all scriptures. He is satvic."
+    text_hindi: "गुरु ज्ञान और विद्या का कारक है। बड़ा शरीर, कफ-वात प्रकृति, बुद्धिमान और सभी शास्त्रों में निपुण है। सात्विक स्वभाव का है।"
+    rule_type: general
+
+  - verse: 6
+    topic: planet_nature
+    planets: [Venus]
+    houses: []
+    text_sanskrit: "Sukha Karako Bhargavaha"
+    text_english: "Venus is the significator of pleasure, beauty, and luxuries. He is charming, has a splendid body, beautiful eyes, is poetic, and of kapha-vata constitution. He is rajasic."
+    text_hindi: "शुक्र सुख, सौन्दर्य और भोग का कारक है। मनमोहक, सुन्दर शरीर, सुन्दर नेत्र, काव्य प्रेमी और कफ-वात प्रकृति वाला है। राजसिक स्वभाव का है।"
+    rule_type: general
+
+  - verse: 7
+    topic: planet_nature
+    planets: [Saturn]
+    houses: []
+    text_sanskrit: "Duhkha Karako Mandaha"
+    text_english: "Saturn is the significator of sorrow and longevity. He has a tall, lean body, is lame, has dark complexion, is of vata constitution, cruel, and tamasic in nature."
+    text_hindi: "शनि दुःख और आयु का कारक है। लम्बा, दुबला शरीर, लंगड़ा, श्याम वर्ण, वात प्रकृति, क्रूर और तामसिक स्वभाव का है।"
+    rule_type: general
+
+  - verse: 8
+    topic: planet_nature
+    planets: [Rahu]
+    houses: []
+    text_sanskrit: "Tamaha Pradhano Rahuh"
+    text_english: "Rahu has a smoky appearance, is of vata constitution, intelligent, and lives among outcastes. He wears dark blue clothes and is tamasic in nature."
+    text_hindi: "राहु धूम्र वर्ण, वात प्रकृति, बुद्धिमान और म्लेच्छों में निवास करने वाला है। नीले वस्त्र धारण करता है और तामसिक स्वभाव का है।"
+    rule_type: general
+
+  - verse: 9
+    topic: planet_nature
+    planets: [Ketu]
+    houses: []
+    text_sanskrit: "Ketu Shikhina Samaha"
+    text_english: "Ketu has a smoky complexion like Rahu. He is of mixed constitution, speaks harshly, and represents spiritual liberation (Moksha). He is tamasic."
+    text_hindi: "केतु राहु के समान धूम्र वर्ण का है। मिश्रित प्रकृति, कठोर वाणी और मोक्ष का कारक है। तामसिक स्वभाव का है।"
+    rule_type: general
+
+  - verse: 10
+    topic: karakatva
+    planets: [Sun]
+    houses: []
+    text_sanskrit: "Atma Pita Rajya Tejo Deepti Karaha Ravihi"
+    text_english: "The Sun signifies: Atma (soul), father, government/authority, vitality, bone, right eye, heart, copper, ruby, wheat, and eastern direction."
+    text_hindi: "सूर्य का कारकत्व: आत्मा, पिता, राज्य/अधिकार, ओज, अस्थि, दाहिना नेत्र, हृदय, ताम्बा, माणिक्य, गेहूँ और पूर्व दिशा।"
+    rule_type: general
+
+  - verse: 11
+    topic: karakatva
+    planets: [Moon]
+    houses: []
+    text_sanskrit: "Mano Mata Jala Rasa Karako Induhu"
+    text_english: "The Moon signifies: mind, mother, water, fluids, blood, left eye, pearl, rice, silver, north-west direction, and public/masses."
+    text_hindi: "चन्द्रमा का कारकत्व: मन, माता, जल, रस, रक्त, बायाँ नेत्र, मोती, चावल, चाँदी, वायव्य दिशा और जन सामान्य।"
+    rule_type: general
+
+  - verse: 12
+    topic: karakatva
+    planets: [Mars]
+    houses: []
+    text_sanskrit: "Bhratri Bhoomi Shaurya Karako Bhaumaha"
+    text_english: "Mars signifies: brothers, land/property, courage, blood, marrow, muscles, red coral, red lentils, copper, and southern direction."
+    text_hindi: "मंगल का कारकत्व: भाई, भूमि/सम्पत्ति, साहस, रक्त, मज्जा, मांसपेशी, मूँगा, मसूर दाल, ताम्बा और दक्षिण दिशा।"
+    rule_type: general
+
+  - verse: 13
+    topic: karakatva
+    planets: [Mercury]
+    houses: []
+    text_sanskrit: "Vidya Buddhi Vakya Karako Budhaha"
+    text_english: "Mercury signifies: education, intellect, speech, trade/commerce, mathematics, skin, emerald, moong dal, bronze, and northern direction."
+    text_hindi: "बुध का कारकत्व: विद्या, बुद्धि, वाणी, व्यापार, गणित, त्वचा, पन्ना, मूँग दाल, कांस्य और उत्तर दिशा।"
+    rule_type: general
+
+  - verse: 14
+    topic: karakatva
+    planets: [Jupiter]
+    houses: []
+    text_sanskrit: "Putra Dhana Vidya Karako Devaguruh"
+    text_english: "Jupiter signifies: children, wealth, wisdom, husband (for women), liver, fat, yellow sapphire, turmeric, gold, and north-east direction."
+    text_hindi: "गुरु का कारकत्व: सन्तान, धन, ज्ञान, पति (स्त्री के लिए), यकृत, वसा, पुखराज, हल्दी, स्वर्ण और ईशान दिशा।"
+    rule_type: general
+
+  - verse: 15
+    topic: karakatva
+    planets: [Venus]
+    houses: []
+    text_sanskrit: "Kalatra Kama Vahana Karako Shukraha"
+    text_english: "Venus signifies: wife/spouse, desire, vehicles, luxury, semen, diamond, silk, white foods, silver, and south-east direction."
+    text_hindi: "शुक्र का कारकत्व: पत्नी/जीवनसाथी, काम, वाहन, विलासिता, वीर्य, हीरा, रेशम, श्वेत भोजन, चाँदी और आग्नेय दिशा।"
+    rule_type: general
+
+  - verse: 16
+    topic: karakatva
+    planets: [Saturn]
+    houses: []
+    text_sanskrit: "Ayu Dukha Seva Karako Shanaicharaha"
+    text_english: "Saturn signifies: longevity, sorrow, service, labour, oil, iron, blue sapphire, black sesame, lead, and western direction."
+    text_hindi: "शनि का कारकत्व: आयु, दुःख, सेवा, श्रम, तेल, लोहा, नीलम, काले तिल, सीसा और पश्चिम दिशा।"
+    rule_type: general
+
+  - verse: 17
+    topic: planet_nature
+    planets: [Jupiter, Venus]
+    houses: []
+    text_sanskrit: "Shubha Grahau Guru Shukrau"
+    text_english: "Jupiter and Venus are natural benefics (Shubha Graha). They bestow prosperity, happiness, and wisdom when well-placed."
+    text_hindi: "गुरु और शुक्र नैसर्गिक शुभ ग्रह हैं। अच्छी स्थिति में समृद्धि, सुख और ज्ञान प्रदान करते हैं।"
+    rule_type: general
+
+  - verse: 18
+    topic: planet_nature
+    planets: [Sun, Mars, Saturn, Rahu, Ketu]
+    houses: []
+    text_sanskrit: "Papa Grahah Surya Kuja Shani Rahu Ketu"
+    text_english: "Sun, Mars, Saturn, Rahu and Ketu are natural malefics (Papa Graha). Their influence brings challenges and difficulties unless well-placed."
+    text_hindi: "सूर्य, मंगल, शनि, राहु और केतु नैसर्गिक पाप ग्रह हैं। अच्छी स्थिति में न होने पर कठिनाइयाँ और चुनौतियाँ देते हैं।"
+    rule_type: general
+
+  - verse: 19
+    topic: planet_nature
+    planets: [Moon]
+    houses: []
+    text_sanskrit: "Shukla Pakshe Shubhaha Chandraha Krishna Pakshe Ashubhaha"
+    text_english: "The waxing Moon (Shukla Paksha, near full) is benefic. The waning Moon (Krishna Paksha, near new) is malefic. Moon within 72 degrees of the Sun is considered weak."
+    text_hindi: "शुक्ल पक्ष (पूर्णिमा के निकट) का चन्द्रमा शुभ है। कृष्ण पक्ष (अमावस्या के निकट) का चन्द्रमा अशुभ है। सूर्य से 72 अंश के भीतर चन्द्रमा दुर्बल माना जाता है।"
+    rule_type: general
+
+  - verse: 20
+    topic: planet_nature
+    planets: [Mercury]
+    houses: []
+    text_sanskrit: "Shubha Graha Yukte Shubhaha Budhaha Papa Yukte Papaha"
+    text_english: "Mercury is benefic when associated with natural benefics, and malefic when associated with natural malefics. Alone, Mercury is considered benefic."
+    text_hindi: "बुध शुभ ग्रहों के साथ होने पर शुभ और पाप ग्रहों के साथ होने पर पापी होता है। अकेला बुध शुभ माना जाता है।"
+    rule_type: general
+
+  - verse: 21
+    topic: planet_nature
+    planets: [Sun]
+    houses: []
+    text_sanskrit: "Simha Rashi Adhipatih Suryaha"
+    text_english: "The Sun owns (is lord of) Leo (Simha). He is exalted in Aries (Mesha) at 10 degrees and debilitated in Libra (Tula) at 10 degrees."
+    text_hindi: "सूर्य सिंह राशि का स्वामी है। मेष में 10 अंश पर उच्च और तुला में 10 अंश पर नीच होता है।"
+    rule_type: general
+
+  - verse: 22
+    topic: planet_nature
+    planets: [Moon]
+    houses: []
+    text_sanskrit: "Karka Rashi Adhipatih Chandraha"
+    text_english: "The Moon owns Cancer (Karka). She is exalted in Taurus (Vrishabha) at 3 degrees and debilitated in Scorpio (Vrishchika) at 3 degrees."
+    text_hindi: "चन्द्रमा कर्क राशि का स्वामी है। वृषभ में 3 अंश पर उच्च और वृश्चिक में 3 अंश पर नीच होता है।"
+    rule_type: general
+
+  - verse: 23
+    topic: planet_nature
+    planets: [Mars]
+    houses: []
+    text_sanskrit: "Mesha Vrishchika Adhipatih Kujaha"
+    text_english: "Mars owns Aries (Mesha) and Scorpio (Vrishchika). He is exalted in Capricorn (Makara) at 28 degrees and debilitated in Cancer (Karka) at 28 degrees."
+    text_hindi: "मंगल मेष और वृश्चिक राशि का स्वामी है। मकर में 28 अंश पर उच्च और कर्क में 28 अंश पर नीच होता है।"
+    rule_type: general

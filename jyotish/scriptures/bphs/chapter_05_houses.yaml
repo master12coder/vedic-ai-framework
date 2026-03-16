@@ -1,0 +1,219 @@
+book: BPHS
+chapter: 5
+title: "Houses and Their Significations"
+rules:
+  - verse: 1
+    topic: house_signification
+    planets: [Sun]
+    houses: [1]
+    text_sanskrit: "Tanu Bhava — Shareeram Roopam Varna Shubhashubham"
+    text_english: "The first house (Lagna/Ascendant) signifies the body, appearance, complexion, character, health, fame, strength, and overall personality. The Sun is the natural karaka for the 1st house."
+    text_hindi: "प्रथम भाव (लग्न) शरीर, रूप, वर्ण, चरित्र, स्वास्थ्य, यश, बल और सम्पूर्ण व्यक्तित्व का कारक है। सूर्य प्रथम भाव का नैसर्गिक कारक है।"
+    rule_type: general
+
+  - verse: 2
+    topic: house_signification
+    planets: [Jupiter]
+    houses: [2]
+    text_sanskrit: "Dhana Bhava — Kutumba Vitta Vaani"
+    text_english: "The second house signifies wealth, family, speech, food intake, right eye, face, oral cavity, and early education. Jupiter is the natural karaka for the 2nd house."
+    text_hindi: "द्वितीय भाव धन, परिवार, वाणी, भोजन, दाहिना नेत्र, मुख, मुख गुहा और प्रारम्भिक शिक्षा का कारक है। गुरु द्वितीय भाव का नैसर्गिक कारक है।"
+    rule_type: general
+
+  - verse: 3
+    topic: house_signification
+    planets: [Mars]
+    houses: [3]
+    text_sanskrit: "Sahaja Bhava — Parakramam Bhratarau"
+    text_english: "The third house signifies younger siblings, courage, valour, short journeys, communication, hands, arms, shoulders, and right ear. Mars is the natural karaka."
+    text_hindi: "तृतीय भाव छोटे भाई-बहन, पराक्रम, साहस, लघु यात्रा, संचार, हाथ, भुजा, कंधे और दाहिना कान का कारक है। मंगल नैसर्गिक कारक है।"
+    rule_type: general
+
+  - verse: 4
+    topic: house_signification
+    planets: [Moon]
+    houses: [4]
+    text_sanskrit: "Sukha Bhava — Matri Griha Vaahana Sukham"
+    text_english: "The fourth house signifies mother, home, landed property, vehicles, domestic happiness, chest/heart area, and formal education. The Moon is the natural karaka."
+    text_hindi: "चतुर्थ भाव माता, गृह, भूमि सम्पत्ति, वाहन, गृह सुख, छाती/हृदय क्षेत्र और शिक्षा का कारक है। चन्द्रमा नैसर्गिक कारक है।"
+    rule_type: general
+
+  - verse: 5
+    topic: house_signification
+    planets: [Jupiter]
+    houses: [5]
+    text_sanskrit: "Putra Bhava — Santati Buddhi Mantra"
+    text_english: "The fifth house signifies children, intelligence, higher learning, mantras, past-life merit (Purva Punya), stomach, love affairs, and speculation. Jupiter is the natural karaka."
+    text_hindi: "पंचम भाव सन्तान, बुद्धि, उच्च शिक्षा, मन्त्र, पूर्व पुण्य, पेट, प्रेम सम्बन्ध और सट्टे का कारक है। गुरु नैसर्गिक कारक है।"
+    rule_type: general
+
+  - verse: 6
+    topic: house_signification
+    planets: [Mars, Saturn]
+    houses: [6]
+    text_sanskrit: "Ripu Bhava — Shatru Roga Rina"
+    text_english: "The sixth house signifies enemies, diseases, debts, service, maternal uncle, obstacles, digestive system, and daily work routine. Mars and Saturn are natural karakas."
+    text_hindi: "षष्ठ भाव शत्रु, रोग, ऋण, सेवा, मामा, बाधा, पाचन तन्त्र और दैनिक कार्य दिनचर्या का कारक है। मंगल और शनि नैसर्गिक कारक हैं।"
+    rule_type: general
+
+  - verse: 7
+    topic: house_signification
+    planets: [Venus]
+    houses: [7]
+    text_sanskrit: "Kalatra Bhava — Patni Vyapara Marana"
+    text_english: "The seventh house signifies spouse, marriage, partnerships, business dealings, foreign travel, lower abdomen, and the nature of death. Venus is the natural karaka."
+    text_hindi: "सप्तम भाव पत्नी/पति, विवाह, साझेदारी, व्यापारिक सम्बन्ध, विदेश यात्रा, निचला उदर और मृत्यु का स्वरूप बताता है। शुक्र नैसर्गिक कारक है।"
+    rule_type: general
+
+  - verse: 8
+    topic: house_signification
+    planets: [Saturn]
+    houses: [8]
+    text_sanskrit: "Ayu Bhava — Mrityu Klesha Vighnaha"
+    text_english: "The eighth house signifies longevity, death, chronic diseases, hidden wealth, inheritance, occult knowledge, reproductive organs, and sudden transformations. Saturn is the natural karaka."
+    text_hindi: "अष्टम भाव आयु, मृत्यु, दीर्घ रोग, गुप्त धन, विरासत, गुप्त विद्या, प्रजनन अंग और अचानक परिवर्तन का कारक है। शनि नैसर्गिक कारक है।"
+    rule_type: general
+
+  - verse: 9
+    topic: house_signification
+    planets: [Jupiter, Sun]
+    houses: [9]
+    text_sanskrit: "Dharma Bhava — Pita Guru Bhagya Dharma"
+    text_english: "The ninth house signifies father, guru/teacher, fortune/luck, dharma (righteousness), long-distance travel, higher wisdom, and thighs. Jupiter and Sun are natural karakas."
+    text_hindi: "नवम भाव पिता, गुरु, भाग्य, धर्म, दूर की यात्रा, उच्च ज्ञान और जाँघों का कारक है। गुरु और सूर्य नैसर्गिक कारक हैं।"
+    rule_type: general
+
+  - verse: 10
+    topic: house_signification
+    planets: [Sun, Mercury, Jupiter, Saturn]
+    houses: [10]
+    text_sanskrit: "Karma Bhava — Rajya Maana Jeevika"
+    text_english: "The tenth house signifies career, profession, honour, authority, government, knees, and public reputation. Sun, Mercury, Jupiter, and Saturn are relevant karakas."
+    text_hindi: "दशम भाव कर्म, व्यवसाय, मान, अधिकार, सरकार, घुटने और जन प्रतिष्ठा का कारक है। सूर्य, बुध, गुरु और शनि सम्बन्धित कारक हैं।"
+    rule_type: general
+
+  - verse: 11
+    topic: house_signification
+    planets: [Jupiter]
+    houses: [11]
+    text_sanskrit: "Labha Bhava — Aaya Jyeshtha Bhratri Kama"
+    text_english: "The eleventh house signifies gains, income, elder siblings, friends, fulfilment of desires, left ear, and calves. Jupiter is the natural karaka."
+    text_hindi: "एकादश भाव लाभ, आय, बड़े भाई-बहन, मित्र, इच्छा पूर्ति, बायाँ कान और पिंडली का कारक है। गुरु नैसर्गिक कारक है।"
+    rule_type: general
+
+  - verse: 12
+    topic: house_signification
+    planets: [Saturn, Ketu]
+    houses: [12]
+    text_sanskrit: "Vyaya Bhava — Mochana Kharcha Shayya Sukham"
+    text_english: "The twelfth house signifies expenditure, losses, foreign residence, spiritual liberation (Moksha), bed pleasures, left eye, feet, and confinement. Saturn and Ketu are natural karakas."
+    text_hindi: "द्वादश भाव व्यय, हानि, विदेश निवास, मोक्ष, शय्या सुख, बायाँ नेत्र, पैर और कारावास का कारक है। शनि और केतु नैसर्गिक कारक हैं।"
+    rule_type: general
+
+  - verse: 13
+    topic: house_signification
+    planets: []
+    houses: [1, 4, 7, 10]
+    text_sanskrit: "Kendra Sthanani Balakari"
+    text_english: "Houses 1, 4, 7, 10 are called Kendra (angular) houses. Planets placed in Kendras gain strength and are most influential. They are the pillars of the horoscope."
+    text_hindi: "भाव 1, 4, 7, 10 केन्द्र (कोण) भाव कहलाते हैं। केन्द्र में स्थित ग्रह बलवान और सर्वाधिक प्रभावशाली होते हैं। ये कुण्डली के स्तम्भ हैं।"
+    rule_type: general
+
+  - verse: 14
+    topic: house_signification
+    planets: []
+    houses: [1, 5, 9]
+    text_sanskrit: "Trikona Sthanani Lakshmi Sthanani"
+    text_english: "Houses 1, 5, 9 are Trikona (trine) houses, also called Lakshmi Sthana. They are the most auspicious houses. Their lords become functional benefics regardless of their natural nature."
+    text_hindi: "भाव 1, 5, 9 त्रिकोण भाव हैं, जिन्हें लक्ष्मी स्थान भी कहते हैं। ये सबसे शुभ भाव हैं। इनके स्वामी नैसर्गिक प्रकृति से निरपेक्ष कार्यकारी शुभ बन जाते हैं।"
+    rule_type: general
+
+  - verse: 15
+    topic: house_signification
+    planets: []
+    houses: [6, 8, 12]
+    text_sanskrit: "Trik Sthanani Duhkha Sthanani"
+    text_english: "Houses 6, 8, 12 are Trik (Dusthana) houses, considered inauspicious. Their lords become functional malefics. Planets placed here face obstacles but can give hidden strengths."
+    text_hindi: "भाव 6, 8, 12 त्रिक (दुस्थान) भाव हैं, जो अशुभ माने जाते हैं। इनके स्वामी कार्यकारी पापी बन जाते हैं। यहाँ स्थित ग्रहों को बाधाएँ आती हैं किन्तु गुप्त शक्ति भी मिल सकती है।"
+    rule_type: general
+
+  - verse: 16
+    topic: house_signification
+    planets: []
+    houses: [2, 7]
+    text_sanskrit: "Maraka Sthanani Dvitiyam Saptamam Cha"
+    text_english: "Houses 2 and 7 are Maraka (death-inflicting) houses. Their lords can trigger health crises or death-like experiences during their Dasha-Antardasha periods."
+    text_hindi: "भाव 2 और 7 मारक स्थान हैं। इनके स्वामी अपनी दशा-अन्तर्दशा में स्वास्थ्य संकट या मृत्यु तुल्य अनुभव दे सकते हैं।"
+    rule_type: general
+
+  - verse: 17
+    topic: house_signification
+    planets: []
+    houses: [3, 6, 10, 11]
+    text_sanskrit: "Upachaya Sthanani Trayam Shashtham Dashamam Ekaadasham"
+    text_english: "Houses 3, 6, 10, 11 are Upachaya (growing) houses. Malefic planets placed here give good results as they improve over time. Natural malefics do well in Upachaya houses."
+    text_hindi: "भाव 3, 6, 10, 11 उपचय भाव हैं। यहाँ स्थित पाप ग्रह शुभ फल देते हैं क्योंकि समय के साथ इनमें सुधार होता है। नैसर्गिक पापी ग्रह उपचय भावों में अच्छा करते हैं।"
+    rule_type: general
+
+  - verse: 18
+    topic: house_signification
+    planets: []
+    houses: [1]
+    text_sanskrit: "Lagnam Balaaya Rogaaya Cha"
+    text_english: "A strong Lagna (1st house) and its lord ensure good health, vitality, and success. A weak or afflicted Lagna brings health problems and lack of confidence."
+    text_hindi: "बलवान लग्न और लग्नेश अच्छा स्वास्थ्य, ओज और सफलता सुनिश्चित करते हैं। दुर्बल या पीड़ित लग्न स्वास्थ्य समस्याएँ और आत्मविश्वास की कमी लाता है।"
+    rule_type: general
+
+  - verse: 19
+    topic: house_signification
+    planets: []
+    houses: [1, 2, 4, 7, 8]
+    text_sanskrit: "Shareera Sthana Vicharaha"
+    text_english: "Body mapping: 1st house = head, 2nd = face, 3rd = arms, 4th = chest, 5th = stomach, 6th = waist, 7th = lower abdomen, 8th = reproductive area, 9th = thighs, 10th = knees, 11th = calves, 12th = feet."
+    text_hindi: "शरीर मानचित्र: 1 = सिर, 2 = मुख, 3 = भुजा, 4 = छाती, 5 = पेट, 6 = कमर, 7 = निचला उदर, 8 = प्रजनन क्षेत्र, 9 = जाँघ, 10 = घुटने, 11 = पिंडली, 12 = पैर।"
+    rule_type: general
+
+  - verse: 20
+    topic: house_signification
+    planets: []
+    houses: [1, 5, 9]
+    text_sanskrit: "Dharma Trikona Punyam Shubham"
+    text_english: "The Dharma Trikona (1, 5, 9) represents past merit, present intelligence, and future fortune. Connection between lords of 5th and 9th creates powerful Raj Yoga."
+    text_hindi: "धर्म त्रिकोण (1, 5, 9) पूर्व पुण्य, वर्तमान बुद्धि और भावी भाग्य का प्रतिनिधित्व करता है। 5वें और 9वें भाव के स्वामियों का सम्बन्ध शक्तिशाली राजयोग बनाता है।"
+    rule_type: general
+
+  - verse: 21
+    topic: house_signification
+    planets: []
+    houses: [2, 6, 10]
+    text_sanskrit: "Artha Trikona Dhana Jeevika"
+    text_english: "The Artha Trikona (2, 6, 10) governs material prosperity — accumulated wealth (2nd), service income (6th), and career earnings (10th)."
+    text_hindi: "अर्थ त्रिकोण (2, 6, 10) भौतिक समृद्धि का शासक है — संचित धन (2), सेवा आय (6), और व्यावसायिक आय (10)।"
+    rule_type: general
+
+  - verse: 22
+    topic: house_signification
+    planets: []
+    houses: [3, 7, 11]
+    text_sanskrit: "Kama Trikona Icchha Poortih"
+    text_english: "The Kama Trikona (3, 7, 11) governs desires — personal initiative (3rd), partnerships (7th), and fulfilment of aspirations (11th)."
+    text_hindi: "काम त्रिकोण (3, 7, 11) इच्छाओं का शासक है — व्यक्तिगत पहल (3), साझेदारी (7), और आकांक्षा पूर्ति (11)।"
+    rule_type: general
+
+  - verse: 23
+    topic: house_signification
+    planets: []
+    houses: [4, 8, 12]
+    text_sanskrit: "Moksha Trikona Mukti Maargaha"
+    text_english: "The Moksha Trikona (4, 8, 12) governs spiritual liberation — inner peace (4th), transformation/occult (8th), and final liberation (12th)."
+    text_hindi: "मोक्ष त्रिकोण (4, 8, 12) आध्यात्मिक मुक्ति का शासक है — आन्तरिक शान्ति (4), परिवर्तन/गुप्त विद्या (8), और अन्तिम मुक्ति (12)।"
+    rule_type: general
+
+  - verse: 24
+    topic: house_signification
+    planets: []
+    houses: [1, 4, 7, 10]
+    text_sanskrit: "Kendradhipati Dosha Niyamaha"
+    text_english: "Kendradhipati Dosha: Natural benefics (Jupiter, Venus) owning Kendra houses lose their benefic nature and can give neutral or mildly inauspicious results, especially if they do not simultaneously own a Trikona."
+    text_hindi: "केन्द्राधिपति दोष: नैसर्गिक शुभ ग्रह (गुरु, शुक्र) केन्द्र के स्वामी होने पर अपना शुभत्व खो देते हैं और तटस्थ या मन्द अशुभ फल दे सकते हैं, विशेषतः जब वे त्रिकोण के भी स्वामी न हों।"
+    rule_type: general

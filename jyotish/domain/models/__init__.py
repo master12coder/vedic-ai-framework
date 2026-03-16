@@ -15,6 +15,7 @@ from jyotish.domain.models.strength import PlanetStrength, ShadbalaResult
 from jyotish.domain.models.muhurta import MuhurtaCandidate
 from jyotish.domain.models.ashtakavarga import AshtakavargaResult
 from jyotish.domain.models.bhava_chalit import BhavaPlanet, BhavaChalitResult
+from jyotish.domain.models.scripture import ScriptureReference
 
 __all__ = [
     "PlanetData",
@@ -34,4 +35,5 @@ __all__ = [
     "AshtakavargaResult",
     "BhavaPlanet",
     "BhavaChalitResult",
+    "ScriptureReference",
 ]

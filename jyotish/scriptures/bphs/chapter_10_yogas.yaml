@@ -1,0 +1,147 @@
+book: BPHS
+chapter: 10
+title: "Yoga Formations"
+rules:
+  - verse: 1
+    topic: yoga
+    planets: [Mars]
+    houses: [1, 4, 7, 10]
+    text_sanskrit: "Ruchaka Yoga — Kuje Kendre Svochcha Svarashisthite"
+    text_english: "Ruchaka Yoga (Panch Mahapurush): Mars in a Kendra (1, 4, 7, 10) in its own sign (Aries, Scorpio) or exaltation (Capricorn). Gives a strong physique, commanding personality, military/leadership ability, courage, and fame. The native becomes a ruler or army commander."
+    text_hindi: "रुचक योग (पंच महापुरुष): मंगल केन्द्र (1, 4, 7, 10) में स्वराशि (मेष, वृश्चिक) या उच्च (मकर) में हो। बलवान शरीर, आज्ञाकारी व्यक्तित्व, सैन्य/नेतृत्व क्षमता, साहस और यश देता है। जातक शासक या सेनापति बनता है।"
+    rule_type: yoga
+
+  - verse: 2
+    topic: yoga
+    planets: [Mercury]
+    houses: [1, 4, 7, 10]
+    text_sanskrit: "Bhadra Yoga — Budhe Kendre Svochcha Svarashisthite"
+    text_english: "Bhadra Yoga (Panch Mahapurush): Mercury in a Kendra in its own sign (Gemini, Virgo) or exaltation (Virgo at 15 degrees). Gives sharp intellect, eloquent speech, expertise in mathematics and trade, and scholarly reputation."
+    text_hindi: "भद्र योग (पंच महापुरुष): बुध केन्द्र में स्वराशि (मिथुन, कन्या) या उच्च (कन्या 15 अंश) में हो। तीक्ष्ण बुद्धि, वाक् चातुर्य, गणित और व्यापार में दक्षता तथा विद्वान के रूप में ख्याति देता है।"
+    rule_type: yoga
+
+  - verse: 3
+    topic: yoga
+    planets: [Jupiter]
+    houses: [1, 4, 7, 10]
+    text_sanskrit: "Hamsa Yoga — Gurau Kendre Svochcha Svarashisthite"
+    text_english: "Hamsa Yoga (Panch Mahapurush): Jupiter in a Kendra in its own sign (Sagittarius, Pisces) or exaltation (Cancer). Gives wisdom, righteousness, respect from scholars, wealth, spiritual inclination, and a long life. The native becomes a respected teacher or minister."
+    text_hindi: "हंस योग (पंच महापुरुष): गुरु केन्द्र में स्वराशि (धनु, मीन) या उच्च (कर्क) में हो। ज्ञान, धार्मिकता, विद्वानों का सम्मान, धन, आध्यात्मिक झुकाव और दीर्घायु देता है। जातक सम्मानित गुरु या मन्त्री बनता है।"
+    rule_type: yoga
+
+  - verse: 4
+    topic: yoga
+    planets: [Venus]
+    houses: [1, 4, 7, 10]
+    text_sanskrit: "Malavya Yoga — Shukre Kendre Svochcha Svarashisthite"
+    text_english: "Malavya Yoga (Panch Mahapurush): Venus in a Kendra in its own sign (Taurus, Libra) or exaltation (Pisces). Gives beauty, luxurious life, artistic talents, a beautiful spouse, vehicles, and all comforts. The native enjoys all material pleasures."
+    text_hindi: "मालव्य योग (पंच महापुरुष): शुक्र केन्द्र में स्वराशि (वृषभ, तुला) या उच्च (मीन) में हो। सौन्दर्य, विलासी जीवन, कलात्मक प्रतिभा, सुन्दर जीवनसाथी, वाहन और सभी सुख देता है।"
+    rule_type: yoga
+
+  - verse: 5
+    topic: yoga
+    planets: [Saturn]
+    houses: [1, 4, 7, 10]
+    text_sanskrit: "Shasha Yoga — Shanau Kendre Svochcha Svarashisthite"
+    text_english: "Shasha Yoga (Panch Mahapurush): Saturn in a Kendra in its own sign (Capricorn, Aquarius) or exaltation (Libra). Gives authority over people, command over servants, political power, and expertise in metals and minerals. The native rises to a position of governance."
+    text_hindi: "शश योग (पंच महापुरुष): शनि केन्द्र में स्वराशि (मकर, कुम्भ) या उच्च (तुला) में हो। जनता पर अधिकार, सेवकों पर आज्ञा, राजनैतिक शक्ति और धातु-खनिज विशेषज्ञता देता है। जातक शासन पद पर पहुँचता है।"
+    rule_type: yoga
+
+  - verse: 6
+    topic: yoga
+    planets: [Jupiter, Moon]
+    houses: [1, 4, 7, 10]
+    text_sanskrit: "Gajakesari Yoga — Chandro Guroh Kendre"
+    text_english: "Gajakesari Yoga: Moon and Jupiter in mutual Kendras (1st, 4th, 7th, or 10th from each other). Gives fame that spreads like the roar of an elephant (Gaja) and lion (Kesari). The native becomes wealthy, intelligent, virtuous, and enjoys lasting reputation."
+    text_hindi: "गजकेसरी योग: चन्द्रमा और गुरु परस्पर केन्द्र (1, 4, 7, 10) में हों। हाथी (गज) और सिंह (केसरी) की गर्जना के समान यश देता है। जातक धनवान, बुद्धिमान, गुणवान और चिरस्थायी ख्याति प्राप्त करता है।"
+    rule_type: yoga
+
+  - verse: 7
+    topic: yoga
+    planets: [Sun, Mercury]
+    houses: []
+    text_sanskrit: "Budhaditya Yoga — Surya Budha Samyogaha"
+    text_english: "Budhaditya Yoga: Sun and Mercury conjunct in the same house. Gives intelligence, good education, fame through intellect, skill in speech and writing. Most effective when Mercury is not combust (more than 14 degrees from Sun) and both are in a Kendra or Trikona."
+    text_hindi: "बुधादित्य योग: सूर्य और बुध एक ही भाव में युति। बुद्धि, अच्छी शिक्षा, बौद्धिक प्रसिद्धि, वाक् और लेखन कौशल देता है। सर्वाधिक प्रभावी जब बुध अस्त न हो (सूर्य से 14 अंश से अधिक) और दोनों केन्द्र या त्रिकोण में हों।"
+    rule_type: yoga
+
+  - verse: 8
+    topic: yoga
+    planets: []
+    houses: [1, 5, 9, 4, 7, 10]
+    text_sanskrit: "Raja Yoga — Kendra Trikona Adhipati Sambandha"
+    text_english: "Raj Yoga: Formed when the lord of a Kendra (1, 4, 7, 10) and lord of a Trikona (1, 5, 9) are conjunct, aspecting each other, or in mutual exchange. Gives power, authority, wealth, and high social status. The strongest Raj Yoga involves the lords of the 9th and 10th houses."
+    text_hindi: "राजयोग: केन्द्र (1, 4, 7, 10) का स्वामी और त्रिकोण (1, 5, 9) का स्वामी युति, दृष्टि या परिवर्तन में हों। शक्ति, अधिकार, धन और उच्च सामाजिक स्थिति देता है। सबसे शक्तिशाली राजयोग 9वें और 10वें भाव के स्वामियों से बनता है।"
+    rule_type: yoga
+
+  - verse: 9
+    topic: yoga
+    planets: []
+    houses: [6, 8, 12]
+    text_sanskrit: "Viparita Raja Yoga — Trik Adhipati Trike"
+    text_english: "Viparita Raj Yoga: Lord of the 6th, 8th, or 12th house placed in another Trik house (6th, 8th, or 12th). The native rises from adversity — gains through enemies' downfall, insurance claims, or foreign connections. The Yoga gives unexpected fortune through losses of others."
+    text_hindi: "विपरीत राजयोग: 6ठे, 8वें या 12वें भाव का स्वामी दूसरे त्रिक भाव (6, 8, 12) में स्थित हो। जातक विपरीत परिस्थितियों से ऊपर उठता है — शत्रुओं के पतन, बीमा दावों या विदेशी सम्पर्क से लाभ। दूसरों की हानि से अप्रत्याशित भाग्य मिलता है।"
+    rule_type: yoga
+
+  - verse: 10
+    topic: yoga
+    planets: []
+    houses: [2, 5, 9, 11]
+    text_sanskrit: "Dhana Yoga — Dhana Sthana Adhipati Yoga"
+    text_english: "Dhana Yoga: Connection between lords of 2nd and 11th houses with lords of 5th or 9th. Gives accumulation of wealth. Stronger when Jupiter aspects or is involved. Multiple Dhana Yogas in a chart indicate great riches."
+    text_hindi: "धन योग: 2 और 11वें भाव के स्वामियों का 5वें या 9वें के स्वामियों से सम्बन्ध। धन संचय देता है। गुरु की दृष्टि या सम्बन्ध से अधिक शक्तिशाली। कुण्डली में अनेक धन योग महान सम्पत्ति दर्शाते हैं।"
+    rule_type: yoga
+
+  - verse: 11
+    topic: yoga
+    planets: [Sun, Moon]
+    houses: []
+    text_sanskrit: "Voshi Yoga — Surya Dvadasha Grahe Sthite"
+    text_english: "Voshi Yoga: A planet (other than Moon) in the 12th house from the Sun. Gives eloquence, learning, generosity, and good character. Results depend on the nature of the planet forming the Yoga."
+    text_hindi: "वोशी योग: सूर्य से 12वें भाव में (चन्द्रमा के अलावा) कोई ग्रह हो। वाक्पटुता, विद्या, उदारता और सच्चरित्र देता है। फल योग बनाने वाले ग्रह की प्रकृति पर निर्भर है।"
+    rule_type: yoga
+
+  - verse: 12
+    topic: yoga
+    planets: [Sun]
+    houses: []
+    text_sanskrit: "Veshi Yoga — Surya Dvitiye Grahe Sthite"
+    text_english: "Veshi Yoga: A planet (other than Moon) in the 2nd house from the Sun. Gives truthful speech, happiness, balanced nature, and material comforts. Malefic planets forming Veshi reduce its positive effects."
+    text_hindi: "वेशी योग: सूर्य से 2रे भाव में (चन्द्रमा के अलावा) कोई ग्रह हो। सत्य वाणी, सुख, सन्तुलित स्वभाव और भौतिक सुख देता है। पापी ग्रहों से बनने पर शुभ प्रभाव कम होता है।"
+    rule_type: yoga
+
+  - verse: 13
+    topic: yoga
+    planets: [Moon]
+    houses: []
+    text_sanskrit: "Sunapha Yoga — Chandra Dvitiye Grahe Sthite"
+    text_english: "Sunapha Yoga: A planet (other than Sun) in the 2nd house from the Moon. Gives self-earned wealth, intelligence, fame, and royal favour. One of the important Chandra (Moon) Yogas."
+    text_hindi: "सुनफा योग: चन्द्रमा से 2रे भाव में (सूर्य के अलावा) कोई ग्रह हो। स्वार्जित धन, बुद्धि, यश और राज कृपा देता है। महत्वपूर्ण चन्द्र योगों में से एक।"
+    rule_type: yoga
+
+  - verse: 14
+    topic: yoga
+    planets: [Moon]
+    houses: []
+    text_sanskrit: "Anapha Yoga — Chandra Dvadasha Grahe Sthite"
+    text_english: "Anapha Yoga: A planet (other than Sun) in the 12th house from the Moon. Gives good health, pleasant appearance, virtuous conduct, and renunciation in later life."
+    text_hindi: "अनफा योग: चन्द्रमा से 12वें भाव में (सूर्य के अलावा) कोई ग्रह हो। अच्छा स्वास्थ्य, सुन्दर रूप, सदाचार और जीवन के उत्तरार्द्ध में वैराग्य देता है।"
+    rule_type: yoga
+
+  - verse: 15
+    topic: yoga
+    planets: [Moon]
+    houses: []
+    text_sanskrit: "Kemadruma Yoga — Chandra Ubhayatah Graha Rahitam"
+    text_english: "Kemadruma Yoga: No planets in the 2nd or 12th house from the Moon (excluding Sun, Rahu, Ketu). Indicates poverty, hardship, loneliness, and mental distress. Cancelled if Moon is in a Kendra, aspected by Jupiter, or conjunct with a benefic."
+    text_hindi: "केमद्रुम योग: चन्द्रमा से 2रे और 12वें भाव में कोई ग्रह न हो (सूर्य, राहु, केतु को छोड़कर)। दरिद्रता, कष्ट, अकेलापन और मानसिक पीड़ा दर्शाता है। चन्द्रमा केन्द्र में हो, गुरु की दृष्टि हो, या शुभ ग्रह से युक्त हो तो भंग होता है।"
+    rule_type: yoga
+
+  - verse: 16
+    topic: yoga
+    planets: []
+    houses: [1, 7]
+    text_sanskrit: "Parivartana Yoga — Rashi Vinimayaha"
+    text_english: "Parivartana (Exchange) Yoga: Two planets in each other's signs. If involving Kendra/Trikona lords, creates Maha Yoga (great prosperity). If involving Trik lords (6, 8, 12), creates Dainya Yoga (misery). Exchange between 2 benefic houses amplifies both."
+    text_hindi: "परिवर्तन योग: दो ग्रह एक-दूसरे की राशियों में हों। केन्द्र/त्रिकोण स्वामियों का हो तो महायोग (महान समृद्धि)। त्रिक स्वामियों (6, 8, 12) का हो तो दैन्य योग (दुःख)। दो शुभ भावों के बीच परिवर्तन दोनों को प्रबल करता है।"
+    rule_type: yoga
