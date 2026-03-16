@@ -1,0 +1,43 @@
+# Auto-detect text files and normalise line endings
+* text=auto eol=lf
+
+# Python
+*.py text diff=python
+*.pyi text diff=python
+
+# YAML knowledge files — always LF, diff as text
+*.yaml text diff
+*.yml text diff
+
+# Markdown / documentation
+*.md text diff=markdown
+
+# Jinja2 prompt templates
+jyotish/interpret/prompts/*.md text diff=markdown linguist-language=Markdown
+
+# Configuration
+*.toml text
+*.cfg text
+*.ini text
+*.json text
+
+# Shell scripts
+*.sh text eol=lf
+
+# Binary — never diff
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+
+# Swiss Ephemeris data files
+*.se1 binary
+
+# Lock file — do not merge manually
+requirements*.txt merge=union
+
+# Prevent large binaries from being committed
+*.zip filter=lfs diff=lfs merge=lfs -text
+*.tar.gz filter=lfs diff=lfs merge=lfs -text

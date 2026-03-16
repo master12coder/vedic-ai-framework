@@ -36,3 +36,84 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 include = ["jyotish*"]
+
+# ---------------------------------------------------------------------------
+# Ruff — linter + formatter
+# ---------------------------------------------------------------------------
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["jyotish", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "I",    # isort
+    "N",    # pep8-naming
+    "UP",   # pyupgrade
+    "B",    # flake8-bugbear
+    "SIM",  # flake8-simplify
+    "T20",  # flake8-print (flag print statements)
+    "RET",  # flake8-return
+    "C4",   # flake8-comprehensions
+]
+ignore = [
+    "E501",   # line too long — handled by formatter
+    "T201",   # print() — allowed in CLI and scripts
+    "B008",   # function call in default arg — Click uses this pattern
+    "SIM108", # ternary — readability preference
+    "RET504", # unnecessary variable before return — clarity preference
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["jyotish"]
+force-single-line = false
+lines-after-imports = 2
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+docstring-code-format = true
+
+# ---------------------------------------------------------------------------
+# Mypy — type checker
+# ---------------------------------------------------------------------------
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+check_untyped_defs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "jyotish.compute.*"
+disallow_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = "jyotish.domain.*"
+disallow_untyped_defs = true
+
+# ---------------------------------------------------------------------------
+# Pytest
+# ---------------------------------------------------------------------------
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+markers = [
+    "safety: gemstone and interpretation safety tests",
+    "slow: tests that take >5 seconds (e.g. E2E with LLM)",
+    "integration: cross-layer integration tests",
+]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]
