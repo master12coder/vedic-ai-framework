@@ -11,6 +11,8 @@ from jyotish.learn.corrections import PanditCorrection
 
 @dataclass
 class TranscriptionResult:
+    """Result of audio transcription via Whisper."""
+
     text: str
     language: str
     duration_seconds: float

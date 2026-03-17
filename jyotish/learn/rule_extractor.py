@@ -13,6 +13,8 @@ from jyotish.learn.corrections import PanditCorrection, PanditCorrectionStore
 
 @dataclass
 class LearnedRule:
+    """A rule extracted from validated Pandit Ji corrections."""
+
     rule_id: str
     category: str
     lagna: str

@@ -57,7 +57,7 @@ def _find_bhava_house(lon: float, cusps: list[float]) -> int:
             return i + 1
 
     # Fallback: find nearest cusp (should not normally reach here)
-    min_dist = 999.0
+    min_dist = float("inf")
     nearest = 1
     for i in range(12):
         dist = _angular_distance(lon, cusps[i])
@@ -70,7 +70,7 @@ def _find_bhava_house(lon: float, cusps: list[float]) -> int:
 def _nearest_cusp(lon: float, cusps: list[float]) -> float:
     """Return the longitude of the cusp nearest to the given longitude."""
     lon = _normalize(lon)
-    min_dist = 999.0
+    min_dist = float("inf")
     nearest_cusp_lon = cusps[0]
     for cusp in cusps:
         dist = _angular_distance(lon, cusp)

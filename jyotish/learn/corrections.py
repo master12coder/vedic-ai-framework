@@ -14,6 +14,8 @@ from jyotish.config import get as cfg_get
 
 @dataclass
 class PanditCorrection:
+    """A correction submitted by a Pandit Ji about chart interpretation."""
+
     id: str = ""
     pandit_name: str = ""
     date: str = ""

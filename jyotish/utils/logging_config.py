@@ -37,6 +37,7 @@ class JsonFormatter(logging.Formatter):
     """Format log records as JSON lines."""
 
     def format(self, record: logging.LogRecord) -> str:
+        """Format a log record as a JSON string."""
         import json
         log_data: dict[str, Any] = {
             "timestamp": self.formatTime(record),

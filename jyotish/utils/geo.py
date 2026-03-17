@@ -13,6 +13,8 @@ import pytz
 
 @dataclass(frozen=True)
 class GeoLocation:
+    """Resolved geographic coordinates and timezone for a place."""
+
     latitude: float
     longitude: float
     timezone_name: str
