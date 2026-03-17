@@ -1,0 +1,22 @@
+# CODEOWNERS — auto-assigns reviewers for PRs
+#
+# When a PR touches files matching a pattern, the listed owners
+# are automatically requested for review.
+#
+# Format: <pattern> <owner> [<owner2> ...]
+# Owner is a GitHub username or team.
+
+# Default: project owner reviews everything
+* @master12coder
+
+# Safety-critical: gemstone/interpretation changes need explicit review
+jyotish/knowledge/lordship_rules.yaml @master12coder
+jyotish/knowledge/gemstone_logic.yaml @master12coder
+jyotish/interpret/safety_validator.py @master12coder
+jyotish/interpret/prompts/ @master12coder
+
+# Computation layer: any change to Swiss Ephemeris logic
+jyotish/compute/ @master12coder
+
+# CI/CD changes
+.github/ @master12coder

@@ -1,0 +1,109 @@
+# ===========================================================================
+# CI Pipeline — runs on every push and pull request
+#
+# STAGES (all must pass before merge):
+#   1. lint      — code style (ruff)
+#   2. typecheck — type safety (mypy)
+#   3. test      — pytest on 3 Python versions
+#   4. audit     — architecture + gemstone safety
+#
+# Branch protection requires ALL these checks to pass.
+# ===========================================================================
+
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+# Cancel in-progress runs for the same branch/PR
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+
+  # ─── Stage 1: Code Style ──────────────────────────────────────────────
+  lint:
+    name: Lint (ruff)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install ruff
+      - run: ruff check jyotish/ tests/ scripts/
+      - run: ruff format --check jyotish/ tests/ scripts/
+
+  # ─── Stage 2: Type Safety ─────────────────────────────────────────────
+  typecheck:
+    name: Type Check (mypy)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -e ".[dev]"
+      - run: pip install mypy
+      - run: mypy jyotish/ --ignore-missing-imports
+
+  # ─── Stage 3: Tests ───────────────────────────────────────────────────
+  test:
+    name: Tests (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -e ".[dev]"
+      - name: Run pytest
+        run: python -m pytest tests/ -v --tb=short
+      - name: Check test count
+        run: |
+          COUNT=$(python -m pytest tests/ --co -q 2>/dev/null | tail -1 | grep -oE '[0-9]+')
+          echo "Test count: $COUNT"
+          if [ "$COUNT" -lt 300 ]; then
+            echo "FAIL: Only $COUNT tests, minimum 300 required"
+            exit 1
+          fi
+
+  # ─── Stage 4: Architecture + Safety Audits ────────────────────────────
+  audit:
+    name: Audits (Architecture + Safety)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -e ".[dev]"
+      - name: Architecture audit (0 errors required)
+        run: python scripts/architecture_audit.py
+      - name: Gemstone safety audit (0 errors required)
+        run: python scripts/gemstone_safety_audit.py
+
+  # ─── Gate: All checks must pass ───────────────────────────────────────
+  ci-pass:
+    name: CI Pass
+    needs: [lint, typecheck, test, audit]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Check all jobs passed
+        run: |
+          if [ "${{ needs.lint.result }}" != "success" ] || \
+             [ "${{ needs.typecheck.result }}" != "success" ] || \
+             [ "${{ needs.test.result }}" != "success" ] || \
+             [ "${{ needs.audit.result }}" != "success" ]; then
+            echo "One or more CI jobs failed"
+            exit 1
+          fi
+          echo "All CI checks passed"
