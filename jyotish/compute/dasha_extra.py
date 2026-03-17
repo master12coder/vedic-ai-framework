@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta
 
-from jyotish.utils.constants import NAKSHATRA_LORDS, SIGNS
+from jyotish.utils.constants import SIGNS
 from jyotish.domain.models.chart import ChartData
 from jyotish.domain.models.dasha_extra import (
     YoginiDashaPeriod, AshtottariDashaPeriod, CharaDashaPeriod,

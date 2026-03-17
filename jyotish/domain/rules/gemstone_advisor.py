@@ -16,6 +16,12 @@ _gemstone_data: dict[str, Any] | None = None
 _YAML_PATH = Path(__file__).parent.parent.parent / "knowledge" / "gemstone_logic.yaml"
 
 
+def reset_gemstone_cache() -> None:
+    """Clear cached gemstone data."""
+    global _gemstone_data
+    _gemstone_data = None
+
+
 @dataclass
 class GemstoneRecommendation:
     """A gemstone recommendation with full details."""

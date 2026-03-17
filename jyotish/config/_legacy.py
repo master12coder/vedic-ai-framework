@@ -12,6 +12,12 @@ import yaml
 _CONFIG: dict[str, Any] | None = None
 
 
+def reset_config() -> None:
+    """Clear cached config. Call between tests if needed."""
+    global _CONFIG
+    _CONFIG = None
+
+
 def _find_config_path() -> Path:
     """Walk up from CWD looking for config.yaml, fall back to package root."""
     cwd = Path.cwd()

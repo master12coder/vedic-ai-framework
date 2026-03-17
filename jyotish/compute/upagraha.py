@@ -7,7 +7,7 @@ Upagrahas are mathematical points derived from planetary positions.
 
 from __future__ import annotations
 
-from jyotish.utils.constants import SIGNS, SIGN_LORDS, GULIKA_SLOT
+from jyotish.utils.constants import SIGNS, GULIKA_SLOT
 from jyotish.utils.datetime_utils import (
     to_jd, compute_sunrise, compute_sunset, from_jd, parse_birth_datetime,
 )
