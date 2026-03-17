@@ -9,21 +9,21 @@ from __future__ import annotations
 
 import swisseph as swe
 
-from jyotish.utils.constants import PLANETS
+from jyotish.utils.constants import PLANETS, FULL_CIRCLE_DEG, HALF_CIRCLE_DEG
 from jyotish.domain.models.chart import ChartData
 from jyotish.domain.models.bhava_chalit import BhavaChalitResult, BhavaPlanet
 
 
 def _normalize(deg: float) -> float:
     """Normalize a degree value to the 0-360 range."""
-    return deg % 360.0
+    return deg % FULL_CIRCLE_DEG
 
 
 def _angular_distance(a: float, b: float) -> float:
     """Shortest angular distance from a to b (always positive, 0-180)."""
-    diff = abs(a - b) % 360.0
-    if diff > 180.0:
-        diff = 360.0 - diff
+    diff = abs(a - b) % FULL_CIRCLE_DEG
+    if diff > HALF_CIRCLE_DEG:
+        diff = FULL_CIRCLE_DEG - diff
     return diff
 
 

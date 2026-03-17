@@ -11,7 +11,10 @@ from jyotish.utils.constants import (
     SIGNS, SIGNS_EN, SIGNS_HI, PLANETS, PLANETS_HI, SWE_PLANETS,
     SIGN_LORDS, NAKSHATRAS, NAKSHATRA_LORDS, EXALTATION, DEBILITATION,
     OWN_SIGNS, MOOLTRIKONA, COMBUSTION_LIMITS, COMBUSTION_LIMITS_RETROGRADE,
-    AVASTHAS,
+    AVASTHAS, SPECIAL_ASPECTS,
+    NUM_NAKSHATRAS, MAX_NAKSHATRA_INDEX, NAKSHATRA_SPAN_DEG,
+    PADAS_PER_NAKSHATRA, HALF_CIRCLE_DEG, FULL_CIRCLE_DEG,
+    DEFAULT_CONJUNCTION_ORB,
 )
 from jyotish.utils.datetime_utils import to_jd, parse_birth_datetime
 from jyotish.utils.geo import resolve_or_manual, GeoLocation
@@ -21,14 +24,13 @@ from jyotish.domain.models.chart import PlanetData, ChartData
 
 def get_nakshatra(lon: float) -> tuple[int, int]:
     """Return (nakshatra_index, pada) from sidereal longitude."""
-    nak_span = 360.0 / 27.0  # 13.3333 degrees
-    nak_index = int(lon / nak_span)
-    if nak_index > 26:
-        nak_index = 26
-    degree_in_nak = lon - nak_index * nak_span
-    pada = int(degree_in_nak / (nak_span / 4.0)) + 1
-    if pada > 4:
-        pada = 4
+    nak_index = int(lon / NAKSHATRA_SPAN_DEG)
+    if nak_index > MAX_NAKSHATRA_INDEX:
+        nak_index = MAX_NAKSHATRA_INDEX
+    degree_in_nak = lon - nak_index * NAKSHATRA_SPAN_DEG
+    pada = int(degree_in_nak / (NAKSHATRA_SPAN_DEG / PADAS_PER_NAKSHATRA)) + 1
+    if pada > PADAS_PER_NAKSHATRA:
+        pada = PADAS_PER_NAKSHATRA
     return nak_index, pada
 
 
@@ -148,7 +150,7 @@ def compute_chart(
         if planet_name == "Ketu":
             # Ketu is always 180° from Rahu
             rahu_data = chart.planets["Rahu"]
-            ketu_lon = (rahu_data.longitude + 180.0) % 360.0
+            ketu_lon = (rahu_data.longitude + HALF_CIRCLE_DEG) % FULL_CIRCLE_DEG
             sign_index = int(ketu_lon / 30.0)
             degree_in_sign = ketu_lon - sign_index * 30.0
             nak_index, pada = get_nakshatra(ketu_lon)
@@ -230,7 +232,7 @@ def get_planet_house(chart: ChartData, planet_name: str) -> int:
     return chart.planets[planet_name].house
 
 
-def are_conjunct(chart: ChartData, planet1: str, planet2: str, orb: float = 10.0) -> bool:
+def are_conjunct(chart: ChartData, planet1: str, planet2: str, orb: float = DEFAULT_CONJUNCTION_ORB) -> bool:
     """Check if two planets are conjunct (in same sign or within orb)."""
     p1 = chart.planets[planet1]
     p2 = chart.planets[planet2]
@@ -244,7 +246,6 @@ def are_conjunct(chart: ChartData, planet1: str, planet2: str, orb: float = 10.0
 
 def has_aspect(chart: ChartData, aspecting_planet: str, target_house: int) -> bool:
     """Check if a planet aspects a given house (including special aspects)."""
-    from jyotish.utils.constants import SPECIAL_ASPECTS
     p = chart.planets[aspecting_planet]
     planet_house = p.house
 

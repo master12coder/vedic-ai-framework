@@ -4,7 +4,11 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta
 
-from jyotish.utils.constants import SIGNS
+from jyotish.utils.constants import (
+    SIGNS, NAKSHATRA_SPAN_DEG,
+    YOGINI_TOTAL_YEARS as _YOGINI_TOTAL_YEARS,
+    ASHTOTTARI_TOTAL_YEARS as _ASHTOTTARI_TOTAL_YEARS,
+)
 from jyotish.domain.models.chart import ChartData
 from jyotish.domain.models.dasha_extra import (
     YoginiDashaPeriod, AshtottariDashaPeriod, CharaDashaPeriod,
@@ -23,7 +27,7 @@ YOGINI_SEQUENCE = [
     ("Siddha", "Venus", 7),
     ("Sankata", "Rahu", 8),
 ]
-YOGINI_TOTAL_YEARS = 36  # Sum of 1+2+3+4+5+6+7+8
+YOGINI_TOTAL_YEARS = _YOGINI_TOTAL_YEARS
 
 # Yogini start nakshatra mapping: nakshatra_index % 8 -> yogini index
 def _yogini_start_index(nakshatra_index: int) -> int:
@@ -46,9 +50,8 @@ def compute_yogini_dasha(chart: ChartData) -> list[YoginiDashaPeriod]:
     start_idx = _yogini_start_index(moon.nakshatra_index)
 
     # Calculate balance of first dasha
-    nak_span = 360.0 / 27.0
-    degree_in_nak = moon.longitude - moon.nakshatra_index * nak_span
-    fraction_elapsed = degree_in_nak / nak_span
+    degree_in_nak = moon.longitude - moon.nakshatra_index * NAKSHATRA_SPAN_DEG
+    fraction_elapsed = degree_in_nak / NAKSHATRA_SPAN_DEG
     balance = 1.0 - fraction_elapsed
 
     periods: list[YoginiDashaPeriod] = []
@@ -81,7 +84,7 @@ ASHTOTTARI_SEQUENCE = [
     ("Sun", 6), ("Moon", 15), ("Mars", 8), ("Mercury", 17),
     ("Saturn", 10), ("Jupiter", 19), ("Rahu", 12), ("Venus", 21),
 ]
-ASHTOTTARI_TOTAL_YEARS = 108
+ASHTOTTARI_TOTAL_YEARS = _ASHTOTTARI_TOTAL_YEARS
 
 # Ashtottari uses only specific nakshatras (Ardra-based system)
 ASHTOTTARI_NAK_LORDS = {

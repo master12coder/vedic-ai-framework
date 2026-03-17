@@ -18,6 +18,7 @@ from jyotish.compute.transit import compute_transits
 from jyotish.compute.panchang import compute_panchang
 from jyotish.compute.ashtakavarga import compute_ashtakavarga
 from jyotish.domain.constants.signs import SIGNS
+from jyotish.domain.constants.astro import MAX_DAY_RATING
 from jyotish.utils.logging_config import get_logger
 
 logger = get_logger(__name__)
@@ -60,7 +61,7 @@ class DailySuggestion:
     avoid: list[str]
     transit_impacts: list[TransitImpact]
     health_focus: str
-    day_rating: int  # 1-10
+    day_rating: int  # 1-MAX_DAY_RATING
     rahu_kaal: str
     nakshatra: str
     tithi: str
@@ -85,8 +86,8 @@ def _compute_day_rating(transit_impacts: list[TransitImpact]) -> int:
         return 5
     total_bindus = sum(t.bindus for t in transit_impacts)
     avg = total_bindus / len(transit_impacts)
-    # Scale: 0-1 bindus avg = 1, 4+ = 10
-    return min(10, max(1, int(avg * 2.5)))
+    # Scale: 0-1 bindus avg = 1, 4+ = MAX_DAY_RATING
+    return min(MAX_DAY_RATING, max(1, int(avg * 2.5)))
 
 
 def compute_daily_suggestion(

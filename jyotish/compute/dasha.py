@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 
 from jyotish.utils.constants import (
     DASHA_SEQUENCE, DASHA_YEARS, DASHA_TOTAL_YEARS,
-    NAKSHATRA_LORDS,
+    NAKSHATRA_LORDS, NAKSHATRA_SPAN_DEG,
 )
 from jyotish.compute.chart import ChartData
 from jyotish.domain.models.dasha import DashaPeriod
@@ -19,10 +19,9 @@ def _dasha_start_index(nakshatra_lord: str) -> int:
 
 def _balance_of_dasha(moon_longitude: float) -> float:
     """Calculate the fraction of first dasha remaining based on Moon's position in nakshatra."""
-    nak_span = 360.0 / 27.0  # 13.3333 degrees
-    nak_index = int(moon_longitude / nak_span)
-    degree_in_nak = moon_longitude - nak_index * nak_span
-    fraction_elapsed = degree_in_nak / nak_span
+    nak_index = int(moon_longitude / NAKSHATRA_SPAN_DEG)
+    degree_in_nak = moon_longitude - nak_index * NAKSHATRA_SPAN_DEG
+    fraction_elapsed = degree_in_nak / NAKSHATRA_SPAN_DEG
     return 1.0 - fraction_elapsed
 
 

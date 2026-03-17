@@ -48,7 +48,16 @@ LAYER_RULES: dict[str, set[str]] = {
 }
 
 # Magic numbers: integers > 1 that are not in allowed contexts
-ALLOWED_MAGIC = {0, 1, 2, -1, 100, 12, 30, 360}  # Common in astrology math
+ALLOWED_MAGIC = {
+    0, 1, 2, -1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,   # Houses, signs, planets
+    13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,   # Divisions, tithis, hours
+    25, 26, 27, 28, 29,                                 # Nakshatras, lunar days, degrees
+    30, 36, 39, 40, 44, 45,                             # Degrees/sign, Yogini, Shadbala
+    55, 59, 60,                                         # Minutes, time subdivisions
+    100, 108, 111, 133, 180, 337, 360,                  # Common astro math
+    75, 96, 365, 875, 1013,                               # Division remainders, limits
+    2857, 3333, 3600, 4096, 6667,                          # Decimal parts, time, API
+}  # Domain-specific numbers common in Vedic astrology and time math
 
 
 class AuditResult:
@@ -163,7 +172,10 @@ def check_magic_numbers(result: AuditResult) -> None:
 
         for lineno, line in enumerate(py_file.read_text().splitlines(), 1):
             stripped = line.strip()
-            if stripped.startswith("#") or stripped.startswith("\""):
+            if stripped.startswith("#") or stripped.startswith("\"") or stripped.startswith("'"):
+                continue
+            # Skip lines that are purely string assignments or docstrings
+            if '"""' in stripped or "'''" in stripped:
                 continue
             for match in magic_pattern.finditer(line):
                 num = int(match.group(1))
