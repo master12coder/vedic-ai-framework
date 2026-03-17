@@ -42,4 +42,3 @@ htmlcov/
 *.tar.gz
 *.whl
 data/life_events.db
-.github/workflows/
