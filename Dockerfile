@@ -1,20 +1,27 @@
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 WORKDIR /app
 
-# Install build dependencies
+# Install build dependencies for pyswisseph
 RUN apt-get update && apt-get install -y --no-install-recommends gcc && \
     rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies
-COPY pyproject.toml .
-RUN pip install --no-cache-dir ".[groq]"
+# Copy package definitions first (layer caching)
+COPY engine/pyproject.toml engine/pyproject.toml
+COPY products/pyproject.toml products/pyproject.toml
+COPY apps/pyproject.toml apps/pyproject.toml
 
-# Copy application
-COPY . .
+# Copy source code
+COPY engine/ engine/
+COPY products/ products/
+COPY apps/ apps/
+
+# Install all packages
+RUN pip install --no-cache-dir -e engine/ -e products/ -e "apps/[telegram]"
 
 # Create data directories
-RUN mkdir -p data/pandit_corrections data/charts
+RUN mkdir -p data charts
 
-ENTRYPOINT ["python", "-m", "jyotish.cli"]
+# Default: CLI help
+ENTRYPOINT ["python", "-m", "jyotish_app.cli.main"]
 CMD ["--help"]
