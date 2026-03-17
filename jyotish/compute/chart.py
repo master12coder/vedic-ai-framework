@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Optional
 
 import swisseph as swe
 
@@ -20,7 +19,7 @@ from jyotish.utils.geo import resolve_or_manual, GeoLocation
 from jyotish.domain.models.chart import PlanetData, ChartData
 
 
-def _get_nakshatra(lon: float) -> tuple[int, int]:
+def get_nakshatra(lon: float) -> tuple[int, int]:
     """Return (nakshatra_index, pada) from sidereal longitude."""
     nak_span = 360.0 / 27.0  # 13.3333 degrees
     nak_index = int(lon / nak_span)
@@ -152,7 +151,7 @@ def compute_chart(
             ketu_lon = (rahu_data.longitude + 180.0) % 360.0
             sign_index = int(ketu_lon / 30.0)
             degree_in_sign = ketu_lon - sign_index * 30.0
-            nak_index, pada = _get_nakshatra(ketu_lon)
+            nak_index, pada = get_nakshatra(ketu_lon)
             planet_data = PlanetData(
                 name="Ketu",
                 name_hi=PLANETS_HI[i],
@@ -183,7 +182,7 @@ def compute_chart(
 
             sign_index = int(lon / 30.0)
             degree_in_sign = lon - sign_index * 30.0
-            nak_index, pada = _get_nakshatra(lon)
+            nak_index, pada = get_nakshatra(lon)
 
             if planet_name == "Rahu":
                 is_retro = True  # Rahu always retrograde

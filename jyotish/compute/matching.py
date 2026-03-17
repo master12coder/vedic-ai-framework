@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 
 from jyotish.utils.constants import (
     SIGN_ELEMENTS, SIGN_VARNA, VARNA_RANK, VASYA_TABLE,

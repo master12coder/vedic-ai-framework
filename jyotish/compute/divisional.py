@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 
 from jyotish.utils.constants import SIGNS, PLANETS
 from jyotish.compute.chart import ChartData

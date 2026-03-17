@@ -2,9 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 from datetime import datetime, timedelta
-from typing import Optional
 
 from jyotish.utils.constants import (
     DASHA_SEQUENCE, DASHA_YEARS, DASHA_TOTAL_YEARS,

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 from datetime import datetime
 
 import swisseph as swe
@@ -11,7 +10,7 @@ from jyotish.utils.constants import (
     PLANETS, SWE_PLANETS, SIGNS, SIGN_LORDS, NAKSHATRAS, NAKSHATRA_LORDS,
 )
 from jyotish.utils.datetime_utils import to_jd, now_ist
-from jyotish.compute.chart import ChartData, _get_nakshatra
+from jyotish.compute.chart import ChartData, get_nakshatra
 from jyotish.domain.models.transit import TransitPlanet, TransitData
 
 
@@ -45,7 +44,7 @@ def compute_transits(chart: ChartData, target_date: datetime | None = None) -> T
 
         sign_index = int(lon / 30.0)
         degree_in_sign = lon - sign_index * 30.0
-        nak_index, _ = _get_nakshatra(lon)
+        nak_index, _ = get_nakshatra(lon)
         is_retro = speed < 0 if planet_name != "Ketu" else True
 
         # Which natal house does this transit activate?

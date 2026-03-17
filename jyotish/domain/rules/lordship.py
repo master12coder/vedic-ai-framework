@@ -7,9 +7,9 @@ from typing import Any
 
 import yaml
 
-from jyotish.utils.logging_config import get_logger
+import logging
 
-logger = get_logger(__name__)
+logger = logging.getLogger(__name__)
 
 _lordship_data: dict[str, Any] | None = None
 _YAML_PATH = Path(__file__).parent.parent.parent / "knowledge" / "lordship_rules.yaml"

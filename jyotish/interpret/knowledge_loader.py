@@ -20,6 +20,14 @@ _lordship_cache: dict[str, Any] | None = None
 _gemstone_cache: dict[str, Any] | None = None
 
 
+def reset_caches() -> None:
+    """Clear all cached knowledge data. Call between tests."""
+    global _lordship_cache, _gemstone_cache
+    _lordship_cache = None
+    _gemstone_cache = None
+
+
+
 def _load_yaml(filename: str) -> dict[str, Any]:
     """Load a YAML knowledge file."""
     path = _KNOWLEDGE_DIR / filename
