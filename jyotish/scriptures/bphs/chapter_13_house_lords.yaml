@@ -1,0 +1,428 @@
+book: BPHS
+chapter: 13
+title: "Effects of House Lords in Different Houses"
+description: "Brihat Parashara Hora Shastra chapter 13-14 describes the effects when the lord of one house is placed in another house."
+
+rules:
+  # ============================================================
+  # LAGNA LORD (1st) IN HOUSES
+  # ============================================================
+  - verse: 1
+    topic: house_lord_placement
+    planets: []
+    houses: [1, 1]
+    text_sanskrit: ""
+    text_english: "1st lord in 1st house: The native is healthy, long-lived, self-made, and possesses natural charisma. Independent personality with strong willpower. Favorable for overall success in life."
+    text_hindi: "लग्नेश प्रथम भाव में: जातक स्वस्थ, दीर्घायु, स्वनिर्मित और प्राकृतिक आकर्षण वाला होता है।"
+    rule_type: lord_placement
+
+  - verse: 2
+    topic: house_lord_placement
+    planets: []
+    houses: [1, 2]
+    text_english: "1st lord in 2nd house: The native earns wealth through personal effort. Good family life, eloquent speech. Financial prosperity linked to personality and self-initiative."
+    text_hindi: "लग्नेश द्वितीय भाव में: जातक व्यक्तिगत प्रयास से धन अर्जित करता है। अच्छा पारिवारिक जीवन।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 3
+    topic: house_lord_placement
+    planets: []
+    houses: [1, 4]
+    text_english: "1st lord in 4th house: Happiness from mother, vehicles, landed property. The native gets domestic comforts and emotional security. Education is valued."
+    text_hindi: "लग्नेश चतुर्थ भाव में: माता सुख, वाहन, भूमि सम्पत्ति। गृह सुख और भावनात्मक सुरक्षा।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 4
+    topic: house_lord_placement
+    planets: []
+    houses: [1, 5]
+    text_english: "1st lord in 5th house: Intelligent, creative, good with children. Past life merit supports this life. Interest in speculation, education, and romantic pursuits."
+    text_hindi: "लग्नेश पञ्चम भाव में: बुद्धिमान, रचनात्मक, सन्तान सुख। पूर्व जन्म के पुण्य।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 5
+    topic: house_lord_placement
+    planets: []
+    houses: [1, 6]
+    text_english: "1st lord in 6th house: The native faces health challenges, enemies, and debts in early life. May overcome obstacles through personal strength. Service-oriented career indicated."
+    text_hindi: "लग्नेश षष्ठ भाव में: स्वास्थ्य चुनौती, शत्रु और ऋण। व्यक्तिगत बल से बाधाओं पर विजय।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 6
+    topic: house_lord_placement
+    planets: []
+    houses: [1, 7]
+    text_english: "1st lord in 7th house: Marriage and partnerships are central to life identity. The spouse is influential. Business partnerships can be very successful."
+    text_hindi: "लग्नेश सप्तम भाव में: विवाह और साझेदारी जीवन की पहचान। जीवनसाथी प्रभावशाली।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 7
+    topic: house_lord_placement
+    planets: []
+    houses: [1, 8]
+    text_english: "1st lord in 8th house: Prone to sudden transformations, health scares, and hidden matters. Interest in occult, astrology, and mysteries. Longevity may be affected."
+    text_hindi: "लग्नेश अष्टम भाव में: अचानक परिवर्तन, स्वास्थ्य भय। तन्त्र और रहस्य में रुचि।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 8
+    topic: house_lord_placement
+    planets: []
+    houses: [1, 9]
+    text_english: "1st lord in 9th house: Very fortunate placement. Native is righteous, spiritual, and blessed by fortune. Father is supportive. Long-distance travel benefits the native."
+    text_hindi: "लग्नेश नवम भाव में: अत्यन्त भाग्यशाली। धार्मिक, आध्यात्मिक, भाग्य अनुकूल। पिता सहायक।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 9
+    topic: house_lord_placement
+    planets: []
+    houses: [1, 10]
+    text_english: "1st lord in 10th house: Career-oriented, ambitious, achieves recognition through personal merit. Strong professional reputation. Government or authority positions favored."
+    text_hindi: "लग्नेश दशम भाव में: कर्मठ, महत्वाकांक्षी, व्यक्तिगत योग्यता से मान्यता। सरकारी पद अनुकूल।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 10
+    topic: house_lord_placement
+    planets: []
+    houses: [1, 11]
+    text_english: "1st lord in 11th house: Gains and income are strong. Large social circle, elder siblings are supportive. Aspirations are fulfilled through personal effort."
+    text_hindi: "लग्नेश एकादश भाव में: लाभ और आय प्रबल। बड़ा सामाजिक वृत्त। आकांक्षाएं पूर्ण।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 11
+    topic: house_lord_placement
+    planets: []
+    houses: [1, 12]
+    text_english: "1st lord in 12th house: Expenses exceed income, foreign settlement possible. Spiritual inclination, interest in meditation and isolation. Hospital or ashram connections."
+    text_hindi: "लग्नेश द्वादश भाव में: व्यय अधिक, विदेश वास सम्भव। आध्यात्मिक प्रवृत्ति।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  # ============================================================
+  # 2ND LORD IN HOUSES (key placements)
+  # ============================================================
+  - verse: 12
+    topic: house_lord_placement
+    planets: []
+    houses: [2, 1]
+    text_english: "2nd lord in 1st house: The native earns wealth through self-effort. Good speaker. Family values define personality. Accumulation of assets through personal endeavor."
+    text_hindi: "द्वितीयेश प्रथम भाव में: स्वप्रयास से धनार्जन। वाक्पटु। पारिवारिक मूल्य व्यक्तित्व को परिभाषित करते हैं।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 13
+    topic: house_lord_placement
+    planets: []
+    houses: [2, 6]
+    text_english: "2nd lord in 6th house: Financial losses through enemies, litigation, or illness. Speech may cause disputes. Hard work needed to maintain wealth."
+    text_hindi: "द्वितीयेश षष्ठ भाव में: शत्रु, मुकदमे या बीमारी से धन हानि। वाणी विवाद का कारण।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 14
+    topic: house_lord_placement
+    planets: []
+    houses: [2, 11]
+    text_english: "2nd lord in 11th house: Excellent for wealth. Income from multiple sources. Family supports financial growth. Elder siblings bring financial benefit."
+    text_hindi: "द्वितीयेश एकादश भाव में: धन के लिए उत्तम। अनेक स्रोतों से आय। परिवार आर्थिक वृद्धि में सहायक।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  # ============================================================
+  # 5TH LORD IN HOUSES (key placements)
+  # ============================================================
+  - verse: 15
+    topic: house_lord_placement
+    planets: []
+    houses: [5, 1]
+    text_english: "5th lord in 1st house: Intelligent, creative, blessed with children. Past life merits manifest in this life. Artistic and speculative talents are strong."
+    text_hindi: "पञ्चमेश प्रथम भाव में: बुद्धिमान, रचनात्मक, सन्तान सुख। पूर्व जन्म के पुण्य इस जन्म में प्रकट।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 16
+    topic: house_lord_placement
+    planets: []
+    houses: [5, 5]
+    text_english: "5th lord in 5th house: Very auspicious. Strong intelligence, children prosper, past life merit active. Success in education, speculation, and creative pursuits."
+    text_hindi: "पञ्चमेश पञ्चम भाव में: अत्यन्त शुभ। प्रबल बुद्धि, सन्तान समृद्ध, शिक्षा और रचनात्मकता में सफलता।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 17
+    topic: house_lord_placement
+    planets: []
+    houses: [5, 9]
+    text_english: "5th lord in 9th house: Highly fortunate. Excellent intellect devoted to dharma. Children are blessed. Connection between past merit and present fortune."
+    text_hindi: "पञ्चमेश नवम भाव में: अत्यन्त भाग्यशाली। धर्म के प्रति समर्पित उत्तम बुद्धि। सन्तान भाग्यशाली।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  # ============================================================
+  # 7TH LORD IN HOUSES (key placements)
+  # ============================================================
+  - verse: 18
+    topic: house_lord_placement
+    planets: []
+    houses: [7, 1]
+    text_english: "7th lord in 1st house: Spouse deeply influences the native's life. Early marriage possible. Business partnerships successful. The native is relationship-oriented."
+    text_hindi: "सप्तमेश प्रथम भाव में: जीवनसाथी जातक के जीवन को गहराई से प्रभावित करता है। शीघ्र विवाह।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 19
+    topic: house_lord_placement
+    planets: []
+    houses: [7, 6]
+    text_english: "7th lord in 6th house: Marital discord, spouse may have health issues. Litigation related to marriage possible. Spouse may be in service or medical profession."
+    text_hindi: "सप्तमेश षष्ठ भाव में: वैवाहिक कलह, जीवनसाथी को स्वास्थ्य समस्या। विवाह से सम्बन्धित मुकदमा।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 20
+    topic: house_lord_placement
+    planets: []
+    houses: [7, 12]
+    text_english: "7th lord in 12th house: Spouse may be from foreign land. Separation in marriage possible. Expenditure through partnerships. Bed pleasures may be affected."
+    text_hindi: "सप्तमेश द्वादश भाव में: विदेशी जीवनसाथी। वैवाहिक वियोग सम्भव। साझेदारी से व्यय।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  # ============================================================
+  # 9TH LORD IN HOUSES (key placements)
+  # ============================================================
+  - verse: 21
+    topic: house_lord_placement
+    planets: []
+    houses: [9, 1]
+    text_english: "9th lord in 1st house: Very fortunate native. Father is supportive. Religious and philosophical inclination. Luck favors the native throughout life."
+    text_hindi: "नवमेश प्रथम भाव में: अत्यन्त भाग्यशाली। पिता सहायक। धार्मिक और दार्शनिक प्रवृत्ति।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 22
+    topic: house_lord_placement
+    planets: []
+    houses: [9, 5]
+    text_english: "9th lord in 5th house: Blessed with intelligence and fortune. Children bring luck. Past life merit and present fortune combine powerfully."
+    text_hindi: "नवमेश पञ्चम भाव में: बुद्धि और भाग्य से सम्पन्न। सन्तान भाग्यवर्धक।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 23
+    topic: house_lord_placement
+    planets: []
+    houses: [9, 10]
+    text_english: "9th lord in 10th house: Dharma-Karma connection brings outstanding career success. Father supports career. Government positions, leadership, and public recognition."
+    text_hindi: "नवमेश दशम भाव में: धर्म-कर्म योग से विशिष्ट कैरियर सफलता। पिता कैरियर में सहायक।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  # ============================================================
+  # 10TH LORD IN HOUSES (key placements)
+  # ============================================================
+  - verse: 24
+    topic: house_lord_placement
+    planets: []
+    houses: [10, 1]
+    text_english: "10th lord in 1st house: Career defines the native. Self-employed or independent profession. Authority and recognition come naturally. Strong professional identity."
+    text_hindi: "दशमेश प्रथम भाव में: कैरियर जातक को परिभाषित करता है। स्वरोजगार। अधिकार और मान्यता।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 25
+    topic: house_lord_placement
+    planets: []
+    houses: [10, 4]
+    text_english: "10th lord in 4th house: Career in real estate, vehicles, education, or homeland affairs. Works from home possible. Mother influences career choices."
+    text_hindi: "दशमेश चतुर्थ भाव में: रियल एस्टेट, वाहन, शिक्षा में कैरियर। माता कैरियर को प्रभावित करती है।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 26
+    topic: house_lord_placement
+    planets: []
+    houses: [10, 9]
+    text_english: "10th lord in 9th house: Career in teaching, law, religion, or foreign affairs. Fortune through profession. Father and career closely connected."
+    text_hindi: "दशमेश नवम भाव में: शिक्षण, कानून, धर्म या विदेशी मामलों में कैरियर। पेशे से भाग्योदय।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 27
+    topic: house_lord_placement
+    planets: []
+    houses: [10, 12]
+    text_english: "10th lord in 12th house: Career in foreign lands, hospitals, spiritual organizations, or behind-the-scenes work. May face career interruptions but finds success abroad."
+    text_hindi: "दशमेश द्वादश भाव में: विदेश, अस्पताल, आध्यात्मिक संस्थानों में कैरियर। विदेश में सफलता।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  # ============================================================
+  # 11TH LORD IN HOUSES (key placements)
+  # ============================================================
+  - verse: 28
+    topic: house_lord_placement
+    planets: []
+    houses: [11, 1]
+    text_english: "11th lord in 1st house: Gains through personal effort. Large social network. Aspirations fulfilled. Elder siblings support the native."
+    text_hindi: "एकादशेश प्रथम भाव में: व्यक्तिगत प्रयास से लाभ। बड़ा सामाजिक नेटवर्क।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 29
+    topic: house_lord_placement
+    planets: []
+    houses: [11, 2]
+    text_english: "11th lord in 2nd house: Income flows into savings. Gains benefit family wealth. Multiple income sources leading to strong financial accumulation."
+    text_hindi: "एकादशेश द्वितीय भाव में: आय बचत में। लाभ पारिवारिक धन में वृद्धि करता है।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 30
+    topic: house_lord_placement
+    planets: []
+    houses: [11, 10]
+    text_english: "11th lord in 10th house: Career is the main source of gains. Professional success leads to financial prosperity. Network helps career advancement."
+    text_hindi: "एकादशेश दशम भाव में: कैरियर लाभ का मुख्य स्रोत। व्यावसायिक सफलता से आर्थिक समृद्धि।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  # ============================================================
+  # 12TH LORD IN HOUSES (key placements)
+  # ============================================================
+  - verse: 31
+    topic: house_lord_placement
+    planets: []
+    houses: [12, 1]
+    text_english: "12th lord in 1st house: Expenses through self, health expenditure. Foreign connections. Spiritual inclination. The native may spend more than they earn."
+    text_hindi: "द्वादशेश प्रथम भाव में: स्वास्थ्य व्यय। विदेशी सम्बन्ध। आध्यात्मिक प्रवृत्ति।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 32
+    topic: house_lord_placement
+    planets: []
+    houses: [12, 2]
+    text_english: "12th lord in 2nd house: Family wealth affected by losses. Speech may be deceptive. Financial drain through family responsibilities or foreign investments."
+    text_hindi: "द्वादशेश द्वितीय भाव में: पारिवारिक धन हानि। वाणी भ्रामक। विदेशी निवेश से व्यय।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 33
+    topic: house_lord_placement
+    planets: []
+    houses: [12, 9]
+    text_english: "12th lord in 9th house: Expenditure on pilgrimage, foreign travel for spiritual purposes. Father may be in foreign land. Auspicious for spiritual growth."
+    text_hindi: "द्वादशेश नवम भाव में: तीर्थयात्रा पर व्यय। पिता विदेश में। आध्यात्मिक विकास के लिए शुभ।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  # ============================================================
+  # 6TH LORD IN HOUSES (key placements)
+  # ============================================================
+  - verse: 34
+    topic: house_lord_placement
+    planets: []
+    houses: [6, 6]
+    text_english: "6th lord in 6th house: Victory over enemies and diseases. Strong immune system. The native overcomes all obstacles. Legal matters resolved favorably."
+    text_hindi: "षष्ठेश षष्ठ भाव में: शत्रुओं और रोगों पर विजय। प्रबल प्रतिरक्षा।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 35
+    topic: house_lord_placement
+    planets: []
+    houses: [6, 8]
+    text_english: "6th lord in 8th house: Vipreet Raj Yoga — enemies self-destruct. Hidden health issues may emerge but resolve favorably. Transformation through overcoming obstacles."
+    text_hindi: "षष्ठेश अष्टम भाव में: विपरीत राज योग — शत्रु स्वयं नष्ट। बाधाओं पर विजय से परिवर्तन।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 36
+    topic: house_lord_placement
+    planets: []
+    houses: [6, 12]
+    text_english: "6th lord in 12th house: Vipreet Raj Yoga — debts and enemies dissolve. Hospitalization possible but recovery assured. Foreign land resolves health issues."
+    text_hindi: "षष्ठेश द्वादश भाव में: विपरीत राज योग — ऋण और शत्रु नष्ट। विदेश से स्वास्थ्य लाभ।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  # ============================================================
+  # 8TH LORD IN HOUSES (key placements)
+  # ============================================================
+  - verse: 37
+    topic: house_lord_placement
+    planets: []
+    houses: [8, 1]
+    text_english: "8th lord in 1st house: Health challenges, sudden events in life. Interest in occult and hidden knowledge. Transformative personality. Longevity may be affected."
+    text_hindi: "अष्टमेश प्रथम भाव में: स्वास्थ्य चुनौती, अचानक घटनाएं। तन्त्र में रुचि। आयु प्रभावित।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 38
+    topic: house_lord_placement
+    planets: []
+    houses: [8, 6]
+    text_english: "8th lord in 6th house: Vipreet Raj Yoga — sudden gains through overcoming obstacles. Hidden enemies revealed and defeated. Legal matters favor the native."
+    text_hindi: "अष्टमेश षष्ठ भाव में: विपरीत राज योग — बाधाओं से अचानक लाभ। छिपे शत्रु प्रकट और पराजित।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 39
+    topic: house_lord_placement
+    planets: []
+    houses: [8, 10]
+    text_english: "8th lord in 10th house: Career disruptions, sudden changes in profession. May work in insurance, astrology, occult, or research. Public reputation has ups and downs."
+    text_hindi: "अष्टमेश दशम भाव में: कैरियर में व्यवधान। बीमा, ज्योतिष, अनुसन्धान में कार्य। प्रतिष्ठा में उतार-चढ़ाव।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  # ============================================================
+  # 3RD LORD IN HOUSES (key placements)
+  # ============================================================
+  - verse: 40
+    topic: house_lord_placement
+    planets: []
+    houses: [3, 10]
+    text_english: "3rd lord in 10th house: Career in communication, media, writing, or short-distance travel. Courage and initiative drive professional success."
+    text_hindi: "तृतीयेश दशम भाव में: संचार, मीडिया, लेखन में कैरियर। साहस और पहल व्यावसायिक सफलता।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 41
+    topic: house_lord_placement
+    planets: []
+    houses: [3, 11]
+    text_english: "3rd lord in 11th house: Gains through communication skills, younger siblings, and short journeys. Writing or media brings income."
+    text_hindi: "तृतीयेश एकादश भाव में: संवाद कौशल, छोटे भाई-बहन और लघु यात्राओं से लाभ।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  # ============================================================
+  # 4TH LORD IN HOUSES (key placements)
+  # ============================================================
+  - verse: 42
+    topic: house_lord_placement
+    planets: []
+    houses: [4, 9]
+    text_english: "4th lord in 9th house: Fortune from property, mother is religious. Native finds peace in spiritual pursuits. Ancestral property brings luck."
+    text_hindi: "चतुर्थेश नवम भाव में: सम्पत्ति से भाग्य। माता धार्मिक। आध्यात्मिक साधना से शान्ति।"
+    text_sanskrit: ""
+    rule_type: lord_placement
+
+  - verse: 43
+    topic: house_lord_placement
+    planets: []
+    houses: [4, 10]
+    text_english: "4th lord in 10th house: Career from home base, real estate, agriculture, or education. Mother supports career. Professional life brings domestic happiness."
+    text_hindi: "चतुर्थेश दशम भाव में: गृह आधारित कैरियर। माता कैरियर में सहायक। व्यावसायिक जीवन से गृह सुख।"
+    text_sanskrit: ""
+    rule_type: lord_placement

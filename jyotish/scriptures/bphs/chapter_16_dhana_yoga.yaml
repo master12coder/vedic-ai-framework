@@ -1,0 +1,194 @@
+book: BPHS
+chapter: 16
+title: "Dhana Yoga — Wealth Combinations"
+description: "Brihat Parashara Hora Shastra chapter 16 describes planetary combinations that bring wealth, poverty, and financial fluctuations."
+
+rules:
+  # ============================================================
+  # WEALTH-PRODUCING COMBINATIONS
+  # ============================================================
+  - verse: 1
+    topic: dhana_yoga
+    planets: [Jupiter]
+    houses: [2, 11]
+    text_english: "Jupiter as 2nd or 11th lord placed in kendra or trikona in own/exalted sign creates powerful Dhana Yoga. The native accumulates wealth through righteous means, education, or advisory roles."
+    text_hindi: "बृहस्पति द्वितीय या एकादश भाव का स्वामी केन्द्र या त्रिकोण में स्वगृही/उच्च हो तो शक्तिशाली धन योग। धार्मिक मार्ग से धनार्जन।"
+    text_sanskrit: ""
+    rule_type: yoga
+
+  - verse: 2
+    topic: dhana_yoga
+    planets: [Venus]
+    houses: [2, 11]
+    text_english: "Venus as 2nd or 11th lord well-placed brings wealth through arts, entertainment, luxury goods, or spouse. Financial comfort and material abundance indicated."
+    text_hindi: "शुक्र द्वितीय या एकादश भाव का स्वामी शुभ स्थान पर हो तो कला, मनोरंजन, विलासिता या जीवनसाथी से धन।"
+    text_sanskrit: ""
+    rule_type: yoga
+
+  - verse: 3
+    topic: dhana_yoga
+    planets: [Mercury]
+    houses: [2, 11]
+    text_english: "Mercury connected to 2nd and 11th houses brings wealth through trade, commerce, communication, writing, or intellectual pursuits. Multiple income streams."
+    text_hindi: "बुध द्वितीय और एकादश भाव से सम्बन्धित हो तो व्यापार, संचार, लेखन से धन। अनेक आय स्रोत।"
+    text_sanskrit: ""
+    rule_type: yoga
+
+  - verse: 4
+    topic: dhana_yoga
+    planets: []
+    houses: [1, 2, 5, 9, 11]
+    text_english: "When lords of 1st, 2nd, 5th, 9th, and 11th houses are strong and mutually connected through conjunction, aspect, or exchange, great wealth is indicated. This is the complete Dhana Yoga formula."
+    text_hindi: "प्रथम, द्वितीय, पञ्चम, नवम और एकादश भावेश बलवान और परस्पर सम्बन्धित हों तो महान् धन योग।"
+    text_sanskrit: ""
+    rule_type: yoga
+
+  - verse: 5
+    topic: dhana_yoga
+    planets: [Sun]
+    houses: [2, 11]
+    text_english: "Sun connected to 2nd or 11th house brings wealth through government, authority, father, or leadership positions. Earning through power and influence."
+    text_hindi: "सूर्य द्वितीय या एकादश भाव से सम्बन्धित हो तो सरकार, अधिकार, पिता या नेतृत्व से धन।"
+    text_sanskrit: ""
+    rule_type: yoga
+
+  - verse: 6
+    topic: dhana_yoga
+    planets: [Moon]
+    houses: [2, 11]
+    text_english: "Moon as 2nd or 11th lord strong brings wealth through public dealings, liquids, agriculture, hospitality, or mother's side. Emotional intelligence generates income."
+    text_hindi: "चन्द्रमा द्वितीय या एकादश भावेश बलवान हो तो जनसम्पर्क, कृषि, आतिथ्य या मातृ पक्ष से धन।"
+    text_sanskrit: ""
+    rule_type: yoga
+
+  - verse: 7
+    topic: dhana_yoga
+    planets: [Saturn]
+    houses: [2, 11]
+    text_english: "Saturn connected to wealth houses brings slow but steady accumulation. Wealth through hard work, mining, oil, real estate, or service to masses. Delayed but substantial gains."
+    text_hindi: "शनि धन भावों से सम्बन्धित हो तो धीमा किन्तु स्थिर संचय। कठिन परिश्रम, खनन, तेल, भूमि से धन।"
+    text_sanskrit: ""
+    rule_type: yoga
+
+  - verse: 8
+    topic: dhana_yoga
+    planets: [Mars]
+    houses: [2, 11]
+    text_english: "Mars connected to 2nd or 11th brings wealth through courage, competition, property, engineering, or military. Quick gains possible but financial aggression needed."
+    text_hindi: "मंगल द्वितीय या एकादश भाव से सम्बन्धित हो तो साहस, प्रतिस्पर्धा, सम्पत्ति, अभियान्त्रिकी से धन।"
+    text_sanskrit: ""
+    rule_type: yoga
+
+  # ============================================================
+  # POVERTY-PRODUCING COMBINATIONS (Daridra Yoga)
+  # ============================================================
+  - verse: 9
+    topic: daridra_yoga
+    planets: []
+    houses: [2, 6, 8, 12]
+    text_english: "2nd lord in 6th, 8th, or 12th house without benefic aspect creates Daridra Yoga. Financial losses through debts, sudden calamities, or excessive expenditure."
+    text_hindi: "द्वितीयेश षष्ठ, अष्टम या द्वादश भाव में बिना शुभ दृष्टि — दरिद्र योग। ऋण, आकस्मिक विपत्ति से धन हानि।"
+    text_sanskrit: ""
+    rule_type: yoga
+
+  - verse: 10
+    topic: daridra_yoga
+    planets: []
+    houses: [11, 6, 8, 12]
+    text_english: "11th lord in dusthana (6th/8th/12th) without cancellation brings irregular income, losses through elder siblings, and unfulfilled aspirations."
+    text_hindi: "एकादशेश दुःस्थान में बिना निरस्तीकरण — अनियमित आय, ज्येष्ठ भ्रातृ से हानि।"
+    text_sanskrit: ""
+    rule_type: yoga
+
+  - verse: 11
+    topic: daridra_yoga
+    planets: [Jupiter, Saturn]
+    houses: []
+    text_english: "Jupiter and Saturn both debilitated or combust in a chart creates severe financial hardship. The native struggles to accumulate wealth despite effort."
+    text_hindi: "बृहस्पति और शनि दोनों नीच या अस्त हों तो गम्भीर आर्थिक कठिनाई। प्रयास के बावजूद धन संचय कठिन।"
+    text_sanskrit: ""
+    rule_type: yoga
+
+  - verse: 12
+    topic: daridra_yoga
+    planets: []
+    houses: [1, 6, 8, 12]
+    text_english: "Lagna lord debilitated in 6th, 8th, or 12th without any Vipreet Raj Yoga cancellation indicates self-created financial problems and health-related expenses."
+    text_hindi: "लग्नेश नीच होकर षष्ठ, अष्टम या द्वादश में — स्व-निर्मित आर्थिक समस्या और स्वास्थ्य व्यय।"
+    text_sanskrit: ""
+    rule_type: yoga
+
+  # ============================================================
+  # SUDDEN WEALTH COMBINATIONS
+  # ============================================================
+  - verse: 13
+    topic: sudden_wealth
+    planets: [Rahu]
+    houses: [2, 5, 11]
+    text_english: "Rahu in 2nd, 5th, or 11th house connected with their lords brings sudden wealth through unconventional means — speculation, foreign trade, technology, or lottery."
+    text_hindi: "राहु द्वितीय, पञ्चम या एकादश भाव में उनके स्वामी से सम्बन्धित — अपारम्परिक मार्ग से अचानक धन।"
+    text_sanskrit: ""
+    rule_type: yoga
+
+  - verse: 14
+    topic: sudden_wealth
+    planets: []
+    houses: [5, 8, 11]
+    text_english: "Connection between 5th lord (speculation), 8th lord (sudden events), and 11th lord (gains) creates potential for windfall profits. Stock market, inheritance, or unexpected gains."
+    text_hindi: "पञ्चमेश, अष्टमेश और एकादशेश का सम्बन्ध — आकस्मिक लाभ, शेयर बाजार, विरासत।"
+    text_sanskrit: ""
+    rule_type: yoga
+
+  - verse: 15
+    topic: dhana_yoga
+    planets: []
+    houses: [2, 9]
+    text_english: "2nd lord in 9th or 9th lord in 2nd creates Bhagya-Dhana connection. Wealth comes through fortune, father, pilgrimage, foreign travel, or higher education."
+    text_hindi: "द्वितीयेश नवम में या नवमेश द्वितीय में — भाग्य-धन सम्बन्ध। पिता, विदेश या उच्च शिक्षा से धन।"
+    text_sanskrit: ""
+    rule_type: yoga
+
+  - verse: 16
+    topic: dhana_yoga
+    planets: []
+    houses: [5, 9]
+    text_english: "5th and 9th lords in mutual exchange or conjunction creates Purva Punya Dhana Yoga. Past life merit manifests as present-life financial fortune."
+    text_hindi: "पञ्चमेश और नवमेश का परस्पर परिवर्तन या युति — पूर्व पुण्य धन योग।"
+    text_sanskrit: ""
+    rule_type: yoga
+
+  - verse: 17
+    topic: dhana_yoga
+    planets: []
+    houses: [1, 2, 11]
+    text_english: "Lagna lord, 2nd lord, and 11th lord all in kendras or trikonas without affliction indicates consistent wealth throughout life."
+    text_hindi: "लग्नेश, द्वितीयेश और एकादशेश सभी केन्द्र या त्रिकोण में बिना पीड़ा — जीवन भर स्थिर धन।"
+    text_sanskrit: ""
+    rule_type: yoga
+
+  - verse: 18
+    topic: dhana_yoga
+    planets: [Jupiter, Venus]
+    houses: [2]
+    text_english: "Jupiter and Venus in 2nd house together create exceptional wealth yoga. The native has abundant family wealth, eloquent speech, and refined tastes."
+    text_hindi: "बृहस्पति और शुक्र द्वितीय भाव में एक साथ — असाधारण धन योग। प्रचुर पारिवारिक सम्पत्ति।"
+    text_sanskrit: ""
+    rule_type: yoga
+
+  - verse: 19
+    topic: dhana_yoga
+    planets: []
+    houses: [2, 7]
+    text_english: "2nd and 7th lords exchange or conjoin brings wealth through marriage, partnership, or spouse's family. Business partnerships are profitable."
+    text_hindi: "द्वितीयेश और सप्तमेश का परिवर्तन या युति — विवाह, साझेदारी या ससुराल से धन।"
+    text_sanskrit: ""
+    rule_type: yoga
+
+  - verse: 20
+    topic: dhana_yoga
+    planets: []
+    houses: [4, 10]
+    text_english: "4th and 10th lords mutually strong create wealth from career, property, and material comforts combined. Professional success leads to property accumulation."
+    text_hindi: "चतुर्थेश और दशमेश दोनों बलवान — कैरियर, सम्पत्ति और भौतिक सुख से धन।"
+    text_sanskrit: ""
+    rule_type: yoga

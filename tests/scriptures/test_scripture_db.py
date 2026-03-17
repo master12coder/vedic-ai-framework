@@ -215,6 +215,8 @@ class TestDataQuality:
             "general", "yoga", "dasha", "remedy",
             "transit", "friendship", "gemstone",
             "planet_house", "raja_yoga", "muhurta",
+            "lord_placement", "bhava_effect", "karaka_effect",
+            "ashtakavarga", "dasha_effect",
         }
         refs = get_all_references()
         for r in refs:

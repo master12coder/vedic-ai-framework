@@ -1,0 +1,224 @@
+book: BPHS
+chapter: 47
+title: "Ashtakavarga System"
+description: "Brihat Parashara Hora Shastra chapters 47-50 describe the Ashtakavarga system for transit evaluation and strength assessment."
+
+rules:
+  # ============================================================
+  # GENERAL ASHTAKAVARGA PRINCIPLES
+  # ============================================================
+  - verse: 1
+    topic: ashtakavarga_general
+    planets: []
+    houses: []
+    text_english: "Sarvashtakavarga (SAV) total for a sign indicates its overall strength. Signs with 25+ bindus are favorable for transit, while those below 25 are weak. Signs with 30+ are exceptionally strong."
+    text_hindi: "सर्वाष्टकवर्ग (SAV) किसी राशि का समग्र बल दर्शाता है। 25+ बिन्दु शुभ, 25 से कम दुर्बल, 30+ अत्यन्त बलवान।"
+    text_sanskrit: ""
+    rule_type: ashtakavarga
+
+  - verse: 2
+    topic: ashtakavarga_general
+    planets: []
+    houses: []
+    text_english: "Planets transiting signs with high SAV bindus give favorable results. Planets transiting signs with low SAV bindus give unfavorable results regardless of other factors."
+    text_hindi: "उच्च SAV बिन्दुओं वाली राशि में गोचर करने वाले ग्रह शुभ फल देते हैं। कम बिन्दुओं वाली राशि में अशुभ।"
+    text_sanskrit: ""
+    rule_type: ashtakavarga
+
+  # ============================================================
+  # PLANET-SPECIFIC ASHTAKAVARGA EFFECTS
+  # ============================================================
+  - verse: 3
+    topic: ashtakavarga_sun
+    planets: [Sun]
+    houses: []
+    text_english: "Sun's Bhinna Ashtakavarga (BAV): When Sun transits a sign where it has 4+ bindus, it gives authority, health, father's wellbeing. Below 4 bindus: health issues, conflicts with authority."
+    text_hindi: "सूर्य भिन्नाष्टकवर्ग: 4+ बिन्दुओं वाली राशि में गोचर — अधिकार, स्वास्थ्य। 4 से कम — स्वास्थ्य समस्या।"
+    text_sanskrit: ""
+    rule_type: ashtakavarga
+
+  - verse: 4
+    topic: ashtakavarga_moon
+    planets: [Moon]
+    houses: []
+    text_english: "Moon's BAV: Moon transiting sign with 4+ bindus gives mental peace, public favor, and emotional wellbeing. Below 4: anxiety, mood swings, problems with mother."
+    text_hindi: "चन्द्र भिन्नाष्टकवर्ग: 4+ बिन्दुओं वाली राशि — मानसिक शान्ति, जन प्रियता। 4 से कम — चिन्ता, मातृ कष्ट।"
+    text_sanskrit: ""
+    rule_type: ashtakavarga
+
+  - verse: 5
+    topic: ashtakavarga_mars
+    planets: [Mars]
+    houses: []
+    text_english: "Mars BAV: Mars in sign with 4+ bindus gives courage, property gains, victory over enemies. Below 4: accidents, surgery, conflicts, blood-related issues."
+    text_hindi: "मंगल भिन्नाष्टकवर्ग: 4+ बिन्दुओं — साहस, सम्पत्ति लाभ। 4 से कम — दुर्घटना, शल्यचिकित्सा, रक्त सम्बन्धी।"
+    text_sanskrit: ""
+    rule_type: ashtakavarga
+
+  - verse: 6
+    topic: ashtakavarga_mercury
+    planets: [Mercury]
+    houses: []
+    text_english: "Mercury BAV: Mercury in sign with 4+ bindus gives intellectual success, business profits, good communication. Below 4: business losses, misunderstandings, nervous disorders."
+    text_hindi: "बुध भिन्नाष्टकवर्ग: 4+ बिन्दुओं — बौद्धिक सफलता, व्यापार लाभ। 4 से कम — व्यापार हानि, तन्त्रिका विकार।"
+    text_sanskrit: ""
+    rule_type: ashtakavarga
+
+  - verse: 7
+    topic: ashtakavarga_jupiter
+    planets: [Jupiter]
+    houses: []
+    text_english: "Jupiter BAV: Jupiter in sign with 4+ bindus brings prosperity, spiritual growth, children's wellbeing, and wisdom. Below 4: financial strain, loss of reputation, liver issues."
+    text_hindi: "बृहस्पति भिन्नाष्टकवर्ग: 4+ बिन्दुओं — समृद्धि, आध्यात्मिक वृद्धि। 4 से कम — आर्थिक तनाव, यकृत समस्या।"
+    text_sanskrit: ""
+    rule_type: ashtakavarga
+
+  - verse: 8
+    topic: ashtakavarga_venus
+    planets: [Venus]
+    houses: []
+    text_english: "Venus BAV: Venus in sign with 4+ bindus gives marital happiness, luxury, artistic success, romance. Below 4: relationship problems, financial losses on luxury."
+    text_hindi: "शुक्र भिन्नाष्टकवर्ग: 4+ बिन्दुओं — वैवाहिक सुख, विलासिता। 4 से कम — सम्बन्ध समस्या, विलासिता पर हानि।"
+    text_sanskrit: ""
+    rule_type: ashtakavarga
+
+  - verse: 9
+    topic: ashtakavarga_saturn
+    planets: [Saturn]
+    houses: []
+    text_english: "Saturn BAV: Saturn in sign with 4+ bindus gives steady progress, discipline rewarded. Below 4: delays, hardship, chronic issues, career setbacks."
+    text_hindi: "शनि भिन्नाष्टकवर्ग: 4+ बिन्दुओं — स्थिर प्रगति। 4 से कम — विलम्ब, कठिनाई, दीर्घ रोग, कैरियर में बाधा।"
+    text_sanskrit: ""
+    rule_type: ashtakavarga
+
+  # ============================================================
+  # ASHTAKAVARGA TRANSIT RULES
+  # ============================================================
+  - verse: 10
+    topic: ashtakavarga_transit
+    planets: [Saturn]
+    houses: []
+    text_english: "Saturn's Sadesati intensity varies by Ashtakavarga: If Saturn has 4+ bindus in the transiting sign, Sadesati effects are milder. Below 3 bindus, effects are severe."
+    text_hindi: "शनि की साढ़ेसाती तीव्रता अष्टकवर्ग पर निर्भर: 4+ बिन्दुओं — प्रभाव हल्के। 3 से कम — प्रभाव गम्भीर।"
+    text_sanskrit: ""
+    rule_type: ashtakavarga
+
+  - verse: 11
+    topic: ashtakavarga_transit
+    planets: [Jupiter]
+    houses: []
+    text_english: "Jupiter's transit benefits are amplified in signs where it has 5+ bindus. Such transits bring expansion, wisdom, and financial growth. Jupiter with 2 or fewer bindus gives false hopes."
+    text_hindi: "बृहस्पति गोचर के लाभ 5+ बिन्दुओं वाली राशि में प्रबल। विस्तार, ज्ञान, धन वृद्धि। 2 या कम बिन्दुओं — मिथ्या आशा।"
+    text_sanskrit: ""
+    rule_type: ashtakavarga
+
+  - verse: 12
+    topic: ashtakavarga_transit
+    planets: []
+    houses: []
+    text_english: "When multiple planets simultaneously transit signs with high SAV (28+), that period is exceptionally favorable for new ventures, investments, and important life decisions."
+    text_hindi: "अनेक ग्रह एक साथ उच्च SAV (28+) वाली राशि में गोचर करें तो वह काल नए कार्य, निवेश के लिए अत्यन्त शुभ।"
+    text_sanskrit: ""
+    rule_type: ashtakavarga
+
+  # ============================================================
+  # ASHTAKAVARGA AND DASHA
+  # ============================================================
+  - verse: 13
+    topic: ashtakavarga_dasha
+    planets: []
+    houses: []
+    text_english: "During a planet's mahadasha, the houses where it has 4+ bindus in its BAV will give favorable results. Houses with low bindus will be areas of challenge during the dasha."
+    text_hindi: "किसी ग्रह की महादशा में जिन भावों में उसके 4+ बिन्दु हैं वे शुभ फल देंगे। कम बिन्दुओं वाले भाव चुनौतीपूर्ण।"
+    text_sanskrit: ""
+    rule_type: ashtakavarga
+
+  - verse: 14
+    topic: ashtakavarga_dasha
+    planets: []
+    houses: []
+    text_english: "The most favorable period is when the dasha lord transits a sign where it has maximum bindus in its BAV. This is called 'Bindu Dasha Sangam' — the convergence of dasha and transit strength."
+    text_hindi: "सबसे शुभ काल जब दशानाथ अपने BAV में अधिकतम बिन्दुओं वाली राशि में गोचर करे — बिन्दु दशा संगम।"
+    text_sanskrit: ""
+    rule_type: ashtakavarga
+
+  # ============================================================
+  # KAKSHYA (SUB-DIVISIONS) IN ASHTAKAVARGA
+  # ============================================================
+  - verse: 15
+    topic: ashtakavarga_kakshya
+    planets: []
+    houses: []
+    text_english: "Each sign is divided into 8 kakshyas (sub-portions) of 3°45' each, ruled by Saturn, Jupiter, Mars, Sun, Venus, Mercury, Moon, and Lagna in that order. Transit results change based on which kakshya the planet enters."
+    text_hindi: "प्रत्येक राशि 8 कक्ष्याओं में विभाजित — प्रत्येक 3°45'। शनि, बृहस्पति, मंगल, सूर्य, शुक्र, बुध, चन्द्र और लग्न क्रम से। गोचर फल कक्ष्या पर निर्भर।"
+    text_sanskrit: ""
+    rule_type: ashtakavarga
+
+  - verse: 16
+    topic: ashtakavarga_kakshya
+    planets: []
+    houses: []
+    text_english: "A planet transiting a kakshya ruled by a planet from whom it has a bindu gives good results. Transiting a kakshya ruled by a planet from whom it has no bindu gives adverse results."
+    text_hindi: "ग्रह जिस कक्ष्या में गोचर करे, उसका स्वामी जिससे बिन्दु मिला हो तो शुभ। बिन्दु न हो तो अशुभ।"
+    text_sanskrit: ""
+    rule_type: ashtakavarga
+
+  # ============================================================
+  # PRASTARA ASHTAKAVARGA
+  # ============================================================
+  - verse: 17
+    topic: ashtakavarga_prastara
+    planets: []
+    houses: []
+    text_english: "Prastara Ashtakavarga shows which specific planet contributed the bindu. This reveals which planet's transit will activate the house. Useful for timing predictions within a sign."
+    text_hindi: "प्रस्तार अष्टकवर्ग दर्शाता है कि कौन सा ग्रह बिन्दु देता है। गोचर में कौन सा ग्रह भाव को सक्रिय करेगा।"
+    text_sanskrit: ""
+    rule_type: ashtakavarga
+
+  # ============================================================
+  # SPECIAL ASHTAKAVARGA RULES
+  # ============================================================
+  - verse: 18
+    topic: ashtakavarga_special
+    planets: []
+    houses: []
+    text_english: "The Trikona Shodhana (reduction) of Ashtakavarga purifies bindu values. After reduction, remaining bindus in houses 1, 5, 9 (trikonas) indicate true strength of a planet."
+    text_hindi: "त्रिकोण शोधन अष्टकवर्ग बिन्दु मूल्यों को शुद्ध करता है। शोधन के बाद 1, 5, 9 में शेष बिन्दु ग्रह का वास्तविक बल।"
+    text_sanskrit: ""
+    rule_type: ashtakavarga
+
+  - verse: 19
+    topic: ashtakavarga_longevity
+    planets: []
+    houses: []
+    text_english: "For longevity assessment: Sum of bindus in 1st and 8th houses in SAV indicates vitality. Above 48: long life (75+). Between 32-48: medium (60-75). Below 32: short life indicated."
+    text_hindi: "आयु आकलन: SAV में 1 और 8 भाव के बिन्दुओं का योग। 48 से अधिक — दीर्घायु। 32-48 — मध्यम। 32 से कम — अल्पायु।"
+    text_sanskrit: ""
+    rule_type: ashtakavarga
+
+  - verse: 20
+    topic: ashtakavarga_marriage
+    planets: [Venus]
+    houses: [7]
+    text_english: "For marriage timing: Venus and Jupiter transiting signs where they have 4+ bindus, combined with favorable dasha, indicate marriage period. The 7th house SAV above 25 supports marriage."
+    text_hindi: "विवाह समय: शुक्र और बृहस्पति 4+ बिन्दुओं वाली राशि में गोचर, अनुकूल दशा — विवाह काल। सप्तम भाव SAV 25+ विवाह सहायक।"
+    text_sanskrit: ""
+    rule_type: ashtakavarga
+
+  - verse: 21
+    topic: ashtakavarga_career
+    planets: []
+    houses: [10]
+    text_english: "For career assessment: 10th house SAV above 30 bindus gives exceptional career. Sun and Saturn bindus in the 10th house sign are especially important for professional success."
+    text_hindi: "कैरियर आकलन: दशम भाव SAV 30+ — असाधारण कैरियर। सूर्य और शनि बिन्दु दशम भाव की राशि में विशेष महत्वपूर्ण।"
+    text_sanskrit: ""
+    rule_type: ashtakavarga
+
+  - verse: 22
+    topic: ashtakavarga_wealth
+    planets: []
+    houses: [2, 11]
+    text_english: "For wealth: SAV sum of 2nd and 11th houses indicates financial potential. Above 54: wealthy. Between 40-54: comfortable. Below 40: financial challenges."
+    text_hindi: "धन: 2 और 11 भाव SAV योग आर्थिक क्षमता दर्शाता है। 54 से अधिक — धनवान। 40-54 — सहज। 40 से कम — आर्थिक चुनौती।"
+    text_sanskrit: ""
+    rule_type: ashtakavarga

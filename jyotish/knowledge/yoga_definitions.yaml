@@ -1,6 +1,6 @@
 # =============================================================================
 # Vedic Astrology (Jyotish) Yoga Definitions
-# Complete reference for 31 classical yogas
+# Complete reference for 157 classical yogas
 # =============================================================================
 
 # =============================================================================
@@ -939,3 +939,2757 @@ ubhayachari:
     - "Results maximized when the flanking benefics are also in good house positions from lagna"
     - "If Jupiter flanks the Sun on one side, the yoga takes on a particularly dharmic and expansive quality"
     - "The yoga gives its fullest results during the mahadashas of the Sun and the flanking planets"
+
+# =============================================================================
+# ADDITIONAL RAJ YOGAS (22 entries)
+# =============================================================================
+
+panch_mahapurush_combo:
+  name_en: "Panch Mahapurush Combination"
+  name_hi: "पंच महापुरुष संयोग"
+  type: "benefic"
+  formation:
+    condition: "Two or more Panch Mahapurush Yogas (Hamsa, Malavya, Sasa, Ruchaka, Bhadra) are simultaneously present in the chart."
+    planets: ["jupiter", "venus", "saturn", "mars", "mercury"]
+    houses_required: [1, 4, 7, 10]
+    sign_condition: "own_or_exalted"
+  cancellation:
+    - "One or more of the Mahapurush planets is combust or in planetary war"
+    - "The participating planets are mutually afflicting each other"
+  effects:
+    general: "Exceptional personality combining the virtues of multiple Mahapurush Yogas. The native achieves extraordinary status, wealth, and fame, embodying the qualities of multiple great archetypes simultaneously."
+  source: "BPHS chapter 75"
+  confidence: "high"
+
+maharaj_yoga:
+  name_en: "Maharaj Yoga"
+  name_hi: "महाराज योग"
+  type: "benefic"
+  formation:
+    condition: "Multiple raj yogas (three or more kendra-trikona lord connections) are present in the same chart, creating compounded royal fortune."
+    planets: ["varies_by_lagna"]
+    houses_required: [1, 4, 5, 7, 9, 10]
+  cancellation:
+    - "Most of the participating planets are debilitated or severely afflicted"
+    - "Lagna lord is extremely weak, unable to channel the raj yoga energy"
+  effects:
+    general: "The native attains the highest levels of power, authority, and fame. Multiple raj yogas compound exponentially, conferring king-like status in their sphere of influence."
+  source: "BPHS chapter 36"
+  confidence: "high"
+
+adhi_raj_yoga:
+  name_en: "Adhi Raj Yoga"
+  name_hi: "अधिराज योग"
+  type: "benefic"
+  formation:
+    condition: "Jupiter, Venus, and Mercury are in the 6th, 7th, and 8th houses from Moon, AND they receive benefic aspects from other planets."
+    planets: ["jupiter", "venus", "mercury"]
+    houses_required: [6, 7, 8]
+    sign_condition: "benefics_in_6_7_8_from_moon_with_aspect"
+  cancellation:
+    - "Any of the three benefics is debilitated or combust"
+    - "Moon is severely afflicted"
+  effects:
+    general: "The native becomes a supreme commander or leader, surpassing ordinary Adhi Yoga results. Exceptional prosperity, authority over vast resources, and lasting fame."
+  source: "Phaladeepika chapter 4"
+  confidence: "high"
+
+raja_sambandha_yoga:
+  name_en: "Raja Sambandha Yoga"
+  name_hi: "राज संबंध योग"
+  type: "benefic"
+  formation:
+    condition: "Exchange (parivartana) between the lord of a kendra house and the lord of a trikona house, where each occupies the other's house."
+    planets: ["kendra_lord", "trikona_lord"]
+    houses_required: [1, 4, 5, 7, 9, 10]
+    sign_condition: "parivartana"
+  cancellation:
+    - "Either planet is debilitated in the exchanged sign"
+    - "Both planets are combust or aspected by malefics"
+  effects:
+    general: "Powerful raj yoga through mutual exchange. The native rises to positions of authority with support from powerful institutions. The exchange creates a strong and lasting bond between fortune and action."
+  source: "BPHS chapter 41"
+  confidence: "high"
+
+parashara_raj_1:
+  name_en: "Parashara Raj Yoga 1"
+  name_hi: "पराशर राज योग १"
+  type: "benefic"
+  formation:
+    condition: "The lords of the 4th and 10th houses are conjunct or in mutual aspect, and both are strong in dignity."
+    planets: ["4th_lord", "10th_lord"]
+    houses_required: [4, 10]
+  cancellation:
+    - "Both lords are debilitated or in enemy signs"
+    - "The conjunction occurs in a dusthana without benefic aspect"
+  effects:
+    general: "The native achieves great public recognition, political power, and professional success. Connection of the two primary kendra houses creates a foundation of material stability and public authority."
+  source: "BPHS chapter 36"
+  confidence: "high"
+
+parashara_raj_2:
+  name_en: "Parashara Raj Yoga 2"
+  name_hi: "पराशर राज योग २"
+  type: "benefic"
+  formation:
+    condition: "The lords of the 1st and 5th houses are conjunct or in mutual aspect, with at least one in good dignity."
+    planets: ["1st_lord", "5th_lord"]
+    houses_required: [1, 5]
+  cancellation:
+    - "Both lords are debilitated"
+    - "The conjunction is heavily afflicted by Rahu/Ketu"
+  effects:
+    general: "The native is intelligent, fortunate, and commands natural respect. Self-effort combined with past-life merit creates easy pathways to success and recognition."
+  source: "BPHS chapter 36"
+  confidence: "high"
+
+parashara_raj_3:
+  name_en: "Parashara Raj Yoga 3"
+  name_hi: "पराशर राज योग ३"
+  type: "benefic"
+  formation:
+    condition: "The lords of the 1st and 9th houses are conjunct or in mutual aspect. Lagna lord meets fortune lord."
+    planets: ["1st_lord", "9th_lord"]
+    houses_required: [1, 9]
+  cancellation:
+    - "Both lords are combust or debilitated"
+    - "Malefics heavily afflict the conjunction"
+  effects:
+    general: "The native is blessed with great fortune aligned with personal effort. Dharma and self merge, giving a life of purpose, success, and spiritual alignment."
+  source: "BPHS chapter 36"
+  confidence: "high"
+
+parashara_raj_4:
+  name_en: "Parashara Raj Yoga 4"
+  name_hi: "पराशर राज योग ४"
+  type: "benefic"
+  formation:
+    condition: "The lords of the 4th and 5th houses are conjunct or in mutual aspect, connecting comfort with intelligence and merit."
+    planets: ["4th_lord", "5th_lord"]
+    houses_required: [4, 5]
+  cancellation:
+    - "Both lords are debilitated or severely afflicted"
+    - "The conjunction occurs in the 6th, 8th, or 12th house"
+  effects:
+    general: "The native enjoys domestic happiness, academic success, and property. Strong connection between emotional security and intellectual accomplishment."
+  source: "BPHS chapter 36"
+  confidence: "high"
+
+parashara_raj_5:
+  name_en: "Parashara Raj Yoga 5"
+  name_hi: "पराशर राज योग ५"
+  type: "benefic"
+  formation:
+    condition: "The lords of the 7th and 9th houses are conjunct or in mutual aspect, connecting partnerships with fortune."
+    planets: ["7th_lord", "9th_lord"]
+    houses_required: [7, 9]
+  cancellation:
+    - "Both lords are debilitated"
+    - "The yoga is afflicted by Saturn and Rahu simultaneously"
+  effects:
+    general: "The native gains fortune through partnerships, marriage, and public dealings. Spouse may bring wealth and luck. Business partnerships are highly profitable."
+  source: "BPHS chapter 36"
+  confidence: "high"
+
+brihat_raj_yoga:
+  name_en: "Brihat Raj Yoga"
+  name_hi: "बृहत् राज योग"
+  type: "benefic"
+  formation:
+    condition: "Sun, Moon, and Mars are all placed in trikona houses (1st, 5th, 9th) from the lagna."
+    planets: ["sun", "moon", "mars"]
+    houses_required: [1, 5, 9]
+  cancellation:
+    - "Any of the three planets is debilitated"
+    - "Any is severely combust or in planetary war"
+  effects:
+    general: "The native possesses tremendous willpower, courage, and fortune. The luminaries and Mars in trikonas create a powerful personality destined for leadership and martial success."
+  source: "Brihat Jataka"
+  confidence: "medium"
+
+chandra_raj_yoga:
+  name_en: "Chandra Raj Yoga"
+  name_hi: "चंद्र राज योग"
+  type: "benefic"
+  formation:
+    condition: "Moon is in a kendra house and is aspected by or conjunct with Jupiter, with Moon being strong (waxing, own sign, or exalted)."
+    planets: ["moon", "jupiter"]
+    houses_required: [1, 4, 7, 10]
+  cancellation:
+    - "Moon is waning and debilitated"
+    - "Jupiter is combust or debilitated"
+  effects:
+    general: "The native is emotionally resilient, popular, and rises to positions of public influence. Strong mental fortitude combined with wisdom creates natural leadership through emotional intelligence."
+  source: "Phaladeepika"
+  confidence: "high"
+
+surya_raj_yoga:
+  name_en: "Surya Raj Yoga"
+  name_hi: "सूर्य राज योग"
+  type: "benefic"
+  formation:
+    condition: "Sun is in the 10th house in its own sign (Leo) or exalted (Aries), free from malefic affliction."
+    planets: ["sun"]
+    houses_required: [10]
+    sign_condition: "own_or_exalted"
+    valid_signs: ["leo", "aries"]
+  cancellation:
+    - "Sun is aspected by Saturn without benefic intervention"
+    - "Sun is conjunct Rahu or Ketu"
+  effects:
+    general: "The native attains high government position, political power, and commanding authority. An exalted or own-sign Sun in the 10th creates a born ruler with natural dignity and honor."
+  source: "Classical texts"
+  confidence: "high"
+
+bhagya_raj_yoga:
+  name_en: "Bhagya Raj Yoga"
+  name_hi: "भाग्य राज योग"
+  type: "benefic"
+  formation:
+    condition: "The 9th lord is exalted or in own sign and placed in a kendra house (1st, 4th, 7th, 10th)."
+    planets: ["9th_lord"]
+    houses_required: [1, 4, 7, 10]
+    sign_condition: "own_or_exalted"
+  cancellation:
+    - "The 9th lord is combust or in planetary war"
+    - "The 9th lord is aspected by multiple malefics"
+  effects:
+    general: "The native is exceptionally fortunate with divine grace supporting all endeavors. Fortune lord in strength and prominence ensures that luck consistently favors the native."
+  source: "BPHS chapter 36"
+  confidence: "high"
+
+matru_raj_yoga:
+  name_en: "Matru Raj Yoga"
+  name_hi: "मातृ राज योग"
+  type: "benefic"
+  formation:
+    condition: "The 4th lord is conjunct or in mutual aspect with a kendra lord, and both are well placed."
+    planets: ["4th_lord", "kendra_lord"]
+    houses_required: [1, 4, 7, 10]
+  cancellation:
+    - "The 4th lord is debilitated or in enemy sign"
+    - "The conjunction is in a dusthana house"
+  effects:
+    general: "The native enjoys domestic happiness, property, vehicles, and emotional security. Mother is a source of support. Success through real estate and education."
+  source: "Classical texts"
+  confidence: "medium"
+
+putra_raj_yoga:
+  name_en: "Putra Raj Yoga"
+  name_hi: "पुत्र राज योग"
+  type: "benefic"
+  formation:
+    condition: "The 5th lord is placed in a kendra house in good dignity (own sign, exalted, or friendly sign)."
+    planets: ["5th_lord"]
+    houses_required: [1, 4, 7, 10]
+    sign_condition: "good_dignity"
+  cancellation:
+    - "The 5th lord is combust or debilitated"
+    - "The 5th lord is conjunct malefics without benefic aspect"
+  effects:
+    general: "The native is intelligent, creative, and blessed with good children. Past-life merit supports present success. Recognition through intellectual or creative achievements."
+  source: "Classical texts"
+  confidence: "medium"
+
+bandhu_raj_yoga:
+  name_en: "Bandhu Raj Yoga"
+  name_hi: "बंधु राज योग"
+  type: "benefic"
+  formation:
+    condition: "The 4th lord is exalted or in own sign and placed in a kendra house."
+    planets: ["4th_lord"]
+    houses_required: [1, 4, 7, 10]
+    sign_condition: "own_or_exalted"
+  cancellation:
+    - "The 4th lord is combust or aspected by Saturn and Mars"
+    - "Malefics occupy the 4th house simultaneously"
+  effects:
+    general: "The native acquires fine properties, vehicles, and enjoys deep domestic happiness. Strong connection to homeland and mother. Success in education and real estate."
+  source: "Classical texts"
+  confidence: "medium"
+
+rajya_poojita_yoga:
+  name_en: "Rajya Poojita Yoga"
+  name_hi: "राज्य पूजित योग"
+  type: "benefic"
+  formation:
+    condition: "Natural benefic planets are placed in the 2nd, 4th, and 5th houses from the lagna lord's position."
+    planets: ["jupiter", "venus", "mercury"]
+    houses_required: [2, 4, 5]
+    sign_condition: "benefics_from_lagna_lord"
+  cancellation:
+    - "The benefics are debilitated or combust"
+    - "Lagna lord itself is severely afflicted"
+  effects:
+    general: "The native is honored by the state and respected by rulers. Government recognition, awards, and public honor are indicated. The native is worshipped in their community."
+  source: "Phaladeepika"
+  confidence: "medium"
+
+chaamara_yoga:
+  name_en: "Chaamara Yoga"
+  name_hi: "चामर योग"
+  type: "benefic"
+  formation:
+    condition: "Lagna lord is exalted in a kendra house and aspected by Jupiter."
+    planets: ["lagna_lord", "jupiter"]
+    houses_required: [1, 4, 7, 10]
+    sign_condition: "exalted_with_jupiter_aspect"
+  cancellation:
+    - "Lagna lord is combust despite exaltation"
+    - "Jupiter is debilitated or combust"
+  effects:
+    general: "The native is eloquent, learned, and long-lived. They command respect through wisdom and moral authority. Royal patronage and academic honors are indicated."
+  source: "Phaladeepika chapter 6"
+  confidence: "high"
+
+shankha_yoga:
+  name_en: "Shankha Yoga"
+  name_hi: "शंख योग"
+  type: "benefic"
+  formation:
+    condition: "The 5th and 6th lords are in mutual kendras (1st, 4th, 7th, 10th from each other), with the lagna lord strong."
+    planets: ["5th_lord", "6th_lord"]
+    houses_required: [1, 4, 7, 10]
+  cancellation:
+    - "Lagna lord is debilitated"
+    - "Both 5th and 6th lords are combust or severely afflicted"
+  effects:
+    general: "The native is fond of pleasures, virtuous, long-lived, and blessed with good children. Skilled in arts and supported by fortune. Victory over enemies through intelligence."
+  source: "Phaladeepika chapter 6"
+  confidence: "high"
+
+bheri_yoga:
+  name_en: "Bheri Yoga"
+  name_hi: "भेरी योग"
+  type: "benefic"
+  formation:
+    condition: "The lords of the 1st, 2nd, 7th, and 12th houses are all placed in kendra houses."
+    planets: ["1st_lord", "2nd_lord", "7th_lord", "12th_lord"]
+    houses_required: [1, 4, 7, 10]
+  cancellation:
+    - "Any of the four lords is debilitated or combust"
+    - "Malefics heavily afflict the kendra houses"
+  effects:
+    general: "The native is courageous, devoid of enemies, long-lived, and free from disease. Strong material security combined with spiritual inclination. Blessed with family and partnerships."
+  source: "Phaladeepika chapter 6"
+  confidence: "high"
+
+mridanga_yoga:
+  name_en: "Mridanga Yoga"
+  name_hi: "मृदंग योग"
+  type: "benefic"
+  formation:
+    condition: "A planet is exalted and placed in a kendra house, and is aspected by the lord of a friendly sign."
+    planets: ["any_exalted_planet"]
+    houses_required: [1, 4, 7, 10]
+    sign_condition: "exalted_in_kendra_aspected_by_friend"
+  cancellation:
+    - "The exalted planet is combust or in planetary war"
+    - "The friendly-sign lord is debilitated"
+  effects:
+    general: "The native is famous, commands a large following, and wields authority like a king. The drum (mridanga) symbolizes royal proclamation and public fame."
+  source: "Phaladeepika chapter 6"
+  confidence: "medium"
+
+akhanda_samrajya_yoga:
+  name_en: "Akhanda Samrajya Yoga"
+  name_hi: "अखंड साम्राज्य योग"
+  type: "benefic"
+  formation:
+    condition: "Jupiter rules the 2nd, 5th, or 11th house and is placed in a kendra from the Moon, with the lagna lord strong."
+    planets: ["jupiter"]
+    houses_required: [1, 4, 7, 10]
+    sign_condition: "jupiter_as_2_5_11_lord_in_kendra_from_moon"
+  cancellation:
+    - "Jupiter is debilitated or combust"
+    - "Lagna lord is severely afflicted"
+    - "Moon is dark or debilitated"
+  effects:
+    general: "The native rules an undivided empire or domain, achieving supreme authority in their sphere. Long-lasting power and dynasty-building capability. One of the rarest and most powerful raj yogas."
+  source: "BPHS chapter 36"
+  confidence: "high"
+
+kanaka_yoga:
+  name_en: "Kanaka Yoga"
+  name_hi: "कनक योग"
+  type: "benefic"
+  formation:
+    condition: "The 4th lord is in own or exalted sign placed in a kendra house."
+    planets: ["4th_lord"]
+    houses_required: [1, 4, 7, 10]
+    sign_condition: "own_or_exalted"
+  cancellation:
+    - "The 4th lord is combust"
+    - "Malefics aspect the 4th lord without benefic relief"
+  effects:
+    general: "The native acquires gold, property, and material wealth. Comfortable domestic life with fine possessions and vehicles. Name derives from 'kanaka' meaning gold."
+  source: "Classical texts"
+  confidence: "medium"
+
+devendra_yoga:
+  name_en: "Devendra Yoga"
+  name_hi: "देवेंद्र योग"
+  type: "benefic"
+  formation:
+    condition: "The lagna lord and 7th lord are in parivartana (exchange of houses)."
+    planets: ["1st_lord", "7th_lord"]
+    houses_required: [1, 7]
+    sign_condition: "parivartana"
+  cancellation:
+    - "Either lord is debilitated in the exchanged position"
+    - "Both lords are combust or in planetary war"
+  effects:
+    general: "The native is like Indra (king of gods) in prosperity and authority. Strong partnerships, excellent marriage, and public prominence. Leadership through collaboration."
+  source: "Classical texts"
+  confidence: "medium"
+
+indra_yoga:
+  name_en: "Indra Yoga"
+  name_hi: "इंद्र योग"
+  type: "benefic"
+  formation:
+    condition: "The 5th and 11th lords are in mutual kendras from each other."
+    planets: ["5th_lord", "11th_lord"]
+    houses_required: [1, 4, 7, 10]
+  cancellation:
+    - "Both lords are debilitated"
+    - "The lords are conjunct malefics without relief"
+  effects:
+    general: "The native enjoys royal pleasures, fame, and the fulfillment of all desires. Intelligence (5th) merges with gains (11th) for comprehensive life success."
+  source: "Classical texts"
+  confidence: "medium"
+
+vasumati_yoga:
+  name_en: "Vasumati Yoga"
+  name_hi: "वसुमती योग"
+  type: "benefic"
+  formation:
+    condition: "Natural benefic planets (Jupiter, Venus, Mercury, waxing Moon) occupy upachaya houses (3rd, 6th, 10th, 11th) from the lagna or Moon."
+    planets: ["jupiter", "venus", "mercury", "moon"]
+    houses_required: [3, 6, 10, 11]
+  cancellation:
+    - "The benefics in upachayas are debilitated or combust"
+    - "Malefics also crowd the upachaya houses"
+  effects:
+    general: "The native is extremely wealthy, as the upachaya houses grow stronger with time. Wealth increases steadily throughout life, with financial prosperity being the defining feature."
+  source: "Phaladeepika"
+  confidence: "high"
+
+# =============================================================================
+# ADDITIONAL DHAN YOGAS (10 entries — dhan_yoga_2_11 and dhan_yoga_5_9 exist)
+# =============================================================================
+
+dhana_yoga_1_2:
+  name_en: "Dhana Yoga (1st-2nd Lords)"
+  name_hi: "धन योग (प्रथम-द्वितीय)"
+  type: "benefic"
+  formation:
+    condition: "The 1st lord and 2nd lord are conjunct, in mutual aspect, or in exchange."
+    planets: ["1st_lord", "2nd_lord"]
+    houses_required: [1, 2]
+  cancellation:
+    - "Both lords are debilitated or in enemy signs"
+    - "The conjunction is in the 6th, 8th, or 12th house"
+  effects:
+    general: "The native earns wealth through self-effort and personal initiative. Strong connection between identity and wealth ensures financial success through one's own abilities."
+  source: "BPHS chapter 37"
+  confidence: "high"
+
+dhana_yoga_2_5:
+  name_en: "Dhana Yoga (2nd-5th Lords)"
+  name_hi: "धन योग (द्वितीय-पंचम)"
+  type: "benefic"
+  formation:
+    condition: "The 2nd lord and 5th lord are conjunct, in mutual aspect, or in exchange."
+    planets: ["2nd_lord", "5th_lord"]
+    houses_required: [2, 5]
+  cancellation:
+    - "Both lords are debilitated"
+    - "Both are combust or severely afflicted"
+  effects:
+    general: "Wealth through intelligence, speculation, and creative endeavors. The native profits from investments, stock markets, and intellectual property. Children may also bring financial fortune."
+  source: "BPHS chapter 37"
+  confidence: "high"
+
+dhana_yoga_2_9:
+  name_en: "Dhana Yoga (2nd-9th Lords)"
+  name_hi: "धन योग (द्वितीय-नवम)"
+  type: "benefic"
+  formation:
+    condition: "The 2nd lord and 9th lord are conjunct, in mutual aspect, or in exchange."
+    planets: ["2nd_lord", "9th_lord"]
+    houses_required: [2, 9]
+  cancellation:
+    - "Both lords are debilitated"
+    - "The conjunction is heavily afflicted by malefics"
+  effects:
+    general: "Wealth through fortune, inheritance, and father's legacy. The native receives divine grace in financial matters. Gains from religious or dharmic activities."
+  source: "BPHS chapter 37"
+  confidence: "high"
+
+dhana_yoga_9_11:
+  name_en: "Dhana Yoga (9th-11th Lords)"
+  name_hi: "धन योग (नवम-एकादश)"
+  type: "benefic"
+  formation:
+    condition: "The 9th lord and 11th lord are conjunct, in mutual aspect, or in exchange."
+    planets: ["9th_lord", "11th_lord"]
+    houses_required: [9, 11]
+  cancellation:
+    - "Both lords are debilitated or combust"
+    - "Malefics heavily afflict the combination"
+  effects:
+    general: "Fortune meets gains — the native earns through luck, divine grace, and fortunate connections. Father and elder siblings may be sources of wealth. Pilgrimage or long-distance travel brings profit."
+  source: "BPHS chapter 37"
+  confidence: "high"
+
+dhana_yoga_1_11:
+  name_en: "Dhana Yoga (1st-11th Lords)"
+  name_hi: "धन योग (प्रथम-एकादश)"
+  type: "benefic"
+  formation:
+    condition: "The 1st lord and 11th lord are conjunct, in mutual aspect, or in exchange."
+    planets: ["1st_lord", "11th_lord"]
+    houses_required: [1, 11]
+  cancellation:
+    - "Both lords are debilitated or severely afflicted"
+    - "The combination occurs in a dusthana"
+  effects:
+    general: "The native's personal efforts directly translate to financial gains. Self-made wealth through personal initiative and networking. Desires are fulfilled through self-effort."
+  source: "BPHS chapter 37"
+  confidence: "high"
+
+kubera_yoga:
+  name_en: "Kubera Yoga"
+  name_hi: "कुबेर योग"
+  type: "benefic"
+  formation:
+    condition: "Jupiter and Mercury are conjunct in the 2nd or 11th house in good dignity."
+    planets: ["jupiter", "mercury"]
+    houses_required: [2, 11]
+    sign_condition: "good_dignity"
+  cancellation:
+    - "Either planet is debilitated or combust"
+    - "Rahu or Ketu conjoins the combination"
+  effects:
+    general: "Named after the god of wealth. The native accumulates vast wealth through wisdom and business acumen. Financial intelligence combined with expansive vision creates extraordinary earning capacity."
+  source: "Classical texts"
+  confidence: "medium"
+
+chandal_dhan_yoga:
+  name_en: "Chandal Dhan Yoga"
+  name_hi: "चांडाल धन योग"
+  type: "mixed"
+  formation:
+    condition: "Rahu is placed in the 2nd or 11th house conjunct or aspecting the 2nd or 11th lord."
+    planets: ["rahu", "2nd_lord", "11th_lord"]
+    houses_required: [2, 11]
+  cancellation:
+    - "Jupiter aspects the combination, purifying Rahu's influence"
+    - "Rahu is in an enemy sign and debilitated"
+  effects:
+    general: "Wealth through unconventional, foreign, or boundary-breaking means. The native may earn through technology, foreign trade, or taboo-breaking industries. Wealth may come with ethical dilemmas."
+  source: "Classical texts"
+  confidence: "medium"
+
+bhagya_dhan_yoga:
+  name_en: "Bhagya Dhan Yoga"
+  name_hi: "भाग्य धन योग"
+  type: "benefic"
+  formation:
+    condition: "The 9th lord is placed in the 2nd or 11th house in good dignity."
+    planets: ["9th_lord"]
+    houses_required: [2, 11]
+    sign_condition: "good_dignity"
+  cancellation:
+    - "The 9th lord is debilitated or combust in the wealth house"
+    - "Malefics afflict the 9th lord without benefic relief"
+  effects:
+    general: "Fortune directly channels into wealth accumulation. The native is blessed with financial luck — gains from father, guru, or divine grace flow into their treasury."
+  source: "BPHS chapter 37"
+  confidence: "high"
+
+sudden_wealth_yoga:
+  name_en: "Sudden Wealth Yoga"
+  name_hi: "आकस्मिक धन योग"
+  type: "mixed"
+  formation:
+    condition: "The lords of the 5th and 8th houses are connected (conjunction, aspect, or exchange) with the 2nd or 11th lord."
+    planets: ["5th_lord", "8th_lord", "2nd_lord", "11th_lord"]
+    houses_required: [2, 5, 8, 11]
+  cancellation:
+    - "All involved planets are debilitated"
+    - "No benefic aspects on the combination"
+  effects:
+    general: "The native may receive sudden windfalls, insurance payouts, inheritance, or unexpected financial gains. Wealth through transformation, crisis, or hidden sources. Lottery, speculation, and inheritance gains."
+  source: "Classical texts"
+  confidence: "medium"
+
+lottery_yoga:
+  name_en: "Lottery Yoga"
+  name_hi: "लॉटरी योग"
+  type: "mixed"
+  formation:
+    condition: "Rahu is in the 5th house conjunct or aspecting the 5th lord, with connections to the 2nd or 11th house."
+    planets: ["rahu", "5th_lord"]
+    houses_required: [5]
+  cancellation:
+    - "Jupiter aspects Rahu in the 5th, reducing speculative tendency"
+    - "Saturn aspects the 5th, blocking sudden gains"
+  effects:
+    general: "The native may gain through lotteries, gambling, speculation, or unexpected windfalls. Rahu in the 5th amplifies risk-taking and unconventional gains. Results are unpredictable and karmic."
+  source: "Classical texts"
+  confidence: "low"
+
+# =============================================================================
+# DARIDRA YOGAS (Poverty Yogas — 10 entries)
+# =============================================================================
+
+daridra_yoga_1:
+  name_en: "Daridra Yoga 1"
+  name_hi: "दरिद्र योग १"
+  type: "malefic"
+  formation:
+    condition: "The lagna lord is placed in the 6th, 8th, or 12th house in a debilitated or enemy sign."
+    planets: ["lagna_lord"]
+    houses_required: [6, 8, 12]
+    sign_condition: "debilitated_or_enemy"
+  cancellation:
+    - "The lagna lord receives Jupiter's aspect"
+    - "Neech bhanga conditions apply to the debilitated planet"
+  effects:
+    general: "The native faces persistent financial hardship, low self-esteem, and difficulty establishing themselves. Weak lagna lord in a dusthana drains vitality and fortune."
+  source: "BPHS chapter 38"
+  confidence: "high"
+
+daridra_yoga_2:
+  name_en: "Daridra Yoga 2"
+  name_hi: "दरिद्र योग २"
+  type: "malefic"
+  formation:
+    condition: "The 2nd lord is in the 12th house and the 12th lord is in the 2nd house (exchange between houses of wealth and loss)."
+    planets: ["2nd_lord", "12th_lord"]
+    houses_required: [2, 12]
+    sign_condition: "parivartana"
+  cancellation:
+    - "Jupiter aspects either house"
+    - "Both lords are in good dignity despite the exchange"
+  effects:
+    general: "Wealth flows out as fast as it comes in. The native earns but cannot save. Expenditure always exceeds income, creating persistent financial drain."
+  source: "BPHS chapter 38"
+  confidence: "high"
+
+daridra_yoga_3:
+  name_en: "Daridra Yoga 3"
+  name_hi: "दरिद्र योग ३"
+  type: "malefic"
+  formation:
+    condition: "Malefic planets occupy both the 2nd and 12th houses without any benefic aspect on either."
+    planets: ["saturn", "mars", "rahu", "ketu"]
+    houses_required: [2, 12]
+  cancellation:
+    - "Jupiter or Venus aspects either the 2nd or 12th house"
+    - "The malefics are in own sign or exalted"
+  effects:
+    general: "Financial squeeze from both sides — wealth is blocked (2nd afflicted) and expenditure is amplified (12th afflicted). The native struggles with poverty and financial pressure throughout life."
+  source: "Classical texts"
+  confidence: "high"
+
+daridra_yoga_4:
+  name_en: "Daridra Yoga 4"
+  name_hi: "दरिद्र योग ४"
+  type: "malefic"
+  formation:
+    condition: "Moon is debilitated (in Scorpio) and alone in a house with no benefic aspect from any planet."
+    planets: ["moon"]
+    sign_condition: "debilitated_and_isolated"
+    valid_signs: ["scorpio"]
+  cancellation:
+    - "Mars (Scorpio lord) is in a kendra, providing neech bhanga"
+    - "Jupiter aspects Moon"
+  effects:
+    general: "The native suffers emotional instability, mental anguish, and financial difficulties. A weak, isolated Moon creates deep insecurity, poverty of mind and resources."
+  source: "Classical texts"
+  confidence: "medium"
+
+daridra_yoga_5:
+  name_en: "Daridra Yoga 5"
+  name_hi: "दरिद्र योग ५"
+  type: "malefic"
+  formation:
+    condition: "The 11th lord is placed in the 6th, 8th, or 12th house, cutting off the house of gains."
+    planets: ["11th_lord"]
+    houses_required: [6, 8, 12]
+  cancellation:
+    - "The 11th lord is in own sign or exalted in the dusthana"
+    - "Jupiter aspects the 11th lord"
+  effects:
+    general: "Income and gains are blocked or diverted to losses. The native's desires remain unfulfilled and elder siblings may be a source of trouble rather than support."
+  source: "BPHS chapter 38"
+  confidence: "high"
+
+daridra_yoga_6:
+  name_en: "Daridra Yoga 6"
+  name_hi: "दरिद्र योग ६"
+  type: "malefic"
+  formation:
+    condition: "All planets are concentrated in the 6th, 8th, and 12th houses (dusthana stellium)."
+    planets: ["sun", "moon", "mars", "mercury", "jupiter", "venus", "saturn"]
+    houses_required: [6, 8, 12]
+  cancellation:
+    - "One or more planets are in own sign or exalted in the dusthanas"
+    - "A strong planet aspects the lagna"
+  effects:
+    general: "Extreme poverty and suffering. All planetary energy is channeled into houses of disease, death, and loss. Life is dominated by hardship, though spiritual growth potential is immense."
+  source: "Classical texts"
+  confidence: "high"
+
+daridra_yoga_7:
+  name_en: "Daridra Yoga 7"
+  name_hi: "दरिद्र योग ७"
+  type: "malefic"
+  formation:
+    condition: "The 5th lord is combust AND the 9th lord is debilitated simultaneously."
+    planets: ["5th_lord", "9th_lord"]
+    houses_required: [5, 9]
+  cancellation:
+    - "Jupiter aspects either the 5th or 9th house"
+    - "Neech bhanga applies to the 9th lord"
+  effects:
+    general: "Both past-life merit (5th) and fortune (9th) are destroyed. The native lacks luck and intelligence to overcome poverty. Deep karmic debt indicated."
+  source: "Classical texts"
+  confidence: "medium"
+
+daridra_yoga_8:
+  name_en: "Daridra Yoga 8"
+  name_hi: "दरिद्र योग ८"
+  type: "malefic"
+  formation:
+    condition: "Jupiter and Saturn are both debilitated or combust in the chart."
+    planets: ["jupiter", "saturn"]
+  cancellation:
+    - "Neech bhanga conditions apply to either planet"
+    - "Other strong benefic yogas compensate"
+  effects:
+    general: "The two slow-moving planets that govern expansion and contraction are both weakened. The native lacks both fortune (Jupiter) and discipline (Saturn), leading to chronic financial failure."
+  source: "Classical texts"
+  confidence: "medium"
+
+daridra_yoga_9:
+  name_en: "Daridra Yoga 9"
+  name_hi: "दरिद्र योग ९"
+  type: "malefic"
+  formation:
+    condition: "A malefic planet is in the lagna AND the 2nd lord is in an enemy sign."
+    planets: ["malefic_in_lagna", "2nd_lord"]
+    houses_required: [1, 2]
+  cancellation:
+    - "Jupiter aspects the lagna"
+    - "The 2nd lord is in a friend's sign rather than enemy"
+  effects:
+    general: "The native's personality is tainted by malefic influence while wealth potential is weakened. Self-destructive tendencies combine with poor financial prospects."
+  source: "Classical texts"
+  confidence: "medium"
+
+daridra_yoga_10:
+  name_en: "Daridra Yoga 10"
+  name_hi: "दरिद्र योग १०"
+  type: "malefic"
+  formation:
+    condition: "The 10th lord is in the 6th house AND the 6th lord is in the 10th house (exchange between career and enemies/disease)."
+    planets: ["10th_lord", "6th_lord"]
+    houses_required: [6, 10]
+    sign_condition: "parivartana"
+  cancellation:
+    - "Jupiter aspects the 10th house"
+    - "Both lords are in good dignity despite the exchange"
+  effects:
+    general: "Career is plagued by enemies, litigation, and disease. The native's profession involves struggle, conflict, or servitude. Financial gains from career are consumed by debts and health issues."
+  source: "Classical texts"
+  confidence: "medium"
+
+# =============================================================================
+# ARISHTA YOGAS (Affliction / Health / Danger Yogas — 15 entries)
+# =============================================================================
+
+balarishta_1:
+  name_en: "Balarishta Yoga 1"
+  name_hi: "बालारिष्ट योग १"
+  type: "malefic"
+  formation:
+    condition: "Moon is in the 6th or 8th house and afflicted by malefics, especially in a child's chart (infant danger)."
+    planets: ["moon"]
+    houses_required: [6, 8]
+  cancellation:
+    - "Jupiter aspects Moon"
+    - "Moon is in own sign (Cancer) or exalted (Taurus)"
+  effects:
+    general: "Danger to the child in infancy. Health complications, emotional distress, and vulnerability in early life. Requires careful attention to the child's health and wellbeing."
+  source: "BPHS chapter 7"
+  confidence: "high"
+
+balarishta_2:
+  name_en: "Balarishta Yoga 2"
+  name_hi: "बालारिष्ट योग २"
+  type: "malefic"
+  formation:
+    condition: "Lagna lord is debilitated and aspected by one or more malefic planets."
+    planets: ["lagna_lord"]
+    sign_condition: "debilitated"
+  cancellation:
+    - "Neech bhanga conditions apply"
+    - "Strong benefics aspect the lagna"
+  effects:
+    general: "Weak constitution and vulnerability in early childhood. The native may face health crises in infancy. If survived, the native develops resilience but remains health-conscious."
+  source: "BPHS chapter 7"
+  confidence: "high"
+
+balarishta_3:
+  name_en: "Balarishta Yoga 3"
+  name_hi: "बालारिष्ट योग ३"
+  type: "malefic"
+  formation:
+    condition: "Malefic planets occupy both the lagna and 8th house without any benefic aspect on either."
+    planets: ["saturn", "mars", "rahu", "ketu"]
+    houses_required: [1, 8]
+  cancellation:
+    - "Jupiter aspects either the lagna or 8th house"
+    - "Lagna lord is strong in a kendra"
+  effects:
+    general: "Severe childhood health danger. Both the body (1st) and longevity (8th) are under malefic siege. Requires immediate remedial measures and careful medical attention."
+  source: "BPHS chapter 7"
+  confidence: "high"
+
+rogarishta_1:
+  name_en: "Rogarishta Yoga 1"
+  name_hi: "रोगारिष्ट योग १"
+  type: "malefic"
+  formation:
+    condition: "The 6th lord is in the lagna AND the lagna lord is in the 6th house (exchange between self and disease)."
+    planets: ["6th_lord", "lagna_lord"]
+    houses_required: [1, 6]
+    sign_condition: "parivartana"
+  cancellation:
+    - "Jupiter aspects the lagna"
+    - "Both planets are in good dignity despite the exchange"
+  effects:
+    general: "The native's identity becomes entwined with disease and conflict. Chronic health issues, frequent illnesses, and involvement in disputes dominate life."
+  source: "Classical texts"
+  confidence: "high"
+
+rogarishta_2:
+  name_en: "Rogarishta Yoga 2"
+  name_hi: "रोगारिष्ट योग २"
+  type: "malefic"
+  formation:
+    condition: "A malefic planet occupies the 6th house AND the 6th lord is placed in the 8th house."
+    planets: ["malefic_in_6th", "6th_lord"]
+    houses_required: [6, 8]
+  cancellation:
+    - "Jupiter aspects both the 6th and 8th houses"
+    - "The 6th lord is in own sign in the 8th (vipreet raj component)"
+  effects:
+    general: "Chronic and potentially serious disease. The illness (6th) feeds into the 8th house of crisis, creating prolonged health battles. Surgery or hospitalization may be required."
+  source: "Classical texts"
+  confidence: "medium"
+
+mrityu_yoga_1:
+  name_en: "Mrityu Yoga 1"
+  name_hi: "मृत्यु योग १"
+  type: "malefic"
+  formation:
+    condition: "The 8th lord is in the lagna, afflicted by malefics, during an active maraka dasha period."
+    planets: ["8th_lord"]
+    houses_required: [1]
+  cancellation:
+    - "The 8th lord is in own sign or exalted in the lagna"
+    - "Jupiter aspects the lagna strongly"
+  effects:
+    general: "Danger to life during maraka periods. The 8th lord in the 1st brings the energy of death/transformation directly to the body. Requires awareness during dangerous dasha periods."
+  source: "BPHS chapter 44"
+  confidence: "high"
+
+mrityu_yoga_2:
+  name_en: "Mrityu Yoga 2"
+  name_hi: "मृत्यु योग २"
+  type: "malefic"
+  formation:
+    condition: "Saturn and Mars are conjunct in the 8th house without any benefic aspect."
+    planets: ["saturn", "mars"]
+    houses_required: [8]
+  cancellation:
+    - "Jupiter aspects the 8th house"
+    - "Either Saturn or Mars is in own sign in the 8th"
+  effects:
+    general: "Potential for accidents, violence, or sudden health crises. Two harsh malefics in the house of death create danger, especially during their combined dasha periods."
+  source: "Classical texts"
+  confidence: "high"
+
+karaka_arishta_1:
+  name_en: "Karaka Arishta Yoga 1"
+  name_hi: "कारक अरिष्ट योग १"
+  type: "malefic"
+  formation:
+    condition: "A karaka (significator) planet is debilitated in the house it signifies (e.g., Jupiter debilitated in the 5th, Venus debilitated in the 7th)."
+    planets: ["karaka_planet"]
+    sign_condition: "debilitated_in_karaka_house"
+  cancellation:
+    - "Neech bhanga conditions apply"
+    - "The house lord is strong and well placed"
+  effects:
+    general: "The significations of that house suffer greatly. When the natural protector of a house is weakened within it, the life areas it represents face chronic challenges."
+  source: "Classical texts"
+  confidence: "high"
+
+karaka_arishta_2:
+  name_en: "Karaka Arishta Yoga 2"
+  name_hi: "कारक अरिष्ट योग २"
+  type: "malefic"
+  formation:
+    condition: "Multiple karaka planets are afflicted simultaneously (e.g., Jupiter afflicted + Venus afflicted + Moon afflicted)."
+    planets: ["jupiter", "venus", "moon"]
+  cancellation:
+    - "Strong lagna lord compensates"
+    - "At least one karaka recovers through divisional chart strength"
+  effects:
+    general: "Multiple life areas suffer simultaneously — children, marriage, and emotional health are all compromised. A chart with multiple afflicted karakas indicates broad-spectrum life challenges."
+  source: "Classical texts"
+  confidence: "medium"
+
+deha_kashta_yoga:
+  name_en: "Deha Kashta Yoga"
+  name_hi: "देह कष्ट योग"
+  type: "malefic"
+  formation:
+    condition: "Sun is afflicted by malefics AND the lagna lord is weak (debilitated, combust, or in dusthana)."
+    planets: ["sun", "lagna_lord"]
+  cancellation:
+    - "Jupiter aspects both Sun and lagna"
+    - "Sun is in a friend's sign despite affliction"
+  effects:
+    general: "Physical suffering and bodily pain. Weak vitality combined with a compromised lagna lord creates chronic health issues, low energy, and physical hardship."
+  source: "Classical texts"
+  confidence: "medium"
+
+vrana_yoga:
+  name_en: "Vrana Yoga"
+  name_hi: "व्रण योग"
+  type: "malefic"
+  formation:
+    condition: "Mars and Ketu are conjunct in the 6th or 8th house."
+    planets: ["mars", "ketu"]
+    houses_required: [6, 8]
+  cancellation:
+    - "Jupiter aspects the conjunction"
+    - "Mars is in own sign (Aries/Scorpio) in the conjunction"
+  effects:
+    general: "The native is prone to wounds, cuts, surgeries, and inflammatory conditions. Mars-Ketu in disease/crisis houses creates acute health episodes requiring surgical intervention."
+  source: "Classical texts"
+  confidence: "medium"
+
+pishachha_yoga:
+  name_en: "Pishachha Yoga"
+  name_hi: "पिशाच योग"
+  type: "malefic"
+  formation:
+    condition: "Rahu is in the lagna AND Moon is in the 8th house."
+    planets: ["rahu", "moon"]
+    houses_required: [1, 8]
+  cancellation:
+    - "Jupiter aspects both the lagna and 8th house"
+    - "Moon is in own sign or exalted"
+  effects:
+    general: "The native may suffer from psychological disturbances, phobias, possession-like symptoms, and irrational fears. Rahu clouds the personality while Moon in the 8th creates deep emotional turmoil."
+  source: "Classical texts"
+  confidence: "low"
+
+pretasaapa_yoga:
+  name_en: "Pretasaapa Yoga"
+  name_hi: "प्रेतशाप योग"
+  type: "malefic"
+  formation:
+    condition: "Saturn, Rahu, and Ketu are all placed in trikona houses (1st, 5th, 9th)."
+    planets: ["saturn", "rahu", "ketu"]
+    houses_required: [1, 5, 9]
+  cancellation:
+    - "Jupiter aspects any of the three trikona houses"
+    - "Strong benefics also occupy trikonas"
+  effects:
+    general: "Ancestral curse or karmic debt weighing on the native. Trikonas of dharma and merit are occupied by shadow planets and Saturn, indicating past-life debts requiring spiritual remedies."
+  source: "Classical texts"
+  confidence: "low"
+
+papa_kartari_arishta:
+  name_en: "Papa Kartari Arishta"
+  name_hi: "पाप कर्तरी अरिष्ट"
+  type: "malefic"
+  formation:
+    condition: "Natural benefic planets are hemmed between malefics in adjacent houses, trapping benefic energy."
+    planets: ["jupiter", "venus", "mercury"]
+  cancellation:
+    - "The benefics are in own or exalted signs, strong enough to resist"
+    - "Other benefics aspect and support the hemmed planets"
+  effects:
+    general: "The benefic planet's positive qualities are suppressed and blocked. Whatever that benefic signifies in the chart suffers restriction and frustration. Good intentions are thwarted."
+  source: "Classical texts"
+  confidence: "high"
+
+chandala_arishta:
+  name_en: "Chandala Arishta"
+  name_hi: "चांडाल अरिष्ट"
+  type: "malefic"
+  formation:
+    condition: "Jupiter is conjunct Rahu in the 1st, 5th, or 9th house (Guru Chandal in trikonas of dharma)."
+    planets: ["jupiter", "rahu"]
+    houses_required: [1, 5, 9]
+  cancellation:
+    - "Jupiter is in own sign or exalted, overpowering Rahu"
+    - "Venus or Mercury also conjunct, diluting Rahu's impact"
+  effects:
+    general: "Dharma and spiritual merit are corrupted. The native may follow false teachers, adopt harmful beliefs, or lose moral compass. In trikonas, this afflicts the deepest layer of fortune and merit."
+  source: "Classical texts"
+  confidence: "high"
+
+# =============================================================================
+# NABHASA YOGAS (Celestial Pattern Yogas — 20 entries)
+# =============================================================================
+
+yupa_yoga:
+  name_en: "Yupa Yoga"
+  name_hi: "यूप योग"
+  type: "mixed"
+  formation:
+    condition: "All planets are placed in 4 consecutive signs starting from the lagna."
+    planets: ["all"]
+    houses_required: [1, 2, 3, 4]
+  cancellation:
+    - "Any planet falls outside the 4 consecutive signs"
+  effects:
+    general: "The native is firm, charitable, and interested in sacred rituals. Named after the sacrificial post (yupa), indicating dedication to dharmic duties and steady character."
+  source: "BPHS chapter 32"
+  confidence: "high"
+
+ishu_yoga:
+  name_en: "Ishu Yoga"
+  name_hi: "इषु योग"
+  type: "mixed"
+  formation:
+    condition: "All planets are placed in 4 consecutive signs starting from the 4th house."
+    planets: ["all"]
+    houses_required: [4, 5, 6, 7]
+  cancellation:
+    - "Any planet falls outside the 4 consecutive signs"
+  effects:
+    general: "The native is skilled in weaponry, martial arts, or administrative duties. Named after the arrow (ishu), indicating sharp focus and targeted action."
+  source: "BPHS chapter 32"
+  confidence: "high"
+
+shakti_yoga:
+  name_en: "Shakti Yoga"
+  name_hi: "शक्ति योग"
+  type: "mixed"
+  formation:
+    condition: "All planets are placed in 4 consecutive signs starting from the 7th house."
+    planets: ["all"]
+    houses_required: [7, 8, 9, 10]
+  cancellation:
+    - "Any planet falls outside the 4 consecutive signs"
+  effects:
+    general: "The native is lazy, talkative, and may suffer from poverty despite potential. Named after the spear (shakti), indicating unrealized power that needs focused direction."
+  source: "BPHS chapter 32"
+  confidence: "high"
+
+danda_yoga:
+  name_en: "Danda Yoga"
+  name_hi: "दण्ड योग"
+  type: "mixed"
+  formation:
+    condition: "All planets are placed in 4 consecutive signs starting from the 10th house."
+    planets: ["all"]
+    houses_required: [10, 11, 12, 1]
+  cancellation:
+    - "Any planet falls outside the 4 consecutive signs"
+  effects:
+    general: "The native loses near and dear ones, may live in isolation or exile. Named after the staff/rod (danda), indicating authority through separation from ordinary comforts."
+  source: "BPHS chapter 32"
+  confidence: "high"
+
+nauka_yoga:
+  name_en: "Nauka Yoga"
+  name_hi: "नौका योग"
+  type: "mixed"
+  formation:
+    condition: "All seven planets occupy 7 consecutive houses starting from the lagna."
+    planets: ["all"]
+    houses_required: [1, 2, 3, 4, 5, 6, 7]
+  cancellation:
+    - "Any planet falls outside the 7 consecutive houses"
+  effects:
+    general: "The native earns wealth through water-related activities, shipping, or travel. Named after the boat (nauka), indicating a life connected to journeys and maritime affairs."
+  source: "BPHS chapter 32"
+  confidence: "high"
+
+koota_yoga:
+  name_en: "Koota Yoga"
+  name_hi: "कूट योग"
+  type: "mixed"
+  formation:
+    condition: "All planets are concentrated in the 4th to 10th house half of the chart."
+    planets: ["all"]
+    houses_required: [4, 5, 6, 7, 8, 9, 10]
+  cancellation:
+    - "Any planet falls in houses 1, 2, 3, 11, or 12"
+  effects:
+    general: "The native is a liar, jailer, or works in confinement-related occupations. Named after the fortress (koota), indicating hidden or secretive nature."
+  source: "BPHS chapter 32"
+  confidence: "medium"
+
+chhatra_yoga:
+  name_en: "Chhatra Yoga"
+  name_hi: "छत्र योग"
+  type: "benefic"
+  formation:
+    condition: "All planets occupy 7 consecutive houses starting from the lagna, with strength in the 1st house."
+    planets: ["all"]
+    houses_required: [1, 2, 3, 4, 5, 6, 7]
+  cancellation:
+    - "Planets fall outside the 7-house span"
+    - "Lagna is severely afflicted"
+  effects:
+    general: "The native is like an umbrella (chhatra) to others — protective, generous, and a benefactor to many. They attain royal status and help others generously."
+  source: "BPHS chapter 32"
+  confidence: "medium"
+
+chapa_yoga:
+  name_en: "Chapa Yoga"
+  name_hi: "चाप योग"
+  type: "mixed"
+  formation:
+    condition: "All planets are concentrated from the 10th to 4th house (upper half of the chart)."
+    planets: ["all"]
+    houses_required: [10, 11, 12, 1, 2, 3, 4]
+  cancellation:
+    - "Any planet falls in houses 5 through 9"
+  effects:
+    general: "The native is a liar who appears truthful, enjoys falsehood, and finds happiness through deceitful means. Named after the bow (chapa), indicating tension and hidden intentions."
+  source: "BPHS chapter 32"
+  confidence: "medium"
+
+ardha_chandra_yoga:
+  name_en: "Ardha Chandra Yoga"
+  name_hi: "अर्ध चंद्र योग"
+  type: "benefic"
+  formation:
+    condition: "Planets occupy 7 alternate houses, forming a half-moon pattern across the chart."
+    planets: ["all"]
+  cancellation:
+    - "The pattern is broken by planets in non-alternate positions"
+  effects:
+    general: "The native is beautiful, lucky, and commands respect. Named after the half-moon (ardha chandra), indicating grace, charm, and periodic good fortune."
+  source: "BPHS chapter 32"
+  confidence: "medium"
+
+chakra_yoga:
+  name_en: "Chakra Yoga"
+  name_hi: "चक्र योग"
+  type: "benefic"
+  formation:
+    condition: "All planets fill the odd houses (1st, 3rd, 5th, 7th, 9th, 11th) leaving even houses empty."
+    planets: ["all"]
+    houses_required: [1, 3, 5, 7, 9, 11]
+  cancellation:
+    - "Any planet occupies an even house"
+  effects:
+    general: "The native is an emperor or supreme authority. Named after the wheel (chakra) of sovereignty, indicating commanding power over a vast domain."
+  source: "BPHS chapter 32"
+  confidence: "medium"
+
+samudra_yoga:
+  name_en: "Samudra Yoga"
+  name_hi: "समुद्र योग"
+  type: "benefic"
+  formation:
+    condition: "All planets fill the even houses (2nd, 4th, 6th, 8th, 10th, 12th) leaving odd houses empty."
+    planets: ["all"]
+    houses_required: [2, 4, 6, 8, 10, 12]
+  cancellation:
+    - "Any planet occupies an odd house"
+  effects:
+    general: "The native is wealthy, generous, and enjoys many pleasures. Named after the ocean (samudra), indicating vast resources and deep, unfathomable fortune."
+  source: "BPHS chapter 32"
+  confidence: "medium"
+
+gada_yoga:
+  name_en: "Gada Yoga"
+  name_hi: "गदा योग"
+  type: "mixed"
+  formation:
+    condition: "All planets are concentrated in two kendra houses (e.g., 1st and 4th, or 7th and 10th)."
+    planets: ["all"]
+    houses_required: [1, 4, 7, 10]
+  cancellation:
+    - "Planets occupy non-kendra houses"
+  effects:
+    general: "The native is wealthy through ceremonial activities, religious functions, or social events. Named after the mace (gada), indicating focused power concentrated in specific life areas."
+  source: "BPHS chapter 32"
+  confidence: "medium"
+
+sakata_nabhasa:
+  name_en: "Sakata Nabhasa Yoga"
+  name_hi: "शकट नाभस योग"
+  type: "mixed"
+  formation:
+    condition: "All planets are concentrated in the 1st and 7th houses only."
+    planets: ["all"]
+    houses_required: [1, 7]
+  cancellation:
+    - "Planets occupy houses other than 1st and 7th"
+  effects:
+    general: "The native lives on the earnings of others, may be sickly and quarrelsome. Named after the cart (sakata), indicating a life of dependence and fluctuation."
+  source: "BPHS chapter 32"
+  confidence: "medium"
+
+vihaga_yoga:
+  name_en: "Vihaga Yoga"
+  name_hi: "विहग योग"
+  type: "mixed"
+  formation:
+    condition: "All planets are concentrated in the 4th and 10th houses only."
+    planets: ["all"]
+    houses_required: [4, 10]
+  cancellation:
+    - "Planets occupy houses other than 4th and 10th"
+  effects:
+    general: "The native is a wanderer, messenger, or ambassador. Named after the bird (vihaga), indicating constant movement, travel, and carrying information across distances."
+  source: "BPHS chapter 32"
+  confidence: "medium"
+
+shringataka_yoga:
+  name_en: "Shringataka Yoga"
+  name_hi: "शृंगाटक योग"
+  type: "benefic"
+  formation:
+    condition: "Planets occupy all three trikona houses (1st, 5th, 9th) simultaneously."
+    planets: ["all"]
+    houses_required: [1, 5, 9]
+  cancellation:
+    - "The trikona houses are occupied exclusively by malefics without benefic presence"
+  effects:
+    general: "The native is fortunate, religious, and blessed with children. Trikona occupation activates dharma, intelligence, and fortune simultaneously."
+  source: "BPHS chapter 32"
+  confidence: "medium"
+
+hala_yoga:
+  name_en: "Hala Yoga"
+  name_hi: "हल योग"
+  type: "mixed"
+  formation:
+    condition: "All planets are placed in 3 consecutive trikona-related houses (e.g., houses starting from a trikona)."
+    planets: ["all"]
+    houses_required: [1, 2, 3]
+  cancellation:
+    - "Planets fall outside the 3 consecutive houses"
+  effects:
+    general: "The native is a farmer or agriculturist, enjoys food, and lives a simple life. Named after the plough (hala), indicating connection to the earth and honest labor."
+  source: "BPHS chapter 32"
+  confidence: "medium"
+
+vajra_yoga:
+  name_en: "Vajra Yoga"
+  name_hi: "वज्र योग"
+  type: "mixed"
+  formation:
+    condition: "Benefic planets are in the 1st and 7th houses, while malefic planets are in the 4th and 10th houses."
+    planets: ["benefics_in_1_7", "malefics_in_4_10"]
+    houses_required: [1, 4, 7, 10]
+  cancellation:
+    - "Benefics and malefics are mixed in the kendras"
+  effects:
+    general: "The native is courageous, happy in the beginning and end of life, but faces challenges in the middle. Named after the thunderbolt (vajra), indicating hard and resilient character."
+  source: "BPHS chapter 32"
+  confidence: "high"
+
+yava_yoga:
+  name_en: "Yava Yoga"
+  name_hi: "यव योग"
+  type: "mixed"
+  formation:
+    condition: "Benefic planets are in the 4th and 10th houses, while malefic planets are in the 1st and 7th houses."
+    planets: ["benefics_in_4_10", "malefics_in_1_7"]
+    houses_required: [1, 4, 7, 10]
+  cancellation:
+    - "Benefics and malefics are mixed in the kendras"
+  effects:
+    general: "The native faces difficulties in youth and old age but enjoys prosperity in middle life. Named after barley grain (yava), indicating gradual growth followed by decline."
+  source: "BPHS chapter 32"
+  confidence: "high"
+
+kamala_yoga:
+  name_en: "Kamala Yoga"
+  name_hi: "कमल योग"
+  type: "benefic"
+  formation:
+    condition: "Planets occupy all four kendra houses (1st, 4th, 7th, 10th) simultaneously."
+    planets: ["all"]
+    houses_required: [1, 4, 7, 10]
+  cancellation:
+    - "Any kendra house is empty"
+    - "All kendra planets are malefics without benefic presence"
+  effects:
+    general: "The native achieves supreme fame, prosperity, and longevity. Named after the lotus (kamala), indicating beauty, purity, and the ability to rise above material circumstances. One of the most auspicious Nabhasa yogas."
+  source: "BPHS chapter 32"
+  confidence: "high"
+
+vaapi_yoga:
+  name_en: "Vaapi Yoga"
+  name_hi: "वापी योग"
+  type: "benefic"
+  formation:
+    condition: "Planets occupy all non-kendra houses (2nd, 3rd, 5th, 6th, 8th, 9th, 11th, 12th) while kendras are empty."
+    planets: ["all"]
+    houses_required: [2, 3, 5, 6, 8, 9, 11, 12]
+  cancellation:
+    - "Any kendra house is occupied"
+  effects:
+    general: "The native accumulates wealth through various means, enjoys comforts, and lives a prosperous life. Named after the well/reservoir (vaapi), indicating stored resources and hidden abundance."
+  source: "BPHS chapter 32"
+  confidence: "medium"
+
+# =============================================================================
+# CHANDRA YOGAS (Moon-based Yogas — 12 entries)
+# =============================================================================
+
+sunaphaa_yoga:
+  name_en: "Sunaphaa Yoga"
+  name_hi: "सुनफा योग"
+  type: "benefic"
+  formation:
+    condition: "Any planet (excluding Sun, Rahu, Ketu) is in the 2nd house from the Moon."
+    planets: ["mars", "mercury", "jupiter", "venus", "saturn"]
+    houses_required: [2]
+    sign_condition: "planet_in_2nd_from_moon"
+    excluded_planets: ["sun", "rahu", "ketu"]
+  cancellation:
+    - "The planet in 2nd from Moon is debilitated or combust"
+    - "Moon itself is severely afflicted"
+  effects:
+    general: "The native is wealthy, intelligent, and respected. The planet following Moon provides material support and resources. Self-made wealth through personal effort is indicated."
+  source: "BPHS chapter 34"
+  confidence: "high"
+
+anaphaa_yoga:
+  name_en: "Anaphaa Yoga"
+  name_hi: "अनफा योग"
+  type: "benefic"
+  formation:
+    condition: "Any planet (excluding Sun, Rahu, Ketu) is in the 12th house from the Moon."
+    planets: ["mars", "mercury", "jupiter", "venus", "saturn"]
+    houses_required: [12]
+    sign_condition: "planet_in_12th_from_moon"
+    excluded_planets: ["sun", "rahu", "ketu"]
+  cancellation:
+    - "The planet in 12th from Moon is debilitated or combust"
+    - "Moon is severely afflicted"
+  effects:
+    general: "The native has a good physique, virtuous character, and enjoys comforts. The planet preceding Moon provides background support and hidden strengths."
+  source: "BPHS chapter 34"
+  confidence: "high"
+
+durudhuraa_yoga:
+  name_en: "Durudhuraa Yoga"
+  name_hi: "दुरुधुरा योग"
+  type: "benefic"
+  formation:
+    condition: "Planets (excluding Sun, Rahu, Ketu) are in both the 2nd and 12th houses from the Moon."
+    planets: ["mars", "mercury", "jupiter", "venus", "saturn"]
+    houses_required: [2, 12]
+    sign_condition: "planets_flanking_moon"
+    excluded_planets: ["sun", "rahu", "ketu"]
+  cancellation:
+    - "Both flanking planets are debilitated"
+    - "Moon is severely afflicted"
+  effects:
+    general: "The native is wealthy, generous, and enjoys all comforts. Moon is fully supported from both sides, creating emotional stability, financial security, and social grace. Superior to either Sunaphaa or Anaphaa alone."
+  source: "BPHS chapter 34"
+  confidence: "high"
+
+kemadruma_bhanga:
+  name_en: "Kemadruma Bhanga (Cancellation)"
+  name_hi: "केमद्रुम भंग"
+  type: "benefic"
+  formation:
+    condition: "Kemdrum yoga exists but is cancelled by: a planet in kendra from Moon or lagna, OR Moon conjunct a planet, OR Moon aspected by Jupiter/Venus, OR Moon in own/exalted sign."
+    planets: ["moon", "jupiter", "venus"]
+    houses_required: [1, 4, 7, 10]
+  cancellation:
+    - "No cancellation conditions are met (Kemdrum remains active)"
+  effects:
+    general: "The native overcomes the difficulties of Kemdrum yoga. After initial struggles with isolation and financial instability, the cancellation brings recovery, support, and eventual prosperity."
+  source: "Classical texts"
+  confidence: "high"
+
+chandra_adi_yoga:
+  name_en: "Chandra Adi Yoga"
+  name_hi: "चंद्र आदि योग"
+  type: "benefic"
+  formation:
+    condition: "Moon is conjunct a natural benefic planet (Jupiter, Venus, or Mercury) in the same house."
+    planets: ["moon", "jupiter", "venus", "mercury"]
+  cancellation:
+    - "Moon is waning or debilitated"
+    - "The benefic is combust or afflicted by malefics"
+  effects:
+    general: "The native has a gentle, attractive personality with emotional intelligence. The benefic planet colors Moon's emotional nature — Jupiter adds wisdom, Venus adds charm, Mercury adds wit."
+  source: "Classical texts"
+  confidence: "high"
+
+pushkala_yoga:
+  name_en: "Pushkala Yoga"
+  name_hi: "पुष्कल योग"
+  type: "benefic"
+  formation:
+    condition: "The lagna lord and Moon are in the same sign, aspected by a benefic planet, and the lagna is a strong sign."
+    planets: ["lagna_lord", "moon"]
+    sign_condition: "conjunction_with_benefic_aspect"
+  cancellation:
+    - "Moon is waning or debilitated"
+    - "No benefic aspect on the conjunction"
+  effects:
+    general: "The native is wealthy, famous, eloquent, and respected by rulers. Mind and body are in harmony, supported by benefic grace. Excellent public reputation."
+  source: "Phaladeepika"
+  confidence: "medium"
+
+amavasya_yoga:
+  name_en: "Amavasya Yoga (New Moon)"
+  name_hi: "अमावस्या योग"
+  type: "malefic"
+  formation:
+    condition: "Sun and Moon are in exact or very close conjunction (new Moon), with Moon having minimal brightness."
+    planets: ["sun", "moon"]
+    sign_condition: "conjunction_within_12_degrees"
+  cancellation:
+    - "Jupiter aspects the Sun-Moon conjunction"
+    - "Moon is in a benefic sign or nakshatra"
+  effects:
+    general: "The native has a weak mind and compromised health. New Moon birth depletes Moon's emotional nourishment. The native may struggle with motivation, confidence, and emotional stability."
+  source: "Classical texts"
+  confidence: "high"
+
+purnima_yoga:
+  name_en: "Purnima Yoga (Full Moon)"
+  name_hi: "पूर्णिमा योग"
+  type: "benefic"
+  formation:
+    condition: "Sun and Moon are in exact opposition (full Moon), with Moon at maximum brightness."
+    planets: ["sun", "moon"]
+    sign_condition: "opposition"
+  cancellation:
+    - "Moon is in debilitation sign despite being full"
+    - "Malefics aspect Moon closely"
+  effects:
+    general: "The native is blessed with strong mind, emotional clarity, and vitality. Full Moon birth gives maximum mental strength, popularity, and emotional intelligence. Excellent for public-facing roles."
+  source: "Classical texts"
+  confidence: "high"
+
+chandradhi_lakshmi:
+  name_en: "Chandradhi Lakshmi Yoga"
+  name_hi: "चंद्राधि लक्ष्मी योग"
+  type: "benefic"
+  formation:
+    condition: "Moon is in the 2nd house in good dignity, well aspected by benefics."
+    planets: ["moon"]
+    houses_required: [2]
+    sign_condition: "good_dignity_with_benefic_aspect"
+  cancellation:
+    - "Moon is debilitated or waning in the 2nd"
+    - "Malefics aspect Moon in the 2nd"
+  effects:
+    general: "The native is wealthy with a pleasant voice, beautiful face, and strong family. Moon in the 2nd nourishes wealth, speech, and family — aspected by benefics, it becomes a source of Lakshmi's blessings."
+  source: "Classical texts"
+  confidence: "medium"
+
+dakshina_yoga:
+  name_en: "Dakshina Yoga"
+  name_hi: "दक्षिणा योग"
+  type: "mixed"
+  formation:
+    condition: "Moon is waning (Krishna Paksha) but placed in a benefic sign (Taurus, Cancer, Sagittarius, Pisces)."
+    planets: ["moon"]
+    sign_condition: "waning_in_benefic_sign"
+    valid_signs: ["taurus", "cancer", "sagittarius", "pisces"]
+  cancellation:
+    - "Moon is also aspected by malefics"
+    - "Moon is in an enemy nakshatra"
+  effects:
+    general: "Despite waning strength, Moon finds support from the sign's energy. The native has quiet wisdom, introspective nature, and hidden emotional depth. Success through patience rather than aggression."
+  source: "Classical texts"
+  confidence: "low"
+
+vargottama_chandra:
+  name_en: "Vargottama Chandra Yoga"
+  name_hi: "वर्गोत्तम चंद्र योग"
+  type: "benefic"
+  formation:
+    condition: "Moon occupies the same sign in both the Rashi (D1) and Navamsha (D9) charts."
+    planets: ["moon"]
+    sign_condition: "same_sign_in_rashi_and_navamsha"
+  cancellation:
+    - "Moon is debilitated in both Rashi and Navamsha"
+    - "Moon is severely afflicted by malefics in both charts"
+  effects:
+    general: "The native has exceptional emotional strength and mental stability. Vargottama Moon acts as if exalted, giving deep intuition, popularity, and emotional resilience. The mind is clear and focused."
+  source: "Classical texts"
+  confidence: "high"
+
+pushkara_navamsha_chandra:
+  name_en: "Pushkara Navamsha Chandra Yoga"
+  name_hi: "पुष्कर नवांश चंद्र योग"
+  type: "benefic"
+  formation:
+    condition: "Moon is placed in a Pushkara Navamsha division, conferring special nourishing energy."
+    planets: ["moon"]
+    sign_condition: "pushkara_navamsha"
+  cancellation:
+    - "Moon is debilitated in the Rashi chart"
+    - "Severe malefic affliction overrides Pushkara benefits"
+  effects:
+    general: "The native is nurtured by cosmic grace. Pushkara divisions are considered especially nourishing — Moon here gives emotional fulfillment, maternal blessings, and spiritual contentment."
+  source: "Classical texts"
+  confidence: "medium"
+
+# =============================================================================
+# KAAL SARP TYPES (12 specific types — 12 entries)
+# =============================================================================
+
+anant_kalsarp:
+  name_en: "Anant Kaal Sarpa Yoga"
+  name_hi: "अनंत काल सर्प योग"
+  type: "malefic"
+  formation:
+    condition: "Rahu in 1st house, Ketu in 7th house, all planets on one side of the axis."
+    planets: ["rahu", "ketu"]
+    houses_required: [1, 7]
+  cancellation:
+    - "Any planet is outside the Rahu-Ketu axis"
+    - "Jupiter aspects Rahu or lagna"
+  effects:
+    general: "Affects self-identity and partnerships. The native faces recurring obstacles in personal growth and marriage. Named after the serpent Ananta (infinite), indicating lifelong karmic patterns."
+  source: "Classical texts"
+  confidence: "medium"
+
+kulik_kalsarp:
+  name_en: "Kulik Kaal Sarpa Yoga"
+  name_hi: "कुलिक काल सर्प योग"
+  type: "malefic"
+  formation:
+    condition: "Rahu in 2nd house, Ketu in 8th house, all planets on one side of the axis."
+    planets: ["rahu", "ketu"]
+    houses_required: [2, 8]
+  cancellation:
+    - "Any planet is outside the axis"
+    - "Jupiter aspects the 2nd or 8th house"
+  effects:
+    general: "Affects wealth and longevity. Financial instability and health scares recur. The native may face family dysfunction and struggle to accumulate lasting wealth."
+  source: "Classical texts"
+  confidence: "medium"
+
+vasuki_kalsarp:
+  name_en: "Vasuki Kaal Sarpa Yoga"
+  name_hi: "वासुकि काल सर्प योग"
+  type: "malefic"
+  formation:
+    condition: "Rahu in 3rd house, Ketu in 9th house, all planets on one side of the axis."
+    planets: ["rahu", "ketu"]
+    houses_required: [3, 9]
+  cancellation:
+    - "Any planet breaks the axis"
+    - "Jupiter aspects the 3rd or 9th house"
+  effects:
+    general: "Affects courage and fortune. The native has unconventional beliefs and may conflict with siblings. Fortune is delayed but may come through foreign or unconventional channels."
+  source: "Classical texts"
+  confidence: "medium"
+
+shankhpal_kalsarp:
+  name_en: "Shankhpal Kaal Sarpa Yoga"
+  name_hi: "शंखपाल काल सर्प योग"
+  type: "malefic"
+  formation:
+    condition: "Rahu in 4th house, Ketu in 10th house, all planets on one side of the axis."
+    planets: ["rahu", "ketu"]
+    houses_required: [4, 10]
+  cancellation:
+    - "Any planet breaks the axis"
+    - "Jupiter aspects the 4th or 10th house"
+  effects:
+    general: "Affects domestic happiness and career. Property disputes, mother's health issues, and career instability recur. The native may live away from homeland."
+  source: "Classical texts"
+  confidence: "medium"
+
+padma_kalsarp:
+  name_en: "Padma Kaal Sarpa Yoga"
+  name_hi: "पद्म काल सर्प योग"
+  type: "malefic"
+  formation:
+    condition: "Rahu in 5th house, Ketu in 11th house, all planets on one side of the axis."
+    planets: ["rahu", "ketu"]
+    houses_required: [5, 11]
+  cancellation:
+    - "Any planet breaks the axis"
+    - "Jupiter aspects the 5th house"
+  effects:
+    general: "Affects children and gains. Difficulty with progeny, speculative losses, and unfulfilled desires. However, the native may have intense creativity and unconventional intelligence."
+  source: "Classical texts"
+  confidence: "medium"
+
+mahapadma_kalsarp:
+  name_en: "Mahapadma Kaal Sarpa Yoga"
+  name_hi: "महापद्म काल सर्प योग"
+  type: "malefic"
+  formation:
+    condition: "Rahu in 6th house, Ketu in 12th house, all planets on one side of the axis."
+    planets: ["rahu", "ketu"]
+    houses_required: [6, 12]
+  cancellation:
+    - "Any planet breaks the axis"
+    - "Jupiter aspects Rahu in the 6th"
+  effects:
+    general: "Affects enemies/health and spiritual life/losses. The native may face litigation, health issues, and hidden expenses. However, Rahu in 6th can defeat enemies through unconventional means."
+  source: "Classical texts"
+  confidence: "medium"
+
+takshak_kalsarp:
+  name_en: "Takshak Kaal Sarpa Yoga"
+  name_hi: "तक्षक काल सर्प योग"
+  type: "malefic"
+  formation:
+    condition: "Rahu in 7th house, Ketu in 1st house, all planets on one side of the axis."
+    planets: ["rahu", "ketu"]
+    houses_required: [7, 1]
+  cancellation:
+    - "Any planet breaks the axis"
+    - "Jupiter aspects the 7th house"
+  effects:
+    general: "Affects marriage and partnerships severely. Multiple relationship challenges, deception in business partnerships, and legal disputes. Ketu in lagna gives spiritual detachment but worldly confusion."
+  source: "Classical texts"
+  confidence: "medium"
+
+karkotak_kalsarp:
+  name_en: "Karkotak Kaal Sarpa Yoga"
+  name_hi: "कर्कोटक काल सर्प योग"
+  type: "malefic"
+  formation:
+    condition: "Rahu in 8th house, Ketu in 2nd house, all planets on one side of the axis."
+    planets: ["rahu", "ketu"]
+    houses_required: [8, 2]
+  cancellation:
+    - "Any planet breaks the axis"
+    - "Jupiter aspects the 8th house"
+  effects:
+    general: "Affects longevity and family wealth. Sudden crises, mysterious health issues, and family wealth depletion. The native may gain through occult knowledge or inheritance after struggle."
+  source: "Classical texts"
+  confidence: "medium"
+
+shankhachur_kalsarp:
+  name_en: "Shankhachur Kaal Sarpa Yoga"
+  name_hi: "शंखचूर काल सर्प योग"
+  type: "malefic"
+  formation:
+    condition: "Rahu in 9th house, Ketu in 3rd house, all planets on one side of the axis."
+    planets: ["rahu", "ketu"]
+    houses_required: [9, 3]
+  cancellation:
+    - "Any planet breaks the axis"
+    - "Jupiter aspects the 9th house"
+  effects:
+    general: "Affects fortune and courage. The native may have unconventional religious views, strained relation with father, but bold and adventurous spirit. Fortune comes late in life."
+  source: "Classical texts"
+  confidence: "medium"
+
+ghatak_kalsarp:
+  name_en: "Ghatak Kaal Sarpa Yoga"
+  name_hi: "घातक काल सर्प योग"
+  type: "malefic"
+  formation:
+    condition: "Rahu in 10th house, Ketu in 4th house, all planets on one side of the axis."
+    planets: ["rahu", "ketu"]
+    houses_required: [10, 4]
+  cancellation:
+    - "Any planet breaks the axis"
+    - "Jupiter aspects the 10th house"
+  effects:
+    general: "Affects career and domestic life. Professional instability, office politics, and restlessness at home. The native may achieve success in foreign lands or through unconventional career paths."
+  source: "Classical texts"
+  confidence: "medium"
+
+vishdhar_kalsarp:
+  name_en: "Vishdhar Kaal Sarpa Yoga"
+  name_hi: "विषधर काल सर्प योग"
+  type: "malefic"
+  formation:
+    condition: "Rahu in 11th house, Ketu in 5th house, all planets on one side of the axis."
+    planets: ["rahu", "ketu"]
+    houses_required: [11, 5]
+  cancellation:
+    - "Any planet breaks the axis"
+    - "Jupiter aspects the 11th or 5th house"
+  effects:
+    general: "Affects gains and children. The native may earn well but through struggle, with challenges in progeny. Ketu in 5th gives spiritual detachment from worldly pleasures."
+  source: "Classical texts"
+  confidence: "medium"
+
+sheshnag_kalsarp:
+  name_en: "Sheshnag Kaal Sarpa Yoga"
+  name_hi: "शेषनाग काल सर्प योग"
+  type: "malefic"
+  formation:
+    condition: "Rahu in 12th house, Ketu in 6th house, all planets on one side of the axis."
+    planets: ["rahu", "ketu"]
+    houses_required: [12, 6]
+  cancellation:
+    - "Any planet breaks the axis"
+    - "Jupiter aspects the 12th house"
+  effects:
+    general: "Affects expenditure/moksha and enemies/health. Excessive spending, foreign settlement, and health issues. However, Ketu in 6th is strong for defeating enemies and spiritual progress."
+  source: "Classical texts"
+  confidence: "medium"
+
+# =============================================================================
+# VIVAH YOGAS (Marriage Yogas — 12 entries)
+# =============================================================================
+
+shubha_vivah_1:
+  name_en: "Shubha Vivah Yoga 1"
+  name_hi: "शुभ विवाह योग १"
+  type: "benefic"
+  formation:
+    condition: "The 7th lord is well placed (in kendra/trikona, own/exalted sign) AND Venus is strong and unafflicted."
+    planets: ["7th_lord", "venus"]
+    houses_required: [1, 4, 5, 7, 9, 10]
+    sign_condition: "good_dignity"
+  cancellation:
+    - "7th lord or Venus is debilitated, combust, or afflicted"
+    - "Saturn aspects the 7th house"
+  effects:
+    general: "Happy and harmonious marriage. The native finds a compatible, attractive, and supportive spouse. Married life brings joy, companionship, and mutual growth."
+  source: "Classical texts"
+  confidence: "high"
+
+shubha_vivah_2:
+  name_en: "Shubha Vivah Yoga 2"
+  name_hi: "शुभ विवाह योग २"
+  type: "benefic"
+  formation:
+    condition: "Venus is in its own sign (Taurus/Libra) or exalted (Pisces) in the 7th house."
+    planets: ["venus"]
+    houses_required: [7]
+    sign_condition: "own_or_exalted"
+    valid_signs: ["taurus", "libra", "pisces"]
+  cancellation:
+    - "Venus is aspected by Mars and Saturn simultaneously"
+    - "Rahu/Ketu conjunct Venus in 7th"
+  effects:
+    general: "Exceptionally beautiful and loving spouse. Marriage brings material comfort, sensual pleasures, and artistic fulfillment. The partner may be wealthy or artistically talented."
+  source: "Classical texts"
+  confidence: "high"
+
+vivah_delay_1:
+  name_en: "Vivah Delay Yoga 1"
+  name_hi: "विवाह विलंब योग १"
+  type: "malefic"
+  formation:
+    condition: "Saturn aspects the 7th house or the 7th lord through its special aspects (3rd, 7th, 10th)."
+    planets: ["saturn", "7th_lord"]
+    houses_required: [7]
+  cancellation:
+    - "Jupiter also aspects the 7th house"
+    - "Venus is strong and well placed"
+  effects:
+    general: "Marriage is delayed, often until after age 28-32. Saturn brings maturity before marriage. The eventual partner is often older, more mature, or from a different background."
+  source: "Classical texts"
+  confidence: "high"
+
+vivah_delay_2:
+  name_en: "Vivah Delay Yoga 2 (Kuja Dosha)"
+  name_hi: "विवाह विलंब योग २ (कुज दोष)"
+  type: "malefic"
+  formation:
+    condition: "Mars is placed in the 7th house, especially for female natives (Manglik/Kuja Dosha variant)."
+    planets: ["mars"]
+    houses_required: [7]
+  cancellation:
+    - "Mars is in own sign (Aries/Scorpio) in the 7th"
+    - "Jupiter aspects Mars in the 7th"
+    - "Spouse also has Mars in 1st/4th/7th/8th/12th"
+  effects:
+    general: "Conflict and aggression in marriage. Mars brings its fiery energy to partnerships, causing arguments, dominance struggles, and potential separation. Matching with a fellow Manglik mitigates."
+  source: "Classical texts"
+  confidence: "high"
+
+vivah_denial_1:
+  name_en: "Vivah Denial Yoga"
+  name_hi: "विवाह निषेध योग"
+  type: "malefic"
+  formation:
+    condition: "The 7th lord is combust AND Saturn occupies the 7th house, with no benefic aspect."
+    planets: ["7th_lord", "saturn"]
+    houses_required: [7]
+  cancellation:
+    - "Jupiter aspects the 7th house"
+    - "Venus is strong in a kendra"
+  effects:
+    general: "Strong denial or extreme delay in marriage. The native may remain unmarried or marry very late under unusual circumstances. Loneliness in partnership area is indicated."
+  source: "Classical texts"
+  confidence: "medium"
+
+early_marriage_yoga:
+  name_en: "Early Marriage Yoga"
+  name_hi: "शीघ्र विवाह योग"
+  type: "benefic"
+  formation:
+    condition: "Venus is in the 2nd or 7th house conjunct or aspected by benefic planets, with the 7th lord also strong."
+    planets: ["venus", "7th_lord"]
+    houses_required: [2, 7]
+  cancellation:
+    - "Saturn aspects Venus or the 7th house"
+    - "Mars afflicts the 7th"
+  effects:
+    general: "Marriage happens early in life, often before age 25. Strong Venus and benefic influences on marriage houses create early romantic connections and desire for companionship."
+  source: "Classical texts"
+  confidence: "medium"
+
+divorce_yoga_1:
+  name_en: "Divorce Yoga 1"
+  name_hi: "विवाह विच्छेद योग १"
+  type: "malefic"
+  formation:
+    condition: "Rahu is in the 7th house AND the 7th lord is afflicted by malefics."
+    planets: ["rahu", "7th_lord"]
+    houses_required: [7]
+  cancellation:
+    - "Jupiter aspects the 7th house"
+    - "Venus is strong and unafflicted"
+  effects:
+    general: "Deception, misunderstanding, and incompatibility lead to marital breakdown. Rahu in 7th creates illusion in partnerships, and an afflicted 7th lord cannot sustain the bond."
+  source: "Classical texts"
+  confidence: "medium"
+
+divorce_yoga_2:
+  name_en: "Divorce Yoga 2"
+  name_hi: "विवाह विच्छेद योग २"
+  type: "malefic"
+  formation:
+    condition: "Mars and Saturn are on the 1st-7th axis (one in lagna, other in 7th, or vice versa)."
+    planets: ["mars", "saturn"]
+    houses_required: [1, 7]
+  cancellation:
+    - "Jupiter aspects both houses"
+    - "Both Mars and Saturn are in own signs"
+  effects:
+    general: "Extreme friction in marriage — Mars brings aggression while Saturn brings coldness and distance. The push-pull dynamic creates irreconcilable differences and potential separation."
+  source: "Classical texts"
+  confidence: "medium"
+
+second_marriage_yoga:
+  name_en: "Second Marriage Yoga"
+  name_hi: "द्वितीय विवाह योग"
+  type: "mixed"
+  formation:
+    condition: "The 7th lord is in a dual sign (Gemini, Virgo, Sagittarius, Pisces) AND aspected by Rahu."
+    planets: ["7th_lord", "rahu"]
+    houses_required: [7]
+    valid_signs: ["gemini", "virgo", "sagittarius", "pisces"]
+  cancellation:
+    - "Jupiter aspects the 7th lord strongly"
+    - "No other marriage-disturbing factors exist"
+  effects:
+    general: "The native may marry more than once. Dual signs indicate multiplicity, and Rahu's aspect adds unconventional circumstances leading to a second union."
+  source: "Classical texts"
+  confidence: "medium"
+
+love_marriage_yoga:
+  name_en: "Love Marriage Yoga"
+  name_hi: "प्रेम विवाह योग"
+  type: "mixed"
+  formation:
+    condition: "The 5th lord (romance) and 7th lord (marriage) are connected through conjunction, aspect, or exchange, with Rahu's involvement."
+    planets: ["5th_lord", "7th_lord", "rahu"]
+    houses_required: [5, 7]
+  cancellation:
+    - "Saturn aspects the 5th-7th connection heavily"
+    - "Jupiter dominates, redirecting toward arranged marriage"
+  effects:
+    general: "The native marries for love rather than family arrangement. Romance leads to marriage. Rahu's involvement indicates breaking social norms or caste/community boundaries."
+  source: "Classical texts"
+  confidence: "medium"
+
+inter_caste_marriage:
+  name_en: "Inter-Caste Marriage Yoga"
+  name_hi: "अंतर्जातीय विवाह योग"
+  type: "mixed"
+  formation:
+    condition: "Rahu is in the 7th house conjunct or aspecting Venus."
+    planets: ["rahu", "venus"]
+    houses_required: [7]
+  cancellation:
+    - "Jupiter aspects the 7th, adding traditional influence"
+    - "Saturn restricts the unconventional alliance"
+  effects:
+    general: "The native marries outside their community, religion, or social group. Rahu breaks boundaries and Venus drives attraction — their combination in the marriage house overrides traditional norms."
+  source: "Classical texts"
+  confidence: "low"
+
+arranged_marriage_yoga:
+  name_en: "Arranged Marriage Yoga"
+  name_hi: "व्यवस्थित विवाह योग"
+  type: "benefic"
+  formation:
+    condition: "Jupiter aspects the 7th house, the 7th lord is in a traditional sign, and family houses (2nd, 4th) are strong."
+    planets: ["jupiter", "7th_lord"]
+    houses_required: [2, 4, 7]
+  cancellation:
+    - "Rahu strongly influences the 7th house"
+    - "5th-7th lord connection indicates love override"
+  effects:
+    general: "Marriage happens through family channels with elders' blessings. Jupiter's traditional influence on the 7th ensures a dharmic, family-supported union. Stable and long-lasting marriage."
+  source: "Classical texts"
+  confidence: "medium"
+
+# =============================================================================
+# SANTAN YOGAS (Children / Progeny Yogas — 8 entries)
+# =============================================================================
+
+putra_yoga_1:
+  name_en: "Putra Yoga 1"
+  name_hi: "पुत्र योग १"
+  type: "benefic"
+  formation:
+    condition: "The 5th lord is placed in a kendra or trikona house in good dignity (own, exalted, or friendly sign)."
+    planets: ["5th_lord"]
+    houses_required: [1, 4, 5, 7, 9, 10]
+    sign_condition: "good_dignity"
+  cancellation:
+    - "5th lord is debilitated or combust"
+    - "Malefics afflict the 5th house and 5th lord"
+  effects:
+    general: "The native is blessed with good children who bring joy and pride. Strong 5th lord ensures progeny, intelligence in children, and happiness through offspring."
+  source: "BPHS chapter 39"
+  confidence: "high"
+
+putra_yoga_2:
+  name_en: "Putra Yoga 2"
+  name_hi: "पुत्र योग २"
+  type: "benefic"
+  formation:
+    condition: "Jupiter (putra karaka) is well placed in the 5th house in good dignity."
+    planets: ["jupiter"]
+    houses_required: [5]
+    sign_condition: "good_dignity"
+  cancellation:
+    - "Jupiter is debilitated (Capricorn) in the 5th"
+    - "Jupiter is conjunct Rahu in the 5th (Guru Chandal)"
+  effects:
+    general: "Children are wise, well-behaved, and bring fortune to the family. Jupiter as the natural significator of children in the 5th house is one of the strongest indications for blessed progeny."
+  source: "BPHS chapter 39"
+  confidence: "high"
+
+santan_delay_1:
+  name_en: "Santan Delay Yoga 1"
+  name_hi: "संतान विलंब योग १"
+  type: "malefic"
+  formation:
+    condition: "Saturn aspects the 5th house AND the 5th lord through its special aspects."
+    planets: ["saturn", "5th_lord"]
+    houses_required: [5]
+  cancellation:
+    - "Jupiter aspects the 5th house"
+    - "5th lord is in own/exalted sign"
+  effects:
+    general: "Childbirth is delayed, often until mid-30s. Saturn brings maturity and patience to the process. Children born after delay may be more disciplined and responsible."
+  source: "Classical texts"
+  confidence: "high"
+
+santan_delay_2:
+  name_en: "Santan Delay Yoga 2"
+  name_hi: "संतान विलंब योग २"
+  type: "malefic"
+  formation:
+    condition: "Ketu is placed in the 5th house."
+    planets: ["ketu"]
+    houses_required: [5]
+  cancellation:
+    - "Jupiter aspects the 5th house"
+    - "5th lord is strong in a kendra"
+  effects:
+    general: "Ketu in the 5th creates detachment from progeny matters. Delay, complications, or spiritual orientation away from having children. The native may adopt or have children through unconventional means."
+  source: "Classical texts"
+  confidence: "medium"
+
+santan_denial_1:
+  name_en: "Santan Denial Yoga"
+  name_hi: "संतान निषेध योग"
+  type: "malefic"
+  formation:
+    condition: "The 5th lord is combust AND a malefic planet occupies the 5th house without any benefic aspect."
+    planets: ["5th_lord", "malefic_in_5th"]
+    houses_required: [5]
+  cancellation:
+    - "Jupiter aspects the 5th house from any position"
+    - "The 5th lord recovers in divisional charts"
+  effects:
+    general: "Strong indication of difficulty having children or childlessness. Both the 5th lord and 5th house are compromised. Requires spiritual remedies and medical consultation."
+  source: "Classical texts"
+  confidence: "medium"
+
+twin_yoga:
+  name_en: "Twin Yoga"
+  name_hi: "यमज योग"
+  type: "mixed"
+  formation:
+    condition: "Mercury is in the 5th house in a dual sign (Gemini, Virgo, Sagittarius, Pisces)."
+    planets: ["mercury"]
+    houses_required: [5]
+    valid_signs: ["gemini", "virgo", "sagittarius", "pisces"]
+  cancellation:
+    - "Mercury is heavily afflicted by malefics"
+    - "No other dual-sign influences support the indication"
+  effects:
+    general: "Possibility of twins or multiple births. Mercury's dual nature combined with a dual sign in the house of children creates multiplicity in progeny."
+  source: "Classical texts"
+  confidence: "low"
+
+putri_yoga:
+  name_en: "Putri Yoga (Daughter Yoga)"
+  name_hi: "पुत्री योग"
+  type: "benefic"
+  formation:
+    condition: "The 5th lord is in a female sign (Taurus, Cancer, Virgo, Scorpio, Capricorn, Pisces) AND Venus aspects the 5th house."
+    planets: ["5th_lord", "venus"]
+    houses_required: [5]
+  cancellation:
+    - "Mars dominates the 5th house influence"
+    - "5th lord is in a male sign with male planet aspect"
+  effects:
+    general: "The native is blessed with daughters. Female planetary influences on the 5th house indicate female progeny. Daughters bring joy, beauty, and fortune to the family."
+  source: "Classical texts"
+  confidence: "low"
+
+adopted_child_yoga:
+  name_en: "Adopted Child Yoga"
+  name_hi: "दत्तक पुत्र योग"
+  type: "mixed"
+  formation:
+    condition: "Saturn influences the 5th house (occupancy or aspect) AND Rahu is connected to the 5th lord."
+    planets: ["saturn", "rahu", "5th_lord"]
+    houses_required: [5]
+  cancellation:
+    - "Jupiter strongly aspects the 5th, indicating natural progeny"
+    - "5th lord is strong in own sign"
+  effects:
+    general: "The native may adopt a child or raise someone else's child as their own. Saturn's restriction combined with Rahu's unconventional influence on the children's house redirects the parental instinct toward adoption."
+  source: "Classical texts"
+  confidence: "low"
+
+# =============================================================================
+# SANNYASA YOGAS (Renunciation / Spiritual Yogas — 5 entries)
+# =============================================================================
+
+sannyasa_yoga_1:
+  name_en: "Sannyasa Yoga 1"
+  name_hi: "संन्यास योग १"
+  type: "mixed"
+  formation:
+    condition: "Four or more planets are conjunct in one house, with the 10th lord among them."
+    planets: ["10th_lord", "three_or_more_planets"]
+    houses_required: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  cancellation:
+    - "Jupiter aspects the conjunction with strong material beneficence"
+    - "The lagna lord is strong in a different house, maintaining worldly engagement"
+  effects:
+    general: "The native renounces worldly life and takes to spiritual path. A stellium involving the 10th lord redirects all action toward a single-pointed spiritual pursuit. The native may become a monk, ascetic, or spiritual teacher."
+  source: "BPHS chapter 79"
+  confidence: "high"
+
+sannyasa_yoga_2:
+  name_en: "Sannyasa Yoga 2"
+  name_hi: "संन्यास योग २"
+  type: "mixed"
+  formation:
+    condition: "Moon is in Saturn's navamsha AND Saturn aspects Moon in the birth chart."
+    planets: ["moon", "saturn"]
+  cancellation:
+    - "Jupiter aspects Moon, maintaining worldly attachment"
+    - "Venus is strong, keeping material desires alive"
+  effects:
+    general: "The native develops deep detachment and may renounce the world. Saturn's influence on Moon creates emotional austerity and dispassion toward material pleasures."
+  source: "Classical texts"
+  confidence: "medium"
+
+sannyasa_yoga_3:
+  name_en: "Sannyasa Yoga 3"
+  name_hi: "संन्यास योग ३"
+  type: "mixed"
+  formation:
+    condition: "Lagna lord is in the 12th house AND spiritual planets (Jupiter, Ketu, Saturn) are strong and prominently placed."
+    planets: ["lagna_lord", "jupiter", "ketu", "saturn"]
+    houses_required: [12]
+  cancellation:
+    - "Strong material planets (Venus, Mars) dominate the chart"
+    - "2nd and 11th houses are strong, keeping material attachment"
+  effects:
+    general: "The native gravitates toward spiritual liberation (moksha). Lagna lord in the 12th dissolves ego into the transcendent, especially when spiritual planets support the dissolution."
+  source: "Classical texts"
+  confidence: "medium"
+
+pravrajya_yoga:
+  name_en: "Pravrajya Yoga"
+  name_hi: "प्रव्रज्या योग"
+  type: "mixed"
+  formation:
+    condition: "Ketu is in the 12th house AND Jupiter aspects Ketu or the 12th house."
+    planets: ["ketu", "jupiter"]
+    houses_required: [12]
+  cancellation:
+    - "Rahu dominates the chart with material obsessions"
+    - "Venus is conjunct lagna lord, maintaining worldly desires"
+  effects:
+    general: "The native takes formal renunciation (pravrajya). Ketu in the house of liberation with Jupiter's wisdom creates a genuine spiritual seeker who eventually leaves worldly life for monastic pursuit."
+  source: "BPHS chapter 79"
+  confidence: "high"
+
+vairagya_yoga:
+  name_en: "Vairagya Yoga"
+  name_hi: "वैराग्य योग"
+  type: "mixed"
+  formation:
+    condition: "Moon is in the last navamsha of a sign (29th degree area) AND Saturn aspects Moon."
+    planets: ["moon", "saturn"]
+    sign_condition: "moon_in_last_navamsha"
+  cancellation:
+    - "Jupiter or Venus aspect Moon, maintaining attachment"
+    - "Moon is in own sign or exalted, strong enough to resist detachment"
+  effects:
+    general: "Deep spiritual dispassion (vairagya) develops in the native. Moon at the edge of a sign combined with Saturn's detaching aspect creates an inner sense of completion and desire to transcend material existence."
+  source: "Classical texts"
+  confidence: "medium"
+
+# =============================================================================
+# DARIDRA YOGAS (Poverty Yogas)
+# =============================================================================
+
+daridra_yoga_1:
+  name_en: "Daridra Yoga (Lagna Lord in Dusthana)"
+  name_hi: "दरिद्र योग (लग्नेश दुःस्थान में)"
+  type: "malefic"
+  formation:
+    condition: "1st lord placed in 6th, 8th, or 12th house in debilitated state without benefic aspect."
+    planets: []
+    houses_required: [6, 8, 12]
+  cancellation:
+    - "Benefic aspect on the debilitated lagna lord"
+  effects:
+    general: "Self-created financial problems, health expenses, and struggle for recognition."
+  source: "BPHS chapter 16"
+  confidence: "high"
+
+daridra_yoga_2:
+  name_en: "Daridra Yoga (2nd-12th Exchange)"
+  name_hi: "दरिद्र योग (द्वितीय-द्वादश परिवर्तन)"
+  type: "malefic"
+  formation:
+    condition: "2nd lord in 12th house and 12th lord in 2nd house."
+    planets: []
+    houses_required: [2, 12]
+  cancellation:
+    - "Both planets are natural benefics in good dignity"
+  effects:
+    general: "Wealth earned is immediately spent. Financial cycle of earning and losing."
+  source: "BPHS chapter 16"
+  confidence: "high"
+
+daridra_yoga_3:
+  name_en: "Daridra Yoga (Malefics in 2nd and 12th)"
+  name_hi: "दरिद्र योग (द्वितीय-द्वादश पापग्रह)"
+  type: "malefic"
+  formation:
+    condition: "Malefic planets in both 2nd and 12th houses without any benefic aspect."
+    planets: []
+    houses_required: [2, 12]
+  cancellation:
+    - "Jupiter or Venus aspects either house"
+  effects:
+    general: "Constant financial drain. Money comes in through 2nd house but leaks out through 12th."
+  source: "Classical texts"
+  confidence: "high"
+
+daridra_yoga_4:
+  name_en: "Daridra Yoga (Debilitated Moon Alone)"
+  name_hi: "दरिद्र योग (नीच चन्द्र एकाकी)"
+  type: "malefic"
+  formation:
+    condition: "Moon debilitated without any benefic conjunction or aspect, and no planet in 2nd or 12th from Moon."
+    planets: ["moon"]
+    sign_condition: "debilitated"
+  cancellation:
+    - "Jupiter aspects Moon"
+    - "Planet in kendra from Moon (Kemdrum Bhanga)"
+  effects:
+    general: "Mental anxiety, poverty, loneliness. Kemdrum + debilitation creates severe hardship."
+  source: "Classical texts"
+  confidence: "high"
+
+daridra_yoga_5:
+  name_en: "Daridra Yoga (11th Lord in Dusthana)"
+  name_hi: "दरिद्र योग (एकादशेश दुःस्थान में)"
+  type: "malefic"
+  formation:
+    condition: "11th lord placed in 6th, 8th, or 12th house without cancellation."
+    planets: []
+    houses_required: [6, 8, 12]
+  cancellation:
+    - "11th lord in own or exalted sign even in dusthana"
+  effects:
+    general: "Irregular income, losses through friends or elder siblings, unfulfilled aspirations."
+  source: "BPHS chapter 16"
+  confidence: "high"
+
+daridra_yoga_6:
+  name_en: "Daridra Yoga (All Planets in Dusthana)"
+  name_hi: "दरिद्र योग (सर्व ग्रह दुःस्थान में)"
+  type: "malefic"
+  formation:
+    condition: "All or most planets concentrated in 6th, 8th, and 12th houses."
+    planets: []
+    houses_required: [6, 8, 12]
+  cancellation:
+    - "Multiple Vipreet Raj Yogas form simultaneously"
+  effects:
+    general: "Extreme poverty, health issues, debts, and imprisonment."
+  source: "Phaladeepika"
+  confidence: "medium"
+
+daridra_yoga_7:
+  name_en: "Daridra Yoga (5th-9th Lords Afflicted)"
+  name_hi: "दरिद्र योग (पञ्चमेश-नवमेश पीड़ित)"
+  type: "malefic"
+  formation:
+    condition: "5th lord combust and 9th lord debilitated simultaneously."
+    planets: []
+    houses_required: [5, 9]
+  cancellation:
+    - "Either planet has Neech Bhanga"
+  effects:
+    general: "Loss of past-life merit and present fortune. Both purva punya and bhagya destroyed."
+  source: "Classical texts"
+  confidence: "medium"
+
+daridra_yoga_8:
+  name_en: "Daridra Yoga (Jupiter-Saturn Both Weak)"
+  name_hi: "दरिद्र योग (गुरु-शनि दोनों दुर्बल)"
+  type: "malefic"
+  formation:
+    condition: "Both Jupiter and Saturn debilitated or combust."
+    planets: ["jupiter", "saturn"]
+  cancellation:
+    - "One has Neech Bhanga Raj Yoga"
+  effects:
+    general: "Severe financial and social hardship. Prosperity (Jupiter) and perseverance (Saturn) both failing."
+  source: "Classical texts"
+  confidence: "medium"
+
+daridra_yoga_9:
+  name_en: "Daridra Yoga (Malefic Lagna + Weak 2nd)"
+  name_hi: "दरिद्र योग (पाप लग्न + दुर्बल द्वितीयेश)"
+  type: "malefic"
+  formation:
+    condition: "Malefic in lagna without benefic aspect, 2nd lord in enemy/debilitated sign."
+    planets: []
+    houses_required: [1, 2]
+  cancellation:
+    - "Benefic planet aspects lagna"
+  effects:
+    general: "Poor health limits earning capacity. Body and wealth both afflicted."
+  source: "Classical texts"
+  confidence: "medium"
+
+daridra_yoga_10:
+  name_en: "Daridra Yoga (6th-10th Exchange)"
+  name_hi: "दरिद्र योग (षष्ठ-दशम परिवर्तन)"
+  type: "malefic"
+  formation:
+    condition: "10th lord in 6th and 6th lord in 10th."
+    planets: []
+    houses_required: [6, 10]
+  cancellation:
+    - "Both planets strong in dignity"
+  effects:
+    general: "Career plagued by enemies, debts, service difficulties. Reputation tarnished."
+  source: "Classical texts"
+  confidence: "medium"
+
+# =============================================================================
+# ARISHTA YOGAS (Affliction/Danger Yogas)
+# =============================================================================
+
+balarishta_1:
+  name_en: "Balarishta Yoga (Moon Afflicted in Infant Chart)"
+  name_hi: "बालारिष्ट योग (शिशु कुण्डली में चन्द्र पीड़ित)"
+  type: "malefic"
+  formation:
+    condition: "Moon in 6th or 8th house afflicted by malefics in an infant chart."
+    planets: ["moon"]
+    houses_required: [6, 8]
+  cancellation:
+    - "Jupiter aspects Moon"
+  effects:
+    general: "Health dangers in infancy. Moon weakness indicates vulnerable constitution."
+  source: "BPHS chapter 7"
+  confidence: "high"
+
+balarishta_2:
+  name_en: "Balarishta Yoga (Lagna Lord Debilitated + Malefic)"
+  name_hi: "बालारिष्ट योग (लग्नेश नीच + पापग्रह)"
+  type: "malefic"
+  formation:
+    condition: "Lagna lord debilitated and aspected by malefics without benefic intervention."
+    planets: []
+    houses_required: [1]
+  cancellation:
+    - "Neech Bhanga Raj Yoga"
+  effects:
+    general: "Weak constitution from birth. Frequent childhood illnesses."
+  source: "Classical texts"
+  confidence: "high"
+
+rogarishta_1:
+  name_en: "Rogarishta Yoga (6th-1st Exchange)"
+  name_hi: "रोगारिष्ट योग (षष्ठ-लग्न परिवर्तन)"
+  type: "malefic"
+  formation:
+    condition: "6th lord in 1st and 1st lord in 6th."
+    planets: []
+    houses_required: [1, 6]
+  cancellation:
+    - "Both planets are natural benefics"
+  effects:
+    general: "Chronic disease becomes part of identity. Health struggles define the native."
+  source: "Classical texts"
+  confidence: "high"
+
+rogarishta_2:
+  name_en: "Rogarishta Yoga (6th-8th Malefic Connection)"
+  name_hi: "रोगारिष्ट योग (षष्ठ-अष्टम पाप सम्बन्ध)"
+  type: "malefic"
+  formation:
+    condition: "Malefic in 6th and 6th lord in 8th."
+    planets: []
+    houses_required: [6, 8]
+  cancellation:
+    - "Jupiter aspects 6th house"
+  effects:
+    general: "Disease leads to emergencies. Chronic condition with acute episodes. Surgery indicated."
+  source: "Classical texts"
+  confidence: "medium"
+
+mrityu_yoga_1:
+  name_en: "Mrityu Yoga (8th Lord in Lagna)"
+  name_hi: "मृत्यु योग (अष्टमेश लग्न में)"
+  type: "malefic"
+  formation:
+    condition: "8th lord in 1st house afflicted by malefics, maraka dasha active."
+    planets: []
+    houses_required: [1, 8]
+  cancellation:
+    - "Jupiter aspects lagna"
+    - "8th lord also owns a benefic house"
+  effects:
+    general: "Life-threatening danger when maraka dasha activates. Health emergencies or accidents."
+  source: "BPHS chapter 20"
+  confidence: "high"
+
+mrityu_yoga_2:
+  name_en: "Mrityu Yoga (Saturn-Mars in 8th)"
+  name_hi: "मृत्यु योग (शनि-मंगल अष्टम में)"
+  type: "malefic"
+  formation:
+    condition: "Saturn and Mars conjunct in 8th without benefic aspect."
+    planets: ["saturn", "mars"]
+    houses_required: [8]
+  cancellation:
+    - "Jupiter aspects the conjunction"
+  effects:
+    general: "Danger from accidents, surgery, or chronic disease. If one is 8th lord, may actually give longevity."
+  source: "Classical texts"
+  confidence: "medium"
+
+karaka_arishta:
+  name_en: "Karaka Arishta Yoga"
+  name_hi: "कारक अरिष्ट योग"
+  type: "malefic"
+  formation:
+    condition: "House karaka planet debilitated in its own significating house."
+    planets: []
+  cancellation:
+    - "Neech Bhanga for the karaka"
+  effects:
+    general: "House significations severely damaged. The protector of the house is weak."
+  source: "Classical texts"
+  confidence: "medium"
+
+# =============================================================================
+# MORE VIVAH (MARRIAGE) YOGAS
+# =============================================================================
+
+shubha_vivah_1:
+  name_en: "Shubha Vivah Yoga"
+  name_hi: "शुभ विवाह योग"
+  type: "benefic"
+  formation:
+    condition: "7th lord in kendra/trikona and Venus strong (own/exalted)."
+    planets: ["venus"]
+    houses_required: [7]
+  cancellation:
+    - "Saturn or Rahu aspects 7th lord"
+  effects:
+    general: "Happy marriage with compatible spouse. Timely marriage and harmony."
+  source: "BPHS chapter 19"
+  confidence: "high"
+
+vivah_delay_1:
+  name_en: "Vivah Vilamba Yoga (Saturn Delays)"
+  name_hi: "विवाह विलम्ब योग (शनि)"
+  type: "mixed"
+  formation:
+    condition: "Saturn aspects 7th house or 7th lord."
+    planets: ["saturn"]
+    houses_required: [7]
+  cancellation:
+    - "Jupiter also aspects 7th"
+  effects:
+    general: "Marriage delayed beyond normal age. Mature spouse. Marriage after 28+."
+  source: "Classical texts"
+  confidence: "high"
+
+vivah_delay_2:
+  name_en: "Vivah Vilamba Yoga (Mars in 7th for Female)"
+  name_hi: "विवाह विलम्ब योग (स्त्री कुण्डली मंगल सप्तम)"
+  type: "mixed"
+  formation:
+    condition: "Mars in 7th in female chart (Mangal Dosha)."
+    planets: ["mars"]
+    houses_required: [7]
+  cancellation:
+    - "Partner also has Mangal Dosha"
+  effects:
+    general: "Delays due to Mangal Dosha. Marriage after matching with Manglik partner preferred."
+  source: "Classical texts"
+  confidence: "high"
+
+vivah_denial_1:
+  name_en: "Vivah Nishedha Yoga"
+  name_hi: "विवाह निषेध योग"
+  type: "malefic"
+  formation:
+    condition: "7th lord combust, Saturn in 7th, no benefic on 7th house."
+    planets: ["saturn"]
+    houses_required: [7]
+  cancellation:
+    - "Jupiter aspects 7th house"
+  effects:
+    general: "Extreme difficulty getting married. Multiple broken engagements."
+  source: "Classical texts"
+  confidence: "medium"
+
+divorce_yoga_1:
+  name_en: "Vivah Bhanga Yoga (Rahu in 7th)"
+  name_hi: "विवाह भंग योग (राहु सप्तम)"
+  type: "malefic"
+  formation:
+    condition: "Rahu in 7th with 7th lord afflicted."
+    planets: ["rahu"]
+    houses_required: [7]
+  cancellation:
+    - "Jupiter aspects Rahu or 7th lord"
+  effects:
+    general: "Deception in marriage or divorce. Spouse from different background."
+  source: "Classical texts"
+  confidence: "medium"
+
+divorce_yoga_2:
+  name_en: "Vivah Bhanga Yoga (Mars-Saturn 1-7 Axis)"
+  name_hi: "विवाह भंग योग (मंगल-शनि अक्ष)"
+  type: "malefic"
+  formation:
+    condition: "Mars and Saturn on 1st-7th axis."
+    planets: ["mars", "saturn"]
+    houses_required: [1, 7]
+  cancellation:
+    - "Jupiter aspects both"
+  effects:
+    general: "Severe marital conflict. Stubbornness meets aggression. Separation likely."
+  source: "Classical texts"
+  confidence: "medium"
+
+# =============================================================================
+# MORE SANTAN (CHILDREN) YOGAS
+# =============================================================================
+
+putra_yoga_1:
+  name_en: "Putra Yoga (5th Lord Strong)"
+  name_hi: "पुत्र योग (पञ्चमेश बलवान)"
+  type: "benefic"
+  formation:
+    condition: "5th lord in kendra/trikona in own or exalted sign."
+    planets: []
+    houses_required: [1, 4, 5, 7, 9, 10]
+  cancellation:
+    - "5th lord combust"
+  effects:
+    general: "Blessed with good children who bring happiness and fame."
+  source: "BPHS chapter 19"
+  confidence: "high"
+
+putra_yoga_2:
+  name_en: "Putra Yoga (Jupiter in 5th)"
+  name_hi: "पुत्र योग (बृहस्पति पञ्चम)"
+  type: "benefic"
+  formation:
+    condition: "Jupiter in 5th house in good dignity."
+    planets: ["jupiter"]
+    houses_required: [5]
+  cancellation:
+    - "Jupiter combust or debilitated"
+  effects:
+    general: "Jupiter as putra karaka in putra bhava. Children are wise and dharmic."
+  source: "Classical texts"
+  confidence: "high"
+
+santan_delay_1:
+  name_en: "Santan Vilamba Yoga"
+  name_hi: "सन्तान विलम्ब योग"
+  type: "mixed"
+  formation:
+    condition: "Saturn aspects 5th house or 5th lord."
+    planets: ["saturn"]
+    houses_required: [5]
+  cancellation:
+    - "Jupiter also aspects 5th house"
+  effects:
+    general: "Delay in having children. Children after age 30. Few but responsible children."
+  source: "Classical texts"
+  confidence: "high"
+
+santan_denial_1:
+  name_en: "Santan Nishedha Yoga"
+  name_hi: "सन्तान निषेध योग"
+  type: "malefic"
+  formation:
+    condition: "5th lord combust, malefic in 5th, Jupiter weak, no benefic on 5th."
+    planets: []
+    houses_required: [5]
+  cancellation:
+    - "Jupiter aspects 5th from any position"
+  effects:
+    general: "Difficulty having children. Medical intervention or adoption may be needed."
+  source: "Classical texts"
+  confidence: "medium"
+
+# =============================================================================
+# MORE SANNYASA YOGAS
+# =============================================================================
+
+sannyasa_yoga_1:
+  name_en: "Sannyasa Yoga (4+ Planets in One House)"
+  name_hi: "संन्यास योग (चतुर्ग्रह एक भाव)"
+  type: "mixed"
+  formation:
+    condition: "4+ planets in one house including the 10th lord."
+    planets: []
+  cancellation:
+    - "All in own signs (worldly success instead)"
+  effects:
+    general: "Renunciation of worldly life. Concentrated energy toward single-minded spiritual pursuit."
+  source: "BPHS chapter 79"
+  confidence: "high"
+
+sannyasa_yoga_2:
+  name_en: "Sannyasa Yoga (Moon-Saturn Connection)"
+  name_hi: "संन्यास योग (चन्द्र-शनि सम्बन्ध)"
+  type: "mixed"
+  formation:
+    condition: "Moon in Saturn navamsha and Saturn aspects Moon."
+    planets: ["moon", "saturn"]
+  cancellation:
+    - "Jupiter aspects Moon"
+  effects:
+    general: "Emotional detachment from material world. Saturn's cold energy on Moon creates inner renunciant."
+  source: "Classical texts"
+  confidence: "medium"
+
+sannyasa_yoga_3:
+  name_en: "Sannyasa Yoga (12th House Dominance)"
+  name_hi: "संन्यास योग (द्वादश प्रभुत्व)"
+  type: "mixed"
+  formation:
+    condition: "Lagna lord in 12th with Jupiter/Ketu influence on 12th."
+    planets: ["jupiter", "ketu"]
+    houses_required: [12]
+  cancellation:
+    - "Venus/Mercury in lagna counterbalance"
+  effects:
+    general: "Life directed toward moksha. Foreign ashram or monastery life."
+  source: "Classical texts"
+  confidence: "medium"
+
+# =============================================================================
+# ADDITIONAL RAJ AND DHAN YOGAS
+# =============================================================================
+
+parashara_raj_1:
+  name_en: "Parashara Raja Yoga (1st-4th Exchange)"
+  name_hi: "पाराशर राज योग (लग्न-चतुर्थ परिवर्तन)"
+  type: "benefic"
+  formation:
+    condition: "1st and 4th lords exchange houses."
+    planets: []
+    houses_required: [1, 4]
+  cancellation:
+    - "Either planet debilitated in exchanged sign"
+  effects:
+    general: "Status through education, property, domestic foundation."
+  source: "BPHS chapter 15"
+  confidence: "high"
+
+parashara_raj_2:
+  name_en: "Parashara Raja Yoga (1st-5th Conjunction)"
+  name_hi: "पाराशर राज योग (लग्न-पञ्चम युति)"
+  type: "benefic"
+  formation:
+    condition: "1st and 5th lords conjunct in kendra/trikona."
+    planets: []
+    houses_required: [1, 4, 5, 7, 9, 10]
+  cancellation:
+    - "Conjunction in dusthana"
+  effects:
+    general: "Authority through intelligence and past-life merit."
+  source: "BPHS chapter 15"
+  confidence: "high"
+
+parashara_raj_3:
+  name_en: "Parashara Raja Yoga (4th-5th Conjunction)"
+  name_hi: "पाराशर राज योग (चतुर्थ-पञ्चम युति)"
+  type: "benefic"
+  formation:
+    condition: "4th and 5th lords conjunct in favorable house."
+    planets: []
+    houses_required: [1, 4, 5, 7, 9, 10]
+  cancellation:
+    - "Both debilitated or combust"
+  effects:
+    general: "Education leads to authority. Academic achievements bring recognition."
+  source: "BPHS chapter 15"
+  confidence: "high"
+
+parashara_raj_4:
+  name_en: "Parashara Raja Yoga (5th-9th Aspect)"
+  name_hi: "पाराशर राज योग (पञ्चम-नवम दृष्टि)"
+  type: "benefic"
+  formation:
+    condition: "5th and 9th lords have mutual aspect."
+    planets: []
+    houses_required: [5, 9]
+  cancellation:
+    - "Malefic disrupts the aspect"
+  effects:
+    general: "Trikona lords connecting brings spiritual merit into active life."
+  source: "BPHS chapter 15"
+  confidence: "high"
+
+parashara_raj_5:
+  name_en: "Parashara Raja Yoga (9th-10th Exchange)"
+  name_hi: "पाराशर राज योग (नवम-दशम परिवर्तन)"
+  type: "benefic"
+  formation:
+    condition: "9th and 10th lords exchange houses (Dharma-Karma Parivartana)."
+    planets: []
+    houses_required: [9, 10]
+  cancellation:
+    - "Both afflicted by Rahu-Ketu"
+  effects:
+    general: "Most powerful Parivartana. Fortune and career merge. Righteous work rewarded."
+  source: "BPHS chapter 15"
+  confidence: "high"
+
+dhana_yoga_1_2:
+  name_en: "Dhana Yoga (1st-2nd Connection)"
+  name_hi: "धन योग (लग्न-द्वितीय)"
+  type: "benefic"
+  formation:
+    condition: "1st and 2nd lords conjunct, exchange, or mutually aspect."
+    planets: []
+    houses_required: [1, 2]
+  cancellation:
+    - "Connection in dusthana"
+  effects:
+    general: "Personal effort directly creates wealth. Self-made financial success."
+  source: "BPHS chapter 16"
+  confidence: "high"
+
+dhana_yoga_2_5:
+  name_en: "Dhana Yoga (2nd-5th Connection)"
+  name_hi: "धन योग (द्वितीय-पञ्चम)"
+  type: "benefic"
+  formation:
+    condition: "2nd and 5th lords conjunct or exchange houses."
+    planets: []
+    houses_required: [2, 5]
+  cancellation:
+    - "Either combust or debilitated"
+  effects:
+    general: "Wealth through intelligence, speculation, past-life merit."
+  source: "BPHS chapter 16"
+  confidence: "high"
+
+dhana_yoga_2_9:
+  name_en: "Dhana Yoga (2nd-9th Connection)"
+  name_hi: "धन योग (द्वितीय-नवम)"
+  type: "benefic"
+  formation:
+    condition: "2nd and 9th lords conjunct, exchange, or mutually aspect."
+    planets: []
+    houses_required: [2, 9]
+  cancellation:
+    - "Connection in dusthana"
+  effects:
+    general: "Fortune brings wealth. Inheritance, dharmic pursuits, foreign connections."
+  source: "BPHS chapter 16"
+  confidence: "high"
+
+dhana_yoga_9_11:
+  name_en: "Dhana Yoga (9th-11th Connection)"
+  name_hi: "धन योग (नवम-एकादश)"
+  type: "benefic"
+  formation:
+    condition: "9th and 11th lords conjunct, exchange, or mutually aspect."
+    planets: []
+    houses_required: [9, 11]
+  cancellation:
+    - "Both in dusthana"
+  effects:
+    general: "Fortune leads to gains. Lucky windfalls and divinely supported income."
+  source: "BPHS chapter 16"
+  confidence: "high"
+
+dhana_yoga_1_11:
+  name_en: "Dhana Yoga (1st-11th Connection)"
+  name_hi: "धन योग (लग्न-एकादश)"
+  type: "benefic"
+  formation:
+    condition: "1st and 11th lords conjunct, exchange, or mutually aspect."
+    planets: []
+    houses_required: [1, 11]
+  cancellation:
+    - "11th lord in 6th or 12th"
+  effects:
+    general: "Personal effort leads to gains. Networking drives financial success."
+  source: "BPHS chapter 16"
+  confidence: "high"

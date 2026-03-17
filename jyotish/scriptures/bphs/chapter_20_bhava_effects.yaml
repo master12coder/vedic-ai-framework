@@ -1,0 +1,287 @@
+book: BPHS
+chapter: 20
+title: "Effects of Different Bhavas"
+description: "Brihat Parashara Hora Shastra chapters 20-24 describe the specific effects and significations when different houses are strong, weak, or afflicted."
+
+rules:
+  # ============================================================
+  # FIRST BHAVA (LAGNA) EFFECTS
+  # ============================================================
+  - verse: 1
+    topic: bhava_effects
+    planets: []
+    houses: [1]
+    text_english: "When the 1st house is strong with benefic aspect, the native has good health, attractive personality, leadership qualities, and success through personal effort. A weak 1st house gives poor health and lack of confidence."
+    text_hindi: "प्रथम भाव शुभ दृष्टि से बलवान हो तो अच्छा स्वास्थ्य, आकर्षक व्यक्तित्व, नेतृत्व। कमजोर हो तो खराब स्वास्थ्य।"
+    text_sanskrit: ""
+    rule_type: bhava_effect
+
+  - verse: 2
+    topic: bhava_effects
+    planets: []
+    houses: [1]
+    text_english: "Malefics in the 1st house can give a combative personality, scars or marks on the body, and health challenges in early life. However, strong malefics here can also give courage and leadership."
+    text_hindi: "लग्न में पापग्रह — लड़ाकू स्वभाव, शरीर पर चिह्न, बाल्यकाल में स्वास्थ्य समस्या। बलवान पापग्रह साहस और नेतृत्व भी दे सकते हैं।"
+    text_sanskrit: ""
+    rule_type: bhava_effect
+
+  # ============================================================
+  # SECOND BHAVA (DHANA/FAMILY) EFFECTS
+  # ============================================================
+  - verse: 3
+    topic: bhava_effects
+    planets: []
+    houses: [2]
+    text_english: "Strong 2nd house with benefics gives eloquent speech, good family life, accumulated wealth, and food abundance. Malefics here cause harsh speech, family disputes, and financial losses."
+    text_hindi: "शुभग्रहों से बलवान द्वितीय भाव — वाक्पटुता, अच्छा पारिवारिक जीवन, धन संचय। पापग्रह — कठोर वाणी, कलह।"
+    text_sanskrit: ""
+    rule_type: bhava_effect
+
+  # ============================================================
+  # THIRD BHAVA (COURAGE/SIBLINGS) EFFECTS
+  # ============================================================
+  - verse: 4
+    topic: bhava_effects
+    planets: []
+    houses: [3]
+    text_english: "Strong 3rd house gives courage, good relations with siblings, success in communication, writing, and short travels. Weak 3rd house gives timidity and poor sibling relations."
+    text_hindi: "बलवान तृतीय भाव — साहस, भ्रातृ सुख, संवाद में सफलता। कमजोर — भीरुता, भ्रातृ कलह।"
+    text_sanskrit: ""
+    rule_type: bhava_effect
+
+  # ============================================================
+  # FOURTH BHAVA (SUKHA/MOTHER) EFFECTS
+  # ============================================================
+  - verse: 5
+    topic: bhava_effects
+    planets: []
+    houses: [4]
+    text_english: "Benefics in or aspecting 4th house give domestic happiness, good mother, vehicles, property, and education. The native is emotionally secure and has inner peace."
+    text_hindi: "चतुर्थ भाव पर शुभ प्रभाव — गृह सुख, मातृ सुख, वाहन, सम्पत्ति, शिक्षा। भावनात्मक सुरक्षा।"
+    text_sanskrit: ""
+    rule_type: bhava_effect
+
+  - verse: 6
+    topic: bhava_effects
+    planets: [Mars]
+    houses: [4]
+    text_english: "Mars in 4th house disturbs domestic peace. Disputes over property, separation from mother, and accidents involving vehicles. However, it gives land and property eventually."
+    text_hindi: "चतुर्थ भाव में मंगल — गृह शान्ति में बाधा। सम्पत्ति विवाद, मातृ वियोग। किन्तु भूमि और सम्पत्ति।"
+    text_sanskrit: ""
+    rule_type: bhava_effect
+
+  # ============================================================
+  # FIFTH BHAVA (PUTRA/INTELLIGENCE) EFFECTS
+  # ============================================================
+  - verse: 7
+    topic: bhava_effects
+    planets: []
+    houses: [5]
+    text_english: "Strong 5th house with benefic influence grants intelligence, good children, success in speculation, romance, and creative pursuits. Past life merit is active."
+    text_hindi: "शुभ प्रभाव से बलवान पञ्चम भाव — बुद्धि, सन्तान सुख, सट्टे में सफलता। पूर्व जन्म पुण्य।"
+    text_sanskrit: ""
+    rule_type: bhava_effect
+
+  - verse: 8
+    topic: bhava_effects
+    planets: [Saturn, Rahu]
+    houses: [5]
+    text_english: "Saturn or Rahu in 5th house delays children, creates obstacles in education, and gives unconventional thinking. The native may adopt or have children late in life."
+    text_hindi: "पञ्चम भाव में शनि या राहु — सन्तान विलम्ब, शिक्षा में बाधा। दत्तक सन्तान या देर से सन्तान।"
+    text_sanskrit: ""
+    rule_type: bhava_effect
+
+  # ============================================================
+  # SIXTH BHAVA (RIPU/ROGA) EFFECTS
+  # ============================================================
+  - verse: 9
+    topic: bhava_effects
+    planets: []
+    houses: [6]
+    text_english: "Strong 6th house enables victory over enemies and diseases. The native excels in competitive environments, service, and healthcare. Weak 6th house lord in 6th is also good (enemy defeated)."
+    text_hindi: "बलवान षष्ठ भाव — शत्रुओं और रोगों पर विजय। प्रतिस्पर्धी वातावरण में उत्कृष्ट।"
+    text_sanskrit: ""
+    rule_type: bhava_effect
+
+  # ============================================================
+  # SEVENTH BHAVA (VIVAH/PARTNERSHIPS) EFFECTS
+  # ============================================================
+  - verse: 10
+    topic: bhava_effects
+    planets: []
+    houses: [7]
+    text_english: "Benefics influencing 7th house give happy marriage, good spouse, successful partnerships, and foreign travel. Venus here is especially favorable for marriage happiness."
+    text_hindi: "सप्तम भाव पर शुभ प्रभाव — सुखी विवाह, अच्छा जीवनसाथी, सफल साझेदारी। शुक्र विशेष अनुकूल।"
+    text_sanskrit: ""
+    rule_type: bhava_effect
+
+  - verse: 11
+    topic: bhava_effects
+    planets: [Saturn]
+    houses: [7]
+    text_english: "Saturn in 7th house delays marriage and gives an older, mature, or duty-bound spouse. The marriage may lack romance but has stability and longevity."
+    text_hindi: "सप्तम भाव में शनि — विवाह विलम्ब। परिपक्व या कर्तव्यनिष्ठ जीवनसाथी। स्थिरता किन्तु रोमांस की कमी।"
+    text_sanskrit: ""
+    rule_type: bhava_effect
+
+  # ============================================================
+  # EIGHTH BHAVA (AAYUSH/TRANSFORMATION) EFFECTS
+  # ============================================================
+  - verse: 12
+    topic: bhava_effects
+    planets: []
+    houses: [8]
+    text_english: "Strong 8th house gives longevity, inheritance, interest in occult sciences, and ability to transform through crises. Malefics here without benefic relief shorten life."
+    text_hindi: "बलवान अष्टम भाव — दीर्घायु, विरासत, तन्त्र विज्ञान में रुचि। पापग्रह बिना शुभ राहत — आयु क्षीण।"
+    text_sanskrit: ""
+    rule_type: bhava_effect
+
+  - verse: 13
+    topic: bhava_effects
+    planets: [Jupiter]
+    houses: [8]
+    text_english: "Jupiter in 8th house is protective for longevity (Ashta Manga Yoga). The native survives dangerous situations. Interest in philosophy, astrology, and hidden knowledge."
+    text_hindi: "अष्टम भाव में बृहस्पति — आयु की रक्षा (अष्ट मङ्गल योग)। खतरनाक स्थितियों से बचाव।"
+    text_sanskrit: ""
+    rule_type: bhava_effect
+
+  # ============================================================
+  # NINTH BHAVA (BHAGYA/DHARMA) EFFECTS
+  # ============================================================
+  - verse: 14
+    topic: bhava_effects
+    planets: []
+    houses: [9]
+    text_english: "Strong 9th house is the single greatest indicator of fortune. Father is long-lived and supportive. The native is righteous, travels abroad, and receives divine grace."
+    text_hindi: "बलवान नवम भाव — भाग्य का सर्वश्रेष्ठ सूचक। पिता दीर्घायु और सहायक। धार्मिक, विदेश यात्रा।"
+    text_sanskrit: ""
+    rule_type: bhava_effect
+
+  # ============================================================
+  # TENTH BHAVA (KARMA/CAREER) EFFECTS
+  # ============================================================
+  - verse: 15
+    topic: bhava_effects
+    planets: []
+    houses: [10]
+    text_english: "Strong 10th house with benefics gives authority, fame, government position, and professional success. The native is respected in society and leaves a lasting legacy."
+    text_hindi: "शुभग्रहों से बलवान दशम भाव — अधिकार, यश, सरकारी पद, व्यावसायिक सफलता। स्थायी विरासत।"
+    text_sanskrit: ""
+    rule_type: bhava_effect
+
+  - verse: 16
+    topic: bhava_effects
+    planets: [Sun]
+    houses: [10]
+    text_english: "Sun in 10th house (digbala) gives powerful career in government, politics, or leadership. The native has natural authority and earns recognition for achievements."
+    text_hindi: "दशम भाव में सूर्य (दिग्बल) — सरकार, राजनीति या नेतृत्व में शक्तिशाली कैरियर। प्राकृतिक अधिकार।"
+    text_sanskrit: ""
+    rule_type: bhava_effect
+
+  - verse: 17
+    topic: bhava_effects
+    planets: [Saturn]
+    houses: [10]
+    text_english: "Saturn in 10th house gives slow but steady career rise. The native works hard and earns through discipline and perseverance. Success after 30 years of age."
+    text_hindi: "दशम भाव में शनि — धीमी किन्तु स्थिर कैरियर वृद्धि। अनुशासन और धैर्य से सफलता। 30 वर्ष बाद।"
+    text_sanskrit: ""
+    rule_type: bhava_effect
+
+  # ============================================================
+  # ELEVENTH BHAVA (LABHA/GAINS) EFFECTS
+  # ============================================================
+  - verse: 18
+    topic: bhava_effects
+    planets: []
+    houses: [11]
+    text_english: "Strong 11th house ensures fulfillment of desires, regular income, supportive elder siblings, and large social network. All planets do well in the 11th house."
+    text_hindi: "बलवान एकादश भाव — इच्छापूर्ति, नियमित आय, ज्येष्ठ भ्रातृ सहायता, बड़ा सामाजिक नेटवर्क।"
+    text_sanskrit: ""
+    rule_type: bhava_effect
+
+  # ============================================================
+  # TWELFTH BHAVA (VYAYA/LOSS) EFFECTS
+  # ============================================================
+  - verse: 19
+    topic: bhava_effects
+    planets: []
+    houses: [12]
+    text_english: "Strong 12th house gives spiritual liberation, foreign settlement, and peaceful sleep. Weak 12th house causes insomnia, unnecessary expenses, and hospitalization."
+    text_hindi: "बलवान द्वादश भाव — मोक्ष, विदेश वास, शान्त निद्रा। कमजोर — अनिद्रा, अनावश्यक व्यय।"
+    text_sanskrit: ""
+    rule_type: bhava_effect
+
+  - verse: 20
+    topic: bhava_effects
+    planets: [Venus]
+    houses: [12]
+    text_english: "Venus in 12th house gives bed pleasures, foreign luxury, and artistic appreciation. The native may live abroad in comfort. Expenditure on pleasure and aesthetics."
+    text_hindi: "द्वादश भाव में शुक्र — शय्या सुख, विदेश विलासिता, कलात्मक रुचि। विदेश में आरामदायक जीवन।"
+    text_sanskrit: ""
+    rule_type: bhava_effect
+
+  # ============================================================
+  # BHAVA KARAKA EFFECTS
+  # ============================================================
+  - verse: 21
+    topic: karaka_effects
+    planets: [Sun]
+    houses: [1]
+    text_english: "Sun as natural karaka of 1st house: When Sun is strong, the native has vitality, confidence, and leadership. Weak Sun gives low self-esteem, health issues, and dependency."
+    text_hindi: "सूर्य प्रथम भाव का नैसर्गिक कारक: बलवान सूर्य — जीवनशक्ति, आत्मविश्वास। कमजोर — आत्मविश्वास की कमी।"
+    text_sanskrit: ""
+    rule_type: karaka_effect
+
+  - verse: 22
+    topic: karaka_effects
+    planets: [Jupiter]
+    houses: [2, 5, 9, 11]
+    text_english: "Jupiter as natural karaka of wealth, children, fortune, and gains: Strong Jupiter is the single most important planet for overall prosperity and protection."
+    text_hindi: "बृहस्पति धन, सन्तान, भाग्य और लाभ का नैसर्गिक कारक: बलवान बृहस्पति समग्र समृद्धि और रक्षा के लिए सर्वाधिक महत्वपूर्ण।"
+    text_sanskrit: ""
+    rule_type: karaka_effect
+
+  - verse: 23
+    topic: karaka_effects
+    planets: [Venus]
+    houses: [7]
+    text_english: "Venus as natural karaka of marriage: Strong Venus gives happy marriage, beautiful spouse, material comforts, and artistic appreciation. Weak Venus disrupts marital harmony."
+    text_hindi: "शुक्र विवाह का नैसर्गिक कारक: बलवान शुक्र — सुखी विवाह, सुन्दर जीवनसाथी। कमजोर शुक्र — वैवाहिक अशान्ति।"
+    text_sanskrit: ""
+    rule_type: karaka_effect
+
+  - verse: 24
+    topic: karaka_effects
+    planets: [Saturn]
+    houses: [6, 8, 10, 12]
+    text_english: "Saturn as karaka of longevity, service, and discipline: Strong Saturn gives long life, career through hard work, and spiritual detachment. Weak Saturn brings chronic diseases."
+    text_hindi: "शनि आयु, सेवा और अनुशासन का कारक: बलवान शनि — दीर्घायु, कठिन परिश्रम से कैरियर। कमजोर — दीर्घरोग।"
+    text_sanskrit: ""
+    rule_type: karaka_effect
+
+  - verse: 25
+    topic: karaka_effects
+    planets: [Mars]
+    houses: [3, 6]
+    text_english: "Mars as karaka of courage and enemies: Strong Mars gives physical strength, victory over enemies, property, and younger siblings. Weak Mars gives cowardice and accidents."
+    text_hindi: "मंगल साहस और शत्रुओं का कारक: बलवान मंगल — शारीरिक बल, शत्रु विजय। कमजोर — भीरुता और दुर्घटना।"
+    text_sanskrit: ""
+    rule_type: karaka_effect
+
+  - verse: 26
+    topic: karaka_effects
+    planets: [Mercury]
+    houses: [4, 10]
+    text_english: "Mercury as karaka of intellect and commerce: Strong Mercury gives sharp mind, business acumen, communication skills, and education. Weak Mercury affects learning and trade."
+    text_hindi: "बुध बुद्धि और वाणिज्य का कारक: बलवान बुध — तीक्ष्ण बुद्धि, व्यापार कौशल। कमजोर — विद्या और व्यापार प्रभावित।"
+    text_sanskrit: ""
+    rule_type: karaka_effect
+
+  - verse: 27
+    topic: karaka_effects
+    planets: [Moon]
+    houses: [4]
+    text_english: "Moon as karaka of mind and mother: Strong Moon gives emotional stability, good mother, popularity, and mental peace. Weak Moon causes anxiety, depression, and emotional instability."
+    text_hindi: "चन्द्रमा मन और माता का कारक: बलवान चन्द्र — भावनात्मक स्थिरता, मातृ सुख। कमजोर — चिन्ता, अवसाद।"
+    text_sanskrit: ""
+    rule_type: karaka_effect

@@ -1,0 +1,260 @@
+book: BPHS
+chapter: 36
+title: "Detailed Dasha Results"
+description: "Brihat Parashara Hora Shastra chapter 36 describes specific results during planetary mahadashas based on the planet's house placement and dignity."
+
+rules:
+  # ============================================================
+  # SUN MAHADASHA RESULTS BY HOUSE
+  # ============================================================
+  - verse: 1
+    topic: dasha_results
+    planets: [Sun]
+    houses: [1]
+    text_english: "Sun Mahadasha with Sun in 1st house: Rise in status, government favor, leadership role, improved health. The native gains recognition and authority during this period."
+    text_hindi: "सूर्य महादशा — सूर्य प्रथम भाव में: पद वृद्धि, सरकारी कृपा, नेतृत्व। मान्यता और अधिकार प्राप्ति।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  - verse: 2
+    topic: dasha_results
+    planets: [Sun]
+    houses: [10]
+    text_english: "Sun Mahadasha with Sun in 10th house: Peak career period. Promotion, public recognition, authority in profession. Father may also prosper. Government positions attainable."
+    text_hindi: "सूर्य महादशा — सूर्य दशम भाव में: कैरियर का शिखर। पदोन्नति, सार्वजनिक मान्यता। सरकारी पद प्राप्ति।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  - verse: 3
+    topic: dasha_results
+    planets: [Sun]
+    houses: [8]
+    text_english: "Sun Mahadasha with Sun in 8th house: Health crises, conflicts with authority, father's health concerns. Hidden enemies may surface. Transformation through suffering possible."
+    text_hindi: "सूर्य महादशा — सूर्य अष्टम भाव में: स्वास्थ्य संकट, पिता का स्वास्थ्य चिन्ताजनक। छिपे शत्रु प्रकट।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  # ============================================================
+  # MOON MAHADASHA RESULTS BY HOUSE
+  # ============================================================
+  - verse: 4
+    topic: dasha_results
+    planets: [Moon]
+    houses: [1, 4, 7, 10]
+    text_english: "Moon Mahadasha with Moon in kendra: Emotional fulfillment, public popularity, mother's blessings, domestic happiness. Travel to places near water bodies. Mental peace if Moon is strong."
+    text_hindi: "चन्द्र महादशा — चन्द्र केन्द्र में: भावनात्मक सन्तुष्टि, जन प्रियता, मातृ आशीर्वाद। जल निकायों के समीप यात्रा।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  - verse: 5
+    topic: dasha_results
+    planets: [Moon]
+    houses: [6, 8, 12]
+    text_english: "Moon Mahadasha with Moon in dusthana: Mental anxiety, health issues (especially stomach/water-related), mother's health concerns, emotional turmoil, possible depression."
+    text_hindi: "चन्द्र महादशा — चन्द्र दुःस्थान में: मानसिक चिन्ता, स्वास्थ्य समस्या, मातृ कष्ट, भावनात्मक उथल-पुथल।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  # ============================================================
+  # MARS MAHADASHA RESULTS
+  # ============================================================
+  - verse: 6
+    topic: dasha_results
+    planets: [Mars]
+    houses: [1, 4, 7, 10]
+    text_english: "Mars Mahadasha with Mars in kendra: Courage, property acquisition, victory over enemies, physical energy. If Mars is strong, the native achieves through boldness and action."
+    text_hindi: "मंगल महादशा — मंगल केन्द्र में: साहस, सम्पत्ति प्राप्ति, शत्रु विजय। बलवान मंगल — साहस से सफलता।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  - verse: 7
+    topic: dasha_results
+    planets: [Mars]
+    houses: [6]
+    text_english: "Mars Mahadasha with Mars in 6th house: Victory over enemies, overcoming debts and diseases. The native dominates competition. Legal matters resolved favorably. Service-related success."
+    text_hindi: "मंगल महादशा — मंगल षष्ठ भाव में: शत्रु विजय, ऋण और रोग पर विजय। प्रतिस्पर्धा में प्रभुत्व।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  # ============================================================
+  # JUPITER MAHADASHA RESULTS
+  # ============================================================
+  - verse: 8
+    topic: dasha_results
+    planets: [Jupiter]
+    houses: [1, 4, 5, 7, 9, 10]
+    text_english: "Jupiter Mahadasha with Jupiter in kendra or trikona: Period of expansion, wisdom, prosperity. Children born, wealth increases, spiritual growth. Marriage if unmarried. Teacher/advisor roles."
+    text_hindi: "बृहस्पति महादशा — बृहस्पति केन्द्र या त्रिकोण में: विस्तार, ज्ञान, समृद्धि। सन्तान जन्म, धन वृद्धि। विवाह।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  - verse: 9
+    topic: dasha_results
+    planets: [Jupiter]
+    houses: [6, 8, 12]
+    text_english: "Jupiter Mahadasha with Jupiter in dusthana: False hopes, financial losses disguised as opportunities, liver/obesity issues, conflict with teachers. If Jupiter owns good houses, mixed results."
+    text_hindi: "बृहस्पति महादशा — बृहस्पति दुःस्थान में: मिथ्या आशा, छिपी हानि, यकृत समस्या। शुभ भाव स्वामित्व हो तो मिश्र।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  # ============================================================
+  # SATURN MAHADASHA RESULTS
+  # ============================================================
+  - verse: 10
+    topic: dasha_results
+    planets: [Saturn]
+    houses: [3, 6, 10, 11]
+    text_english: "Saturn Mahadasha with Saturn in upachaya or 10th: Hard work rewarded. Slow but steady rise. Discipline leads to authority. Career consolidation. Land and property gains after long effort."
+    text_hindi: "शनि महादशा — शनि उपचय या दशम में: कठिन परिश्रम पुरस्कृत। धीमी किन्तु स्थिर वृद्धि। भूमि सम्पत्ति।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  - verse: 11
+    topic: dasha_results
+    planets: [Saturn]
+    houses: [1, 4, 7, 8]
+    text_english: "Saturn Mahadasha with Saturn in lagna, 4th, 7th, or 8th: Chronic health issues, domestic unhappiness, marital strain, and transformation through suffering. Delays in all areas of life."
+    text_hindi: "शनि महादशा — शनि लग्न, 4, 7, या 8 में: दीर्घ रोग, गृह अशान्ति, वैवाहिक तनाव। जीवन के सभी क्षेत्रों में विलम्ब।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  # ============================================================
+  # RAHU/KETU MAHADASHA RESULTS
+  # ============================================================
+  - verse: 12
+    topic: dasha_results
+    planets: [Rahu]
+    houses: [3, 6, 10, 11]
+    text_english: "Rahu Mahadasha with Rahu in upachaya: Sudden rise through unconventional means. Foreign connections bring gains. Technology, politics, or media career. Deceptive enemies defeated."
+    text_hindi: "राहु महादशा — राहु उपचय में: अपारम्परिक मार्ग से अचानक उत्थान। विदेशी सम्पर्क से लाभ।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  - verse: 13
+    topic: dasha_results
+    planets: [Rahu]
+    houses: [1, 5, 7, 8, 12]
+    text_english: "Rahu Mahadasha with Rahu in lagna, 5th, 7th, 8th, or 12th: Confusion, deception, foreign exile, sudden health scares. Children's issues. Marital deception possible. Obsessive tendencies."
+    text_hindi: "राहु महादशा — राहु लग्न, 5, 7, 8, या 12 में: भ्रम, छल, विदेश वास, अचानक स्वास्थ्य भय।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  - verse: 14
+    topic: dasha_results
+    planets: [Ketu]
+    houses: [3, 6, 9, 12]
+    text_english: "Ketu Mahadasha with Ketu in 3rd, 6th, 9th, or 12th: Spiritual awakening, detachment from material world, victory over enemies (6th), liberation-oriented experiences."
+    text_hindi: "केतु महादशा — केतु 3, 6, 9, या 12 में: आध्यात्मिक जागृति, भौतिक संसार से वैराग्य, शत्रु विजय (6), मोक्षोन्मुख।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  - verse: 15
+    topic: dasha_results
+    planets: [Ketu]
+    houses: [1, 2, 4, 7]
+    text_english: "Ketu Mahadasha with Ketu in lagna, 2nd, 4th, or 7th: Identity crisis, family disputes, domestic upheaval, marital separation. Sudden losses and confusion about life direction."
+    text_hindi: "केतु महादशा — केतु लग्न, 2, 4, या 7 में: पहचान संकट, पारिवारिक विवाद, गृह उथल-पुथल।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  # ============================================================
+  # VENUS MAHADASHA RESULTS
+  # ============================================================
+  - verse: 16
+    topic: dasha_results
+    planets: [Venus]
+    houses: [1, 4, 5, 7, 9, 10]
+    text_english: "Venus Mahadasha with Venus in favorable position: Marriage, luxury, artistic success, romantic fulfillment, acquisition of vehicles and fine clothes. Comfortable and pleasurable period."
+    text_hindi: "शुक्र महादशा — शुक्र शुभ स्थान पर: विवाह, विलासिता, कलात्मक सफलता, वाहन प्राप्ति। सुखद काल।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  - verse: 17
+    topic: dasha_results
+    planets: [Venus]
+    houses: [6, 8, 12]
+    text_english: "Venus Mahadasha with Venus in dusthana: Relationship problems, excessive expenditure on pleasures, reproductive health issues. Hidden affairs may cause trouble."
+    text_hindi: "शुक्र महादशा — शुक्र दुःस्थान में: सम्बन्ध समस्या, भोगविलास पर अत्यधिक व्यय, प्रजनन स्वास्थ्य।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  # ============================================================
+  # MERCURY MAHADASHA RESULTS
+  # ============================================================
+  - verse: 18
+    topic: dasha_results
+    planets: [Mercury]
+    houses: [1, 4, 5, 7, 10]
+    text_english: "Mercury Mahadasha with Mercury in kendra or 5th: Intellectual peak, business success, education achievements, writing and communication success. Quick thinking rewarded."
+    text_hindi: "बुध महादशा — बुध केन्द्र या पञ्चम में: बौद्धिक शिखर, व्यापार सफलता, शिक्षा उपलब्धि।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  - verse: 19
+    topic: dasha_results
+    planets: [Mercury]
+    houses: [6, 8, 12]
+    text_english: "Mercury Mahadasha with Mercury in dusthana: Nervous disorders, business failures, communication breakdowns, skin diseases. Legal disputes through paperwork errors."
+    text_hindi: "बुध महादशा — बुध दुःस्थान में: तन्त्रिका विकार, व्यापार विफलता, संवाद में असफलता।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  # ============================================================
+  # ANTARDASHA SPECIAL EFFECTS
+  # ============================================================
+  - verse: 20
+    topic: antardasha_effects
+    planets: []
+    houses: []
+    text_english: "When antardasha lord is in 6th, 8th, or 12th from mahadasha lord, the sub-period brings challenges and obstacles. When in kendra or trikona from mahadasha lord, favorable results."
+    text_hindi: "अन्तर्दशा नाथ महादशा नाथ से 6, 8, 12 में हो तो बाधाएं। केन्द्र या त्रिकोण में हो तो शुभ।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  - verse: 21
+    topic: antardasha_effects
+    planets: []
+    houses: []
+    text_english: "The antardasha of the planet owning the nakshatra of the mahadasha lord gives particularly strong results, either very good or very bad depending on its placement and dignity."
+    text_hindi: "महादशा नाथ की नक्षत्र स्वामी की अन्तर्दशा विशेष प्रबल फल देती है।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  - verse: 22
+    topic: antardasha_effects
+    planets: []
+    houses: []
+    text_english: "Mahadasha lord's antardasha (swabhukti) is a critical period that sets the tone for the entire mahadasha. It activates the dasha lord's significations fully for the first time."
+    text_hindi: "महादशा नाथ की स्वभुक्ति सम्पूर्ण महादशा का स्वर निर्धारित करती है। दशानाथ के सभी फल प्रथम बार पूर्ण सक्रिय।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  # ============================================================
+  # DASHA SANDHI (TRANSITION) EFFECTS
+  # ============================================================
+  - verse: 23
+    topic: dasha_sandhi
+    planets: []
+    houses: []
+    text_english: "The junction between two mahadashas (dasha sandhi) is a period of uncertainty and transition. The last antardasha of one dasha and the first antardasha of the next are critical transition periods."
+    text_hindi: "दो महादशाओं का सन्धिकाल अनिश्चितता और परिवर्तन का समय। एक दशा की अन्तिम और अगली की प्रथम अन्तर्दशा निर्णायक।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  - verse: 24
+    topic: dasha_sandhi
+    planets: []
+    houses: []
+    text_english: "If the outgoing and incoming mahadasha lords are mutual friends, the transition is smooth. If enemies, the transition period brings sudden changes and upheavals."
+    text_hindi: "जाने वाले और आने वाले दशानाथ परस्पर मित्र हों तो सहज परिवर्तन। शत्रु हों तो अचानक बदलाव।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
+
+  - verse: 25
+    topic: dasha_dignity
+    planets: []
+    houses: []
+    text_english: "A planet's dignity (exalted/own/neutral/debilitated) determines the quality of its mahadasha results. Exalted dasha lords give results with ease; debilitated ones give results through struggle."
+    text_hindi: "ग्रह की गरिमा (उच्च/स्व/सम/नीच) महादशा फल की गुणवत्ता निर्धारित करती है। उच्च — सहज फल। नीच — संघर्ष से।"
+    text_sanskrit: ""
+    rule_type: dasha_effect
