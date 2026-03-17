@@ -14,7 +14,7 @@ from jyotish.utils.constants import (
     AVASTHAS, SPECIAL_ASPECTS,
     NUM_NAKSHATRAS, MAX_NAKSHATRA_INDEX, NAKSHATRA_SPAN_DEG,
     PADAS_PER_NAKSHATRA, HALF_CIRCLE_DEG, FULL_CIRCLE_DEG,
-    DEFAULT_CONJUNCTION_ORB,
+    DEGREES_PER_SIGN, DEFAULT_CONJUNCTION_ORB,
 )
 from jyotish.utils.datetime_utils import to_jd, parse_birth_datetime
 from jyotish.utils.geo import resolve_or_manual, GeoLocation
@@ -119,8 +119,8 @@ def compute_chart(
     cusps, ascmc = swe.houses_ex(jd, geo.latitude, geo.longitude, b"W")
     lagna_tropical = ascmc[0]
     lagna_sidereal = (lagna_tropical - ayanamsha) % 360.0
-    lagna_sign_index = int(lagna_sidereal / 30.0)
-    lagna_degree = lagna_sidereal - lagna_sign_index * 30.0
+    lagna_sign_index = int(lagna_sidereal / DEGREES_PER_SIGN)
+    lagna_degree = lagna_sidereal - lagna_sign_index * DEGREES_PER_SIGN
 
     chart = ChartData(
         name=name,
@@ -151,8 +151,8 @@ def compute_chart(
             # Ketu is always 180° from Rahu
             rahu_data = chart.planets["Rahu"]
             ketu_lon = (rahu_data.longitude + HALF_CIRCLE_DEG) % FULL_CIRCLE_DEG
-            sign_index = int(ketu_lon / 30.0)
-            degree_in_sign = ketu_lon - sign_index * 30.0
+            sign_index = int(ketu_lon / DEGREES_PER_SIGN)
+            degree_in_sign = ketu_lon - sign_index * DEGREES_PER_SIGN
             nak_index, pada = get_nakshatra(ketu_lon)
             planet_data = PlanetData(
                 name="Ketu",
@@ -182,8 +182,8 @@ def compute_chart(
             speed = result[0][3]
             is_retro = speed < 0
 
-            sign_index = int(lon / 30.0)
-            degree_in_sign = lon - sign_index * 30.0
+            sign_index = int(lon / DEGREES_PER_SIGN)
+            degree_in_sign = lon - sign_index * DEGREES_PER_SIGN
             nak_index, pada = get_nakshatra(lon)
 
             if planet_name == "Rahu":
@@ -239,8 +239,8 @@ def are_conjunct(chart: ChartData, planet1: str, planet2: str, orb: float = DEFA
     if p1.sign_index == p2.sign_index:
         return True
     diff = abs(p1.longitude - p2.longitude)
-    if diff > 180:
-        diff = 360 - diff
+    if diff > HALF_CIRCLE_DEG:
+        diff = FULL_CIRCLE_DEG - diff
     return diff <= orb
 
 

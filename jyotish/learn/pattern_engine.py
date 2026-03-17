@@ -79,7 +79,7 @@ def _parse_csv_field(rows: list[sqlite3.Row], column: str) -> set[str]:
     """Extract unique values from a comma-separated column across rows."""
     values: set[str] = set()
     for r in rows:
-        for item in r[column].split(","):
+        for item in (r[column] or "").split(","):
             stripped = item.strip()
             if stripped:
                 values.add(stripped)
