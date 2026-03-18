@@ -5,8 +5,8 @@ import pytest
 
 from jyotish_engine.compute.chart import compute_chart
 from jyotish_engine.models.chart import ChartData
-from jyotish_products.plugins.kundali.diamond import render_diamond_text, render_chart_summary
-from jyotish_products.plugins.kundali.report import generate_report, REPORT_SECTIONS
+from jyotish_products.plugins.kundali.diamond_text import render_chart_summary, render_diamond_text
+from jyotish_products.plugins.kundali.report import REPORT_SECTIONS, generate_report
 
 
 @pytest.fixture

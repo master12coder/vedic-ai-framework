@@ -2,15 +2,15 @@
 from __future__ import annotations
 
 import logging
-from typing import Any
 
-from jyotish_engine.models.chart import ChartData
-from jyotish_engine.compute.dasha import compute_mahadashas, find_current_dasha
-from jyotish_engine.compute.yoga import detect_all_yogas
-from jyotish_engine.compute.dosha import detect_all_doshas
 from jyotish_engine.compute.ashtakavarga import compute_ashtakavarga
 from jyotish_engine.compute.chart import get_house_lord
-from jyotish_products.plugins.kundali.diamond import render_diamond_text, render_chart_summary
+from jyotish_engine.compute.dasha import compute_mahadashas, find_current_dasha
+from jyotish_engine.compute.dosha import detect_all_doshas
+from jyotish_engine.compute.yoga import detect_all_yogas
+from jyotish_engine.models.chart import ChartData
+from jyotish_products.plugins.kundali.diamond_text import render_chart_summary, render_diamond_text
+
 
 logger = logging.getLogger(__name__)
 
@@ -183,7 +183,7 @@ def _section_mahadasha(chart: ChartData) -> str:
 def _section_current_dasha(chart: ChartData) -> str:
     """Current dasha period details."""
     try:
-        md, ad, pd = find_current_dasha(chart)
+        md, ad, _pd = find_current_dasha(chart)
         lines = [
             "═══ Current Dasha Period ═══",
             f"  Mahadasha: {md.lord}",
