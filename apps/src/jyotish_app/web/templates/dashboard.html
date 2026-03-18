@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — Jyotish AI{% endblock %}
+
+{% block content %}
+<div class="j-p-md">
+  <!-- User greeting -->
+  <div style="display: flex; align-items: center; gap: var(--j-space-sm); margin-bottom: var(--j-space-lg);">
+    {% if user.picture %}
+    <img src="{{ user.picture }}" alt="" style="width: 40px; height: 40px; border-radius: 50%;">
+    {% endif %}
+    <div>
+      <div style="font-weight: 600; color: var(--j-maroon);">नमस्ते, {{ user.name }}</div>
+      <div class="j-text-xs j-text-muted">{{ user.role }}</div>
+    </div>
+    <a href="/auth/logout" class="j-btn j-btn-outline j-btn-sm" style="margin-left: auto;">बाहर</a>
+  </div>
+
+  <!-- New chart button -->
+  <a href="/new" class="j-btn j-btn-saffron j-btn-block j-mb-md">
+    + नई कुंडली बनाएं
+  </a>
+
+  <!-- Client list -->
+  <div class="j-card-header" style="margin: var(--j-space-md) 0 var(--j-space-sm) 0;">
+    मेरे ग्राहक ({{ clients|length }})
+  </div>
+
+  {% if not clients %}
+  <div class="j-card j-text-center" style="color: var(--j-ink-300); padding: var(--j-space-2xl);">
+    <p>अभी कोई कुंडली नहीं है</p>
+    <p class="j-text-sm">ऊपर "नई कुंडली बनाएं" पर क्लिक करें</p>
+  </div>
+  {% endif %}
+
+  {% for c in clients %}
+  <div class="j-card">
+    <div style="display: flex; justify-content: space-between; align-items: start;">
+      <div>
+        <div style="font-weight: 600; font-size: 1.05rem; color: var(--j-ink-900);">{{ c.name }}</div>
+        <div class="j-text-sm j-text-muted">{{ c.dob }} | {{ c.place }}</div>
+      </div>
+      {% if c.lagna_hi %}
+      <span class="j-tag j-tag-saffron">{{ c.lagna_hi }} लग्न</span>
+      {% endif %}
+    </div>
+    <div style="display: flex; gap: var(--j-space-sm); margin-top: var(--j-space-sm);">
+      <a href="/client/{{ c.id }}" class="j-btn j-btn-saffron j-btn-sm">कुंडली</a>
+      <a href="/client/{{ c.id }}/dasha" class="j-btn j-btn-outline j-btn-sm">दशा</a>
+      <a href="/client/{{ c.id }}/ratna" class="j-btn j-btn-outline j-btn-sm">रत्न</a>
+      <a href="/client/{{ c.id }}/pdf" class="j-btn j-btn-outline j-btn-sm">PDF</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

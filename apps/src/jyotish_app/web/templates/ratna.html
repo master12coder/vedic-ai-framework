@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% from "components/macros.html" import gem_card %}
+{% block title %}{{ client.name }} — रत्न विधान{% endblock %}
+
+{% block content %}
+<div class="j-p-md">
+  <a href="/client/{{ client.id }}" class="j-text-sm" style="color: var(--j-saffron-600); text-decoration: none;">← कुंडली</a>
+
+  <h1 style="font-size: 1.2rem; color: var(--j-maroon); margin: var(--j-space-md) 0;">
+    रत्न विधान — {{ client.name }} ({{ chart.lagna_sign_hi }} लग्न)
+  </h1>
+
+  <!-- Recommended -->
+  {% if recommended_stones %}
+  <div class="j-card">
+    <div class="j-card-header" style="color: var(--j-shubh);">✅ अनुशंसित रत्न — Recommended</div>
+    {% for s in recommended_stones %}
+      {{ gem_card(s, 'recommended') }}
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <!-- Test with caution -->
+  {% set test_stones = lordship.get('test_stones', []) %}
+  {% if test_stones %}
+  <div class="j-card">
+    <div class="j-card-header" style="color: var(--j-caution);">⚠️ सावधानी से — Test With Caution</div>
+    {% for s in test_stones %}
+      {{ gem_card(s, 'test') }}
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <!-- Prohibited -->
+  {% if prohibited_stones %}
+  <div class="j-card">
+    <div class="j-card-header" style="color: var(--j-ashubh);">❌ निषिद्ध रत्न — Prohibited</div>
+    {% for s in prohibited_stones %}
+      {{ gem_card(s, 'prohibited') }}
+    {% endfor %}
+    <div class="j-text-sm j-mt-sm" style="color: var(--j-ashubh); font-weight: 500;">
+      कोई भी वेबसाइट यह सूची नहीं दिखाती। वे रत्न बेचते हैं।
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Maraka warnings -->
+  {% set maraka = lordship.get('maraka', []) %}
+  {% if maraka %}
+  <div class="j-card" style="border-left: 4px solid var(--j-marak);">
+    <div class="j-card-header" style="color: var(--j-marak);">⚠️ मारक ग्रह — Maraka Planets</div>
+    {% for m in maraka %}
+    <div style="padding: var(--j-space-xs) 0;">
+      <strong>{{ m.planet }}</strong> — {{ m.house_str }}
+    </div>
+    {% endfor %}
+    <div class="j-text-xs j-text-muted j-mt-sm">
+      मारक ग्रह की दशा में इनके रत्न कभी न पहनें
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Free alternatives -->
+  <div class="j-card">
+    <div class="j-card-header">मुफ्त विकल्प — Free Alternatives</div>
+    <div class="j-text-sm">
+      <p>रत्न न खरीद सकें तो ये उपाय करें:</p>
+      <ul style="padding-left: var(--j-space-md); margin-top: var(--j-space-sm);">
+        <li><strong>मंत्र:</strong> ग्रह के बीज मंत्र का नियमित जप</li>
+        <li><strong>दान:</strong> ग्रह से संबंधित वस्तु का दान (उचित दिन पर)</li>
+        <li><strong>रंग:</strong> ग्रह का अनुकूल रंग पहनें</li>
+        <li><strong>व्रत:</strong> ग्रह के दिन उपवास रखें</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Honesty note -->
+  <div class="j-card" style="background: var(--j-cream-200);">
+    <div class="j-text-sm" style="color: var(--j-ink-500); font-style: italic;">
+      कोई भी शास्त्र (BPHS, रत्न प्रकाश, गरुड़ पुराण) सटीक रत्न भार नहीं बताता।
+      body_weight/10 formula gemstone industry की convention है, शास्त्र नहीं।
+      अपने Pandit Ji से अवश्य परामर्श करें।
+    </div>
+  </div>
+
+  <!-- Pandit Ji questions -->
+  <div class="j-card">
+    <div class="j-card-header">Pandit Ji से पूछें</div>
+    <ol class="j-text-sm" style="padding-left: var(--j-space-md);">
+      <li>क्या पहले 1-2 रत्ती से 7 दिन परीक्षण करना चाहिए?</li>
+      <li>वर्तमान दशा में यह रत्न पहनने का सही समय है?</li>
+      <li>क्या उपरत्न (substitute) पर्याप्त होगा?</li>
+      <li>रत्न के साथ मंत्र जप भी करना चाहिए?</li>
+      <li>धारण करने का शुभ मुहूर्त (दिन/होरा) क्या है?</li>
+    </ol>
+  </div>
+</div>
+{% endblock %}

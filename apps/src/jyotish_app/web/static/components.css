@@ -1,0 +1,211 @@
+/* Jyotish AI — Component Styles
+   All classes prefixed with j-. Uses CSS variables from tokens.css. */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--j-font-body);
+  background: var(--j-cream-500);
+  color: var(--j-ink-800);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── Sacred Header ── */
+.j-sacred-bar {
+  background: var(--j-saffron-600);
+  color: white;
+  text-align: center;
+  padding: var(--j-space-sm) var(--j-space-md);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ── Page Container ── */
+.j-page {
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--j-cream-100);
+  min-height: 100vh;
+  box-shadow: var(--j-shadow-lg);
+}
+
+/* ── Cards ── */
+.j-card {
+  background: white;
+  border-radius: var(--j-radius-md);
+  box-shadow: var(--j-shadow-sm);
+  margin: var(--j-space-md);
+  padding: var(--j-space-md);
+  border: 1px solid var(--j-cream-300);
+}
+.j-card-header {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--j-maroon);
+  margin-bottom: var(--j-space-sm);
+  padding-bottom: var(--j-space-xs);
+  border-bottom: 2px solid var(--j-saffron-100);
+}
+
+/* ── Tags / Badges ── */
+.j-tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: var(--j-radius-pill);
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin: 2px;
+}
+.j-tag-saffron { background: var(--j-saffron-100); color: var(--j-saffron-700); }
+.j-tag-shubh { background: var(--j-shubh-bg); color: var(--j-shubh); }
+.j-tag-ashubh { background: var(--j-ashubh-bg); color: var(--j-ashubh); }
+.j-tag-marak { background: var(--j-marak-bg); color: var(--j-marak); }
+.j-tag-yoga { background: var(--j-yoga-bg); color: var(--j-yoga); }
+.j-tag-caution { background: var(--j-caution-bg); color: var(--j-caution); }
+.j-tag-gold { background: #FFF8E1; color: var(--j-gold); }
+.j-tag-retro { background: #E3F2FD; color: #1565C0; }
+.j-tag-combust { background: #FFF3E0; color: #E65100; }
+
+/* ── Planet Colors (functional role for THIS lagna) ── */
+.j-planet-shubh { color: var(--j-shubh); }
+.j-planet-ashubh { color: var(--j-ashubh); }
+.j-planet-marak { color: var(--j-marak); }
+.j-planet-yoga { color: var(--j-yoga); }
+.j-planet-neutral { color: var(--j-ink-500); }
+
+/* ── Buttons ── */
+.j-btn {
+  display: inline-block;
+  padding: 10px 24px;
+  border: none;
+  border-radius: var(--j-radius-sm);
+  font-family: var(--j-font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.j-btn:active { transform: scale(0.98); }
+.j-btn-saffron {
+  background: var(--j-saffron-600);
+  color: white;
+  box-shadow: var(--j-shadow-sm);
+}
+.j-btn-saffron:hover { background: var(--j-saffron-700); }
+.j-btn-outline {
+  background: transparent;
+  color: var(--j-saffron-600);
+  border: 2px solid var(--j-saffron-600);
+}
+.j-btn-sm { padding: 6px 14px; font-size: 0.8rem; }
+.j-btn-block { display: block; width: 100%; }
+
+/* ── Form ── */
+.j-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--j-cream-300);
+  border-radius: var(--j-radius-sm);
+  font-family: var(--j-font-body);
+  font-size: 0.95rem;
+  background: white;
+  color: var(--j-ink-800);
+  transition: border-color 0.2s;
+}
+.j-input:focus { border-color: var(--j-saffron-600); outline: none; }
+.j-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--j-ink-500);
+  margin-bottom: var(--j-space-xs);
+}
+.j-form-group { margin-bottom: var(--j-space-md); }
+.j-radio-row {
+  display: flex;
+  gap: var(--j-space-md);
+  padding: var(--j-space-sm) 0;
+}
+.j-radio-row label {
+  display: flex;
+  align-items: center;
+  gap: var(--j-space-xs);
+  cursor: pointer;
+}
+
+/* ── Tables ── */
+.j-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.j-table th {
+  background: var(--j-saffron-600);
+  color: white;
+  padding: 8px;
+  text-align: left;
+  font-weight: 500;
+}
+.j-table td { padding: 8px; border-bottom: 1px solid var(--j-cream-300); }
+.j-table tr:nth-child(even) { background: var(--j-cream-200); }
+
+/* ── Timeline ── */
+.j-timeline { padding: 0 var(--j-space-md); }
+.j-timeline-item {
+  display: flex;
+  gap: var(--j-space-md);
+  padding: var(--j-space-sm) 0;
+  border-left: 3px solid var(--j-cream-300);
+  padding-left: var(--j-space-md);
+  margin-left: 8px;
+}
+.j-timeline-item.j-current {
+  border-left-color: var(--j-saffron-600);
+  background: var(--j-saffron-50);
+  border-radius: 0 var(--j-radius-sm) var(--j-radius-sm) 0;
+  padding: var(--j-space-sm) var(--j-space-md);
+}
+.j-timeline-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--j-cream-300);
+  flex-shrink: 0;
+  margin-top: 5px;
+  margin-left: -22px;
+}
+.j-current .j-timeline-dot { background: var(--j-saffron-600); }
+.j-timeline-shubh .j-timeline-dot { background: var(--j-shubh); }
+.j-timeline-ashubh .j-timeline-dot { background: var(--j-ashubh); }
+
+/* ── Gemstone Cards ── */
+.j-gem-card {
+  border-left: 4px solid var(--j-shubh);
+  padding: var(--j-space-md);
+  margin: var(--j-space-sm) 0;
+  background: white;
+  border-radius: 0 var(--j-radius-sm) var(--j-radius-sm) 0;
+}
+.j-gem-card.j-prohibited { border-left-color: var(--j-ashubh); background: var(--j-ashubh-bg); }
+.j-gem-card.j-caution { border-left-color: var(--j-caution); }
+
+/* ── Footer ── */
+.j-footer {
+  text-align: center;
+  padding: var(--j-space-lg) var(--j-space-md);
+  color: var(--j-ink-300);
+  font-size: 0.8rem;
+}
+
+/* ── Utility ── */
+.j-text-center { text-align: center; }
+.j-text-muted { color: var(--j-ink-300); }
+.j-text-sm { font-size: 0.85rem; }
+.j-text-xs { font-size: 0.75rem; }
+.j-mt-sm { margin-top: var(--j-space-sm); }
+.j-mt-md { margin-top: var(--j-space-md); }
+.j-mb-md { margin-bottom: var(--j-space-md); }
+.j-p-md { padding: var(--j-space-md); }
+.j-flex { display: flex; }
+.j-flex-wrap { flex-wrap: wrap; }
+.j-gap-sm { gap: var(--j-space-sm); }
+.j-hidden { display: none; }

@@ -1,0 +1,54 @@
+{# Jinja2 Component Macros — reusable across all templates #}
+
+{% macro planet_role_class(planet_name, benefics, malefics, yogakaraka) %}
+{%- if planet_name == yogakaraka %}j-planet-yoga{% elif planet_name in benefics %}j-planet-shubh{% elif planet_name in malefics %}j-planet-ashubh{% else %}j-planet-neutral{% endif -%}
+{% endmacro %}
+
+{% macro planet_role_tag(planet_name, benefics, malefics, yogakaraka, maraka_planets) %}
+{%- if planet_name == yogakaraka %}<span class="j-tag j-tag-yoga">योगकारक</span>
+{%- elif planet_name in maraka_planets %}<span class="j-tag j-tag-marak">मारक</span>
+{%- elif planet_name in benefics %}<span class="j-tag j-tag-shubh">शुभ</span>
+{%- elif planet_name in malefics %}<span class="j-tag j-tag-ashubh">अशुभ</span>
+{%- endif -%}
+{% endmacro %}
+
+{% macro planet_hi(name) %}
+{%- set names = {"Sun":"सू","Moon":"चं","Mars":"मं","Mercury":"बु","Jupiter":"गु","Venus":"शु","Saturn":"श","Rahu":"रा","Ketu":"के"} -%}
+{{ names.get(name, name[:2]) }}
+{%- endmacro %}
+
+{% macro planet_flags(p) %}
+{%- if p.is_retrograde %}<span class="j-tag j-tag-retro">वक्री</span>{% endif -%}
+{%- if p.is_combust %}<span class="j-tag j-tag-combust">अस्त</span>{% endif -%}
+{%- if p.dignity == "exalted" %}<span class="j-tag j-tag-shubh">उच्च</span>{% endif -%}
+{%- if p.dignity == "debilitated" %}<span class="j-tag j-tag-ashubh">नीच</span>{% endif -%}
+{% endmacro %}
+
+{% macro sign_hi(index) %}
+{%- set signs = ["मेष","वृषभ","मिथुन","कर्क","सिंह","कन्या","तुला","वृश्चिक","धनु","मकर","कुम्भ","मीन"] -%}
+{{ signs[index] }}
+{%- endmacro %}
+
+{% macro yoga_card(y) %}
+<div class="j-card" style="border-left: 4px solid {% if y.effect == 'benefic' %}var(--j-shubh){% elif y.effect == 'malefic' %}var(--j-ashubh){% else %}var(--j-caution){% endif %}; padding: var(--j-space-sm) var(--j-space-md);">
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    <strong>{{ y.name_hindi }} ({{ y.name }})</strong>
+    {% if y.effect == "benefic" %}<span class="j-tag j-tag-shubh">शुभ</span>
+    {% elif y.effect == "malefic" %}<span class="j-tag j-tag-ashubh">अशुभ</span>
+    {% else %}<span class="j-tag j-tag-caution">मिश्र</span>{% endif %}
+  </div>
+  <div class="j-text-sm j-text-muted j-mt-sm">{{ y.description[:120] }}</div>
+</div>
+{% endmacro %}
+
+{% macro gem_card(stone, status) %}
+<div class="j-gem-card {% if status == 'prohibited' %}j-prohibited{% elif status == 'test' %}j-caution{% endif %}">
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    <strong>{{ stone.stone }} ({{ stone.planet }})</strong>
+    {% if status == 'recommended' %}<span class="j-tag j-tag-shubh">अनुशंसित</span>
+    {% elif status == 'prohibited' %}<span class="j-tag j-tag-ashubh">निषिद्ध</span>
+    {% else %}<span class="j-tag j-tag-caution">सावधानी</span>{% endif %}
+  </div>
+  <div class="j-text-sm j-text-muted j-mt-sm">{{ stone.reasoning[:100] }}</div>
+</div>
+{% endmacro %}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Jyotish AI{% endblock %}</title>
+  <link rel="stylesheet" href="/static/tokens.css">
+  <link rel="stylesheet" href="/static/components.css">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <div class="j-page">
+    <div class="j-sacred-bar">॥ श्री गणेशाय नमः ॥</div>
+    {% block content %}{% endblock %}
+    <div class="j-footer">
+      शुभम् भवतु<br>
+      <span class="j-text-xs">vedic-ai-framework</span>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+/* Jyotish AI — Design Tokens CSS
+   Generated from design-tokens.json. SINGLE source for all colors/fonts/spacing. */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ── Colors: Primary (Saffron) ── */
+  --j-saffron-50: #FFF3E0;
+  --j-saffron-100: #FFE0B2;
+  --j-saffron-200: #FFCC80;
+  --j-saffron-400: #FFA726;
+  --j-saffron-500: #FF9800;
+  --j-saffron-600: #FF6F00;
+  --j-saffron-700: #E65100;
+  --j-saffron-800: #BF360C;
+
+  /* ── Colors: Neutral (Cream) ── */
+  --j-cream-50: #FFFEF9;
+  --j-cream-100: #FFFDE7;
+  --j-cream-200: #FFF8E1;
+  --j-cream-300: #FFF3C4;
+  --j-cream-500: #F5E6C8;
+
+  /* ── Colors: Accent ── */
+  --j-gold: #C8902E;
+  --j-gold-light: #E8B84B;
+  --j-maroon: #7B1F1F;
+  --j-maroon-dark: #5D1212;
+  --j-indigo: #1A237E;
+
+  /* ── Colors: Ink (Text) ── */
+  --j-ink-900: #1A0F0A;
+  --j-ink-800: #2D1810;
+  --j-ink-600: #4E342E;
+  --j-ink-500: #5D4037;
+  --j-ink-300: #8D6E63;
+  --j-ink-200: #A1887F;
+  --j-ink-100: #BCAAA4;
+
+  /* ── Colors: Semantic ── */
+  --j-shubh: #2E7D32;
+  --j-shubh-bg: #E8F5E9;
+  --j-ashubh: #C62828;
+  --j-ashubh-bg: #FFEBEE;
+  --j-marak: #E65100;
+  --j-marak-bg: #FFF3E0;
+  --j-yoga: #6A1B9A;
+  --j-yoga-bg: #F3E5F5;
+  --j-caution: #F57F17;
+  --j-caution-bg: #FFFDE7;
+
+  /* ── Typography ── */
+  --j-font-sacred: 'Noto Sans Devanagari', sans-serif;
+  --j-font-body: 'Noto Sans Devanagari', sans-serif;
+  --j-font-data: 'monospace';
+
+  /* ── Spacing ── */
+  --j-space-xs: 4px;
+  --j-space-sm: 8px;
+  --j-space-md: 16px;
+  --j-space-lg: 24px;
+  --j-space-xl: 32px;
+  --j-space-2xl: 48px;
+
+  /* ── Borders ── */
+  --j-radius-sm: 6px;
+  --j-radius-md: 12px;
+  --j-radius-lg: 16px;
+  --j-radius-pill: 9999px;
+
+  /* ── Shadows ── */
+  --j-shadow-sm: 0 1px 3px rgba(26,15,10,0.08);
+  --j-shadow-md: 0 4px 12px rgba(26,15,10,0.10);
+  --j-shadow-lg: 0 8px 24px rgba(26,15,10,0.12);
+}

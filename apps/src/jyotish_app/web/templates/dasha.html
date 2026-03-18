@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% from "components/macros.html" import planet_hi %}
+{% block title %}{{ client.name }} — दशा{% endblock %}
+
+{% block content %}
+{% set maraka_planets = lordship.get('maraka', []) | map(attribute='planet') | list %}
+<div class="j-p-md">
+  <a href="/client/{{ client.id }}" class="j-text-sm" style="color: var(--j-saffron-600); text-decoration: none;">← कुंडली</a>
+
+  <h1 style="font-size: 1.2rem; color: var(--j-maroon); margin: var(--j-space-md) 0;">
+    विंशोत्तरी दशा — {{ client.name }}
+  </h1>
+
+  <!-- Current period highlight -->
+  <div class="j-card" style="border-left: 4px solid var(--j-saffron-600);">
+    <div class="j-text-xs j-text-muted">वर्तमान दशा</div>
+    <div style="font-size: 1.2rem; font-weight: 700; color: var(--j-maroon);">
+      {{ planet_hi(current_md.lord) }} {{ current_md.lord }} > {{ planet_hi(current_ad.lord) }} {{ current_ad.lord }}
+    </div>
+    <div class="j-text-sm j-text-muted">
+      {{ current_md.start.strftime('%b %Y') }} — {{ current_md.end.strftime('%b %Y') }}
+    </div>
+  </div>
+
+  <!-- Full timeline -->
+  <div class="j-card">
+    <div class="j-card-header">120-Year Dasha Timeline</div>
+    <div class="j-timeline">
+      {% for md in mahadashas %}
+      {% set is_current = (md.lord == current_md.lord and md.start == current_md.start) %}
+      {% set lord_class = "j-timeline-shubh" if md.lord in benefics else "j-timeline-ashubh" if md.lord in malefics else "" %}
+
+      <div class="j-timeline-item {{ lord_class }} {% if is_current %}j-current{% endif %}">
+        <div class="j-timeline-dot"></div>
+        <div style="flex: 1;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-weight: 600;">
+              {{ planet_hi(md.lord) }} {{ md.lord }}
+              {% if is_current %}<span class="j-tag j-tag-saffron">अभी</span>{% endif %}
+            </span>
+            {% if md.lord in benefics %}<span class="j-tag j-tag-shubh">शुभ</span>
+            {% elif md.lord in malefics %}<span class="j-tag j-tag-ashubh">अशुभ</span>
+            {% elif md.lord in maraka_planets %}<span class="j-tag j-tag-marak">मारक</span>{% endif %}
+          </div>
+          <div class="j-text-xs j-text-muted">
+            {{ md.start.strftime('%b %Y') }} — {{ md.end.strftime('%b %Y') }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Jyotish AI — प्रवेश{% endblock %}
+
+{% block content %}
+<div style="padding: var(--j-space-2xl) var(--j-space-md); text-align: center;">
+
+  <div style="font-size: 3rem; margin-bottom: var(--j-space-md); color: var(--j-saffron-600);">
+    ॐ
+  </div>
+
+  <h1 style="font-size: 1.8rem; color: var(--j-maroon); margin-bottom: var(--j-space-sm);">
+    ज्योतिष AI
+  </h1>
+  <p style="color: var(--j-ink-500); margin-bottom: var(--j-space-2xl);">
+    वैदिक ज्योतिष — AI-Powered Vedic Astrology
+  </p>
+
+  {% if error == "auth_failed" %}
+  <div class="j-card" style="border-left: 4px solid var(--j-ashubh); margin-bottom: var(--j-space-lg);">
+    <p style="color: var(--j-ashubh);">Authentication failed. Please try again.</p>
+  </div>
+  {% elif error == "not_allowed" %}
+  <div class="j-card" style="border-left: 4px solid var(--j-caution); margin-bottom: var(--j-space-lg);">
+    <p style="color: var(--j-caution);">Your email is not in the allowed list. Contact the administrator.</p>
+  </div>
+  {% endif %}
+
+  <a href="/auth/google" class="j-btn j-btn-saffron j-btn-block"
+     style="max-width: 300px; margin: 0 auto; display: block;">
+    🔐 Google से प्रवेश करें
+  </a>
+
+  <p class="j-text-sm j-text-muted" style="margin-top: var(--j-space-2xl);">
+    Swiss Ephemeris (NASA JPL DE431) | Lahiri Ayanamsha<br>
+    कोई पासवर्ड नहीं — Google account से सुरक्षित प्रवेश
+  </p>
+</div>
+{% endblock %}

@@ -1,0 +1,174 @@
+{
+  "$schema": "jyotish-design-tokens-v2",
+  "$version": "2.0.0",
+  "$description": "Jyotish AI — Sacred Traditional + Modern UI. Single source for Web CSS, Flutter Dart, Python PIL.",
+
+  "color": {
+    "primary": {
+      "50":  { "value": "#FFF3E0", "description": "Lightest saffron tint" },
+      "100": { "value": "#FFE0B2", "description": "Light saffron" },
+      "200": { "value": "#FFCC80", "description": "Soft saffron" },
+      "300": { "value": "#FFB74D", "description": "Medium-light saffron" },
+      "400": { "value": "#FFA726", "description": "Medium saffron" },
+      "500": { "value": "#FF9800", "description": "Base saffron" },
+      "600": { "value": "#FF6F00", "description": "PRIMARY — brand saffron" },
+      "700": { "value": "#E65100", "description": "Deep saffron" },
+      "800": { "value": "#BF360C", "description": "Darkest saffron" }
+    },
+    "neutral": {
+      "50":  { "value": "#FFFEF9", "description": "Near white" },
+      "100": { "value": "#FFFDE7", "description": "PAGE BACKGROUND — cream" },
+      "200": { "value": "#FFF8E1", "description": "Card hover / strip bg" },
+      "300": { "value": "#FFF3C4", "description": "Borders, dividers" },
+      "400": { "value": "#FFECB3", "description": "Deep cream" },
+      "500": { "value": "#F5E6C8", "description": "OUTER BACKGROUND — parchment" }
+    },
+    "accent": {
+      "gold-300":  { "value": "#E8B84B" },
+      "gold-400":  { "value": "#D4A035" },
+      "gold-500":  { "value": "#C8902E", "description": "PRIMARY GOLD" },
+      "gold-600":  { "value": "#A67424" },
+      "gold-700":  { "value": "#8B6914" },
+      "maroon-400": { "value": "#A33A3A" },
+      "maroon-500": { "value": "#7B1F1F", "description": "PRIMARY MAROON — sacred headers" },
+      "maroon-600": { "value": "#5D1212" },
+      "indigo-500": { "value": "#1A237E", "description": "Chart borders (from v0 ref)" },
+      "indigo-600": { "value": "#0D1642" }
+    },
+    "ink": {
+      "900": { "value": "#1A0F0A" },
+      "800": { "value": "#2D1810", "description": "BODY TEXT" },
+      "700": { "value": "#3E2723" },
+      "600": { "value": "#4E342E" },
+      "500": { "value": "#5D4037", "description": "SECONDARY TEXT" },
+      "400": { "value": "#6D4C41" },
+      "300": { "value": "#8D6E63", "description": "MUTED TEXT / captions" },
+      "200": { "value": "#A1887F" },
+      "100": { "value": "#BCAAA4" }
+    },
+    "graha": {
+      "surya":   { "value": "#E65100", "label_hi": "सू", "label_en": "Sun" },
+      "chandra": { "value": "#5D4037", "label_hi": "चं", "label_en": "Moon" },
+      "mangal":  { "value": "#C62828", "label_hi": "मं", "label_en": "Mars" },
+      "budh":    { "value": "#2E7D32", "label_hi": "बु", "label_en": "Mercury" },
+      "guru":    { "value": "#F9A825", "label_hi": "गु", "label_en": "Jupiter", "text_on_bg": "#2D1810" },
+      "shukra":  { "value": "#6A1B9A", "label_hi": "शु", "label_en": "Venus" },
+      "shani":   { "value": "#1565C0", "label_hi": "श",  "label_en": "Saturn" },
+      "rahu":    { "value": "#37474F", "label_hi": "रा", "label_en": "Rahu" },
+      "ketu":    { "value": "#795548", "label_hi": "के", "label_en": "Ketu" }
+    },
+    "semantic": {
+      "shubh":    { "value": "#2E7D32", "bg": "#E8F5E9", "label_hi": "शुभ" },
+      "ashubh":   { "value": "#C62828", "bg": "#FFEBEE", "label_hi": "अशुभ" },
+      "marak":    { "value": "#E65100", "bg": "#FFF3E0", "label_hi": "मारक" },
+      "yoga":     { "value": "#6A1B9A", "bg": "#F3E5F5", "label_hi": "योगकारक" },
+      "mixed":    { "value": "#F57F17", "bg": "#FFFDE7", "label_hi": "मिश्रित" },
+      "neutral":  { "value": "#546E7A", "bg": "#ECEFF1", "label_hi": "तटस्थ" },
+      "retro":    { "value": "#1565C0", "bg": "#E3F2FD", "label_hi": "वक्री" },
+      "combust":  { "value": "#BF360C", "bg": "#FBE9E7", "label_hi": "अस्त" },
+      "exalted":  { "value": "#1B5E20", "bg": "#E8F5E9", "label_hi": "उच्च" },
+      "debilitated": { "value": "#B71C1C", "bg": "#FFEBEE", "label_hi": "नीच" }
+    }
+  },
+
+  "typography": {
+    "family": {
+      "sacred":  { "value": "'Tiro Devanagari Hindi', serif", "google": "Tiro+Devanagari+Hindi:ital@0;1", "usage": "OM, mantras, section headers in Hindi" },
+      "body":    { "value": "'Noto Sans Devanagari', sans-serif", "google": "Noto+Sans+Devanagari:wght@300;400;500;600;700", "usage": "Body text, UI labels, form fields" },
+      "display": { "value": "'Cormorant Garamond', serif", "google": "Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500", "usage": "English display, elegant names" },
+      "data":    { "value": "'IBM Plex Mono', monospace", "google": "IBM+Plex+Mono:wght@400;500;600", "usage": "Degrees, dates, numbers, coordinates" }
+    },
+    "scale": {
+      "xs":      { "mobile": "0.6rem",   "desktop": "0.65rem",  "usage": "Tiny labels, fine print" },
+      "sm":      { "mobile": "0.72rem",  "desktop": "0.78rem",  "usage": "Captions, tag text, table cells" },
+      "base":    { "mobile": "0.85rem",  "desktop": "0.92rem",  "usage": "Body text" },
+      "md":      { "mobile": "0.95rem",  "desktop": "1.05rem",  "usage": "Emphasized body, mantra text" },
+      "lg":      { "mobile": "1.15rem",  "desktop": "1.25rem",  "usage": "Section titles (Hindi)" },
+      "xl":      { "mobile": "1.5rem",   "desktop": "1.7rem",   "usage": "Page title / name" },
+      "2xl":     { "mobile": "2.2rem",   "desktop": "2.6rem",   "usage": "OM symbol" },
+      "display": { "mobile": "2.6rem",   "desktop": "3.2rem",   "usage": "Hero display (unused in mobile)" }
+    }
+  },
+
+  "spacing": {
+    "1":  { "value": "4px" },
+    "2":  { "value": "8px" },
+    "3":  { "value": "12px" },
+    "4":  { "value": "16px" },
+    "5":  { "value": "20px" },
+    "6":  { "value": "24px" },
+    "7":  { "value": "28px" },
+    "8":  { "value": "32px" },
+    "10": { "value": "40px" },
+    "12": { "value": "48px" },
+    "16": { "value": "64px" }
+  },
+
+  "radius": {
+    "sm":   { "value": "4px" },
+    "md":   { "value": "8px" },
+    "lg":   { "value": "12px" },
+    "xl":   { "value": "16px" },
+    "full": { "value": "999px" }
+  },
+
+  "shadow": {
+    "sm":   { "value": "0 1px 3px rgba(139, 105, 20, 0.08)" },
+    "md":   { "value": "0 2px 8px rgba(139, 105, 20, 0.12)" },
+    "lg":   { "value": "0 4px 16px rgba(139, 105, 20, 0.16)" },
+    "glow": { "value": "0 0 20px rgba(255, 111, 0, 0.15)" },
+    "page": { "value": "0 0 60px rgba(139, 105, 20, 0.2)" }
+  },
+
+  "animation": {
+    "duration": {
+      "fast":   { "value": "150ms" },
+      "normal": { "value": "300ms" },
+      "slow":   { "value": "500ms" },
+      "shimmer": { "value": "10s" }
+    },
+    "easing": {
+      "out":     { "value": "cubic-bezier(0.16, 1, 0.3, 1)" },
+      "spring":  { "value": "cubic-bezier(0.34, 1.56, 0.64, 1)" },
+      "smooth":  { "value": "ease-in-out" }
+    }
+  },
+
+  "layout": {
+    "page_max": {
+      "mobile":  { "value": "480px" },
+      "tablet":  { "value": "540px" },
+      "desktop": { "value": "600px" }
+    },
+    "page_padding": {
+      "mobile":  { "value": "20px" },
+      "tablet":  { "value": "28px" },
+      "desktop": { "value": "32px" }
+    }
+  },
+
+  "brand": {
+    "invocation":   { "value": "॥ श्री गणेशाय नमः ॥" },
+    "closing":      { "value": "शुभम् भवतु" },
+    "app_name":     { "value": "Jyotish AI" },
+    "app_name_hi":  { "value": "ज्योतिष AI" },
+    "framework":    { "value": "vedic-ai-framework" },
+    "disclaimer_hi": { "value": "यह computational tool है, पंडित जी का विकल्प नहीं।" },
+    "disclaimer_en": { "value": "Computational tool, not a replacement for Pandit Ji." }
+  },
+
+  "rashi_map": [
+    { "num": 1,  "hi": "मेष",    "en": "Aries",       "abbr": "मे" },
+    { "num": 2,  "hi": "वृषभ",   "en": "Taurus",      "abbr": "वृ" },
+    { "num": 3,  "hi": "मिथुन",  "en": "Gemini",      "abbr": "मि" },
+    { "num": 4,  "hi": "कर्क",   "en": "Cancer",      "abbr": "क" },
+    { "num": 5,  "hi": "सिंह",   "en": "Leo",         "abbr": "सिं" },
+    { "num": 6,  "hi": "कन्या",  "en": "Virgo",       "abbr": "कन" },
+    { "num": 7,  "hi": "तुला",   "en": "Libra",       "abbr": "तु" },
+    { "num": 8,  "hi": "वृश्चिक", "en": "Scorpio",     "abbr": "वृश" },
+    { "num": 9,  "hi": "धनु",    "en": "Sagittarius",  "abbr": "ध" },
+    { "num": 10, "hi": "मकर",    "en": "Capricorn",    "abbr": "मक" },
+    { "num": 11, "hi": "कुंभ",   "en": "Aquarius",     "abbr": "कुं" },
+    { "num": 12, "hi": "मीन",    "en": "Pisces",       "abbr": "मी" }
+  ]
+}

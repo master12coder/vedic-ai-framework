@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% from "components/macros.html" import planet_role_class, planet_role_tag, planet_hi, planet_flags, sign_hi, yoga_card, gem_card %}
+{% block title %}{{ client.name }} — कुंडली{% endblock %}
+
+{% block content %}
+{% set maraka_planets = lordship.get('maraka', []) | map(attribute='planet') | list %}
+
+<!-- Birth Strip -->
+<div class="j-card" style="text-align: center;">
+  <div style="font-size: 1.4rem; font-weight: 700; color: var(--j-maroon);">{{ client.name }}</div>
+  <div class="j-text-sm j-text-muted">{{ client.dob }} | {{ client.tob }} | {{ client.place }}</div>
+  <div style="margin-top: var(--j-space-sm); display: flex; justify-content: center; flex-wrap: wrap; gap: var(--j-space-xs);">
+    <span class="j-tag j-tag-saffron">{{ chart.lagna_sign_hi }} लग्न</span>
+    <span class="j-tag j-tag-gold">{{ chart.planets.Moon.nakshatra }} पाद {{ chart.planets.Moon.pada }}</span>
+    <span class="j-tag j-tag-saffron">{{ current_md.lord }} > {{ current_ad.lord }} दशा</span>
+  </div>
+</div>
+
+<!-- Diamond Chart (SVG) -->
+{% include "components/diamond_chart.html" %}
+
+<!-- Planet Positions -->
+<div class="j-card">
+  <div class="j-card-header">ग्रह स्थिति — Planetary Positions</div>
+  <table class="j-table">
+    <thead>
+      <tr><th>ग्रह</th><th>राशि</th><th>भाव</th><th>अंश</th><th>स्थिति</th></tr>
+    </thead>
+    <tbody>
+    {% for name, p in chart.planets.items() %}
+      <tr>
+        <td>
+          <span class="{{ planet_role_class(name, benefics, malefics, yogakaraka) }}" style="font-weight: 600;">
+            {{ planet_hi(name) }} {{ name }}
+          </span>
+        </td>
+        <td>{{ sign_hi(p.sign_index) }}</td>
+        <td>{{ p.house }}</td>
+        <td style="font-family: var(--j-font-data);">{{ "%.1f"|format(p.degree_in_sign) }}°</td>
+        <td>
+          {{ planet_flags(p) }}
+          {{ planet_role_tag(name, benefics, malefics, yogakaraka, maraka_planets) }}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<!-- Active Yogas -->
+{% if yogas %}
+<div class="j-card">
+  <div class="j-card-header">सक्रिय योग — Active Yogas ({{ yogas|length }})</div>
+  {% for y in yogas[:7] %}
+    {{ yoga_card(y) }}
+  {% endfor %}
+</div>
+{% endif %}
+
+<!-- Current Dasha -->
+<div class="j-card">
+  <div class="j-card-header">वर्तमान दशा — Current Period</div>
+  <div style="font-size: 1.1rem; font-weight: 600; color: var(--j-maroon);">
+    {{ current_md.lord }} महादशा > {{ current_ad.lord }} अन्तर्दशा
+  </div>
+  <div class="j-text-sm j-text-muted j-mt-sm">
+    MD: {{ current_md.start.strftime('%d/%m/%Y') }} — {{ current_md.end.strftime('%d/%m/%Y') }}<br>
+    AD: {{ current_ad.start.strftime('%d/%m/%Y') }} — {{ current_ad.end.strftime('%d/%m/%Y') }}
+  </div>
+  <a href="/client/{{ client.id }}/dasha" class="j-btn j-btn-outline j-btn-sm j-mt-sm">
+    पूरी दशा देखें →
+  </a>
+</div>
+
+<!-- Gemstone Quick View -->
+<div class="j-card">
+  <div class="j-card-header">रत्न सुझाव — Gemstones</div>
+  {% for s in recommended_stones %}
+    {{ gem_card(s, 'recommended') }}
+  {% endfor %}
+  {% for s in prohibited_stones[:3] %}
+    {{ gem_card(s, 'prohibited') }}
+  {% endfor %}
+  <a href="/client/{{ client.id }}/ratna" class="j-btn j-btn-outline j-btn-sm j-mt-sm">
+    पूरा रत्न विश्लेषण →
+  </a>
+</div>
+
+<!-- Actions -->
+<div style="padding: var(--j-space-md); display: flex; gap: var(--j-space-sm);">
+  <a href="/client/{{ client.id }}/pdf" class="j-btn j-btn-saffron" style="flex: 1;">PDF डाउनलोड</a>
+  <a href="/dashboard" class="j-btn j-btn-outline" style="flex: 1;">वापस</a>
+</div>
+{% endblock %}
