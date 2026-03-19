@@ -33,12 +33,11 @@ class FullChartAnalysis(BaseModel):
     """Complete pre-computed analysis — single source of truth.
 
     Every field is deterministic: same input chart = same output, always.
-    Versioned so stored analyses can be identified and recomputed.
     """
 
     model_config = ConfigDict(frozen=True)
 
-    version: str = "2.0"
+    version: str = "3.0"
 
     # Core chart
     chart: ChartData
@@ -48,6 +47,7 @@ class FullChartAnalysis(BaseModel):
     current_md: DashaPeriod
     current_ad: DashaPeriod
     narayana_dasha: list[DashaPeriod]
+    dasha_sandhi: list[Any]  # DashaSandhi
 
     # Yogas & Doshas
     yogas: list[YogaResult]
@@ -66,26 +66,39 @@ class FullChartAnalysis(BaseModel):
     # Special checks
     gandanta: list[GandantaResult]
     graha_yuddha: list[GrahaYuddha]
+    gand_mool: Any | None  # GandMoolResult
 
-    # Transit (for current date)
-    double_transit: list[DoubleTransit]  # From lagna
-    double_transit_moon: list[DoubleTransit]  # From Moon sign
+    # Transit
+    double_transit: list[DoubleTransit]
+    double_transit_moon: list[DoubleTransit]
+    sadesati: Any | None  # SadesatiDetail
+    jupiter_transit: Any | None  # JupiterTransitResult
+    rahu_ketu_transit: Any | None  # RahuKetuTransitResult
 
     # Jaimini
     upapada: UpapadaLagna
-    argala: list[Any]  # ArgalaResult (from compute/argala.py)
+    argala: list[Any]
 
     # Special lagnas
-    special_lagnas: dict[str, Any]  # hora, bhava, ghatika
+    special_lagnas: dict[str, Any]
 
-    # Sudarshan Chakra
-    sudarshan: Any | None  # SudarshanChakra
+    # Sudarshan
+    sudarshan: Any | None
 
-    # Bhava chalit comparison
-    house_shifts: list[Any]  # HouseShift from house_comparison.py
+    # House comparison
+    house_shifts: list[Any]
 
     # Saham points
-    sahams: list[Any]  # SahamPoint
+    sahams: list[Any]
+
+    # Longevity (internal use only)
+    longevity: Any | None  # LongevityResult
+
+    # Mangal dosha detailed
+    mangal_dosha: Any | None  # MangalDoshaDetail
+
+    # Varga analysis
+    varga_analysis: dict[str, Any]  # D7, D4, D24, D10
 
     # Lordship context
     lordship_context: dict
