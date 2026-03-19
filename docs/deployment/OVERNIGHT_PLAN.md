@@ -32,7 +32,7 @@ It calls products/ which calls engine/. It NEVER computes directly.
 - Apple Sign-In: skip for v1 (needs Apple Developer account $99/year)
 
 ### Database: SQLite (free, zero config, one file)
-- `data/jyotish.db` — single file, backs up easily
+- `data/daivai.db` — single file, backs up easily
 - Tables: users, clients, charts, gemstones, events, daily_cache
 - ORM: SQLModel (Pydantic + SQLAlchemy, already in FastAPI ecosystem)
 
@@ -379,7 +379,7 @@ cat > /opt/jyotish/.env << EOF
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
 SECRET_KEY=$(python3 -c "import secrets; print(secrets.token_hex(32))")
-DATABASE_URL=sqlite:///opt/jyotish/data/jyotish.db
+DATABASE_URL=sqlite:///opt/daivai/data/daivai.db
 ALLOWED_EMAILS=manish@email.com,panditji@email.com
 EOF
 
@@ -425,7 +425,7 @@ pip install rclone
 # Configure rclone with Google Drive (one-time interactive)
 cat > /opt/jyotish/scripts/backup.sh << 'EOF'
 #!/bin/bash
-cp /opt/jyotish/data/jyotish.db /opt/jyotish/data/backup-$(date +%Y%m%d).db
+cp /opt/jyotish/data/daivai.db /opt/jyotish/data/backup-$(date +%Y%m%d).db
 rclone copy /opt/jyotish/data/backup-*.db gdrive:jyotish-backups/
 find /opt/jyotish/data/backup-*.db -mtime +7 -delete
 EOF

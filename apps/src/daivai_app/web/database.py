@@ -61,7 +61,7 @@ def get_engine() -> Any:
     """Get or create the database engine."""
     global _engine
     if _engine is None:
-        db_url = os.environ.get("DATABASE_URL", "sqlite:///data/jyotish.db")
+        db_url = os.environ.get("DATABASE_URL", "sqlite:///data/daivai.db")
         db_path = db_url.replace("sqlite:///", "")
         Path(db_path).parent.mkdir(parents=True, exist_ok=True)
         _engine = create_engine(db_url, echo=False)

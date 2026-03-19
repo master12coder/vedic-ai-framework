@@ -1,12 +1,12 @@
 #!/bin/bash
-# Jyotish AI — Oracle Cloud Always Free Deployment
+# DaivAI — Oracle Cloud Always Free Deployment
 # Run on fresh Ubuntu 22.04 ARM VM (4 CPU, 24GB RAM)
 # Usage: bash setup_oracle.sh
 
 set -euo pipefail
 
 echo "═══════════════════════════════════════════"
-echo "  Jyotish AI — Oracle Cloud Setup"
+echo "  DaivAI — Oracle Cloud Setup"
 echo "  श्री गणेशाय नमः"
 echo "═══════════════════════════════════════════"
 
@@ -19,7 +19,7 @@ sudo apt install -y python3.12 python3.12-venv python3.12-dev \
 # ── Clone repository ──
 echo "Cloning repository..."
 if [ ! -d /opt/daivai ]; then
-    sudo git clone https://github.com/master12coder/daivai.git /opt/daivai
+    sudo git clone https://github.com/master12coder/daiv-ai.git /opt/daivai
     sudo chown -R ubuntu:ubuntu /opt/daivai
 fi
 cd /opt/daivai
@@ -65,7 +65,7 @@ sudo apt update && sudo apt install -y caddy
 echo "Creating systemd service..."
 sudo tee /etc/systemd/system/daivai.service > /dev/null << EOF
 [Unit]
-Description=Jyotish AI Web App
+Description=DaivAI Web App
 After=network.target
 
 [Service]
