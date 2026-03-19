@@ -21,8 +21,8 @@ class User(SQLModel, table=True):
     name: str
     picture_url: str | None = None
     role: str = Field(default="family")  # owner | pandit | family
-    created_at: datetime = Field(default_factory=datetime.utcnow)
-    last_login: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=datetime.now)
+    last_login: datetime = Field(default_factory=datetime.now)
 
 
 class Client(SQLModel, table=True):
@@ -39,8 +39,8 @@ class Client(SQLModel, table=True):
     lon: float
     gender: str
     chart_json: str  # Full ChartData serialized
-    created_at: datetime = Field(default_factory=datetime.utcnow)
-    updated_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=datetime.now)
+    updated_at: datetime = Field(default_factory=datetime.now)
 
 
 class DailyCache(SQLModel, table=True):
@@ -87,7 +87,7 @@ def get_or_create_user(google_id: str, email: str, name: str,
         stmt = select(User).where(User.google_id == google_id)
         user = session.exec(stmt).first()
         if user:
-            user.last_login = datetime.utcnow()
+            user.last_login = datetime.now()
             user.name = name
             if picture_url:
                 user.picture_url = picture_url

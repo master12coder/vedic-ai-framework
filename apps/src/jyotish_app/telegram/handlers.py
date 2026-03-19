@@ -5,6 +5,7 @@ import json
 import logging
 from pathlib import Path
 
+
 logger = logging.getLogger(__name__)
 
 # Default chart path for the primary user
@@ -35,7 +36,7 @@ def _get_user_level(user_id: int) -> str:
     return _user_levels.get(user_id, "medium")
 
 
-def _load_chart(chart_path: str | None = None) -> "ChartData | None":
+def _load_chart(chart_path: str | None = None) -> ChartData | None:
     """Load a saved chart from JSON."""
     from jyotish_engine.models.chart import ChartData
 
@@ -51,7 +52,7 @@ def _load_chart(chart_path: str | None = None) -> "ChartData | None":
     return ChartData.model_validate_json(path.read_text())
 
 
-async def handle_start(update: "Update", context: "ContextTypes.DEFAULT_TYPE") -> None:
+async def handle_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Handle /start command — welcome message."""
     welcome = (
         "🙏 नमस्ते! Welcome to **Jyotish AI** — your Vedic astrology companion.\n\n"
@@ -65,7 +66,7 @@ async def handle_start(update: "Update", context: "ContextTypes.DEFAULT_TYPE") -
     await update.message.reply_text(welcome, parse_mode="Markdown")
 
 
-async def handle_daily(update: "Update", context: "ContextTypes.DEFAULT_TYPE") -> None:
+async def handle_daily(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Handle /daily command — send today's guidance at user's preferred level."""
     user_id = update.effective_user.id
     level_str = _get_user_level(user_id)
@@ -91,7 +92,7 @@ async def handle_daily(update: "Update", context: "ContextTypes.DEFAULT_TYPE") -
     await update.message.reply_text(result)
 
 
-async def handle_level(update: "Update", context: "ContextTypes.DEFAULT_TYPE") -> None:
+async def handle_level(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Handle /level command — set daily guidance detail level."""
     user_id = update.effective_user.id
     args = context.args
@@ -116,7 +117,7 @@ async def handle_level(update: "Update", context: "ContextTypes.DEFAULT_TYPE") -
     await update.message.reply_text(f"✅ Level set to **{new_level}**", parse_mode="Markdown")
 
 
-async def handle_kundali(update: "Update", context: "ContextTypes.DEFAULT_TYPE") -> None:
+async def handle_kundali(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Handle /kundali command — send full chart report."""
     chart = _load_chart()
     if not chart:
@@ -143,7 +144,7 @@ async def handle_kundali(update: "Update", context: "ContextTypes.DEFAULT_TYPE")
             await update.message.reply_text(f"```\n{chunk}\n```", parse_mode="Markdown")
 
 
-def register_handlers(app: "Application") -> None:
+def register_handlers(app: Application) -> None:
     """Register all handlers with the telegram Application."""
     from telegram.ext import CommandHandler
 

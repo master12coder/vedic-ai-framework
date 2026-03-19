@@ -41,6 +41,7 @@ def generate_pdf(
     fmt: str = "detailed",
     body_weight_kg: float = 0,
     chart_image_bytes: bytes | None = None,
+    gemstone_results: list[Any] | None = None,
 ) -> bytes | None:
     """Generate a complete kundali PDF report.
 
@@ -48,8 +49,9 @@ def generate_pdf(
         chart: Computed birth chart.
         output_path: Save path or None for bytes.
         fmt: 'summary', 'detailed', or 'pandit'.
-        body_weight_kg: Body weight for gemstone computation (0 = skip).
+        body_weight_kg: Unused (kept for backward compat). Pass gemstone_results instead.
         chart_image_bytes: Legacy: pre-rendered chart PNG (ignored if fmt used).
+        gemstone_results: Pre-computed gemstone weight results (from apps/ layer).
 
     Returns:
         PDF bytes if output_path is None, else None.
@@ -67,13 +69,8 @@ def generate_pdf(
     ashtakavarga = compute_ashtakavarga(chart)
     navamsha = compute_navamsha(chart)
 
-    gemstone_results: list[Any] = []
-    if body_weight_kg > 0:
-        try:
-            from jyotish_products.plugins.remedies.gemstone import compute_gemstone_weights
-            gemstone_results = compute_gemstone_weights(chart, body_weight_kg)
-        except Exception:
-            logger.warning("Gemstone computation failed, skipping")
+    if gemstone_results is None:
+        gemstone_results = []
 
     # ── Build story ──
     story: list[Any] = []

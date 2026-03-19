@@ -1,13 +1,13 @@
 """Scheduler for daily Telegram messages at 5:30 AM IST."""
 from __future__ import annotations
 
-import json
 import logging
 import os
 import time
 from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
+
 
 logger = logging.getLogger(__name__)
 
@@ -26,7 +26,7 @@ def _next_run_time() -> datetime:
     return target
 
 
-def _load_chart(chart_path: str = "charts/manish.json") -> "ChartData | None":
+def _load_chart(chart_path: str = "charts/manish.json") -> ChartData | None:
     """Load chart from JSON file."""
     from jyotish_engine.models.chart import ChartData
 
@@ -39,8 +39,8 @@ def _load_chart(chart_path: str = "charts/manish.json") -> "ChartData | None":
 
 def _send_telegram_message(token: str, chat_id: str, message: str) -> bool:
     """Send a message via Telegram Bot API (no dependency on python-telegram-bot)."""
-    import urllib.request
     import urllib.parse
+    import urllib.request
 
     url = f"https://api.telegram.org/bot{token}/sendMessage"
     data = urllib.parse.urlencode({

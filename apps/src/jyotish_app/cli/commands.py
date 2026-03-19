@@ -317,7 +317,12 @@ def kundali(
 
     from jyotish_products.plugins.kundali.pdf import generate_pdf
 
-    generate_pdf(chart_data, output_path=output, fmt=fmt, body_weight_kg=body_weight)
+    gem_results = None
+    if body_weight > 0:
+        from jyotish_products.plugins.remedies.gemstone import compute_gemstone_weights
+        gem_results = compute_gemstone_weights(chart_data, body_weight)
+
+    generate_pdf(chart_data, output_path=output, fmt=fmt, gemstone_results=gem_results)
     console.print(f"Kundali PDF ({fmt}) saved to {output}")
 
 

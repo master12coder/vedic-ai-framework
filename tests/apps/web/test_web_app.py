@@ -8,7 +8,6 @@ from fastapi.testclient import TestClient
 
 from jyotish_app.web.database import (
     get_engine,
-    get_or_create_user,
     reset_engine,
 )
 
@@ -38,19 +37,6 @@ def app():
 def client(app):
     """Test client."""
     return TestClient(app)
-
-
-@pytest.fixture
-def auth_client(app):
-    """Test client with mocked auth session."""
-    user = get_or_create_user("g_test", "test@test.com", "Test User")
-    tc = TestClient(app)
-    # Manually set session by using cookie
-    with tc:
-        # Simulate login by setting session data via the session middleware
-        # We'll use a helper approach: create a route that sets session
-        pass
-    return tc, user
 
 
 class TestHealthCheck:

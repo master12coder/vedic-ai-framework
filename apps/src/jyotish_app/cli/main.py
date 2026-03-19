@@ -10,6 +10,7 @@ from rich.console import Console
 from jyotish_engine.compute.chart import compute_chart
 from jyotish_engine.models.chart import ChartData
 
+
 logger = logging.getLogger(__name__)
 console = Console()
 
@@ -56,11 +57,11 @@ def main() -> None:
 @click.option("--gender", default="Male", help="Gender (Male/Female)")
 def chart(name: str, dob: str, tob: str, place: str | None, gender: str) -> None:
     """Compute and display a Vedic birth chart."""
-    from jyotish_engine.compute.yoga import detect_all_yogas
-    from jyotish_engine.compute.dosha import detect_all_doshas
-    from jyotish_engine.compute.dasha import compute_mahadashas
-    from rich.table import Table
     from rich.panel import Panel
+    from rich.table import Table
+
+    from jyotish_engine.compute.dosha import detect_all_doshas
+    from jyotish_engine.compute.yoga import detect_all_yogas
 
     chart_data = compute_chart(name=name, dob=dob, tob=tob, place=place, gender=gender)
 
