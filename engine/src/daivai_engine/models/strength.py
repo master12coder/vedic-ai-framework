@@ -27,6 +27,36 @@ class ShadbalaResult(BaseModel):
     rank: int  # Rank among planets (1 = strongest)
 
 
+class IshtaKashtaPhala(BaseModel):
+    """Good/bad results derived from Shadbala.
+
+    Ishta Phala = benefic potential, Kashta Phala = malefic potential.
+    Net effect positive means planet gives more good than harm.
+    Source: BPHS Chapter 27.
+    """
+
+    planet: str
+    ishta_phala: float  # Benefic potential (0-60)
+    kashta_phala: float  # Malefic potential (0-60)
+    net_effect: float  # ishta - kashta
+    classification: str  # strongly_benefic/mildly_benefic/neutral/mildly_malefic/strongly_malefic
+
+
+class VimshopakaBala(BaseModel):
+    """Strength of planet across divisional charts.
+
+    Evaluates planet dignity in up to 16 vargas with weighted scoring.
+    Source: BPHS Chapters 16-17.
+    """
+
+    planet: str
+    shadvarga_score: float  # 6 main vargas (D1,D2,D3,D9,D12,D30)
+    shodashavarga_score: float  # 16 vargas (most comprehensive)
+    max_score: float  # Maximum possible (20.0)
+    percentage: float  # score/max * 100
+    dignity_in_each: dict[str, str]  # {"D1": "own", "D9": "exalted", ...}
+
+
 class PlanetStrength(BaseModel):
     """Backward-compatible simplified strength view.
 
