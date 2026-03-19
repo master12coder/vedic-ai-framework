@@ -26,7 +26,7 @@ class TestDeeptadiAvasthas:
         results = compute_deeptadi_avasthas(manish_chart)
         venus = next(r for r in results if r.planet == "Venus")
         assert venus.avastha == "vikala"
-        assert venus.strength_multiplier == 0.25
+        assert venus.strength_multiplier == 0.5
 
     def test_all_have_hindi_names(self, manish_chart: ChartData) -> None:
         results = compute_deeptadi_avasthas(manish_chart)
@@ -37,6 +37,31 @@ class TestDeeptadiAvasthas:
         results = compute_deeptadi_avasthas(manish_chart)
         for r in results:
             assert 0.0 <= r.strength_multiplier <= 1.5
+
+    def test_valid_avastha_names(self, manish_chart: ChartData) -> None:
+        """All avasthas should be one of the 9 BPHS states."""
+        valid = {
+            "deepta",
+            "swastha",
+            "mudita",
+            "shanta",
+            "deena",
+            "vikala",
+            "dukhita",
+            "khal",
+            "kopa",
+        }
+        results = compute_deeptadi_avasthas(manish_chart)
+        for r in results:
+            assert r.avastha in valid, f"{r.planet} has invalid avastha '{r.avastha}'"
+
+    def test_debilitated_planet_gets_kopa(self, sample_chart: ChartData) -> None:
+        """Any debilitated planet should get kopa (lowest state)."""
+        results = compute_deeptadi_avasthas(sample_chart)
+        for r in results:
+            planet = sample_chart.planets[r.planet]
+            if planet.dignity == "debilitated":
+                assert r.avastha == "kopa"
 
 
 class TestLajjitadiAvasthas:

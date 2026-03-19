@@ -28,7 +28,9 @@ class TestFullChartAnalysis:
         assert len(analysis.vimshopaka) == 7
         assert len(analysis.ishta_kashta) == 7
         assert len(analysis.double_transit) == 12
+        assert len(analysis.double_transit_moon) == 12
         assert analysis.upapada is not None
+        assert isinstance(analysis.verification_warnings, list)
 
     def test_full_analysis_deterministic(self, manish_chart: ChartData) -> None:
         """Same input must produce same output."""
@@ -39,10 +41,25 @@ class TestFullChartAnalysis:
         assert a1.graha_yuddha == a2.graha_yuddha
         assert a1.upapada == a2.upapada
 
-    def test_full_analysis_has_lordship_context(
-        self, manish_chart: ChartData
-    ) -> None:
+    def test_full_analysis_has_lordship_context(self, manish_chart: ChartData) -> None:
         ctx = _lordship(manish_chart)
         analysis = compute_full_analysis(manish_chart, lordship_context=ctx)
         assert "functional_benefics" in analysis.lordship_context
         assert "functional_malefics" in analysis.lordship_context
+
+    def test_verification_clean(self, manish_chart: ChartData) -> None:
+        """Manish chart should pass all verification checks."""
+        analysis = compute_full_analysis(manish_chart)
+        errors = [w for w in analysis.verification_warnings if w.startswith("ERROR")]
+        assert len(errors) == 0
+
+    def test_json_roundtrip(self, manish_chart: ChartData) -> None:
+        """FullChartAnalysis should survive JSON serialization."""
+        analysis = compute_full_analysis(manish_chart)
+        json_str = analysis.model_dump_json()
+        from daivai_engine.models.analysis import FullChartAnalysis
+
+        restored = FullChartAnalysis.model_validate_json(json_str)
+        assert restored.chart.name == analysis.chart.name
+        assert len(restored.shadbala) == len(analysis.shadbala)
+        assert len(restored.gandanta) == len(analysis.gandanta)

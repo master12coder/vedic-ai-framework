@@ -2,6 +2,8 @@
 
 Deeptadi = 9 states based on dignity, combustion, and planetary war.
 Lajjitadi = 6 states based on house position and conjunctions.
+
+Source: BPHS Chapter 45, verses 1-20.
 """
 
 from __future__ import annotations
@@ -22,18 +24,18 @@ _DEEPTADI_PLANETS = ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Satu
 def compute_deeptadi_avasthas(chart: ChartData) -> list[DeeptadiAvastha]:
     """Compute 9-state Deeptadi Avastha for each planet.
 
-    States (BPHS Ch.45 v1-10):
-    1. Deepta = exalted
-    2. Swastha = own sign
-    3. Mudita = friend's sign
-    4. Shanta = benefic vargas (mooltrikona)
-    5. Deena = enemy's sign
-    6. Vikala = combust
-    7. Dukhita = in malefic sign with malefic aspect/conjunction
-    8. Kala = debilitated
-    9. Kopa = defeated in planetary war (checked externally)
+    States (BPHS Ch.45 v1-10) in priority order:
+    1. Deepta (exalted) = 1.5x
+    2. Swastha (own sign) = 1.3x
+    3. Mudita (great friend's sign) = 1.2x
+    4. Shanta (friend's sign) = 1.1x
+    5. Deena (neutral sign) = 0.8x
+    6. Vikala (combust) = 0.5x
+    7. Dukhita (enemy's sign) = 0.4x
+    8. Khal (great enemy's sign) = 0.3x
+    9. Kopa (debilitated) = 0.2x
 
-    Priority: combustion and debilitation override friendship/enmity.
+    Combustion and debilitation override sign-based states.
     """
     results: list[DeeptadiAvastha] = []
     for name in _DEEPTADI_PLANETS:
@@ -52,52 +54,74 @@ def compute_deeptadi_avasthas(chart: ChartData) -> list[DeeptadiAvastha]:
 
 
 def _classify_deeptadi(name: str, p: PlanetData, chart: ChartData) -> tuple[str, str, str, float]:
-    """Return (avastha, hindi, description, multiplier)."""
-    # Combustion takes high priority (BPHS: vikala overrides most)
+    """Return (avastha, hindi, description, multiplier).
+
+    Priority: debilitation > combustion > dignity > friendship.
+    """
+    # Kopa: debilitated (worst state — BPHS ranks this lowest)
+    if p.dignity == "debilitated":
+        return ("kopa", "कोप", f"{name} is debilitated — defeated state", 0.2)
+
+    # Vikala: combust (overrides sign-based states)
     if p.is_combust and name != "Sun":
-        return ("vikala", "विकल", f"{name} is combust — crippled state", 0.25)
+        return ("vikala", "विकल", f"{name} is combust — crippled state", 0.5)
 
-    match p.dignity:
-        case "exalted":
-            return ("deepta", "दीप्त", f"{name} is exalted — brilliant state", 1.5)
-        case "debilitated":
-            return ("kala", "कल", f"{name} is debilitated — dead state", 0.1)
-        case "own":
-            return ("swastha", "स्वस्थ", f"{name} is in own sign — healthy state", 1.25)
-        case "mooltrikona":
-            return ("shanta", "शान्त", f"{name} is in mooltrikona — peaceful state", 1.2)
+    # Deepta: exalted (best state)
+    if p.dignity == "exalted":
+        return ("deepta", "दीप्त", f"{name} is exalted — brilliant state", 1.5)
 
-    # Check friendship/enmity with sign lord
+    # Swastha: own sign
+    if p.dignity in ("own", "mooltrikona"):
+        return ("swastha", "स्वस्थ", f"{name} is in own sign — healthy state", 1.3)
+
+    # Check friendship/enmity with sign lord for remaining states
     enemies = NATURAL_ENEMIES.get(name, [])
     friends = NATURAL_FRIENDS.get(name, [])
 
-    if p.sign_lord in friends:
-        return ("mudita", "मुदित", f"{name} is in friend's sign — delighted state", 1.0)
-
     if p.sign_lord in enemies:
-        # Check if also aspected/conjunct with malefics → dukhita
-        has_malefic = _has_malefic_influence(name, chart)
-        if has_malefic:
+        # Check if also conjunct/aspected by malefic → dukhita (worse)
+        if _has_malefic_influence(name, chart):
             return (
-                "dukhita",
-                "दुखित",
-                f"{name} is in enemy sign with malefic influence — distressed",
+                "khal",
+                "खल",
+                f"{name} in enemy sign with malefic influence — wicked state",
                 0.3,
             )
-        return ("deena", "दीन", f"{name} is in enemy's sign — miserable state", 0.5)
+        return ("dukhita", "दुखित", f"{name} is in enemy sign — distressed state", 0.4)
 
-    # Neutral
-    return ("shanta", "शान्त", f"{name} is in neutral/benefic position — peaceful state", 0.9)
+    if p.sign_lord in friends:
+        # Distinguish great friend vs friend (BPHS makes this distinction)
+        # Great friend = friend of friend too; simplified: just friend
+        return ("shanta", "शान्त", f"{name} is in friend's sign — peaceful state", 1.1)
+
+    # Neutral sign = deena (BPHS: miserable, not peaceful)
+    return ("deena", "दीन", f"{name} is in neutral sign — miserable state", 0.8)
 
 
 def _has_malefic_influence(planet_name: str, chart: ChartData) -> bool:
-    """Check if planet is conjunct or in same house as a malefic."""
+    """Check if planet is conjunct or aspected by a malefic.
+
+    Checks both same-house conjunction and 7th/special aspects.
+    """
     p = chart.planets[planet_name]
     for other_name, other in chart.planets.items():
         if other_name == planet_name:
             continue
-        if other_name in _MALEFICS and other.house == p.house:
+        if other_name not in _MALEFICS:
+            continue
+        # Same house = conjunction
+        if other.house == p.house:
             return True
+        # 7th aspect (all planets)
+        if ((other.house - 1 + 6) % 12) + 1 == p.house:
+            return True
+        # Special aspects (Mars 4,8; Saturn 3,10; Rahu/Ketu 5,9)
+        from daivai_engine.constants import SPECIAL_ASPECTS
+
+        for asp_dist in SPECIAL_ASPECTS.get(other_name, []):
+            target = ((other.house - 1 + asp_dist - 1) % 12) + 1
+            if target == p.house:
+                return True
     return False
 
 
@@ -171,7 +195,7 @@ def _classify_lajjitadi(name: str, p: PlanetData, chart: ChartData) -> tuple[str
             False,
         )
 
-    # Trushita: in water sign aspected by enemy, not by friend
+    # Trushita: in water sign with enemy influence
     element = SIGN_ELEMENTS[p.sign_index]
     if element == "Water" and any(e in enemies for e in housemates):
         return (

@@ -22,6 +22,8 @@ from daivai_engine.constants import (
     DEBILITATION,
     EXALTATION,
     MOOLTRIKONA,
+    NATURAL_ENEMIES,
+    NATURAL_FRIENDS,
     OWN_SIGNS,
     SIGN_LORDS,
 )
@@ -91,9 +93,11 @@ def compute_vimshopaka_bala(chart: ChartData) -> list[VimshopakaBala]:
         }
 
         # Compute dignity in each varga
+        # For D1, pass actual degree; for others, use mid-sign (15°) approximation
         dignity_map: dict[str, str] = {}
         for varga, varga_sign in varga_signs.items():
-            dignity_map[varga] = _dignity_in_sign(name, varga_sign)
+            deg = p.degree_in_sign if varga == "D1" else 15.0
+            dignity_map[varga] = _dignity_in_sign(name, varga_sign, deg)
 
         # Shadvarga score
         shadvarga = 0.0
@@ -129,19 +133,26 @@ def compute_vimshopaka_bala(chart: ChartData) -> list[VimshopakaBala]:
     return results
 
 
-def _dignity_in_sign(planet: str, sign_idx: int) -> str:
-    """Determine planet's dignity in a given sign."""
+def _dignity_in_sign(planet: str, sign_idx: int, deg_in_sign: float = 15.0) -> str:
+    """Determine planet's dignity in a given sign.
+
+    Args:
+        planet: Planet name.
+        sign_idx: Sign index (0-11).
+        deg_in_sign: Degree within sign (0-30). Defaults to mid-sign.
+            Needed for accurate mooltrikona range check.
+    """
     if EXALTATION.get(planet) == sign_idx:
         return "exalted"
     if DEBILITATION.get(planet) == sign_idx:
         return "debilitated"
 
-    # Check mooltrikona
+    # Check mooltrikona — MUST verify degree is within range (BPHS Ch.16)
     mt = MOOLTRIKONA.get(planet)
-    if mt and mt[0] == sign_idx:
+    if mt and mt[0] == sign_idx and mt[1] <= deg_in_sign <= mt[2]:
         return "mooltrikona"
 
-    # Check own sign
+    # Check own sign (including mooltrikona sign but outside MT degree range)
     if sign_idx in OWN_SIGNS.get(planet, []):
         return "own"
 
@@ -149,8 +160,6 @@ def _dignity_in_sign(planet: str, sign_idx: int) -> str:
     sign_lord = SIGN_LORDS.get(sign_idx, "")
     if sign_lord == planet:
         return "own"
-
-    from daivai_engine.constants import NATURAL_ENEMIES, NATURAL_FRIENDS
 
     if sign_lord in NATURAL_FRIENDS.get(planet, []):
         return "friend"

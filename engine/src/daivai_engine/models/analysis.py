@@ -49,6 +49,8 @@ class FullChartAnalysis(BaseModel):
     lajjitadi_avasthas: list[LajjitadiAvastha]
     vimshopaka: list[VimshopakaBala]
     ishta_kashta: list[IshtaKashtaPhala]
-    double_transit: list[DoubleTransit]
+    double_transit: list[DoubleTransit]  # From lagna
+    double_transit_moon: list[DoubleTransit]  # From Moon sign
     upapada: UpapadaLagna
     lordship_context: dict  # Functional benefic/malefic per lagna
+    verification_warnings: list[str]  # Accuracy check results

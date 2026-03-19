@@ -4,6 +4,8 @@ The primary timing technique used by professional astrologers (K.N. Rao school).
 For each house, checks if BOTH transiting Jupiter and Saturn aspect it.
 When both aspect, that house's significations become active.
 
+Computes from BOTH lagna and Moon sign per standard practice.
+
 Source: Widely used in North Indian tradition, derived from BPHS transit chapter.
 """
 
@@ -37,7 +39,6 @@ _HOUSE_EVENTS: dict[int, str] = {
     12: "Loss, expenses, foreign land, moksha",
 }
 
-# Hindi house names
 _HOUSE_HI: dict[int, str] = {
     1: "तनु",
     2: "धन",
@@ -58,25 +59,51 @@ def check_double_transit(
     chart: ChartData,
     target_date: date | None = None,
 ) -> list[DoubleTransit]:
-    """Check double transit for all 12 houses.
+    """Check double transit for all 12 houses from lagna.
 
     Args:
         chart: Natal birth chart.
         target_date: Date to check transits for. Defaults to today.
 
     Returns:
-        List of 12 DoubleTransit results, one per house.
+        List of 12 DoubleTransit results (from lagna), one per house.
     """
+    return _compute_dt(chart.lagna_sign_index, target_date)
+
+
+def check_double_transit_from_moon(
+    chart: ChartData,
+    target_date: date | None = None,
+) -> list[DoubleTransit]:
+    """Check double transit for all 12 houses from Moon sign.
+
+    K.N. Rao method: most astrologers check from Moon sign for
+    transit analysis, as Moon represents the mind and events.
+
+    Args:
+        chart: Natal birth chart.
+        target_date: Date to check transits for. Defaults to today.
+
+    Returns:
+        List of 12 DoubleTransit results (from Moon sign), one per house.
+    """
+    moon_sign = chart.planets["Moon"].sign_index
+    return _compute_dt(moon_sign, target_date)
+
+
+def _compute_dt(
+    reference_sign: int,
+    target_date: date | None,
+) -> list[DoubleTransit]:
+    """Core double transit computation from any reference sign."""
     if target_date is None:
         target_date = date.today()
 
-    # Get current Jupiter and Saturn positions
     jup_sign = _transit_sign("Jupiter", target_date)
     sat_sign = _transit_sign("Saturn", target_date)
 
-    # Jupiter aspects: 1st (conjunction), 5th, 7th, 9th from its position
-    jup_aspected = _aspected_houses(jup_sign, chart.lagna_sign_index, "Jupiter")
-    sat_aspected = _aspected_houses(sat_sign, chart.lagna_sign_index, "Saturn")
+    jup_aspected = _aspected_houses(jup_sign, reference_sign, "Jupiter")
+    sat_aspected = _aspected_houses(sat_sign, reference_sign, "Saturn")
 
     results: list[DoubleTransit] = []
     for house in range(1, 13):
@@ -113,15 +140,14 @@ def _transit_sign(planet: str, target_date: date) -> int:
     return int(lon / DEGREES_PER_SIGN) % 12
 
 
-def _aspected_houses(planet_sign: int, lagna_sign: int, planet_name: str) -> set[int]:
+def _aspected_houses(planet_sign: int, reference_sign: int, planet_name: str) -> set[int]:
     """Get all natal houses aspected by a transiting planet.
 
     Every planet aspects the 7th house from itself.
-    Special aspects: Mars (4,8), Jupiter (5,9), Saturn (3,10).
+    Special aspects: Jupiter (5,9), Saturn (3,10).
     Being IN a house also counts as aspecting it.
     """
-    # Convert transit sign to natal house
-    transit_house = ((planet_sign - lagna_sign) % 12) + 1
+    transit_house = ((planet_sign - reference_sign) % 12) + 1
 
     aspected = {transit_house}  # Planet is IN this house
     aspected.add(((transit_house - 1 + 6) % 12) + 1)  # 7th aspect
