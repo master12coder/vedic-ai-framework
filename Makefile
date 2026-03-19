@@ -1,4 +1,4 @@
-.PHONY: help install test lint typecheck format audit all clean run
+.PHONY: help install test lint typecheck format audit all clean run backup backup-gdrive backup-setup
 
 PYTHON ?= python3
 UV ?= uv
@@ -66,10 +66,27 @@ all: lint typecheck test audit ## Run everything (CI equivalent)
 # ---------------------------------------------------------------------------
 
 run: ## Show CLI help
-	$(PYTHON) -m jyotish_app.cli.main --help
+	$(PYTHON) -m daivai_app.cli.main --help
 
 chart: ## Compute Manish's chart
-	$(PYTHON) -m jyotish_app.cli.main chart --name "Manish Chaurasia" --dob "13/03/1989" --tob "12:17" --place "Varanasi" --gender Male
+	$(PYTHON) -m daivai_app.cli.main chart --name "Manish Chaurasia" --dob "13/03/1989" --tob "12:17" --place "Varanasi" --gender Male
+
+# ---------------------------------------------------------------------------
+# Maintenance
+# ---------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------
+# Backup
+# ---------------------------------------------------------------------------
+
+backup: ## Backup local data (database, charts, .env)
+	bash scripts/backup/local_backup.sh
+
+backup-gdrive: ## Backup + upload to Google Drive
+	bash scripts/backup/auto_backup.sh
+
+backup-setup: ## One-time: configure Google Drive sync
+	bash scripts/backup/setup_gdrive_sync.sh
 
 # ---------------------------------------------------------------------------
 # Maintenance
