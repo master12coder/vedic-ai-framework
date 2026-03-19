@@ -1,0 +1,42 @@
+{# Dasha timeline — CSS flexbox horizontal bars with ▼ NOW marker #}
+<div class="section">
+  <h2 class="section-title">विमशोत्तरी दशा — Dasha Timeline</h2>
+
+  {# Mahadasha bar #}
+  <h3 class="subsection-title">महादशा</h3>
+  <div class="dasha-bar-container">
+    {% for bar in dasha_bars %}
+    <div class="dasha-segment" style="flex: {{ bar.pct }}; background: {{ bar.color }}; {% if bar.is_current %}opacity: 1; border: 2px solid #1A237E;{% else %}opacity: 0.6;{% endif %}">
+      <span class="dasha-label">{{ bar.lord_hi }}</span>
+      {% if bar.is_current %}<span class="dasha-now">▼</span>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  <div class="dasha-years">
+    {% for bar in dasha_bars %}
+    <span style="flex: {{ bar.pct }}; font-size: 8px; text-align: center;">{{ bar.start }}</span>
+    {% endfor %}
+  </div>
+
+  {# Antardasha bar (current MD expanded) #}
+  <h3 class="subsection-title">अन्तर्दशा ({{ planet_hi.get(md.lord, md.lord) }} महादशा)</h3>
+  <div class="dasha-bar-container">
+    {% for bar in ad_bars %}
+    <div class="dasha-segment" style="flex: {{ bar.pct }}; background: {{ bar.color }}; {% if bar.is_current %}opacity: 1; border: 2px solid #1A237E;{% else %}opacity: 0.6;{% endif %}">
+      <span class="dasha-label">{{ bar.lord_hi }}</span>
+      {% if bar.is_current %}<span class="dasha-now">▼</span>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  <div class="dasha-years">
+    {% for bar in ad_bars %}
+    <span style="flex: {{ bar.pct }}; font-size: 7px; text-align: center;">{{ bar.start }}</span>
+    {% endfor %}
+  </div>
+
+  <p class="dasha-current">
+    वर्तमान: <strong>{{ md.lord }}</strong> महादशा › <strong>{{ ad.lord }}</strong> अन्तर्दशा
+    <br>
+    <span class="text-muted">{{ md.start.strftime('%b %Y') }} — {{ md.end.strftime('%b %Y') }}</span>
+  </p>
+</div>

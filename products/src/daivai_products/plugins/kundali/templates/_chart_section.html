@@ -1,0 +1,16 @@
+{# D1 + D9 SVG charts side by side (or stacked on narrow) #}
+<div class="section chart-section">
+  <h2 class="section-title">राशि चक्र — Birth Chart</h2>
+  <div class="chart-grid">
+    <div class="chart-box">
+      <h3>D1 लग्न कुंडली</h3>
+      {{ d1_svg|safe }}
+    </div>
+    {% if fmt != 'summary' %}
+    <div class="chart-box">
+      <h3>D9 नवमांश</h3>
+      {{ d9_svg|safe }}
+    </div>
+    {% endif %}
+  </div>
+</div>

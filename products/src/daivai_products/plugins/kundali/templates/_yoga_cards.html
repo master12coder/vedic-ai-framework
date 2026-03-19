@@ -1,0 +1,21 @@
+{# Yoga cards — bordered by effect type #}
+<div class="section">
+  <h2 class="section-title">योग — Yogas</h2>
+  {% if yogas %}
+  <div class="yoga-grid">
+    {% for y in yogas %}
+    <div class="yoga-card yoga-{{ y.effect }}">
+      <div class="yoga-header">
+        <strong>{{ y.name_hindi }} ({{ y.name }})</strong>
+        {% if y.effect == 'benefic' %}<span class="tag tag-shubh">शुभ</span>
+        {% elif y.effect == 'malefic' %}<span class="tag tag-ashubh">अशुभ</span>
+        {% else %}<span class="tag tag-mixed">मिश्र</span>{% endif %}
+      </div>
+      <p class="yoga-desc">{{ y.description[:120] }}</p>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="text-muted">No active yogas detected in this chart.</p>
+  {% endif %}
+</div>

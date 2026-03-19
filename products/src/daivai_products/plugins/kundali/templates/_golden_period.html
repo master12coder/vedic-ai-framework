@@ -1,0 +1,22 @@
+{# Golden period highlight card #}
+<div class="section">
+  <h2 class="section-title">स्वर्ण काल — Golden Period</h2>
+  {% if golden %}
+  <div class="golden-card">
+    <div class="golden-title">
+      {{ golden.lord_hi }} ({{ golden.lord }}) महादशा
+      {% if golden.is_yogakaraka %}<span class="tag tag-yoga">योगकारक</span>{% endif %}
+    </div>
+    <div class="golden-dates">{{ golden.start }} — {{ golden.end }}</div>
+    <p class="golden-advice">
+      {% if golden.is_yogakaraka %}
+      योगकारक ग्रह की दशा — career growth, spiritual progress, and material gains are all favorable.
+      {% else %}
+      शुभ दशा — favorable for education, relationships, and health. Strengthen this planet.
+      {% endif %}
+    </p>
+  </div>
+  {% else %}
+  <p class="text-muted">No strongly benefic period found in the next 20 years. Focus on remedies and mantra practice.</p>
+  {% endif %}
+</div>

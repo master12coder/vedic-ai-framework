@@ -1,0 +1,52 @@
+{# Gemstone recommendations (green) + prohibited (red) stone cards #}
+<div class="section">
+  <h2 class="section-title">रत्न — Gemstones</h2>
+
+  {# Recommended stones #}
+  {% if recommended_stones %}
+  <h3 class="subsection-title" style="color: #2E7D32;">अनुशंसित रत्न — Recommended</h3>
+  <div class="gem-grid">
+    {% for stone in recommended_stones %}
+    <div class="gem-card gem-recommended">
+      <div class="gem-name">{{ stone.stone_hi }} ({{ stone.stone }})</div>
+      <div class="gem-planet">{{ stone.planet }}</div>
+      <div class="gem-reason">{{ stone.reasoning[:100] }}</div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {# Prohibited stones #}
+  {% if prohibited_stones %}
+  <h3 class="subsection-title" style="color: #C62828;">निषिद्ध रत्न — Prohibited for {{ chart.lagna_sign_en }} Lagna</h3>
+  <div class="gem-grid">
+    {% for stone in prohibited_stones %}
+    <div class="gem-card gem-prohibited">
+      <div class="gem-name">{{ stone.stone_hi }} ({{ stone.stone }})</div>
+      <div class="gem-planet">{{ stone.planet }} — {{ stone.lordship }}</div>
+      <div class="gem-reason">{{ stone.reasoning[:100] }}</div>
+    </div>
+    {% endfor %}
+  </div>
+  <p class="gem-warning">
+    कोई भी वेबसाइट यह सूची नहीं दिखाती। वे रत्न बेचते हैं।<br>
+    <span class="text-muted">No gemstone website shows this list. They sell stones. This tool shows what is actually safe for YOUR lagna based on Parashari lordship rules.</span>
+  </p>
+  {% endif %}
+
+  {% if gemstone_results %}
+  <h3 class="subsection-title">Detailed Weight Analysis</h3>
+  {% for r in gemstone_results %}
+    {% if r.status == 'recommended' or r.status == 'test_with_caution' %}
+    <div class="gem-detail">
+      <strong>{{ r.stone_name_hi }} ({{ r.stone_name }})</strong> — {{ r.planet }}
+      <br>Recommended: <strong>{{ "%.2f"|format(r.recommended_ratti) }} ratti</strong>
+      (base: {{ "%.1f"|format(r.base_ratti) }}r)
+      {% if r.status == 'test_with_caution' %}
+        <span class="tag tag-mixed">सावधानी</span>
+      {% endif %}
+    </div>
+    {% endif %}
+  {% endfor %}
+  {% endif %}
+</div>

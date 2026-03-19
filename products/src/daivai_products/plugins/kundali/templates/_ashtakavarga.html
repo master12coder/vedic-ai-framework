@@ -1,0 +1,27 @@
+{# Color-coded ashtakavarga bindu grid (green 5+, gold 3-4, red 0-2) #}
+<div class="section">
+  <h2 class="section-title">अष्टकवर्ग — Ashtakavarga</h2>
+  <table class="avk-table">
+    <thead>
+      <tr>
+        <th>ग्रह</th>
+        {% for sign in avk_grid.signs_hi %}
+        <th>{{ sign }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in avk_grid.rows %}
+      <tr>
+        <td class="avk-planet">{{ row.planet_hi }}</td>
+        {% for cell in row.cells %}
+        <td class="avk-cell" style="background: {{ cell.color }}20; color: {{ cell.color }}; font-weight: 600;">
+          {{ cell.value }}
+        </td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p class="text-muted avk-total">सर्वाष्टकवर्ग Total: {{ avk_grid.total }}</p>
+</div>

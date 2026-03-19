@@ -1,0 +1,28 @@
+{# Computation certificate — metadata + disclaimer #}
+<div class="section certificate">
+  <h2 class="section-title">गणना प्रमाणपत्र — Computation Certificate</h2>
+  <table class="cert-table">
+    <tbody>
+      <tr><td class="cert-label">Ephemeris</td><td>Swiss Ephemeris (NASA JPL DE431)</td></tr>
+      <tr><td class="cert-label">Ayanamsha</td><td>Lahiri (Chitrapaksha) — {{ "%.4f"|format(chart.ayanamsha) }}°</td></tr>
+      <tr><td class="cert-label">Coordinates</td><td>{{ "%.4f"|format(chart.latitude) }}°N, {{ "%.4f"|format(chart.longitude) }}°E</td></tr>
+      <tr><td class="cert-label">Timezone</td><td>{{ chart.timezone_name }}</td></tr>
+      <tr><td class="cert-label">Julian Day</td><td>{{ "%.6f"|format(chart.julian_day) }}</td></tr>
+      <tr><td class="cert-label">House System</td><td>Whole Sign (Rashi-based)</td></tr>
+      <tr><td class="cert-label">Dasha System</td><td>Vimshottari (120-year cycle)</td></tr>
+      <tr><td class="cert-label">Computation</td><td>Sidereal (not Tropical)</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="subsection-title">Cross-verification</h3>
+  <p style="color: #2E7D32;">Planet longitudes can be verified against DrikPanchang.com or any Swiss Ephemeris-based software using Lahiri ayanamsha.</p>
+
+  <h3 class="subsection-title">अस्वीकरण — Disclaimer</h3>
+  <p>यह computational tool है, Pandit Ji का विकल्प नहीं।</p>
+  <p class="text-muted disclaimer-text">
+    This is a computational tool, not a replacement for an experienced astrologer.
+    Jyotish is a complex vidya that requires human wisdom beyond mathematical computation.
+    Use this report as a starting point for discussion with your Pandit Ji, not as a final answer.
+  </p>
+  <p class="text-muted" style="font-size: 9px;">Open source: github.com/DaivAI</p>
+</div>

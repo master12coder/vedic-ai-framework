@@ -1,0 +1,12 @@
+{# Title page — ॐ, name, birth details, lagna, nakshatra, dasha, branding #}
+<div class="title-page">
+  <div class="om">ॐ</div>
+  <h1 class="name">{{ chart.name }}</h1>
+  <p class="birth-info">जन्म: {{ chart.dob }} | {{ chart.tob }} | {{ chart.place }}</p>
+  <div class="title-details">
+    <p>लग्न: {{ chart.lagna_sign_hi }} ({{ chart.lagna_sign_en }}) — {{ "%.1f"|format(chart.lagna_degree) }}°</p>
+    <p>चन्द्र: {{ chart.planets['Moon'].nakshatra }} Pada {{ chart.planets['Moon'].pada }}</p>
+    <p>वर्तमान दशा: {{ planet_hi.get(md.lord, md.lord) }} ({{ md.lord }}) › {{ planet_hi.get(ad.lord, ad.lord) }} ({{ ad.lord }})</p>
+  </div>
+  <div class="branding">DaivAI — Vedic Astrology Engine</div>
+</div>

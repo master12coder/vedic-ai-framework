@@ -215,3 +215,32 @@ HOUSE_LABEL_HI: dict[int, str] = {
     11: "लाभ",
     12: "व्यय",
 }
+
+
+# ── Planet color helpers (no ReportLab dependency) ────────────────────────
+
+
+def planet_color_hex(
+    name: str,
+    benefics: set[str],
+    malefics: set[str],
+    yogakaraka: str,
+) -> str:
+    """Return hex color string for a planet based on functional role.
+
+    Args:
+        name: Planet name (English).
+        benefics: Set of functional benefic planet names for this lagna.
+        malefics: Set of functional malefic planet names for this lagna.
+        yogakaraka: Yogakaraka planet name (or empty string).
+
+    Returns:
+        Hex color string (e.g. '#2E7D32').
+    """
+    if name == yogakaraka:
+        return MPL_GOLD
+    if name in benefics:
+        return MPL_GREEN
+    if name in malefics:
+        return MPL_RED
+    return MPL_TEXT

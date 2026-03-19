@@ -194,6 +194,21 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
             },
         )
 
+    @app.get("/client/{client_id}/kundali", response_class=HTMLResponse)
+    async def kundali_preview(request: Request, client_id: int) -> Response:
+        """HTML kundali preview — beautiful print-ready view."""
+        user = require_auth(request)
+        client = get_client(client_id)
+        if not client or client.user_id != user["id"]:
+            return RedirectResponse(url="/dashboard", status_code=302)
+
+        from daivai_engine.models.chart import ChartData
+        from daivai_products.plugins.kundali.pdf import generate_html
+
+        chart = ChartData.model_validate_json(client.chart_json)
+        html = generate_html(chart, fmt="detailed", standalone=False)
+        return HTMLResponse(content=html)
+
     @app.get("/client/{client_id}/pdf")
     async def download_pdf(request: Request, client_id: int) -> Response:
         """Download kundali PDF."""

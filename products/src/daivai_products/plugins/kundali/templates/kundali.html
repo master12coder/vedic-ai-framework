@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>कुंडली — {{ chart.name }}</title>
+{% if standalone %}
+<style>
+@page {
+  size: A4;
+  margin: 1.5cm;
+  @bottom-center { content: "DaivAI — " counter(page); font-size: 8px; color: #757575; }
+}
+@font-face {
+  font-family: 'Noto Sans Devanagari';
+  src: url('{{ font_data_uri }}') format('truetype');
+  font-weight: 400;
+}
+</style>
+{% endif %}
+<style>
+/* ── Design Tokens ─────────────────────────────────── */
+:root {
+  --saffron: #FF6F00;
+  --cream: #FFFDE7;
+  --green: #2E7D32;
+  --red: #C62828;
+  --gold: #FF8F00;
+  --indigo: #1A237E;
+  --light-saffron: #FFF3E0;
+  --gray: #9E9E9E;
+  --text: #212121;
+  --text-muted: #757575;
+}
+
+/* ── Base ──────────────────────────────────────────── */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans Devanagari', 'Segoe UI', sans-serif;
+  color: var(--text);
+  background: white;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* ── Title Page ────────────────────────────────────── */
+.title-page {
+  text-align: center;
+  padding: 60px 20px 40px;
+  page-break-after: always;
+}
+.title-page .om {
+  font-size: 72px;
+  color: var(--saffron);
+  margin-bottom: 16px;
+}
+.title-page .name {
+  font-size: 28px;
+  color: var(--indigo);
+  margin-bottom: 8px;
+}
+.title-page .birth-info {
+  font-size: 14px;
+  color: var(--saffron);
+  margin-bottom: 24px;
+}
+.title-page .title-details {
+  font-size: 13px;
+  line-height: 2;
+}
+.title-page .branding {
+  margin-top: 60px;
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+/* ── Sections ──────────────────────────────────────── */
+.section {
+  margin-bottom: 24px;
+  page-break-inside: avoid;
+}
+.section-title {
+  font-size: 16px;
+  color: var(--indigo);
+  border-bottom: 2px solid var(--saffron);
+  padding-bottom: 4px;
+  margin-bottom: 12px;
+}
+.subsection-title {
+  font-size: 12px;
+  color: var(--saffron);
+  margin: 10px 0 6px;
+}
+.text-muted { color: var(--text-muted); font-size: 9px; }
+
+/* ── Charts ────────────────────────────────────────── */
+.chart-grid {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.chart-box {
+  flex: 1;
+  min-width: 220px;
+  max-width: 360px;
+  text-align: center;
+}
+.chart-box h3 {
+  font-size: 12px;
+  color: var(--indigo);
+  margin-bottom: 6px;
+}
+.chart-box svg { width: 100%; height: auto; }
+.chart-section { page-break-after: always; }
+
+/* ── Graha Table ───────────────────────────────────── */
+.graha-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10px;
+}
+.graha-table th {
+  background: var(--indigo);
+  color: white;
+  padding: 5px 6px;
+  text-align: left;
+  font-weight: 600;
+}
+.graha-table td {
+  padding: 4px 6px;
+  border-bottom: 1px solid #eee;
+}
+.graha-table tr:nth-child(even) { background: var(--light-saffron); }
+
+/* Role tags */
+.role-tag {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: 600;
+}
+.role-shubh { background: #E8F5E9; color: var(--green); }
+.role-ashubh { background: #FFEBEE; color: var(--red); }
+.role-yoga { background: #FFF8E1; color: var(--gold); }
+.role-neutral { color: var(--gray); }
+
+/* ── Dasha Timeline ────────────────────────────────── */
+.dasha-bar-container {
+  display: flex;
+  height: 28px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 2px;
+}
+.dasha-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-width: 20px;
+  color: white;
+  font-size: 9px;
+  font-weight: 600;
+}
+.dasha-label { z-index: 1; }
+.dasha-now {
+  position: absolute;
+  top: -10px;
+  font-size: 10px;
+  color: var(--indigo);
+}
+.dasha-years {
+  display: flex;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.dasha-current {
+  font-size: 11px;
+  margin-top: 8px;
+  padding: 8px;
+  background: var(--light-saffron);
+  border-radius: 4px;
+}
+
+/* ── Ashtakavarga ──────────────────────────────────── */
+.avk-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10px;
+  text-align: center;
+}
+.avk-table th {
+  background: var(--indigo);
+  color: white;
+  padding: 3px 2px;
+  font-size: 9px;
+}
+.avk-table td { padding: 3px 2px; border: 1px solid #eee; }
+.avk-planet { font-weight: 600; text-align: left; padding-left: 6px !important; }
+.avk-cell { font-weight: 600; min-width: 28px; }
+.avk-total { margin-top: 4px; text-align: right; }
+
+/* ── Yoga Cards ────────────────────────────────────── */
+.yoga-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+}
+.yoga-card {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border-left: 4px solid;
+}
+.yoga-benefic { border-color: var(--green); background: #E8F5E9; }
+.yoga-malefic { border-color: var(--red); background: #FFEBEE; }
+.yoga-mixed { border-color: var(--gold); background: #FFF8E1; }
+.yoga-header { display: flex; justify-content: space-between; align-items: center; font-size: 11px; }
+.yoga-desc { font-size: 9px; color: var(--text-muted); margin-top: 4px; }
+.tag {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 8px;
+  font-weight: 600;
+}
+.tag-shubh { background: #C8E6C9; color: var(--green); }
+.tag-ashubh { background: #FFCDD2; color: var(--red); }
+.tag-mixed { background: #FFE0B2; color: var(--gold); }
+.tag-yoga { background: #FFE0B2; color: var(--gold); }
+
+/* ── Shadbala ──────────────────────────────────────── */
+.shadbala-list { display: flex; flex-direction: column; gap: 6px; }
+.shadbala-row { display: flex; align-items: center; gap: 8px; }
+.shadbala-planet { width: 100px; font-weight: 600; font-size: 11px; }
+.shadbala-rank { font-size: 8px; color: var(--gray); margin-left: 4px; }
+.shadbala-bar-track {
+  flex: 1;
+  height: 14px;
+  background: #f0f0f0;
+  border-radius: 7px;
+  overflow: hidden;
+}
+.shadbala-bar-fill {
+  height: 100%;
+  border-radius: 7px;
+  transition: width 0.3s;
+}
+.shadbala-ratio { width: 45px; text-align: right; font-weight: 600; font-size: 11px; }
+.shadbala-ratio.strong { color: var(--green); }
+.shadbala-ratio.weak { color: var(--red); }
+.shadbala-note { margin-top: 6px; }
+
+/* ── Golden Period ─────────────────────────────────── */
+.golden-card {
+  border: 2px solid var(--gold);
+  background: var(--light-saffron);
+  border-radius: 6px;
+  padding: 16px;
+  text-align: center;
+}
+.golden-title { font-size: 16px; color: var(--indigo); font-weight: 600; }
+.golden-dates { font-size: 13px; color: var(--green); margin: 6px 0; }
+.golden-advice { font-size: 10px; color: var(--text); margin-top: 8px; }
+
+/* ── Gemstones ─────────────────────────────────────── */
+.gem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.gem-card {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid;
+}
+.gem-recommended { border-color: var(--green); background: #E8F5E9; }
+.gem-prohibited { border-color: var(--red); background: #FFEBEE; }
+.gem-name { font-weight: 600; font-size: 12px; }
+.gem-planet { font-size: 10px; color: var(--text-muted); }
+.gem-reason { font-size: 9px; color: var(--text-muted); margin-top: 4px; }
+.gem-warning {
+  font-size: 11px;
+  color: var(--red);
+  font-weight: 600;
+  margin-top: 8px;
+}
+.gem-detail {
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 10px;
+}
+
+/* ── Certificate ───────────────────────────────────── */
+.cert-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10px;
+  margin-bottom: 12px;
+}
+.cert-table td {
+  padding: 4px 8px;
+  border: 1px solid #eee;
+}
+.cert-table tr:nth-child(even) { background: var(--light-saffron); }
+.cert-label { font-weight: 600; width: 120px; color: var(--indigo); }
+.disclaimer-text { font-size: 9px; line-height: 1.6; }
+.certificate { page-break-before: always; }
+</style>
+</head>
+<body>
+
+{% include '_title_page.html' %}
+{% include '_chart_section.html' %}
+
+{% if fmt != 'summary' %}
+  {% include '_graha_table.html' %}
+  {% include '_dasha_timeline.html' %}
+  {% include '_ashtakavarga.html' %}
+{% endif %}
+
+{% include '_yoga_cards.html' %}
+
+{% if fmt != 'summary' %}
+  {% include '_shadbala.html' %}
+  {% include '_golden_period.html' %}
+{% endif %}
+
+{% include '_gemstones.html' %}
+{% include '_certificate.html' %}
+
+</body>
+</html>

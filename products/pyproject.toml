@@ -15,7 +15,7 @@ groq = ["groq>=0.9.0"]
 ollama = ["ollama>=0.4.0"]
 claude = ["anthropic>=0.39.0"]
 openai = ["openai>=1.50.0"]
-pdf = ["reportlab>=4.0", "matplotlib>=3.8"]
+pdf = ["reportlab>=4.0", "matplotlib>=3.8", "weasyprint>=62.0"]
 all = ["jyotish-products[groq,ollama,claude,openai,pdf]"]
 
 [build-system]

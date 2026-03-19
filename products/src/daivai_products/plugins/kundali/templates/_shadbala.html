@@ -1,0 +1,21 @@
+{# Shadbala — CSS progress bars, green ≥1.0, red <1.0 #}
+<div class="section">
+  <h2 class="section-title">षड्बल — Planetary Strength</h2>
+  <div class="shadbala-list">
+    {% for s in shadbala_data %}
+    <div class="shadbala-row">
+      <div class="shadbala-planet" style="color: {{ s.planet_color }};">
+        {{ s.planet_hi }} {{ s.planet }}
+        <span class="shadbala-rank">#{{ s.rank }}</span>
+      </div>
+      <div class="shadbala-bar-track">
+        <div class="shadbala-bar-fill" style="width: {{ s.bar_pct }}%; background: {{ s.bar_color }};"></div>
+      </div>
+      <div class="shadbala-ratio {% if s.is_strong %}strong{% else %}weak{% endif %}">
+        {{ s.ratio }}×
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <p class="text-muted shadbala-note">Ratio = Total ÷ Required. ≥1.0 = strong planet.</p>
+</div>

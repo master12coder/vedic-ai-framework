@@ -1,0 +1,40 @@
+{# Planet positions table with Unicode motion symbols #}
+<div class="section">
+  <h2 class="section-title">ग्रह स्थिति — Planet Positions</h2>
+  <table class="graha-table">
+    <thead>
+      <tr>
+        <th>ग्रह</th>
+        <th>राशि</th>
+        <th>अंश</th>
+        <th>नक्षत्र</th>
+        <th>पाद</th>
+        <th>भाव</th>
+        <th>गति</th>
+        <th>अवस्था</th>
+        {% if planet_rows[0].ratio is not none %}
+        <th>बल</th>
+        {% endif %}
+        <th>लग्न-फल</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in planet_rows %}
+      <tr>
+        <td style="color: {{ p.color }}; font-weight: 600;">{{ p.name_hi }} {{ p.name }}</td>
+        <td>{{ p.sign_hi }}</td>
+        <td>{{ p.degree }}°</td>
+        <td>{{ p.nakshatra }}</td>
+        <td>{{ p.pada }}</td>
+        <td>{{ p.house }}</td>
+        <td>{{ p.motion }}</td>
+        <td>{{ p.avastha }}</td>
+        {% if p.ratio is not none %}
+        <td>{{ p.ratio }}×</td>
+        {% endif %}
+        <td><span class="role-tag role-{{ p.role_class }}">{{ p.role }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
