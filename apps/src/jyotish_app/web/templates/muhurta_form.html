@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}मुहूर्त — Jyotish AI{% endblock %}
+
+{% block content %}
+<div class="j-p-md">
+  <a href="/dashboard" class="j-text-sm" style="color: var(--j-saffron-600); text-decoration: none;">&larr; वापस</a>
+
+  <h1 style="font-size: 1.3rem; color: var(--j-maroon); margin: var(--j-space-md) 0;">
+    शुभ मुहूर्त खोजें
+  </h1>
+
+  <form action="/muhurta/result" method="POST">
+    <div class="j-card">
+      <div class="j-card-header">कार्य विवरण — Purpose</div>
+
+      <div class="j-form-group">
+        <label class="j-label">कार्य का प्रकार / Purpose *</label>
+        <select name="purpose" class="j-input" required>
+          <option value="marriage">विवाह (Marriage)</option>
+          <option value="property">गृह प्रवेश (Griha Pravesh)</option>
+          <option value="business">व्यापार (Business)</option>
+          <option value="travel">यात्रा (Travel)</option>
+        </select>
+      </div>
+
+      <div style="display: flex; gap: var(--j-space-md);">
+        <div class="j-form-group" style="flex: 1;">
+          <label class="j-label">आरंभ तिथि / From Date *</label>
+          <input type="text" name="from_date" class="j-input" required placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}">
+        </div>
+        <div class="j-form-group" style="flex: 1;">
+          <label class="j-label">अंतिम तिथि / To Date *</label>
+          <input type="text" name="to_date" class="j-input" required placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}">
+        </div>
+      </div>
+    </div>
+
+    <div class="j-card">
+      <div class="j-card-header">स्थान — Location</div>
+
+      <div style="display: flex; gap: var(--j-space-md);">
+        <div class="j-form-group" style="flex: 1;">
+          <label class="j-label">अक्षांश / Latitude</label>
+          <input type="number" name="lat" class="j-input" step="0.0001" placeholder="25.3176" value="25.3176">
+        </div>
+        <div class="j-form-group" style="flex: 1;">
+          <label class="j-label">देशांतर / Longitude</label>
+          <input type="number" name="lon" class="j-input" step="0.0001" placeholder="83.0067" value="83.0067">
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="j-btn j-btn-saffron j-btn-block" style="margin: var(--j-space-md);">
+      शुभ मुहूर्त खोजें &rarr;
+    </button>
+  </form>
+</div>
+{% endblock %}

@@ -166,6 +166,54 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
             headers={"Content-Disposition": f"attachment; filename=kundali_{client.name}.pdf"},
         )
 
+    @app.get("/client/{client_id}/daily", response_class=HTMLResponse)
+    async def daily_page(request: Request, client_id: int):
+        """Daily guidance page with transit-based suggestions."""
+        user = require_auth(request)
+        client = get_client(client_id)
+        if not client or client.user_id != user["id"]:
+            return RedirectResponse(url="/dashboard", status_code=302)
+
+        chart_data = json.loads(client.chart_json)
+
+        from jyotish_engine.compute.daily import compute_daily_suggestion
+        from jyotish_engine.models.chart import ChartData
+
+        chart = ChartData.model_validate(chart_data)
+        suggestion = compute_daily_suggestion(chart)
+
+        return templates.TemplateResponse("daily.html", {
+            "request": request, "user": user, "client": client,
+            "chart": chart_data, "suggestion": suggestion,
+        })
+
+    @app.get("/client/{client_id}/navamsha", response_class=HTMLResponse)
+    async def navamsha_page(request: Request, client_id: int):
+        """D9 Navamsha divisional chart page."""
+        user = require_auth(request)
+        client = get_client(client_id)
+        if not client or client.user_id != user["id"]:
+            return RedirectResponse(url="/dashboard", status_code=302)
+
+        chart_data = json.loads(client.chart_json)
+        ctx = _build_chart_context(chart_data)
+
+        from jyotish_engine.compute.divisional import (
+            compute_navamsha,
+            get_vargottam_planets,
+        )
+        from jyotish_engine.models.chart import ChartData
+
+        chart = ChartData.model_validate(chart_data)
+        d9_positions = compute_navamsha(chart)
+        vargottam = get_vargottam_planets(chart)
+
+        return templates.TemplateResponse("navamsha.html", {
+            "request": request, "user": user, "client": client,
+            "chart": chart_data, "d9_positions": d9_positions,
+            "vargottam": vargottam, **ctx,
+        })
+
     @app.get("/api/chart/{client_id}")
     async def api_chart(request: Request, client_id: int):
         """JSON API for chart data."""

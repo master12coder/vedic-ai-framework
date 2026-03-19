@@ -78,6 +78,10 @@ def create_app():
     from jyotish_app.web.routes import register_routes
     register_routes(app, templates)
 
+    # ── Register standalone routes (match, muhurta) ──
+    from jyotish_app.web.routes_standalone import register_standalone_routes
+    register_standalone_routes(app, templates)
+
     # ── Health check ──
     @app.get("/health")
     async def health():

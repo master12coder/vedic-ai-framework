@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}गुण मिलान फल — Jyotish AI{% endblock %}
+
+{% block content %}
+<div class="j-p-md">
+  <a href="/match" class="j-text-sm" style="color: var(--j-saffron-600); text-decoration: none;">&larr; नया मिलान</a>
+
+  <h1 style="font-size: 1.3rem; color: var(--j-maroon); margin: var(--j-space-md) 0;">
+    अष्टकूट गुण मिलान फल
+  </h1>
+
+  <!-- Name badges -->
+  <div style="display: flex; justify-content: center; gap: var(--j-space-md); margin-bottom: var(--j-space-md); flex-wrap: wrap;">
+    <span class="j-tag j-tag-saffron" style="font-size: 0.95rem; padding: 6px 16px;">{{ name1 }}</span>
+    <span style="color: var(--j-ink-300); align-self: center;">&amp;</span>
+    <span class="j-tag j-tag-saffron" style="font-size: 0.95rem; padding: 6px 16px;">{{ name2 }}</span>
+  </div>
+
+  <!-- Score circle -->
+  <div class="j-card j-text-center" style="padding: var(--j-space-lg);">
+    <div style="
+      width: 120px; height: 120px; border-radius: 50%; margin: 0 auto var(--j-space-md);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      border: 6px solid {% if result.total_obtained >= 25 %}var(--j-shubh){% elif result.total_obtained >= 18 %}var(--j-gold){% else %}var(--j-ashubh){% endif %};
+      background: {% if result.total_obtained >= 25 %}var(--j-shubh-bg){% elif result.total_obtained >= 18 %}#FFF8E1{% else %}var(--j-ashubh-bg){% endif %};
+    ">
+      <span style="font-size: 2rem; font-weight: 700; color: {% if result.total_obtained >= 25 %}var(--j-shubh){% elif result.total_obtained >= 18 %}var(--j-gold){% else %}var(--j-ashubh){% endif %};">
+        {{ result.total_obtained }}/{{ result.total_max|int }}
+      </span>
+      <span class="j-text-xs j-text-muted">{{ result.percentage }}%</span>
+    </div>
+
+    <!-- Hindi verdict -->
+    <p style="font-size: 1.1rem; font-weight: 600; color: {% if result.total_obtained >= 25 %}var(--j-shubh){% elif result.total_obtained >= 18 %}var(--j-gold){% else %}var(--j-ashubh){% endif %};">
+      {% if result.total_obtained >= 25 %}
+        उत्तम मिलान — विवाह अत्यंत शुभ
+      {% elif result.total_obtained >= 18 %}
+        अच्छा मिलान — विवाह योग्य
+      {% elif result.total_obtained >= 14 %}
+        सामान्य मिलान — विचार आवश्यक
+      {% else %}
+        मिलान कमजोर — विस्तृत कुंडली विश्लेषण आवश्यक
+      {% endif %}
+    </p>
+    <p class="j-text-sm j-text-muted">{{ result.recommendation }}</p>
+  </div>
+
+  <!-- 8 Koota progress bars -->
+  <div class="j-card">
+    <div class="j-card-header">अष्टकूट विवरण — Koota Details</div>
+
+    {% for k in result.kootas %}
+    <div style="margin-bottom: var(--j-space-md);">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--j-space-xs);">
+        <span style="font-weight: 600; font-size: 0.9rem;">{{ k.name_hindi }} ({{ k.name }})</span>
+        <span class="j-text-sm" style="font-weight: 600;">{{ k.obtained }}/{{ k.max_points|int }}</span>
+      </div>
+      <div style="background: var(--j-cream-300); border-radius: var(--j-radius-pill); height: 10px; overflow: hidden;">
+        {% set pct = (k.obtained / k.max_points * 100) if k.max_points > 0 else 0 %}
+        <div style="
+          height: 100%;
+          width: {{ pct }}%;
+          border-radius: var(--j-radius-pill);
+          background: {% if pct >= 75 %}var(--j-shubh){% elif pct >= 40 %}var(--j-gold){% else %}var(--j-ashubh){% endif %};
+        "></div>
+      </div>
+      <div class="j-text-xs j-text-muted" style="margin-top: 2px;">{{ k.description }}</div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <a href="/match" class="j-btn j-btn-outline j-btn-block" style="margin: var(--j-space-md);">
+    नया मिलान करें
+  </a>
+</div>
+{% endblock %}

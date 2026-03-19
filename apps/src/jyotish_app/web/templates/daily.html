@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block title %}{{ client.name }} — दैनिक मार्गदर्शन{% endblock %}
+
+{% block content %}
+{% set vara_hi_map = {"Sunday":"रविवार","Monday":"सोमवार","Tuesday":"मंगलवार","Wednesday":"बुधवार","Thursday":"गुरुवार","Friday":"शुक्रवार","Saturday":"शनिवार"} %}
+{% set color_map = {"Red/Saffron":"#E65100","White/Cream":"#F5F5F5","Red/Orange":"#D84315","Green":"#2E7D32","Yellow":"#F9A825","White/Pink":"#F8BBD0","Blue/Black":"#1A237E","Grey/Smoky":"#757575","Brown/Grey":"#795548"} %}
+
+<div class="j-p-md">
+  <a href="/client/{{ client.id }}" class="j-text-sm" style="color: var(--j-saffron-600); text-decoration: none;">← कुंडली</a>
+
+  <h1 style="font-size: 1.2rem; color: var(--j-maroon); margin: var(--j-space-md) 0;">
+    दैनिक मार्गदर्शन — {{ client.name }}
+  </h1>
+
+  <!-- Date & Day -->
+  <div class="j-card" style="text-align: center;">
+    <div style="font-size: 1.3rem; font-weight: 700; color: var(--j-maroon);">
+      {{ vara_hi_map.get(suggestion.vara, suggestion.vara) }}
+    </div>
+    <div class="j-text-sm j-text-muted">{{ suggestion.date }}</div>
+    <div class="j-text-sm j-text-muted j-mt-sm">
+      {{ suggestion.nakshatra }} | {{ suggestion.tithi }}
+    </div>
+  </div>
+
+  <!-- Day Rating -->
+  <div class="j-card" style="text-align: center;">
+    <div class="j-card-header">दिन का स्तर — Day Rating</div>
+    <div style="font-size: 1.6rem; letter-spacing: 2px;">
+      {% for i in range(suggestion.day_rating) %}&#11088;{% endfor %}{% for i in range(10 - suggestion.day_rating) %}&#9734;{% endfor %}
+    </div>
+    <div class="j-text-sm j-text-muted j-mt-sm">{{ suggestion.day_rating }} / 10</div>
+  </div>
+
+  <!-- Recommended Color -->
+  <div class="j-card">
+    <div class="j-card-header">आज का रंग — Today's Color</div>
+    <div style="display: flex; align-items: center; gap: var(--j-space-sm);">
+      <div style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid #ccc; background: {{ color_map.get(suggestion.recommended_color, '#888') }};"></div>
+      <span style="font-weight: 600;">{{ suggestion.recommended_color }}</span>
+      <span class="j-text-sm j-text-muted">({{ suggestion.vara_planet }})</span>
+    </div>
+  </div>
+
+  <!-- Mantra -->
+  <div class="j-card" style="border-left: 4px solid var(--j-saffron-600);">
+    <div class="j-card-header">मंत्र — Mantra</div>
+    <div style="font-size: 1.1rem; font-weight: 600; color: var(--j-maroon); font-style: italic;">
+      {{ suggestion.recommended_mantra }}
+    </div>
+  </div>
+
+  <!-- Rahu Kaal -->
+  <div class="j-card" style="border-left: 4px solid var(--j-ashubh);">
+    <div class="j-card-header">राहु काल — Rahu Kaal</div>
+    <div style="font-weight: 600; color: var(--j-ashubh);">
+      {{ suggestion.rahu_kaal }}
+    </div>
+    <div class="j-text-xs j-text-muted j-mt-sm">इस समय शुभ कार्य न करें</div>
+  </div>
+
+  <!-- Health Focus -->
+  <div class="j-card">
+    <div class="j-card-header">स्वास्थ्य — Health Focus</div>
+    <div class="j-text-sm">{{ suggestion.health_focus }}</div>
+  </div>
+
+  <!-- Good For -->
+  <div class="j-card">
+    <div class="j-card-header" style="color: var(--j-shubh);">शुभ कार्य — Good For</div>
+    {% for item in suggestion.good_for %}
+    <div style="padding: var(--j-space-xs) 0;">
+      <span style="color: var(--j-shubh); font-weight: 600;">&#10004;</span> {{ item }}
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Avoid -->
+  <div class="j-card">
+    <div class="j-card-header" style="color: var(--j-ashubh);">बचें — Avoid</div>
+    {% for item in suggestion.avoid %}
+    <div style="padding: var(--j-space-xs) 0;">
+      <span style="color: var(--j-ashubh); font-weight: 600;">&#10008;</span> {{ item }}
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Back -->
+  <div style="padding: var(--j-space-md) 0;">
+    <a href="/client/{{ client.id }}" class="j-btn j-btn-outline" style="width: 100%; text-align: center;">
+      ← कुंडली पर वापस
+    </a>
+  </div>
+</div>
+{% endblock %}

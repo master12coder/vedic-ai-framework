@@ -1,8 +1,9 @@
 {% extends "base.html" %}
-{% from "components/macros.html" import planet_hi %}
+{% from "components/macros.html" import client_tabs, planet_hi %}
 {% block title %}{{ client.name }} — दशा{% endblock %}
 
 {% block content %}
+{{ client_tabs(client.id, "dasha") }}
 {% set maraka_planets = lordship.get('maraka', []) | map(attribute='planet') | list %}
 <div class="j-p-md">
   <a href="/client/{{ client.id }}" class="j-text-sm" style="color: var(--j-saffron-600); text-decoration: none;">← कुंडली</a>

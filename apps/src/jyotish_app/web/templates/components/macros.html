@@ -1,5 +1,16 @@
 {# Jinja2 Component Macros — reusable across all templates #}
 
+{% macro client_tabs(client_id, active="overview") %}
+<nav class="j-tabs">
+  <a href="/client/{{ client_id }}" class="j-tab {% if active == 'overview' %}j-tab-active{% endif %}">कुंडली</a>
+  <a href="/client/{{ client_id }}/dasha" class="j-tab {% if active == 'dasha' %}j-tab-active{% endif %}">दशा</a>
+  <a href="/client/{{ client_id }}/ratna" class="j-tab {% if active == 'ratna' %}j-tab-active{% endif %}">रत्न</a>
+  <a href="/client/{{ client_id }}/daily" class="j-tab {% if active == 'daily' %}j-tab-active{% endif %}">दैनिक</a>
+  <a href="/client/{{ client_id }}/navamsha" class="j-tab {% if active == 'navamsha' %}j-tab-active{% endif %}">D9</a>
+  <a href="/client/{{ client_id }}/pdf" class="j-tab">PDF</a>
+</nav>
+{% endmacro %}
+
 {% macro planet_role_class(planet_name, benefics, malefics, yogakaraka) %}
 {%- if planet_name == yogakaraka %}j-planet-yoga{% elif planet_name in benefics %}j-planet-shubh{% elif planet_name in malefics %}j-planet-ashubh{% else %}j-planet-neutral{% endif -%}
 {% endmacro %}

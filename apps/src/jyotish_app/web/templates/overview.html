@@ -1,8 +1,9 @@
 {% extends "base.html" %}
-{% from "components/macros.html" import planet_role_class, planet_role_tag, planet_hi, planet_flags, sign_hi, yoga_card, gem_card %}
+{% from "components/macros.html" import client_tabs, planet_role_class, planet_role_tag, planet_hi, planet_flags, sign_hi, yoga_card, gem_card %}
 {% block title %}{{ client.name }} — कुंडली{% endblock %}
 
 {% block content %}
+{{ client_tabs(client.id, "overview") }}
 {% set maraka_planets = lordship.get('maraka', []) | map(attribute='planet') | list %}
 
 <!-- Birth Strip -->

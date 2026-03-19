@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}गुण मिलान — Jyotish AI{% endblock %}
+
+{% block content %}
+<div class="j-p-md">
+  <a href="/dashboard" class="j-text-sm" style="color: var(--j-saffron-600); text-decoration: none;">&larr; वापस</a>
+
+  <h1 style="font-size: 1.3rem; color: var(--j-maroon); margin: var(--j-space-md) 0;">
+    अष्टकूट गुण मिलान
+  </h1>
+
+  <form action="/match/result" method="POST">
+    <!-- Person 1 -->
+    <div class="j-card">
+      <div class="j-card-header">वर (Person 1)</div>
+
+      <div class="j-form-group">
+        <label class="j-label">पूरा नाम / Full Name *</label>
+        <input type="text" name="name1" class="j-input" required placeholder="मनीष चौरसिया" value="Manish Chaurasia">
+      </div>
+
+      <div class="j-form-group">
+        <label class="j-label">जन्म तिथि / Date of Birth *</label>
+        <input type="text" name="dob1" class="j-input" required placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}" value="13/03/1989">
+      </div>
+
+      <div class="j-form-group">
+        <label class="j-label">जन्म समय / Time of Birth *</label>
+        <input type="text" name="tob1" class="j-input" required placeholder="HH:MM (24h)" pattern="\d{2}:\d{2}" value="12:17">
+      </div>
+
+      <div style="display: flex; gap: var(--j-space-md);">
+        <div class="j-form-group" style="flex: 1;">
+          <label class="j-label">अक्षांश / Latitude</label>
+          <input type="number" name="lat1" class="j-input" step="0.0001" placeholder="25.3176" value="25.3176">
+        </div>
+        <div class="j-form-group" style="flex: 1;">
+          <label class="j-label">देशांतर / Longitude</label>
+          <input type="number" name="lon1" class="j-input" step="0.0001" placeholder="83.0067" value="83.0067">
+        </div>
+      </div>
+
+      <div class="j-form-group">
+        <label class="j-label">लिंग / Gender</label>
+        <div class="j-radio-row">
+          <label><input type="radio" name="gender1" value="Male" checked> पुरुष / Male</label>
+          <label><input type="radio" name="gender1" value="Female"> स्त्री / Female</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Person 2 -->
+    <div class="j-card">
+      <div class="j-card-header">वधू (Person 2)</div>
+
+      <div class="j-form-group">
+        <label class="j-label">पूरा नाम / Full Name *</label>
+        <input type="text" name="name2" class="j-input" required placeholder="नाम दर्ज करें">
+      </div>
+
+      <div class="j-form-group">
+        <label class="j-label">जन्म तिथि / Date of Birth *</label>
+        <input type="text" name="dob2" class="j-input" required placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}">
+      </div>
+
+      <div class="j-form-group">
+        <label class="j-label">जन्म समय / Time of Birth *</label>
+        <input type="text" name="tob2" class="j-input" required placeholder="HH:MM (24h)" pattern="\d{2}:\d{2}">
+      </div>
+
+      <div style="display: flex; gap: var(--j-space-md);">
+        <div class="j-form-group" style="flex: 1;">
+          <label class="j-label">अक्षांश / Latitude</label>
+          <input type="number" name="lat2" class="j-input" step="0.0001" placeholder="25.3176" value="25.3176">
+        </div>
+        <div class="j-form-group" style="flex: 1;">
+          <label class="j-label">देशांतर / Longitude</label>
+          <input type="number" name="lon2" class="j-input" step="0.0001" placeholder="83.0067" value="83.0067">
+        </div>
+      </div>
+
+      <div class="j-form-group">
+        <label class="j-label">लिंग / Gender</label>
+        <div class="j-radio-row">
+          <label><input type="radio" name="gender2" value="Male"> पुरुष / Male</label>
+          <label><input type="radio" name="gender2" value="Female" checked> स्त्री / Female</label>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="j-btn j-btn-saffron j-btn-block" style="margin: var(--j-space-md);">
+      गुण मिलान करें &rarr;
+    </button>
+  </form>
+</div>
+{% endblock %}

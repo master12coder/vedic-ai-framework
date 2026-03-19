@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% from "components/macros.html" import planet_hi, planet_role_class, planet_role_tag, sign_hi %}
+{% block title %}{{ client.name }} — D9 नवांश{% endblock %}
+
+{% block content %}
+{% set signs_hi = ["मेष","वृषभ","मिथुन","कर्क","सिंह","कन्या","तुला","वृश्चिक","धनु","मकर","कुम्भ","मीन"] %}
+{% set planet_abbr = {"Sun":"सू","Moon":"चं","Mars":"मं","Mercury":"बु","Jupiter":"गु","Venus":"शु","Saturn":"श","Rahu":"रा","Ketu":"के"} %}
+{% set maraka_planets = lordship.get('maraka', []) | map(attribute='planet') | list %}
+
+<div class="j-p-md">
+  <a href="/client/{{ client.id }}" class="j-text-sm" style="color: var(--j-saffron-600); text-decoration: none;">← कुंडली</a>
+
+  <h1 style="font-size: 1.2rem; color: var(--j-maroon); margin: var(--j-space-md) 0;">
+    D9 नवांश चक्र — {{ client.name }}
+  </h1>
+
+  <!-- Vargottam highlight -->
+  {% if vargottam %}
+  <div class="j-card" style="border-left: 4px solid var(--j-saffron-600);">
+    <div class="j-card-header">वर्गोत्तम ग्रह — Vargottam Planets</div>
+    <div style="display: flex; flex-wrap: wrap; gap: var(--j-space-sm);">
+      {% for pname in vargottam %}
+      <span class="j-tag j-tag-saffron" style="font-size: 0.95rem;">
+        &#9733; {{ planet_hi(pname) }} {{ pname }}
+      </span>
+      {% endfor %}
+    </div>
+    <div class="j-text-xs j-text-muted j-mt-sm">
+      D1 और D9 में एक ही राशि — अत्यंत बलवान
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- D9 Diamond Chart (SVG) -->
+  {# Build D9 houses: group planets by their navamsha sign relative to lagna #}
+  {% set ns = namespace(d9_houses={}) %}
+  {% for h in range(1, 13) %}
+    {% set _ = ns.d9_houses.update({h: []}) %}
+  {% endfor %}
+  {% for pos in d9_positions %}
+    {% set d9_house = (pos.divisional_sign_index - chart.lagna_sign_index + 12) % 12 + 1 %}
+    {% set _ = ns.d9_houses[d9_house].append(pos) %}
+  {% endfor %}
+
+  {% set hx = {12:150, 1:60, 11:240, 2:15, 10:285, 3:60, 9:240, 4:150, 5:60, 7:240, 6:150, 8:285} %}
+  {% set hy = {12:35, 1:85, 11:85, 2:150, 10:150, 3:215, 9:215, 4:265, 5:265, 7:265, 6:290, 8:215} %}
+
+  <div class="j-card" style="text-align: center; padding: var(--j-space-sm);">
+    <div class="j-card-header">D9 नवांश चक्र — Navamsha Chart</div>
+
+    <svg viewBox="0 0 300 300" width="100%" style="max-width: 360px; margin: 0 auto; display: block;">
+      <!-- Diamond outline -->
+      <polygon points="150,10 290,150 150,290 10,150" fill="none" stroke="#1A237E" stroke-width="2.5"/>
+      <!-- Cross lines -->
+      <line x1="10" y1="150" x2="290" y2="150" stroke="#1A237E" stroke-width="1.2"/>
+      <line x1="150" y1="10" x2="150" y2="290" stroke="#1A237E" stroke-width="1.2"/>
+      <!-- Inner grid -->
+      <line x1="80" y1="80" x2="220" y2="80" stroke="#1A237E" stroke-width="0.7"/>
+      <line x1="80" y1="220" x2="220" y2="220" stroke="#1A237E" stroke-width="0.7"/>
+      <line x1="80" y1="80" x2="80" y2="220" stroke="#1A237E" stroke-width="0.7"/>
+      <line x1="220" y1="80" x2="220" y2="220" stroke="#1A237E" stroke-width="0.7"/>
+
+      <!-- Center: D9 label -->
+      <text x="150" y="145" text-anchor="middle" font-size="14" fill="#1A237E" opacity="0.3" font-weight="600">D9</text>
+      <text x="150" y="162" text-anchor="middle" font-size="9" fill="#5D4037">{{ chart.lagna_sign_hi }} लग्न</text>
+
+      <!-- Houses with signs and planets -->
+      {% for h in range(1, 13) %}
+      {% set x = hx[h] %}
+      {% set y = hy[h] %}
+      {% set si = (chart.lagna_sign_index + h - 1) % 12 %}
+
+      <!-- Sign label -->
+      <text x="{{ x }}" y="{{ y - 8 }}" text-anchor="middle" font-size="7" fill="#8D6E63">{{ h }} {{ signs_hi[si] }}</text>
+
+      <!-- Planets -->
+      {% for pos in ns.d9_houses[h] %}
+      {% set py = y + 5 + loop.index0 * 13 %}
+      {% set is_varg = pos.planet in vargottam %}
+      {% set color = "#6A1B9A" if pos.planet == yogakaraka else "#2E7D32" if pos.planet in benefics else "#C62828" if pos.planet in malefics else "#5D4037" %}
+      <text x="{{ x }}" y="{{ py }}" text-anchor="middle" font-size="9" fill="{{ color }}" font-weight="600">
+        {{ planet_abbr.get(pos.planet, pos.planet[:2]) }}{% if is_varg %} &#9733;{% endif %}
+      </text>
+      {% endfor %}
+      {% endfor %}
+    </svg>
+
+    <!-- Legend -->
+    <div style="display: flex; justify-content: center; gap: var(--j-space-md); margin-top: var(--j-space-sm);" class="j-text-xs">
+      <span><span style="color: var(--j-shubh);">●</span> शुभ</span>
+      <span><span style="color: var(--j-ashubh);">●</span> अशुभ</span>
+      <span><span style="color: var(--j-yoga);">●</span> योगकारक</span>
+      <span>&#9733; वर्गोत्तम</span>
+    </div>
+  </div>
+
+  <!-- D1 vs D9 Comparison Table -->
+  <div class="j-card">
+    <div class="j-card-header">D1 ↔ D9 तुलना — Rashi vs Navamsha</div>
+    <table class="j-table">
+      <thead>
+        <tr>
+          <th>ग्रह</th>
+          <th>D1 राशि</th>
+          <th>D9 राशि</th>
+          <th>स्थिति</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for pos in d9_positions %}
+        <tr{% if pos.is_vargottam %} style="background: rgba(255, 152, 0, 0.08);"{% endif %}>
+          <td>
+            <span class="{{ planet_role_class(pos.planet, benefics, malefics, yogakaraka) }}" style="font-weight: 600;">
+              {{ planet_hi(pos.planet) }} {{ pos.planet }}
+            </span>
+          </td>
+          <td>{{ signs_hi[pos.d1_sign_index] }}</td>
+          <td>{{ signs_hi[pos.divisional_sign_index] }}</td>
+          <td>
+            {% if pos.is_vargottam %}
+              <span class="j-tag j-tag-saffron">&#9733; वर्गोत्तम</span>
+            {% endif %}
+            {{ planet_role_tag(pos.planet, benefics, malefics, yogakaraka, maraka_planets) }}
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Back -->
+  <div style="padding: var(--j-space-md) 0;">
+    <a href="/client/{{ client.id }}" class="j-btn j-btn-outline" style="width: 100%; text-align: center;">
+      ← कुंडली पर वापस
+    </a>
+  </div>
+</div>
+{% endblock %}
