@@ -22,7 +22,7 @@ jobs:
 
       - name: Install packages
         run: |
-          pip install -e engine/ -e products/ -e "apps/"
+          pip install -e engine/ -e "products/[groq]" -e "apps/[web]"
           pip install pytest ruff mypy types-PyYAML types-pytz
 
       - name: Lint
