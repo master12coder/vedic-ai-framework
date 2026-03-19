@@ -1,15 +1,9 @@
 {# Jinja2 Component Macros — reusable across all templates #}
 
 {% macro client_tabs(client_id, active="overview") %}
-<nav class="j-tabs">
-  <a href="/client/{{ client_id }}" class="j-tab {% if active == 'overview' %}j-tab-active{% endif %}">कुंडली</a>
-  <a href="/client/{{ client_id }}/dasha" class="j-tab {% if active == 'dasha' %}j-tab-active{% endif %}">दशा</a>
-  <a href="/client/{{ client_id }}/ratna" class="j-tab {% if active == 'ratna' %}j-tab-active{% endif %}">रत्न</a>
-  <a href="/client/{{ client_id }}/daily" class="j-tab {% if active == 'daily' %}j-tab-active{% endif %}">दैनिक</a>
-  <a href="/client/{{ client_id }}/navamsha" class="j-tab {% if active == 'navamsha' %}j-tab-active{% endif %}">D9</a>
-  <a href="/client/{{ client_id }}/kundali" class="j-tab {% if active == 'kundali' %}j-tab-active{% endif %}">Print</a>
-  <a href="/client/{{ client_id }}/pdf" class="j-tab">PDF</a>
-</nav>
+{# DEPRECATED: Use client_nav.html instead. Kept for backward compat. #}
+{% from "components/client_nav.html" import client_tabs as nav_tabs %}
+{{ nav_tabs(client_id, active) }}
 {% endmacro %}
 
 {% macro planet_role_class(planet_name, benefics, malefics, yogakaraka) %}
@@ -42,7 +36,7 @@
 {%- endmacro %}
 
 {% macro yoga_card(y) %}
-<div class="j-card" style="border-left: 4px solid {% if y.effect == 'benefic' %}var(--j-shubh){% elif y.effect == 'malefic' %}var(--j-ashubh){% else %}var(--j-caution){% endif %}; padding: var(--j-space-sm) var(--j-space-md);">
+<div class="j-card" style="border-left: 4px solid {% if y.effect == 'benefic' %}var(--j-shubh){% elif y.effect == 'malefic' %}var(--j-ashubh){% else %}var(--j-caution){% endif %}; padding: var(--j-space-sm) var(--j-space-md); margin: var(--j-space-xs) 0;">
   <div style="display: flex; justify-content: space-between; align-items: center;">
     <strong>{{ y.name_hindi }} ({{ y.name }})</strong>
     {% if y.effect == "benefic" %}<span class="j-tag j-tag-shubh">शुभ</span>
@@ -54,13 +48,83 @@
 {% endmacro %}
 
 {% macro gem_card(stone, status) %}
+{%- set gem_type = _gem_type(stone.stone) -%}
 <div class="j-gem-card {% if status == 'prohibited' %}j-prohibited{% elif status == 'test' %}j-caution{% endif %}">
-  <div style="display: flex; justify-content: space-between; align-items: center;">
-    <strong>{{ stone.stone }} ({{ stone.planet }})</strong>
-    {% if status == 'recommended' %}<span class="j-tag j-tag-shubh">अनुशंसित</span>
-    {% elif status == 'prohibited' %}<span class="j-tag j-tag-ashubh">निषिद्ध</span>
-    {% else %}<span class="j-tag j-tag-caution">सावधानी</span>{% endif %}
+  <div style="display: flex; gap: var(--j-space-sm); align-items: flex-start;">
+    {{ j_gem_icon(gem_type, 44) }}
+    <div style="flex: 1;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <strong>{{ stone.stone }} ({{ stone.planet }})</strong>
+        {% if status == 'recommended' %}<span class="j-tag j-tag-shubh">अनुशंसित</span>
+        {% elif status == 'prohibited' %}<span class="j-tag j-tag-ashubh">निषिद्ध</span>
+        {% else %}<span class="j-tag j-tag-caution">सावधानी</span>{% endif %}
+      </div>
+      <div class="j-text-sm j-text-muted j-mt-sm">{{ stone.reasoning[:100] }}</div>
+    </div>
   </div>
-  <div class="j-text-sm j-text-muted j-mt-sm">{{ stone.reasoning[:100] }}</div>
 </div>
+{% endmacro %}
+
+{# ── Gem type mapping ── #}
+{% macro _gem_type(stone_name) %}
+{%- set map = {
+  "Panna": "emerald", "Emerald": "emerald",
+  "Heera": "diamond", "Diamond": "diamond",
+  "Neelam": "sapphire", "Blue Sapphire": "sapphire",
+  "Manikya": "ruby", "Manik": "ruby", "Ruby": "ruby",
+  "Moti": "pearl", "Pearl": "pearl",
+  "Moonga": "coral", "Red Coral": "coral",
+  "Gomed": "hessonite", "Hessonite": "hessonite",
+  "Lehsunia": "cats_eye", "Lahsuniya": "cats_eye", "Cat's Eye": "cats_eye",
+  "Pukhraj": "topaz", "Yellow Sapphire": "topaz",
+  "Safed Pukhraj": "diamond"
+} -%}
+{{ map.get(stone_name, "default") }}
+{%- endmacro %}
+
+{# ── Gemstone SVG Icons ── #}
+{% macro j_gem_icon(stone_type, size=48) %}
+<svg width="{{ size }}" height="{{ size }}" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
+  {% if stone_type|trim == 'emerald' %}
+    <polygon points="16,4 32,4 44,16 44,32 32,44 16,44 4,32 4,16" fill="#2E7D32" fill-opacity="0.15" stroke="#2E7D32" stroke-width="1.5"/>
+    <polygon points="18,10 30,10 38,18 38,30 30,38 18,38 10,30 10,18" fill="#2E7D32" fill-opacity="0.25" stroke="#2E7D32" stroke-width="1"/>
+    <polygon points="20,16 28,16 34,22 34,26 28,32 20,32 14,26 14,22" fill="#4CAF50" fill-opacity="0.4"/>
+  {% elif stone_type|trim == 'diamond' %}
+    <polygon points="24,2 44,18 38,46 10,46 4,18" fill="#6A1B9A" fill-opacity="0.12" stroke="#6A1B9A" stroke-width="1.5"/>
+    <polygon points="24,8 38,18 34,40 14,40 10,18" fill="#6A1B9A" fill-opacity="0.2"/>
+    <polygon points="24,14 32,20 28,34 20,34 16,20" fill="#9C27B0" fill-opacity="0.3"/>
+  {% elif stone_type|trim == 'sapphire' %}
+    <ellipse cx="24" cy="24" rx="18" ry="20" fill="#1565C0" fill-opacity="0.15" stroke="#1565C0" stroke-width="1.5"/>
+    <ellipse cx="24" cy="24" rx="13" ry="15" fill="#1565C0" fill-opacity="0.25"/>
+    <ellipse cx="24" cy="22" rx="8" ry="10" fill="#42A5F5" fill-opacity="0.3"/>
+    <ellipse cx="20" cy="18" rx="3" ry="4" fill="#BBDEFB" fill-opacity="0.5" transform="rotate(-15 20 18)"/>
+  {% elif stone_type|trim == 'ruby' %}
+    <ellipse cx="24" cy="24" rx="18" ry="20" fill="#C62828" fill-opacity="0.15" stroke="#C62828" stroke-width="1.5"/>
+    <ellipse cx="24" cy="24" rx="13" ry="15" fill="#C62828" fill-opacity="0.25"/>
+    <ellipse cx="24" cy="22" rx="8" ry="10" fill="#EF5350" fill-opacity="0.3"/>
+  {% elif stone_type|trim == 'pearl' %}
+    <circle cx="24" cy="24" r="19" fill="#ECEFF1" stroke="#90A4AE" stroke-width="1.5"/>
+    <circle cx="24" cy="24" r="14" fill="#F5F5F5" opacity="0.6"/>
+    <ellipse cx="19" cy="18" rx="6" ry="5" fill="#FFFFFF" opacity="0.7" transform="rotate(-20 19 18)"/>
+  {% elif stone_type|trim == 'coral' %}
+    <ellipse cx="24" cy="24" rx="16" ry="20" fill="#C62828" fill-opacity="0.15" stroke="#D84315" stroke-width="1.5"/>
+    <ellipse cx="24" cy="24" rx="11" ry="15" fill="#E53935" fill-opacity="0.2"/>
+    <ellipse cx="24" cy="22" rx="6" ry="9" fill="#FF5722" fill-opacity="0.3"/>
+  {% elif stone_type|trim == 'hessonite' %}
+    <rect x="6" y="6" width="36" height="36" rx="8" fill="#E65100" fill-opacity="0.15" stroke="#E65100" stroke-width="1.5"/>
+    <rect x="12" y="12" width="24" height="24" rx="4" fill="#F57C00" fill-opacity="0.25"/>
+    <rect x="17" y="17" width="14" height="14" rx="2" fill="#FFB74D" fill-opacity="0.3"/>
+  {% elif stone_type|trim == 'cats_eye' %}
+    <ellipse cx="24" cy="24" rx="16" ry="20" fill="#795548" fill-opacity="0.15" stroke="#795548" stroke-width="1.5"/>
+    <ellipse cx="24" cy="24" rx="11" ry="15" fill="#8D6E63" fill-opacity="0.2"/>
+    <line x1="24" y1="6" x2="24" y2="42" stroke="#A1887F" stroke-width="2" opacity="0.5"/>
+    <ellipse cx="24" cy="24" rx="3" ry="14" fill="#BCAAA4" fill-opacity="0.3"/>
+  {% elif stone_type|trim == 'topaz' %}
+    <rect x="6" y="6" width="36" height="36" rx="8" fill="#F9A825" fill-opacity="0.15" stroke="#F9A825" stroke-width="1.5"/>
+    <rect x="12" y="12" width="24" height="24" rx="4" fill="#FDD835" fill-opacity="0.25"/>
+    <rect x="17" y="17" width="14" height="14" rx="2" fill="#FFEE58" fill-opacity="0.35"/>
+  {% else %}
+    <circle cx="24" cy="24" r="18" fill="#9E9E9E" fill-opacity="0.15" stroke="#9E9E9E" stroke-width="1.5"/>
+  {% endif %}
+</svg>
 {% endmacro %}

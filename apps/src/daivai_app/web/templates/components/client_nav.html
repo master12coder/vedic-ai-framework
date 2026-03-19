@@ -1,0 +1,19 @@
+{# Persistent client navigation — included on ALL client pages #}
+
+{% macro client_tabs(client_id, active_tab, client_name="") %}
+<nav class="j-client-nav">
+  <div class="j-client-nav-inner">
+    {% if client_name %}
+    <span class="j-nav-name">{{ client_name }}</span>
+    {% endif %}
+    <a href="/client/{{ client_id }}" class="j-nav-tab {% if active_tab == 'kundli' %}active{% endif %}">कुंडली</a>
+    <a href="/client/{{ client_id }}/dasha" class="j-nav-tab {% if active_tab == 'dasha' %}active{% endif %}">दशा</a>
+    <a href="/client/{{ client_id }}/ratna" class="j-nav-tab {% if active_tab == 'ratna' %}active{% endif %}">रत्न</a>
+    <a href="/client/{{ client_id }}/daily" class="j-nav-tab {% if active_tab == 'daily' %}active{% endif %}">दैनिक</a>
+    <a href="/client/{{ client_id }}/navamsha" class="j-nav-tab {% if active_tab == 'navamsha' %}active{% endif %}">D9</a>
+    <a href="/client/{{ client_id }}/kundali" class="j-nav-tab {% if active_tab == 'print' %}active{% endif %}">Print</a>
+    <a href="/client/{{ client_id }}/pdf" class="j-nav-tab">PDF ↓</a>
+    <a href="/dashboard" class="j-nav-tab j-nav-back">← वापस</a>
+  </div>
+</nav>
+{% endmacro %}

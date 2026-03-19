@@ -22,9 +22,10 @@
       <span class="j-text-xs">DaivAI</span>
     </div>
   </div>
+  <button class="j-back-top" id="backTop" onclick="window.scrollTo({top:0})">↑</button>
   <script>
-    // Scroll fade-in animation
     document.addEventListener('DOMContentLoaded', () => {
+      // Scroll fade-in animation
       const obs = new IntersectionObserver((entries) => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('j-visible'); });
       }, { threshold: 0.1 });
@@ -32,6 +33,13 @@
         el.classList.add('j-fade-in');
         obs.observe(el);
       });
+      // Back to top button
+      const btn = document.getElementById('backTop');
+      if (btn) {
+        window.addEventListener('scroll', () => {
+          btn.classList.toggle('visible', window.scrollY > 500);
+        }, { passive: true });
+      }
     });
   </script>
 </body>

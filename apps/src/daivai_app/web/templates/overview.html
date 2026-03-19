@@ -1,9 +1,10 @@
 {% extends "base.html" %}
-{% from "components/macros.html" import client_tabs, planet_role_class, planet_role_tag, planet_hi, planet_flags, sign_hi, yoga_card, gem_card %}
+{% from "components/client_nav.html" import client_tabs %}
+{% from "components/macros.html" import planet_role_class, planet_role_tag, planet_hi, planet_flags, sign_hi, yoga_card, gem_card %}
 {% block title %}{{ client.name }} — कुंडली{% endblock %}
 
 {% block content %}
-{{ client_tabs(client.id, "overview") }}
+{{ client_tabs(client.id, 'kundli', client.name) }}
 {% set maraka_planets = lordship.get('maraka', []) | map(attribute='planet') | list %}
 
 <!-- Birth Strip -->
@@ -18,7 +19,9 @@
 </div>
 
 <!-- Diamond Chart (SVG) -->
-{% include "components/diamond_chart.html" %}
+<div class="j-chart-wrapper">
+  {% include "components/diamond_chart.html" %}
+</div>
 
 <!-- Planet Positions -->
 <div class="j-card">
@@ -52,9 +55,11 @@
 {% if yogas %}
 <div class="j-card">
   <div class="j-card-header">सक्रिय योग — Active Yogas ({{ yogas|length }})</div>
-  {% for y in yogas[:7] %}
-    {{ yoga_card(y) }}
-  {% endfor %}
+  <div class="j-yoga-grid">
+    {% for y in yogas[:7] %}
+      {{ yoga_card(y) }}
+    {% endfor %}
+  </div>
 </div>
 {% endif %}
 
@@ -76,12 +81,14 @@
 <!-- Gemstone Quick View -->
 <div class="j-card">
   <div class="j-card-header">रत्न सुझाव — Gemstones</div>
-  {% for s in recommended_stones %}
-    {{ gem_card(s, 'recommended') }}
-  {% endfor %}
-  {% for s in prohibited_stones[:3] %}
-    {{ gem_card(s, 'prohibited') }}
-  {% endfor %}
+  <div class="j-gem-grid">
+    {% for s in recommended_stones %}
+      {{ gem_card(s, 'recommended') }}
+    {% endfor %}
+    {% for s in prohibited_stones[:3] %}
+      {{ gem_card(s, 'prohibited') }}
+    {% endfor %}
+  </div>
   <a href="/client/{{ client.id }}/ratna" class="j-btn j-btn-outline j-btn-sm j-mt-sm">
     पूरा रत्न विश्लेषण →
   </a>

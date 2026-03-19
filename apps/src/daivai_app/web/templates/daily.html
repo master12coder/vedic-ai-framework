@@ -1,13 +1,13 @@
 {% extends "base.html" %}
+{% from "components/client_nav.html" import client_tabs %}
 {% block title %}{{ client.name }} — दैनिक मार्गदर्शन{% endblock %}
 
 {% block content %}
+{{ client_tabs(client.id, 'daily', client.name) }}
 {% set vara_hi_map = {"Sunday":"रविवार","Monday":"सोमवार","Tuesday":"मंगलवार","Wednesday":"बुधवार","Thursday":"गुरुवार","Friday":"शुक्रवार","Saturday":"शनिवार"} %}
 {% set color_map = {"Red/Saffron":"#E65100","White/Cream":"#F5F5F5","Red/Orange":"#D84315","Green":"#2E7D32","Yellow":"#F9A825","White/Pink":"#F8BBD0","Blue/Black":"#1A237E","Grey/Smoky":"#757575","Brown/Grey":"#795548"} %}
 
 <div class="j-p-md">
-  <a href="/client/{{ client.id }}" class="j-text-sm" style="color: var(--j-saffron-600); text-decoration: none;">← कुंडली</a>
-
   <h1 style="font-size: 1.2rem; color: var(--j-maroon); margin: var(--j-space-md) 0;">
     दैनिक मार्गदर्शन — {{ client.name }}
   </h1>
@@ -83,13 +83,6 @@
       <span style="color: var(--j-ashubh); font-weight: 600;">&#10008;</span> {{ item }}
     </div>
     {% endfor %}
-  </div>
-
-  <!-- Back -->
-  <div style="padding: var(--j-space-md) 0;">
-    <a href="/client/{{ client.id }}" class="j-btn j-btn-outline" style="width: 100%; text-align: center;">
-      ← कुंडली पर वापस
-    </a>
   </div>
 </div>
 {% endblock %}

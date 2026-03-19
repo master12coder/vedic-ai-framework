@@ -1,13 +1,12 @@
 {% extends "base.html" %}
-{% from "components/macros.html" import client_tabs, planet_hi %}
+{% from "components/client_nav.html" import client_tabs %}
+{% from "components/macros.html" import planet_hi %}
 {% block title %}{{ client.name }} — दशा{% endblock %}
 
 {% block content %}
-{{ client_tabs(client.id, "dasha") }}
+{{ client_tabs(client.id, 'dasha', client.name) }}
 {% set maraka_planets = lordship.get('maraka', []) | map(attribute='planet') | list %}
 <div class="j-p-md">
-  <a href="/client/{{ client.id }}" class="j-text-sm" style="color: var(--j-saffron-600); text-decoration: none;">← कुंडली</a>
-
   <h1 style="font-size: 1.2rem; color: var(--j-maroon); margin: var(--j-space-md) 0;">
     विंशोत्तरी दशा — {{ client.name }}
   </h1>

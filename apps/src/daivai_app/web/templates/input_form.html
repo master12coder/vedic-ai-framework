@@ -9,7 +9,7 @@
     नई कुंडली बनाएं
   </h1>
 
-  <form action="/generate" method="POST">
+  <form action="/generate" method="POST" id="chartForm">
     <div class="j-card">
       <div class="j-card-header">मूल जानकारी — Basic Details</div>
 
@@ -53,9 +53,21 @@
       </div>
     </div>
 
-    <button type="submit" class="j-btn j-btn-saffron j-btn-block" style="margin: var(--j-space-md);">
+    <button type="submit" class="j-btn j-btn-saffron j-btn-block" id="submitBtn" style="margin: var(--j-space-md);">
       कुंडली बनाएं →
     </button>
+
+    <div class="j-loading" id="loadingState">
+      <div class="j-spinner"></div>
+      <div class="j-text-sm" style="color: var(--j-maroon);">गणना हो रही है...</div>
+      <div class="j-text-xs j-text-muted">Swiss Ephemeris computation in progress</div>
+    </div>
   </form>
 </div>
+<script>
+  document.getElementById('chartForm').addEventListener('submit', function() {
+    document.getElementById('submitBtn').style.display = 'none';
+    document.getElementById('loadingState').classList.add('active');
+  });
+</script>
 {% endblock %}

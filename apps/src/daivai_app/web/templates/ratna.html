@@ -1,12 +1,11 @@
 {% extends "base.html" %}
-{% from "components/macros.html" import client_tabs, gem_card %}
+{% from "components/client_nav.html" import client_tabs %}
+{% from "components/macros.html" import gem_card %}
 {% block title %}{{ client.name }} — रत्न विधान{% endblock %}
 
 {% block content %}
-{{ client_tabs(client.id, "ratna") }}
+{{ client_tabs(client.id, 'ratna', client.name) }}
 <div class="j-p-md">
-  <a href="/client/{{ client.id }}" class="j-text-sm" style="color: var(--j-saffron-600); text-decoration: none;">← कुंडली</a>
-
   <h1 style="font-size: 1.2rem; color: var(--j-maroon); margin: var(--j-space-md) 0;">
     रत्न विधान — {{ client.name }} ({{ chart.lagna_sign_hi }} लग्न)
   </h1>
@@ -14,10 +13,12 @@
   <!-- Recommended -->
   {% if recommended_stones %}
   <div class="j-card">
-    <div class="j-card-header" style="color: var(--j-shubh);">✅ अनुशंसित रत्न — Recommended</div>
-    {% for s in recommended_stones %}
-      {{ gem_card(s, 'recommended') }}
-    {% endfor %}
+    <div class="j-card-header" style="color: var(--j-shubh);">अनुशंसित रत्न — Recommended</div>
+    <div class="j-gem-grid">
+      {% for s in recommended_stones %}
+        {{ gem_card(s, 'recommended') }}
+      {% endfor %}
+    </div>
   </div>
   {% endif %}
 
@@ -25,20 +26,24 @@
   {% set test_stones = lordship.get('test_stones', []) %}
   {% if test_stones %}
   <div class="j-card">
-    <div class="j-card-header" style="color: var(--j-caution);">⚠️ सावधानी से — Test With Caution</div>
-    {% for s in test_stones %}
-      {{ gem_card(s, 'test') }}
-    {% endfor %}
+    <div class="j-card-header" style="color: var(--j-caution);">सावधानी से — Test With Caution</div>
+    <div class="j-gem-grid">
+      {% for s in test_stones %}
+        {{ gem_card(s, 'test') }}
+      {% endfor %}
+    </div>
   </div>
   {% endif %}
 
   <!-- Prohibited -->
   {% if prohibited_stones %}
   <div class="j-card">
-    <div class="j-card-header" style="color: var(--j-ashubh);">❌ निषिद्ध रत्न — Prohibited</div>
-    {% for s in prohibited_stones %}
-      {{ gem_card(s, 'prohibited') }}
-    {% endfor %}
+    <div class="j-card-header" style="color: var(--j-ashubh);">निषिद्ध रत्न — Prohibited</div>
+    <div class="j-gem-grid">
+      {% for s in prohibited_stones %}
+        {{ gem_card(s, 'prohibited') }}
+      {% endfor %}
+    </div>
     <div class="j-text-sm j-mt-sm" style="color: var(--j-ashubh); font-weight: 500;">
       कोई भी वेबसाइट यह सूची नहीं दिखाती। वे रत्न बेचते हैं।
     </div>
@@ -49,7 +54,7 @@
   {% set maraka = lordship.get('maraka', []) %}
   {% if maraka %}
   <div class="j-card" style="border-left: 4px solid var(--j-marak);">
-    <div class="j-card-header" style="color: var(--j-marak);">⚠️ मारक ग्रह — Maraka Planets</div>
+    <div class="j-card-header" style="color: var(--j-marak);">मारक ग्रह — Maraka Planets</div>
     {% for m in maraka %}
     <div style="padding: var(--j-space-xs) 0;">
       <strong>{{ m.planet }}</strong> — {{ m.house_str }}
