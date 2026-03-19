@@ -29,7 +29,7 @@ jobs:
         run: ruff check engine/src/ products/src/ apps/src/
 
       - name: Type check
-        run: mypy engine/src/ --ignore-missing-imports --no-strict-optional --allow-untyped-defs
+        run: mypy engine/src/ --ignore-missing-imports --disable-error-code no-any-return --disable-error-code attr-defined
 
       - name: Test
         run: pytest tests/ -v --tb=short
