@@ -139,11 +139,11 @@ def compute_daily_suggestion(
             avoid.append(avoid_str)
 
     # Add transit-based advice
-    for t in transit_impacts:
-        if t.natal_house == 10 and t.is_favorable:
-            good_for.append(f"Career actions ({t.planet} transit in 10th)")
-        elif t.natal_house == 8 and not t.is_favorable:
-            avoid.append(f"Risky ventures ({t.planet} in 8th house)")
+    for impact in transit_impacts:
+        if impact.natal_house == 10 and impact.is_favorable:
+            good_for.append(f"Career actions ({impact.planet} transit in 10th)")
+        elif impact.natal_house == 8 and not impact.is_favorable:
+            avoid.append(f"Risky ventures ({impact.planet} in 8th house)")
 
     # Mantra for the day
     mantra = day_routine.get("mantra", f"Om {vara_planet}aya Namaha")
