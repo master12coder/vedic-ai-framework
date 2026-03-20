@@ -1,0 +1,41 @@
+# Pushkara Navamsha and Pushkara Bhaga
+# Source: Phaladeepika (Mantreswara), Jyotish Rahasya
+# Description: Auspicious planetary positions that strengthen a graha's results.
+#
+# Pushkara Navamsha: Specific navamsha pada ranges (3°20' each) within a sign
+#   that correspond to highly auspicious navamsha divisions. A planet in a
+#   Pushkara Navamsha gains significant strength and gives benefic results.
+#
+# Pushkara Bhaga: A single exact degree within each sign that represents the
+#   peak of auspiciousness. A planet at its Pushkara Bhaga degree is at its
+#   strongest possible position for conferring good results.
+
+source: "Phaladeepika and Jyotish Rahasya"
+
+pushkara_navamsha:
+  description: >
+    Degree ranges within each sign that fall in Pushkara Navamsha.
+    Each navamsha pada = 3°20' (10/3 degrees). Two padas per sign are Pushkara.
+    Ranges are [start_degree, end_degree) within the 0-30° sign arc.
+  # Elements determine which navamsha padas are Pushkara
+  fire_sign_indices: [0, 4, 8]    # Aries, Leo, Sagittarius
+  earth_sign_indices: [1, 5, 9]   # Taurus, Virgo, Capricorn
+  air_sign_indices: [2, 6, 10]    # Gemini, Libra, Aquarius
+  water_sign_indices: [3, 7, 11]  # Cancer, Scorpio, Pisces
+  # Pada 4 (10°–13°20') and Pada 9 (26°40'–30°) are Pushkara for fire signs
+  # Pada 2 (3°20'–6°40') and Pada 9 (26°40'–30°) are Pushkara for earth signs
+  # Pada 7 (20°–23°20') and Pada 9 (26°40'–30°) are Pushkara for air signs
+  # Pada 1 (0°–3°20') and Pada 6 (16°40'–20°) are Pushkara for water signs
+  ranges_by_element:
+    Fire:  [[10.0, 13.3334], [26.6667, 30.0]]
+    Earth: [[ 3.3334,  6.6667], [26.6667, 30.0]]
+    Air:   [[20.0, 23.3334], [26.6667, 30.0]]
+    Water: [[ 0.0,  3.3334], [16.6667, 20.0]]
+
+pushkara_bhaga:
+  description: >
+    The single exact degree within each sign that is the Pushkara Bhaga —
+    peak auspiciousness. A planet within 1° of this degree is significantly
+    strengthened. Indexed by sign (0=Aries … 11=Pisces).
+  # Ari  Tau  Gem  Can  Leo  Vir  Lib  Sco  Sag  Cap  Aqu  Pis
+  degrees: [21,  14,  18,   8,  19,   9,  24,  11,  23,  14,  19,   9]

@@ -1,0 +1,31 @@
+# Mrityu Bhaga — Death Degrees
+# Source: BPHS (Brihat Parashara Hora Shastra) and Jataka Parijata
+# Description: Specific degrees within each sign where a planet becomes extremely
+#   weak — "death-like" affliction. A planet at its Mrityu Bhaga degree in its
+#   occupied sign is severely debilitated regardless of other dignities.
+#
+# Orb rules:
+#   severe:   within 1.0° of the Mrityu Bhaga degree
+#   moderate: within 3.0° of the Mrityu Bhaga degree
+#   clear:    beyond 3.0° — no Mrityu Bhaga affliction
+
+source: "BPHS and Jataka Parijata"
+
+orbs:
+  severe: 1.0
+  moderate: 3.0
+
+# degrees[body][sign_index 0..11] = Mrityu Bhaga degree within that sign
+# Columns: Aries(0), Taurus(1), Gemini(2), Cancer(3), Leo(4), Virgo(5),
+#          Libra(6), Scorpio(7), Sagittarius(8), Capricorn(9), Aquarius(10), Pisces(11)
+degrees:
+  Sun:     [20,  9, 12,  6,  8, 24, 16, 17, 22,  2,  3, 23]
+  Moon:    [26, 12, 13, 25, 24, 11, 26, 14, 13, 25,  5, 12]
+  Mars:    [19, 28, 25, 23, 29, 28, 14, 21,  2, 15, 11, 16]
+  Mercury: [15, 14, 13, 12,  8, 18, 20, 10, 21, 22,  7,  5]
+  Jupiter: [19, 29, 12, 27,  6,  4, 13, 10, 17, 11, 15, 28]
+  Venus:   [28, 15, 11, 17, 10, 13,  4,  6, 27, 12, 29, 19]
+  Saturn:  [10,  4,  7,  9, 12, 17, 22,  3, 18, 28, 14, 13]
+  Rahu:    [14, 13, 12, 11, 24, 26, 12, 13, 25, 24, 26,  5]
+  Ketu:    [ 8, 18, 20, 10, 21, 22, 15, 14, 13,  7, 12,  5]
+  Lagna:   [ 1,  9, 12,  6,  8, 24, 16, 17, 22,  2,  3, 23]
