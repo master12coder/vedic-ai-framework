@@ -1,0 +1,110 @@
+# ═══════════════════════════════════════════════════════════════
+# VIMSHOPAKA BALA — Varga Strength Weighting Schemes
+# ═══════════════════════════════════════════════════════════════
+# Source: BPHS Chapters 16-17 "Vimshopaka Bala Adhyaya"
+# Confidence: canonical
+#
+# Four schemes are defined by BPHS. Each uses a different number
+# of divisional charts and weights. The total weight in each
+# scheme corresponds to its maximum possible score.
+#
+# Dignity scoring (applied per varga):
+#   Exalted     = 20 / 20
+#   Mooltrikona = 18 / 20
+#   Own         = 15 / 20
+#   Friend      = 10 / 20
+#   Neutral     =  8 / 20
+#   Enemy       =  5 / 20
+#   Debilitated =  2 / 20
+# ═══════════════════════════════════════════════════════════════
+
+source: "BPHS Ch.16-17"
+confidence: canonical
+note: >
+  Shadvarga uses a 10-point scale (weights sum to 10).
+  Saptvarga, Dashavarga, and Shodashavarga all use a 20-point scale
+  (weights sum to 20). A planet's final score is:
+  sum(weight_i * dignity_fraction_i) where dignity_fraction = points/20.
+
+schemes:
+
+  shadvarga:
+    name: "Shadvarga (6 Vargas)"
+    name_hi: "षड्वर्ग"
+    total_weight: 10.0
+    max_score: 10.0
+    description: "Six most important divisional charts. Basic strength assessment."
+    vargas:
+      D1:  { weight: 3.5, chart: "Rashi",      description: "Overall life" }
+      D2:  { weight: 1.0, chart: "Hora",       description: "Wealth" }
+      D3:  { weight: 1.0, chart: "Drekkana",   description: "Siblings, courage" }
+      D9:  { weight: 3.0, chart: "Navamsha",   description: "Dharma, spouse" }
+      D12: { weight: 0.5, chart: "Dwadashamsha", description: "Parents" }
+      D30: { weight: 1.0, chart: "Trimshamsha", description: "Adversity, evil" }
+
+  saptvarga:
+    name: "Saptvarga (7 Vargas)"
+    name_hi: "सप्तवर्ग"
+    total_weight: 20.0
+    max_score: 20.0
+    description: "Seven vargas. Adds D7 (Saptamsha) for progeny assessment."
+    vargas:
+      D1:  { weight: 5.0, chart: "Rashi",       description: "Overall life" }
+      D2:  { weight: 2.0, chart: "Hora",        description: "Wealth" }
+      D3:  { weight: 3.0, chart: "Drekkana",    description: "Siblings, courage" }
+      D7:  { weight: 4.5, chart: "Saptamsha",   description: "Children" }
+      D9:  { weight: 2.5, chart: "Navamsha",    description: "Dharma, spouse" }
+      D12: { weight: 2.0, chart: "Dwadashamsha", description: "Parents" }
+      D30: { weight: 1.0, chart: "Trimshamsha", description: "Adversity" }
+
+  dashavarga:
+    name: "Dashavarga (10 Vargas)"
+    name_hi: "दशवर्ग"
+    total_weight: 20.0
+    max_score: 20.0
+    description: "Ten vargas. Adds career, vehicles, and past karma charts."
+    vargas:
+      D1:  { weight: 3.0, chart: "Rashi",        description: "Overall life" }
+      D2:  { weight: 1.5, chart: "Hora",         description: "Wealth" }
+      D3:  { weight: 1.5, chart: "Drekkana",     description: "Siblings" }
+      D7:  { weight: 1.5, chart: "Saptamsha",    description: "Children" }
+      D9:  { weight: 1.5, chart: "Navamsha",     description: "Spouse, dharma" }
+      D10: { weight: 1.5, chart: "Dashamsha",    description: "Career" }
+      D12: { weight: 1.5, chart: "Dwadashamsha", description: "Parents" }
+      D16: { weight: 1.5, chart: "Shodashamsha", description: "Vehicles, comforts" }
+      D30: { weight: 1.5, chart: "Trimshamsha",  description: "Adversity" }
+      D60: { weight: 5.0, chart: "Shashtiamsha", description: "Past karma (most subtle)" }
+
+  shodashavarga:
+    name: "Shodashavarga (16 Vargas)"
+    name_hi: "षोडशवर्ग"
+    total_weight: 20.0
+    max_score: 20.0
+    description: >
+      Complete 16-varga scheme. Most comprehensive assessment of planet strength.
+      The standard for serious Jyotish analysis.
+    vargas:
+      D1:  { weight: 3.5, chart: "Rashi",            description: "Overall life, physical body" }
+      D2:  { weight: 1.0, chart: "Hora",             description: "Wealth, financial status" }
+      D3:  { weight: 1.0, chart: "Drekkana",         description: "Siblings, courage" }
+      D4:  { weight: 0.5, chart: "Chaturthamsha",    description: "Fortune, property" }
+      D7:  { weight: 0.5, chart: "Saptamsha",        description: "Children, progeny" }
+      D9:  { weight: 3.0, chart: "Navamsha",         description: "Spouse, dharma (2nd most important)" }
+      D10: { weight: 0.5, chart: "Dashamsha",        description: "Career, profession" }
+      D12: { weight: 0.5, chart: "Dwadashamsha",     description: "Parents" }
+      D16: { weight: 2.0, chart: "Shodashamsha",     description: "Vehicles, comforts, luxuries" }
+      D20: { weight: 0.5, chart: "Vimshamsha",       description: "Spiritual practices, upasana" }
+      D24: { weight: 0.5, chart: "Chaturvimshamsha", description: "Education, learning" }
+      D27: { weight: 0.5, chart: "Bhamsha",          description: "Strengths and weaknesses" }
+      D30: { weight: 1.0, chart: "Trimshamsha",      description: "Adversity, evil, misfortune" }
+      D40: { weight: 0.5, chart: "Khavedamsha",      description: "Auspicious effects (paternal line)" }
+      D45: { weight: 0.5, chart: "Akshavedamsha",    description: "Auspicious effects (maternal line)" }
+      D60: { weight: 4.0, chart: "Shashtiamsha",     description: "Past-life karma (most subtle)" }
+
+# Interpretation thresholds for shodashavarga (out of 20):
+interpretation_thresholds:
+  - min: 15.0  label: "Exalted"       meaning: "Planet extremely strong — gives excellent results"
+  - min: 12.0  label: "Strong"        meaning: "Planet well-placed — gives good results"
+  - min: 10.0  label: "Moderate"      meaning: "Planet average strength — mixed results"
+  - min:  7.0  label: "Weak"          meaning: "Planet below average — reduced results"
+  - min:  0.0  label: "Very Weak"     meaning: "Planet severely afflicted — difficult results"

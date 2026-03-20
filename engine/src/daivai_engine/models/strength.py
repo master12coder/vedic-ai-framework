@@ -50,10 +50,12 @@ class VimshopakaBala(BaseModel):
     """
 
     planet: str
-    shadvarga_score: float  # 6 main vargas (D1,D2,D3,D9,D12,D30)
-    shodashavarga_score: float  # 16 vargas (most comprehensive)
+    shadvarga_score: float  # 6 main vargas (D1,D2,D3,D9,D12,D30) — max 10
+    saptvarga_score: float  # 7 vargas (D1,D2,D3,D7,D9,D12,D30) — max 20
+    dashavarga_score: float  # 10 vargas — max 20
+    shodashavarga_score: float  # 16 vargas (most comprehensive) — max 20
     max_score: float  # Maximum possible (20.0)
-    percentage: float  # score/max * 100
+    percentage: float  # shodashavarga_score/max * 100
     dignity_in_each: dict[str, str]  # {"D1": "own", "D9": "exalted", ...}
 
 

@@ -1,0 +1,354 @@
+# ═══════════════════════════════════════════════════════════════
+# VARGA SIGNIFICATIONS — All 16 Shodashavarga Divisional Charts
+# ═══════════════════════════════════════════════════════════════
+# Source: BPHS Chapters 6-7 "Shodashavarga Adhyaya",
+#         Jaimini Sutras, Prasna Marga
+# Confidence: canonical
+#
+# The 16 divisional charts form the Shodashavarga scheme.
+# D1 and D9 are most important. D60 is the most subtle (past karma).
+# ═══════════════════════════════════════════════════════════════
+
+source: "BPHS Ch.6-7, Jaimini Sutras, Prasna Marga"
+confidence: canonical
+note: >
+  Each divisional chart divides the 30° zodiac sign into N equal
+  (or structured) parts. Each part maps to a sign, revealing how
+  the planet functions in that area of life.
+
+vargas:
+
+  D1:
+    name: "Rashi"
+    name_hi: "राशि"
+    division: 1
+    part_size_deg: 30.0
+    primary_domain: "Overall life, physical body, general circumstances"
+    secondary_domains:
+      - "General fortune and temperament"
+      - "Physical appearance and constitution"
+      - "All major life events"
+    importance: "Most important — all life events"
+    vimshopaka_weight_shodasha: 3.5
+    assessment: >
+      The foundation of all astrological analysis. Every other varga
+      must be read in light of D1 placements. A planet strong in D1
+      but weak elsewhere gives external results without inner support.
+    source: "BPHS Ch.4"
+
+  D2:
+    name: "Hora"
+    name_hi: "होरा"
+    division: 2
+    part_size_deg: 15.0
+    primary_domain: "Wealth, financial status, monetary resources"
+    secondary_domains:
+      - "Accumulation vs. expenditure tendencies"
+      - "Inheritance and earned income"
+    importance: "Moderate — specifically for financial matters"
+    vimshopaka_weight_shodasha: 1.0
+    formula: >
+      Odd signs: first 15° → Leo (Sun/male), second 15° → Cancer (Moon/female).
+      Even signs: first 15° → Cancer, second 15° → Leo.
+    assessment: >
+      Sun Hora favors wealth through one's own efforts (masculine principle).
+      Moon Hora favors wealth through others, inheritance, and liquidity.
+    source: "BPHS Ch.6 v1-4"
+
+  D3:
+    name: "Drekkana"
+    name_hi: "द्रेष्काण"
+    division: 3
+    part_size_deg: 10.0
+    primary_domain: "Siblings, co-borns, courage, communication"
+    secondary_domains:
+      - "Short journeys and movement"
+      - "Younger siblings specifically"
+      - "Mental strength and valor"
+    importance: "Moderate — especially for sibling and courage matters"
+    vimshopaka_weight_shodasha: 1.0
+    formula: >
+      Three 10° decanates per sign. 1st → same sign, 2nd → 5th sign,
+      3rd → 9th sign (trinal progression).
+    assessment: >
+      The trine structure of D3 connects the chart to the natural
+      friends (5th and 9th) of the natal sign, reflecting the
+      supportive-competitive nature of sibling relationships.
+    source: "BPHS Ch.6 v5-8"
+
+  D4:
+    name: "Chaturthamsha"
+    name_hi: "चतुर्थांश"
+    division: 4
+    part_size_deg: 7.5
+    primary_domain: "Fortune, property, fixed assets, real estate"
+    secondary_domains:
+      - "Immovable wealth (land, buildings)"
+      - "Good fortune in general"
+      - "Ancestral property"
+    importance: "Moderate — property and land matters"
+    vimshopaka_weight_shodasha: 0.5
+    formula: >
+      Four 7.5° parts per sign, counting from same sign, 4th, 7th, 10th
+      (quadrant progression).
+    assessment: >
+      The 4th house signifies property and comfort. D4 focuses these
+      significations on the planetary level, showing which planets
+      support or obstruct property acquisition.
+    source: "BPHS Ch.6 v9-10"
+
+  D7:
+    name: "Saptamsha"
+    name_hi: "सप्तमांश"
+    division: 7
+    part_size_deg: 4.2857
+    primary_domain: "Children, progeny, creative output"
+    secondary_domains:
+      - "Fertility and reproduction"
+      - "Grandchildren (in extended analysis)"
+      - "Relationship with children"
+    importance: "Moderate — specifically for progeny questions"
+    vimshopaka_weight_shodasha: 0.5
+    formula: >
+      Seven parts per sign. Odd signs count from same sign;
+      even signs count from 7th sign.
+    assessment: >
+      D7 is the divisional chart most consulted for fertility questions
+      and child-related timings. Jupiter's strength in D7 is critical.
+    source: "BPHS Ch.6 v13-14"
+
+  D9:
+    name: "Navamsha"
+    name_hi: "नवमांश"
+    division: 9
+    part_size_deg: 3.3333
+    primary_domain: "Spouse, marriage, dharma, spiritual path"
+    secondary_domains:
+      - "Inner spiritual qualities"
+      - "Deeper nature of planets (how they truly manifest)"
+      - "Fortune in the second half of life"
+      - "Vargottama status"
+    importance: "Most important after D1 — the soul of the chart"
+    vimshopaka_weight_shodasha: 3.0
+    formula: >
+      Nine parts per sign. Fire signs start from Aries, Earth from Capricorn,
+      Air from Libra, Water from Cancer (element-based starting points).
+    assessment: >
+      Navamsha is considered the second horoscope. A planet in its own
+      or exaltation sign in D9 (even if debilitated in D1) gains strength
+      to deliver results. Vargottama (same sign in D1 and D9) is highly
+      auspicious. Strong D9 = strong inner resources and marital harmony.
+    source: "BPHS Ch.6 v17-20"
+
+  D10:
+    name: "Dashamsha"
+    name_hi: "दशमांश"
+    division: 10
+    part_size_deg: 3.0
+    primary_domain: "Career, profession, social status, public life"
+    secondary_domains:
+      - "Fame and recognition"
+      - "Professional achievements"
+      - "Relationship with authority"
+    importance: "Important for career matters"
+    vimshopaka_weight_shodasha: 0.5
+    formula: >
+      Ten parts per sign. Odd signs count from same sign;
+      even signs count from 9th sign.
+    assessment: >
+      D10 is the divisional chart specifically examined for career
+      and professional success. The 10th lord and Sun in D10 are
+      key indicators of career trajectory.
+    source: "BPHS Ch.6 v21-22"
+
+  D12:
+    name: "Dwadashamsha"
+    name_hi: "द्वादशांश"
+    division: 12
+    part_size_deg: 2.5
+    primary_domain: "Parents, ancestral karma, parental lineage"
+    secondary_domains:
+      - "Father (Sun's placement)"
+      - "Mother (Moon's placement)"
+      - "Ancestral blessings or debts"
+    importance: "Moderate — for parental matters and ancestry"
+    vimshopaka_weight_shodasha: 0.5
+    formula: >
+      Twelve 2.5° parts, always counting from the same sign as D1.
+    assessment: >
+      D12 reveals the native's connection to their parents and
+      ancestral lineage. Strong benefics in D12 indicate ancestral
+      blessings; malefics suggest ancestral debts.
+    source: "BPHS Ch.6 v25-26"
+
+  D16:
+    name: "Shodashamsha"
+    name_hi: "षोडशांश"
+    division: 16
+    part_size_deg: 1.875
+    primary_domain: "Vehicles, conveyances, luxuries, comforts"
+    secondary_domains:
+      - "Happiness from material comforts"
+      - "Heart and cardiovascular health"
+      - "Accidents in vehicles"
+    importance: "Moderate — for luxuries and vehicle matters"
+    vimshopaka_weight_shodasha: 2.0
+    formula: >
+      16 parts per sign. Movable signs start from Aries,
+      fixed signs from Leo, dual signs from Sagittarius.
+    assessment: >
+      D16 has the second highest weight after D1, D9, and D60 in
+      Shodashavarga. Venus and 4th lord in D16 determine luxury and
+      vehicle fortune. Malefics can indicate vehicle accidents.
+    source: "BPHS Ch.6 v27-28"
+
+  D20:
+    name: "Vimshamsha"
+    name_hi: "विंशांश"
+    division: 20
+    part_size_deg: 1.5
+    primary_domain: "Spiritual practices, upasana, worship"
+    secondary_domains:
+      - "Ishta devata (personal deity)"
+      - "Mantra siddhi potential"
+      - "Meditative depth"
+    importance: "Important for spiritual life assessment"
+    vimshopaka_weight_shodasha: 0.5
+    formula: >
+      20 parts per sign. Movable signs from Aries, fixed from
+      Sagittarius, dual from Leo.
+    assessment: >
+      D20 reveals the native's spiritual inclinations and the
+      quality of their devotional life. Strong 5th lord and
+      Jupiter in D20 indicate spiritual attainment.
+    source: "BPHS Ch.6 v29-30"
+
+  D24:
+    name: "Chaturvimshamsha"
+    name_hi: "चतुर्विंशांश"
+    alternative_name: "Siddhamsha"
+    division: 24
+    part_size_deg: 1.25
+    primary_domain: "Education, learning, academic success"
+    secondary_domains:
+      - "Wisdom and knowledge acquisition"
+      - "Achievement of educational qualifications"
+      - "Guru-shishya relationship"
+    importance: "Important for educational matters"
+    vimshopaka_weight_shodasha: 0.5
+    formula: >
+      24 parts per sign. Odd signs count from Leo (4),
+      even signs count from Cancer (3).
+    assessment: >
+      D24 is consulted for questions about academic achievement
+      and learning potential. Mercury and 5th lord in D24 are
+      key indicators. Vargottama planets in D24 support scholastic success.
+    source: "BPHS Ch.6 v31-32"
+
+  D27:
+    name: "Bhamsha"
+    name_hi: "भांश"
+    alternative_name: "Nakshatramsha, Saptavimshamsha"
+    division: 27
+    part_size_deg: 1.1111
+    primary_domain: "Physical and mental strengths and weaknesses"
+    secondary_domains:
+      - "Athletic ability and physical vitality"
+      - "Innate talents"
+      - "Character and temperament"
+    importance: "Useful for assessing inherent strengths"
+    vimshopaka_weight_shodasha: 0.5
+    formula: >
+      27 parts per sign corresponding to 27 nakshatras.
+      Fire signs from Aries, Earth from Cancer, Air from Libra,
+      Water from Capricorn.
+    assessment: >
+      D27 mirrors the nakshatra division and reveals innate strengths
+      (like athletic ability, artistic talent) and inherent weaknesses.
+      Strong D27 planets give robust constitution and clear talents.
+    source: "BPHS Ch.6 v33-34"
+
+  D30:
+    name: "Trimshamsha"
+    name_hi: "त्रिंशांश"
+    division: 30
+    part_size_deg: 1.0
+    primary_domain: "Adversity, evil, misfortune, sins"
+    secondary_domains:
+      - "Disease and suffering"
+      - "Moral character (benefic D30 = virtuous)"
+      - "Past-life sins manifesting"
+    importance: "Important for adversity and health matters"
+    vimshopaka_weight_shodasha: 1.0
+    formula: >
+      Non-uniform division. Odd signs: 0-5° Mars, 5-10° Saturn,
+      10-18° Jupiter, 18-25° Mercury, 25-30° Venus.
+      Even signs: reverse order starting with Venus.
+    assessment: >
+      D30 is uniquely non-uniform, ruled by the 5 non-luminaries.
+      Malefics placed strongly in D30 indicate serious adversity.
+      Used to assess chronic disease, suffering, and moral character.
+    source: "BPHS Ch.6 v37-40"
+
+  D40:
+    name: "Khavedamsha"
+    name_hi: "खवेदांश"
+    division: 40
+    part_size_deg: 0.75
+    primary_domain: "Auspicious and inauspicious effects (paternal lineage)"
+    secondary_domains:
+      - "Paternal ancestral karma"
+      - "Fortune from father's side"
+    importance: "Supplementary — for ancestral karma"
+    vimshopaka_weight_shodasha: 0.5
+    formula: >
+      40 parts per sign. Odd signs count from Aries,
+      even signs count from Libra.
+    assessment: >
+      D40 and D45 together assess auspiciousness of the native's
+      birth in relation to their ancestral lines. D40 focuses on
+      the paternal (father's) lineage karma.
+    source: "BPHS Ch.6 v41-42"
+
+  D45:
+    name: "Akshavedamsha"
+    name_hi: "अक्षवेदांश"
+    division: 45
+    part_size_deg: 0.6667
+    primary_domain: "Auspicious and inauspicious effects (maternal lineage)"
+    secondary_domains:
+      - "Maternal ancestral karma"
+      - "Fortune from mother's side"
+    importance: "Supplementary — for ancestral karma"
+    vimshopaka_weight_shodasha: 0.5
+    formula: >
+      45 parts per sign. Movable signs from Aries, fixed from Leo,
+      dual from Sagittarius.
+    assessment: >
+      Complements D40. D45 reveals how the native's existence is
+      influenced by their maternal lineage karma. Both D40 and D45
+      are rarely used independently but contribute to Vimshopaka Bala.
+    source: "BPHS Ch.6 v43-44"
+
+  D60:
+    name: "Shashtiamsha"
+    name_hi: "षष्ट्यांश"
+    division: 60
+    part_size_deg: 0.5
+    primary_domain: "Past-life karma, the most subtle layer of destiny"
+    secondary_domains:
+      - "Soul's accumulated karma from previous births"
+      - "Deepest tendencies and dharmic direction"
+      - "Final and most precise indicator of life quality"
+    importance: "Most subtle and revealing — past karma"
+    vimshopaka_weight_shodasha: 4.0
+    formula: >
+      60 parts of 0.5° each, always counting from the same sign as D1.
+      Each 0.5° is ruled by one of 60 Shashtiamsha deities.
+    assessment: >
+      D60 carries the highest weight (4.0) in Shodashavarga after D1 (3.5)
+      and D9 (3.0), underscoring its importance. A planet in a good Shashtiamsha
+      (Ghora, Mridu, etc.) gains significant strength. The 60 Shashtiamshas
+      cycle through auspicious, inauspicious, and mixed states. Used for
+      precise timing and past-karma assessment.
+    source: "BPHS Ch.6 v47-48"

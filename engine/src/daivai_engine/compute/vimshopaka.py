@@ -1,7 +1,7 @@
 """Vimshopaka Bala — planet strength across divisional charts.
 
-Evaluates planet dignity in 6 or 16 vargas with BPHS-prescribed weights.
-Higher score = planet consistently strong across multiple divisional charts.
+Evaluates planet dignity in 6, 7, 10, or 16 vargas with BPHS-prescribed
+weights. Higher score = planet consistently strong across multiple charts.
 
 Source: BPHS Chapters 16-17.
 """
@@ -9,14 +9,21 @@ Source: BPHS Chapters 16-17.
 from __future__ import annotations
 
 from daivai_engine.compute.divisional import (
+    compute_akshavedamsha_sign,
     compute_chaturthamsha_sign,
+    compute_chaturvimshamsha_sign,
     compute_dasamsha_sign,
     compute_drekkana_sign,
     compute_dwadashamsha_sign,
     compute_hora_sign,
+    compute_khavedamsha_sign,
     compute_navamsha_sign,
     compute_saptamsha_sign,
+    compute_saptavimshamsha_sign,
+    compute_shashtyamsha_sign,
+    compute_shodashamsha_sign,
     compute_trimshamsha_sign,
+    compute_vimshamsha_sign,
 )
 from daivai_engine.constants import (
     DEBILITATION,
@@ -31,12 +38,45 @@ from daivai_engine.models.chart import ChartData
 from daivai_engine.models.strength import VimshopakaBala
 
 
-# Shadbarga weights (6 vargas): D1=3.5, D2=1, D3=1, D9=3, D12=0.5, D30=1
-_SHADVARGA = {"D1": 3.5, "D2": 1.0, "D3": 1.0, "D9": 3.0, "D12": 0.5, "D30": 1.0}
+# ── Varga weight schemes (BPHS Ch.16-17) ────────────────────────────────────
 
-# Shodashavarga (16 vargas) — using available implementations
-# We compute what we can; missing vargas get neutral score
-_SHODASHAVARGA = {
+# Shadvarga (6 vargas) — total weight: 10.0
+_SHADVARGA: dict[str, float] = {
+    "D1": 3.5,
+    "D2": 1.0,
+    "D3": 1.0,
+    "D9": 3.0,
+    "D12": 0.5,
+    "D30": 1.0,
+}
+
+# Saptvarga (7 vargas) — total weight: 20.0
+_SAPTVARGA: dict[str, float] = {
+    "D1": 5.0,
+    "D2": 2.0,
+    "D3": 3.0,
+    "D7": 4.5,
+    "D9": 2.5,
+    "D12": 2.0,
+    "D30": 1.0,
+}
+
+# Dashavarga (10 vargas) — total weight: 20.0
+_DASHAVARGA: dict[str, float] = {
+    "D1": 3.0,
+    "D2": 1.5,
+    "D3": 1.5,
+    "D7": 1.5,
+    "D9": 1.5,
+    "D10": 1.5,
+    "D12": 1.5,
+    "D16": 1.5,
+    "D30": 1.5,
+    "D60": 5.0,
+}
+
+# Shodashavarga (16 vargas) — total weight: 20.0
+_SHODASHAVARGA: dict[str, float] = {
     "D1": 3.5,
     "D2": 1.0,
     "D3": 1.0,
@@ -45,13 +85,20 @@ _SHODASHAVARGA = {
     "D9": 3.0,
     "D10": 0.5,
     "D12": 0.5,
+    "D16": 2.0,
+    "D20": 0.5,
+    "D24": 0.5,
+    "D27": 0.5,
     "D30": 1.0,
+    "D40": 0.5,
+    "D45": 0.5,
+    "D60": 4.0,
 }
 
 _SHADVARGA_MAX = sum(_SHADVARGA.values())  # 10.0
-_SHODASHA_MAX = 20.0  # Standard BPHS max
+_SHODASHA_MAX = 20.0  # Standard BPHS max for Saptvarga, Dashavarga, Shodashavarga
 
-# Dignity points per varga
+# Dignity points (normalized to 20-point scale)
 _DIGNITY_POINTS: dict[str, float] = {
     "exalted": 20.0,
     "mooltrikona": 18.0,
@@ -65,21 +112,36 @@ _DIGNITY_POINTS: dict[str, float] = {
 _PLANETS_7 = ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"]
 
 
+def _scheme_score(dignity_map: dict[str, str], scheme: dict[str, float]) -> float:
+    """Compute weighted dignity score for a varga scheme, scaled to 20.
+
+    Args:
+        dignity_map: Varga name → dignity string for one planet.
+        scheme: Varga name → weight for the desired scheme.
+
+    Returns:
+        Weighted score scaled so that maximum possible = 20.0.
+    """
+    raw = sum(w * (_DIGNITY_POINTS.get(dignity_map[v], 8.0) / 20.0) for v, w in scheme.items())
+    total_w = sum(scheme.values())
+    return (raw / total_w) * _SHODASHA_MAX if total_w else 0.0
+
+
 def compute_vimshopaka_bala(chart: ChartData) -> list[VimshopakaBala]:
-    """Compute Vimshopaka Bala for the 7 classical planets.
+    """Compute Vimshopaka Bala for the 7 classical planets (all 4 schemes).
 
     Args:
         chart: Computed birth chart.
 
     Returns:
-        List of VimshopakaBala, one per planet, sorted by score descending.
+        List of VimshopakaBala, one per planet, sorted by shodashavarga score.
     """
     results: list[VimshopakaBala] = []
     for name in _PLANETS_7:
         p = chart.planets[name]
         lon = p.longitude
 
-        # Compute sign index in each varga
+        # Sign index in each varga (D1 uses natal position)
         varga_signs: dict[str, int] = {
             "D1": p.sign_index,
             "D2": compute_hora_sign(lon),
@@ -89,42 +151,39 @@ def compute_vimshopaka_bala(chart: ChartData) -> list[VimshopakaBala]:
             "D9": compute_navamsha_sign(lon),
             "D10": compute_dasamsha_sign(lon),
             "D12": compute_dwadashamsha_sign(lon),
+            "D16": compute_shodashamsha_sign(lon),
+            "D20": compute_vimshamsha_sign(lon),
+            "D24": compute_chaturvimshamsha_sign(lon),
+            "D27": compute_saptavimshamsha_sign(lon),
             "D30": compute_trimshamsha_sign(lon),
+            "D40": compute_khavedamsha_sign(lon),
+            "D45": compute_akshavedamsha_sign(lon),
+            "D60": compute_shashtyamsha_sign(lon),
         }
 
-        # Compute dignity in each varga
-        # For D1, pass actual degree; for others, use mid-sign (15°) approximation
+        # Dignity in each varga (D1 uses actual degree; others use mid-sign)
         dignity_map: dict[str, str] = {}
-        for varga, varga_sign in varga_signs.items():
+        for varga, vsign in varga_signs.items():
             deg = p.degree_in_sign if varga == "D1" else 15.0
-            dignity_map[varga] = _dignity_in_sign(name, varga_sign, deg)
+            dignity_map[varga] = _dignity_in_sign(name, vsign, deg)
 
-        # Shadvarga score
-        shadvarga = 0.0
-        for varga, weight in _SHADVARGA.items():
-            dig = dignity_map.get(varga, "neutral")
-            points = _DIGNITY_POINTS.get(dig, 8.0)
-            shadvarga += weight * (points / 20.0)
-
-        # Shodashavarga score (scaled to max 20)
-        shodasha_raw = 0.0
-        shodasha_weight_sum = 0.0
-        for varga, weight in _SHODASHAVARGA.items():
-            dig = dignity_map.get(varga, "neutral")
-            points = _DIGNITY_POINTS.get(dig, 8.0)
-            shodasha_raw += weight * (points / 20.0)
-            shodasha_weight_sum += weight
-
-        # Scale to 20-point max
-        shodasha = (shodasha_raw / shodasha_weight_sum) * 20.0 if shodasha_weight_sum else 0.0
+        # Shadvarga on its native 10-point scale (raw weighted sum, no normalisation)
+        shadvarga_raw = sum(
+            w * (_DIGNITY_POINTS.get(dignity_map[v], 8.0) / 20.0) for v, w in _SHADVARGA.items()
+        )
+        sapt_score = _scheme_score(dignity_map, _SAPTVARGA)
+        dash_score = _scheme_score(dignity_map, _DASHAVARGA)
+        shodasha_score = _scheme_score(dignity_map, _SHODASHAVARGA)
 
         results.append(
             VimshopakaBala(
                 planet=name,
-                shadvarga_score=round(shadvarga, 2),
-                shodashavarga_score=round(shodasha, 2),
+                shadvarga_score=round(shadvarga_raw, 2),
+                saptvarga_score=round(sapt_score, 2),
+                dashavarga_score=round(dash_score, 2),
+                shodashavarga_score=round(shodasha_score, 2),
                 max_score=_SHODASHA_MAX,
-                percentage=round((shodasha / _SHODASHA_MAX) * 100, 1),
+                percentage=round((shodasha_score / _SHODASHA_MAX) * 100, 1),
                 dignity_in_each=dignity_map,
             )
         )

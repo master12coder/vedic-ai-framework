@@ -1,0 +1,374 @@
+# ═══════════════════════════════════════════════════════════════
+# SAHAM DEFINITIONS — 29 Sensitive Points (Tajaka / Parashari)
+# ═══════════════════════════════════════════════════════════════
+# Sources: Tajaka Neelakanthi, Uttarakalamrita, Phala Deepika
+# Formula: Saham = A + B - C (mod 360)
+# Day = Sun in houses 7-12 (above horizon)
+# Night = Sun in houses 1-6 (below horizon)
+# ═══════════════════════════════════════════════════════════════
+
+source: "Tajaka Neelakanthi, Uttarakalamrita, Phala Deepika"
+note: >
+  All formulas are modular (result reduced to 0-360°).
+  House cusps use whole-sign system.
+  House lord = ruler of the whole-sign house.
+
+sahams:
+
+  # ── Original 6 (Core Tajaka) ─────────────────────────────────────────────
+
+  - name: Punya Saham
+    name_hi: पुण्य सहम
+    english: Fortune / Lot of Fortune
+    category: core
+    formula_day: "Lagna + Moon - Sun"
+    formula_night: "Lagna + Sun - Moon"
+    signification: >
+      Overall fortune, luck, and benefic outcomes. The most important saham.
+      Corresponds to the Hellenistic Part of Fortune. Strong Punya Saham
+      indicates a fortunate, well-supported life.
+    source: "Tajaka Neelakanthi Ch.3"
+
+  - name: Vivaha Saham
+    name_hi: विवाह सहम
+    english: Marriage
+    category: core
+    formula_day: "Lagna + Venus - 7th cusp"
+    formula_night: "Lagna + Venus - 7th cusp"
+    note: "No day/night reversal — Venus always used"
+    signification: >
+      Timing and quality of marriage. Transits over this point by benefics
+      indicate marriage prospects.
+    source: "Tajaka Neelakanthi Ch.3"
+
+  - name: Putra Saham
+    name_hi: पुत्र सहम
+    english: Children
+    category: core
+    formula_day: "Lagna + Jupiter - 5th cusp"
+    formula_night: "Lagna + Jupiter - 5th cusp"
+    note: "No day/night reversal — Jupiter always used"
+    signification: >
+      Prospects for progeny. Afflictions to this saham or its lord indicate
+      delays or difficulties with children.
+    source: "Tajaka Neelakanthi Ch.3"
+
+  - name: Karma Saham
+    name_hi: कर्म सहम
+    english: Career / Profession
+    category: core
+    formula_day: "Lagna + Saturn - 10th cusp"
+    formula_night: "Lagna + Saturn - 10th cusp"
+    note: "No day/night reversal — Saturn always used"
+    signification: >
+      Career potential and professional status. Saturn's connection to
+      karma makes this the karmic profession indicator.
+    source: "Tajaka Neelakanthi Ch.3"
+
+  - name: Vidya Saham
+    name_hi: विद्या सहम
+    english: Education / Learning
+    category: core
+    formula_day: "Lagna + Mercury - 5th cusp"
+    formula_night: "Lagna + Mercury - 5th cusp"
+    note: "No day/night reversal — Mercury always used"
+    signification: >
+      Academic success, intellectual development, and learning capacity.
+    source: "Tajaka Neelakanthi Ch.3"
+
+  - name: Mrityu Saham
+    name_hi: मृत्यु सहम
+    english: Death / Transformation
+    category: core
+    formula_day: "Lagna + 8th cusp - Moon"
+    formula_night: "Lagna + 8th cusp - Moon"
+    note: "No day/night reversal"
+    signification: >
+      Timing of death or major transformations. Used along with longevity
+      calculations. Transits of malefics activate this point.
+    source: "Uttarakalamrita"
+
+  # ── Health & Body ─────────────────────────────────────────────────────────
+
+  - name: Roga Saham
+    name_hi: रोग सहम
+    english: Disease / Acute Illness
+    category: health
+    formula_day: "Lagna + Mars - Saturn"
+    formula_night: "Lagna + Saturn - Mars"
+    signification: >
+      Acute diseases and health crises. Mars-Saturn combination represents
+      sudden (Mars) and chronic (Saturn) illness activation.
+    source: "Tajaka Neelakanthi"
+
+  - name: Sharira Saham
+    name_hi: शरीर सहम
+    english: Body / Physical Constitution
+    category: health
+    formula_day: "Lagna + Moon's-lord-sign-cusp - Moon"
+    formula_night: "Lagna + Moon's-lord-sign-cusp - Moon"
+    note: "Moon's lord = ruler of the sign Moon occupies; no day/night reversal"
+    signification: >
+      Physical body, constitution, and vitality. Moon's lord connects
+      the mind-body continuum to physical health.
+    source: "Phala Deepika"
+
+  # ── Relationships ─────────────────────────────────────────────────────────
+
+  - name: Bandhu Saham
+    name_hi: बन्धु सहम
+    english: Relatives / Bonds
+    category: relationships
+    formula_day: "Lagna + Moon - Mercury"
+    formula_night: "Lagna + Moon - Mercury"
+    note: "No day/night reversal"
+    signification: >
+      Relatives, family bonds, and social connections. Mercury represents
+      communication and exchange within family networks.
+    source: "Uttarakalamrita"
+
+  - name: Matri Saham
+    name_hi: मातृ सहम
+    english: Mother
+    category: relationships
+    formula_day: "Lagna + Moon - Venus"
+    formula_night: "Lagna + Venus - Moon"
+    signification: >
+      Relationship with the mother and maternal influences. Venus
+      (comfort) and Moon (nurture) together define maternal energy.
+    source: "Tajaka Neelakanthi"
+
+  - name: Pitri Saham
+    name_hi: पितृ सहम
+    english: Father
+    category: relationships
+    formula_day: "Lagna + Sun - Saturn"
+    formula_night: "Lagna + Saturn - Sun"
+    signification: >
+      Relationship with the father and paternal karma. Sun (father
+      principle) and Saturn (discipline, longevity) define paternal themes.
+    source: "Tajaka Neelakanthi"
+
+  - name: Bhratri Saham
+    name_hi: भ्रातृ सहम
+    english: Siblings
+    category: relationships
+    formula_day: "Lagna + Jupiter - Saturn"
+    formula_night: "Lagna + Saturn - Jupiter"
+    signification: >
+      Siblings, co-borns, and close associates. Jupiter governs
+      brothers/expansion; Saturn governs separation and delays.
+    source: "Uttarakalamrita"
+
+  # ── Wealth & Career ───────────────────────────────────────────────────────
+
+  - name: Rajya Saham
+    name_hi: राज्य सहम
+    english: Kingdom / Power / Authority
+    category: wealth_career
+    formula_day: "Lagna + Saturn - Sun"
+    formula_night: "Lagna + Sun - Saturn"
+    signification: >
+      Power, authority, and political/social status. Activation indicates
+      periods of enhanced leadership and recognition.
+    source: "Tajaka Neelakanthi"
+
+  - name: Dhana Saham
+    name_hi: धन सहम
+    english: Wealth / Prosperity
+    category: wealth_career
+    formula_day: "Lagna + Moon - Jupiter"
+    formula_night: "Lagna + Moon - Jupiter"
+    note: "Some texts reverse for night births; general formula widely accepted"
+    signification: >
+      Financial prosperity and accumulated wealth. Moon (needs) and
+      Jupiter (abundance) together indicate financial potential.
+    source: "Uttarakalamrita"
+
+  - name: Vyapara Saham
+    name_hi: व्यापार सहम
+    english: Business / Trade
+    category: wealth_career
+    formula_day: "Lagna + Mars - Saturn"
+    formula_night: "Lagna + Saturn - Mars"
+    signification: >
+      Business ventures and commercial success. Mars (initiative) and
+      Saturn (structure/persistence) form the entrepreneurial axis.
+    source: "Tajaka Neelakanthi"
+
+  - name: Labha Saham
+    name_hi: लाभ सहम
+    english: Gains / Profits
+    category: wealth_career
+    formula_day: "Lagna + 11th-cusp - 11th-lord"
+    formula_night: "Lagna + 11th-cusp - 11th-lord"
+    note: "Uses 11th house cusp and its lord; no day/night reversal"
+    signification: >
+      Gains, income, and fulfillment of desires. The 11th house is the
+      house of gains; this saham crystallizes its energy.
+    source: "Uttarakalamrita"
+
+  # ── Spiritual ─────────────────────────────────────────────────────────────
+
+  - name: Dharma Saham
+    name_hi: धर्म सहम
+    english: Righteousness / Duty
+    category: spiritual
+    formula_day: "Lagna + 9th-cusp - 9th-lord"
+    formula_night: "Lagna + 9th-cusp - 9th-lord"
+    note: "No day/night reversal; same formula as Yatra Saham"
+    signification: >
+      Dharmic path, righteousness, and higher purpose. The 9th house
+      encapsulates dharma; this saham focuses its energy.
+    source: "Tajaka Neelakanthi"
+
+  - name: Guru Saham
+    name_hi: गुरु सहम
+    english: Teacher / Mentor
+    category: spiritual
+    formula_day: "Lagna + Jupiter - Sun"
+    formula_night: "Lagna + Jupiter - Sun"
+    note: "No day/night reversal"
+    signification: >
+      Connection to teachers, mentors, and gurus. Jupiter (wisdom) minus
+      Sun (ego) indicates the capacity to receive guidance.
+    source: "Phala Deepika"
+
+  - name: Mantra Saham
+    name_hi: मन्त्र सहम
+    english: Spiritual Practice / Mantra
+    category: spiritual
+    formula_day: "Lagna + Moon - Jupiter"
+    formula_night: "Lagna + Moon - Jupiter"
+    note: "No day/night reversal; same formula as Dhana Saham"
+    signification: >
+      Spiritual practices, mantra siddhi, and devotion. Different
+      signification from Dhana Saham despite shared formula.
+    source: "Uttarakalamrita"
+
+  # ── Events ────────────────────────────────────────────────────────────────
+
+  - name: Yatra Saham
+    name_hi: यात्रा सहम
+    english: Travel / Journey
+    category: events
+    formula_day: "Lagna + 9th-cusp - 9th-lord"
+    formula_night: "Lagna + 9th-cusp - 9th-lord"
+    note: "No day/night reversal; same formula as Dharma Saham"
+    signification: >
+      Long-distance travel and journeys. The 9th house governs both
+      dharma and long travel; context determines interpretation.
+    source: "Tajaka Neelakanthi"
+
+  - name: Vitta Saham
+    name_hi: वित्त सहम
+    english: Finance / Resources
+    category: events
+    formula_day: "Lagna + 2nd-cusp - 2nd-lord"
+    formula_night: "Lagna + 2nd-cusp - 2nd-lord"
+    note: "No day/night reversal"
+    signification: >
+      Financial resources, liquid wealth, and monetary flow. The
+      2nd house is the treasury; this saham shows its activation.
+    source: "Uttarakalamrita"
+
+  - name: Paradesa Saham
+    name_hi: परदेश सहम
+    english: Foreign Land / Abroad
+    category: events
+    formula_day: "Lagna + 12th-cusp - 12th-lord"
+    formula_night: "Lagna + 12th-cusp - 12th-lord"
+    note: "No day/night reversal"
+    signification: >
+      Foreign residence, settlement abroad, and exile. The 12th house
+      governs foreign lands and losses.
+    source: "Tajaka Neelakanthi"
+
+  - name: Santana Saham
+    name_hi: सन्तान सहम
+    english: Progeny / Children (extended)
+    category: events
+    formula_day: "Lagna + Jupiter - Moon"
+    formula_night: "Lagna + Jupiter - Moon"
+    note: "No day/night reversal; Jupiter-Moon axis for nurturing"
+    signification: >
+      Children and progeny (complementary to Putra Saham). Jupiter
+      (expansion) and Moon (nurturing) represent parenthood.
+    source: "Phala Deepika"
+
+  # ── Danger ────────────────────────────────────────────────────────────────
+
+  - name: Apamrityu Saham
+    name_hi: अपमृत्यु सहम
+    english: Accidental Death / Sudden Peril
+    category: danger
+    formula_day: "Lagna + 8th-cusp - Mars"
+    formula_night: "Lagna + 8th-cusp - Mars"
+    note: "No day/night reversal"
+    signification: >
+      Accidents and sudden peril. Mars represents violence and sudden
+      events; the 8th house governs death and transformation.
+    source: "Uttarakalamrita"
+
+  - name: Kali Saham
+    name_hi: काली सहम
+    english: Strife / Discord
+    category: danger
+    formula_day: "Lagna + Mars - Jupiter"
+    formula_night: "Lagna + Mars - Jupiter"
+    note: "No day/night reversal"
+    signification: >
+      Strife, conflict, and discord. Mars (aggression) minus Jupiter
+      (wisdom/restraint) indicates uncontrolled conflict.
+    source: "Tajaka Neelakanthi"
+
+  - name: Rog Saham
+    name_hi: रोग सहम (जीर्ण)
+    english: Chronic Disease
+    category: danger
+    formula_day: "Lagna + 6th-cusp - 6th-lord"
+    formula_night: "Lagna + 6th-cusp - 6th-lord"
+    note: "No day/night reversal; different from Roga Saham (acute illness)"
+    signification: >
+      Chronic and persistent illness. The 6th house governs disease;
+      this saham concentrates that energy into a sensitive point.
+    source: "Phala Deepika"
+
+  # ── Additional Classical ──────────────────────────────────────────────────
+
+  - name: Jalapatana Saham
+    name_hi: जलपतन सहम
+    english: Drowning / Water Peril
+    category: danger
+    formula_day: "Lagna + 4th-cusp - Moon"
+    formula_night: "Lagna + 4th-cusp - Moon"
+    note: "No day/night reversal"
+    signification: >
+      Danger from water, drowning, and fluid-related accidents. The 4th
+      house governs water bodies; Moon governs the mind and fluids.
+    source: "Uttarakalamrita"
+
+  - name: Shatru Saham
+    name_hi: शत्रु सहम
+    english: Enemies
+    category: danger
+    formula_day: "Lagna + Mars - Saturn"
+    formula_night: "Lagna + Saturn - Mars"
+    note: "Same formula as Roga Saham; context determines if health or enemies"
+    signification: >
+      Enemies, opposition, and adversarial relationships. Mars (aggression)
+      and Saturn (obstruction) indicate enemity.
+    source: "Tajaka Neelakanthi"
+
+  - name: Gajakesari Saham
+    name_hi: गजकेसरी सहम
+    english: Prosperity / Elephant-Lion
+    category: wealth_career
+    formula_day: "Lagna + Jupiter - Moon"
+    formula_night: "Lagna + Jupiter - Moon"
+    note: "No day/night reversal; same formula as Santana Saham"
+    signification: >
+      General prosperity and auspiciousness. Named after the Gajakesari
+      Yoga (Jupiter-Moon combination). Strong point indicates royal
+      qualities and widespread recognition.
+    source: "Phala Deepika"

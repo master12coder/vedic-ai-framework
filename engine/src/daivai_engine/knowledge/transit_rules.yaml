@@ -1,0 +1,586 @@
+# ═══════════════════════════════════════════════════════════════
+# GOCHARA (TRANSIT) RULES — Results by House from Natal Moon
+# ═══════════════════════════════════════════════════════════════
+# Source: Phaladeepika Ch.26, BPHS Transit Chapter, Jataka Parijata
+# Confidence: canonical
+#
+# Rules describe transit results for each planet passing through
+# houses 1-12 counted from the natal Moon sign.
+#
+# Favorability scale:
+#   very_favorable  (+2) : Strong positive results
+#   favorable       (+1) : Positive results
+#   neutral          (0) : Mixed / no strong effect
+#   unfavorable     (-1) : Negative results
+#   very_unfavorable(-2) : Strong negative results
+#
+# VEDHA: Houses 7 and 11 have NO vedha — beneficial effects always active.
+# Vedha pairs: 1↔5, 2↔12, 3↔9, 4↔10, 6↔8
+# ═══════════════════════════════════════════════════════════════
+
+source: "Phaladeepika Ch.26, BPHS transit chapter"
+confidence: canonical
+
+# Ashtakavarga-based score modifier (applied on top of gochara result):
+ashtakavarga_scoring:
+  thresholds:
+    - bindus: [0, 1]  score_modifier: -2  label: "Very unfavorable"
+    - bindus: [2, 3]  score_modifier: -1  label: "Unfavorable"
+    - bindus: [4, 4]  score_modifier:  0  label: "Neutral"
+    - bindus: [5, 6]  score_modifier: +1  label: "Favorable"
+    - bindus: [7, 8]  score_modifier: +2  label: "Very favorable"
+  note: >
+    When Vedha is active, the beneficial transit effect is nullified
+    (score forced to 0 regardless of bindu count). Malefic effects
+    from vedha are not blocked.
+
+planets:
+
+  # ── Saturn ──────────────────────────────────────────────────────────────
+  # Saturn transit is most impactful of all planets.
+  # Sade Sati (12th/1st/2nd from Moon) = 7.5-year affliction period.
+  # Saturn's own signs (Capricorn/Aquarius) and exaltation (Libra)
+  # reduce the malefic effects even in unfavorable houses.
+  Saturn:
+    source: "Phaladeepika Ch.26 v1-12"
+    houses:
+      1:
+        favorability: unfavorable
+        score: -1
+        result: "Obstacles, health issues, mental distress, loss of position"
+        note: "Part of Sade Sati — peak phase when Saturn crosses Moon sign"
+      2:
+        favorability: unfavorable
+        score: -1
+        result: "Financial strain, family disputes, speech problems"
+        note: "Part of Sade Sati — setting phase"
+      3:
+        favorability: favorable
+        score: +1
+        result: "Success over enemies, courage, valour, short journeys"
+        note: "One of Saturn's good transit positions"
+      4:
+        favorability: unfavorable
+        score: -1
+        result: "Mental distress, property issues, mother's health affected"
+      5:
+        favorability: unfavorable
+        score: -1
+        result: "Children issues, stomach problems, loss of intelligence"
+      6:
+        favorability: favorable
+        score: +1
+        result: "Victory over enemies, good health, recovery from illness"
+        note: "Good Saturn transit — enemies subdued"
+      7:
+        favorability: unfavorable
+        score: -1
+        result: "Travel, relationship strain, spouse health issues"
+        vedha: none
+      8:
+        favorability: very_unfavorable
+        score: -2
+        result: "Health crises, major losses, accidents, danger of death"
+        note: "Very malefic — Saturn in 8th from Moon"
+      9:
+        favorability: unfavorable
+        score: -1
+        result: "Obstacles in fortune, father's health, loss of dharma"
+      10:
+        favorability: unfavorable
+        score: -1
+        result: "Career setbacks, public humiliation, loss of status"
+        note: "Kantak Shani — Saturn in 10th from Moon"
+      11:
+        favorability: very_favorable
+        score: +2
+        result: "Gains, prosperity, fulfillment of desires, income increase"
+        note: "Saturn's best transit position — no vedha for 11th house"
+        vedha: none
+      12:
+        favorability: unfavorable
+        score: -1
+        result: "Expenses, losses, foreign travel, sleep disturbances"
+        note: "Part of Sade Sati — rising phase"
+
+  # ── Jupiter ──────────────────────────────────────────────────────────────
+  # Jupiter transit is highly beneficial in 2/5/7/9/11 from Moon.
+  # In other houses it delays or creates obstacles.
+  Jupiter:
+    source: "Phaladeepika Ch.26 v13-24"
+    favorable_houses: [2, 5, 7, 9, 11]
+    houses:
+      1:
+        favorability: unfavorable
+        score: -1
+        result: "Restlessness, wandering, loss of wealth, change of residence"
+      2:
+        favorability: favorable
+        score: +1
+        result: "Financial gains, good food, family happiness, eloquent speech"
+      3:
+        favorability: unfavorable
+        score: -1
+        result: "Obstacles in short journeys, sibling issues, loss of courage"
+      4:
+        favorability: unfavorable
+        score: -1
+        result: "Property disputes, vehicle problems, mother's health issues"
+      5:
+        favorability: very_favorable
+        score: +2
+        result: "Blessings to children, intellectual growth, spiritual inclination"
+        note: "Guru in 5th — excellent for education and progeny"
+      6:
+        favorability: unfavorable
+        score: -1
+        result: "Health issues, enemy troubles, financial disputes"
+      7:
+        favorability: favorable
+        score: +1
+        result: "Marriage prospects, partnerships, successful negotiations"
+        vedha: none
+      8:
+        favorability: unfavorable
+        score: -1
+        result: "Hidden troubles, health setbacks, occult involvement"
+      9:
+        favorability: very_favorable
+        score: +2
+        result: "Fortune, guru blessings, long journeys, spiritual progress"
+        note: "Guru in 9th — excellent for dharma and fortune"
+      10:
+        favorability: unfavorable
+        score: -1
+        result: "Career stagnation despite efforts, authority conflicts"
+      11:
+        favorability: very_favorable
+        score: +2
+        result: "Excellent gains, aspirations fulfilled, social success"
+        vedha: none
+      12:
+        favorability: unfavorable
+        score: -1
+        result: "Unnecessary expenditure, spiritual retreat (sometimes positive)"
+
+  # ── Mars ─────────────────────────────────────────────────────────────────
+  # Mars transit is swift (~45 days per sign). Favorable in 3/6/11.
+  Mars:
+    source: "Phaladeepika Ch.26 v25-36"
+    favorable_houses: [3, 6, 11]
+    houses:
+      1:
+        favorability: unfavorable
+        score: -1
+        result: "Accidents, fever, conflicts, eye/head ailments"
+      2:
+        favorability: unfavorable
+        score: -1
+        result: "Financial losses, family quarrels, speech-related troubles"
+      3:
+        favorability: very_favorable
+        score: +2
+        result: "Courage, victory over enemies, sibling support, travel success"
+      4:
+        favorability: unfavorable
+        score: -1
+        result: "Property disputes, domestic quarrels, vehicle accidents"
+      5:
+        favorability: unfavorable
+        score: -1
+        result: "Children troubles, stomach issues, loss of intellectual clarity"
+      6:
+        favorability: very_favorable
+        score: +2
+        result: "Victory over enemies, improved health, athletic success"
+      7:
+        favorability: unfavorable
+        score: -1
+        result: "Marital discord, partnership conflicts, travel with difficulties"
+        vedha: none
+      8:
+        favorability: very_unfavorable
+        score: -2
+        result: "Accidents, surgeries, blood disorders, danger from weapons"
+      9:
+        favorability: unfavorable
+        score: -1
+        result: "Father's health issues, loss of fortune, irreligious tendencies"
+      10:
+        favorability: unfavorable
+        score: -1
+        result: "Career conflicts, disputes with authorities, professional setbacks"
+      11:
+        favorability: very_favorable
+        score: +2
+        result: "Gains, success in competitions, fulfillment of desires"
+        vedha: none
+      12:
+        favorability: unfavorable
+        score: -1
+        result: "Secret enemies, expenses, imprisonment risk, foreign troubles"
+
+  # ── Sun ──────────────────────────────────────────────────────────────────
+  # Sun transits each sign for ~1 month. Favorable in 3/6/10/11.
+  Sun:
+    source: "Phaladeepika Ch.26 v37-48"
+    favorable_houses: [3, 6, 10, 11]
+    houses:
+      1:
+        favorability: unfavorable
+        score: -1
+        result: "Health issues, eye problems, loss of energy"
+      2:
+        favorability: unfavorable
+        score: -1
+        result: "Financial losses, family disputes, speech problems"
+      3:
+        favorability: very_favorable
+        score: +2
+        result: "Courage, strength, sibling support, good health"
+      4:
+        favorability: unfavorable
+        score: -1
+        result: "Mental agitation, property issues, domestic unhappiness"
+      5:
+        favorability: unfavorable
+        score: -1
+        result: "Children troubles, stomach heat, loss of respect"
+      6:
+        favorability: very_favorable
+        score: +2
+        result: "Victory over enemies, good health, government favor"
+      7:
+        favorability: unfavorable
+        score: -1
+        result: "Marital tension, body heat, urinary issues"
+        vedha: none
+      8:
+        favorability: unfavorable
+        score: -2
+        result: "Health crises, fever, debts, danger from fire"
+      9:
+        favorability: unfavorable
+        score: -1
+        result: "Father's troubles, loss of fortune, irreligion"
+      10:
+        favorability: very_favorable
+        score: +2
+        result: "Career success, leadership recognition, authority gains"
+      11:
+        favorability: very_favorable
+        score: +2
+        result: "Financial gains, fulfillment of ambitions"
+        vedha: none
+      12:
+        favorability: unfavorable
+        score: -1
+        result: "Eye problems, expenses, foreign travel, tiredness"
+
+  # ── Moon ─────────────────────────────────────────────────────────────────
+  # Moon transits each sign for ~2.5 days. Quick-acting results.
+  Moon:
+    source: "Phaladeepika Ch.26 v49-60"
+    favorable_houses: [1, 3, 6, 7, 10, 11]
+    houses:
+      1:
+        favorability: favorable
+        score: +1
+        result: "Good health, mental clarity, comfort"
+      2:
+        favorability: unfavorable
+        score: -1
+        result: "Financial fluctuation, family anxieties"
+      3:
+        favorability: favorable
+        score: +1
+        result: "Mental strength, travel success, sibling harmony"
+      4:
+        favorability: unfavorable
+        score: -1
+        result: "Mental unease, domestic disturbances"
+      5:
+        favorability: unfavorable
+        score: -1
+        result: "Worries about children, stomach upset"
+      6:
+        favorability: favorable
+        score: +1
+        result: "Good health, victory over opposition"
+      7:
+        favorability: very_favorable
+        score: +2
+        result: "Good relationships, partnership success, social ease"
+        vedha: none
+      8:
+        favorability: unfavorable
+        score: -1
+        result: "Mental depression, health concerns, fatigue"
+      9:
+        favorability: unfavorable
+        score: -1
+        result: "Obstacles in fortune, father's health"
+      10:
+        favorability: very_favorable
+        score: +2
+        result: "Career success, public recognition, active work"
+      11:
+        favorability: very_favorable
+        score: +2
+        result: "Financial gains, social popularity, wishes fulfilled"
+        vedha: none
+      12:
+        favorability: unfavorable
+        score: -1
+        result: "Expenditure, fatigue, sleep disturbances"
+
+  # ── Mercury ──────────────────────────────────────────────────────────────
+  # Mercury transits ~20-40 days. Favorable in 2/4/6/8/10/11.
+  Mercury:
+    source: "Phaladeepika Ch.26 v61-72"
+    favorable_houses: [2, 4, 6, 8, 10, 11]
+    houses:
+      1:
+        favorability: unfavorable
+        score: -1
+        result: "Mental restlessness, confusion, scattered communication"
+      2:
+        favorability: very_favorable
+        score: +2
+        result: "Financial gains through trade, eloquent speech, good education"
+      3:
+        favorability: unfavorable
+        score: -1
+        result: "Sibling issues, short journey troubles"
+      4:
+        favorability: favorable
+        score: +1
+        result: "Property benefits, vehicle purchase, domestic harmony"
+      5:
+        favorability: unfavorable
+        score: -1
+        result: "Children matters difficult, intellectual restlessness"
+      6:
+        favorability: very_favorable
+        score: +2
+        result: "Victory over enemies through intellect, business success"
+      7:
+        favorability: unfavorable
+        score: -1
+        result: "Partnership disputes, communication breakdowns"
+        vedha: none
+      8:
+        favorability: favorable
+        score: +1
+        result: "Occult knowledge, research success, inheritance"
+      9:
+        favorability: unfavorable
+        score: -1
+        result: "Travel delays, teacher-student conflicts"
+      10:
+        favorability: very_favorable
+        score: +2
+        result: "Career success through communication, writing, trade"
+      11:
+        favorability: very_favorable
+        score: +2
+        result: "Gains through intellect, network expansion"
+        vedha: none
+      12:
+        favorability: unfavorable
+        score: -1
+        result: "Mental confusion, expenses on communication"
+
+  # ── Venus ────────────────────────────────────────────────────────────────
+  # Venus transits ~25-30 days. Generally favorable in 1/2/3/4/5/8/9/11/12.
+  Venus:
+    source: "Phaladeepika Ch.26 v73-84"
+    favorable_houses: [1, 2, 3, 4, 5, 8, 9, 11, 12]
+    houses:
+      1:
+        favorability: favorable
+        score: +1
+        result: "Attractiveness, comfort, sensual pleasures, good health"
+      2:
+        favorability: very_favorable
+        score: +2
+        result: "Wealth gains, family happiness, good food, luxury"
+      3:
+        favorability: favorable
+        score: +1
+        result: "Pleasant journeys, artistic expression, social success"
+      4:
+        favorability: very_favorable
+        score: +2
+        result: "Domestic happiness, vehicle purchase, property gains"
+      5:
+        favorability: very_favorable
+        score: +2
+        result: "Romance, children's blessings, creative success"
+      6:
+        favorability: unfavorable
+        score: -1
+        result: "Relationship disputes, health issues from indulgence"
+      7:
+        favorability: unfavorable
+        score: -1
+        result: "Marital difficulties despite Venus's signification"
+        vedha: none
+      8:
+        favorability: favorable
+        score: +1
+        result: "Inheritance, sensual pleasures, occult interests"
+      9:
+        favorability: very_favorable
+        score: +2
+        result: "Fortune, guru blessings, spiritual comfort"
+      10:
+        favorability: unfavorable
+        score: -1
+        result: "Career not favored, creative blocks"
+      11:
+        favorability: very_favorable
+        score: +2
+        result: "Excellent gains, luxury, social popularity"
+        vedha: none
+      12:
+        favorability: very_favorable
+        score: +2
+        result: "Pleasures in privacy, retreat, spiritual comfort, bed comforts"
+
+  # ── Rahu ─────────────────────────────────────────────────────────────────
+  # Rahu transits ~18 months per sign. Amplifies the house significations.
+  # Favorable in 3/6/10/11 (gives material gains through unconventional means).
+  Rahu:
+    source: "BPHS transit chapter, Jataka Parijata"
+    note: "Rahu's effects are ambiguous — worldly gains but karmic entanglements"
+    favorable_houses: [3, 6, 10, 11]
+    houses:
+      1:
+        favorability: unfavorable
+        score: -1
+        result: "Mental confusion, identity crisis, health issues, illusions"
+      2:
+        favorability: unfavorable
+        score: -1
+        result: "Financial irregularities, family disruptions, speech issues"
+      3:
+        favorability: favorable
+        score: +1
+        result: "Courage through unconventional means, travel, sibling connections"
+      4:
+        favorability: unfavorable
+        score: -1
+        result: "Domestic upheaval, property disputes, mother's troubles"
+      5:
+        favorability: unfavorable
+        score: -1
+        result: "Children issues, speculative losses, obsessive thinking"
+      6:
+        favorability: favorable
+        score: +1
+        result: "Overcoming enemies through shrewdness, health improvement"
+      7:
+        favorability: unfavorable
+        score: -1
+        result: "Unusual partnerships, foreign spouse attraction, relationship karma"
+        vedha: none
+      8:
+        favorability: unfavorable
+        score: -2
+        result: "Accidents, chronic ailments, hidden enemies, sudden crises"
+      9:
+        favorability: unfavorable
+        score: -1
+        result: "Religious confusion, father's troubles, fortune fluctuations"
+      10:
+        favorability: favorable
+        score: +1
+        result: "Unconventional career success, fame through irregular means"
+      11:
+        favorability: very_favorable
+        score: +2
+        result: "Material gains, large aspirations, network through unusual channels"
+        vedha: none
+      12:
+        favorability: unfavorable
+        score: -1
+        result: "Foreign travel, hidden expenditure, subconscious fears"
+
+  # ── Ketu ─────────────────────────────────────────────────────────────────
+  # Ketu is opposite Rahu. Spiritualizes the house it transits.
+  # Favorable in 3/6/10/11 (same as Rahu) but results more spiritual.
+  Ketu:
+    source: "BPHS transit chapter, Jataka Parijata"
+    note: "Ketu's effects are more spiritual/detaching in nature"
+    favorable_houses: [3, 6, 10, 11]
+    houses:
+      1:
+        favorability: unfavorable
+        score: -1
+        result: "Health issues, spiritual seeking, identity dissolution"
+      2:
+        favorability: unfavorable
+        score: -1
+        result: "Financial losses, family detachment, speech problems"
+      3:
+        favorability: favorable
+        score: +1
+        result: "Spiritual journeys, detachment from siblings, courage in isolation"
+      4:
+        favorability: unfavorable
+        score: -1
+        result: "Domestic detachment, mother's health, property loss"
+      5:
+        favorability: unfavorable
+        score: -1
+        result: "Children troubles, past-life karma surfacing, creative blocks"
+      6:
+        favorability: favorable
+        score: +1
+        result: "Enemies subdued through karma, disease recovery"
+      7:
+        favorability: unfavorable
+        score: -1
+        result: "Relationship detachment, spouse health, spiritual partnerships"
+        vedha: none
+      8:
+        favorability: unfavorable
+        score: -2
+        result: "Occult experiences, near-death, major transformations"
+      9:
+        favorability: unfavorable
+        score: -1
+        result: "Guru detachment, dharmic questioning, father's issues"
+      10:
+        favorability: favorable
+        score: +1
+        result: "Career through spirituality, detachment from worldly status"
+      11:
+        favorability: very_favorable
+        score: +2
+        result: "Spiritual gains, fulfillment through renunciation"
+        vedha: none
+      12:
+        favorability: favorable
+        score: +1
+        result: "Moksha inclinations, foreign ashrams, spiritual liberation"
+
+# ── Vedha Pairs ──────────────────────────────────────────────────────────────
+# When a planet transits a favorable house, another planet in the vedha house
+# cancels the beneficial effect (result becomes neutral, score = 0).
+# Malefic transits are NOT blocked by vedha.
+# Houses 7 and 11 have NO vedha — benefits always active.
+vedha_pairs:
+  source: "Phaladeepika transit chapter"
+  pairs:
+    - houses: [1, 5]   description: "1st and 5th obstruct each other"
+    - houses: [2, 12]  description: "2nd and 12th obstruct each other"
+    - houses: [3, 9]   description: "3rd and 9th obstruct each other"
+    - houses: [4, 10]  description: "4th and 10th obstruct each other"
+    - houses: [6, 8]   description: "6th and 8th obstruct each other"
+  no_vedha: [7, 11]
+  note: >
+    Vedha applies to NATAL planet positions, not transiting planets.
+    If a natal planet sits in the vedha house of the transiting planet's
+    favorable house, the benefit is cancelled.
