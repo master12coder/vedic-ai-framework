@@ -5,11 +5,20 @@ Sarvashtakavarga (aggregate) for all 7 planets (Sun through Saturn).
 Each planet receives bindus from 8 sources (7 planets + Lagna).
 
 The total of all Sarvashtakavarga values is always 337.
+
+Also provides:
+  - Prastara Ashtakavarga: 12x8 contributor matrix per planet (BPHS Ch.68)
+  - Kaksha computation: 8 sub-divisions per sign with their lords (BPHS Ch.69)
 """
 
 from __future__ import annotations
 
-from daivai_engine.models.ashtakavarga import AshtakavargaResult
+from daivai_engine.constants import SIGNS, SIGNS_EN
+from daivai_engine.models.ashtakavarga import (
+    AshtakavargaResult,
+    KakshaResult,
+    PrastaraResult,
+)
 from daivai_engine.models.chart import ChartData
 
 
@@ -166,6 +175,102 @@ def compute_ashtakavarga(chart: ChartData) -> AshtakavargaResult:
     total = sum(sarva)
 
     return AshtakavargaResult(bhinna=bhinna, sarva=sarva, total=total)
+
+
+# ---------------------------------------------------------------------------
+# Prastara Ashtakavarga — contributor matrix (BPHS Ch.68)
+# ---------------------------------------------------------------------------
+
+
+def _compute_bhinna_prastara(chart: ChartData, planet: str) -> list[list[str]]:
+    """Compute contributor lists for one planet's Prastara Ashtakavarga.
+
+    For each of the 12 signs, returns the list of source names (from the 8
+    contributors: 7 planets + Lagna) that gave a bindu point.
+
+    Returns:
+        List of 12 lists of contributor name strings.
+    """
+    table = _BINDU_TABLES[planet]
+    contributors: list[list[str]] = []
+
+    for sign in range(12):
+        sign_contributors: list[str] = []
+        for source in _SOURCES:
+            source_sign = _sign_index_of(chart, source)
+            house = _house_distance(source_sign, sign)
+            if house in table[source]:
+                sign_contributors.append(source)
+        contributors.append(sign_contributors)
+
+    return contributors
+
+
+def compute_prastara(chart: ChartData) -> dict[str, PrastaraResult]:
+    """Compute Prastara (expanded) Ashtakavarga for all 7 planets.
+
+    The Prastara shows WHICH of the 8 contributors (7 planets + Lagna)
+    gave each bindu point in the Bhinnashtakavarga, for every sign.
+    This is the detailed form from which the standard BAV counts can be
+    derived by taking len(contributors[sign_index]) for each sign.
+
+    Args:
+        chart: A fully computed birth chart with planetary positions.
+
+    Returns:
+        Dict mapping planet name → PrastaraResult, for Sun through Saturn.
+    """
+    result: dict[str, PrastaraResult] = {}
+    for planet in _PLANETS:
+        contributors = _compute_bhinna_prastara(chart, planet)
+        result[planet] = PrastaraResult(planet=planet, contributors=contributors)
+    return result
+
+
+# ---------------------------------------------------------------------------
+# Kaksha — 8 sub-divisions per sign (BPHS Ch.69)
+# ---------------------------------------------------------------------------
+
+# Kaksha lords in order within any sign (3°45' = 3.75° each)
+_KAKSHA_LORDS = ["Saturn", "Jupiter", "Mars", "Sun", "Venus", "Mercury", "Moon", "Lagna"]
+_KAKSHA_WIDTH = 30.0 / 8.0  # 3.75°
+
+
+def compute_kaksha(longitude: float) -> KakshaResult:
+    """Return the Kaksha details for a given sidereal longitude.
+
+    Each sign (30°) is divided into 8 Kakshas of 3°45'. The lords cycle
+    as: Saturn → Jupiter → Mars → Sun → Venus → Mercury → Moon → Lagna.
+    When a transit planet occupies a Kaksha whose lord contributed a bindu
+    in that sign's BAV, the transit gives auspicious results.
+
+    Args:
+        longitude: Sidereal longitude of the planet/point (0 ≤ lon < 360).
+
+    Returns:
+        KakshaResult with sign, Kaksha number (1-8), lord, and degree range.
+    """
+    longitude = longitude % 360.0
+    sign_index = int(longitude / 30.0)
+    degree_in_sign = longitude - sign_index * 30.0
+
+    kaksha_idx = int(degree_in_sign / _KAKSHA_WIDTH)
+    kaksha_idx = min(kaksha_idx, 7)  # guard against floating-point edge at 30°
+
+    start = kaksha_idx * _KAKSHA_WIDTH
+    end = (kaksha_idx + 1) * _KAKSHA_WIDTH
+
+    return KakshaResult(
+        longitude=longitude,
+        sign_index=sign_index,
+        sign=SIGNS[sign_index],
+        sign_en=SIGNS_EN[sign_index],
+        degree_in_sign=degree_in_sign,
+        kaksha_number=kaksha_idx + 1,
+        kaksha_lord=_KAKSHA_LORDS[kaksha_idx],
+        kaksha_start=start,
+        kaksha_end=end,
+    )
 
 
 def get_transit_strength(sarva: list[int], sign_index: int) -> str:
