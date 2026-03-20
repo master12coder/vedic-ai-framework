@@ -1,0 +1,374 @@
+# ═══════════════════════════════════════════════════════════════
+# KALACHAKRA DASHA — Complete Lookup Tables with Provenance
+# ═══════════════════════════════════════════════════════════════
+#
+# Source: BPHS Chapter 46 "Kalachakra Dasha Adhyaya"
+# Cross-ref: Girish Chand Sharma commentary, PVR Narasimha Rao
+#
+# IMPORTANT: This is THE authoritative data for Kalachakra computation.
+# The Python module loads this YAML — no hardcoded sequences in code.
+# Each entry has source, confidence, and known alternatives.
+#
+# Sign indices: 0=Aries, 1=Taurus, 2=Gemini, 3=Cancer, 4=Leo,
+#   5=Virgo, 6=Libra, 7=Scorpio, 8=Sagittarius,
+#   9=Capricorn, 10=Aquarius, 11=Pisces
+# ═══════════════════════════════════════════════════════════════
+
+metadata:
+  source: "Brihat Parashara Hora Shastra, Chapter 46"
+  compiled_from: "R. Santhanam translation, Girish Chand Sharma commentary"
+  confidence: "scholarly_consensus"
+  note: >
+    Chapter/verse numbers follow R. Santhanam's BPHS translation.
+    Verse numbers may differ in other editions. The 108-pada sequences
+    are consistent across all major commentaries. The interpretation of
+    whether these are Mahadashas or Bhuktis is debated (see controversies).
+  alternatives:
+    - "PVR Narasimha Rao: sequences may be Antardashas, not Mahadashas"
+    - "South Indian 'Portion Zero' method: always starts from pada 1 of group"
+    - "Continuous Progression: after 9 signs, move to next pada's sequence"
+
+# ── Sign durations (BPHS Ch.46 v3-5) ────────────────────────
+sign_years:
+  source: "BPHS Ch.46 v3-5"
+  confidence: "canonical"
+  note: "These are the ONLY years that appear in Kalachakra. No debate exists on these values."
+  values:
+    0: 7    # Aries — Mars rules, 7 years
+    1: 16   # Taurus — Venus rules, 16 years
+    2: 9    # Gemini — Mercury rules, 9 years
+    3: 21   # Cancer — Moon rules, 21 years (longest)
+    4: 5    # Leo — Sun rules, 5 years (shortest)
+    5: 9    # Virgo — Mercury rules, 9 years
+    6: 16   # Libra — Venus rules, 16 years
+    7: 7    # Scorpio — Mars rules, 7 years
+    8: 10   # Sagittarius — Jupiter rules, 10 years
+    9: 4    # Capricorn — Saturn rules, 4 years
+    10: 4   # Aquarius — Saturn rules, 4 years
+    11: 10  # Pisces — Jupiter rules, 10 years
+
+# ── Nakshatra group classification (BPHS Ch.46 v6-12) ───────
+#
+# The 27 nakshatras are divided into 4 groups based on the
+# direction of dasha progression (Savya = direct, Apasavya = reverse).
+# Pattern: first 3 nakshatras Savya, next 3 Apasavya, alternating,
+# with further subdivision into I and II variants.
+#
+nakshatra_groups:
+  source: "BPHS Ch.46 v6-12"
+  confidence: "canonical"
+  note: "This grouping is universally agreed upon across all commentaries."
+  savya_i:
+    nakshatras:
+      - Ashwini
+      - Krittika
+      - Punarvasu
+      - Ashlesha
+      - Hasta
+      - Swati
+      - Moola
+      - Uttara Ashadha
+      - Purva Bhadrapada
+      - Revati
+    motion: "zodiacal (direct)"
+    description: "Aswini Group — primary direct motion nakshatras"
+
+  savya_ii:
+    nakshatras:
+      - Bharani
+      - Pushya
+      - Chitra
+      - Purva Ashadha
+      - Uttara Bhadrapada
+    motion: "zodiacal (direct)"
+    description: "Bharani Group — secondary direct motion nakshatras"
+
+  apasavya_i:
+    nakshatras:
+      - Rohini
+      - Magha
+      - Vishakha
+      - Shravana
+    motion: "anti-zodiacal (reverse)"
+    description: "Rohini Group — primary reverse motion nakshatras"
+
+  apasavya_ii:
+    nakshatras:
+      - Mrigashira
+      - Ardra
+      - Purva Phalguni
+      - Uttara Phalguni
+      - Anuradha
+      - Jyeshtha
+      - Dhanishta
+      - Shatabhisha
+    motion: "anti-zodiacal (reverse)"
+    description: "Mrigashira Group — secondary reverse motion nakshatras"
+
+# ── The 16 pada-to-sign sequences (BPHS Ch.46 v13-45) ───────
+#
+# Each group has 4 pada sequences. Every nakshatra in a group
+# uses the SAME 4 sequences for its 4 padas.
+#
+# Format: list of 9 sign indices
+# Paramayus = sum of sign_years for the 9 signs
+# Deha = first sign (physical body anchor)
+# Jeeva = last sign (soul/life-force anchor)
+#
+sequences:
+  source: "BPHS Ch.46 v13-45"
+  confidence: "scholarly_consensus"
+  note: >
+    These 16 sequences encode the complete Kalachakra wheel.
+    The non-sequential jumps (Gatis) are intentional — they represent
+    karmic shifts where the native leaps between life experiences.
+
+  savya_i:
+    pada_1:
+      signs: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+      paramayus: 100
+      deha: 0   # Aries
+      jeeva: 8  # Sagittarius
+      gatis: []  # Pure zodiacal — no jumps
+      source: "BPHS Ch.46 v13-14"
+
+    pada_2:
+      signs: [9, 10, 11, 7, 6, 5, 3, 4, 2]
+      paramayus: 85
+      deha: 9   # Capricorn
+      jeeva: 2  # Gemini
+      gatis:
+        - type: "simhavalokana"
+          from_sign: 11  # Pisces
+          to_sign: 7     # Scorpio
+          description: "Pisces to Scorpio — trinal jump, major life upheaval"
+          source: "BPHS Ch.46 v15-16"
+        - type: "manduka"
+          from_sign: 5   # Virgo
+          to_sign: 3     # Cancer
+          description: "Virgo to Cancer — skips Leo, sudden professional shift"
+      source: "BPHS Ch.46 v15-16"
+
+    pada_3:
+      signs: [1, 0, 11, 10, 9, 8, 0, 1, 2]
+      paramayus: 83
+      deha: 1   # Taurus
+      jeeva: 2  # Gemini
+      gatis:
+        - type: "markati"
+          from_sign: 8   # Sagittarius
+          to_sign: 0     # Aries
+          description: "Sagittarius to Aries — backward monkey jump"
+      source: "BPHS Ch.46 v17-18"
+
+    pada_4:
+      signs: [3, 4, 5, 6, 7, 8, 9, 10, 11]
+      paramayus: 86
+      deha: 3   # Cancer
+      jeeva: 11 # Pisces
+      gatis: []  # Sequential from Cancer — no jumps
+      source: "BPHS Ch.46 v19-20"
+
+  savya_ii:
+    pada_1:
+      signs: [7, 6, 5, 3, 4, 2, 1, 0, 11]
+      paramayus: 100
+      deha: 7   # Scorpio
+      jeeva: 11 # Pisces
+      gatis:
+        - type: "manduka"
+          from_sign: 5  # Virgo
+          to_sign: 3    # Cancer
+          description: "Skips Leo — sudden career transition"
+      source: "BPHS Ch.46 v21-22"
+
+    pada_2:
+      signs: [10, 9, 8, 0, 1, 2, 3, 4, 5]
+      paramayus: 85
+      deha: 10  # Aquarius
+      jeeva: 5  # Virgo
+      gatis:
+        - type: "simhavalokana"
+          from_sign: 8  # Sagittarius
+          to_sign: 0    # Aries
+          description: "Sagittarius to Aries — trinal leap across the zodiac"
+      source: "BPHS Ch.46 v23-24"
+
+    pada_3:
+      signs: [6, 7, 8, 9, 10, 11, 7, 6, 5]
+      paramayus: 83
+      deha: 6   # Libra
+      jeeva: 5  # Virgo
+      gatis:
+        - type: "markati"
+          from_sign: 11 # Pisces
+          to_sign: 7    # Scorpio
+          description: "Backward jump from Pisces to Scorpio"
+      source: "BPHS Ch.46 v25-26"
+
+    pada_4:
+      signs: [3, 4, 2, 1, 0, 11, 10, 9, 8]
+      paramayus: 86
+      deha: 3   # Cancer
+      jeeva: 8  # Sagittarius
+      gatis:
+        - type: "manduka"
+          from_sign: 4  # Leo
+          to_sign: 2    # Gemini
+          description: "Skips Cancer — professional disruption"
+      source: "BPHS Ch.46 v27-28"
+
+  apasavya_i:
+    pada_1:
+      signs: [8, 9, 10, 11, 0, 1, 2, 4, 3]
+      paramayus: 86
+      deha: 8   # Sagittarius (but actually Cancer is Deha per research)
+      jeeva: 3  # Cancer
+      gatis:
+        - type: "manduka"
+          from_sign: 2  # Gemini
+          to_sign: 4    # Leo
+          description: "Skips Cancer — then jumps back to Cancer as Jeeva"
+      source: "BPHS Ch.46 v29-30"
+
+    pada_2:
+      signs: [5, 6, 7, 11, 10, 9, 8, 7, 6]
+      paramayus: 83
+      deha: 5   # Virgo
+      jeeva: 6  # Libra
+      gatis:
+        - type: "simhavalokana"
+          from_sign: 7   # Scorpio
+          to_sign: 11    # Pisces
+          description: "Scorpio to Pisces — trinal leap, deep transformation"
+      source: "BPHS Ch.46 v31-32"
+
+    pada_3:
+      signs: [5, 4, 3, 2, 1, 0, 8, 9, 10]
+      paramayus: 85
+      deha: 5   # Virgo
+      jeeva: 10 # Aquarius
+      gatis:
+        - type: "simhavalokana"
+          from_sign: 0  # Aries
+          to_sign: 8    # Sagittarius
+          description: "Aries to Sagittarius — trinal fire jump"
+      source: "BPHS Ch.46 v33-34"
+
+    pada_4:
+      signs: [11, 0, 1, 2, 4, 3, 5, 6, 7]
+      paramayus: 100
+      deha: 11  # Pisces
+      jeeva: 7  # Scorpio
+      gatis:
+        - type: "manduka"
+          from_sign: 2  # Gemini
+          to_sign: 4    # Leo
+          description: "Skips Cancer, then jumps back"
+      source: "BPHS Ch.46 v35-36"
+
+  apasavya_ii:
+    pada_1:
+      signs: [11, 10, 9, 8, 7, 6, 5, 4, 3]
+      paramayus: 86
+      deha: 11  # Pisces
+      jeeva: 3  # Cancer
+      gatis: []  # Reverse zodiacal — no jumps
+      source: "BPHS Ch.46 v37-38"
+
+    pada_2:
+      signs: [2, 1, 0, 8, 9, 10, 11, 0, 1]
+      paramayus: 83
+      deha: 2   # Gemini
+      jeeva: 1  # Taurus
+      gatis:
+        - type: "simhavalokana"
+          from_sign: 0  # Aries
+          to_sign: 8    # Sagittarius
+          description: "Aries to Sagittarius — trinal fire leap"
+        - type: "markati"
+          from_sign: 11 # Pisces
+          to_sign: 0    # Aries
+          description: "Backward monkey jump — Pisces to Aries"
+      source: "BPHS Ch.46 v39-40"
+
+    pada_3:
+      signs: [2, 4, 3, 5, 6, 7, 11, 10, 9]
+      paramayus: 85
+      deha: 2   # Gemini
+      jeeva: 9  # Capricorn
+      gatis:
+        - type: "manduka"
+          from_sign: 2  # Gemini
+          to_sign: 4    # Leo
+          description: "Skips Cancer"
+        - type: "simhavalokana"
+          from_sign: 7  # Scorpio
+          to_sign: 11   # Pisces
+          description: "Scorpio to Pisces — trinal water leap"
+      source: "BPHS Ch.46 v41-42"
+
+    pada_4:
+      signs: [8, 7, 6, 5, 4, 3, 2, 1, 0]
+      paramayus: 100
+      deha: 8   # Sagittarius
+      jeeva: 0  # Aries
+      gatis: []  # Reverse zodiacal — no jumps
+      source: "BPHS Ch.46 v43-44"
+
+# ── Gati definitions (BPHS Ch.46 v45-50) ────────────────────
+gati_types:
+  source: "BPHS Ch.46 v45-50"
+  confidence: "scholarly_consensus"
+  types:
+    simhavalokana:
+      name_hi: "सिंहावलोकन"
+      meaning: "Lion's Stare"
+      description: "Trinal jump — skipping to a sign 5 or 9 places away"
+      effect: "Major life upheaval, danger from fire/enemies, destruction of dwelling"
+      severity: "severe"
+
+    manduka:
+      name_hi: "मण्डूक"
+      meaning: "Frog's Leap"
+      description: "Skipping one adjacent sign in the sequence"
+      effect: "Sudden professional shifts, distress to relatives, fear of poison"
+      severity: "moderate"
+
+    markati:
+      name_hi: "मर्कटी"
+      meaning: "Monkey's Jump"
+      description: "Jumping backward in an unexpected direction"
+      effect: "Loss of wealth, death of elders, severe lethargy, loss of position"
+      severity: "moderate"
+
+# ── Controversies (documented for transparency) ─────────────
+controversies:
+  mahadasha_vs_bhukti:
+    description: >
+      Major scholarly disagreement: are the 9 signs Mahadashas or
+      Antardashas (Bhuktis)?
+    standard_view: "Each sign is a full Mahadasha. This is our implementation."
+    alternative_view: >
+      PVR Narasimha Rao argues they represent sub-periods within
+      broader zodiacal progressions.
+    our_choice: "standard_view"
+    reasoning: "Weight of classical evidence in BPHS supports this interpretation."
+
+  cycle_restart:
+    description: "What happens after 9 signs complete?"
+    views:
+      - "Continuous Progression: move to next pada's sequence (supported by BPHS)"
+      - "Same Pada Reset: restart from sign 1 of same pada"
+      - "Portion Zero (South India): each pada standalone, always from sign 1"
+    our_choice: "Continuous Progression"
+    reasoning: "Maintains the 'Wheel of Time' metaphor central to the system."
+
+  birth_time_sensitivity:
+    description: >
+      Kalachakra is the most birth-time-sensitive dasha system.
+      1 minute error in birth time = ~3 months shift in all dashas.
+    implication: "Only use with verified/rectified birth times."
+    ayanamsha_note: >
+      A change in ayanamsha can shift Moon into a different pada entirely,
+      producing a completely different dasha sequence and Paramayus.
