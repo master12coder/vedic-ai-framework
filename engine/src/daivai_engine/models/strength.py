@@ -20,7 +20,8 @@ class ShadbalaResult(BaseModel):
     cheshta_bala: float  # Motional (speed, retrogression)
     naisargika_bala: float  # Natural (fixed per planet)
     drik_bala: float  # Aspectual (aspects received)
-    total: float  # Sum of all 6
+    yuddha_bala: float = 0.0  # Planetary war adjustment (+60 winner, -60 loser)
+    total: float  # Sum of all 6 + yuddha_bala
     required: float  # Minimum required for strength
     ratio: float  # total / required (>1 = strong)
     is_strong: bool  # ratio >= 1.0
