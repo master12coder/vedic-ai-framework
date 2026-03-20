@@ -1,4 +1,4 @@
-"""Advanced Compatibility — Mangal Dosha detailed + Nadi Dosha analysis.
+"""Advanced Compatibility — Mangal Dosha detailed, Nadi Dosha, Rajju Dosha.
 
 Extends basic matching with detailed severity scoring and cancellation logic.
 
@@ -13,10 +13,62 @@ from daivai_engine.constants import (
     EXALTATION,
     NAKSHATRA_LORDS,
     NAKSHATRA_NADIS,
+    NAKSHATRAS,
     NATURAL_FRIENDS,
     OWN_SIGNS,
 )
 from daivai_engine.models.chart import ChartData
+from daivai_engine.models.matching import RajjuResult
+
+
+# ---------------------------------------------------------------------------
+# Rajju Dosha — backbone (spine) compatibility check
+# Maps nakshatra indices (0-26) to body-part groups.
+# Same body part = Rajju Dosha with body-part-specific severity.
+# Source: Muhurta Chintamani; traditional Jyotish matching texts.
+# ---------------------------------------------------------------------------
+
+_RAJJU: dict[str, list[int]] = {
+    "Paada": [0, 8, 9, 17, 18, 26],  # Feet — Ashwini, Ashlesha, Magha, Jyeshtha, Moola, Revati
+    "Kati": [
+        1,
+        7,
+        10,
+        16,
+        19,
+        25,
+    ],  # Waist — Bharani, Pushya, Purva Phalguni, Anuradha, Purva Ashadha, Uttara Bhadrapada
+    "Nabhi": [
+        2,
+        6,
+        11,
+        15,
+        20,
+        24,
+    ],  # Navel — Krittika, Punarvasu, Uttara Phalguni, Vishakha, Uttara Ashadha, Purva Bhadrapada
+    "Kantha": [3, 5, 12, 14, 21, 23],  # Neck — Rohini, Ardra, Hasta, Swati, Shravana, Shatabhisha
+    "Shira": [4, 13, 22],  # Head — Mrigashira, Chitra, Dhanishtha
+}
+
+# Severity of Rajju Dosha per body part (traditional ratings)
+_RAJJU_SEVERITY: dict[str, str] = {
+    "Paada": "mild",
+    "Kati": "mild",
+    "Nabhi": "moderate",
+    "Kantha": "severe",
+    "Shira": "severe",
+}
+
+_RAJJU_EFFECTS: dict[str, str] = {
+    "Paada": "wandering and instability; the couple may not settle in one place",
+    "Kati": "financial poverty and material hardships",
+    "Nabhi": "difficulties with children; progeny issues",
+    "Kantha": "danger to the wife's longevity (most severe for wife)",
+    "Shira": "danger to the husband's longevity (most severe for husband)",
+}
+
+# Reverse lookup: nakshatra index → body part name
+_NAK_TO_RAJJU: dict[int, str] = {nak: part for part, naks in _RAJJU.items() for nak in naks}
 
 
 class MangalDoshaDetail(BaseModel):
@@ -175,6 +227,51 @@ def analyze_nadi_dosha(
         exceptions=exceptions,
         net_severity=net,
         description=f"Same Nadi ({nadi1}) — {net} dosha{', with exceptions' if exceptions else ''}",
+    )
+
+
+def check_rajju_dosha(nakshatra1_idx: int, nakshatra2_idx: int) -> RajjuResult:
+    """Check Rajju (backbone) Dosha between two Moon nakshatras.
+
+    Rajju maps nakshatras to five body parts (spine regions). If both
+    partners' Moon nakshatras fall in the same Rajju group, the dosha
+    is present. The body part determines severity and nature of effects.
+
+    Args:
+        nakshatra1_idx: 0-based Moon nakshatra index of person 1.
+        nakshatra2_idx: 0-based Moon nakshatra index of person 2.
+
+    Returns:
+        RajjuResult with dosha status, body part, severity, and description.
+
+    Source: Muhurta Chintamani; traditional Jyotish matching texts.
+    """
+    part1 = _NAK_TO_RAJJU.get(nakshatra1_idx)
+    part2 = _NAK_TO_RAJJU.get(nakshatra2_idx)
+
+    name1 = NAKSHATRAS[nakshatra1_idx] if 0 <= nakshatra1_idx <= 26 else f"Nak-{nakshatra1_idx}"
+    name2 = NAKSHATRAS[nakshatra2_idx] if 0 <= nakshatra2_idx <= 26 else f"Nak-{nakshatra2_idx}"
+
+    if part1 is None or part2 is None or part1 != part2:
+        return RajjuResult(
+            has_dosha=False,
+            nakshatra1=name1,
+            nakshatra2=name2,
+            body_part=None,
+            severity="none",
+            description=f"Different Rajju groups ({part1 or 'unknown'} vs {part2 or 'unknown'}) — no Rajju Dosha",
+        )
+
+    severity = _RAJJU_SEVERITY[part1]
+    effect = _RAJJU_EFFECTS[part1]
+
+    return RajjuResult(
+        has_dosha=True,
+        nakshatra1=name1,
+        nakshatra2=name2,
+        body_part=part1,
+        severity=severity,
+        description=f"Same Rajju — {part1} (body part: {part1.lower()}). Effect: {effect}. Severity: {severity}.",
     )
 
 

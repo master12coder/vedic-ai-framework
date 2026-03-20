@@ -32,6 +32,27 @@ nakshatras:
       They are courageous, independent, and restless, often pioneering new ventures with child-like
       enthusiasm. Their impatience can lead to incomplete projects, but their innate optimism and
       vitality make them natural first-responders in any crisis.
+    nadi: Aadi
+    varna: Kshatriya
+    gender: Male
+    direction: East
+    padas:
+      - pada: 1
+        navamsha_sign: Aries
+        degree_range: "0°00' - 3°20'"
+        syllable: "Chu"
+      - pada: 2
+        navamsha_sign: Taurus
+        degree_range: "3°20' - 6°40'"
+        syllable: "Che"
+      - pada: 3
+        navamsha_sign: Gemini
+        degree_range: "6°40' - 10°00'"
+        syllable: "Cho"
+      - pada: 4
+        navamsha_sign: Cancer
+        degree_range: "10°00' - 13°20'"
+        syllable: "La"
 
   # ---------------------------------------------------------------------------
   # 2. BHARANI
@@ -58,6 +79,27 @@ nakshatras:
       conviction rooted in Yama's sense of cosmic justice. Their Venusian lordship grants artistic
       sensibility and sensual depth, but they must learn restraint to avoid extremes of indulgence
       or self-denial.
+    nadi: Madhya
+    varna: Shudra
+    gender: Female
+    direction: South
+    padas:
+      - pada: 1
+        navamsha_sign: Leo
+        degree_range: "0°00' - 3°20'"
+        syllable: "Li"
+      - pada: 2
+        navamsha_sign: Virgo
+        degree_range: "3°20' - 6°40'"
+        syllable: "Lu"
+      - pada: 3
+        navamsha_sign: Libra
+        degree_range: "6°40' - 10°00'"
+        syllable: "Le"
+      - pada: 4
+        navamsha_sign: Scorpio
+        degree_range: "10°00' - 13°20'"
+        syllable: "Lo"
 
   # ---------------------------------------------------------------------------
   # 3. KRITTIKA
@@ -83,6 +125,27 @@ nakshatras:
       clarity. Their Sun lordship confers authority, dignity, and a commanding presence, while Agni's
       fire grants them the power to cook, transform, and nurture. They can be blunt or critical, but
       their honesty is rooted in a deep desire for truth and purity.
+    nadi: Antya
+    varna: Brahmin
+    gender: Female
+    direction: West
+    padas:
+      - pada: 1
+        navamsha_sign: Sagittarius
+        degree_range: "0°00' - 3°20'"
+        syllable: "A"
+      - pada: 2
+        navamsha_sign: Capricorn
+        degree_range: "3°20' - 6°40'"
+        syllable: "I"
+      - pada: 3
+        navamsha_sign: Aquarius
+        degree_range: "6°40' - 10°00'"
+        syllable: "U"
+      - pada: 4
+        navamsha_sign: Pisces
+        degree_range: "10°00' - 13°20'"
+        syllable: "E"
 
   # ---------------------------------------------------------------------------
   # 4. ROHINI
@@ -108,6 +171,27 @@ nakshatras:
       Taurus at its peak. They have an innate talent for beauty, art, agriculture, and all forms of
       material manifestation. Emotionally rich but sometimes possessive, they must guard against
       jealousy and over-attachment to comfort and sensory pleasure.
+    nadi: Antya
+    varna: Brahmin
+    gender: Female
+    direction: East
+    padas:
+      - pada: 1
+        navamsha_sign: Aries
+        degree_range: "0°00' - 3°20'"
+        syllable: "O"
+      - pada: 2
+        navamsha_sign: Taurus
+        degree_range: "3°20' - 6°40'"
+        syllable: "Va"
+      - pada: 3
+        navamsha_sign: Gemini
+        degree_range: "6°40' - 10°00'"
+        syllable: "Vi"
+      - pada: 4
+        navamsha_sign: Cancer
+        degree_range: "10°00' - 13°20'"
+        syllable: "Vu"
 
   # ---------------------------------------------------------------------------
   # 5. MRIGASHIRA
@@ -134,6 +218,27 @@ nakshatras:
       combining Martian drive with a refined aesthetic sensibility. They excel in research, travel,
       and intellectual exploration, but may struggle with fickleness and an inability to commit when
       the next horizon always beckons.
+    nadi: Madhya
+    varna: Brahmin
+    gender: Female
+    direction: South
+    padas:
+      - pada: 1
+        navamsha_sign: Leo
+        degree_range: "0°00' - 3°20'"
+        syllable: "Ve"
+      - pada: 2
+        navamsha_sign: Virgo
+        degree_range: "3°20' - 6°40'"
+        syllable: "Vo"
+      - pada: 3
+        navamsha_sign: Libra
+        degree_range: "6°40' - 10°00'"
+        syllable: "Ka"
+      - pada: 4
+        navamsha_sign: Scorpio
+        degree_range: "10°00' - 13°20'"
+        syllable: "Ki"
 
   # ---------------------------------------------------------------------------
   # 6. ARDRA
@@ -160,6 +265,27 @@ nakshatras:
       grants raw emotional power that often manifests as storms followed by clarity. They possess
       penetrating analytical ability and are drawn to technology, research, and reform, but must learn
       to channel their turbulent inner weather constructively.
+    nadi: Aadi
+    varna: Shudra
+    gender: Female
+    direction: West
+    padas:
+      - pada: 1
+        navamsha_sign: Sagittarius
+        degree_range: "0°00' - 3°20'"
+        syllable: "Ku"
+      - pada: 2
+        navamsha_sign: Capricorn
+        degree_range: "3°20' - 6°40'"
+        syllable: "Gha"
+      - pada: 3
+        navamsha_sign: Aquarius
+        degree_range: "6°40' - 10°00'"
+        syllable: "Ng"
+      - pada: 4
+        navamsha_sign: Pisces
+        degree_range: "10°00' - 13°20'"
+        syllable: "Chha"
 
   # ---------------------------------------------------------------------------
   # 7. PUNARVASU
@@ -186,6 +312,27 @@ nakshatras:
       nurturing to create generous, broad-minded individuals who feel at home anywhere. They are
       natural teachers and counselors, though they may scatter their energies across too many pursuits
       before finding their true path.
+    nadi: Aadi
+    varna: Kshatriya
+    gender: Male
+    direction: East
+    padas:
+      - pada: 1
+        navamsha_sign: Aries
+        degree_range: "0°00' - 3°20'"
+        syllable: "Ke"
+      - pada: 2
+        navamsha_sign: Taurus
+        degree_range: "3°20' - 6°40'"
+        syllable: "Ko"
+      - pada: 3
+        navamsha_sign: Gemini
+        degree_range: "6°40' - 10°00'"
+        syllable: "Ha"
+      - pada: 4
+        navamsha_sign: Cancer
+        degree_range: "10°00' - 13°20'"
+        syllable: "Hi"
 
   # ---------------------------------------------------------------------------
   # 8. PUSHYA
@@ -212,6 +359,27 @@ nakshatras:
       produces individuals who sustain communities through selfless service and patient effort.
       They are traditional, charitable, and spiritually inclined, though Saturn's influence can
       sometimes manifest as rigidity, melancholy, or excessive self-sacrifice.
+    nadi: Madhya
+    varna: Brahmin
+    gender: Male
+    direction: South
+    padas:
+      - pada: 1
+        navamsha_sign: Leo
+        degree_range: "0°00' - 3°20'"
+        syllable: "Hu"
+      - pada: 2
+        navamsha_sign: Virgo
+        degree_range: "3°20' - 6°40'"
+        syllable: "He"
+      - pada: 3
+        navamsha_sign: Libra
+        degree_range: "6°40' - 10°00'"
+        syllable: "Ho"
+      - pada: 4
+        navamsha_sign: Scorpio
+        degree_range: "10°00' - 13°20'"
+        syllable: "Da"
 
   # ---------------------------------------------------------------------------
   # 9. ASHLESHA
@@ -238,6 +406,27 @@ nakshatras:
       creates masterful psychologists, researchers, and occultists who understand hidden motivations.
       They can be secretive, manipulative, or suspicious when insecure, but at their best they are
       profoundly transformative healers who work with kundalini and subtle energies.
+    nadi: Antya
+    varna: Vaishya
+    gender: Male
+    direction: West
+    padas:
+      - pada: 1
+        navamsha_sign: Sagittarius
+        degree_range: "0°00' - 3°20'"
+        syllable: "Di"
+      - pada: 2
+        navamsha_sign: Capricorn
+        degree_range: "3°20' - 6°40'"
+        syllable: "Du"
+      - pada: 3
+        navamsha_sign: Aquarius
+        degree_range: "6°40' - 10°00'"
+        syllable: "De"
+      - pada: 4
+        navamsha_sign: Pisces
+        degree_range: "10°00' - 13°20'"
+        syllable: "Do"
 
   # ---------------------------------------------------------------------------
   # 10. MAGHA
@@ -264,6 +453,27 @@ nakshatras:
       their worldly ambition, creating leaders who command respect through innate nobility rather
       than force. They must guard against arrogance and excessive attachment to status, learning
       that true kingship lies in service to the ancestral and spiritual legacy they carry.
+    nadi: Antya
+    varna: Kshatriya
+    gender: Female
+    direction: West
+    padas:
+      - pada: 1
+        navamsha_sign: Aries
+        degree_range: "0°00' - 3°20'"
+        syllable: "Ma"
+      - pada: 2
+        navamsha_sign: Taurus
+        degree_range: "3°20' - 6°40'"
+        syllable: "Mi"
+      - pada: 3
+        navamsha_sign: Gemini
+        degree_range: "6°40' - 10°00'"
+        syllable: "Mu"
+      - pada: 4
+        navamsha_sign: Cancer
+        degree_range: "10°00' - 13°20'"
+        syllable: "Me"
 
   # ---------------------------------------------------------------------------
   # 11. PURVA PHALGUNI
@@ -290,6 +500,27 @@ nakshatras:
       performance, romance, and celebration, and their warmth draws people into their orbit. They
       must balance their love of luxury and leisure with productive effort, as over-indulgence or
       vanity can undermine their considerable creative potential.
+    nadi: Madhya
+    varna: Vaishya
+    gender: Female
+    direction: South
+    padas:
+      - pada: 1
+        navamsha_sign: Leo
+        degree_range: "0°00' - 3°20'"
+        syllable: "Mo"
+      - pada: 2
+        navamsha_sign: Virgo
+        degree_range: "3°20' - 6°40'"
+        syllable: "Ta"
+      - pada: 3
+        navamsha_sign: Libra
+        degree_range: "6°40' - 10°00'"
+        syllable: "Ti"
+      - pada: 4
+        navamsha_sign: Scorpio
+        degree_range: "10°00' - 13°20'"
+        syllable: "Tu"
 
   # ---------------------------------------------------------------------------
   # 12. UTTARA PHALGUNI
@@ -317,6 +548,27 @@ nakshatras:
       a deep sense of social responsibility makes them generous benefactors and reliable friends,
       though they can become overly controlling or self-righteous when their sense of duty is
       challenged.
+    nadi: Aadi
+    varna: Brahmin
+    gender: Female
+    direction: East
+    padas:
+      - pada: 1
+        navamsha_sign: Sagittarius
+        degree_range: "0°00' - 3°20'"
+        syllable: "Te"
+      - pada: 2
+        navamsha_sign: Capricorn
+        degree_range: "3°20' - 6°40'"
+        syllable: "To"
+      - pada: 3
+        navamsha_sign: Aquarius
+        degree_range: "6°40' - 10°00'"
+        syllable: "Pa"
+      - pada: 4
+        navamsha_sign: Pisces
+        degree_range: "10°00' - 13°20'"
+        syllable: "Pi"
 
   # ---------------------------------------------------------------------------
   # 13. HASTA
@@ -343,6 +595,27 @@ nakshatras:
       them an intuitive grasp of form, timing, and gesture. They excel in manual arts, comedy,
       healing modalities, and any work requiring precision and adaptability, though they can be
       cunning or restless when their considerable talents lack a worthy outlet.
+    nadi: Aadi
+    varna: Brahmin
+    gender: Male
+    direction: East
+    padas:
+      - pada: 1
+        navamsha_sign: Aries
+        degree_range: "0°00' - 3°20'"
+        syllable: "Pu"
+      - pada: 2
+        navamsha_sign: Taurus
+        degree_range: "3°20' - 6°40'"
+        syllable: "Sha"
+      - pada: 3
+        navamsha_sign: Gemini
+        degree_range: "6°40' - 10°00'"
+        syllable: "Na"
+      - pada: 4
+        navamsha_sign: Cancer
+        degree_range: "10°00' - 13°20'"
+        syllable: "Tha"
 
   # ---------------------------------------------------------------------------
   # 14. CHITRA
@@ -369,6 +642,27 @@ nakshatras:
       while Vishwakarma inspires the vision of divine craftsmanship. They are glamorous, dynamic,
       and often physically striking, but their perfectionism and fascination with appearances can
       lead to superficiality or chronic dissatisfaction with what already exists.
+    nadi: Madhya
+    varna: Vaishya
+    gender: Female
+    direction: South
+    padas:
+      - pada: 1
+        navamsha_sign: Leo
+        degree_range: "0°00' - 3°20'"
+        syllable: "Pe"
+      - pada: 2
+        navamsha_sign: Virgo
+        degree_range: "3°20' - 6°40'"
+        syllable: "Po"
+      - pada: 3
+        navamsha_sign: Libra
+        degree_range: "6°40' - 10°00'"
+        syllable: "Ra"
+      - pada: 4
+        navamsha_sign: Scorpio
+        degree_range: "10°00' - 13°20'"
+        syllable: "Ri"
 
   # ---------------------------------------------------------------------------
   # 15. SWATI
@@ -395,6 +689,27 @@ nakshatras:
       movement creates natural entrepreneurs, diplomats, and free thinkers who thrive in diverse
       environments. They are adaptable and socially graceful, but their independence can become
       restlessness, and their diplomacy can mask a deep inner uncertainty about belonging.
+    nadi: Antya
+    varna: Kshatriya
+    gender: Female
+    direction: West
+    padas:
+      - pada: 1
+        navamsha_sign: Sagittarius
+        degree_range: "0°00' - 3°20'"
+        syllable: "Ru"
+      - pada: 2
+        navamsha_sign: Capricorn
+        degree_range: "3°20' - 6°40'"
+        syllable: "Re"
+      - pada: 3
+        navamsha_sign: Aquarius
+        degree_range: "6°40' - 10°00'"
+        syllable: "Ro"
+      - pada: 4
+        navamsha_sign: Pisces
+        degree_range: "10°00' - 13°20'"
+        syllable: "Ta"
 
   # ---------------------------------------------------------------------------
   # 16. VISHAKHA
@@ -422,6 +737,27 @@ nakshatras:
       purpose. Their intensity and competitive drive can make them formidable leaders or ruthless
       pursuers of power; the key challenge is to direct their enormous willpower toward dharmic ends
       rather than personal conquest alone.
+    nadi: Antya
+    varna: Kshatriya
+    gender: Female
+    direction: East
+    padas:
+      - pada: 1
+        navamsha_sign: Aries
+        degree_range: "0°00' - 3°20'"
+        syllable: "Ti"
+      - pada: 2
+        navamsha_sign: Taurus
+        degree_range: "3°20' - 6°40'"
+        syllable: "Tu"
+      - pada: 3
+        navamsha_sign: Gemini
+        degree_range: "6°40' - 10°00'"
+        syllable: "Te"
+      - pada: 4
+        navamsha_sign: Cancer
+        degree_range: "10°00' - 13°20'"
+        syllable: "To"
 
   # ---------------------------------------------------------------------------
   # 17. ANURADHA
@@ -449,6 +785,27 @@ nakshatras:
       across all social boundaries. They thrive in foreign lands and diverse groups, though they
       may struggle with melancholy, jealousy, or the pain of unrequited devotion when their deep
       need for connection is unmet.
+    nadi: Madhya
+    varna: Vaishya
+    gender: Female
+    direction: South
+    padas:
+      - pada: 1
+        navamsha_sign: Leo
+        degree_range: "0°00' - 3°20'"
+        syllable: "Na"
+      - pada: 2
+        navamsha_sign: Virgo
+        degree_range: "3°20' - 6°40'"
+        syllable: "Ni"
+      - pada: 3
+        navamsha_sign: Libra
+        degree_range: "6°40' - 10°00'"
+        syllable: "Nu"
+      - pada: 4
+        navamsha_sign: Scorpio
+        degree_range: "10°00' - 13°20'"
+        syllable: "Ne"
 
   # ---------------------------------------------------------------------------
   # 18. JYESHTHA
@@ -476,6 +833,27 @@ nakshatras:
       fiercely. They can be generous protectors or jealous gatekeepers; their central life lesson
       involves wielding power with humility, as the greatest of Indra's virtues is not conquest but
       the courage to defend dharma against overwhelming odds.
+    nadi: Aadi
+    varna: Shudra
+    gender: Female
+    direction: West
+    padas:
+      - pada: 1
+        navamsha_sign: Sagittarius
+        degree_range: "0°00' - 3°20'"
+        syllable: "No"
+      - pada: 2
+        navamsha_sign: Capricorn
+        degree_range: "3°20' - 6°40'"
+        syllable: "Ya"
+      - pada: 3
+        navamsha_sign: Aquarius
+        degree_range: "6°40' - 10°00'"
+        syllable: "Yi"
+      - pada: 4
+        navamsha_sign: Pisces
+        degree_range: "10°00' - 13°20'"
+        syllable: "Yu"
 
   # ---------------------------------------------------------------------------
   # 19. MOOLA
@@ -503,6 +881,27 @@ nakshatras:
       healers who must first destroy before they can rebuild. Their lives often involve profound
       crises that become catalysts for deep wisdom; they are drawn to the origins of things and
       can become powerful herbalists, researchers, or spiritual seekers.
+    nadi: Aadi
+    varna: Shudra
+    gender: Female
+    direction: West
+    padas:
+      - pada: 1
+        navamsha_sign: Aries
+        degree_range: "0°00' - 3°20'"
+        syllable: "Ye"
+      - pada: 2
+        navamsha_sign: Taurus
+        degree_range: "3°20' - 6°40'"
+        syllable: "Yo"
+      - pada: 3
+        navamsha_sign: Gemini
+        degree_range: "6°40' - 10°00'"
+        syllable: "Bha"
+      - pada: 4
+        navamsha_sign: Cancer
+        degree_range: "10°00' - 13°20'"
+        syllable: "Bhi"
 
   # ---------------------------------------------------------------------------
   # 20. PURVA ASHADHA
@@ -530,6 +929,27 @@ nakshatras:
       They are persuasive debaters, inspiring leaders, and natural philosophers, but their supreme
       self-confidence can become arrogance or an inability to accept defeat gracefully when the
       universe demands humility.
+    nadi: Madhya
+    varna: Vaishya
+    gender: Male
+    direction: South
+    padas:
+      - pada: 1
+        navamsha_sign: Leo
+        degree_range: "0°00' - 3°20'"
+        syllable: "Bhu"
+      - pada: 2
+        navamsha_sign: Virgo
+        degree_range: "3°20' - 6°40'"
+        syllable: "Dha"
+      - pada: 3
+        navamsha_sign: Libra
+        degree_range: "6°40' - 10°00'"
+        syllable: "Pha"
+      - pada: 4
+        navamsha_sign: Scorpio
+        degree_range: "10°00' - 13°20'"
+        syllable: "Dha"
 
   # ---------------------------------------------------------------------------
   # 21. UTTARA ASHADHA
@@ -557,6 +977,27 @@ nakshatras:
       earn success through righteousness and persistence. They are patient, ethical, and deeply
       committed to their goals, though their exacting standards and seriousness can sometimes make
       them inflexible or lonely at the summit of their achievements.
+    nadi: Antya
+    varna: Vaishya
+    gender: Male
+    direction: East
+    padas:
+      - pada: 1
+        navamsha_sign: Sagittarius
+        degree_range: "0°00' - 3°20'"
+        syllable: "Bhe"
+      - pada: 2
+        navamsha_sign: Capricorn
+        degree_range: "3°20' - 6°40'"
+        syllable: "Bho"
+      - pada: 3
+        navamsha_sign: Aquarius
+        degree_range: "6°40' - 10°00'"
+        syllable: "Ja"
+      - pada: 4
+        navamsha_sign: Pisces
+        degree_range: "10°00' - 13°20'"
+        syllable: "Ji"
 
   # ---------------------------------------------------------------------------
   # 22. SHRAVANA
@@ -584,6 +1025,27 @@ nakshatras:
       and media professionals who connect people through communication and knowledge. They are
       organized, goal-oriented, and socially astute, though their talent for listening can become
       gossip, and their ambition can lead to Machiavellian maneuvering if not grounded in dharma.
+    nadi: Antya
+    varna: Shudra
+    gender: Male
+    direction: North
+    padas:
+      - pada: 1
+        navamsha_sign: Aries
+        degree_range: "0°00' - 3°20'"
+        syllable: "Ju"
+      - pada: 2
+        navamsha_sign: Taurus
+        degree_range: "3°20' - 6°40'"
+        syllable: "Je"
+      - pada: 3
+        navamsha_sign: Gemini
+        degree_range: "6°40' - 10°00'"
+        syllable: "Jo"
+      - pada: 4
+        navamsha_sign: Cancer
+        degree_range: "10°00' - 13°20'"
+        syllable: "Gha"
 
   # ---------------------------------------------------------------------------
   # 23. DHANISHTA
@@ -611,6 +1073,27 @@ nakshatras:
       are natural musicians, dancers, athletes, and leaders with a generous, group-oriented spirit,
       though marital difficulties and an aggressive competitive streak can arise when Mars's fire
       overwhelms their social idealism.
+    nadi: Madhya
+    varna: Vaishya
+    gender: Female
+    direction: North
+    padas:
+      - pada: 1
+        navamsha_sign: Leo
+        degree_range: "0°00' - 3°20'"
+        syllable: "Ga"
+      - pada: 2
+        navamsha_sign: Virgo
+        degree_range: "3°20' - 6°40'"
+        syllable: "Gi"
+      - pada: 3
+        navamsha_sign: Libra
+        degree_range: "6°40' - 10°00'"
+        syllable: "Gu"
+      - pada: 4
+        navamsha_sign: Scorpio
+        degree_range: "10°00' - 13°20'"
+        syllable: "Ge"
 
   # ---------------------------------------------------------------------------
   # 24. SHATABHISHA
@@ -638,6 +1121,27 @@ nakshatras:
       drawn to alternative medicine, astrology, technology, and mysticism. They are fiercely
       independent and secretive, preferring to work behind the scenes; their challenge is to
       overcome isolation and share their considerable healing gifts with the world.
+    nadi: Aadi
+    varna: Shudra
+    gender: Male
+    direction: North
+    padas:
+      - pada: 1
+        navamsha_sign: Sagittarius
+        degree_range: "0°00' - 3°20'"
+        syllable: "Go"
+      - pada: 2
+        navamsha_sign: Capricorn
+        degree_range: "3°20' - 6°40'"
+        syllable: "Sa"
+      - pada: 3
+        navamsha_sign: Aquarius
+        degree_range: "6°40' - 10°00'"
+        syllable: "Si"
+      - pada: 4
+        navamsha_sign: Pisces
+        degree_range: "10°00' - 13°20'"
+        syllable: "Su"
 
   # ---------------------------------------------------------------------------
   # 25. PURVA BHADRAPADA
@@ -665,6 +1169,27 @@ nakshatras:
       idealists, ascetics, or revolutionaries driven by extreme convictions. They are capable of
       great sacrifice and great fury; their life's work is to channel their volcanic inner energy
       toward genuine spiritual or social transformation rather than destructive fanaticism.
+    nadi: Aadi
+    varna: Kshatriya
+    gender: Male
+    direction: North
+    padas:
+      - pada: 1
+        navamsha_sign: Aries
+        degree_range: "0°00' - 3°20'"
+        syllable: "Se"
+      - pada: 2
+        navamsha_sign: Taurus
+        degree_range: "3°20' - 6°40'"
+        syllable: "So"
+      - pada: 3
+        navamsha_sign: Gemini
+        degree_range: "6°40' - 10°00'"
+        syllable: "Da"
+      - pada: 4
+        navamsha_sign: Cancer
+        degree_range: "10°00' - 13°20'"
+        syllable: "Di"
 
   # ---------------------------------------------------------------------------
   # 26. UTTARA BHADRAPADA
@@ -692,6 +1217,27 @@ nakshatras:
       profound unconscious wisdom. They are compassionate, contemplative, and magnetically serene,
       often drawn to meditation, charity, and counseling. Their challenge is avoiding emotional
       withdrawal or spiritual bypassing when the depths they inhabit become too comfortable.
+    nadi: Madhya
+    varna: Brahmin
+    gender: Male
+    direction: North
+    padas:
+      - pada: 1
+        navamsha_sign: Leo
+        degree_range: "0°00' - 3°20'"
+        syllable: "Du"
+      - pada: 2
+        navamsha_sign: Virgo
+        degree_range: "3°20' - 6°40'"
+        syllable: "Tha"
+      - pada: 3
+        navamsha_sign: Libra
+        degree_range: "6°40' - 10°00'"
+        syllable: "Jha"
+      - pada: 4
+        navamsha_sign: Scorpio
+        degree_range: "10°00' - 13°20'"
+        syllable: "Da"
 
   # ---------------------------------------------------------------------------
   # 27. REVATI
@@ -720,3 +1266,24 @@ nakshatras:
       its natives an intuitive understanding of cycles, completion, and transcendence. They must
       guard against naivety, vulnerability to deception, and the tendency to sacrifice themselves
       for those who may not deserve such boundless generosity.
+    nadi: Antya
+    varna: Vaishya
+    gender: Female
+    direction: North
+    padas:
+      - pada: 1
+        navamsha_sign: Sagittarius
+        degree_range: "0°00' - 3°20'"
+        syllable: "De"
+      - pada: 2
+        navamsha_sign: Capricorn
+        degree_range: "3°20' - 6°40'"
+        syllable: "Do"
+      - pada: 3
+        navamsha_sign: Aquarius
+        degree_range: "6°40' - 10°00'"
+        syllable: "Cha"
+      - pada: 4
+        navamsha_sign: Pisces
+        degree_range: "10°00' - 13°20'"
+        syllable: "Chi"

@@ -107,7 +107,8 @@ class TestCombustionYaml:
             yaml_limit = limits.get(planet, {})
             if isinstance(yaml_limit, dict):
                 actual = yaml_limit.get(
-                    "normal", yaml_limit.get("direct", yaml_limit.get("degrees"))
+                    "direct_degrees",
+                    yaml_limit.get("normal", yaml_limit.get("direct", yaml_limit.get("degrees"))),
                 )
             else:
                 actual = yaml_limit
