@@ -6,6 +6,7 @@
 *.key
 credentials/
 config/
+*.secret
 
 # ── Database ──
 data/
@@ -16,6 +17,8 @@ data/
 # ── Generated outputs ──
 output/
 *.pdf
+*.log
+/tmp/
 
 # ── Personal data ──
 charts/
@@ -33,22 +36,32 @@ build/
 .venv/
 venv/
 env/
+*.whl
+*.tar.gz
+pip-log.txt
+pip-delete-this-directory.txt
 
 # ── IDE ──
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
 
 # ── OS ──
 .DS_Store
 Thumbs.db
+._*
 
 # ── Testing ──
 .pytest_cache/
 .coverage
 htmlcov/
+.mypy_cache/
+.ruff_cache/
 
-# ── Distribution ──
-*.tar.gz
-*.whl
+# ── Node (if any frontend tooling added) ──
+node_modules/
+
+# ── Claude Code local settings ──
+.claude/settings.local.json
