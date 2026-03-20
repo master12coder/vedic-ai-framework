@@ -216,9 +216,12 @@ A: Split into two files by responsibility.
 All docs in docs/. NEVER create .md files at project root.
 Only root .md files: README.md, CLAUDE.md, CHANGELOG.md.
 
+Naming: kebab-case for all doc files (e.g. gemstone-safety.md).
+
 docs/architecture/    → System design, layer rules, ADRs
+docs/deployment/      → Server setup, CI/CD, OAuth
+docs/design/          → UI design system, page specs
 docs/products/        → One spec per product plugin
 docs/development/     → Setup, testing, style guide
 docs/vedic/           → Gemstone safety, lordship guide
-docs/roadmap.md       → Future plans
 ```
