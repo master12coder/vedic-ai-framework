@@ -7,7 +7,14 @@ Also preserves the backward-compatible ``compute_planet_strengths`` API.
 
 from __future__ import annotations
 
-from daivai_engine.compute.divisional import compute_navamsha_sign
+from daivai_engine.compute.divisional import (
+    compute_drekkana_sign,
+    compute_dwadashamsha_sign,
+    compute_hora_sign,
+    compute_navamsha_sign,
+    compute_saptamsha_sign,
+    compute_trimshamsha_sign,
+)
 from daivai_engine.constants import (
     ASPECT_STRENGTH_DEFAULT,
     ASPECT_STRENGTHS,
@@ -16,7 +23,10 @@ from daivai_engine.constants import (
     EXALTATION_DEGREE,
     KENDRAS,
     MOOLTRIKONA,
+    NATURAL_ENEMIES,
+    NATURAL_FRIENDS,
     OWN_SIGNS,
+    SIGN_LORDS,
 )
 from daivai_engine.models.chart import ChartData
 from daivai_engine.models.strength import PlanetStrength, ShadbalaResult
@@ -92,24 +102,59 @@ def _uchcha_bala(planet_name: str, longitude: float) -> float:
     return (180.0 - diff) / 3.0
 
 
-def _saptvargaja_bala(planet_name: str, longitude: float, sign_index: int) -> float:
-    """Simplified Saptvargaja Bala using D1 and D9 dignity.
+# Dignity point table for Saptvargaja Bala (per BPHS Ch.23)
+_SAPTVARGAJA_DIGNITY_PTS: dict[str, float] = {
+    "exalted": 45.0,
+    "own": 30.0,
+    "mooltrikona": 22.5,
+    "friendly": 15.0,
+    "neutral": 7.5,
+    "enemy": 3.75,
+    "debilitated": 1.875,
+}
 
-    Awards points for dignity in Rashi (D1) and Navamsha (D9).
-    Full implementation would include D2, D3, D7, D12, D30 as well.
+
+def _sign_dignity_full(planet_name: str, sign_index: int, deg_in_sign: float) -> str:
+    """Extended dignity: exalted/debilitated/mooltrikona/own/friendly/neutral/enemy.
+
+    Falls back to sign lord friendship when the planet has no special dignity.
     """
-    _dignity_pts = {"exalted": 30, "mooltrikona": 22.5, "own": 20, "neutral": 7.5, "debilitated": 3}
+    basic = _sign_dignity(planet_name, sign_index, deg_in_sign)
+    if basic != "neutral":
+        return basic
+    sign_lord = SIGN_LORDS.get(sign_index)
+    if sign_lord is None:
+        return "neutral"
+    if sign_lord in NATURAL_FRIENDS.get(planet_name, []):
+        return "friendly"
+    if sign_lord in NATURAL_ENEMIES.get(planet_name, []):
+        return "enemy"
+    return "neutral"
 
-    # D1 dignity
-    d1_dignity = _sign_dignity(planet_name, sign_index, longitude - sign_index * 30.0)
-    d1_pts = _dignity_pts.get(d1_dignity, 7.5)
 
-    # D9 dignity
-    d9_sign = compute_navamsha_sign(longitude)
-    d9_dignity = _sign_dignity(planet_name, d9_sign, 15.0)  # mid-sign approx
-    d9_pts = _dignity_pts.get(d9_dignity, 7.5)
+def _saptvargaja_bala(planet_name: str, longitude: float, sign_index: int) -> float:
+    """Saptvargaja Bala across all 7 divisional charts (D1, D2, D3, D7, D9, D12, D30).
 
-    return d1_pts + d9_pts
+    Sums dignity points from each varga per BPHS Ch.23:
+      exalted=45, own=30, mooltrikona=22.5, friendly=15,
+      neutral=7.5, enemy=3.75, debilitated=1.875
+    """
+    deg_in_sign = longitude - sign_index * 30.0
+    # (sign_index, deg_within_sign) for each varga; use 15.0 (mid-sign) for sub-vargas
+    vargas: list[tuple[int, float]] = [
+        (sign_index, deg_in_sign),  # D1 — exact degree
+        (compute_hora_sign(longitude), 15.0),  # D2
+        (compute_drekkana_sign(longitude), 15.0),  # D3
+        (compute_saptamsha_sign(longitude), 15.0),  # D7
+        (compute_navamsha_sign(longitude), 15.0),  # D9
+        (compute_dwadashamsha_sign(longitude), 15.0),  # D12
+        (compute_trimshamsha_sign(longitude), 15.0),  # D30
+    ]
+    total = 0.0
+    for varga_sign, varga_deg in vargas:
+        dignity = _sign_dignity_full(planet_name, varga_sign, varga_deg)
+        total += _SAPTVARGAJA_DIGNITY_PTS.get(dignity, 7.5)
+    return total
 
 
 def _sign_dignity(planet_name: str, sign_index: int, deg_in_sign: float) -> str:
@@ -127,15 +172,33 @@ def _sign_dignity(planet_name: str, sign_index: int, deg_in_sign: float) -> str:
     return "neutral"
 
 
-def _ojhayugma_bala(planet_name: str, sign_index: int) -> float:
-    """Odd/even sign strength.
+def _ojhayugma_bala(planet_name: str, sign_index: int, longitude: float) -> float:
+    """Odd/even Rashi and Navamsha strength (15 each, max 30).
 
-    Moon and Venus get 15 in even signs, others get 15 in odd signs.
+    Female planets (Moon, Venus) prefer even signs (Taurus=1, Cancer=3 …);
+    all others prefer odd signs (Aries=0, Gemini=2 …).
+    Applies independently to both the Rashi (D1) and Navamsha (D9) positions.
+    Source: BPHS Ch.23 Ojhayugmarasyamsa Bala.
     """
-    is_odd_sign = sign_index % 2 == 0  # 0-indexed: Aries=0(odd), Taurus=1(even)
-    if planet_name in ("Moon", "Venus"):
-        return 15.0 if not is_odd_sign else 0.0
-    return 15.0 if is_odd_sign else 0.0
+    female = {"Moon", "Venus"}
+    score = 0.0
+
+    # Rashi component
+    is_odd_rashi = sign_index % 2 == 0  # 0-indexed: Aries=0 is odd
+    if planet_name in female:
+        score += 15.0 if not is_odd_rashi else 0.0
+    else:
+        score += 15.0 if is_odd_rashi else 0.0
+
+    # Navamsha component
+    d9_sign = compute_navamsha_sign(longitude)
+    is_odd_navamsha = d9_sign % 2 == 0
+    if planet_name in female:
+        score += 15.0 if not is_odd_navamsha else 0.0
+    else:
+        score += 15.0 if is_odd_navamsha else 0.0
+
+    return score
 
 
 def _kendradi_bala(house: int) -> float:
@@ -183,7 +246,7 @@ def _sthana_bala(chart: ChartData, planet_name: str) -> float:
     p = chart.planets[planet_name]
     uchcha = _uchcha_bala(planet_name, p.longitude)
     saptvar = _saptvargaja_bala(planet_name, p.longitude, p.sign_index)
-    ojha = _ojhayugma_bala(planet_name, p.sign_index)
+    ojha = _ojhayugma_bala(planet_name, p.sign_index, p.longitude)
     kendra = _kendradi_bala(p.house)
     drekk = _drekkana_bala(planet_name, p.longitude)
     return round(uchcha + saptvar + ojha + kendra + drekk, 2)
@@ -212,6 +275,64 @@ def _dig_bala(chart: ChartData, planet_name: str) -> float:
 # Module-level cache so Abda/Masa lords are computed once per chart.
 # Key: (dob, tob, timezone_name) → (abda_lord, masa_lord)
 _abda_masa_cache: dict[tuple[str, str, str], tuple[str, str]] = {}
+
+# Tribhaga Bala: planet ruling each third of day/night (BPHS Ch.23)
+_TRIBHAGA_DAY: dict[int, str] = {1: "Mercury", 2: "Sun", 3: "Saturn"}
+_TRIBHAGA_NIGHT: dict[int, str] = {1: "Moon", 2: "Venus", 3: "Mars"}
+
+
+def _tribhaga_bala(chart: ChartData, planet_name: str) -> float:
+    """Tribhaga (one-third) Bala — BPHS Ch.23.
+
+    Jupiter always gets 60 virupas. For others, the planet ruling the current
+    third of the daytime or nighttime also receives 60 virupas.
+
+    Daytime thirds  (sunrise → sunset):   1st=Mercury, 2nd=Sun, 3rd=Saturn
+    Nighttime thirds (sunset → sunrise):  1st=Moon, 2nd=Venus, 3rd=Mars
+
+    Args:
+        chart: Computed birth chart (needs julian_day, latitude, longitude).
+        planet_name: Classical planet name.
+
+    Returns:
+        60.0 if planet is the Tribhaga lord or is Jupiter; else 0.0.
+    """
+    from daivai_engine.compute.datetime_utils import compute_sunrise, compute_sunset
+
+    if planet_name == "Jupiter":
+        return 60.0
+
+    jd_birth = chart.julian_day
+    lat, lon = chart.latitude, chart.longitude
+
+    jd_sunrise = compute_sunrise(jd_birth, lat, lon)
+    jd_sunset = compute_sunset(jd_birth, lat, lon)
+
+    if jd_sunrise <= jd_birth <= jd_sunset:
+        # Daytime birth
+        day_len = jd_sunset - jd_sunrise
+        third = day_len / 3.0
+        elapsed = jd_birth - jd_sunrise
+        part = min(3, int(elapsed / third) + 1) if third > 0 else 1
+        lord = _TRIBHAGA_DAY[part]
+    elif jd_birth < jd_sunrise:
+        # Early-morning night birth (previous sunset → today's sunrise)
+        jd_prev_sunset = compute_sunset(jd_birth - 1.0, lat, lon)
+        night_len = jd_sunrise - jd_prev_sunset
+        elapsed = jd_birth - jd_prev_sunset
+        third = night_len / 3.0
+        part = min(3, int(elapsed / third) + 1) if third > 0 else 1
+        lord = _TRIBHAGA_NIGHT[part]
+    else:
+        # Evening night birth (today's sunset → tomorrow's sunrise)
+        jd_next_sunrise = compute_sunrise(jd_birth + 1.0, lat, lon)
+        night_len = jd_next_sunrise - jd_sunset
+        elapsed = jd_birth - jd_sunset
+        third = night_len / 3.0
+        part = min(3, int(elapsed / third) + 1) if third > 0 else 1
+        lord = _TRIBHAGA_NIGHT[part]
+
+    return 60.0 if planet_name == lord else 0.0
 
 
 def _find_solar_ingress(target_sign: int, jd_near: float) -> float:
@@ -328,7 +449,7 @@ def _compute_abda_masa_lords(chart: ChartData) -> tuple[str, str]:
 
 
 def _kala_bala(chart: ChartData, planet_name: str) -> float:
-    """Temporal strength — 7 sub-components from BPHS Ch.23.
+    """Temporal strength — 8 sub-components from BPHS Ch.23.
 
     1. Nathonnatha (60): Day/night birth preference per planet.
     2. Paksha (60): Lunar-fortnight preference (benefics/malefics).
@@ -337,6 +458,7 @@ def _kala_bala(chart: ChartData, planet_name: str) -> float:
     5. Ayana (40/20): Uttarayana / Dakshinayana preference.
     6. Masa (30): Solar month lord receives 30 Virupas.  [BPHS Ch.23 v13-15]
     7. Abda (15): Solar year lord receives 15 Virupas.   [BPHS Ch.23 v16-18]
+    8. Tribhaga (60): Planet ruling the current 1/3 of day/night. Jupiter always.
 
     Source: BPHS Chapter 23.
     """
@@ -376,8 +498,6 @@ def _kala_bala(chart: ChartData, planet_name: str) -> float:
     hora = 60.0 if planet_name == day_lord else 15.0
 
     # 4. Vara Bala (weekday strength) — BPHS Ch.23 v8
-    from daivai_engine.constants import NATURAL_FRIENDS
-
     if planet_name == day_lord:
         vara = 45.0
     elif day_lord in NATURAL_FRIENDS.get(planet_name, []):
@@ -404,7 +524,10 @@ def _kala_bala(chart: ChartData, planet_name: str) -> float:
     masa = 30.0 if planet_name == masa_lord else 0.0
     abda = 15.0 if planet_name == abda_lord else 0.0
 
-    return round(nathonnatha + paksha + hora + vara + ayana + masa + abda, 2)
+    # 8. Tribhaga Bala — BPHS Ch.23
+    tribhaga = _tribhaga_bala(chart, planet_name)
+
+    return round(nathonnatha + paksha + hora + vara + ayana + masa + abda + tribhaga, 2)
 
 
 # ---------------------------------------------------------------------------
@@ -519,6 +642,33 @@ def _aspects_house(planet_name: str, planet_house: int, target_house: int) -> bo
 
 
 # ---------------------------------------------------------------------------
+# Yuddha Bala (planetary war adjustment) — post-processing step
+# ---------------------------------------------------------------------------
+
+
+def _yuddha_bala_adjustments(chart: ChartData) -> dict[str, float]:
+    """Return Yuddha Bala virupad adjustments keyed by planet name.
+
+    Per BPHS: when two planets are within 1° of each other they are at war.
+    The winner gains strength, the loser loses it (60 virupas each).
+    Only Mars, Mercury, Jupiter, Venus, Saturn participate in planetary war.
+
+    Args:
+        chart: Computed birth chart.
+
+    Returns:
+        Dict mapping planet name → adjustment (positive for winner, negative for loser).
+    """
+    from daivai_engine.compute.graha_yuddha import detect_planetary_war
+
+    adjustments: dict[str, float] = {}
+    for war in detect_planetary_war(chart):
+        adjustments[war.winner] = adjustments.get(war.winner, 0.0) + 60.0
+        adjustments[war.loser] = adjustments.get(war.loser, 0.0) - 60.0
+    return adjustments
+
+
+# ---------------------------------------------------------------------------
 # Main Shadbala computation
 # ---------------------------------------------------------------------------
 
@@ -530,6 +680,7 @@ def compute_shadbala(chart: ChartData) -> list[ShadbalaResult]:
     ranks assigned (1 = strongest).
     """
     results: list[ShadbalaResult] = []
+    yuddha_adj = _yuddha_bala_adjustments(chart)
 
     for planet_name in SHADBALA_PLANETS:
         sb = _sthana_bala(chart, planet_name)
@@ -538,7 +689,8 @@ def compute_shadbala(chart: ChartData) -> list[ShadbalaResult]:
         cb = _cheshta_bala(chart, planet_name)
         nb = _naisargika_bala(planet_name)
         drk = _drik_bala(chart, planet_name)
-        total = round(sb + db + kb + cb + nb + drk, 2)
+        yb = yuddha_adj.get(planet_name, 0.0)
+        total = round(sb + db + kb + cb + nb + drk + yb, 2)
         req = REQUIRED_SHADBALA[planet_name]
         ratio = round(total / req, 3) if req > 0 else 0.0
 
@@ -551,6 +703,7 @@ def compute_shadbala(chart: ChartData) -> list[ShadbalaResult]:
                 cheshta_bala=cb,
                 naisargika_bala=nb,
                 drik_bala=drk,
+                yuddha_bala=yb,
                 total=total,
                 required=req,
                 ratio=ratio,
