@@ -1,0 +1,80 @@
+# ═══════════════════════════════════════════════════════════════
+# VIMSHOTTARI DASHA — 120-year planetary dasha system
+# ═══════════════════════════════════════════════════════════════
+# Source: BPHS Ch.44 "Vimshottari Dasha Adhyaya"
+# Confidence: canonical — no debate exists on these values
+# Verified: sequence years sum to exactly 120
+# ═══════════════════════════════════════════════════════════════
+
+source: "BPHS Ch.44"
+confidence: canonical
+total_years: 120
+note: "Most widely used dasha system. Applied universally unless specific conditions warrant Ashtottari or Yogini."
+
+sequence:
+  - planet: Ketu
+    years: 7
+    nakshatra_start: Ashwini
+  - planet: Venus
+    years: 20
+    nakshatra_start: Bharani
+  - planet: Sun
+    years: 6
+    nakshatra_start: Krittika
+  - planet: Moon
+    years: 10
+    nakshatra_start: Rohini
+  - planet: Mars
+    years: 7
+    nakshatra_start: Mrigashira
+  - planet: Rahu
+    years: 18
+    nakshatra_start: Ardra
+  - planet: Jupiter
+    years: 16
+    nakshatra_start: Punarvasu
+  - planet: Saturn
+    years: 19
+    nakshatra_start: Pushya
+  - planet: Mercury
+    years: 17
+    nakshatra_start: Ashlesha
+
+nakshatra_to_lord:
+  Ashwini: Ketu
+  Bharani: Venus
+  Krittika: Sun
+  Rohini: Moon
+  Mrigashira: Mars
+  Ardra: Rahu
+  Punarvasu: Jupiter
+  Pushya: Saturn
+  Ashlesha: Mercury
+  Magha: Ketu
+  Purva Phalguni: Venus
+  Uttara Phalguni: Sun
+  Hasta: Moon
+  Chitra: Mars
+  Swati: Rahu
+  Vishakha: Jupiter
+  Anuradha: Saturn
+  Jyeshtha: Mercury
+  Moola: Ketu
+  Purva Ashadha: Venus
+  Uttara Ashadha: Sun
+  Shravana: Moon
+  Dhanishta: Mars
+  Shatabhisha: Rahu
+  Purva Bhadrapada: Jupiter
+  Uttara Bhadrapada: Saturn
+  Revati: Mercury
+
+balance_formula:
+  description: "Balance = (nakshatra end degree - Moon degree) / nakshatra span x dasha years"
+  nakshatra_span_degrees: 13.3333
+  source: "BPHS Ch.44 v5-7"
+
+antardasha_formula:
+  description: "AD duration = MD duration x (AD lord years / 120)"
+  source: "BPHS Ch.44 v8-10"
+  note: "Same formula applies recursively for Pratyantardasha, Sookshma, and Prana levels"

@@ -1,0 +1,190 @@
+# ═══════════════════════════════════════════════════════════════
+# SIGN PROPERTIES — 12 Rashis with complete attributes
+# ═══════════════════════════════════════════════════════════════
+# Source: BPHS Ch.3 "Rashi Swaroopa"
+# Confidence: canonical
+# ═══════════════════════════════════════════════════════════════
+
+source: "BPHS Ch.3 v1-20"
+confidence: canonical
+
+signs:
+  - index: 0
+    name: Mesha
+    english: Aries
+    hindi: मेष
+    ruler: Mars
+    element: Fire
+    modality: Chara (Cardinal)
+    gender: Male
+    nature: Krura (Cruel)
+    direction: East
+    rising: Prishthodaya (Back rising)
+    body_part: Head
+    tattva: Agni
+    dasha_years_kalachakra: 7
+
+  - index: 1
+    name: Vrishabha
+    english: Taurus
+    hindi: वृषभ
+    ruler: Venus
+    element: Earth
+    modality: Sthira (Fixed)
+    gender: Female
+    nature: Soumya (Gentle)
+    direction: South
+    rising: Prishthodaya
+    body_part: Face/Throat
+    tattva: Prithvi
+    dasha_years_kalachakra: 16
+
+  - index: 2
+    name: Mithuna
+    english: Gemini
+    hindi: मिथुन
+    ruler: Mercury
+    element: Air
+    modality: Dwiswabhava (Dual)
+    gender: Male
+    nature: Soumya
+    direction: West
+    rising: Shirshodaya (Head rising)
+    body_part: Arms/Shoulders
+    tattva: Vayu
+    dasha_years_kalachakra: 9
+
+  - index: 3
+    name: Karka
+    english: Cancer
+    hindi: कर्क
+    ruler: Moon
+    element: Water
+    modality: Chara
+    gender: Female
+    nature: Soumya
+    direction: North
+    rising: Prishthodaya
+    body_part: Chest
+    tattva: Jala
+    dasha_years_kalachakra: 21
+
+  - index: 4
+    name: Simha
+    english: Leo
+    hindi: सिंह
+    ruler: Sun
+    element: Fire
+    modality: Sthira
+    gender: Male
+    nature: Krura
+    direction: East
+    rising: Shirshodaya
+    body_part: Stomach/Upper abdomen
+    tattva: Agni
+    dasha_years_kalachakra: 5
+
+  - index: 5
+    name: Kanya
+    english: Virgo
+    hindi: कन्या
+    ruler: Mercury
+    element: Earth
+    modality: Dwiswabhava
+    gender: Female
+    nature: Soumya
+    direction: South
+    rising: Shirshodaya
+    body_part: Waist/Intestines
+    tattva: Prithvi
+    dasha_years_kalachakra: 9
+
+  - index: 6
+    name: Tula
+    english: Libra
+    hindi: तुला
+    ruler: Venus
+    element: Air
+    modality: Chara
+    gender: Male
+    nature: Soumya
+    direction: West
+    rising: Shirshodaya
+    body_part: Lower abdomen
+    tattva: Vayu
+    dasha_years_kalachakra: 16
+
+  - index: 7
+    name: Vrischika
+    english: Scorpio
+    hindi: वृश्चिक
+    ruler: Mars
+    element: Water
+    modality: Sthira
+    gender: Female
+    nature: Krura
+    direction: North
+    rising: Shirshodaya
+    body_part: Genitals
+    tattva: Jala
+    dasha_years_kalachakra: 7
+
+  - index: 8
+    name: Dhanu
+    english: Sagittarius
+    hindi: धनु
+    ruler: Jupiter
+    element: Fire
+    modality: Dwiswabhava
+    gender: Male
+    nature: Soumya
+    direction: East
+    rising: Prishthodaya
+    body_part: Thighs
+    tattva: Agni
+    dasha_years_kalachakra: 10
+
+  - index: 9
+    name: Makara
+    english: Capricorn
+    hindi: मकर
+    ruler: Saturn
+    element: Earth
+    modality: Chara
+    gender: Female
+    nature: Krura
+    direction: South
+    rising: Prishthodaya
+    body_part: Knees
+    tattva: Prithvi
+    dasha_years_kalachakra: 4
+
+  - index: 10
+    name: Kumbha
+    english: Aquarius
+    hindi: कुम्भ
+    ruler: Saturn
+    element: Air
+    modality: Sthira
+    gender: Male
+    nature: Krura
+    direction: West
+    rising: Shirshodaya
+    body_part: Calves/Ankles
+    tattva: Vayu
+    dasha_years_kalachakra: 4
+
+  - index: 11
+    name: Meena
+    english: Pisces
+    hindi: मीन
+    ruler: Jupiter
+    element: Water
+    modality: Dwiswabhava
+    gender: Female
+    nature: Soumya
+    direction: North
+    rising: Ubhayodaya (Both rising)
+    body_part: Feet
+    tattva: Jala
+    dasha_years_kalachakra: 10

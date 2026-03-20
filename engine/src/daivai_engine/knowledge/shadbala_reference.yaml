@@ -1,0 +1,110 @@
+# ═══════════════════════════════════════════════════════════════
+# SHADBALA REFERENCE — Six-fold strength benchmarks and formulas
+# ═══════════════════════════════════════════════════════════════
+# Source: BPHS Ch.23-24
+# Confidence: canonical (values), medium (Kala Bala simplification)
+# ═══════════════════════════════════════════════════════════════
+
+source: "BPHS Ch.23-24"
+confidence: canonical
+unit: "Shashtiyamsa (60ths of a Rupa)"
+
+# Naisargika Bala — fixed per planet (BPHS Ch.23 v36)
+naisargika_bala:
+  source: "BPHS Ch.23 v36"
+  confidence: canonical
+  note: "These values are FIXED and never change. Based on natural brightness."
+  values:
+    Sun: 60.00
+    Moon: 51.43
+    Venus: 42.86
+    Jupiter: 34.28
+    Mercury: 25.71
+    Mars: 17.14
+    Saturn: 8.57
+
+# Minimum required Shadbala (BPHS Ch.23 v41-42)
+required_shadbala:
+  source: "BPHS Ch.23 v41-42"
+  confidence: canonical
+  note: "Planet with total >= required is 'strong'. Ratio = total/required."
+  values:
+    Sun: 390.0
+    Moon: 360.0
+    Mars: 300.0
+    Mercury: 420.0
+    Jupiter: 390.0
+    Venus: 330.0
+    Saturn: 300.0
+
+# Dig Bala — best house per planet (BPHS Ch.23 v16-18)
+dig_bala_best_house:
+  source: "BPHS Ch.23 v16-18"
+  confidence: canonical
+  note: "Max 60 at best house, 0 at opposite (6 houses away)"
+  values:
+    Sun: 10       # 10th house (South/Zenith)
+    Mars: 10      # 10th house
+    Jupiter: 1    # 1st house (East)
+    Mercury: 1    # 1st house
+    Saturn: 7     # 7th house (West)
+    Moon: 4       # 4th house (North/Nadir)
+    Venus: 4      # 4th house
+
+# Kala Bala components (BPHS Ch.23 v19-30)
+kala_bala:
+  source: "BPHS Ch.23 v19-30"
+  confidence: scholarly_consensus
+  note: "Our implementation has 5 of 8 sub-components. Missing: Masa, Abda, Tribhaga."
+  components:
+    nathonnatha:
+      description: "Day/night strength"
+      rule: "Diurnal planets (Sun, Jupiter, Venus) get 60 in day birth, 0 at night. Nocturnal (Moon, Mars, Saturn) reverse. Mercury always 30."
+      max: 60
+      implemented: true
+    paksha:
+      description: "Lunar phase strength"
+      rule: "Benefics get 60 in Shukla Paksha (waxing), malefics in Krishna (waning)."
+      max: 60
+      implemented: true
+    hora:
+      description: "Planetary hour strength"
+      rule: "Planet ruling the birth hour gets 60."
+      max: 60
+      implemented: true
+    vara:
+      description: "Weekday strength"
+      rule: "Weekday lord gets 45, friends get 30, others 15."
+      max: 45
+      implemented: true
+    ayana:
+      description: "Solstice-based strength"
+      rule: "Diurnal planets stronger in Uttarayana, nocturnal in Dakshinayana."
+      max: 40
+      implemented: true
+    masa:
+      description: "Monthly strength"
+      rule: "Based on ruler of the Hindu month of birth."
+      max: 30
+      implemented: false
+    abda:
+      description: "Yearly strength"
+      rule: "Based on ruler of the year of birth."
+      max: 15
+      implemented: false
+    tribhaga:
+      description: "Day/night third"
+      rule: "Day divided into 3 parts; Jupiter/Mercury/Sun rule day thirds. Moon/Venus/Mars rule night thirds."
+      max: 60
+      implemented: false
+
+# Cheshta Bala classifications (BPHS Ch.23 v31-35)
+cheshta_bala:
+  source: "BPHS Ch.23 v31-35"
+  confidence: canonical
+  classifications:
+    retrograde: 60
+    stationary: 45    # speed < 0.1 deg/day
+    direct_fast: 30   # speed >= average
+    direct_slow: 15   # speed < average
+    sun_moon: 30      # Sun and Moon are never retrograde

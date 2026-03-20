@@ -1,0 +1,124 @@
+# ═══════════════════════════════════════════════════════════════
+# DOSHA DEFINITIONS — 10 doshas with rules, cancellations, sources
+# ═══════════════════════════════════════════════════════════════
+# Source: BPHS, Phaladeepika, Muhurta Chintamani
+# Confidence: scholarly_consensus (main rules); debated (cancellations)
+# ═══════════════════════════════════════════════════════════════
+
+mangal_dosha:
+  source: "BPHS Ch.77, Brihat Jataka"
+  confidence: scholarly_consensus
+  rule: "Mars in houses 1, 2, 4, 7, 8, or 12 from Lagna"
+  severity:
+    high: [7, 8]
+    medium: [1, 4, 12]
+    low: [2]
+  cancellation_rules:
+    - rule: "Mars in own sign (Aries/Scorpio)"
+      source: "BPHS"
+      confidence: scholarly_consensus
+    - rule: "Mars exalted in Capricorn"
+      source: "BPHS"
+      confidence: scholarly_consensus
+    - rule: "Jupiter aspects Mars"
+      source: "Traditional Parashari"
+      confidence: scholarly_consensus
+    - rule: "Venus aspects Mars"
+      source: "Some traditions"
+      confidence: debated
+    - rule: "Both partners have Mangal Dosha (mutual cancellation)"
+      source: "Widely practiced"
+      confidence: scholarly_consensus
+    - rule: "Mars in Gemini/Virgo in 2nd house"
+      source: "South Indian tradition"
+      confidence: debated
+    - rule: "After age 28, effect diminishes"
+      source: "Some modern practitioners"
+      confidence: debated
+  alternatives:
+    - position: "Check from Moon and Venus too, not just Lagna"
+      source: "South Indian tradition"
+    - position: "Only check from Lagna"
+      source: "Some North Indian traditions"
+
+kaal_sarp_dosha:
+  source: "Not in BPHS — modern construction. Attributed to Lal Kitab and some Nadi texts."
+  confidence: debated
+  rule: "All 7 planets (Sun-Saturn) between Rahu-Ketu axis (on one side)"
+  note: "Many scholars consider this a modern invention, not classical."
+  cancellation_rules:
+    - rule: "Any planet conjunct Rahu or Ketu breaks it"
+      source: "Common interpretation"
+      confidence: debated
+  alternatives:
+    - position: "Not a valid dosha — modern commercial invention"
+      source: "Several academic Jyotish scholars"
+
+pitra_dosha:
+  source: "BPHS Ch.84-85, traditional practice"
+  confidence: scholarly_consensus
+  rule: "Sun conjunct Rahu/Ketu, or 9th lord afflicted by Rahu/Saturn"
+  cancellation_rules:
+    - rule: "Jupiter aspects the afflicted combination"
+      source: "Traditional"
+      confidence: scholarly_consensus
+
+guru_chandal:
+  source: "Traditional Parashari, BPHS references scattered"
+  confidence: scholarly_consensus
+  rule: "Jupiter conjunct Rahu in the same sign"
+  cancellation_rules:
+    - rule: "Jupiter in own sign or exalted"
+      source: "Traditional"
+      confidence: scholarly_consensus
+
+shrapit_dosha:
+  source: "Phaladeepika, traditional practice"
+  confidence: scholarly_consensus
+  rule: "Saturn conjunct Rahu in the same sign"
+  note: "Indicates past-life karmic debt."
+
+grahan_dosha:
+  source: "BPHS"
+  confidence: scholarly_consensus
+  rule: "Sun or Moon conjunct Rahu or Ketu"
+  note: "Eclipse-like effect on the luminary."
+
+angarak_dosha:
+  source: "Traditional Jyotish"
+  confidence: scholarly_consensus
+  rule: "Mars conjunct Rahu in the same sign"
+  note: "Amplified aggression and accident proneness."
+
+shakata_dosha:
+  source: "Phaladeepika Ch.7 v12"
+  confidence: scholarly_consensus
+  rule: "Jupiter in 6th, 8th, or 12th from Moon"
+  cancellation_rules:
+    - rule: "Jupiter in kendra from Lagna"
+      source: "Phaladeepika"
+      confidence: scholarly_consensus
+    - rule: "Jupiter in own or exalted sign"
+      source: "Traditional"
+      confidence: scholarly_consensus
+
+daridra_dosha:
+  source: "BPHS"
+  confidence: scholarly_consensus
+  rule: "11th lord in 6th, 8th, or 12th house (dusthana)"
+  note: "Weakens gains and income potential."
+
+sadesati:
+  source: "Phaladeepika Ch.26, widely practiced"
+  confidence: canonical
+  rule: "Saturn transiting 12th, 1st, or 2nd from Moon sign = 7.5 year cycle"
+  phases:
+    - name: "Rising (Ascending)"
+      position: "12th from Moon"
+      duration: "~2.5 years"
+    - name: "Peak"
+      position: "Over Moon sign"
+      duration: "~2.5 years"
+    - name: "Setting (Descending)"
+      position: "2nd from Moon"
+      duration: "~2.5 years"

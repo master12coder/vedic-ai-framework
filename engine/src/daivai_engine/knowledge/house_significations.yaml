@@ -1,0 +1,175 @@
+# ═══════════════════════════════════════════════════════════════
+# HOUSE SIGNIFICATIONS — 12 Bhavas with complete karakatva
+# ═══════════════════════════════════════════════════════════════
+# Source: BPHS Ch.5 "Bhava Adhyaya", Ch.20 "Bhava Phala"
+# Confidence: canonical
+# ═══════════════════════════════════════════════════════════════
+
+source: "BPHS Ch.5, Ch.20"
+confidence: canonical
+
+houses:
+  1:
+    name_hi: तनु
+    name_en: Lagna / Ascendant
+    category: Kendra + Trikona
+    natural_karaka: Sun
+    significations:
+      - Self, body, physical appearance
+      - Health, vitality, constitution
+      - Personality, temperament
+      - Birth, beginning of life
+      - General well-being
+    strong_when: "Benefics in or aspecting; lord strong and well-placed"
+
+  2:
+    name_hi: धन
+    name_en: Wealth
+    category: Maraka
+    natural_karaka: Jupiter
+    significations:
+      - Wealth, accumulated resources
+      - Family, lineage
+      - Speech, voice quality
+      - Food, eating habits
+      - Right eye, face, mouth
+      - Early education
+    strong_when: "Lord in kendra/trikona; benefics in 2nd"
+
+  3:
+    name_hi: सहज
+    name_en: Siblings
+    category: Upachaya + Trishadaya
+    natural_karaka: Mars
+    significations:
+      - Siblings, especially younger
+      - Courage, valor, initiative
+      - Short journeys, communication
+      - Arms, shoulders, right ear
+      - Writing, skill with hands
+    strong_when: "Malefics in 3rd give courage; lord in upachaya"
+
+  4:
+    name_hi: सुख
+    name_en: Happiness
+    category: Kendra
+    natural_karaka: Moon
+    significations:
+      - Mother, maternal happiness
+      - Home, property, vehicles
+      - Education (formal)
+      - Emotional security, peace
+      - Chest, heart, lungs
+    strong_when: "Moon or Venus in 4th; lord in kendra"
+
+  5:
+    name_hi: सन्तान
+    name_en: Children
+    category: Trikona
+    natural_karaka: Jupiter
+    significations:
+      - Children, progeny
+      - Intelligence, wisdom
+      - Past-life merit (Purva Punya)
+      - Creativity, speculation
+      - Romance, love affairs
+      - Mantras, spiritual practice
+    strong_when: "Jupiter aspecting; lord in kendra/trikona"
+
+  6:
+    name_hi: रोग
+    name_en: Disease
+    category: Dusthana + Upachaya + Trishadaya
+    natural_karaka: Mars/Saturn
+    significations:
+      - Enemies, competitors
+      - Disease, illness
+      - Debts, loans
+      - Service, daily work
+      - Maternal uncle
+      - Litigation
+    strong_when: "Malefics in 6th destroy enemies; lord weak = less disease"
+
+  7:
+    name_hi: जाया
+    name_en: Spouse
+    category: Kendra + Maraka
+    natural_karaka: Venus
+    significations:
+      - Marriage, spouse
+      - Partnerships, business
+      - Foreign travel
+      - Lower abdomen
+      - Public dealings
+      - Death (as Maraka house)
+    strong_when: "Venus in 7th; lord unafflicted; no malefics"
+
+  8:
+    name_hi: मृत्यु
+    name_en: Longevity
+    category: Dusthana
+    natural_karaka: Saturn
+    significations:
+      - Longevity, death
+      - Transformation, occult
+      - Inheritance, insurance
+      - Chronic disease
+      - Hidden matters, secrets
+      - Research, investigation
+    strong_when: "Lord in kendra = long life; Saturn in 8th = longevity"
+
+  9:
+    name_hi: भाग्य
+    name_en: Fortune
+    category: Trikona
+    natural_karaka: Jupiter
+    significations:
+      - Fortune, luck, dharma
+      - Father, guru, teacher
+      - Higher education, philosophy
+      - Long-distance travel
+      - Religion, spirituality
+      - Law, justice
+    strong_when: "Jupiter in 9th; lord in kendra/trikona"
+
+  10:
+    name_hi: कर्म
+    name_en: Career
+    category: Kendra + Upachaya
+    natural_karaka: Sun/Saturn/Mercury
+    significations:
+      - Career, profession
+      - Status, authority, fame
+      - Government, administration
+      - Father's status
+      - Knees, bones
+      - Actions, karma in society
+    strong_when: "Sun or Saturn in 10th; lord strong"
+
+  11:
+    name_hi: लाभ
+    name_en: Gains
+    category: Upachaya + Trishadaya
+    natural_karaka: Jupiter
+    significations:
+      - Income, gains, profits
+      - Elder siblings
+      - Friends, social circle
+      - Wishes fulfilled
+      - Left ear, calves
+      - Recovery from illness
+    strong_when: "Lord in kendra; benefics in 11th"
+
+  12:
+    name_hi: व्यय
+    name_en: Expenditure
+    category: Dusthana
+    natural_karaka: Saturn/Ketu
+    significations:
+      - Expenses, losses
+      - Foreign lands, exile
+      - Moksha, spiritual liberation
+      - Sleep, bed pleasures
+      - Left eye, feet
+      - Confinement, hospitals, prisons
+    strong_when: "Benefics in 12th = moksha; lord in 12th = spiritual"
