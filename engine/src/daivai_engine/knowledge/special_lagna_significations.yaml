@@ -1,0 +1,158 @@
+# ═══════════════════════════════════════════════════════════════
+# SPECIAL LAGNA SIGNIFICATIONS — Hora Lagna, Bhava Lagna, Ghatika Lagna
+# ═══════════════════════════════════════════════════════════════
+# Source: BPHS Chapters 8-9 "Vishesh Lagna Adhyaya",
+#         Jaimini Sutras, Prasna Marga
+# Confidence: canonical
+#
+# These three special lagnas supplement the Udaya Lagna (Ascendant)
+# and reveal specific dimensions of the native's life.
+# All three move faster than the Ascendant and are sensitive to
+# exact birth time — use only with precise birth data.
+# ═══════════════════════════════════════════════════════════════
+
+source: "BPHS Ch.8-9, Jaimini Sutras, Prasna Marga"
+confidence: canonical
+note: >
+  These lagnas move at different rates through the zodiac during the
+  day. Hora Lagna = 2 signs/hour, Ghatika Lagna = 1 sign/ghati (~24 min).
+  Exact birth time crucial for accurate results.
+
+special_lagnas:
+
+  Hora_Lagna:
+    name: "Hora Lagna"
+    name_hi: "होरा लग्न"
+    abbreviation: "HL"
+    movement: "Advances 1 sign every 2.5 ghatis (~1 hour)"
+    primary_domain: "Wealth, financial standing, material prosperity"
+    secondary_domains:
+      - "Liquid assets and ready cash"
+      - "Ability to earn and accumulate"
+      - "Financial intelligence and shrewdness"
+    calculation: >
+      Hora Lagna is calculated by counting the number of hours elapsed
+      since sunrise (or sunset for nocturnal charts). Each hour, the
+      Hora Lagna advances by one sign from the Udaya Lagna.
+      Formula: HL = Udaya Lagna + (hours since sunrise × 1 sign)
+    interpretation:
+      lagna_lord: >
+        The lord of the sign occupied by Hora Lagna is the Hora Lagnesh.
+        Its strength, placement, and aspects determine financial success.
+      with_benefics: >
+        Benefic planets in or aspecting Hora Lagna sign give excellent
+        financial results and consistent wealth accumulation.
+      with_malefics: >
+        Malefics in or aspecting Hora Lagna create financial obstacles,
+        losses, or irregular income patterns.
+      conjunction_udaya: >
+        When Hora Lagna coincides with Udaya Lagna (same sign), it powerfully
+        reinforces wealth and overall success.
+    house_reading: >
+      Houses from Hora Lagna provide an alternate framework for wealth:
+      - 1st from HL: personal wealth capacity
+      - 2nd from HL: accumulated wealth
+      - 11th from HL: gains and income sources
+    source: "BPHS Ch.8 v1-8, Jaimini Sutras 1.1.29"
+
+  Bhava_Lagna:
+    name: "Bhava Lagna"
+    name_hi: "भाव लग्न"
+    abbreviation: "BL"
+    movement: "Advances 1 sign every 5 ghatis (~2 hours)"
+    primary_domain: "Character, personality, overall life quality from a complementary perspective"
+    secondary_domains:
+      - "True nature behind the external persona"
+      - "Inner values and fundamental character"
+      - "Life philosophy and core motivations"
+    calculation: >
+      Bhava Lagna advances one sign every 5 ghatis (approximately 2 hours).
+      Formula: BL = Udaya Lagna + (ghatis elapsed since sunrise ÷ 5)
+      It represents an intermediate rate between HL and GL.
+    interpretation:
+      lagna_lord: >
+        Bhava Lagnesh shows the planet most responsible for shaping the
+        native's core character and inner motivational force.
+      comparative_analysis: >
+        Reading a chart from Bhava Lagna alongside Udaya Lagna and Chandra
+        Lagna (Moon as lagna) gives a three-dimensional view of personality:
+        - Udaya Lagna = outer self, body, how world sees you
+        - Chandra Lagna = mind, emotions, inner landscape
+        - Bhava Lagna = deep character, true nature
+      strength_assessment: >
+        Planets strong from Bhava Lagna that are also strong from Udaya
+        Lagna are doubly confirmed in their ability to deliver results.
+    house_reading: >
+      Houses from Bhava Lagna complement the Udaya Lagna reading:
+      - 1st from BL: true nature
+      - 7th from BL: how others perceive the native's character
+    source: "BPHS Ch.8 v9-16, Prasna Marga"
+
+  Ghatika_Lagna:
+    name: "Ghatika Lagna"
+    name_hi: "घटिका लग्न"
+    abbreviation: "GL"
+    movement: "Advances 1 sign every ghati (~24 minutes) — fastest special lagna"
+    primary_domain: "Power, authority, social status, leadership"
+    secondary_domains:
+      - "Political power and governmental authority"
+      - "Social standing and command over others"
+      - "Capacity to lead and rule"
+      - "Fame and public recognition"
+    calculation: >
+      Ghatika Lagna advances one sign per ghati (1/60th of a day = 24 minutes).
+      It is the fastest moving of the three special lagnas.
+      Formula: GL = Udaya Lagna + (ghatis since sunrise)
+      One full zodiac cycle = 60 ghatis = 1 day.
+    interpretation:
+      lagna_lord: >
+        The Ghatika Lagnesh is the key planet for power and authority.
+        Its placement in the birth chart shows WHERE power is expressed.
+        Its strength determines HOW MUCH power and authority is available.
+      with_raja_yoga: >
+        When the Ghatika Lagnesh participates in Raja Yoga or is strongly
+        placed in the birth chart, it confirms high social standing and
+        leadership positions.
+      with_malefics: >
+        Malefics afflicting Ghatika Lagna or its lord reduce social standing,
+        create power struggles, and bring down authority through enemies.
+      conjunction_udaya: >
+        When GL coincides with Udaya Lagna: exceptionally powerful —
+        the native is born with inherent authority and leadership qualities.
+    house_reading: >
+      Houses from Ghatika Lagna for power assessment:
+      - 1st from GL: personal authority and command
+      - 10th from GL: career in positions of power
+      - 11th from GL: gains from authority and social network
+    special_combinations:
+      - condition: "Ghatika Lagnesh in Kendra from Udaya Lagna"
+        result: "Strong authority and stable social position"
+      - condition: "Ghatika Lagnesh exalted or in own sign"
+        result: "Royal or ministerial-level status in one's field"
+      - condition: "Ghatika Lagnesh conjunct 10th lord"
+        result: "Career in governance, leadership, or authority"
+    source: "BPHS Ch.8 v17-24, Jaimini Sutras 1.1.31"
+
+# ── Comparative Summary ───────────────────────────────────────────────────────
+comparative_summary:
+  note: >
+    These three special lagnas together provide a multi-layered view of
+    the native's worldly success. When all three lagnas (Udaya, HL, BL, GL)
+    and their lords are strong and well-placed, the native has support
+    across all dimensions of worldly life.
+
+  quick_reference:
+    - lagna: "Hora Lagna (HL)"
+      domain: "WEALTH"
+      question: "How financially prosperous will the native be?"
+    - lagna: "Bhava Lagna (BL)"
+      domain: "CHARACTER"
+      question: "What is the native's true inner character and nature?"
+    - lagna: "Ghatika Lagna (GL)"
+      domain: "POWER"
+      question: "How much social authority and leadership will the native command?"
+
+  jaimini_connection: >
+    Jaimini astrology makes extensive use of these special lagnas.
+    In Jaimini's system, special lagnas are combined with Chara Karakas
+    to determine the quality of various life areas with precision.

@@ -1,0 +1,164 @@
+# ═══════════════════════════════════════════════════════════════
+# UPAGRAHA SIGNIFICATIONS — Shadow/Secondary Planets
+# ═══════════════════════════════════════════════════════════════
+# Source: BPHS Chapters 3 & 8 "Upagraha Adhyaya",
+#         Uttarakalamrita, Phala Deepika
+# Confidence: canonical
+#
+# Upagrahas are mathematical points derived from planetary positions
+# and time of day. They are NOT physical bodies.
+# Most are inauspicious; Parivesha is the notable exception.
+# ═══════════════════════════════════════════════════════════════
+
+source: "BPHS Ch.3 & 8, Uttarakalamrita, Phala Deepika"
+confidence: canonical
+note: >
+  Upagrahas are calculated from the longitude of planets at specific
+  time intervals. They represent subtle malefic influences and should
+  be consulted for refining predictions about adversity and hidden forces.
+
+upagrahas:
+
+  Gulika:
+    name_hi: "गुलिक"
+    alternative_name: "Mandi"
+    name_hi_alt: "मान्दी"
+    association: "Son of Saturn"
+    nature: "Malefic — most powerful of all upagrahas"
+    significations:
+      primary: "Poison, obstacles, chronic disease, sorrow"
+      secondary:
+        - "Karmic debts and accumulated sins"
+        - "Hidden enemies and treachery"
+        - "Sudden misfortunes and reversals"
+        - "Delays and chronic suffering"
+    calculation: >
+      Gulika is calculated based on the planetary hour of birth.
+      In a daytime chart: start from Saturn's hora and count forward.
+      Each planet rules 1/8th of the day/night period.
+      Gulika = the portion falling in Saturn's son's (Gulika's) slot.
+    house_effects: >
+      House placement determines the area of life afflicted by
+      poison/obstacles. Gulika in the 1st = body afflictions.
+      Gulika in the 2nd = financial poison (gambling, addiction).
+      Gulika in the 7th = relationship toxicity.
+    conjunctions: >
+      Planets conjunct Gulika become tinged with its malefic quality.
+      Even benefics near Gulika lose some of their beneficence.
+    remedies: "Saturn's remedies apply: black sesame, urad dal, Shani puja"
+    source: "BPHS Ch.3 v9-16"
+
+  Dhuma:
+    name_hi: "धूम"
+    nature: "Malefic — inauspiciousness and smoke"
+    significations:
+      primary: "Inauspiciousness, smoke, unclear situations, sudden events"
+      secondary:
+        - "Accidents and mishaps"
+        - "Obscured or unclear circumstances"
+        - "Respiratory and smoke-related health issues"
+    calculation: "Sun's longitude + 133°20' (4 signs 13°20')"
+    note: >
+      Dhuma forms the first of five upagrahas derived from the Sun's
+      position. Each adds a fixed amount to the Sun's longitude.
+    house_effects: >
+      Dhuma in fire houses (1/5/9) can indicate accidents.
+      In air houses (3/7/11) it obscures relationships and communication.
+    source: "BPHS Ch.3 v17-20, Uttarakalamrita"
+
+  Vyatipata:
+    name_hi: "व्यतीपात"
+    nature: "Malefic — great misfortune and calamity"
+    significations:
+      primary: "Calamity, great misfortune, sudden catastrophic events"
+      secondary:
+        - "Fall from a great height (literal or metaphorical)"
+        - "Irreversible losses and ruin"
+        - "Events that turn everything upside down"
+    calculation: "360° - Dhuma longitude (i.e., complement of Dhuma)"
+    note: >
+      Vyatipata = 'great fall' — one of the most feared inauspicious
+      points in classical Jyotish. Often referred to in muhurta as a
+      time to avoid for important beginnings.
+    house_effects: >
+      Its house placement marks the area of the most severe potential
+      downfall in the chart. Transits over Vyatipata are important.
+    source: "BPHS Ch.3 v21-24"
+
+  Parivesha:
+    name_hi: "परिवेष"
+    nature: "Beneficial — the exception among upagrahas"
+    significations:
+      primary: "Protective halo, spiritual shield, divine protection"
+      secondary:
+        - "Blessings from deities and divine grace"
+        - "Natural protection from misfortune"
+        - "Spiritual aura and divine favor"
+        - "Beneficial events surrounding the native"
+    calculation: "Vyatipata longitude + 180°"
+    note: >
+      Parivesha is the one upagraha that carries beneficial energy.
+      Its name means 'halo' or 'surrounding envelope' — like the
+      radiant ring around the Sun or Moon. Strengthens protection
+      in the house it occupies.
+    house_effects: >
+      Parivesha in the 1st = natural protection of the body.
+      In the 9th = strong divine grace and fortunate circumstances.
+    source: "BPHS Ch.3 v25-28"
+
+  Indrachapa:
+    name_hi: "इन्द्रचाप"
+    alternative_name: "Kodanda"
+    nature: "Malefic — egoistic tendencies and pride"
+    significations:
+      primary: "Egoistic tendencies, false pride, Indra's bow energy"
+      secondary:
+        - "Arrogance and self-aggrandizement"
+        - "Excessive desire for recognition"
+        - "Conflicts born of pride"
+        - "Sudden rise followed by fall"
+    calculation: "360° - Parivesha longitude"
+    note: >
+      Named after Indra's rainbow bow. The rainbow is beautiful but
+      temporary — indicating glamour and pride that don't last.
+    house_effects: >
+      In the 1st house: very proud nature. In the 10th: career
+      affected by ego and power struggles.
+    source: "BPHS Ch.3 v29-32"
+
+  Upaketu:
+    name_hi: "उपकेतु"
+    nature: "Malefic — subtle Ketu-like past-life debts"
+    significations:
+      primary: "Past-life debts, subtle karmic obligations, Ketu-type isolation"
+      secondary:
+        - "Hidden karmic burdens less dramatic than Ketu"
+        - "Spiritual obstacles from past actions"
+        - "Subtle detachment and withdrawal tendencies"
+    calculation: "Indrachapa longitude + 16°40'"
+    note: >
+      Upaketu functions similarly to Ketu but in a more subtle and
+      less dramatic manner. Where Ketu severs dramatically, Upaketu
+      creates a slow withdrawal or invisible debt.
+    house_effects: >
+      In the 12th: deep spiritual withdrawal. In the 8th: hidden
+      past-life debts manifesting through transformation.
+    source: "BPHS Ch.3 v33-36"
+
+# ── Usage Guidelines ──────────────────────────────────────────────────────────
+usage_guidelines:
+  primary_use:
+    - "Strengthen adverse predictions when upagraha falls in same house"
+    - "Gulika aspecting or conjoining a planet worsens its malefic quality"
+    - "Muhurta: avoid important actions when Gulika/Vyatipata are prominent"
+  conjunction_effects:
+    - upagraha: Gulika
+      with: benefic
+      result: "Reduces benefic's ability to give good results — adds obstacles"
+    - upagraha: Gulika
+      with: malefic
+      result: "Amplifies malefic's harmful quality — double malefic"
+    - upagraha: Parivesha
+      with: any
+      result: "Adds protective quality to the planet/house"
+  most_important: "Gulika — must always be noted in every chart analysis"
