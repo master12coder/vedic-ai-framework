@@ -3693,3 +3693,430 @@ dhana_yoga_1_11:
     general: "Personal effort leads to gains. Networking drives financial success."
   source: "BPHS chapter 16"
   confidence: "high"
+
+# =============================================================================
+# NABHASA YOGAS — BPHS Chapter 13
+# Sky-pattern yogas based on distribution of 7 classical planets (no Rahu/Ketu)
+# Categories: Ashraya (3), Dala (2), Akriti (20), Sankhya (7)
+# =============================================================================
+
+# ── Ashraya Yogas (sign modality) ────────────────────────────────────────────
+
+rajju:
+  name_en: "Rajju Yoga"
+  name_hi: "रज्जु योग"
+  type: "mixed"
+  formation:
+    condition: "All 7 classical planets occupy movable (chara) signs only: Aries, Cancer, Libra, Capricorn."
+    planets: ["sun", "moon", "mars", "mercury", "jupiter", "venus", "saturn"]
+    houses_required: []
+  cancellation:
+    - "Any planet in a fixed or dual sign breaks the yoga"
+  effects:
+    general: "Restless and mobile nature; loves travel; adapts quickly; life changes frequently; gains through movement and trade."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+musala:
+  name_en: "Musala Yoga"
+  name_hi: "मुसल योग"
+  type: "benefic"
+  formation:
+    condition: "All 7 classical planets occupy fixed (sthira) signs only: Taurus, Leo, Scorpio, Aquarius."
+    planets: ["sun", "moon", "mars", "mercury", "jupiter", "venus", "saturn"]
+    houses_required: []
+  cancellation:
+    - "Any planet in a movable or dual sign breaks the yoga"
+  effects:
+    general: "Stable, determined, and persistent nature; accumulates wealth steadily; honoured by many; fixed in purpose and resolve."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+nala:
+  name_en: "Nala Yoga"
+  name_hi: "नल योग"
+  type: "mixed"
+  formation:
+    condition: "All 7 classical planets occupy dual (dvisvabhava) signs only: Gemini, Virgo, Sagittarius, Pisces."
+    planets: ["sun", "moon", "mars", "mercury", "jupiter", "venus", "saturn"]
+    houses_required: []
+  cancellation:
+    - "Any planet in a movable or fixed sign breaks the yoga"
+  effects:
+    general: "Versatile and multi-talented; skilled across several fields; wavering nature but intellectually sharp; mixed financial results."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+# ── Dala Yogas (benefic/malefic in kendras) ───────────────────────────────────
+
+maala:
+  name_en: "Maala Yoga"
+  name_hi: "माला योग"
+  type: "benefic"
+  formation:
+    condition: "All natural benefics (Jupiter, Venus, Mercury, Moon) occupy kendra houses (1, 4, 7, 10) only."
+    planets: ["jupiter", "venus", "mercury", "moon"]
+    houses_required: [1, 4, 7, 10]
+  cancellation:
+    - "Any benefic in a non-kendra house cancels the yoga"
+  effects:
+    general: "Garlanded with fortune; joyful, prosperous and popular; good family and social standing; commands respect."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+sarpa:
+  name_en: "Sarpa Yoga"
+  name_hi: "सर्प योग"
+  type: "malefic"
+  formation:
+    condition: "All natural malefics (Sun, Mars, Saturn) occupy kendra houses (1, 4, 7, 10) only."
+    planets: ["sun", "mars", "saturn"]
+    houses_required: [1, 4, 7, 10]
+  cancellation:
+    - "Any malefic in a non-kendra house cancels the yoga"
+  effects:
+    general: "Wicked and cruel temperament; dependent on others; financial difficulties; mean-spirited actions; poverty despite efforts."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+# ── Akriti Yogas (geometric house patterns) ───────────────────────────────────
+
+gada_nabhasa:
+  name_en: "Gada Yoga"
+  name_hi: "गदा योग"
+  type: "benefic"
+  formation:
+    condition: "All 7 classical planets confined to 2 adjacent kendra houses: {1,4}, {4,7}, {7,10}, or {10,1}."
+    planets: []
+    houses_required: [1, 4, 7, 10]
+  effects:
+    general: "Like Vishnu's mace; authority and power; ambitious and action-oriented; rises through persistent effort."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+shakata_nabhasa:
+  name_en: "Shakata Yoga (Nabhasa)"
+  name_hi: "शकट योग (नभस)"
+  type: "mixed"
+  formation:
+    condition: "All 7 classical planets confined to 1st and 7th houses only."
+    planets: []
+    houses_required: [1, 7]
+  effects:
+    general: "Wheel of fortune; rises and falls in life repeatedly; eventually gains prominence; partnerships central to destiny."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+shringataka:
+  name_en: "Shringataka Yoga"
+  name_hi: "श्रृंगाटक योग"
+  type: "benefic"
+  formation:
+    condition: "All 7 classical planets confined to trikona houses (1st, 5th, 9th) only."
+    planets: []
+    houses_required: [1, 5, 9]
+  effects:
+    general: "Triangular peak of fortune; powerful, respected and blessed by Lakshmi; dharmic prosperity; auspicious life."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+hala:
+  name_en: "Hala Yoga"
+  name_hi: "हल योग"
+  type: "mixed"
+  formation:
+    condition: "All 7 classical planets confined to 3 consecutive houses beginning from a trikona: {1,2,3}, {5,6,7}, or {9,10,11}."
+    planets: []
+    houses_required: []
+  effects:
+    general: "Plough shape; agricultural or service-oriented life; industrious worker; gains through persistent labour."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+vajra:
+  name_en: "Vajra Yoga"
+  name_hi: "वज्र योग"
+  type: "benefic"
+  formation:
+    condition: "All benefics (Jupiter, Venus, Mercury, Moon) in 1st and 7th; all malefics (Sun, Mars, Saturn) in 4th and 10th."
+    planets: []
+    houses_required: [1, 4, 7, 10]
+  effects:
+    general: "Thunderbolt power; courageous and enduring; happiness in early and late life; like Indra's weapon — decisive and powerful."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+yava:
+  name_en: "Yava Yoga"
+  name_hi: "यव योग"
+  type: "mixed"
+  formation:
+    condition: "All malefics (Sun, Mars, Saturn) in 1st and 7th; all benefics (Jupiter, Venus, Mercury, Moon) in 4th and 10th."
+    planets: []
+    houses_required: [1, 4, 7, 10]
+  effects:
+    general: "Barley grain shape; comfortable middle portion of life; helpful to others; gains increase gradually."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+kamala_nabhasa:
+  name_en: "Kamala Yoga (Padma)"
+  name_hi: "कमल योग"
+  type: "benefic"
+  formation:
+    condition: "All 7 classical planets occupy only the 4 kendra houses (1st, 4th, 7th, 10th)."
+    planets: []
+    houses_required: [1, 4, 7, 10]
+  effects:
+    general: "Lotus of fortune; exceptional achievement; kingly status; long life; fame across the world; like a divine ruler."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+vaapi:
+  name_en: "Vaapi Yoga"
+  name_hi: "वापी योग"
+  type: "mixed"
+  formation:
+    condition: "All 7 classical planets occupy only panaphara houses (2,5,8,11) OR only apoklima houses (3,6,9,12)."
+    planets: []
+    houses_required: []
+  effects:
+    general: "Well-digger; self-made through hidden persistent effort; charitable; gains accumulate quietly over time."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+yupa:
+  name_en: "Yupa Yoga"
+  name_hi: "यूप योग"
+  type: "benefic"
+  formation:
+    condition: "All 7 classical planets confined to houses 1, 2, 3, and 4."
+    planets: []
+    houses_required: [1, 2, 3, 4]
+  effects:
+    general: "Sacrifice post; renunciatory and devotional; generous with wealth; performs yajnas and rituals; focused on dharma."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+ishu:
+  name_en: "Ishu Yoga (Shara)"
+  name_hi: "इषु योग"
+  type: "mixed"
+  formation:
+    condition: "All 7 classical planets confined to houses 4, 5, 6, and 7."
+    planets: []
+    houses_required: [4, 5, 6, 7]
+  effects:
+    general: "Arrow shape; piercing intellect; swift and forceful career actions; victory over enemies; sharp minded."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+shakti_nabhasa:
+  name_en: "Shakti Yoga"
+  name_hi: "शक्ति योग"
+  type: "mixed"
+  formation:
+    condition: "All 7 classical planets confined to houses 7, 8, 9, and 10."
+    planets: []
+    houses_required: [7, 8, 9, 10]
+  effects:
+    general: "Power and strength; achievements through partnerships; gains in second half of life; transformative career."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+danda:
+  name_en: "Danda Yoga"
+  name_hi: "दण्ड योग"
+  type: "mixed"
+  formation:
+    condition: "All 7 classical planets confined to houses 10, 11, 12, and 1."
+    planets: []
+    houses_required: [10, 11, 12, 1]
+  effects:
+    general: "Staff of authority; discipline and governance; gains through profession; punitive or administrative roles."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+naukaa:
+  name_en: "Naukaa Yoga"
+  name_hi: "नौका योग"
+  type: "mixed"
+  formation:
+    condition: "All 7 classical planets confined to 7 consecutive houses starting from the 1st (houses 1-7)."
+    planets: []
+    houses_required: [1, 2, 3, 4, 5, 6, 7]
+  effects:
+    general: "Boat shape; love of sea and travel; gains through trade and commerce; adventurous life; naval or merchant nature."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+koota:
+  name_en: "Koota Yoga (Kuta)"
+  name_hi: "कूट योग"
+  type: "mixed"
+  formation:
+    condition: "All 7 classical planets confined to 7 consecutive houses starting from the 4th (houses 4-10)."
+    planets: []
+    houses_required: [4, 5, 6, 7, 8, 9, 10]
+  effects:
+    general: "Mountain peak; deceptive and cunning; secretive nature; strategic thinker; may engage in fraud or deception."
+  source: "BPHS chapter 13"
+  confidence: "mixed"
+
+chhatra:
+  name_en: "Chhatra Yoga"
+  name_hi: "छत्र योग"
+  type: "benefic"
+  formation:
+    condition: "All 7 classical planets confined to 7 consecutive houses starting from the 7th (houses 7-1)."
+    planets: []
+    houses_required: [7, 8, 9, 10, 11, 12, 1]
+  effects:
+    general: "Royal umbrella; protection from above; patronage of the powerful; leadership; happiness throughout life."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+chaapa:
+  name_en: "Chaapa Yoga (Dhanush)"
+  name_hi: "चाप योग"
+  type: "mixed"
+  formation:
+    condition: "All 7 classical planets confined to 7 consecutive houses starting from the 10th (houses 10-4)."
+    planets: []
+    houses_required: [10, 11, 12, 1, 2, 3, 4]
+  effects:
+    general: "Bow shape; skilled craftsman; archer-like focused intensity; gains through profession and skill."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+ardha_chandra:
+  name_en: "Ardha Chandra Yoga"
+  name_hi: "अर्धचन्द्र योग"
+  type: "benefic"
+  formation:
+    condition: "All 7 classical planets confined to any 7 consecutive houses NOT starting from 1st, 4th, 7th, or 10th."
+    planets: []
+    houses_required: []
+  effects:
+    general: "Half moon; handsome and attractive; balanced personality; graceful demeanour; favoured by rulers."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+chakra_nabhasa:
+  name_en: "Chakra Yoga"
+  name_hi: "चक्र योग"
+  type: "benefic"
+  formation:
+    condition: "All 7 classical planets occupy only odd houses (1st, 3rd, 5th, 7th, 9th, 11th)."
+    planets: []
+    houses_required: [1, 3, 5, 7, 9, 11]
+  effects:
+    general: "Wheel of sovereignty; powerful ruler or commander; wheel of dharma; fame and fortune through bold action."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+samudra:
+  name_en: "Samudra Yoga"
+  name_hi: "समुद्र योग"
+  type: "benefic"
+  formation:
+    condition: "All 7 classical planets occupy only even houses (2nd, 4th, 6th, 8th, 10th, 12th)."
+    planets: []
+    houses_required: [2, 4, 6, 8, 10, 12]
+  effects:
+    general: "Ocean of wealth; commanding and affluent; famous for generosity; profound depth of character."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+# ── Sankhya Yogas (number of houses occupied) ─────────────────────────────────
+
+vallaki:
+  name_en: "Vallaki Yoga (Veena)"
+  name_hi: "वल्लकी योग"
+  type: "benefic"
+  formation:
+    condition: "All 7 classical planets occupy exactly 1 house."
+    planets: []
+    houses_required: []
+  effects:
+    general: "Veena (lute); musical, artistic and creative; performs before kings; endowed with worldly pleasures."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+dama:
+  name_en: "Dama Yoga"
+  name_hi: "दाम योग"
+  type: "benefic"
+  formation:
+    condition: "All 7 classical planets occupy exactly 2 houses."
+    planets: []
+    houses_required: []
+  effects:
+    general: "Garland; community leader; wealthy and generous; well-honoured in society; organises people."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+paasha:
+  name_en: "Paasha Yoga"
+  name_hi: "पाश योग"
+  type: "malefic"
+  formation:
+    condition: "All 7 classical planets occupy exactly 3 houses."
+    planets: []
+    houses_required: []
+  effects:
+    general: "Noose; scheming and manipulative; enslaved to duties and work; many dependants; bound by obligations."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+kedara:
+  name_en: "Kedara Yoga"
+  name_hi: "केदार योग"
+  type: "mixed"
+  formation:
+    condition: "All 7 classical planets occupy exactly 4 houses."
+    planets: []
+    houses_required: []
+  effects:
+    general: "Agricultural field; service-oriented; helps many people; gains through cultivation of skills; content life."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+shoola:
+  name_en: "Shoola Yoga"
+  name_hi: "शूल योग"
+  type: "malefic"
+  formation:
+    condition: "All 7 classical planets occupy exactly 5 houses."
+    planets: []
+    houses_required: []
+  effects:
+    general: "Trident; combative and argumentative; faces many hardships; brave but beset with troubles throughout life."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+yuga:
+  name_en: "Yuga Yoga"
+  name_hi: "युग योग"
+  type: "malefic"
+  formation:
+    condition: "All 7 classical planets occupy exactly 6 houses."
+    planets: []
+    houses_required: []
+  effects:
+    general: "Yoke; heretical views; poor, wretched and impure; deprived of wealth and family comforts."
+  source: "BPHS chapter 13"
+  confidence: "high"
+
+gola:
+  name_en: "Gola Yoga"
+  name_hi: "गोल योग"
+  type: "malefic"
+  formation:
+    condition: "All 7 classical planets each in a different house (7 distinct houses occupied)."
+    planets: []
+    houses_required: []
+  effects:
+    general: "Sphere; dispersed energy; lonely and isolated; poor and helpless; deprived of friends and family support."
+  source: "BPHS chapter 13"
+  confidence: "high"

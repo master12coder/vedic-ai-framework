@@ -9,6 +9,7 @@ Source: BPHS, Phaladeepika, Saravali.
 from __future__ import annotations
 
 from daivai_engine.compute.chart import ChartData, get_house_lord
+from daivai_engine.compute.yoga_nabhasa import detect_nabhasa_yogas
 from daivai_engine.constants import (
     DEBILITATION,
     DUSTHANAS,
@@ -465,66 +466,14 @@ def _detect_vipreet_detailed(chart: ChartData) -> list[YogaResult]:
 
 
 def _detect_nabhasa_yogas(chart: ChartData) -> list[YogaResult]:
-    """Detect selected Nabhasa (sky pattern) yogas — BPHS Ch.13."""
-    yogas: list[YogaResult] = []
+    """Detect all 32 Nabhasa (sky pattern) yogas — delegates to yoga_nabhasa.
 
-    # Count planets per sign
-    sign_count: dict[int, int] = {}
-    for name, p in chart.planets.items():
-        if name in ("Rahu", "Ketu"):
-            continue
-        sign_count[p.sign_index] = sign_count.get(p.sign_index, 0) + 1
+    Also detects Daridra Yoga (11th lord in dusthana), which is a traditional
+    poverty yoga kept separate from the BPHS Ch.13 Nabhasa system.
+    """
+    yogas: list[YogaResult] = list(detect_nabhasa_yogas(chart))
 
-    occupied_signs = len(sign_count)
-
-    # Yupa: all 7 planets in 4 consecutive signs starting from a kendra
-    # (simplified: all in 4 consecutive signs)
-    for start in range(12):
-        consecutive = {(start + i) % 12 for i in range(4)}
-        if all(s in consecutive for s in sign_count):
-            yogas.append(
-                YogaResult(
-                    name="Yupa Yoga",
-                    name_hindi="यूप योग",
-                    is_present=True,
-                    planets_involved=[],
-                    houses_involved=[],
-                    description="All planets in 4 consecutive signs — focused life energy",
-                    effect="mixed",
-                )
-            )
-            break
-
-    # Gada: all planets in 2 kendras
-    kendra_signs = {(chart.lagna_sign_index + k - 1) % 12 for k in KENDRAS}
-    if all(s in kendra_signs for s in sign_count):
-        yogas.append(
-            YogaResult(
-                name="Gada Yoga",
-                name_hindi="गदा योग",
-                is_present=True,
-                planets_involved=[],
-                houses_involved=list(KENDRAS),
-                description="All planets in kendra signs — action-oriented, ambitious life",
-                effect="benefic",
-            )
-        )
-
-    # Kamala (Padma): all planets in kendras — rare and powerful
-    if occupied_signs <= 4 and all(s in kendra_signs for s in sign_count):
-        yogas.append(
-            YogaResult(
-                name="Kamala Yoga",
-                name_hindi="कमल योग",
-                is_present=True,
-                planets_involved=[],
-                houses_involved=list(KENDRAS),
-                description="All planets in kendras only — exceptional fortune, kingly status",
-                effect="benefic",
-            )
-        )
-
-    # Daridra: lord of 11th in 6/8/12 — poverty yoga
+    # Daridra: lord of 11th in 6/8/12 — poverty yoga (not a BPHS Nabhasa yoga)
     lord_11 = get_house_lord(chart, 11)
     p11 = chart.planets.get(lord_11)
     if p11 and p11.house in DUSTHANAS:
