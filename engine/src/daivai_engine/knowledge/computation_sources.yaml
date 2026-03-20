@@ -2,13 +2,22 @@
 # COMPUTATION PROVENANCE — Source citations for every formula
 # ═══════════════════════════════════════════════════════════════
 #
-# Every computation in the engine has a classical text source.
-# This file documents: WHAT, WHY, HOW, ALTERNATIVES, INVALIDATION.
+# IMPORTANT: This file documents the classical sources for each
+# computation. Chapter/verse references are based on standard
+# BPHS translations (R. Santhanam, Girish Chand Sharma).
+#
+# For ACTUAL verse text, see: engine/scriptures/bphs/*.yaml
+# (552 verses with Sanskrit + English + Hindi translations)
+#
+# This provenance was initially written from training knowledge,
+# NOT by reading original texts in session. Verse numbers should
+# be cross-verified against the scripture YAML files.
+# When a Pandit corrects a reference, UPDATE THIS FILE.
 #
 # Format:
 #   computation_name:
 #     source: Primary classical text reference
-#     chapter: Chapter and verse
+#     chapter: Chapter and verse (verify against scriptures/bphs/)
 #     rule: The exact rule applied
 #     alternatives: Other valid interpretations
 #     invalidation: When this computation might be wrong
