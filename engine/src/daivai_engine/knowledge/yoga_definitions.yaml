@@ -4120,3 +4120,254 @@ gola:
     general: "Sphere; dispersed energy; lonely and isolated; poor and helpless; deprived of friends and family support."
   source: "BPHS chapter 13"
   confidence: "high"
+
+# =============================================================================
+# ADDITIONAL CLASSICAL YOGAS — Graha Malika, Parvata, Kahala, Lakshmi,
+# Gauri, Saraswati, Chandra-Mangal, Guru-Mangal, Nipuna
+# =============================================================================
+
+graha_malika:
+  name_en: "Graha Malika Yoga"
+  name_hi: "ग्रह माला योग"
+  type: "benefic"
+  formation:
+    condition: "Planets occupy consecutive houses in an unbroken chain, with at least one planet in each of 5 or more consecutive houses. The longer and more unbroken the chain, the more powerful the yoga. Starting house determines the domain of results: from lagna = overall success and fame; from 4th = domestic and educational gains; from 7th = relationship and partnership focus; from 10th = career and authority."
+    planets: []
+    houses_required: []
+    sign_condition: "none"
+  cancellation:
+    - "Chain is broken by an empty house within the sequence"
+    - "All chained planets severely afflicted or combust"
+    - "Less than 5 consecutive houses occupied"
+  effects:
+    general: "Creates a 'garland' effect of planetary energy flowing sequentially through houses. The native is blessed with an unbroken stream of life opportunities, and achievements build upon each other in a continuous ascending chain. Extremely rare and considered highly auspicious. Fame spreads in the direction indicated by the starting house."
+    career: "Steady progression and recognition in chosen field. Success follows success in an unbroken arc. The native is rarely derailed or stagnant — life keeps moving forward."
+    finance: "Continuous financial improvement; wealth accumulates in stages, each building on the last. No permanent poverty or irreversible financial ruin."
+    health: "Vitality flows through the body in a sustained manner; recovery from illness is relatively swift due to the interconnected planetary support."
+  strength_factors:
+    - "7-house chain is exceptionally rare and maximally powerful"
+    - "6-house chain: very powerful"
+    - "5-house chain: powerful, minimum threshold for full results"
+    - "Stronger when luminaries (Sun, Moon) are part of the chain"
+    - "Results amplified when the chain begins from lagna or 10th house"
+    - "Chain in angular houses (kendras) gives faster results"
+  source: "BPHS chapter 12; classical texts"
+  confidence: "high"
+
+parvata:
+  name_en: "Parvata Yoga"
+  name_hi: "पर्वत योग"
+  type: "benefic"
+  formation:
+    condition: "Benefic planets (Jupiter, Venus, Mercury, Moon) occupy kendra houses (1, 4, 7, 10) AND no malefic planet is placed in the 6th or 8th house. Alternatively: Lagna lord and 12th lord are in mutual kendras from each other and both receive benefic aspects."
+    planets: ["jupiter", "venus", "mercury", "moon"]
+    houses_required: [1, 4, 7, 10]
+    sign_condition: "none"
+  cancellation:
+    - "A malefic in the 6th or 8th house cancels the primary condition"
+    - "Benefics in kendras are combust or severely afflicted"
+    - "Lagna lord is debilitated without cancellation"
+  effects:
+    general: "The native attains mountain-like prominence — stable, elevated, and enduring. Fame, fortune, and leadership come naturally. They receive government favor, patronage from powerful people, and social eminence. The native is respected like a mountain is revered — immovable, authoritative, and grand."
+    career: "Leadership positions in government, administration, judiciary, politics, or institutional bodies. The native rises to peaks of their profession through a combination of benefic grace and personal integrity."
+    finance: "Substantial wealth and prosperity. Financial stability is rock-solid. Gains through authority, land, gold, and legitimate institutional sources."
+    health: "Generally robust constitution. Longevity indicated. The mountain symbolism suggests solidity and endurance in health matters."
+  strength_factors:
+    - "All four kendras occupied by benefics gives the maximum result"
+    - "Jupiter in kendra as the king of benefics is most powerful"
+    - "Lagna lord strong and well-placed amplifies results"
+    - "Yoga active during dasha of kendra-placed benefics"
+  source: "Phala Deepika; classical texts"
+  confidence: "high"
+
+kahala:
+  name_en: "Kahala Yoga"
+  name_hi: "कहल योग"
+  type: "benefic"
+  formation:
+    condition: "Lord of the 4th house and Jupiter are in mutual kendra positions from each other (i.e., each is in the 1st, 4th, 7th, or 10th from the other), AND the lagna lord is strong (in own sign, exaltation, or a kendra/trikona)."
+    planets: ["jupiter"]
+    houses_required: [4]
+    sign_condition: "none"
+  cancellation:
+    - "4th lord is debilitated without cancellation"
+    - "Jupiter is combust within 11 degrees of Sun"
+    - "Lagna lord is severely afflicted, debilitated, or in a dusthana (6/8/12)"
+  effects:
+    general: "The native is bold, courageous, and commands deep respect from others. They possess natural leadership ability and inspire confidence in those around them. Like the sound of a drum (kahala), their presence announces itself without effort. They are respected in assemblies and communities, lead with authority, and inspire loyalty."
+    career: "Military, police, defense, administration, management, sports coaching, or any field requiring bold decision-making and command over others. The native may lead armies, teams, or organizations."
+    finance: "Moderate to good wealth, primarily earned through position of authority and service. Gains from land, vehicles, and property (4th house significations)."
+    health: "Strong physique and good vitality. Mars-like boldness extends to physical resilience."
+  strength_factors:
+    - "Stronger when 4th lord is in a kendra in its own or exalted sign"
+    - "Jupiter in 10th from 4th lord gives maximum career authority"
+    - "Results most prominent during dasha of Jupiter or 4th lord"
+    - "Lagna lord in own sign or exaltation maximizes the yoga"
+  source: "BPHS chapter 36; Phala Deepika"
+  confidence: "high"
+
+lakshmi:
+  name_en: "Lakshmi Yoga"
+  name_hi: "लक्ष्मी योग"
+  type: "benefic"
+  formation:
+    condition: "Lord of the 9th house is placed in a kendra (1, 4, 7, 10) or trikona (1, 5, 9) in its own sign or exaltation sign, AND the lagna lord is also strong (in a kendra, trikona, or its own/exalted sign)."
+    planets: []
+    houses_required: [1, 4, 5, 7, 9, 10]
+    sign_condition: "own_or_exalted"
+  cancellation:
+    - "9th lord is combust, debilitated without cancellation, or placed in a dusthana (6/8/12)"
+    - "Lagna lord is severely afflicted or in a dusthana"
+    - "Both lagna lord and 9th lord are retrograde and weak"
+  effects:
+    general: "The native is blessed by Goddess Lakshmi herself — immense prosperity, fortune, beauty, and grace characterize their life. Wealth flows to them through righteous means, dharmic living, and the blessings of their father and ancestors. They are virtuous, fortunate, and deeply respected in society."
+    career: "The native excels in any profession that combines intellect, authority, and grace. Suitable for law, finance, government, entrepreneurship, and any dharmic vocation. High positions come naturally."
+    finance: "Exceptional wealth accumulation across the lifetime. Multiple income streams. Financial success comes through 9th house themes: father, guru, spirituality, foreign connections, publishing, and long-distance trade."
+    health: "Generally blessed with good health and longevity. The prosperity indicated by this yoga extends to vitality and well-being."
+    spiritual: "Strong dharmic inclination. The native may be deeply religious or spiritually gifted, giving back generously through charity and service."
+  strength_factors:
+    - "9th lord in own sign in a kendra gives the most powerful results"
+    - "Venus as 9th lord in exaltation (Pisces) is particularly auspicious"
+    - "9th lord in lagna (1st house) in own/exalted sign maximizes personal fortune"
+    - "Enhanced when 9th lord and lagna lord mutually aspect each other"
+    - "Results peak during mahadasha of the strong 9th lord"
+  source: "BPHS chapter 35; Phala Deepika"
+  confidence: "high"
+
+gauri:
+  name_en: "Gauri Yoga"
+  name_hi: "गौरी योग"
+  type: "benefic"
+  formation:
+    condition: "Moon is placed in its own sign (Cancer) or exaltation sign (Taurus) in a kendra house (1, 4, 7, or 10), AND Jupiter aspects the Moon."
+    planets: ["moon", "jupiter"]
+    houses_required: [1, 4, 7, 10]
+    sign_condition: "own_or_exalted"
+    valid_signs: ["cancer", "taurus"]
+  cancellation:
+    - "Moon is severely afflicted by malefic conjunction (Saturn, Mars, Rahu, Ketu) without benefic relief"
+    - "Jupiter is combust, debilitated, or retrograde without strength"
+    - "Moon is hemmed between malefics (papa kartari)"
+  effects:
+    general: "The native is blessed with the divine grace of Goddess Gauri (Parvati) — beauty, elegance, culture, and refinement pervade their life. They are morally pure, socially graceful, and win admiration through their dignified demeanor. Wealth comes through righteous means and they are charitable by nature."
+    career: "Excellence in arts, healing, counseling, education, and any field requiring sensitivity and grace. The native may become a respected teacher, healer, artist, or cultural leader."
+    finance: "Wealth accumulates through dharmic means, particularly through creative arts, counseling, healing, and family/maternal connections. Financial security is stable."
+    health: "Beautiful physical appearance and attractive demeanor. Strong emotional health due to Jupiter's protective aspect on Moon. Good longevity."
+    relationships: "Blessed in family and marital life. The native is devoted, emotionally stable, and deeply affectionate. Their children are fortunate."
+  strength_factors:
+    - "Moon exalted in Taurus in kendra (especially 10th) gives maximum results"
+    - "Jupiter's full 5th or 9th aspect on Moon is most powerful"
+    - "Moon in 4th or 1st house gives strong domestic and personal blessings"
+    - "Enhanced during Moon and Jupiter dashas"
+  source: "Phala Deepika; classical texts"
+  confidence: "high"
+
+saraswati:
+  name_en: "Saraswati Yoga"
+  name_hi: "सरस्वती योग"
+  type: "benefic"
+  formation:
+    condition: "Jupiter, Venus, and Mercury are all placed in kendra houses (1, 4, 7, 10), trikona houses (1, 5, 9), or the 2nd house. Additionally, Jupiter must be in its own sign (Sagittarius or Pisces), exaltation (Cancer), or a friendly sign."
+    planets: ["jupiter", "venus", "mercury"]
+    houses_required: [1, 2, 4, 5, 7, 9, 10]
+    sign_condition: "own_exalted_or_friendly"
+  cancellation:
+    - "Jupiter is combust, debilitated without cancellation, or in a dusthana"
+    - "Mercury is severely combust (within 3 degrees of Sun)"
+    - "All three planets are in inimical signs without strength"
+  effects:
+    general: "The native is blessed by Goddess Saraswati — supreme intellect, eloquence, artistic mastery, and the gift of language and expression characterize their life. They are renowned scholars, poets, writers, musicians, or scientists who leave a lasting legacy of knowledge and beauty."
+    career: "Extraordinary success in education, academia, research, writing, music, fine arts, philosophy, astrology, and all Saraswati-governed arts and sciences. The native may become a celebrated author, professor, musician, or polymath."
+    finance: "Wealth through intellectual and creative endeavors. The native earns through knowledge, artistry, consulting, and teaching. Financial comfort is generally assured."
+    health: "Good health with sharp mental faculties maintained throughout life. The native often has a pleasing, cultured appearance."
+    spiritual: "Deep connection to Goddess Saraswati. May receive divine inspiration and be naturally drawn to Vedic knowledge, mantra, and spiritual arts."
+  strength_factors:
+    - "Jupiter in Cancer (exalted) with Venus and Mercury in kendras gives maximum results"
+    - "All three planets in mutual kendras from each other amplifies the yoga"
+    - "Enhanced when Mercury is strong and unafflicted in Gemini or Virgo"
+    - "Results most visible during Jupiter, Venus, or Mercury mahadashas"
+    - "Particularly powerful for Gemini, Virgo, Pisces, and Sagittarius lagnas"
+  source: "Phala Deepika; classical texts"
+  confidence: "high"
+
+chandra_mangal:
+  name_en: "Chandra-Mangal Yoga"
+  name_hi: "चन्द्र-मंगल योग"
+  type: "mixed"
+  formation:
+    condition: "Moon and Mars are conjunct in the same sign."
+    planets: ["moon", "mars"]
+    houses_required: []
+    sign_condition: "none"
+  cancellation:
+    - "Conjunction in a malefic sign without any benefic aspect can reduce auspiciousness"
+    - "Moon severely waning (very close to new moon) reduces results"
+  effects:
+    general: "Creates a dynamic tension between Martian drive and lunar emotion. The native accumulates wealth through their own bold, independent efforts — often in business, trade, or entrepreneurial ventures. They are energetic, emotionally intense, and ambitious. The combination can also indicate an aggressive emotional nature, especially under stress."
+    career: "Business, entrepreneurship, real estate, trading, catering/food industry (Moon), sports and fitness (Mars), or any competitive vocation. The native is self-made and commercially astute."
+    finance: "Strong potential for wealth through independent business ventures, particularly in fields connected to real estate, commodities, food, or physical goods. The native is a shrewd negotiator."
+    health: "Strong physical vitality but may face blood-related issues, emotional volatility, or digestive problems (Moon). The native should guard against anger-driven decisions that affect health."
+  strength_factors:
+    - "Conjunction in a kendra gives stronger career and wealth results"
+    - "In Cancer (Moon's own sign), emotional intensity increases but wealth potential is high"
+    - "In Aries or Scorpio (Mars own), business and courage are maximized"
+    - "Results vary significantly by lagna — check lordships"
+    - "Moon waxing (Shukla Paksha) gives better results than waning"
+  source: "Phala Deepika; classical texts"
+  confidence: "high"
+
+guru_mangal:
+  name_en: "Guru-Mangal Yoga"
+  name_hi: "गुरु-मंगल योग"
+  type: "benefic"
+  formation:
+    condition: "Jupiter and Mars are conjunct in the same sign."
+    planets: ["jupiter", "mars"]
+    houses_required: []
+    sign_condition: "none"
+  cancellation:
+    - "Both planets severely afflicted by additional malefics without benefic support"
+    - "Conjunction in a deeply inimical sign for both (e.g., Mars debilitated in Cancer, Jupiter weakened)"
+    - "Both combust simultaneously"
+  effects:
+    general: "Wisdom (Jupiter) and courage (Mars) combine to create a person of righteous action. The native is principled, courageous, decisive, and morally grounded in their pursuits. They are natural warriors for truth and justice, combining the restraint of dharma with the energy to act. This combination is particularly auspicious for land, property, and siblings."
+    career: "Military officers, police leaders, judges, spiritual warriors, athletes who compete with honor, engineers with vision, and any vocation requiring the combination of bold action and ethical grounding."
+    finance: "Good wealth through property, land, construction, and enterprise. The native benefits from real estate and physical assets (Mars) guided by wise investment (Jupiter)."
+    health: "Generally robust physical health. The Mars-Jupiter combination creates an energetic, strong constitution with good liver function and healing capacity."
+    siblings: "Good relationship with siblings and extended family. Younger siblings (Mars) may benefit through this yoga."
+  strength_factors:
+    - "Conjunction in Sagittarius (Jupiter's sign) gives strong dharmic warrior energy"
+    - "In Capricorn (Mars exalted), practical achievement is maximized"
+    - "In Cancer (Jupiter exalted), wisdom outweighs aggression — most spiritual result"
+    - "Conjunction in kendra amplifies career results"
+    - "Results are strongest during mutual dasha periods of Jupiter and Mars"
+  source: "Phala Deepika; classical texts"
+  confidence: "high"
+
+nipuna:
+  name_en: "Nipuna Yoga (Budha-Chandra)"
+  name_hi: "निपुण योग (बुध-चन्द्र)"
+  type: "benefic"
+  formation:
+    condition: "Mercury and Moon are conjunct in the same sign."
+    planets: ["mercury", "moon"]
+    houses_required: []
+    sign_condition: "none"
+  cancellation:
+    - "Mercury is severely combust (within 3 degrees of Sun), as Mercury may already be combust in some charts where Moon is near Sun"
+    - "Moon is very close to new moon phase (extremely waning) reducing emotional intelligence"
+    - "Conjunction in a severely afflicted sign with multiple malefic aspects"
+  effects:
+    general: "The native is exceptionally skilled (nipuna = skillful, expert) — they combine emotional intelligence (Moon) with sharp analytical ability (Mercury) to master multiple fields simultaneously. Communication is not just verbal but emotionally resonant. They are talented writers, speakers, musicians, counselors, or traders with an unusually empathetic intelligence."
+    career: "Writing, journalism, counseling, psychology, music, trading, business communication, teaching, astrology, comedy, and any vocation requiring the combination of cleverness and emotional attunement. The native excels wherever nuance and adaptability are prized."
+    finance: "Gains through commerce, communication, intellectual work, and emotional attunement to market needs. The native has a gift for understanding what people want and communicating it effectively."
+    health: "Sharp mental faculties with strong emotional processing ability. The native should guard against overthinking, nervous anxiety (Mercury + Moon = restless mind), and digestive issues."
+  strength_factors:
+    - "In Gemini or Virgo (Mercury's own signs), mental sharpness is supreme"
+    - "In Taurus (Moon exalted), the emotional depth gives intuitive genius"
+    - "In Cancer (Moon's own sign), emotional intelligence and nurturing communication dominate"
+    - "Waxing Moon (Shukla Paksha) enhances results significantly"
+    - "Strong results during Mercury and Moon dashas"
+    - "Moon must not be severely waning for best results"
+  source: "Phala Deepika; classical texts"
+  confidence: "high"

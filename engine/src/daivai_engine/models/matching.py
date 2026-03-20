@@ -5,6 +5,23 @@ from __future__ import annotations
 from pydantic import BaseModel, ConfigDict, Field
 
 
+class RajjuResult(BaseModel):
+    """Rajju (backbone) Dosha result for marriage compatibility.
+
+    Rajju maps Moon nakshatras to body parts. If both partners share
+    the same Rajju (body part), certain inauspicious effects are indicated.
+    """
+
+    model_config = ConfigDict(frozen=True)
+
+    has_dosha: bool
+    nakshatra1: str
+    nakshatra2: str
+    body_part: str | None  # Paada / Kati / Nabhi / Kantha / Shira (or None if no dosha)
+    severity: str  # none / mild / moderate / severe
+    description: str
+
+
 class KootaScore(BaseModel):
     """Represents the score for a single koota (compatibility factor) in Ashtakoot matching.
 

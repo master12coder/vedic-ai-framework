@@ -3,34 +3,34 @@
 
 combustion_limits:
   Moon:
-    normal: 12.0
-    retrograde: 12.0  # Moon doesn't retrograde, same limit
+    direct_degrees: 12
+    retrograde_degrees: 12
     notes: "Moon within 12° of Sun = combust. New Moon = maximum combustion. Effects: mental stress, weak mind."
 
   Mars:
-    normal: 17.0
-    retrograde: 17.0
-    notes: "Mars within 17° of Sun. Effects: reduced courage, blood-related issues, conflict with authority."
+    direct_degrees: 17
+    retrograde_degrees: 17
+    notes: "Mars combust within 17° of Sun. Effects: reduced courage, blood-related issues, conflict with authority."
 
   Mercury:
-    normal: 14.0
-    retrograde: 12.0
-    notes: "Mercury often combust due to proximity to Sun. When retrograde, limit reduces to 12°. Effects: communication problems, nervous issues."
+    direct_degrees: 14
+    retrograde_degrees: 12
+    notes: "Mercury often combust due to proximity to Sun. Retrograde limit reduces to 12°. Effects: communication problems, nervous issues."
 
   Jupiter:
-    normal: 11.0
-    retrograde: 11.0
-    notes: "Jupiter within 11° of Sun. Effects: reduced wisdom, issues with guru/teacher, financial setbacks."
+    direct_degrees: 11
+    retrograde_degrees: 11
+    notes: "Jupiter combust within 11° of Sun. Effects: reduced wisdom, issues with guru/teacher, financial setbacks."
 
   Venus:
-    normal: 10.0
-    retrograde: 8.0
-    notes: "Venus within 10° of Sun (8° when retrograde). Effects: relationship difficulties, reduced luxury/comfort."
+    direct_degrees: 10
+    retrograde_degrees: 8
+    notes: "Venus combust within 10°. Retrograde reduces to 8°. Effects: relationship difficulties, reduced luxury/comfort."
 
   Saturn:
-    normal: 15.0
-    retrograde: 15.0
-    notes: "Saturn within 15° of Sun. Effects: career obstacles, health issues, conflict with authority."
+    direct_degrees: 15
+    retrograde_degrees: 15
+    notes: "Saturn combust within 15° of Sun. Effects: career obstacles, health issues, conflict with authority."
 
 # Rahu and Ketu are shadow planets — they cannot be combust
 # Sun itself is the combustor, not combustible
