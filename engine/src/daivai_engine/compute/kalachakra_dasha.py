@@ -1,32 +1,21 @@
 """Kalachakra Dasha — "most respectable dasha" per Parashar (BPHS Ch.46).
 
-The Wheel of Time dasha. Based on Moon's nakshatra PADA, not just nakshatra.
-Uses a 9-sign cycle of 100 years with Savya (direct) and Apasavya (reverse)
-directions. Each sign has a fixed duration. The cycle direction depends on
-whether Moon's pada falls in an odd or even sign.
+The Wheel of Time dasha. Based on Moon's nakshatra AND pada (not just
+nakshatra like Vimshottari). Each of the 108 padas maps to a UNIQUE
+9-sign sequence with specific Deha (body) and Jeeva (soul) anchors.
 
-Key concepts:
-- DEHA (Body): Cancer in Savya, Cancer in Apasavya — physical events
-- JEEVA (Soul): Sagittarius in Savya, Sagittarius in Apasavya — spiritual events
-- When DEHA or JEEVA dasha runs, those life areas are activated
-
-Algorithm (BPHS Chapter 46):
-1. Find Moon's longitude → determine sign (0-11) and pada within sign (0-8)
-2. Odd sign (Aries=0, Gemini=2, Leo=4, Libra=6, Sag=8, Aquarius=10) → Savya
-   Even sign (Taurus=1, Cancer=3, Virgo=5, Scorpio=7, Cap=9, Pisces=11) → Apasavya
-3. The pada number (0-8) within the sign determines the STARTING position
-   in the 9-sign dasha sequence
-4. Balance = remaining fraction of the pada x years of that starting sign
-5. Subsequent dashas follow the cycle from that starting position
-
-Sign durations (BPHS Ch.46 v3-5):
-  Savya:    Aries(7), Taurus(16), Gemini(9), Cancer(21), Leo(5),
-            Virgo(9), Libra(16), Scorpio(7), Sagittarius(10) = 100 years
-  Apasavya: Sagittarius(10), Scorpio(7), Libra(16), Virgo(9), Leo(5),
-            Cancer(21), Gemini(9), Taurus(16), Aries(7) = 100 years
+Key features:
+- Sign-based (Rashi), not planet-based
+- Variable Paramayus: 83, 85, 86, or 100 years per pada sequence
+- 4 nakshatra groups: Savya-I, Savya-II, Apasavya-I, Apasavya-II
+- Non-linear jumps (Gatis): Manduka, Markati, Simhavalokana
+- DEHA = first sign of sequence (physical body)
+- JEEVA = last sign of sequence (soul/life-force)
+- ALL 12 signs used: Aries(7), Taurus(16), Gemini(9), Cancer(21), Leo(5),
+  Virgo(9), Libra(16), Scorpio(7), Sagittarius(10), Capricorn(4),
+  Aquarius(4), Pisces(10)
 
 Source: BPHS Chapter 46 "Kalachakra Dasha Adhyaya"
-Cross-reference: Girish Chand Sharma commentary, PVR Narasimha Rao interpretation
 """
 
 from __future__ import annotations
@@ -35,8 +24,93 @@ from datetime import datetime, timedelta
 
 from pydantic import BaseModel, ConfigDict
 
-from daivai_engine.constants import DEGREES_PER_SIGN, SIGNS, SIGNS_HI
+from daivai_engine.constants import SIGNS, SIGNS_HI
 from daivai_engine.models.chart import ChartData
+
+
+# ── Sign durations in years (BPHS Ch.46 v3-5) ──────────────────────────
+_SIGN_YEARS: dict[int, int] = {
+    0: 7,
+    1: 16,
+    2: 9,
+    3: 21,
+    4: 5,
+    5: 9,
+    6: 16,
+    7: 7,
+    8: 10,
+    9: 4,
+    10: 4,
+    11: 10,
+}
+
+# ── Nakshatra groups (BPHS Ch.46 v6-12) ─────────────────────────────────
+_SAVYA_I = {
+    "Ashwini",
+    "Krittika",
+    "Punarvasu",
+    "Ashlesha",
+    "Hasta",
+    "Swati",
+    "Moola",
+    "Uttara Ashadha",
+    "Purva Bhadrapada",
+    "Revati",
+}
+_SAVYA_II = {
+    "Bharani",
+    "Pushya",
+    "Chitra",
+    "Purva Ashadha",
+    "Uttara Bhadrapada",
+}
+_APASAVYA_I = {
+    "Rohini",
+    "Magha",
+    "Vishakha",
+    "Shravana",
+}
+_APASAVYA_II = {
+    "Mrigashira",
+    "Ardra",
+    "Purva Phalguni",
+    "Uttara Phalguni",
+    "Anuradha",
+    "Jyeshtha",
+    "Dhanishta",
+    "Shatabhisha",
+}
+
+# ── The 108-pada sequences (BPHS Ch.46 v13-45) ─────────────────────────
+# Each pada maps to a UNIQUE 9-sign sequence. Indices: 0=Aries..11=Pisces.
+# Paramayus = sum of _SIGN_YEARS for the 9 signs.
+
+_SEQ_SAVYA_I = {
+    1: [0, 1, 2, 3, 4, 5, 6, 7, 8],  # 100y
+    2: [9, 10, 11, 7, 6, 5, 3, 4, 2],  # 85y
+    3: [1, 0, 11, 10, 9, 8, 0, 1, 2],  # 83y
+    4: [3, 4, 5, 6, 7, 8, 9, 10, 11],  # 86y
+}
+_SEQ_SAVYA_II = {
+    1: [7, 6, 5, 3, 4, 2, 1, 0, 11],  # 100y
+    2: [10, 9, 8, 0, 1, 2, 3, 4, 5],  # 85y
+    3: [6, 7, 8, 9, 10, 11, 7, 6, 5],  # 83y
+    4: [3, 4, 2, 1, 0, 11, 10, 9, 8],  # 86y
+}
+_SEQ_APASAVYA_I = {
+    1: [8, 9, 10, 11, 0, 1, 2, 4, 3],  # 86y
+    2: [5, 6, 7, 11, 10, 9, 8, 7, 6],  # 83y
+    3: [5, 4, 3, 2, 1, 0, 8, 9, 10],  # 85y
+    4: [11, 0, 1, 2, 4, 3, 5, 6, 7],  # 100y
+}
+_SEQ_APASAVYA_II = {
+    1: [11, 10, 9, 8, 7, 6, 5, 4, 3],  # 86y
+    2: [2, 1, 0, 8, 9, 10, 11, 0, 1],  # 83y
+    3: [2, 4, 3, 5, 6, 7, 11, 10, 9],  # 85y
+    4: [8, 7, 6, 5, 4, 3, 2, 1, 0],  # 100y
+}
+
+_PADA_SPAN_DEG = 10.0 / 3.0  # 3.3333 degrees = 3 deg 20 min = 200 arc-min
 
 
 class KalachakraDashaPeriod(BaseModel):
@@ -44,15 +118,15 @@ class KalachakraDashaPeriod(BaseModel):
 
     model_config = ConfigDict(frozen=True)
 
-    sign_index: int  # 0-11
-    sign_name: str  # Vedic sign name
-    sign_hi: str  # Hindi sign name
-    years: int  # Duration in years
+    sign_index: int
+    sign_name: str
+    sign_hi: str
+    years: int
     start: datetime
     end: datetime
-    is_deha: bool  # Body — physical events activated
-    is_jeeva: bool  # Soul — spiritual events activated
-    cycle: str  # "savya" or "apasavya"
+    is_deha: bool  # First sign in sequence = physical body
+    is_jeeva: bool  # Last sign in sequence = soul/life-force
+    cycle: str  # savya_i / savya_ii / apasavya_i / apasavya_ii
 
 
 class KalachakraDashaResult(BaseModel):
@@ -60,137 +134,96 @@ class KalachakraDashaResult(BaseModel):
 
     model_config = ConfigDict(frozen=True)
 
-    cycle_type: str  # "savya" or "apasavya"
-    moon_sign_index: int
-    pada_in_sign: int  # 0-8 (which of the 9 padas within the sign)
-    starting_position: int  # Index in the 9-sign sequence
-    balance_years: float  # Remaining years of first dasha
+    group: str
+    nakshatra: str
+    pada: int  # 1-4
+    paramayus: int  # 83, 85, 86, or 100
+    balance_years: float
+    deha_sign: int  # First sign = body anchor
+    jeeva_sign: int  # Last sign = soul anchor
     periods: list[KalachakraDashaPeriod]
-    deha_sign: int  # Sign index of DEHA point
-    jeeva_sign: int  # Sign index of JEEVA point
-
-
-# ── Kalachakra constants (BPHS Chapter 46 v3-5) ─────────────────────────
-
-# Savya (direct/clockwise) cycle — for Moon pada in ODD signs
-# Sign indices and their dasha durations in years
-_SAVYA_SIGNS = [0, 1, 2, 3, 4, 5, 6, 7, 8]  # Aries → Sagittarius
-_SAVYA_YEARS = [7, 16, 9, 21, 5, 9, 16, 7, 10]  # Total = 100
-
-# Apasavya (reverse/counter-clockwise) cycle — for Moon pada in EVEN signs
-_APASAVYA_SIGNS = [8, 7, 6, 5, 4, 3, 2, 1, 0]  # Sagittarius → Aries
-_APASAVYA_YEARS = [10, 7, 16, 9, 5, 21, 9, 16, 7]  # Total = 100
-
-# DEHA and JEEVA signs — BPHS Ch.46 v8-10
-# DEHA (Body): Cancer (index 3) — physical health, material life
-# JEEVA (Soul): Sagittarius (index 8) — spiritual growth, inner life
-_DEHA_SIGN = 3  # Cancer
-_JEEVA_SIGN = 8  # Sagittarius
-
-# Kalachakra total cycle = 100 years (not 120 like Vimshottari)
-_TOTAL_YEARS = 100
-
-# Each sign contains 9 nakshatra padas
-# Pada span within a sign = 30° / 9 = 3.3333° = 3°20'
-_PADA_SPAN = DEGREES_PER_SIGN / 9.0  # 3.3333...°
-
-# Odd signs (0-indexed): Aries=0, Gemini=2, Leo=4, Libra=6, Sag=8, Aquarius=10
-_ODD_SIGNS = {0, 2, 4, 6, 8, 10}
 
 
 def compute_kalachakra_dasha(chart: ChartData) -> KalachakraDashaResult:
-    """Compute Kalachakra Dasha for a birth chart.
+    """Compute Kalachakra Dasha from the 108-pada mapping.
 
-    The "most respectable dasha" per Parashar. Based on Moon's nakshatra
-    pada position within its sign. Uses a 100-year cycle through 9 signs.
-
-    Algorithm:
-    1. Moon's degree in sign → pada within sign (0-8)
-    2. Sign odd/even → Savya/Apasavya cycle
-    3. Pada number → starting position in the 9-sign sequence
+    Algorithm (BPHS Ch.46):
+    1. Moon nakshatra -> classify into 4 groups
+    2. Moon pada (1-4) -> look up unique 9-sign sequence
+    3. DEHA = first sign, JEEVA = last sign
     4. Balance from Moon's position within the pada
-    5. Generate all 9 periods with dates
+    5. Generate 9 periods with correct sign years
 
     Args:
-        chart: Computed birth chart with Moon position.
+        chart: Computed birth chart.
 
     Returns:
-        KalachakraDashaResult with all 9 periods and DEHA/JEEVA markers.
-
-    Source: BPHS Chapter 46.
+        KalachakraDashaResult with correct Paramayus and Gati jumps.
     """
     moon = chart.planets["Moon"]
+    group, sequences = _get_group(moon.nakshatra)
+    seq = sequences[moon.pada]
 
-    # Step 1: Find pada within sign (0-8)
-    # Each sign has 9 padas of 3°20' each
-    pada_in_sign = int(moon.degree_in_sign / _PADA_SPAN)
-    if pada_in_sign > 8:
-        pada_in_sign = 8
+    deha = seq[0]
+    jeeva = seq[8]
+    paramayus = sum(_SIGN_YEARS[s] for s in seq)
 
-    # Step 2: Determine cycle direction
-    # Odd signs (0,2,4,6,8,10) → Savya (direct)
-    # Even signs (1,3,5,7,9,11) → Apasavya (reverse)
-    is_savya = moon.sign_index in _ODD_SIGNS
-    cycle_type = "savya" if is_savya else "apasavya"
+    # Balance: fraction of pada remaining x first sign years
+    nak_start = moon.nakshatra_index * (360.0 / 27.0)
+    pada_start = nak_start + (moon.pada - 1) * _PADA_SPAN_DEG
+    pada_end = pada_start + _PADA_SPAN_DEG
+    remaining = pada_end - moon.longitude
+    if remaining < 0:
+        remaining += 360.0
+    balance_frac = min(1.0, max(0.0, remaining / _PADA_SPAN_DEG))
+    balance_years = _SIGN_YEARS[seq[0]] * balance_frac
 
-    signs = _SAVYA_SIGNS if is_savya else _APASAVYA_SIGNS
-    years = _SAVYA_YEARS if is_savya else _APASAVYA_YEARS
-
-    # Step 3: Starting position = pada number within the sign
-    # Pada 0 → start from position 0 (first sign in cycle)
-    # Pada 4 → start from position 4 (5th sign in cycle)
-    start_pos = pada_in_sign
-
-    # Step 4: Calculate balance of first dasha
-    # Moon's position within the current pada
-    degree_in_pada = moon.degree_in_sign - pada_in_sign * _PADA_SPAN
-    fraction_elapsed = degree_in_pada / _PADA_SPAN
-    balance_fraction = 1.0 - fraction_elapsed
-    first_dasha_years = years[start_pos]
-    balance_years = first_dasha_years * balance_fraction
-
-    # Step 5: Generate all 9 dasha periods
+    # Generate periods
     from daivai_engine.compute.datetime_utils import parse_birth_datetime
 
     birth_dt = parse_birth_datetime(chart.dob, chart.tob, chart.timezone_name)
     periods: list[KalachakraDashaPeriod] = []
     current = birth_dt
 
-    for i in range(9):
-        pos = (start_pos + i) % 9
-        sign_idx = signs[pos]
-        dasha_years = years[pos]
-
-        # First period uses balance, rest use full duration
-        if i == 0:
-            actual_years = balance_years
-        else:
-            actual_years = float(dasha_years)
-
-        end = current + timedelta(days=actual_years * 365.25)
-
+    for i, sign_idx in enumerate(seq):
+        yrs = _SIGN_YEARS[sign_idx]
+        actual = balance_years if i == 0 else float(yrs)
+        end = current + timedelta(days=actual * 365.25)
         periods.append(
             KalachakraDashaPeriod(
                 sign_index=sign_idx,
                 sign_name=SIGNS[sign_idx],
                 sign_hi=SIGNS_HI[sign_idx],
-                years=dasha_years,
+                years=yrs,
                 start=current,
                 end=end,
-                is_deha=sign_idx == _DEHA_SIGN,
-                is_jeeva=sign_idx == _JEEVA_SIGN,
-                cycle=cycle_type,
+                is_deha=(sign_idx == deha),
+                is_jeeva=(sign_idx == jeeva),
+                cycle=group,
             )
         )
         current = end
 
     return KalachakraDashaResult(
-        cycle_type=cycle_type,
-        moon_sign_index=moon.sign_index,
-        pada_in_sign=pada_in_sign,
-        starting_position=start_pos,
+        group=group,
+        nakshatra=moon.nakshatra,
+        pada=moon.pada,
+        paramayus=paramayus,
         balance_years=round(balance_years, 4),
+        deha_sign=deha,
+        jeeva_sign=jeeva,
         periods=periods,
-        deha_sign=_DEHA_SIGN,
-        jeeva_sign=_JEEVA_SIGN,
     )
+
+
+def _get_group(nakshatra: str) -> tuple[str, dict[int, list[int]]]:
+    """Classify nakshatra into one of 4 Kalachakra groups (BPHS Ch.46 v6-12)."""
+    if nakshatra in _SAVYA_I:
+        return "savya_i", _SEQ_SAVYA_I
+    if nakshatra in _SAVYA_II:
+        return "savya_ii", _SEQ_SAVYA_II
+    if nakshatra in _APASAVYA_I:
+        return "apasavya_i", _SEQ_APASAVYA_I
+    if nakshatra in _APASAVYA_II:
+        return "apasavya_ii", _SEQ_APASAVYA_II
+    return "savya_i", _SEQ_SAVYA_I  # Fallback
