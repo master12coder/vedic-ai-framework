@@ -1,0 +1,442 @@
+# Vastu Shastra knowledge rules — single source of truth for all directional
+# mappings, mandala zone data, room placement rules, Ayadi Shadvarga fields,
+# and Vastu dosha definitions.
+#
+# Auditable by Pandits. Do NOT hardcode these values in Python.
+
+# ── Planet-to-direction mapping (Vastu Dik Bala) ─────────────────────────────
+# Each planet governs one Vastu direction. The planet's dignity and placement
+# in the natal chart determines that direction's strength for the native.
+
+planet_directions:
+  Sun: East
+  Moon: North-West
+  Mars: South
+  Mercury: North
+  Jupiter: North-East
+  Venus: South-East
+  Saturn: West
+  Rahu: South-West
+  Ketu: North-West  # Ketu shares NW with Moon; both evaluated separately
+
+# ── Direction Hindi names ─────────────────────────────────────────────────────
+
+direction_hi:
+  North: "उत्तर"
+  North-East: "ईशान"
+  East: "पूर्व"
+  South-East: "आग्नेय"
+  South: "दक्षिण"
+  South-West: "नैऋत्य"
+  West: "पश्चिम"
+  North-West: "वायव्य"
+  Center: "ब्रह्मस्थान"
+
+# ── Vastu Purusha Mandala — 8 directional zones + Brahmasthana ───────────────
+# Each zone has a ruling planet, element, presiding deity, and significance.
+# Zone strength is computed from the ruling planet's natal chart position.
+
+mandala_zones:
+  North:
+    planet: Mercury
+    element: Water
+    element_hi: "जल"
+    direction_hi: "उत्तर"
+    significance: "Wealth, prosperity, career — Kubera's direction"
+    deity: Kubera
+    color: Green
+
+  North-East:
+    planet: Jupiter
+    element: Space
+    element_hi: "आकाश"
+    direction_hi: "ईशान"
+    significance: "Wisdom, spirituality, divine blessings — highest prana"
+    deity: Shiva
+    color: Yellow
+
+  East:
+    planet: Sun
+    element: Air
+    element_hi: "वायु"
+    direction_hi: "पूर्व"
+    significance: "Health, vitality, new beginnings — Indra's domain"
+    deity: Indra
+    color: Orange
+
+  South-East:
+    planet: Venus
+    element: Fire
+    element_hi: "अग्नि"
+    direction_hi: "आग्नेय"
+    significance: "Fire, energy, transformation — Agni's direction"
+    deity: Agni
+    color: Red
+
+  South:
+    planet: Mars
+    element: Earth
+    element_hi: "पृथ्वी"
+    direction_hi: "दक्षिण"
+    significance: "Strength, protection, ancestors — Yama's direction"
+    deity: Yama
+    color: Red
+
+  South-West:
+    planet: Rahu
+    element: Earth
+    element_hi: "पृथ्वी"
+    direction_hi: "नैऋत्य"
+    significance: "Stability, longevity, heavy energy storage"
+    deity: Nirrti
+    color: Grey
+
+  West:
+    planet: Saturn
+    element: Air
+    element_hi: "वायु"
+    direction_hi: "पश्चिम"
+    significance: "Completion, gains, discipline — Varuna's direction"
+    deity: Varuna
+    color: Blue
+
+  North-West:
+    planet: Moon
+    element: Air
+    element_hi: "वायु"
+    direction_hi: "वायव्य"
+    significance: "Movement, sociability, help from others — Vayu's direction"
+    deity: Vayu
+    color: White
+
+  Center:
+    planet: null
+    element: Space
+    element_hi: "आकाश"
+    direction_hi: "ब्रह्मस्थान"
+    significance: "Sacred center — must remain open; seat of Brahma"
+    deity: Brahma
+    color: Gold
+
+# ── Room placement rules ──────────────────────────────────────────────────────
+# Each room type has an ideal Vastu direction and a ruling planet.
+# planet: lagna_lord means the direction is computed dynamically from the chart.
+
+room_rules:
+  Kitchen:
+    ideal_direction: South-East
+    alternate_direction: North-West
+    planet: Venus
+    direction_hi: "आग्नेय"
+    reason: "Agni corner — fire element governs cooking and nourishment"
+
+  Master_Bedroom:
+    ideal_direction: South-West
+    alternate_direction: South
+    planet: Rahu
+    direction_hi: "नैऋत्य"
+    reason: "Heavy earth energy of SW provides deep rest and marital stability"
+
+  Puja_Room:
+    ideal_direction: North-East
+    alternate_direction: East
+    planet: Jupiter
+    direction_hi: "ईशान"
+    reason: "Ishan corner has the highest spiritual vibration and divine prana"
+
+  Study:
+    ideal_direction: North
+    alternate_direction: North-East
+    planet: Mercury
+    direction_hi: "उत्तर"
+    reason: "Mercury rules intellect; North is Kubera's zone of knowledge"
+
+  Main_Entrance:
+    ideal_direction: lagna_lord
+    alternate_direction: North
+    planet: lagna_lord
+    direction_hi: "लग्नेश दिशा"
+    reason: "Lagna lord direction channels the native's personal energy into home"
+
+  Treasury:
+    ideal_direction: North
+    alternate_direction: North-East
+    planet: Mercury
+    direction_hi: "उत्तर"
+    reason: "Kubera (deity of wealth) resides in North — keep safe and locker here"
+
+  Bathroom:
+    ideal_direction: North-West
+    alternate_direction: South-East
+    planet: Moon
+    direction_hi: "वायव्य"
+    reason: "Vayu zone supports the movement of water and waste removal"
+
+# ── Ayadi Shadvarga — 32 energy fields ───────────────────────────────────────
+# 4 fields per directional zone × 8 zones = 32 fields.
+# Classification: Devta (auspicious), Manushya (neutral), Asura (inauspicious).
+
+ayadi_fields:
+  # ── North zone (Kubera — wealth direction) ──
+  - field: 1
+    direction: North
+    classification: Devta
+    deity: Shikhi
+    quality: Highly auspicious — fire of prosperity
+
+  - field: 2
+    direction: North
+    classification: Devta
+    deity: Parjanya
+    quality: Auspicious — rain and abundance
+
+  - field: 3
+    direction: North
+    classification: Manushya
+    deity: Jayanta
+    quality: Neutral — moderate energy
+
+  - field: 4
+    direction: North
+    classification: Asura
+    deity: Mahendra
+    quality: Inauspicious — aggressive energy
+
+  # ── North-East zone (Shiva — spiritual direction) ──
+  - field: 5
+    direction: North-East
+    classification: Devta
+    deity: Isha
+    quality: Highly auspicious — divine blessings
+
+  - field: 6
+    direction: North-East
+    classification: Devta
+    deity: Parjanya
+    quality: Auspicious — purifying energy
+
+  - field: 7
+    direction: North-East
+    classification: Manushya
+    deity: Diti
+    quality: Neutral — transitional
+
+  - field: 8
+    direction: North-East
+    classification: Asura
+    deity: Aditi
+    quality: Inauspicious — excessive energy
+
+  # ── East zone (Indra — health direction) ──
+  - field: 9
+    direction: East
+    classification: Devta
+    deity: Indra
+    quality: Highly auspicious — divine protection
+
+  - field: 10
+    direction: East
+    classification: Devta
+    deity: Surya
+    quality: Auspicious — solar vitality
+
+  - field: 11
+    direction: East
+    classification: Manushya
+    deity: Satya
+    quality: Neutral
+
+  - field: 12
+    direction: East
+    classification: Asura
+    deity: Bhrisha
+    quality: Inauspicious
+
+  # ── South-East zone (Agni — fire direction) ──
+  - field: 13
+    direction: South-East
+    classification: Devta
+    deity: Agni
+    quality: Auspicious — fire blessings
+
+  - field: 14
+    direction: South-East
+    classification: Manushya
+    deity: Pusha
+    quality: Neutral
+
+  - field: 15
+    direction: South-East
+    classification: Asura
+    deity: Vitatha
+    quality: Inauspicious
+
+  - field: 16
+    direction: South-East
+    classification: Asura
+    deity: Grihakshat
+    quality: Highly inauspicious
+
+  # ── South zone (Yama — ancestors) ──
+  - field: 17
+    direction: South
+    classification: Asura
+    deity: Yama
+    quality: Highly inauspicious — Yama's domain
+
+  - field: 18
+    direction: South
+    classification: Asura
+    deity: Gandharva
+    quality: Inauspicious
+
+  - field: 19
+    direction: South
+    classification: Manushya
+    deity: Bhringraj
+    quality: Neutral
+
+  - field: 20
+    direction: South
+    classification: Asura
+    deity: Mriga
+    quality: Inauspicious
+
+  # ── South-West zone (Nirrti — instability) ──
+  - field: 21
+    direction: South-West
+    classification: Asura
+    deity: Pitru
+    quality: Highly inauspicious — ancestral debts
+
+  - field: 22
+    direction: South-West
+    classification: Asura
+    deity: Dauvarika
+    quality: Inauspicious
+
+  - field: 23
+    direction: South-West
+    classification: Manushya
+    deity: Sugriv
+    quality: Neutral
+
+  - field: 24
+    direction: South-West
+    classification: Asura
+    deity: Pushpadanta
+    quality: Inauspicious
+
+  # ── West zone (Varuna — completion) ──
+  - field: 25
+    direction: West
+    classification: Devta
+    deity: Varuna
+    quality: Auspicious — balanced and disciplined energy
+
+  - field: 26
+    direction: West
+    classification: Manushya
+    deity: Asura
+    quality: Neutral
+
+  - field: 27
+    direction: West
+    classification: Manushya
+    deity: Shosha
+    quality: Neutral
+
+  - field: 28
+    direction: West
+    classification: Asura
+    deity: Papayakshma
+    quality: Inauspicious
+
+  # ── North-West zone (Vayu — movement) ──
+  - field: 29
+    direction: North-West
+    classification: Devta
+    deity: Vayu
+    quality: Auspicious — divine wind energy
+
+  - field: 30
+    direction: North-West
+    classification: Devta
+    deity: Naga
+    quality: Auspicious — protective serpent energy
+
+  - field: 31
+    direction: North-West
+    classification: Manushya
+    deity: Mukhya
+    quality: Neutral
+
+  - field: 32
+    direction: North-West
+    classification: Asura
+    deity: Bhallata
+    quality: Inauspicious
+
+# ── Vastu Dosha definitions ───────────────────────────────────────────────────
+# Triggered by specific planets in the 4th house (home, property, comforts).
+
+vastu_doshas:
+  Saturn_in_4th:
+    name: Griha Bala Dosha
+    name_hi: "गृह बल दोष"
+    trigger:
+      planet: Saturn
+      house: 4
+    severity: moderate
+    description: >
+      Saturn in 4th can cause structural issues, delays in home-related matters,
+      or a cold and heavy atmosphere at the place of residence.
+    remedy_direction: North-East
+
+  Mars_in_4th:
+    name: Agni Sthan Dosha
+    name_hi: "अग्नि स्थान दोष"
+    trigger:
+      planet: Mars
+      house: 4
+    severity: moderate
+    description: >
+      Mars in 4th creates fire risk, aggressive home environment, or conflicts
+      with the mother. The agni element becomes overactive in living spaces.
+    remedy_direction: South-East
+
+  Rahu_in_4th:
+    name: Vastu Bhaya Dosha
+    name_hi: "वास्तु भय दोष"
+    trigger:
+      planet: Rahu
+      house: 4
+    severity: mild
+    description: >
+      Rahu in 4th creates Vastu-related anxiety, unexplained unease at home,
+      or instability in property matters. Shadow energy disturbs the 4th house.
+    remedy_direction: North-East
+
+  Sun_in_4th:
+    name: Pitr Sthan Dosha
+    name_hi: "पितृ स्थान दोष"
+    trigger:
+      planet: Sun
+      house: 4
+    severity: mild
+    description: >
+      Sun in 4th can indicate ego conflicts at home, issues with the father
+      figure, or a domineering atmosphere that reduces domestic harmony.
+    remedy_direction: East
+
+  Ketu_in_4th:
+    name: Moksha Sthan Dosha
+    name_hi: "मोक्ष स्थान दोष"
+    trigger:
+      planet: Ketu
+      house: 4
+    severity: mild
+    description: >
+      Ketu in 4th creates detachment from home, possible spiritual unease in
+      living spaces, or an other-worldly atmosphere that disrupts daily comfort.
+    remedy_direction: North-East
