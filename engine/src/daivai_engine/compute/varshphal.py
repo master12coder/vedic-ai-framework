@@ -13,12 +13,9 @@ from datetime import UTC, datetime
 import swisseph as swe
 
 from daivai_engine.compute.chart import compute_chart
+from daivai_engine.compute.tajaka_yogas import TajakaYoga, detect_all_tajaka_yogas
 from daivai_engine.constants import DAY_PLANET
 from daivai_engine.models.chart import ChartData
-
-
-# Tajaka yoga names (simplified detection)
-_TAJAKA_YOGAS = ["Ikbala", "Ishrafa", "Nakta", "Yamaya", "Kamboola"]
 
 
 def compute_varshphal(
@@ -71,8 +68,8 @@ def compute_varshphal(
     day_idx = (weekday + 1) % 7
     year_lord = DAY_PLANET.get(day_idx, "Sun")
 
-    # Simplified Tajaka yoga detection
-    tajaka = _detect_tajaka_yogas(sr_chart)
+    # Full 16 Tajaka yoga detection using tajaka_yogas module
+    tajaka: list[TajakaYoga] = detect_all_tajaka_yogas(sr_chart)
 
     return {
         "year": year,
@@ -165,43 +162,3 @@ def _sign_lord(sign_idx: int) -> str:
     from daivai_engine.constants import SIGN_LORDS
 
     return SIGN_LORDS.get(sign_idx, "Sun")
-
-
-def _detect_tajaka_yogas(chart: ChartData) -> list[str]:
-    """Simplified Tajaka yoga detection for annual chart.
-
-    Checks basic conditions for the 5 main Tajaka yogas.
-    """
-    yogas: list[str] = []
-    planets = list(chart.planets.values())
-
-    # Ikbala: fast planet applying to slow planet in same sign
-    for i, p1 in enumerate(planets):
-        for p2 in planets[i + 1 :]:
-            if (
-                p1.sign_index == p2.sign_index
-                and abs(p1.speed) > abs(p2.speed)
-                and p1.speed > 0
-                and "Ikbala" not in yogas
-            ):
-                yogas.append("Ikbala")
-
-    # Ishrafa: fast planet separating from slow planet
-    for i, p1 in enumerate(planets):
-        for p2 in planets[i + 1 :]:
-            if (
-                p1.sign_index == p2.sign_index
-                and abs(p1.speed) > abs(p2.speed)
-                and p1.degree_in_sign > p2.degree_in_sign
-                and "Ishrafa" not in yogas
-            ):
-                yogas.append("Ishrafa")
-
-    # Kamboola: Moon involved in Ikbala or Ishrafa
-    moon = chart.planets.get("Moon")
-    if moon:
-        for p in planets:
-            if p.name != "Moon" and p.sign_index == moon.sign_index and "Kamboola" not in yogas:
-                yogas.append("Kamboola")
-
-    return yogas
