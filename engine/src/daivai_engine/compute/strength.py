@@ -40,12 +40,14 @@ from daivai_engine.models.strength import PlanetStrength, ShadbalaResult
 SHADBALA_PLANETS = ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"]
 
 # Naisargika Bala (natural strength) — fixed values in shashtiyamsas
+# Fractions of 60: Sun=60*7/7, Moon=60*6/7, Mars=60*2/7, Mercury=60*3/7,
+# Jupiter=60*4/7, Venus=60*5/7, Saturn=60*1/7  (BPHS Ch.23)
 NAISARGIKA: dict[str, float] = {
     "Sun": 60.00,
     "Moon": 51.43,
     "Mars": 17.14,
     "Mercury": 25.71,
-    "Jupiter": 34.28,
+    "Jupiter": 34.29,
     "Venus": 42.86,
     "Saturn": 8.57,
 }
@@ -272,6 +274,11 @@ def _dig_bala(chart: ChartData, planet_name: str) -> float:
 # 3. Kala Bala (temporal strength)
 # ---------------------------------------------------------------------------
 
+# Chaldean order of planets used for planetary hora computation (BPHS Ch.23 v7)
+# Sun=0, Venus=1, Mercury=2, Moon=3, Saturn=4, Jupiter=5, Mars=6
+_CHALDEAN_ORDER: list[str] = ["Sun", "Venus", "Mercury", "Moon", "Saturn", "Jupiter", "Mars"]
+_CHALDEAN_INDEX: dict[str, int] = {p: i for i, p in enumerate(_CHALDEAN_ORDER)}
+
 # Module-level cache so Abda/Masa lords are computed once per chart.
 # Key: (dob, tob, timezone_name) → (abda_lord, masa_lord)
 _abda_masa_cache: dict[tuple[str, str, str], tuple[str, str]] = {}
@@ -279,6 +286,68 @@ _abda_masa_cache: dict[tuple[str, str, str], tuple[str, str]] = {}
 # Tribhaga Bala: planet ruling each third of day/night (BPHS Ch.23)
 _TRIBHAGA_DAY: dict[int, str] = {1: "Mercury", 2: "Sun", 3: "Saturn"}
 _TRIBHAGA_NIGHT: dict[int, str] = {1: "Moon", 2: "Venus", 3: "Mars"}
+
+
+def _compute_hora_lord(chart: ChartData) -> str:
+    """Return the planetary hora lord ruling the birth moment — BPHS Ch.23 v7.
+
+    A planetary hora divides the day (sunrise→sunset) and night (sunset→sunrise)
+    each into 12 equal parts.  The first hora of any weekday is ruled by that
+    weekday's planet; subsequent horas follow the Chaldean descending order
+    (Sun → Venus → Mercury → Moon → Saturn → Jupiter → Mars → Sun …).
+
+    Args:
+        chart: Computed birth chart with julian_day, latitude, longitude.
+
+    Returns:
+        Name of the hora lord at the moment of birth.
+    """
+    from daivai_engine.compute.datetime_utils import (
+        compute_sunrise,
+        compute_sunset,
+        parse_birth_datetime,
+    )
+    from daivai_engine.constants import DAY_PLANET
+
+    jd_birth = chart.julian_day
+    lat, lon = chart.latitude, chart.longitude
+
+    jd_sunrise = compute_sunrise(jd_birth, lat, lon)
+    jd_sunset = compute_sunset(jd_birth, lat, lon)
+
+    # Weekday lord → starting Chaldean index for this day's hora sequence
+    birth_dt = parse_birth_datetime(chart.dob, chart.tob, chart.timezone_name)
+    weekday = birth_dt.weekday()
+    day_idx = (weekday + 1) % 7  # Convert Python Mon=0 to Sun=0 convention
+    day_lord = DAY_PLANET.get(day_idx, "Sun")
+    start_idx = _CHALDEAN_INDEX[day_lord]
+
+    if jd_sunrise <= jd_birth <= jd_sunset:
+        # Daytime birth: 12 equal horas from sunrise to sunset
+        day_len = jd_sunset - jd_sunrise
+        hora_len = day_len / 12.0 if day_len > 0 else 1.0
+        elapsed = jd_birth - jd_sunrise
+        hora_num = min(int(elapsed / hora_len), 11)  # 0-indexed, clamp to 11
+        hora_chaldean = (start_idx + hora_num) % 7
+    elif jd_birth < jd_sunrise:
+        # Night birth (pre-sunrise): previous sunset → today's sunrise
+        jd_prev_sunset = compute_sunset(jd_birth - 1.0, lat, lon)
+        night_len = jd_sunrise - jd_prev_sunset
+        hora_len = night_len / 12.0 if night_len > 0 else 1.0
+        elapsed = jd_birth - jd_prev_sunset
+        hora_num = min(int(elapsed / hora_len), 11)
+        # Night horas begin at the 13th hora of the day sequence
+        hora_chaldean = (start_idx + 12 + hora_num) % 7
+    else:
+        # Night birth (post-sunset): today's sunset → tomorrow's sunrise
+        jd_next_sunrise = compute_sunrise(jd_birth + 1.0, lat, lon)
+        night_len = jd_next_sunrise - jd_sunset
+        hora_len = night_len / 12.0 if night_len > 0 else 1.0
+        elapsed = jd_birth - jd_sunset
+        hora_num = min(int(elapsed / hora_len), 11)
+        hora_chaldean = (start_idx + 12 + hora_num) % 7
+
+    return _CHALDEAN_ORDER[hora_chaldean]
 
 
 def _tribhaga_bala(chart: ChartData, planet_name: str) -> float:
@@ -477,33 +546,36 @@ def _kala_bala(chart: ChartData, planet_name: str) -> float:
     else:
         nathonnatha = 30.0  # Mercury — always neutral
 
-    # 2. Paksha Bala — BPHS Ch.23 v4-6
+    # 2. Paksha Bala — BPHS Ch.23 v4-6 (graduated, not binary)
+    # Benefics gain strength proportionate to Moon's angular distance from Sun.
+    # Formula: moon_sun_arc / 3  (max 60 at full moon, 0 at new moon).
+    # Malefics receive the complement.  Source: BPHS Ch.23 v4-6.
     moon_sun_diff = (moon_lon - sun_lon) % 360.0
-    is_shukla = moon_sun_diff <= 180.0
+    if moon_sun_diff > 180.0:
+        moon_sun_diff = 360.0 - moon_sun_diff  # Collapse to 0-180 arc
+    paksha_strong = moon_sun_diff / 3.0  # 0-60
     if planet_name in _BENEFICS:
-        paksha = 60.0 if is_shukla else 0.0
+        paksha = paksha_strong
     elif planet_name in _MALEFICS:
-        paksha = 0.0 if is_shukla else 60.0
+        paksha = 60.0 - paksha_strong
     else:
         paksha = 30.0
 
     # 3. Hora Bala (planetary hour) — BPHS Ch.23 v7
+    # The planet ruling the actual Chaldean hora at birth gets 60; others get 0.
+    hora_lord = _compute_hora_lord(chart)
+    hora = 60.0 if planet_name == hora_lord else 0.0
+
+    # 4. Vara Bala (weekday strength) — BPHS Ch.23 v8
+    # Only the weekday lord receives 45 virupas; all others receive 0.
     from daivai_engine.compute.datetime_utils import parse_birth_datetime
     from daivai_engine.constants import DAY_PLANET
 
     birth_dt = parse_birth_datetime(chart.dob, chart.tob, chart.timezone_name)
     weekday = birth_dt.weekday()
-    day_idx = (weekday + 1) % 7  # Sun=0
+    day_idx = (weekday + 1) % 7  # Convert Python Mon=0 to Sun=0 convention
     day_lord = DAY_PLANET.get(day_idx, "Sun")
-    hora = 60.0 if planet_name == day_lord else 15.0
-
-    # 4. Vara Bala (weekday strength) — BPHS Ch.23 v8
-    if planet_name == day_lord:
-        vara = 45.0
-    elif day_lord in NATURAL_FRIENDS.get(planet_name, []):
-        vara = 30.0
-    else:
-        vara = 15.0
+    vara = 45.0 if planet_name == day_lord else 0.0
 
     # 5. Ayana Bala — BPHS Ch.23 v9-11
     sun_sign = chart.planets["Sun"].sign_index

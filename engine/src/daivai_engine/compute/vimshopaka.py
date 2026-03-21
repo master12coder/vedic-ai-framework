@@ -41,22 +41,26 @@ from daivai_engine.models.strength import VimshopakaBala
 # ── Varga weight schemes (BPHS Ch.16-17) ────────────────────────────────────
 
 # Shadvarga (6 vargas) — total weight: 10.0
+# BPHS Ch.16 raw weights D1=6, D2=2, D3=4, D9=5, D12=2, D30=1 (sum=20) halved
+# to fit the 0-10 scale used by this implementation.
 _SHADVARGA: dict[str, float] = {
-    "D1": 3.5,
+    "D1": 3.0,
     "D2": 1.0,
-    "D3": 1.0,
-    "D9": 3.0,
-    "D12": 0.5,
-    "D30": 1.0,
+    "D3": 2.0,
+    "D9": 2.5,
+    "D12": 1.0,
+    "D30": 0.5,
 }
 
 # Saptvarga (7 vargas) — total weight: 20.0
+# BPHS Ch.16: D1=5, D2=2, D3=3, D7=2.5, D9=4.5, D12=2, D30=1
+# Navamsha (D9) outweighs Saptamsha (D7) as the premier spiritual varga.
 _SAPTVARGA: dict[str, float] = {
     "D1": 5.0,
     "D2": 2.0,
     "D3": 3.0,
-    "D7": 4.5,
-    "D9": 2.5,
+    "D7": 2.5,
+    "D9": 4.5,
     "D12": 2.0,
     "D30": 1.0,
 }
