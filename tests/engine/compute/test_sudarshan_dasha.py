@@ -133,6 +133,23 @@ class TestGetSudarshanYear:
         assert isinstance(year, SudarshanYear)
         assert year.age == 37
 
+    def test_age_37_lagna_cycle_back_to_mithuna(self, manish_chart: ChartData) -> None:
+        """Age 37: 36 years elapsed = 3 full 12-year cycles → Lagna back to Mithuna (2).
+
+        Manish: Lagna = Mithuna (sign_index=2).
+        At age 37: index in _make_period = 36 (0-based).
+        sign = (2 + 36) % 12 = 38 % 12 = 2 = Mithuna.
+        Same holds for Moon (Vrishabha=1) and Sun (Kumbha=10): all complete 3 cycles.
+        """
+        year = get_sudarshan_year(manish_chart, 37)
+        lagna_start = manish_chart.lagna_sign_index   # 2 = Mithuna
+        moon_start = manish_chart.planets["Moon"].sign_index   # 1 = Vrishabha
+        sun_start = manish_chart.planets["Sun"].sign_index    # 10 = Kumbha
+
+        assert year.lagna_period.sign_index == (lagna_start + 36) % 12
+        assert year.moon_period.sign_index == (moon_start + 36) % 12
+        assert year.sun_period.sign_index == (sun_start + 36) % 12
+
     def test_age_0_defaults_to_1(self, manish_chart: ChartData) -> None:
         year = get_sudarshan_year(manish_chart, 0)
         assert year.age == 1

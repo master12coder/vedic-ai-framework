@@ -246,6 +246,44 @@ class TestEkadhipatyaShodhana:
         ekadhipatya_shodhana(sarva, rahu_sign=0, ketu_sign=6)
         assert sarva == copy
 
+    def test_both_signs_zero_stays_zero(self):
+        """Both dual-owned signs at 0 bindus with no node → stays 0,0.
+
+        The odd-sign tiebreaker fires (odd sign 'keeps' its 0 value; even → 0).
+        Net result: both are 0 regardless.
+        """
+        # Mars pair (0=Aries[odd], 7=Scorpio[even]); both 0, no node nearby.
+        sarva = self._sarva({0: 0, 7: 0})
+        result = ekadhipatya_shodhana(sarva, rahu_sign=3, ketu_sign=9)
+        assert result[0] == 0
+        assert result[7] == 0
+
+    def test_both_nodes_in_same_dual_pair_falls_to_bindu_comparison(self):
+        """Rahu in sign a AND Ketu in sign b of the same pair → both_has_node.
+
+        The node-priority rules require exactly ONE sign to have a node.
+        When both signs have a node, the code falls through to bindu comparison.
+        Higher value keeps (higher - lower); lower → 0.
+        """
+        # Mercury pair (2=Gemini, 5=Virgo); Rahu in 2, Ketu in 5 → both nodes.
+        # Node rules: a_has_node=True, b_has_node=True → neither exclusive rule
+        # fires → else branch → compare 6 vs 4 → sign 2 keeps 2, sign 5 → 0.
+        sarva = self._sarva({2: 6, 5: 4})
+        result = ekadhipatya_shodhana(sarva, rahu_sign=2, ketu_sign=5)
+        # Bindu comparison: 6 > 4 → result[2] = 6-4=2, result[5] = 0
+        assert result[2] == 2
+        assert result[5] == 0
+
+    def test_both_nodes_equal_bindus_odd_sign_wins(self):
+        """Both nodes in same pair with equal bindus → odd-sign tiebreaker."""
+        # Saturn pair (9=Capricorn[even Vedic], 10=Aquarius[odd Vedic])
+        # Rahu in sign 9, Ketu in sign 10 → both have nodes, both have equal bindus.
+        # Falls to equal-bindu tiebreaker: sign 10 (Aquarius = 11th Vedic = odd) keeps.
+        sarva = self._sarva({9: 3, 10: 3})
+        result = ekadhipatya_shodhana(sarva, rahu_sign=9, ketu_sign=10)
+        assert result[9] == 0   # Capricorn (even Vedic sign) → 0
+        assert result[10] == 3  # Aquarius (odd Vedic sign) → keeps
+
 
 # ---------------------------------------------------------------------------
 # TestComputeShodhana — integration with chart
