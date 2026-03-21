@@ -1,0 +1,385 @@
+# ═══════════════════════════════════════════════════════════════
+# SHASHTYAMSHA (D60) DEITIES — 60 Divisions of Each Sign
+# ═══════════════════════════════════════════════════════════════
+# Source: BPHS Ch.6 "Shashtyamsha Adhyaya" (Brihat Parashara Hora Shastra)
+# Confidence: canonical
+#
+# Each 30° sign is divided into 60 equal parts of 0.5° each.
+# Each part is presided over by one of 60 deities with a fixed
+# nature (Saumya/Krura/Mishra) that modifies a planet's results.
+#
+# ODD SIGNS (Mesha, Mithuna, Simha, Tula, Dhanu, Kumbha):
+#   Part 1-60 in forward order (part 0 = deity 1, part 59 = deity 60)
+#
+# EVEN SIGNS (Vrishabha, Karka, Kanya, Vrischika, Makara, Meena):
+#   Part 1-60 in reverse order (part 0 = deity 60, part 59 = deity 1)
+#
+# Key rule (BPHS):
+#   Planet in Saumya Shashtyamsha → gives good results even if afflicted
+#   Planet in Krura Shashtyamsha → gives trouble even if well-placed
+#   If D1 and D60 agree, the result is CERTAIN (most telling chart)
+# ═══════════════════════════════════════════════════════════════
+
+source: "BPHS Ch.6 Shashtyamsha Adhyaya"
+confidence: canonical
+
+deities:
+  - number: 1
+    name: "Ghora"
+    nature: "Krura"
+    element: "Fire"
+    signification: "Fear, danger, cruelty; planets here cause suffering and violent outcomes"
+
+  - number: 2
+    name: "Rakshasa"
+    nature: "Krura"
+    element: "Fire"
+    signification: "Demonic influence, deceit, oppression; gives harsh and disruptive results"
+
+  - number: 3
+    name: "Deva"
+    nature: "Saumya"
+    element: "Akasha"
+    signification: "Divine grace, spiritual merit, righteousness; planets here confer blessings"
+
+  - number: 4
+    name: "Kubera"
+    nature: "Saumya"
+    element: "Earth"
+    signification: "Wealth, prosperity, material abundance; strong for finances and accumulation"
+
+  - number: 5
+    name: "Yaksha"
+    nature: "Saumya"
+    element: "Air"
+    signification: "Hidden treasures, occult knowledge, semi-divine blessings; grants prosperity"
+
+  - number: 6
+    name: "Kinnara"
+    nature: "Saumya"
+    element: "Air"
+    signification: "Music, arts, beauty, pleasure; gives refined tastes and enjoyment"
+
+  - number: 7
+    name: "Bhrashta"
+    nature: "Krura"
+    element: "Earth"
+    signification: "Fallen, corrupt, disgraced; planets here indicate moral lapses or disgrace"
+
+  - number: 8
+    name: "Kulaghna"
+    nature: "Krura"
+    element: "Fire"
+    signification: "Family destroyer, breaks lineage; causes disruption to family and ancestry"
+
+  - number: 9
+    name: "Garala"
+    nature: "Krura"
+    element: "Fire"
+    signification: "Poison, toxicity, hidden enemies; planets here cause harm through concealed means"
+
+  - number: 10
+    name: "Vahni"
+    nature: "Krura"
+    element: "Fire"
+    signification: "Fire, combustion, aggression; intense and destructive energy, accidents"
+
+  - number: 11
+    name: "Maya"
+    nature: "Mishra"
+    element: "Air"
+    signification: "Illusion, deception, confusion; mixed results through misperception or glamour"
+
+  - number: 12
+    name: "Purishaka"
+    nature: "Krura"
+    element: "Earth"
+    signification: "Impurity, filth, degradation; lowering of dignity and association with base matters"
+
+  - number: 13
+    name: "Apampathi"
+    nature: "Saumya"
+    element: "Water"
+    signification: "Lord of waters, emotional depth, healing; strength in emotional and healing matters"
+
+  - number: 14
+    name: "Marut"
+    nature: "Saumya"
+    element: "Air"
+    signification: "Wind deity, vitality, strength; gives energy, movement, and physical prowess"
+
+  - number: 15
+    name: "Kaala"
+    nature: "Krura"
+    element: "Earth"
+    signification: "Time, fate, inevitable endings; brings karmic completion, delays, or death-like events"
+
+  - number: 16
+    name: "Sarpa"
+    nature: "Krura"
+    element: "Water"
+    signification: "Serpent, Naga energy, poison, fear; brings hidden dangers and subconscious fears"
+
+  - number: 17
+    name: "Amrita"
+    nature: "Saumya"
+    element: "Water"
+    signification: "Nectar of immortality, nourishment, healing; bestows health, longevity, and rejuvenation"
+
+  - number: 18
+    name: "Indu"
+    nature: "Saumya"
+    element: "Water"
+    signification: "Moon, nourishment, coolness, mind; bestows mental peace, popularity, and nurturing"
+
+  - number: 19
+    name: "Mridu"
+    nature: "Saumya"
+    element: "Air"
+    signification: "Soft, gentle, yielding; planets here give refined, pleasant and harmonious results"
+
+  - number: 20
+    name: "Komala"
+    nature: "Saumya"
+    element: "Air"
+    signification: "Tender, delicate, graceful; gives sensitivity, aesthetic sensibility, and affection"
+
+  - number: 21
+    name: "Heramba"
+    nature: "Saumya"
+    element: "Earth"
+    signification: "Ganesha as protector, obstacle-remover; grants protection and success in endeavors"
+
+  - number: 22
+    name: "Brahma"
+    nature: "Saumya"
+    element: "Akasha"
+    signification: "Creator, knowledge, wisdom; bestows intelligence, creativity, and learning"
+
+  - number: 23
+    name: "Vishnu"
+    nature: "Saumya"
+    element: "Water"
+    signification: "Preserver, sustainer, dharma; grants stability, protection, and righteous prosperity"
+
+  - number: 24
+    name: "Maheshwara"
+    nature: "Saumya"
+    element: "Fire"
+    signification: "Shiva, supreme transformation; powerful for spiritual practice and liberation"
+
+  - number: 25
+    name: "Deva"
+    nature: "Saumya"
+    element: "Akasha"
+    signification: "Divine grace, celestial blessings; planets here receive godly favor and merit"
+
+  - number: 26
+    name: "Ardra"
+    nature: "Krura"
+    element: "Water"
+    signification: "Storm, destruction, Rudra's tear; brings sudden upheavals, grief, and transformation"
+
+  - number: 27
+    name: "Kalinasha"
+    nature: "Saumya"
+    element: "Fire"
+    signification: "Destroyer of evil age (Kali), purifier; removes negative karma and obstacles"
+
+  - number: 28
+    name: "Kshiteesha"
+    nature: "Saumya"
+    element: "Earth"
+    signification: "Lord of earth, rulership, land; strong for property, governance, and authority"
+
+  - number: 29
+    name: "Kamalakara"
+    nature: "Saumya"
+    element: "Water"
+    signification: "Lotus-bearer, Vishnu aspect, beauty; grants beauty, prosperity, and divine favor"
+
+  - number: 30
+    name: "Gulika"
+    nature: "Krura"
+    element: "Earth"
+    signification: "Mandi (Saturn's son), poison, obstruction; brings delays, poisons, and chronic misfortune"
+
+  - number: 31
+    name: "Mrithyu"
+    nature: "Krura"
+    element: "Earth"
+    signification: "Death, endings, dissolution; severe difficulties, danger to life and vital matters"
+
+  - number: 32
+    name: "Kaala"
+    nature: "Krura"
+    element: "Earth"
+    signification: "Time's inexorable force, fate; brings karmic delays, chronic troubles, and endings"
+
+  - number: 33
+    name: "Davagni"
+    nature: "Krura"
+    element: "Fire"
+    signification: "Forest fire, uncontrolled destruction; brings ruin, loss, and widespread damage"
+
+  - number: 34
+    name: "Ghora"
+    nature: "Krura"
+    element: "Fire"
+    signification: "Fierce, terrible, frightening; planets here intensify suffering and violent tendencies"
+
+  - number: 35
+    name: "Yama"
+    nature: "Krura"
+    element: "Earth"
+    signification: "God of death, judgment, law; brings fear, punishment, justice, and endings"
+
+  - number: 36
+    name: "Kantaka"
+    nature: "Krura"
+    element: "Fire"
+    signification: "Thorn, obstacle, hindrance; planets here create persistent blockages and frustrations"
+
+  - number: 37
+    name: "Sudha"
+    nature: "Saumya"
+    element: "Water"
+    signification: "Purity, nectar, whiteness; gives cleanliness, clarity, and righteous conduct"
+
+  - number: 38
+    name: "Amrita"
+    nature: "Saumya"
+    element: "Water"
+    signification: "Nectar, immortality, healing; bestows health, recovery, and life-sustaining grace"
+
+  - number: 39
+    name: "Poornachandra"
+    nature: "Saumya"
+    element: "Water"
+    signification: "Full moon, completeness, fulfillment; grants success, popularity, and emotional satisfaction"
+
+  - number: 40
+    name: "Vishadagdha"
+    nature: "Krura"
+    element: "Fire"
+    signification: "Burned by poison, toxicity, corruption; brings illness, contamination, and decay"
+
+  - number: 41
+    name: "Kulanasha"
+    nature: "Krura"
+    element: "Fire"
+    signification: "Family destroyer, lineage extinction; causes family strife, orphaning, and ancestral curses"
+
+  - number: 42
+    name: "Vamshakshaya"
+    nature: "Krura"
+    element: "Earth"
+    signification: "Lineage decay, heir-lessness; threatens continuation of family and legacy"
+
+  - number: 43
+    name: "Utpata"
+    nature: "Krura"
+    element: "Air"
+    signification: "Calamity, sudden disaster, upheaval; brings unexpected catastrophes and emergencies"
+
+  - number: 44
+    name: "Kaala"
+    nature: "Krura"
+    element: "Earth"
+    signification: "Destructive time, fate, doom; brings unavoidable suffering and karmic retribution"
+
+  - number: 45
+    name: "Saumya"
+    nature: "Saumya"
+    element: "Air"
+    signification: "Gentle, merciful, benign; planets here give calm, measured, and pleasing results"
+
+  - number: 46
+    name: "Komala"
+    nature: "Saumya"
+    element: "Air"
+    signification: "Soft, tender, affectionate; gives harmony, sensitivity, and pleasant interactions"
+
+  - number: 47
+    name: "Sheetala"
+    nature: "Saumya"
+    element: "Water"
+    signification: "Cooling, soothing, fever-dispelling; brings relief, peace, and healing"
+
+  - number: 48
+    name: "Karala"
+    nature: "Krura"
+    element: "Fire"
+    signification: "Terrible, gaping jaws, fierce form; brings aggression, fear, and sudden violence"
+
+  - number: 49
+    name: "Chandramukhi"
+    nature: "Saumya"
+    element: "Water"
+    signification: "Moon-faced, beautiful, charming; gives attractiveness, popularity, and emotional fulfillment"
+
+  - number: 50
+    name: "Praveena"
+    nature: "Saumya"
+    element: "Air"
+    signification: "Skilled, expert, proficient; planets here confer mastery, expertise, and professional success"
+
+  - number: 51
+    name: "Kalapavaka"
+    nature: "Krura"
+    element: "Fire"
+    signification: "Fire of time, consuming blaze; brings destructive losses and irreversible changes"
+
+  - number: 52
+    name: "Dandayudha"
+    nature: "Krura"
+    element: "Fire"
+    signification: "Armed with staff/weapons, punishment; brings legal troubles, punishments, and confrontations"
+
+  - number: 53
+    name: "Nirmala"
+    nature: "Saumya"
+    element: "Water"
+    signification: "Pure, stainless, clear; grants clarity of mind, moral purity, and transparent dealings"
+
+  - number: 54
+    name: "Saumya"
+    nature: "Saumya"
+    element: "Air"
+    signification: "Benign, pleasant, gentle; gives favorable results with ease and peaceful disposition"
+
+  - number: 55
+    name: "Kroora"
+    nature: "Krura"
+    element: "Fire"
+    signification: "Cruel, harsh, merciless; planets here intensify harshness, coldness, and cruelty"
+
+  - number: 56
+    name: "Atisheetala"
+    nature: "Saumya"
+    element: "Water"
+    signification: "Very cool, extremely soothing; brings deep peace, contentment, and relief from suffering"
+
+  - number: 57
+    name: "Amrita"
+    nature: "Saumya"
+    element: "Water"
+    signification: "Nectar of immortality, grace; bestows longevity, health, and divine nourishment"
+
+  - number: 58
+    name: "Payodhi"
+    nature: "Saumya"
+    element: "Water"
+    signification: "Ocean of milk, abundance, depth; grants vast resources, nourishment, and prosperity"
+
+  - number: 59
+    name: "Bhramana"
+    nature: "Mishra"
+    element: "Air"
+    signification: "Wandering, circling, unstable; gives mixed results through travel, restlessness, and uncertainty"
+
+  - number: 60
+    name: "Chandrarekha"
+    nature: "Saumya"
+    element: "Water"
+    signification: "Moonbeam, lunar light, peace; bestows mental clarity, spiritual insight, and serenity"
