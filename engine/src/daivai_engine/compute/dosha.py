@@ -7,8 +7,30 @@ from daivai_engine.constants import SIGN_LORDS, SIGNS
 from daivai_engine.models.dosha import DoshaResult
 
 
+# ── Kaal Sarp Dosha: 12 named types by Rahu's house ─────────────────────────
+# Source: Traditional Jyotish; widely cited in post-classical texts.
+_KSD_TYPES: dict[int, tuple[str, str]] = {
+    1: ("Anant", "अनन्त"),
+    2: ("Kulik", "कुलिक"),
+    3: ("Vasuki", "वासुकि"),
+    4: ("Shankhapal", "शंखपाल"),
+    5: ("Padma", "पद्म"),
+    6: ("Mahapadma", "महापद्म"),
+    7: ("Takshak", "तक्षक"),
+    8: ("Karkotak", "कर्कोटक"),
+    9: ("Shankhnaad", "शंखनाद"),
+    10: ("Ghatak", "घातक"),
+    11: ("Vishdhar", "विषधर"),
+    12: ("Sheshnag", "शेषनाग"),
+}
+
+
 def detect_mangal_dosha(chart: ChartData) -> DoshaResult:
-    """Detect Mangal (Kuja) Dosha — Mars in 1/2/4/7/8/12 from lagna."""
+    """Detect Mangal (Kuja) Dosha — Mars in 1/2/4/7/8/12 from lagna.
+
+    Source: BPHS Ch.77, Brihat Jataka, Phaladeepika.
+    Cancellation rules from: BPHS, Muhurta Chintamani, South Indian traditions.
+    """
     mars = chart.planets["Mars"]
     mangal_houses = {1, 2, 4, 7, 8, 12}
 
@@ -25,33 +47,57 @@ def detect_mangal_dosha(chart: ChartData) -> DoshaResult:
         )
 
     # Check cancellation conditions
-    cancellations = []
+    cancellations: list[str] = []
 
-    # 1. Mars in own sign (Aries/Scorpio)
+    # 1. Mars in own sign (Aries/Scorpio) — BPHS
     if mars.sign_index in (0, 7):
         cancellations.append("Mars in own sign (Aries/Scorpio)")
 
-    # 2. Mars in exaltation (Capricorn)
+    # 2. Mars in exaltation (Capricorn) — BPHS
     if mars.sign_index == 9:
         cancellations.append("Mars exalted in Capricorn")
 
-    # 3. Jupiter aspect on Mars
+    # 3. Mars in friendly Jupiter sign (Sagittarius/Pisces) — Phaladeepika
+    if mars.sign_index in (8, 11):
+        cancellations.append(
+            "Mars in Jupiter's sign (Sagittarius/Pisces) — friendly, reduces severity"
+        )
+
+    # 4. Lagna is Aries or Scorpio (Mars = lagna lord) — BPHS Ch.77
+    if chart.lagna_sign_index in (0, 7):
+        cancellations.append(
+            f"Lagna is {SIGNS[chart.lagna_sign_index]} — Mars is lagna lord, dosha cancelled"
+        )
+
+    # 5. Jupiter aspects Mars — Traditional Parashari
     if has_aspect(chart, "Jupiter", mars.house):
         cancellations.append("Jupiter aspects Mars")
 
-    # 4. Venus aspect on Mars (soft planet mitigates)
+    # 6. Venus aspects Mars — softens Mars
     if has_aspect(chart, "Venus", mars.house):
         cancellations.append("Venus aspects Mars")
 
-    # 5. Mars in 1st/8th for Aries/Scorpio lagna (own sign)
-    if chart.lagna_sign_index in (0, 7) and mars.house in (1, 8):
-        cancellations.append(f"Mars in own house for {SIGNS[chart.lagna_sign_index]} lagna")
+    # 7. Moon conjunct Mars (Chandra-Mangal) — Phaladeepika
+    moon = chart.planets["Moon"]
+    if moon.sign_index == mars.sign_index:
+        cancellations.append("Moon conjunct Mars — Chandra-Mangal cancels Kuja Dosha")
+
+    # 8. Mars in 2nd in Gemini or Virgo (Mercury sign) — South Indian tradition
+    if mars.house == 2 and mars.sign_index in (2, 5):
+        cancellations.append(
+            "Mars in 2nd house in Gemini/Virgo (Mercury sign) — South Indian cancellation"
+        )
+
+    # 9. Mars in 12th in Taurus or Libra (Venus sign) — South Indian tradition
+    if mars.house == 12 and mars.sign_index in (1, 6):
+        cancellations.append(
+            "Mars in 12th house in Taurus/Libra (Venus sign) — South Indian cancellation"
+        )
 
     is_present = len(cancellations) == 0
-    severity = "cancelled" if cancellations else "full"
-    if len(cancellations) > 0 and len(cancellations) < 3:
-        severity = "partial"
-        is_present = True
+    severity = "cancelled" if len(cancellations) >= 2 else ("partial" if cancellations else "full")
+    if severity == "cancelled":
+        is_present = False
 
     return DoshaResult(
         name="Mangal Dosha",
@@ -66,8 +112,20 @@ def detect_mangal_dosha(chart: ChartData) -> DoshaResult:
     )
 
 
+def _ksd_type(rahu_house: int) -> tuple[str, str]:
+    """Return (english_name, hindi_name) of the Kaal Sarp type from Rahu's house.
+
+    Source: Traditional Jyotish; 12 types named after serpents.
+    """
+    return _KSD_TYPES.get(rahu_house, ("Unknown", "अज्ञात"))
+
+
 def detect_kaal_sarp_dosha(chart: ChartData) -> DoshaResult:
-    """Detect Kaal Sarp Dosha — all planets hemmed between Rahu-Ketu."""
+    """Detect Kaal Sarp Dosha — all planets hemmed between Rahu-Ketu.
+
+    Also identifies which of the 12 named KSD types applies based on Rahu's house.
+    Source: Traditional Jyotish (not in BPHS — post-classical).
+    """
     rahu = chart.planets["Rahu"]
     ketu = chart.planets["Ketu"]
 
@@ -82,7 +140,7 @@ def detect_kaal_sarp_dosha(chart: ChartData) -> DoshaResult:
         p = chart.planets[pname]
         p_lon = p.longitude
 
-        # Check if planet is between Rahu and Ketu (going forward)
+        # Check if planet is between Rahu and Ketu (going forward from Rahu)
         if rahu_lon < ketu_lon:
             between = rahu_lon <= p_lon <= ketu_lon
         else:
@@ -96,6 +154,8 @@ def detect_kaal_sarp_dosha(chart: ChartData) -> DoshaResult:
     all_between = len(planets_outside) == 0
     partial = len(planets_outside) == 1
 
+    ksd_name, ksd_name_hi = _ksd_type(rahu.house)
+
     if all_between:
         return DoshaResult(
             name="Kaal Sarp Dosha",
@@ -104,7 +164,11 @@ def detect_kaal_sarp_dosha(chart: ChartData) -> DoshaResult:
             severity="full",
             planets_involved=["Rahu", "Ketu", *planets_between],
             houses_involved=[rahu.house, ketu.house],
-            description="All 7 planets hemmed between Rahu-Ketu — full Kaal Sarp Dosha",
+            description=(
+                f"Full Kaal Sarp Dosha — {ksd_name} ({ksd_name_hi}) type. "
+                f"Rahu in house {rahu.house}, Ketu in house {ketu.house}. "
+                "All 7 planets hemmed between Rahu-Ketu axis."
+            ),
             cancellation_reasons=[],
         )
     elif partial:
@@ -115,7 +179,10 @@ def detect_kaal_sarp_dosha(chart: ChartData) -> DoshaResult:
             severity="partial",
             planets_involved=["Rahu", "Ketu", *planets_between],
             houses_involved=[rahu.house, ketu.house],
-            description=f"Partial Kaal Sarp — {planets_outside[0]} escapes the axis",
+            description=(
+                f"Partial Kaal Sarp — {ksd_name} ({ksd_name_hi}) type (if full). "
+                f"{planets_outside[0]} escapes the axis, reducing severity."
+            ),
             cancellation_reasons=[f"{planets_outside[0]} outside Rahu-Ketu axis"],
         )
     else:

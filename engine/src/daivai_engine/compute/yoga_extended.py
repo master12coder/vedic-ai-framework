@@ -286,6 +286,13 @@ def _detect_neech_bhanga(chart: ChartData) -> list[YogaResult]:
         if p.house in KENDRAS:
             cancellation_reasons.append(f"{name} debilitated but in kendra house {p.house}")
 
+        # Rule 4: debilitated planet is retrograde — BPHS, widely accepted
+        # A retrograde planet moves backward toward its exaltation, cancelling debilitation.
+        if p.is_retrograde:
+            cancellation_reasons.append(
+                f"{name} debilitated but retrograde — reversal cancels weakness"
+            )
+
         if cancellation_reasons:
             yogas.append(
                 YogaResult(

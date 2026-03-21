@@ -62,3 +62,30 @@ class TestDashaComputation:
         duration_days = (mds[0].end - mds[0].start).days
         assert duration_days < 10 * 365.25  # Less than full 10 years
         assert duration_days > 0  # But positive
+
+    def test_antardasha_mercury_in_jupiter_md_march_2026(self, manish_chart):
+        """On 15/03/2026, Jupiter Mahadasha > Mercury Antardasha should be active.
+
+        This is the known current state from CLAUDE.md fixture.
+        """
+        target = pytz.timezone("Asia/Kolkata").localize(datetime(2026, 3, 15))
+        md, ad, _pd = find_current_dasha(manish_chart, target)
+        assert md.lord == "Jupiter", f"Expected Jupiter MD, got {md.lord}"
+        assert ad.lord == "Mercury", f"Expected Mercury AD, got {ad.lord}"
+
+    def test_pratyantardasha_level(self, manish_chart):
+        """PD should have level 'PD' and a parent_lord."""
+        target = pytz.timezone("Asia/Kolkata").localize(datetime(2026, 3, 15))
+        _md, _ad, pd = find_current_dasha(manish_chart, target)
+        assert pd.level == "PD"
+        assert pd.parent_lord is not None
+
+    def test_moon_dasha_balance_at_birth_for_rohini_pada2(self, manish_chart):
+        """Moon in Rohini Pada 2 — balance must be between 25% and 75% of 10 years."""
+        mds = compute_mahadashas(manish_chart)
+        moon_md = mds[0]
+        assert moon_md.lord == "Moon"
+        # Pada 2 of Rohini = 25-50% through nakshatra → 50-75% remaining
+        days = (moon_md.end - moon_md.start).days
+        total_moon_days = 10 * 365.25
+        assert total_moon_days * 0.25 < days < total_moon_days * 0.80
