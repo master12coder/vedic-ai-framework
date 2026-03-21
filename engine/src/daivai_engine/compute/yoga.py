@@ -1,4 +1,4 @@
-"""Yoga detection engine — Panch Mahapurush, Raj, Dhan yogas."""
+"""Yoga detection engine — Panch Mahapurush, Raj, Dhan, and all extended yogas."""
 
 from __future__ import annotations
 
@@ -26,8 +26,32 @@ def _is_in_own_or_exalted(planet_name: str, sign_index: int) -> bool:
 
 
 def detect_all_yogas(chart: ChartData) -> list[YogaResult]:
-    """Detect all yogas — 80+ checks from BPHS, Phaladeepika, Saravali."""
+    """Detect all yogas — Panch Mahapurush, Raj, Dhan, Nabhasa, Parivartana, and more.
+
+    Detection order:
+      1. Panch Mahapurush (5 great-person yogas)
+      2. Raj Yogas (kendra-trikona lord connections)
+      3. Dhan Yogas (wealth yogas)
+      4. Other Yogas (Gajakesari, Budhaditya, Vipreet Raj, Neech Bhanga, etc.)
+      5. Extended Yogas (Nabhasa, lunar, solar, conjunction doshas, Kartari, etc.)
+      6. Parivartana Yogas (all 66 house-pair mutual exchanges)
+      7. Special Yogas (Chatussagara, Mahabhagya)
+      8. Strength post-processing (combustion, Vargottama, retrograde modifiers)
+
+    Source: BPHS, Phaladeepika, Saravali.
+
+    Args:
+        chart: Computed birth chart.
+
+    Returns:
+        List of all detected YogaResults with strength fields set.
+    """
     from daivai_engine.compute.yoga_extended import detect_extended_yogas
+    from daivai_engine.compute.yoga_parivartana import (
+        apply_yoga_strength,
+        detect_parivartana_yogas,
+    )
+    from daivai_engine.compute.yoga_special import detect_special_yogas
 
     yogas: list[YogaResult] = []
     yogas.extend(_detect_panch_mahapurush(chart))
@@ -35,7 +59,11 @@ def detect_all_yogas(chart: ChartData) -> list[YogaResult]:
     yogas.extend(_detect_dhan_yogas(chart))
     yogas.extend(detect_other_yogas(chart))
     yogas.extend(detect_extended_yogas(chart))
-    return yogas
+    yogas.extend(detect_parivartana_yogas(chart))
+    yogas.extend(detect_special_yogas(chart))
+
+    # Apply combustion / Vargottama / retrograde strength modifiers
+    return apply_yoga_strength(yogas, chart)
 
 
 def _detect_panch_mahapurush(chart: ChartData) -> list[YogaResult]:

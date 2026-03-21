@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from daivai_engine.compute.chart import ChartData, get_house_lord, get_planets_in_house
+from daivai_engine.compute.chart import ChartData, get_house_lord
 from daivai_engine.constants import (
     DUSTHANAS,
     EXALTATION,
@@ -171,42 +171,6 @@ def detect_other_yogas(chart: ChartData) -> list[YogaResult]:
                 planets_involved=["Jupiter", "Venus", "Mercury"],
                 houses_involved=[jup.house, ven.house, mer.house],
                 description="Jupiter, Venus, Mercury in kendra/trikona — learning, wisdom, arts",
-                effect="benefic",
-            )
-        )
-
-    # Amala Yoga
-    planets_in_10 = get_planets_in_house(chart, 10)
-    for p in planets_in_10:
-        if p.name in {"Jupiter", "Venus", "Mercury", "Moon"}:
-            yogas.append(
-                YogaResult(
-                    name="Amala Yoga",
-                    name_hindi="अमल योग",
-                    is_present=True,
-                    planets_involved=[p.name],
-                    houses_involved=[10],
-                    description=f"Natural benefic {p.name} in 10th — virtuous reputation",
-                    effect="benefic",
-                )
-            )
-            break
-
-    # Adhi Yoga
-    moon_house = moon.house
-    adhi_houses = [((moon_house - 1 + offset) % 12) + 1 for offset in (5, 6, 7)]
-    benefics_in_adhi = [
-        pn for pn in ["Jupiter", "Venus", "Mercury"] if chart.planets[pn].house in adhi_houses
-    ]
-    if len(benefics_in_adhi) >= 2:
-        yogas.append(
-            YogaResult(
-                name="Adhi Yoga",
-                name_hindi="अधि योग",
-                is_present=True,
-                planets_involved=benefics_in_adhi,
-                houses_involved=adhi_houses,
-                description="Benefics in 6th/7th/8th from Moon — leadership, authority, wealth",
                 effect="benefic",
             )
         )

@@ -22,3 +22,4 @@ class YogaResult(BaseModel):
     houses_involved: list[int]
     description: str
     effect: str  # benefic, malefic, mixed
+    strength: str = "full"  # full, partial, cancelled, enhanced

@@ -131,45 +131,82 @@ def _detect_lunar_yogas(chart: ChartData) -> list[YogaResult]:
             )
         )
 
-    # Amala: benefic in 10th from Moon or Lagna — Phaladeepika 7.14
+    # Amala: natural benefic in 10th from Moon or Lagna — Phaladeepika 7.14
+    # Natural benefics: Jupiter, Venus, unafflicted Mercury, waxing Moon.
     sign_10_from_moon = (moon_sign + 9) % 12
     sign_10_from_lagna = (chart.lagna_sign_index + 9) % 12
-    for name, p in chart.planets.items():
-        if name in _BENEFICS and (
-            p.sign_index == sign_10_from_moon or p.sign_index == sign_10_from_lagna
-        ):
+
+    # Waxing Moon: Moon is ahead of Sun by 0-180 degrees (new moon to full moon)
+    moon_sun_diff = (chart.planets["Moon"].longitude - chart.planets["Sun"].longitude) % 360
+    is_waxing_moon = moon_sun_diff < 180
+
+    amala_candidates: list[tuple[str, bool]] = [
+        ("Jupiter", True),
+        ("Venus", True),
+        ("Mercury", not chart.planets["Mercury"].is_combust),
+        ("Moon", is_waxing_moon),
+    ]
+    for amala_planet, qualifies in amala_candidates:
+        if not qualifies:
+            continue
+        p = chart.planets.get(amala_planet)
+        if p and p.sign_index in (sign_10_from_moon, sign_10_from_lagna):
+            ref = "10th from Moon" if p.sign_index == sign_10_from_moon else "10th from Lagna"
             yogas.append(
                 YogaResult(
                     name="Amala Yoga",
                     name_hindi="अमल योग",
                     is_present=True,
-                    planets_involved=[name],
+                    planets_involved=[amala_planet],
                     houses_involved=[10],
-                    description=f"{name} in 10th — spotless reputation, ethical conduct, fame through good deeds",
+                    description=(
+                        f"{amala_planet} in {ref} — spotless reputation, "
+                        "ethical conduct, fame through good deeds"
+                    ),
                     effect="benefic",
                 )
             )
-            break
+            break  # One Amala per chart is sufficient
 
-    # Adhi: benefics in 6/7/8 from Moon — BPHS
-    sign_6 = (moon_sign + 5) % 12
-    sign_7 = (moon_sign + 6) % 12
-    sign_8 = (moon_sign + 7) % 12
-    adhi_benefics = [
-        n
-        for n, p in chart.planets.items()
-        if n in _BENEFICS and p.sign_index in (sign_6, sign_7, sign_8)
+    # Adhi Yoga: Jupiter, Venus, Mercury in 6th/7th/8th from Moon — BPHS
+    # Purna (all 3) / Madhya (2) / Hina (1) grading per classical texts.
+    adhi_signs = frozenset([(moon_sign + i) % 12 for i in (5, 6, 7)])
+    adhi_planets = [
+        n for n in ("Jupiter", "Venus", "Mercury") if chart.planets[n].sign_index in adhi_signs
     ]
-    if len(adhi_benefics) >= 2:
+    if adhi_planets:
+        count = len(adhi_planets)
+        if count >= 3:
+            grade = "Purna"
+            adhi_desc = (
+                "All 3 benefics (Jupiter, Venus, Mercury) in 6/7/8 from Moon — "
+                "minister-level authority, great prosperity, enduring leadership"
+            )
+            adhi_strength = "full"
+        elif count == 2:
+            grade = "Madhya"
+            adhi_desc = (
+                f"{' & '.join(adhi_planets)} in 6/7/8 from Moon — "
+                "leadership role, wealth, comfortable authority"
+            )
+            adhi_strength = "full"
+        else:
+            grade = "Hina"
+            adhi_desc = (
+                f"{adhi_planets[0]} in 6/7/8 from Moon — "
+                "modest authority, minor gains through position"
+            )
+            adhi_strength = "partial"
         yogas.append(
             YogaResult(
                 name="Adhi Yoga",
                 name_hindi="अधि योग",
                 is_present=True,
-                planets_involved=adhi_benefics,
+                planets_involved=adhi_planets,
                 houses_involved=[6, 7, 8],
-                description="Multiple benefics in 6/7/8 from Moon — leadership, minister-level power",
+                description=f"{grade}: {adhi_desc}",
                 effect="benefic",
+                strength=adhi_strength,
             )
         )
 
@@ -506,13 +543,18 @@ def _detect_wealth_yogas(chart: ChartData) -> list[YogaResult]:
     """Detect additional wealth yogas — Phaladeepika, Saravali."""
     yogas: list[YogaResult] = []
 
-    # Vasumati: benefics in upachaya (3,6,10,11) from Moon — Phaladeepika
+    # Vasumati: benefics (Jupiter, Venus, Mercury) in upachaya (3,6,10,11) from Moon
+    # Phaladeepika: "all benefics" in upachaya → traditional 3 benefics.
+    # Purna: all 3 present; Partial: 2 present (still significant).
     moon_sign = chart.planets["Moon"].sign_index
     upachaya_signs = {(moon_sign + h - 1) % 12 for h in (3, 6, 10, 11)}
+    vasumati_benefics = ("Jupiter", "Venus", "Mercury")
     benefics_in_upachaya = [
-        n for n, p in chart.planets.items() if n in _BENEFICS and p.sign_index in upachaya_signs
+        n for n in vasumati_benefics if chart.planets[n].sign_index in upachaya_signs
     ]
     if len(benefics_in_upachaya) >= 2:
+        vasu_strength = "full" if len(benefics_in_upachaya) >= 3 else "partial"
+        vasu_grade = "Purna" if len(benefics_in_upachaya) >= 3 else "Partial"
         yogas.append(
             YogaResult(
                 name="Vasumati Yoga",
@@ -520,8 +562,12 @@ def _detect_wealth_yogas(chart: ChartData) -> list[YogaResult]:
                 is_present=True,
                 planets_involved=benefics_in_upachaya,
                 houses_involved=[3, 6, 10, 11],
-                description="Benefics in upachaya from Moon — enduring wealth, financial security",
+                description=(
+                    f"{vasu_grade}: {', '.join(benefics_in_upachaya)} in upachaya (3/6/10/11) "
+                    "from Moon — enduring wealth, financial security, material abundance"
+                ),
                 effect="benefic",
+                strength=vasu_strength,
             )
         )
 
