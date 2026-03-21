@@ -38,10 +38,29 @@ class ArudhaPada(BaseModel):
     sign: str  # Sign name (Vedic)
 
 
+class JaiminiRajYoga(BaseModel):
+    """A Raj (kingly) Yoga detected in the Jaimini system.
+
+    Jaimini Raj Yogas differ from Parashari — they are based on sign aspects,
+    Chara Karakas, and Arudha Lagna rather than house lords.
+
+    Source: Jaimini Upadesha Sutras, B.V. Raman Studies in Jaimini Astrology.
+    """
+
+    model_config = ConfigDict(frozen=True)
+
+    name: str  # e.g. "AK-AmK Conjunction"
+    name_hi: str  # Hindi name
+    is_present: bool
+    description: str
+    planets_involved: list[str]
+    strength: str  # strong / moderate / weak
+
+
 class JaiminiResult(BaseModel):
     """Complete Jaimini analysis result for a chart.
 
-    Aggregates Chara Karakas, Arudha Padas, and Karakamsha
+    Aggregates Chara Karakas, Arudha Padas, Karakamsha, and Raj Yogas
     into a single result object.
     """
 
@@ -53,3 +72,4 @@ class JaiminiResult(BaseModel):
     karakamsha_sign: str  # Sign name (Vedic)
     atmakaraka: str  # Planet name of Atmakaraka
     darakaraka: str  # Planet name of Darakaraka
+    raj_yogas: list[JaiminiRajYoga] = Field(default_factory=list)

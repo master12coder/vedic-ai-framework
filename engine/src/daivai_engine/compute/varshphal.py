@@ -71,6 +71,10 @@ def compute_varshphal(
     # Full 16 Tajaka yoga detection using tajaka_yogas module
     tajaka: list[TajakaYoga] = detect_all_tajaka_yogas(sr_chart)
 
+    # Tri-pataki Chakra: Sun, Moon, and Lagna in the annual chart
+    # show 3 distinct areas of life most activated in this solar year
+    tri_pataki = compute_tri_pataki(sr_chart, muntha_sign)
+
     return {
         "year": year,
         "solar_return_date": sr_date.strftime("%Y-%m-%d %H:%M:%S"),
@@ -80,6 +84,7 @@ def compute_varshphal(
         "year_lord": year_lord,
         "chart": sr_chart,
         "tajaka_yogas": tajaka,
+        "tri_pataki": tri_pataki,
     }
 
 
@@ -162,3 +167,84 @@ def _sign_lord(sign_idx: int) -> str:
     from daivai_engine.constants import SIGN_LORDS
 
     return SIGN_LORDS.get(sign_idx, "Sun")
+
+
+# ── Tri-pataki Chakra ─────────────────────────────────────────────────────────
+
+
+def compute_tri_pataki(sr_chart: ChartData, muntha_sign: int) -> dict:
+    """Compute the Tri-pataki Chakra for the annual chart.
+
+    The Tri-pataki ("three-stake") Chakra identifies three zones of intense
+    annual activity based on the annual chart:
+      1. Lagna sector — personal health, body, self-projection
+      2. Muntha sector — the progressed ascendant (most critical sign of the year)
+      3. Year Lord sector — the planet that owns the weekday of solar return
+
+    Each sector covers the sign itself plus its 5th and 9th (trikona) signs,
+    forming a "triangle" of activation. Planets in these triangles become
+    especially significant for the year.
+
+    Interpretation:
+    - Muntha Trikona planets: govern the primary themes of the year
+    - Year Lord Trikona planets: govern timing and triggering events
+    - Lagna Trikona planets: govern the native's personal experience
+
+    Source: Tajaka Neelakanthi, Varshphal (Annual Chart) traditions.
+    """
+    from daivai_engine.constants import SIGNS
+
+    lagna_sign = sr_chart.lagna_sign_index
+
+    # Three stakes (tri-pataki signs = the sign, 5th from it, 9th from it)
+    def _trikona(sign: int) -> list[int]:
+        return [sign, (sign + 4) % 12, (sign + 8) % 12]
+
+    lagna_trikona = _trikona(lagna_sign)
+    muntha_trikona = _trikona(muntha_sign)
+
+    # Year lord's sign for trikona (use year lord's annual chart placement)
+    year_lord_name = _sign_lord(lagna_sign)  # The year lord planet
+    year_lord_planet = sr_chart.planets.get(year_lord_name)
+    year_lord_sign_idx = year_lord_planet.sign_index if year_lord_planet else lagna_sign
+    year_lord_trikona = _trikona(year_lord_sign_idx)
+
+    # Find planets activated in each sector
+    def _planets_in(trikona: list[int]) -> list[str]:
+        return [name for name, p in sr_chart.planets.items() if p.sign_index in trikona]
+
+    lagna_sector_planets = _planets_in(lagna_trikona)
+    muntha_sector_planets = _planets_in(muntha_trikona)
+    year_lord_sector_planets = _planets_in(year_lord_trikona)
+
+    # Muntha aspects: does any planet aspect the Muntha sign?
+    # A planet in 7th from Muntha aspects it directly
+    muntha_aspected_by = [
+        name for name, p in sr_chart.planets.items() if ((p.sign_index - muntha_sign) % 12) + 1 == 7
+    ]
+
+    return {
+        "lagna_sector": {
+            "anchor_sign": lagna_sign,
+            "anchor_sign_name": SIGNS[lagna_sign],
+            "trikona_signs": [SIGNS[s] for s in lagna_trikona],
+            "activated_planets": lagna_sector_planets,
+            "theme": "Personal health, body, and self-expression for the year",
+        },
+        "muntha_sector": {
+            "anchor_sign": muntha_sign,
+            "anchor_sign_name": SIGNS[muntha_sign],
+            "trikona_signs": [SIGNS[s] for s in muntha_trikona],
+            "activated_planets": muntha_sector_planets,
+            "aspected_by": muntha_aspected_by,
+            "theme": "Primary karmic theme and key events of the year",
+        },
+        "year_lord_sector": {
+            "year_lord": year_lord_name,
+            "anchor_sign": year_lord_sign_idx,
+            "anchor_sign_name": SIGNS[year_lord_sign_idx],
+            "trikona_signs": [SIGNS[s] for s in year_lord_trikona],
+            "activated_planets": year_lord_sector_planets,
+            "theme": "Timing and triggering of major events through the year",
+        },
+    }
