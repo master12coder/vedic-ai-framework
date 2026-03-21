@@ -151,7 +151,13 @@ def compute_sahams(chart: ChartData) -> list[SahamPoint]:
     sahams = [
         # ── Original 6 ────────────────────────────────────────────────────
         _make("Punya Saham", "पुण्य सहम", punya_lon),
-        _make("Vivaha Saham", "विवाह सहम", (lagna_lon + venus - cusp_7) % FULL_CIRCLE_DEG),
+        _make(
+            "Vivaha Saham",
+            "विवाह सहम",
+            (lagna_lon + venus - cusp_7) % FULL_CIRCLE_DEG
+            if is_day
+            else (lagna_lon + cusp_7 - venus) % FULL_CIRCLE_DEG,
+        ),
         _make("Putra Saham", "पुत्र सहम", (lagna_lon + jupiter - cusp_5) % FULL_CIRCLE_DEG),
         _make("Karma Saham", "कर्म सहम", (lagna_lon + saturn - cusp_10) % FULL_CIRCLE_DEG),
         _make("Vidya Saham", "विद्या सहम", (lagna_lon + mercury - cusp_5) % FULL_CIRCLE_DEG),
