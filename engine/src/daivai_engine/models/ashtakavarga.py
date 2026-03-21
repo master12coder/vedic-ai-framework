@@ -1,4 +1,4 @@
-"""Domain models for Ashtakavarga, Prastara, and Kaksha computation."""
+"""Domain models for Ashtakavarga, Prastara, Kaksha, and Shodhana computation."""
 
 from __future__ import annotations
 
@@ -80,3 +80,51 @@ class KakshaResult(BaseModel):
     kaksha_lord: str
     kaksha_start: float = Field(ge=0, lt=30)
     kaksha_end: float = Field(gt=0, le=30)
+
+
+class ShodhanaResult(BaseModel):
+    """Shodhana (purification) reduction result — BPHS Ch.71.
+
+    Holds the output of applying both Trikona Shodhana and Ekadhipatya
+    Shodhana to an AshtakavargaResult.  The reduced tables remove the
+    "base level" that repeats across trikona groups and the redundancy
+    introduced by dual-ruled signs, leaving only differential strength.
+
+    Attributes:
+        reduced_bhinna: Per-planet BAV after Trikona Shodhana only.
+                        Keys are planet names (Sun…Saturn); values are
+                        12-element lists (Aries-first), all ≥ 0.
+        trikona_sarva:  Sarvashtakavarga after Trikona Shodhana (before
+                        Ekadhipatya).  12 non-negative integers.
+        reduced_sarva:  Sarvashtakavarga after both reductions.  12
+                        non-negative integers, with one sign in every
+                        dual-owned pair reduced to 0.
+    """
+
+    model_config = ConfigDict(frozen=True)
+
+    reduced_bhinna: dict[str, list[int]] = Field(default_factory=dict)
+    trikona_sarva: list[int] = Field(default_factory=list)
+    reduced_sarva: list[int] = Field(default_factory=list)
+
+
+class ShodhyaPindaResult(BaseModel):
+    """Shodhya Pinda score for a single planet — BPHS Ch.71.
+
+    Shodhya Pinda = Rasi Pinda + Graha Pinda, computed from the planet's
+    Trikona-reduced BAV.  It gives a single numerical strength indicator
+    that combines sign-based and planet-based weighting.
+
+    Attributes:
+        planet:       Planet name (Sun … Saturn).
+        rasi_pinda:   sum(reduced_bindu[sign] * RASI_GUNAKARA[sign]).
+        graha_pinda:  GRAHA_GUNAKARA[planet] * sum(reduced_bindu[sign]).
+        shodhya_pinda: rasi_pinda + graha_pinda.
+    """
+
+    model_config = ConfigDict(frozen=True)
+
+    planet: str
+    rasi_pinda: int = Field(ge=0)
+    graha_pinda: int = Field(ge=0)
+    shodhya_pinda: int = Field(ge=0)
