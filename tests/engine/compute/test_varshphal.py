@@ -39,3 +39,15 @@ class TestVarshphal:
         r2025 = compute_varshphal(manish_chart, 2025)
         r2026 = compute_varshphal(manish_chart, 2026)
         assert r2025["solar_return_date"] != r2026["solar_return_date"]
+
+    def test_muntha_sign_2026_is_karka(self, manish_chart: ChartData) -> None:
+        """2026 Muntha for Manish: age = 2026-1989 = 37.
+        muntha = (lagna_sign_index + age) % 12 = (2 + 37) % 12 = 39 % 12 = 3 = Karka.
+        """
+        result = compute_varshphal(manish_chart, 2026)
+        assert result["muntha_sign"] == 3  # Karka (Cancer)
+
+    def test_tajaka_yogas_are_non_empty(self, manish_chart: ChartData) -> None:
+        """Annual chart must produce at least some Tajaka yogas (Manaou at minimum)."""
+        result = compute_varshphal(manish_chart, 2026)
+        assert len(result["tajaka_yogas"]) > 0

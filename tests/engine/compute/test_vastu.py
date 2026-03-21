@@ -27,6 +27,7 @@ from daivai_engine.compute.vastu_mandala import (
     compute_mandala_zones,
     compute_room_recommendations,
 )
+from daivai_engine.models.chart import ChartData, PlanetData
 from daivai_engine.models.vastu import (
     AyadiField,
     DirectionStrength,
@@ -36,6 +37,62 @@ from daivai_engine.models.vastu import (
     VastuResult,
     VastuZone,
 )
+
+
+# ── Synthetic chart helpers ────────────────────────────────────────────────────
+
+
+def _make_planet_in_house(name: str, house: int) -> PlanetData:
+    """Minimal PlanetData with a specific house number for dosha testing."""
+    return PlanetData(
+        name=name,
+        name_hi="",
+        longitude=float(house - 1) * 30.0 + 15.0,
+        sign_index=(house - 1) % 12,
+        sign="",
+        sign_en="",
+        sign_hi="",
+        degree_in_sign=15.0,
+        nakshatra_index=0,
+        nakshatra="",
+        nakshatra_lord="",
+        pada=1,
+        house=house,
+        is_retrograde=False,
+        speed=1.0,
+        dignity="neutral",
+        avastha="Yuva",
+        is_combust=False,
+        sign_lord="",
+    )
+
+
+def _make_dosha_chart(trigger_planet: str) -> ChartData:
+    """Build a minimal chart with the given planet in house 4 (to trigger a dosha)."""
+    chart = ChartData(
+        name="Dosha Test",
+        dob="01/01/2000",
+        tob="06:00",
+        place="Delhi",
+        gender="Male",
+        latitude=28.6139,
+        longitude=77.2090,
+        timezone_name="Asia/Kolkata",
+        julian_day=2451545.0,
+        ayanamsha=23.7,
+        lagna_longitude=60.0,
+        lagna_sign_index=2,  # Mithuna
+        lagna_sign="Mithuna",
+        lagna_sign_en="Gemini",
+        lagna_sign_hi="मिथुन",
+        lagna_degree=0.0,
+    )
+    # Populate all required planets with neutral placements
+    all_planets = ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn", "Rahu", "Ketu"]
+    for i, pname in enumerate(all_planets):
+        h = 4 if pname == trigger_planet else (i % 12) + 1
+        chart.planets[pname] = _make_planet_in_house(pname, h)
+    return chart
 
 
 # ── Direction Strengths ───────────────────────────────────────────────────────
@@ -359,3 +416,69 @@ class TestComputeVastu:
         result = compute_vastu(manish_chart)
         with pytest.raises(ValidationError):
             result.lagna = "Mesha"  # type: ignore[misc]
+
+
+# ── Vastu Dosha Activation ────────────────────────────────────────────────────
+
+
+class TestVastuDoshaActivation:
+    """Verify each of the 5 vastu doshas fires when the trigger planet is in house 4."""
+
+    def _get_present_doshas(self, trigger_planet: str) -> list[VastuDosha]:
+        chart = _make_dosha_chart(trigger_planet)
+        return [d for d in detect_vastu_doshas(chart) if d.is_present]
+
+    def test_saturn_in_4th_triggers_griha_bala_dosha(self):
+        """Saturn in 4th → Griha Bala Dosha present."""
+        present = self._get_present_doshas("Saturn")
+        names = [d.name for d in present]
+        assert "Griha Bala Dosha" in names
+
+    def test_mars_in_4th_triggers_agni_sthan_dosha(self):
+        """Mars in 4th → Agni Sthan Dosha present."""
+        present = self._get_present_doshas("Mars")
+        names = [d.name for d in present]
+        assert "Agni Sthan Dosha" in names
+
+    def test_rahu_in_4th_triggers_vastu_bhaya_dosha(self):
+        """Rahu in 4th → Vastu Bhaya Dosha present."""
+        present = self._get_present_doshas("Rahu")
+        names = [d.name for d in present]
+        assert "Vastu Bhaya Dosha" in names
+
+    def test_sun_in_4th_triggers_pitr_sthan_dosha(self):
+        """Sun in 4th → Pitr Sthan Dosha present."""
+        present = self._get_present_doshas("Sun")
+        names = [d.name for d in present]
+        assert "Pitr Sthan Dosha" in names
+
+    def test_ketu_in_4th_triggers_moksha_sthan_dosha(self):
+        """Ketu in 4th → Moksha Sthan Dosha present."""
+        present = self._get_present_doshas("Ketu")
+        names = [d.name for d in present]
+        assert "Moksha Sthan Dosha" in names
+
+    def test_saturn_not_in_4th_griha_bala_absent(self, manish_chart):
+        """Manish: Saturn in house 7, not 4 → Griha Bala Dosha absent."""
+        # Manish's Saturn is in house 7 (Sagittarius)
+        doshas = detect_vastu_doshas(manish_chart)
+        griha = next(d for d in doshas if d.name == "Griha Bala Dosha")
+        assert griha.is_present is False
+        assert griha.severity == "none"
+
+    def test_present_dosha_has_non_none_severity(self):
+        """An activated dosha has severity in {mild, moderate, severe}."""
+        chart = _make_dosha_chart("Saturn")
+        doshas = detect_vastu_doshas(chart)
+        saturn_dosha = next(d for d in doshas if d.name == "Griha Bala Dosha")
+        assert saturn_dosha.is_present is True
+        assert saturn_dosha.severity in {"mild", "moderate", "severe"}
+
+    def test_only_trigger_planet_dosha_is_present(self):
+        """Only the dosha for the trigger planet should be present (others absent)."""
+        chart = _make_dosha_chart("Mars")
+        doshas = detect_vastu_doshas(chart)
+        present = [d for d in doshas if d.is_present]
+        # Only Agni Sthan Dosha should be present
+        assert len(present) == 1
+        assert present[0].name == "Agni Sthan Dosha"

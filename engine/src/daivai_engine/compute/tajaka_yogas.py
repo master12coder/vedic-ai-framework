@@ -311,6 +311,12 @@ def _check_pair(
                 )
             )
 
+    # 16. Musaripha — fast planet separating from slow while applying to another
+    if not is_applying:
+        musaripha = _check_musaripha(fast_name, fast, slow_name, slow, chart)
+        if musaripha:
+            results.append(musaripha)
+
     return results
 
 
