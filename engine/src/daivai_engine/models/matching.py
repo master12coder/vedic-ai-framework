@@ -43,7 +43,7 @@ class MatchingResult(BaseModel):
 
     Contains the Moon sign and nakshatra indices for both persons, the list of
     individual koota scores, the aggregate totals, percentage, and a human-readable
-    recommendation.
+    recommendation. Also flags key doshas and Vedha.
     """
 
     model_config = ConfigDict(frozen=True)
@@ -57,3 +57,6 @@ class MatchingResult(BaseModel):
     total_max: float = Field(ge=0)
     percentage: float = Field(ge=0, le=100)
     recommendation: str
+    has_vedha_dosha: bool = False
+    vedha_note: str = ""
+    dosha_notes: list[str] = Field(default_factory=list)
