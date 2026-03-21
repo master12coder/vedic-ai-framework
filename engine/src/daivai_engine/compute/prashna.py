@@ -17,6 +17,7 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 
+from daivai_engine.compute.ashtamangala_prashna import analyze_ashtamangala
 from daivai_engine.compute.chart import compute_chart
 from daivai_engine.constants import KENDRAS, SIGN_LORDS, SIGNS, TRIKONAS
 from daivai_engine.models.chart import ChartData
@@ -65,6 +66,7 @@ def compute_prashna(
     question_time: datetime | None = None,
     question_type: str = "general",
     is_mook_prashna: bool = False,
+    use_ashtamangala: bool = False,
 ) -> dict:
     """Compute a Prashna (horary) chart and derive a verdict.
 
@@ -76,9 +78,11 @@ def compute_prashna(
         question_time: Exact time of question. Defaults to now.
         question_type: Category (marriage, career, etc.) for house selection.
         is_mook_prashna: True if querent did not speak (Moon analysis is primary).
+        use_ashtamangala: If True, includes Kerala Ashtamangala analysis.
 
     Returns:
         Dict with chart, answer, reasoning, arudha, hora_lord, swara, and key factors.
+        If use_ashtamangala=True, also includes "ashtamangala" key.
     """
     if question_time is None:
         question_time = datetime.now(tz=UTC)
@@ -233,6 +237,8 @@ def compute_prashna(
         # Score breakdown
         "positive_factors": positive,
         "negative_factors": negative,
+        # Kerala Ashtamangala analysis (optional)
+        "ashtamangala": (analyze_ashtamangala(chart, question_type) if use_ashtamangala else None),
     }
 
 

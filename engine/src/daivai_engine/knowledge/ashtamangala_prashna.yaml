@@ -1,0 +1,220 @@
+# ═══════════════════════════════════════════════════════════════
+# ASHTAMANGALA PRASHNA — Kerala Horary Tradition
+# ═══════════════════════════════════════════════════════════════
+# Source: Prashna Marga (Kerala Jyotisha text), Ashtamangala
+#         Deva Prashna tradition of Kerala temples.
+# Confidence: classical
+# ═══════════════════════════════════════════════════════════════
+
+source: "Prashna Marga, Kerala Ashtamangala Deva Prashna tradition"
+confidence: classical
+
+# ── 8 Mangala Dravyas (Auspicious Objects) ─────────────────────
+# Each object is governed by a planet and a domain of life.
+# Their condition in the Prashna chart indicates which aspects
+# of the query are favored or challenged.
+# Source: Prashna Marga Ch.7 "Mangala Dravya Prashna"
+mangala_dravyas:
+  - name: Suvarna
+    name_en: Gold
+    planet: Sun
+    element: Fire
+    signification: Sovereignty, honor, vitality, government favor
+    favorable_for: [career, status, father, health]
+    direction: East
+
+  - name: Rajata
+    name_en: Silver
+    planet: Moon
+    element: Water
+    signification: Emotions, travel, changes, feminine grace
+    favorable_for: [marriage, mother, travel, health]
+    direction: Northwest
+
+  - name: Tamra
+    name_en: Copper
+    planet: Mars
+    element: Fire
+    signification: Courage, conflict resolution, energy, surgery
+    favorable_for: [enemies, siblings, litigation, surgery]
+    direction: South
+
+  - name: Madhu
+    name_en: Honey
+    planet: Mercury
+    element: Earth
+    signification: Intelligence, commerce, communication, learning
+    favorable_for: [education, career, wealth, partnership]
+    direction: North
+
+  - name: Dadhi
+    name_en: Curd
+    planet: Jupiter
+    element: Ether
+    signification: Wisdom, prosperity, spiritual growth, expansion
+    favorable_for: [fortune, children, spirituality, education]
+    direction: Northeast
+
+  - name: Ghrita
+    name_en: Ghee
+    planet: Venus
+    element: Water
+    signification: Love, luxury, pleasures, artistic pursuits
+    favorable_for: [marriage, children, wealth, gains]
+    direction: Southeast
+
+  - name: Chandana
+    name_en: Sandal
+    planet: Saturn
+    element: Air
+    signification: Longevity, obstacles, discipline, service
+    favorable_for: [longevity, property, spirituality, loss]
+    direction: West
+
+  - name: Pushpa
+    name_en: Flowers
+    planet: LagnaLord
+    element: Variable
+    signification: >
+      Auspiciousness of the self and outward manifestation.
+      Governed by the Lagna lord — the chart's primary ruler.
+    favorable_for: [general, health, status, fortune]
+    direction: Variable
+
+# ── 108 Division Framework ─────────────────────────────────────
+# 12 rashis × 9 navamsha divisions = 108 cells.
+# When a querist offers a number N (1-108):
+#   rashi_index  = (N - 1) // 9   (0=Mesha … 11=Meena)
+#   navamsha_pos = (N - 1) % 9 + 1  (1-9 within the rashi)
+# Source: Prasna Tantra, Kerala Number Prashna tradition.
+divisions_108:
+  description: >
+    12 rashi × 9 navamsha divisions giving 108 unique cells.
+    Each cell carries the combined energy of rashi lord and
+    navamsha lord, used when querist offers a number.
+  formula:
+    rashi_index: "(N - 1) // 9"
+    navamsha_index: "(N - 1) % 9"
+  outcome_mapping:
+    kendra_navamsha: "1, 4, 7, 10 navamsha position → strong positive signal"
+    trikona_navamsha: "1, 5, 9 navamsha position → dharmic fulfillment"
+    dusthana_navamsha: "6, 8, 12 navamsha position → obstacles, delays"
+    note: >
+      Navamsha sequence for Fire signs begins Mesha; Earth from Makara;
+      Air from Tula; Water from Karka.
+
+# ── Deva Prashna — Deity-Based Query Classification ────────────
+# All queries map to one of the four purushartha (life goals).
+# This determines primary planets and weight of favorable factors.
+deva_prashna:
+  description: >
+    Classification of queries by cosmic nature (purushartha).
+    Determines which planets carry primary analytical weight.
+  categories:
+    dharma:
+      description: Righteous duty, spiritual matters, ethics
+      planets: [Jupiter, Sun]
+      houses: [1, 5, 9]
+      nature: sattvik
+      query_types: [spirituality, education, fortune, father, general]
+    artha:
+      description: Material wealth, career, worldly achievements
+      planets: [Mercury, Venus, Jupiter]
+      houses: [2, 6, 10]
+      nature: rajasik
+      query_types: [wealth, career, property, inheritance, gains, income,
+                    enemies, partnership, status]
+    kama:
+      description: Desires, relationships, pleasures
+      planets: [Moon, Venus, Mars]
+      houses: [3, 7, 11]
+      nature: rajasik
+      query_types: [marriage, siblings, children, travel]
+    moksha:
+      description: Liberation, dissolution, hidden matters
+      planets: [Saturn, Ketu, Jupiter]
+      houses: [4, 8, 12]
+      nature: tamasik
+      query_types: [longevity, loss, health, disease, mother, property]
+
+# ── Aroodha Rules for Prashna ──────────────────────────────────
+# Source: Jaimini Upadesha Sutras, Prashna Marga Ch.2
+aroodha_rules:
+  description: >
+    Aroodha (Pada) reveals worldly image and likely external
+    manifestation of the queried matter. Strong Aroodha lord
+    indicates visible positive outcome; weak lord = hidden obstacles.
+  strength_indicators:
+    strong_houses: [1, 2, 4, 5, 7, 9, 10, 11]
+    weak_houses: [3, 6, 8, 12]
+  exception: >
+    If Aroodha falls in the same sign as the house or in the 7th
+    from it, use the 10th from the house sign instead.
+    Source: Jaimini Sutras 1.2.14-15.
+  natural_karakas:
+    marriage: Venus
+    career: Sun
+    wealth: Jupiter
+    health: Sun
+    children: Jupiter
+    enemies: Mars
+    longevity: Saturn
+    spirituality: Jupiter
+    general: Moon
+
+# ── Swara Prashna (Breath-Based Analysis) ─────────────────────
+# Source: Swara Vigyana, integrated into Prashna Marga Ch.5.
+swara_prashna:
+  description: >
+    The active breath at the moment of query reveals likely outcome.
+    Ida = receptive; Pingala = active; Sushumna = indeterminate.
+  ida:
+    nostril: left
+    planet: Moon
+    element_affinity: [Water, Earth]
+    signs: [Cancer, Scorpio, Pisces, Taurus, Virgo, Capricorn]
+    favorable_for: Mother, home, marriage, wealth, emotional matters
+    verdict: positive for receptive and stable outcomes
+  pingala:
+    nostril: right
+    planet: Sun
+    element_affinity: [Fire, Air]
+    signs: [Aries, Leo, Sagittarius, Gemini, Libra, Aquarius]
+    favorable_for: Career, authority, enemies, surgery, active pursuits
+    verdict: positive for active and assertive endeavors
+  sushumna:
+    nostril: both (transition at hour boundary)
+    planet: null
+    verdict: indeterminate — timing may be premature for the query
+
+# ── Nimittam (Omens at Question Moment) ───────────────────────
+# Observed signs at the moment of query carry interpretive weight.
+nimittam:
+  description: >
+    Direction of querist's approach and ambient omens at question
+    time modify the base Prashna verdict.
+  directions:
+    East:
+      planet: Sun
+      verdict: Positive for career, status, government matters
+    West:
+      planet: Saturn
+      verdict: Delays or obstacles; eventual stability
+    North:
+      planet: Mercury
+      verdict: Positive for intellectual and commercial matters
+    South:
+      planet: Mars
+      verdict: Conflict energy; positive for overcoming enemies
+    Northeast:
+      planet: Jupiter
+      verdict: Highly auspicious; dharmic fulfillment
+    Southeast:
+      planet: Venus
+      verdict: Positive for relationships and pleasures
+    Southwest:
+      planet: Rahu
+      verdict: Confusion and hidden matters; karmic delays
+    Northwest:
+      planet: Moon
+      verdict: Fluctuating results; travel or change likely

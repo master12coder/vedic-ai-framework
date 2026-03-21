@@ -4,6 +4,13 @@ All core model classes are re-exported here for convenient access.
 """
 
 from daivai_engine.models.ashtakavarga import AshtakavargaResult, KakshaResult, PrastaraResult
+from daivai_engine.models.ashtamangala import (
+    AroodhaResult,
+    AshtamangalaResult,
+    MangalaAssessment,
+    PrashnaClassification,
+    SphutuResult,
+)
 from daivai_engine.models.avakhada import AvakhadaChakra
 from daivai_engine.models.bhava_chalit import BhavaChalitResult, BhavaPlanet
 from daivai_engine.models.bhrigu_bindu import BhriguBinduResult
@@ -43,10 +50,13 @@ from daivai_engine.models.yoga import YogaResult
 
 
 __all__ = [
+    "AroodhaResult",
     # jaimini.py
     "ArudhaPada",
     # ashtakavarga.py
     "AshtakavargaResult",
+    # ashtamangala.py
+    "AshtamangalaResult",
     # dasha_extra.py
     "AshtottariDashaPeriod",
     # avakhada.py
@@ -84,6 +94,7 @@ __all__ = [
     "KakshaResult",
     # matching.py
     "KootaScore",
+    "MangalaAssessment",
     "MatchingResult",
     # mrityu_bhaga.py
     "MrityuBhagaResult",
@@ -97,6 +108,7 @@ __all__ = [
     "PlanetData",
     # strength.py
     "PlanetStrength",
+    "PrashnaClassification",
     # ashtakavarga.py
     "PrastaraResult",
     # gemstone.py
@@ -108,6 +120,7 @@ __all__ = [
     "ScriptureReference",
     # strength.py
     "ShadbalaResult",
+    "SphutuResult",
     # transit.py
     "TransitData",
     # daily.py
