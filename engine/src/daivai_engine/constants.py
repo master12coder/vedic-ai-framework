@@ -742,6 +742,21 @@ PADAS_PER_NAKSHATRA = 4
 # Ashtakavarga
 SARVASHTAKAVARGA_TOTAL = 337  # Sum of all SAV bindus is always 337
 
+# Ashtakavarga Shodhya Pinda multipliers — BPHS Ch.71
+# Rasi Gunakara: sign multiplier (index 0=Aries … 11=Pisces)
+RASI_GUNAKARA: list[int] = [7, 10, 8, 4, 10, 6, 7, 8, 9, 5, 11, 12]
+
+# Graha Gunakara: planet multiplier for Graha Pinda computation
+GRAHA_GUNAKARA: dict[str, int] = {
+    "Sun": 5,
+    "Moon": 5,
+    "Mars": 8,
+    "Mercury": 5,
+    "Jupiter": 10,
+    "Venus": 7,
+    "Saturn": 5,
+}
+
 # Conjunction and aspect defaults
 DEFAULT_CONJUNCTION_ORB = 10.0  # Degrees within which two planets are conjunct
 
