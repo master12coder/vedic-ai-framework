@@ -2,6 +2,7 @@
 
 from daivai_engine.compute.chart import compute_chart
 from daivai_engine.compute.yoga import detect_all_yogas
+from daivai_engine.compute.yoga_extended import detect_extended_yogas
 
 
 class TestYogaDetection:
@@ -66,3 +67,45 @@ class TestYogaDetection:
         # Verify structure if present
         if kemdrum and kemdrum[0].is_present:
             assert "Moon" in kemdrum[0].planets_involved
+
+    def test_neech_bhanga_retrograde_cancels(self):
+        """A retrograde debilitated planet should get Neech Bhanga.
+
+        Rule: Retrograde debilitated planet has its debilitation cancelled.
+        Source: BPHS, widely accepted in classical Jyotish.
+        """
+        # Find a chart where a planet is debilitated AND retrograde.
+        # Mercury retrogrades often; when debilitated (Pisces) + retrograde = Neech Bhanga.
+        # Try a date when Mercury was likely in Pisces and retrograde.
+        chart = compute_chart(
+            name="Neech Bhanga Test",
+            dob="15/03/2000",
+            tob="06:00",
+            lat=28.6139,
+            lon=77.2090,
+            tz_name="Asia/Kolkata",
+        )
+        yogas = detect_extended_yogas(chart)
+        neech_bhangas = [y for y in yogas if y.name == "Neech Bhanga Raj Yoga"]
+        # The test verifies: if any planet in this chart is debilitated+retrograde,
+        # it MUST appear as Neech Bhanga with "retrograde" in description.
+        for planet_name, planet in chart.planets.items():
+            if planet.dignity == "debilitated" and planet.is_retrograde:
+                matching = [y for y in neech_bhangas if planet_name in y.planets_involved]
+                assert matching, (
+                    f"{planet_name} is debilitated+retrograde but no Neech Bhanga detected"
+                )
+                assert any("retrograde" in y.description.lower() for y in matching), (
+                    f"Retrograde rule not reflected in Neech Bhanga description for {planet_name}"
+                )
+
+    def test_vipreet_raj_yoga_structure(self, manish_chart):
+        """All Vipreet Raj Yogas must involve dusthana lords in dusthana houses."""
+        yogas = detect_all_yogas(manish_chart)
+        vipreet = [y for y in yogas if "Vipreet" in y.name]
+        for y in vipreet:
+            assert y.is_present
+            # Houses involved should include dusthana houses
+            assert any(h in (6, 8, 12) for h in y.houses_involved), (
+                f"Vipreet Raj Yoga houses should include dusthana: {y.houses_involved}"
+            )

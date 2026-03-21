@@ -40,9 +40,20 @@ YOGINI_TOTAL_YEARS = _YOGINI_TOTAL_YEARS
 
 
 # Yogini start nakshatra mapping: nakshatra_index % 8 -> yogini index
+# Ashwini(0)->Mangala, Bharani(1)->Pingala, Krittika(2)->Dhanya,
+# Rohini(3)->Bhramari, Mrigashira(4)->Bhadrika, Ardra(5)->Ulka,
+# Punarvasu(6)->Siddha, Pushya(7)->Sankata, then repeats.
+# Source: Jataka Parijata, Yogini Dasha chapter.
 def _yogini_start_index(nakshatra_index: int) -> int:
-    """Get starting Yogini from Moon's nakshatra."""
-    return (nakshatra_index + 3) % 8
+    """Get starting Yogini from Moon's nakshatra.
+
+    Each nakshatra maps to a Yogini by simple modulo-8 cycle starting
+    from Ashwini (index 0) = Mangala.
+
+    Returns:
+        Index into YOGINI_SEQUENCE (0=Mangala … 7=Sankata).
+    """
+    return nakshatra_index % 8
 
 
 def compute_yogini_dasha(chart: ChartData) -> list[YoginiDashaPeriod]:
@@ -128,8 +139,33 @@ def _ashtottari_start_lord(nakshatra_index: int) -> str:
     return lord_map[nak_mod]
 
 
+def is_ashtottari_applicable(chart: ChartData) -> bool:
+    """Check if Ashtottari Dasha applies for this chart.
+
+    Applicability condition (BPHS Ch.45): Rahu must be in a kendra
+    (houses 1/4/7/10) or trikona (5/9) from the lagna lord's sign.
+    Rahu in the same sign as the lagna lord also qualifies (counts as 1st).
+
+    Source: BPHS Ch.45 "Ashtottari Dasha Adhyaya".
+    """
+    rahu = chart.planets["Rahu"]
+    lagna_lord_name = SIGN_LORDS[chart.lagna_sign_index]
+    lagna_lord = chart.planets.get(lagna_lord_name)
+    if lagna_lord is None:
+        return False  # Rahu/Ketu as lagna lord edge case
+
+    rahu_sign = rahu.sign_index
+    lord_sign = lagna_lord.sign_index
+    distance = ((rahu_sign - lord_sign) % 12) + 1  # 1-indexed house distance
+    kendra_trikona = {1, 4, 5, 7, 9, 10}
+    return distance in kendra_trikona
+
+
 def compute_ashtottari_dasha(chart: ChartData) -> list[AshtottariDashaPeriod]:
     """Compute Ashtottari Dasha periods (108-year cycle).
+
+    Note: Use is_ashtottari_applicable(chart) to check if this system applies
+    before using results. When inapplicable, Vimshottari is the default.
 
     Args:
         chart: Computed birth chart
