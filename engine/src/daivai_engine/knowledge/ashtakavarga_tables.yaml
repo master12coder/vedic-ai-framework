@@ -87,7 +87,7 @@ planets:
     benefic_positions:
       from_Sun:     [8, 11, 12]
       from_Moon:    [1, 2, 3, 4, 5, 8, 9, 11, 12]
-      from_Mars:    [3, 4, 6, 8, 9, 11, 12]
+      from_Mars:    [3, 4, 6, 9, 11, 12]
       from_Mercury: [3, 5, 6, 9, 11]
       from_Jupiter: [5, 8, 9, 10, 11]
       from_Venus:   [1, 2, 3, 4, 5, 8, 9, 10, 11]
