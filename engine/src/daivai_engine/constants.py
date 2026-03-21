@@ -179,6 +179,11 @@ COMBUSTION_LIMITS_RETROGRADE: dict[str, float] = {
     "Venus": 8.0,
 }
 
+# Cazimi threshold: planet within 17 arc-minutes of Sun is "in the heart of the Sun"
+# (Combust by Beams). Such planets are extremely powerful — not weakened.
+# Source: Saravali Ch.4; Phaladeepika Ch.2 v.6.
+CAZIMI_LIMIT: float = 17.0 / 60.0  # 0.2833° = 17 arc-minutes
+
 # Special (additional) aspects beyond the standard 7th-house aspect
 SPECIAL_ASPECTS: dict[str, list[int]] = {
     "Mars": [4, 8],  # 4th and 8th house aspects

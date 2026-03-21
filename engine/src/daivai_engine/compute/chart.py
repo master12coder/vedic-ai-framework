@@ -8,6 +8,7 @@ from daivai_engine.compute.datetime_utils import parse_birth_datetime, to_jd
 from daivai_engine.compute.geo import resolve_or_manual
 from daivai_engine.constants import (
     AVASTHAS,
+    CAZIMI_LIMIT,
     COMBUSTION_LIMITS,
     COMBUSTION_LIMITS_RETROGRADE,
     DEBILITATION,
@@ -75,19 +76,32 @@ def _get_avastha(degree_in_sign: float, sign_index: int) -> str:
         return AVASTHAS[4 - segment]
 
 
-def _check_combustion(planet: str, planet_lon: float, sun_lon: float, is_retro: bool) -> bool:
-    """Check if planet is combust (too close to Sun)."""
+def _check_combustion(
+    planet: str, planet_lon: float, sun_lon: float, is_retro: bool
+) -> tuple[bool, bool]:
+    """Check combustion and cazimi status for a planet.
+
+    Returns:
+        Tuple of (is_combust, is_cazimi).
+        - is_cazimi: within CAZIMI_LIMIT (17') of Sun — extremely powerful
+        - is_combust: within combustion limit but outside cazimi — weakened
+        A cazimi planet is NOT combust (is_combust=False when is_cazimi=True).
+
+    Source: Saravali Ch.4; Phaladeepika Ch.2 v.6.
+    """
     if planet in ("Sun", "Rahu", "Ketu"):
-        return False
+        return False, False
     limit = COMBUSTION_LIMITS.get(planet)
     if limit is None:
-        return False
+        return False, False
     if is_retro and planet in COMBUSTION_LIMITS_RETROGRADE:
         limit = COMBUSTION_LIMITS_RETROGRADE[planet]
     diff = abs(planet_lon - sun_lon)
     if diff > 180:
         diff = 360 - diff
-    return diff < limit
+    if diff < CAZIMI_LIMIT:
+        return False, True  # Cazimi — in heart of Sun, not weakened
+    return diff < limit, False
 
 
 def _house_from_lagna(planet_sign: int, lagna_sign: int) -> int:
@@ -186,6 +200,7 @@ def compute_chart(
                 dignity=_get_dignity("Ketu", sign_index, degree_in_sign),
                 avastha=_get_avastha(degree_in_sign, sign_index),
                 is_combust=False,
+                is_cazimi=False,
                 sign_lord=SIGN_LORDS[sign_index],
             )
         else:
@@ -201,6 +216,8 @@ def compute_chart(
 
             if planet_name == "Rahu":
                 is_retro = True  # Rahu always retrograde
+
+            is_combust, is_cazimi = _check_combustion(planet_name, lon, sun_lon, is_retro)
 
             planet_data = PlanetData(
                 name=planet_name,
@@ -220,7 +237,8 @@ def compute_chart(
                 speed=round(speed, 6),
                 dignity=_get_dignity(planet_name, sign_index, degree_in_sign),
                 avastha=_get_avastha(degree_in_sign, sign_index),
-                is_combust=_check_combustion(planet_name, lon, sun_lon, is_retro),
+                is_combust=is_combust,
+                is_cazimi=is_cazimi,
                 sign_lord=SIGN_LORDS[sign_index],
             )
 
