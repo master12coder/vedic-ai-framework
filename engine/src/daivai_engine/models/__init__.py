@@ -30,6 +30,15 @@ from daivai_engine.models.scripture import ScriptureReference
 from daivai_engine.models.strength import PlanetStrength, ShadbalaResult
 from daivai_engine.models.transit import TransitData, TransitPlanet
 from daivai_engine.models.upagraha import UpagrahaPosition
+from daivai_engine.models.vastu import (
+    AyadiField,
+    DirectionStrength,
+    DoorAnalysis,
+    RoomRecommendation,
+    VastuDosha,
+    VastuResult,
+    VastuZone,
+)
 from daivai_engine.models.yoga import YogaResult
 
 
@@ -42,6 +51,8 @@ __all__ = [
     "AshtottariDashaPeriod",
     # avakhada.py
     "AvakhadaChakra",
+    # vastu.py
+    "AyadiField",
     # bhava_chalit.py
     "BhavaChalitResult",
     "BhavaPlanet",
@@ -57,8 +68,10 @@ __all__ = [
     "DailySuggestion",
     # dasha.py
     "DashaPeriod",
+    "DirectionStrength",
     # divisional.py
     "DivisionalPosition",
+    "DoorAnalysis",
     # dosha.py
     "DoshaResult",
     # gemstone.py
@@ -90,6 +103,7 @@ __all__ = [
     "ProhibitedStone",
     # pushkara.py
     "PushkaraResult",
+    "RoomRecommendation",
     # scripture.py
     "ScriptureReference",
     # strength.py
@@ -102,6 +116,9 @@ __all__ = [
     "TransitPlanet",
     # upagraha.py
     "UpagrahaPosition",
+    "VastuDosha",
+    "VastuResult",
+    "VastuZone",
     # yoga.py
     "YogaResult",
     # dasha_extra.py

@@ -57,6 +57,11 @@ def load_weekly_routine() -> dict[str, Any]:
     return _load_yaml("weekly_routine.yaml")
 
 
+def load_vastu_rules() -> dict[str, Any]:
+    """Load Vastu Shastra directional mappings, mandala zones, and dosha rules."""
+    return _load_yaml("vastu_rules.yaml")
+
+
 def reload() -> None:
     """Clear cache and force reload."""
     global _cache
