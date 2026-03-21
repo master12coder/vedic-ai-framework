@@ -32,6 +32,7 @@ class PlanetData(BaseModel):
     dignity: str  # exalted/debilitated/own/mooltrikona/neutral
     avastha: str  # Bala/Kumara/Yuva/Vriddha/Mruta
     is_combust: bool
+    is_cazimi: bool = False  # Within 17' of Sun — extremely powerful, not weakened
     sign_lord: str  # Lord of the sign planet is in
 
 

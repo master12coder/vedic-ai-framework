@@ -14,6 +14,7 @@ import logging
 from pydantic import BaseModel
 
 from daivai_engine.constants import (
+    CAZIMI_LIMIT,
     COMBUSTION_LIMITS,
     COMBUSTION_LIMITS_RETROGRADE,
     EXALTATION,
@@ -181,16 +182,23 @@ def _layer2_astronomical(chart: ChartData) -> list[str]:
         if p and not p.is_retrograde:
             w.append(f"L2: {node} not marked retrograde — nodes are always retrograde")
 
-    # Combustion distances match planet-specific BPHS limits (Ch.25)
+    # Combustion distances match planet-specific BPHS limits (Ch.25).
+    # Cazimi (within 17') counts as is_cazimi=True, is_combust=False — not a mismatch.
     for name in ("Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"):
         p = chart.planets[name]
         dist = _circular_dist(p.longitude, sun_lon)
         limit = COMBUSTION_LIMITS.get(name, 999)
         if p.is_retrograde and name in COMBUSTION_LIMITS_RETROGRADE:
             limit = COMBUSTION_LIMITS_RETROGRADE[name]
-        computed = dist < limit
-        if p.is_combust != computed:
+        is_cazimi = dist < CAZIMI_LIMIT
+        computed_combust = (dist < limit) and not is_cazimi
+        computed_cazimi = is_cazimi
+        if p.is_combust != computed_combust:
             w.append(f"L2: {name} combustion mismatch: dist={dist:.2f}° limit={limit}°")
+        if p.is_cazimi != computed_cazimi:
+            w.append(
+                f"L2: {name} cazimi mismatch: dist={dist:.2f}° cazimi_limit={CAZIMI_LIMIT:.4f}°"
+            )
 
     # Retrograde matches negative speed (except nodes)
     for name, p in chart.planets.items():
