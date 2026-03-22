@@ -58,95 +58,57 @@ from daivai_engine.models.yoga import YogaResult
 
 __all__ = [
     "AroodhaResult",
-    # jaimini.py
     "ArudhaPada",
-    # ashtakavarga.py
     "AshtakavargaResult",
-    # ashtamangala.py
     "AshtamangalaResult",
-    # dasha_extra.py
     "AshtottariDashaPeriod",
-    # avakhada.py
     "AvakhadaChakra",
-    # vastu.py
     "AyadiField",
-    # bhava_chalit.py
     "BhavaChalitResult",
     "BhavaPlanet",
-    # bhrigu_bindu.py
     "BhriguBinduResult",
-    # dasha_extra.py
     "CharaDashaPeriod",
-    # jaimini.py
     "CharaKaraka",
-    # chart.py
     "ChartData",
-    # daily.py
     "DailySuggestion",
-    # dasha.py
     "DashaPeriod",
     "DirectionStrength",
-    # divisional.py
     "DivisionalPosition",
     "DoorAnalysis",
-    # dosha.py
     "DoshaResult",
-    # gemstone.py
+    "GandMoolResult",
     "GemstoneRecommendation",
-    # jaimini.py
     "JaiminiResult",
-    # kp.py
     "KPPosition",
-    # ashtakavarga.py
     "KakshaResult",
-    # matching.py
     "KootaScore",
     "MangalaAssessment",
     "MatchingResult",
-    # mrityu_bhaga.py
     "MrityuBhagaResult",
-    # muhurta.py
     "MuhurtaCandidate",
-    # namakarana.py
-    "GandMoolResult",
     "NamakaranaResult",
     "NameNumerology",
     "NameScore",
     "NameSuggestion",
-    # panchang.py
     "PanchangData",
-    # pattern.py
     "PatternResult",
-    # chart.py
     "PlanetData",
-    # strength.py
     "PlanetStrength",
     "PrashnaClassification",
-    # ashtakavarga.py
     "PrastaraResult",
-    # gemstone.py
     "ProhibitedStone",
-    # pushkara.py
     "PushkaraResult",
     "RoomRecommendation",
-    # scripture.py
     "ScriptureReference",
-    # strength.py
     "ShadbalaResult",
     "SphutuResult",
-    # transit.py
     "TransitData",
-    # daily.py
     "TransitImpact",
-    # transit.py
     "TransitPlanet",
-    # upagraha.py
     "UpagrahaPosition",
     "VastuDosha",
     "VastuResult",
     "VastuZone",
-    # yoga.py
     "YogaResult",
-    # dasha_extra.py
     "YoginiDashaPeriod",
 ]

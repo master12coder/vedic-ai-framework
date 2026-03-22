@@ -19,8 +19,6 @@ Tests cover:
 
 from __future__ import annotations
 
-import pytest
-
 from daivai_engine.compute.namakarana import (
     check_gand_mool,
     compute_namakarana,
