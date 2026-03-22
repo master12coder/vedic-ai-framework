@@ -67,6 +67,11 @@ def load_porutham_data() -> dict[str, Any]:
     return _load_yaml("porutham_data.yaml")
 
 
+def load_gem_therapy_rules() -> dict[str, Any]:
+    """Load complete gem therapy rules: contraindications, muhurta, quality, activation."""
+    return _load_yaml("gem_therapy_rules.yaml")
+
+
 def reload() -> None:
     """Clear cache and force reload."""
     global _cache
