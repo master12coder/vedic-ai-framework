@@ -27,10 +27,10 @@ from pathlib import Path
 import yaml
 
 from daivai_engine.compute.divisional import compute_shashtyamsha_sign
+from daivai_engine.compute.shashtyamsha_compare import compare_d1_d60 as _compare_d1_d60
 from daivai_engine.constants import PLANETS, SIGN_LORDS, SIGNS
 from daivai_engine.models.chart import ChartData
 from daivai_engine.models.shashtyamsha import (
-    D1D60Comparison,
     D1D60ComparisonResult,
     D60Analysis,
     ShashtyamshaDeity,
@@ -39,10 +39,6 @@ from daivai_engine.models.shashtyamsha import (
 
 
 _DATA_FILE = Path(__file__).parent.parent / "knowledge" / "shashtyamsha_data.yaml"
-
-# D1 dignities that map to "benefic" for comparison purposes
-_BENEFIC_DIGNITIES = {"exalted", "mooltrikona", "own", "friend"}
-_MALEFIC_DIGNITIES = {"debilitated", "enemy"}
 
 
 @lru_cache(maxsize=1)
@@ -193,34 +189,10 @@ def _build_findings(
     return findings
 
 
-def _assess_d1(dignity: str) -> str:
-    """Convert a planet's D1 dignity to benefic/malefic/neutral assessment."""
-    if dignity in _BENEFIC_DIGNITIES:
-        return "benefic"
-    if dignity in _MALEFIC_DIGNITIES:
-        return "malefic"
-    return "neutral"
-
-
-def _assess_d60(nature: str) -> str:
-    """Normalise Shashtyamsha deity nature to benefic/malefic/mixed."""
-    match nature:
-        case "Saumya":
-            return "benefic"
-        case "Krura":
-            return "malefic"
-        case _:
-            return "mixed"
-
-
 def compare_d1_d60(chart: ChartData) -> D1D60ComparisonResult:
     """Cross-validate D1 and D60 for all planets per the BPHS rule.
 
     BPHS states: 'If D1 and D60 agree, the result is certain.'
-    This function checks agreement for each planet:
-      - D1 benefic + D60 Saumya → certain benefic
-      - D1 malefic + D60 Krura  → certain malefic
-      - Disagreement             → uncertain result
 
     Args:
         chart: Computed birth chart.
@@ -229,83 +201,4 @@ def compare_d1_d60(chart: ChartData) -> D1D60ComparisonResult:
         D1D60ComparisonResult with per-planet comparisons and summary.
     """
     d60 = analyze_d60_chart(chart)
-    positions_by_planet = {pos.planet: pos for pos in d60.planets}
-
-    comparisons: list[D1D60Comparison] = []
-    certain_benefics: list[str] = []
-    certain_malefics: list[str] = []
-    conflicting: list[str] = []
-
-    for planet_name in PLANETS:
-        p = chart.planets[planet_name]
-        pos = positions_by_planet[planet_name]
-
-        d1_val = _assess_d1(p.dignity)
-        d60_val = _assess_d60(pos.deity.nature)
-
-        agree = (d1_val == "benefic" and d60_val == "benefic") or (
-            d1_val == "malefic" and d60_val == "malefic"
-        )
-        certainty = "certain" if agree else "uncertain"
-
-        if agree and d1_val == "benefic":
-            certain_benefics.append(planet_name)
-            interpretation = (
-                f"{planet_name} is benefic in D1 ({p.dignity}) and in D60 "
-                f"({pos.deity.name}, {pos.deity.nature}) — result CERTAIN to be good"
-            )
-        elif agree and d1_val == "malefic":
-            certain_malefics.append(planet_name)
-            interpretation = (
-                f"{planet_name} is malefic in D1 ({p.dignity}) and in D60 "
-                f"({pos.deity.name}, {pos.deity.nature}) — result CERTAIN to be difficult"
-            )
-        else:
-            conflicting.append(planet_name)
-            interpretation = (
-                f"{planet_name} is {d1_val} in D1 ({p.dignity}) but "
-                f"{d60_val} in D60 ({pos.deity.name}, {pos.deity.nature}) — "
-                "result uncertain; context and dasha timing determine outcome"
-            )
-
-        comparisons.append(
-            D1D60Comparison(
-                planet=planet_name,
-                d1_assessment=d1_val,
-                d60_assessment=pos.deity.nature,
-                agreement=agree,
-                certainty=certainty,
-                interpretation=interpretation,
-            )
-        )
-
-    summary = _build_comparison_summary(certain_benefics, certain_malefics, conflicting)
-
-    return D1D60ComparisonResult(
-        comparisons=comparisons,
-        certain_benefics=certain_benefics,
-        certain_malefics=certain_malefics,
-        conflicting=conflicting,
-        summary=summary,
-    )
-
-
-def _build_comparison_summary(
-    certain_benefics: list[str],
-    certain_malefics: list[str],
-    conflicting: list[str],
-) -> str:
-    """Compose a one-paragraph D1-D60 agreement summary."""
-    parts: list[str] = []
-    if certain_benefics:
-        parts.append(f"Certain benefics (D1+D60 agree): {', '.join(certain_benefics)}")
-    if certain_malefics:
-        parts.append(f"Certain malefics (D1+D60 agree): {', '.join(certain_malefics)}")
-    if conflicting:
-        parts.append(f"Uncertain (D1-D60 conflict): {', '.join(conflicting)}")
-    total = len(certain_benefics) + len(certain_malefics)
-    parts.append(
-        f"{total} of 9 planets show D1-D60 agreement — "
-        "those give the most predictable and certain results"
-    )
-    return ". ".join(parts) + "."
+    return _compare_d1_d60(chart, d60)
