@@ -1,21 +1,7 @@
 """Advanced Muhurta Engine — multi-type auspicious timing with dosha checking.
 
-Implements the classical five-fold Panchanga Shuddhi (purity test) and
-additional Lagna Shuddhi check for comprehensive muhurta selection.
-
-Panchanga Shuddhi = 5 Panchanga limbs must all be pure:
-  1. Tithi Shuddhi — no Rikta (4th, 9th, 14th) or Amavasya
-  2. Vara Shuddhi  — no inauspicious weekday for the purpose
-  3. Nakshatra Shuddhi — no Krura/Ugra/Gandanta nakshatra
-  4. Yoga Shuddhi — no Vishkambha, Vajra, Vyatipata, Vaidhriti, etc.
-  5. Karana Shuddhi — no Vishti (Bhadra) karana
-
-Lagna Shuddhi = the rising sign at the muhurta moment must be:
-  - A fixed sign for permanent events (vivah, grihapravesh)
-  - A movable sign for journeys (yatra)
-  - A dual sign for education/business (vidya, vyapara)
-  - Free from malefics in the 8th from lagna
-  - Lagna lord in kendra or trikona
+Orchestrates Panchanga Shuddhi (5-fold purity) and Lagna Shuddhi checks.
+Computation helpers live in muhurta_panchanga.py and muhurta_lagna.py.
 
 Source: Muhurta Chintamani, BPHS Muhurta chapter.
 """
@@ -23,10 +9,19 @@ Source: Muhurta Chintamani, BPHS Muhurta chapter.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any
 
 from pydantic import BaseModel
 
+from daivai_engine.compute.muhurta_lagna import compute_lagna_shuddhi, nak_index
+from daivai_engine.compute.muhurta_panchanga import (
+    _BHADRA_KARANA,
+    _GANDANTA_NAKSHATRAS,
+    _INAUSPICIOUS_YOGAS,
+    _KRURA_NAKSHATRAS,
+    _PANCHAK_NAKSHATRAS,
+    _RIKTA_TITHIS,
+    compute_panchanga_shuddhi,
+)
 from daivai_engine.compute.panchang import compute_panchang
 from daivai_engine.constants import (
     RAHU_KAAL_SLOT,
@@ -96,55 +91,6 @@ class MuhurtaScore(BaseModel):
     lagna_shuddhi: LagnaShuddhi | None = None
     is_auspicious: bool  # score >= 70
     summary: str
-
-
-# Rikta tithis — BPHS: 4th, 9th, 14th are inauspicious (0-indexed: 3, 8, 13, 18, 23, 28)
-_RIKTA_TITHIS = {3, 8, 13, 18, 23, 28}
-
-# Bhadra (Vishti) karana — 7th karana in the cycle is always inauspicious
-_BHADRA_KARANA = "Vishti"
-
-# Panchak nakshatras (Moon in these = Panchak dosha) — Muhurta Chintamani
-_PANCHAK_NAKSHATRAS = {
-    "Dhanishta",
-    "Shatabhisha",
-    "Purva Bhadrapada",
-    "Uttara Bhadrapada",
-    "Revati",
-}
-
-# Krura/Ugra nakshatras — inauspicious for auspicious events
-_KRURA_NAKSHATRAS = {"Bharani", "Magha", "Purva Phalguni", "Purva Ashadha", "Purva Bhadrapada"}
-
-# Gandanta junction nakshatras
-_GANDANTA_NAKSHATRAS = {"Ashlesha", "Jyeshtha", "Revati", "Magha", "Moola", "Ashwini"}
-
-# Inauspicious yogas (from 27 panchang yogas)
-_INAUSPICIOUS_YOGAS = {
-    "Vishkambha",
-    "Atiganda",
-    "Shula",
-    "Ganda",
-    "Vyaghata",
-    "Vajra",
-    "Vyatipata",
-    "Parigha",
-    "Vaidhriti",
-}
-
-# Favorable conditions per event type
-_EVENT_FAVORABLE: dict[str, dict[str, Any]] = {
-    "vivah": {"good_days": {1, 2, 3, 4}, "lagna_types": {"fixed"}, "strong_houses": {7, 2}},
-    "griha_pravesh": {"good_days": {1, 2, 3, 4}, "lagna_types": {"fixed"}, "strong_houses": {4}},
-    "vyapara": {"good_days": {2, 3}, "lagna_types": {"dual"}, "strong_houses": {10, 2, 11}},
-    "yatra": {"good_days": {1, 2, 3}, "lagna_types": {"movable"}, "strong_houses": {9, 3}},
-    "vidya": {"good_days": {2, 3}, "lagna_types": {"dual"}, "strong_houses": {4, 5}},
-    "aushadhi": {
-        "good_days": {0, 1, 3, 4},
-        "lagna_types": {"movable", "dual"},
-        "strong_houses": {1},
-    },
-}
 
 
 def score_muhurta(
@@ -295,7 +241,7 @@ def score_muhurta(
     # 9. Tara Bala (if natal chart provided)
     if natal_chart:
         natal_nak = natal_chart.planets["Moon"].nakshatra_index
-        transit_nak_idx = _nak_index(panchang.nakshatra_name)
+        transit_nak_idx = nak_index(panchang.nakshatra_name)
         tara = ((transit_nak_idx - natal_nak) % 27) % 9
         bad_taras = {2, 4, 6, 8}  # Vipat, Pratyak, Vadha, Naidhana (0-indexed from 0)
         is_bad_tara = tara in bad_taras
@@ -316,10 +262,10 @@ def score_muhurta(
     score = max(0, min(100, score))
 
     # Panchanga Shuddhi (5-fold purity check)
-    panchanga_shuddhi = _compute_panchanga_shuddhi(panchang, event_type, dt)
+    panchanga_shuddhi = compute_panchanga_shuddhi(panchang, event_type, dt, PanchangaShuddhi)
 
     # Lagna Shuddhi (lagna purity — requires chart for event moment)
-    lagna_shuddhi = _compute_lagna_shuddhi(dt, lat, lon, tz_name, event_type)
+    lagna_shuddhi = compute_lagna_shuddhi(dt, lat, lon, tz_name, event_type, LagnaShuddhi)
 
     # Lagna shuddhi affects score
     if lagna_shuddhi is not None and not lagna_shuddhi.is_shuddha:
@@ -343,247 +289,7 @@ def score_muhurta(
     )
 
 
-# ── Panchanga Shuddhi ────────────────────────────────────────────────────────
-
-# Inauspicious weekdays per event type (0=Sun, 1=Mon, ..., 6=Sat)
-_INAUSPICIOUS_VARA: dict[str, set[int]] = {
-    "vivah": {2, 6},  # Tuesday, Saturday
-    "griha_pravesh": {2},  # Tuesday
-    "vyapara": {0},  # Sunday
-    "yatra": {2, 6},  # Tuesday, Saturday
-    "vidya": {2},  # Tuesday
-    "aushadhi": set(),
-    "general": set(),
-}
-
-
-def _compute_panchanga_shuddhi(
-    panchang: Any,
-    event_type: str,
-    dt: datetime,
-) -> PanchangaShuddhi:
-    """Compute the 5-fold Panchanga Shuddhi (purity) assessment.
-
-    Checks each of the 5 Panchanga limbs independently:
-    1. Tithi Shuddhi — no Rikta tithi or Amavasya
-    2. Vara Shuddhi — no inauspicious weekday for event type
-    3. Nakshatra Shuddhi — no Krura, Ugra, Panchak, or Gandanta nakshatra
-    4. Yoga Shuddhi — none of the 9 inauspicious yogas active
-    5. Karana Shuddhi — no Vishti (Bhadra) karana active
-
-    Source: Muhurta Chintamani Ch.1.
-    """
-    tithi_idx = panchang.tithi_index if hasattr(panchang, "tithi_index") else 0
-
-    # 1. Tithi Shuddhi
-    is_rikta = tithi_idx in _RIKTA_TITHIS
-    is_amavasya = "Amavasya" in panchang.tithi_name
-    tithi_shuddha = not is_rikta and not is_amavasya
-
-    # 2. Vara Shuddhi
-    weekday = dt.weekday()
-    day_idx = (weekday + 1) % 7  # Sunday=0
-    bad_varas = _INAUSPICIOUS_VARA.get(event_type, set())
-    vara_shuddha = day_idx not in bad_varas
-
-    # 3. Nakshatra Shuddhi (Krura, Panchak, Gandanta — all checked)
-    is_krura_nak = panchang.nakshatra_name in _KRURA_NAKSHATRAS
-    is_panchak_nak = panchang.nakshatra_name in _PANCHAK_NAKSHATRAS
-    is_gandanta_nak = panchang.nakshatra_name in _GANDANTA_NAKSHATRAS
-    nakshatra_shuddha = not is_krura_nak and not is_panchak_nak and not is_gandanta_nak
-
-    # 4. Yoga Shuddhi
-    yoga_shuddha = panchang.yoga_name not in _INAUSPICIOUS_YOGAS
-
-    # 5. Karana Shuddhi
-    karana_shuddha = _BHADRA_KARANA.lower() not in panchang.karana_name.lower()
-
-    count = sum([tithi_shuddha, vara_shuddha, nakshatra_shuddha, yoga_shuddha, karana_shuddha])
-
-    impure_limbs: list[str] = []
-    if not tithi_shuddha:
-        impure_limbs.append(f"Tithi ({panchang.tithi_name})")
-    if not vara_shuddha:
-        impure_limbs.append(f"Vara (weekday {day_idx})")
-    if not nakshatra_shuddha:
-        impure_limbs.append(f"Nakshatra ({panchang.nakshatra_name})")
-    if not yoga_shuddha:
-        impure_limbs.append(f"Yoga ({panchang.yoga_name})")
-    if not karana_shuddha:
-        impure_limbs.append(f"Karana ({panchang.karana_name})")
-
-    if count == 5:
-        summary = "All 5 Panchanga limbs are pure — excellent muhurta"
-    elif impure_limbs:
-        summary = f"{count}/5 pure: impure — {', '.join(impure_limbs)}"
-    else:
-        summary = f"{count}/5 Panchanga limbs pure"
-
-    return PanchangaShuddhi(
-        tithi_shuddha=tithi_shuddha,
-        vara_shuddha=vara_shuddha,
-        nakshatra_shuddha=nakshatra_shuddha,
-        yoga_shuddha=yoga_shuddha,
-        karana_shuddha=karana_shuddha,
-        shuddha_count=count,
-        is_fully_shuddha=count == 5,
-        summary=summary,
-    )
-
-
-# ── Lagna Shuddhi ────────────────────────────────────────────────────────────
-
-# Lagna type required per event type
-_EVENT_LAGNA_TYPE: dict[str, str | None] = {
-    "vivah": "fixed",  # Fixed lagna for permanent bond
-    "griha_pravesh": "fixed",  # Fixed lagna for stable home
-    "vyapara": "dual",  # Dual lagna for business (communicative)
-    "yatra": "movable",  # Movable lagna for journeys
-    "vidya": "dual",  # Dual lagna for education
-    "aushadhi": "movable",  # Movable for medicine intake
-    "general": None,  # No specific requirement
-}
-
-# Sign modalities (0-indexed)
-_MOVABLE_SIGNS: frozenset[int] = frozenset({0, 3, 6, 9})  # Aries, Cancer, Libra, Capricorn
-_FIXED_SIGNS: frozenset[int] = frozenset({1, 4, 7, 10})  # Taurus, Leo, Scorpio, Aquarius
-_DUAL_SIGNS: frozenset[int] = frozenset({2, 5, 8, 11})  # Gemini, Virgo, Sagittarius, Pisces
-
-_MALEFICS: frozenset[str] = frozenset({"Sun", "Mars", "Saturn", "Rahu", "Ketu"})
-_KENDRAS_SET: frozenset[int] = frozenset({1, 4, 7, 10})
-_TRIKONAS_SET: frozenset[int] = frozenset({1, 5, 9})
-
-_SIGN_NAMES: list[str] = [
-    "Aries",
-    "Taurus",
-    "Gemini",
-    "Cancer",
-    "Leo",
-    "Virgo",
-    "Libra",
-    "Scorpio",
-    "Sagittarius",
-    "Capricorn",
-    "Aquarius",
-    "Pisces",
-]
-
-
-def _compute_lagna_shuddhi(
-    dt: datetime,
-    lat: float,
-    lon: float,
-    tz_name: str,
-    event_type: str,
-) -> LagnaShuddhi | None:
-    """Compute Lagna Shuddhi for the event moment.
-
-    Computes the rising sign at the given moment and checks:
-    1. Lagna type matches event type (fixed/movable/dual)
-    2. No malefic in 8th from lagna
-    3. Lagna lord is in kendra or trikona from lagna
-
-    Source: Muhurta Chintamani Ch.2.
-    """
-    try:
-        import swisseph as swe
-
-        from daivai_engine.constants import SIGN_LORDS
-
-        # Get Julian Day for this datetime
-        jd = swe.julday(dt.year, dt.month, dt.day, dt.hour + dt.minute / 60.0)
-        swe.set_sid_mode(swe.SIDM_LAHIRI)
-
-        # Get lagna (ascendant) using Swiss Ephemeris
-        flags = swe.FLG_SIDEREAL | swe.FLG_SWIEPH
-        _cusps, ascs = swe.houses_ex(jd, lat, lon, b"P", flags)  # type: ignore[arg-type]
-        lagna_lon: float = ascs[0]  # type: ignore[index]
-        lagna_sign = int(lagna_lon / 30.0) % 12
-
-        # Get all planet positions at this moment
-        planet_swe_ids = {
-            "Sun": swe.SUN,
-            "Moon": swe.MOON,
-            "Mars": swe.MARS,
-            "Saturn": swe.SATURN,
-            "Rahu": swe.MEAN_NODE,
-            "Ketu": swe.MEAN_NODE,
-        }
-        planet_signs: dict[str, int] = {}
-        for pname, swe_id in planet_swe_ids.items():
-            res = swe.calc_ut(jd, swe_id, flags)
-            plon: float = res[0][0]  # type: ignore[index]
-            planet_signs[pname] = int(plon / 30.0) % 12
-
-        # Ketu = opposite node
-        if "Rahu" in planet_signs:
-            planet_signs["Ketu"] = (planet_signs["Rahu"] + 6) % 12
-
-        # Determine lagna type
-        if lagna_sign in _MOVABLE_SIGNS:
-            lagna_type = "movable"
-        elif lagna_sign in _FIXED_SIGNS:
-            lagna_type = "fixed"
-        else:
-            lagna_type = "dual"
-
-        # Check if lagna type matches event requirement
-        required_type = _EVENT_LAGNA_TYPE.get(event_type)
-        matches = required_type is None or lagna_type == required_type
-
-        # Check for malefic in 8th from lagna
-        eighth_sign = (lagna_sign + 7) % 12
-        malefic_in_8th = any(planet_signs.get(m) == eighth_sign for m in _MALEFICS)
-
-        # Check lagna lord strength
-        lagna_lord = SIGN_LORDS[lagna_sign]
-        lagna_lord_planet_swe = {
-            "Sun": swe.SUN,
-            "Moon": swe.MOON,
-            "Mars": swe.MARS,
-            "Mercury": swe.MERCURY,
-            "Jupiter": swe.JUPITER,
-            "Venus": swe.VENUS,
-            "Saturn": swe.SATURN,
-        }
-        ll_swe_id = lagna_lord_planet_swe.get(lagna_lord)
-        lagna_lord_strong = False
-        if ll_swe_id:
-            ll_res = swe.calc_ut(jd, ll_swe_id, flags)
-            ll_lon: float = ll_res[0][0]  # type: ignore[index]
-            ll_sign = int(ll_lon / 30.0) % 12
-            ll_house_from_lagna = ((ll_sign - lagna_sign) % 12) + 1
-            lagna_lord_strong = ll_house_from_lagna in _KENDRAS_SET | _TRIKONAS_SET
-
-        is_shuddha = matches and not malefic_in_8th and lagna_lord_strong
-
-        notes: list[str] = []
-        if not matches:
-            notes.append(f"Lagna is {lagna_type} but {event_type} requires {required_type}")
-        if malefic_in_8th:
-            notes.append("Malefic in 8th from lagna (strongly inauspicious)")
-        if not lagna_lord_strong:
-            notes.append(f"Lagna lord {lagna_lord} is not in kendra/trikona")
-
-        return LagnaShuddhi(
-            lagna_sign_index=lagna_sign,
-            lagna_sign=_SIGN_NAMES[lagna_sign],
-            lagna_type=lagna_type,
-            matches_event_type=matches,
-            malefic_in_8th=malefic_in_8th,
-            lagna_lord_strong=lagna_lord_strong,
-            is_shuddha=is_shuddha,
-            note=" | ".join(notes) if notes else "Lagna is pure for this event",
-        )
-    except Exception:
-        return None
-
-
-def _nak_index(nakshatra: str) -> int:
-    """Get nakshatra index from name."""
-    from daivai_engine.constants import NAKSHATRAS
-
-    try:
-        return NAKSHATRAS.index(nakshatra)
-    except ValueError:
-        return 0
+# Private alias for backward compatibility
+_compute_panchanga_shuddhi = compute_panchanga_shuddhi
+_compute_lagna_shuddhi = compute_lagna_shuddhi
+_nak_index = nak_index
