@@ -6598,3 +6598,1707 @@ vesi_voshi_full:
   source: "Phaladeepika chapter 8 on Sun adjacency yogas"
   confidence: "high"
 
+
+# =============================================================================
+# NEECH BHANGA RAJA YOGA — SPECIFIC CONDITIONS (BPHS Ch.28)
+# Each condition that cancels debilitation is a named yoga in its own right.
+# =============================================================================
+
+neech_bhanga_debil_lord_lagna_kendra:
+  name_en: "Neech Bhanga — Debilitation Lord in Kendra from Lagna"
+  name_hi: "नीच भंग — लग्न से केन्द्र में नीचस्थान स्वामी"
+  type: "benefic"
+  formation:
+    condition: "A planet is in its sign of debilitation AND the lord of that debilitation sign is placed in a kendra (1st, 4th, 7th, or 10th) from the Lagna. Example: Saturn debilitated in Aries, and Mars (lord of Aries) is in a kendra from the Lagna."
+    planets: ["any_debilitated_planet"]
+    houses_required: [1, 4, 7, 10]
+    sign_condition: "debilitation_lord_in_kendra_from_lagna"
+  cancellation:
+    - "The debilitation sign lord is itself debilitated or severely afflicted"
+    - "The debilitation sign lord is combust within 6 degrees of the Sun"
+    - "Rahu or Ketu conjuncts the debilitation sign lord, diminishing its beneficence"
+  effects:
+    general: "The first and most classical condition for Neech Bhanga — the lord of the sign where the planet is debilitated stands guard in a kendra, giving the debilitated planet strength through its house ruler. The native rises from difficulty to achievement, with the kendra house providing a strong platform for recovery."
+    career: "Career recovery is indicated — after initial setbacks or struggles, the native finds a position of strength related to the debilitated planet's significations."
+    finance: "Financial reversal from difficulty to stability, especially during the mahadasha of the debilitated planet."
+  strength_factors:
+    - "Strongest when the debilitation lord is exalted or in its own sign in the kendra"
+    - "More powerful when the kendra is the 10th house (career recovery) or 1st house (self recovery)"
+    - "Enhanced when the debilitated planet is also in a kendra or trikona"
+    - "Stronger results when multiple Neech Bhanga conditions are simultaneously present"
+  source: "BPHS chapter 28 — Neech Bhanga conditions; Saravali chapter 14"
+  confidence: "high"
+
+neech_bhanga_debil_lord_moon_kendra:
+  name_en: "Neech Bhanga — Debilitation Lord in Kendra from Moon"
+  name_hi: "नीच भंग — चन्द्र से केन्द्र में नीचस्थान स्वामी"
+  type: "benefic"
+  formation:
+    condition: "A planet is in its sign of debilitation AND the lord of that debilitation sign is placed in a kendra (1st, 4th, 7th, or 10th) from the Moon sign. This is the second BPHS condition for Neech Bhanga, applying the kendra test from the Moon rather than the Lagna."
+    planets: ["any_debilitated_planet"]
+    houses_required: [1, 4, 7, 10]
+    sign_condition: "debilitation_lord_in_kendra_from_moon"
+  cancellation:
+    - "The Moon itself is debilitated (in Scorpio) — weakens the Moon-reference condition"
+    - "The debilitation sign lord is hemmed between malefics near the Moon-kendra"
+    - "The debilitation sign lord is combust, losing ability to support the debilitated planet"
+  effects:
+    general: "The Moon-based Neech Bhanga creates emotional resilience — the native may feel the debilitated planet's challenges acutely in their inner life, but the debilitation lord's kendra strength from Moon provides mental and emotional recovery. The native learns to convert emotional vulnerability into emotional strength."
+    spiritual: "Emotional maturity and growth through difficulty. The native develops psychological resilience that becomes a defining strength."
+  strength_factors:
+    - "Stronger when Moon is waxing (shukla paksha) and bright"
+    - "Enhanced when Moon is in a kendra or trikona from Lagna as well"
+    - "More powerful when Moon itself is strong in dignity"
+    - "Combined effect when both lagna-kendra and moon-kendra conditions are simultaneously met"
+  source: "BPHS chapter 28 — second Neech Bhanga condition"
+  confidence: "high"
+
+neech_bhanga_exalt_lord_kendra:
+  name_en: "Neech Bhanga — Exaltation Lord in Kendra"
+  name_hi: "नीच भंग — उच्चस्थान स्वामी केन्द्र में"
+  type: "benefic"
+  formation:
+    condition: "A planet is in its sign of debilitation AND the lord of the sign where that planet gets exalted is placed in a kendra from the Lagna or Moon. Example: Mars debilitated in Cancer — Mars is exalted in Capricorn, and Saturn (lord of Capricorn) in a kendra from Lagna activates this Neech Bhanga."
+    planets: ["any_debilitated_planet"]
+    houses_required: [1, 4, 7, 10]
+    sign_condition: "exaltation_lord_in_kendra"
+  cancellation:
+    - "The exaltation sign lord is itself in debilitation or a dusthana"
+    - "The exaltation sign lord is combust or in a planetary war and loses"
+    - "Rahu conjuncts the exaltation sign lord, corrupting its restorative influence"
+  effects:
+    general: "The planet's potential exaltation sign lord stands in a position of power, providing the debilitated planet with the memory and pull of its highest expression. The native's trajectory moves toward the potential of the exalted state, with the exaltation lord guiding the recovery from debilitation."
+    career: "The native often achieves at a level that seems beyond their initial circumstances — reaching the heights of what their debilitated planet represents."
+  strength_factors:
+    - "Most powerful when the exaltation sign lord is itself exalted in the kendra"
+    - "Stronger when in the 1st or 10th kendra (direct visibility)"
+    - "Enhanced when the exaltation lord receives benefic aspects from Jupiter or Venus"
+    - "Most effective during the dasha of either the debilitated planet or the exaltation lord"
+  source: "BPHS chapter 28 — third Neech Bhanga condition"
+  confidence: "high"
+
+neech_bhanga_exalt_lord_aspects_debil:
+  name_en: "Neech Bhanga — Exaltation Lord Aspects Debilitated Planet"
+  name_hi: "नीच भंग — उच्चस्वामी नीच ग्रह को देखे"
+  type: "benefic"
+  formation:
+    condition: "The lord of the sign where the debilitated planet gets exalted casts a direct aspect (especially 7th house opposition) on the debilitated planet itself. The exaltation sign lord's gaze lifts the fallen planet toward its potential. Example: Venus debilitated in Virgo — Venus exalts in Pisces; Jupiter (lord of Pisces) aspects Venus across the 7th."
+    planets: ["any_debilitated_planet"]
+    houses_required: []
+    sign_condition: "exaltation_lord_aspects_debilitated_planet"
+  cancellation:
+    - "The exaltation lord itself is debilitated or severely afflicted"
+    - "The aspect is broken by a malefic intercepting between them (very close malefic conjunction)"
+    - "The debilitated planet is also combust, making it unable to receive the aspect's benefit"
+  effects:
+    general: "Direct aspecting relationship between the exaltation lord and the debilitated planet creates a powerful Neech Bhanga. The planet is directly uplifted by the aspect — like a helping hand extended across the chart. The native benefits from associations that remind them of their potential, often through a mentor, teacher, or inspiring relationship."
+  strength_factors:
+    - "Strongest when the aspect is within 3 degrees (tight orb)"
+    - "Enhanced when the exaltation lord is in a kendra simultaneously"
+    - "More powerful when Jupiter, the universal benefic, also aspects the configuration"
+    - "Results are most pronounced during the antardasha of the aspecting exaltation lord"
+  source: "BPHS chapter 28 — fourth Neech Bhanga condition; Phala Deepika commentary"
+  confidence: "high"
+
+neech_bhanga_navamsha_exaltation:
+  name_en: "Neech Bhanga — Debilitated Planet Exalted in Navamsha"
+  name_hi: "नीच भंग — नवांश में नीच ग्रह उच्च"
+  type: "benefic"
+  formation:
+    condition: "A planet is debilitated in the rashi (D1) chart BUT is placed in its sign of exaltation in the Navamsha (D9) chart. The navamsha exaltation overrides the rashi debilitation at a subtle karmic level. Example: Sun debilitated in Libra, but in the navamsha it falls in Aries (Sun's exaltation sign)."
+    planets: ["any_debilitated_planet"]
+    houses_required: []
+    sign_condition: "navamsha_exaltation_of_debilitated_rashi_planet"
+  cancellation:
+    - "The navamsha itself is severely afflicted (malefics in lagna, 8th, 12th of navamsha)"
+    - "The debilitated planet is also combust in the rashi chart — combustion limits navamsha recovery"
+    - "No supporting conditions in the rashi chart — pure navamsha elevation without rashi support is weaker"
+  effects:
+    general: "The debilitated planet in navamsha exaltation reveals its inner strength at the soul level. While surface-level struggles (rashi) are present, the deep karmic potential (navamsha) is elevated. The native often appears stronger in private, spiritual, or inner work than in external circumstances. After the mid-life turning point (navamsha themes activate), the planet's better qualities emerge powerfully."
+    spiritual: "Strong inner life and spiritual depth, particularly for the matters the debilitated planet represents. The native's inner compass is clear even when outer conditions are challenging."
+  strength_factors:
+    - "Most powerful when the navamsha exaltation is in a kendra of the navamsha"
+    - "Enhanced when the planet is also Vargottama in other divisional charts"
+    - "Stronger when Jupiter aspects the debilitated planet in the rashi chart"
+    - "Results manifest most clearly after age 36 (navamsha period of life)"
+  source: "BPHS chapter 28; Sarvartha Chintamani on navamsha exaltation as Neech Bhanga"
+  confidence: "high"
+
+neech_bhanga_retrograde_reversal:
+  name_en: "Neech Bhanga — Debilitated Planet Retrograde"
+  name_hi: "नीच भंग — नीच ग्रह वक्री"
+  type: "benefic"
+  formation:
+    condition: "A planet is debilitated in its sign AND is retrograde (vakri) at birth. A retrograde planet moves backward toward its previous position — symbolically moving away from debilitation toward the energy of its previous strong placement. Classical texts interpret retrograde motion as reversing the normal condition, thus partly cancelling debilitation."
+    planets: ["any_debilitated_planet"]
+    houses_required: []
+    sign_condition: "debilitated_and_retrograde"
+  cancellation:
+    - "The retrograde debilitated planet is also combust (combustion limits retrograde benefit)"
+    - "Multiple planets are simultaneously debilitated without other cancellation factors"
+    - "The retrograde planet is in a dusthana house without benefic aspects"
+  effects:
+    general: "A debilitated retrograde planet carries unusual energy — the retrograde motion creates a reversal, and the planet's expression becomes internalized and often inverted. The native may struggle with the planet's affairs in conventional settings but excel in unconventional, creative, or internalized expressions of the same planet. Over time, with self-awareness, the retrograde energy transforms the debilitation into a unique strength."
+    personality: "The native has an unconventional relationship with the debilitated planet's themes — they may approach these matters differently than expected, often with greater introspection and eventual mastery."
+  strength_factors:
+    - "Stronger when the retrograde planet is in a kendra or trikona despite debilitation"
+    - "Enhanced when Saturn retrograde (which retrograde is particularly powerful for Saturn)"
+    - "Combined with other Neech Bhanga conditions for full cancellation"
+    - "Navamsha strength of the retrograde planet amplifies recovery"
+  source: "BPHS chapter 28; Jataka Parijata on retrograde debilitation; Saravali commentary"
+  confidence: "medium"
+
+neech_bhanga_parivartana_with_exalt_lord:
+  name_en: "Neech Bhanga — Exchange with Exaltation Sign Lord"
+  name_hi: "नीच भंग — उच्च राशि स्वामी से परिवर्तन"
+  type: "benefic"
+  formation:
+    condition: "The debilitated planet and the lord of its exaltation sign are in exchange (parivartana) — each placed in the other's sign. This powerful mutual exchange creates a special form of Neech Bhanga where the debilitated planet and its exaltation lord trade positions, creating a symbolic movement toward exaltation."
+    planets: ["any_debilitated_planet"]
+    houses_required: []
+    sign_condition: "parivartana_with_exaltation_lord"
+  cancellation:
+    - "Either planet in the exchange is severely afflicted by Rahu or Ketu conjunction"
+    - "Either planet in the exchange is combust or in a planetary war"
+    - "The exaltation sign lord is itself debilitated in the exchange"
+  effects:
+    general: "One of the most powerful forms of Neech Bhanga — the exchange creates a mutual support network where both planets gain strength from the relationship. The native often rises dramatically after initial hardship, with the recovery being remarkable and the ultimate achievement surpassing what might be expected from a debilitated planet alone."
+    career: "Career trajectory shows clear reversal — early struggles give way to remarkable achievement in the field indicated by the exchanged planets."
+  strength_factors:
+    - "This is considered the most powerful single Neech Bhanga condition by many authorities"
+    - "Enhanced when one or both planets in the exchange are in kendra or trikona houses"
+    - "Stronger when the exchange houses are linked (lord exchange between benefic houses)"
+    - "Most potent during the dasha period of either planet involved in the exchange"
+  source: "BPHS chapter 28 on Parivartana + Neech Bhanga; Hora Sara commentary"
+  confidence: "high"
+
+# =============================================================================
+# SPIRITUAL / MOKSHA YOGAS — Beyond Pravrajya and Vairagya
+# Sources: BPHS Ch.79, Phaladeepika Ch.27, Saravali Ch.38
+# =============================================================================
+
+sanyasi_yoga:
+  name_en: "Sanyasi Yoga (Complete Renunciation Yoga)"
+  name_hi: "संन्यासी योग"
+  type: "mixed"
+  formation:
+    condition: "Four or more planets are placed in a single house (sign), AND the Lagna lord is aspected by Saturn without any benefic (Jupiter, Venus, Mercury) aspect on the Lagna or Lagna lord. The massive stellium in one sign creates renunciation energy, and Saturn's aspect on the Lagna lord without benefic relief indicates worldly detachment."
+    planets: ["saturn"]
+    houses_required: []
+    sign_condition: "four_plus_planets_one_sign_saturn_aspects_lagna_lord"
+  cancellation:
+    - "Jupiter aspects the Lagna lord, providing benefic influence that maintains worldly engagement"
+    - "Venus is in the 1st or 7th house, indicating strong attachment to worldly pleasures"
+    - "The multiple-planet concentration is in a kendra house — worldly power indicated instead"
+    - "Moon is strong (full) and in a kendra — emotional engagement with the world maintained"
+  effects:
+    general: "The native is drawn to renunciation, spiritual life, and detachment from worldly affairs. This yoga indicates a soul that has accumulated sufficient worldly experience to seek the transcendent. The native may formally take up sanyasa (monastic vows), or live as a householder with a renunciate inner orientation, unattached to outcomes."
+    spiritual: "Deep and genuine spiritual vocation. The native is suited for the path of jnana (knowledge), bhakti (devotion), or karma yoga (selfless action) — all paths of renunciation from the fruits of action."
+  strength_factors:
+    - "Strongest when the stellium includes the Lagna lord, Sun, and Moon"
+    - "Enhanced when Jupiter is in the stellium — sattvic renunciation rather than tamasic withdrawal"
+    - "More pronounced when the stellium falls in the 12th house (liberation) or 9th house (dharma)"
+    - "Saturn in the 10th aspecting the Lagna lord is particularly powerful for this yoga"
+  source: "BPHS chapter 79 — Sanyasa yogas; Phaladeepika chapter 27"
+  confidence: "high"
+
+vishnu_yoga:
+  name_en: "Vishnu Yoga (Sustainer's Yoga)"
+  name_hi: "विष्णु योग"
+  type: "benefic"
+  formation:
+    condition: "Jupiter is in the 9th house (dharma/bhagya), Venus is in the 2nd house (dhana), and Mercury is in the 10th house (karma). Alternatively: Jupiter, the Moon, and Venus form a trine relationship with each other while simultaneously aspecting the 5th house (Vishnu's seat of children and wisdom). The combination of dharma (Jupiter), beauty (Venus), and intelligence (Mercury/Moon) in these specific houses."
+    planets: ["jupiter", "venus", "mercury"]
+    houses_required: [2, 9, 10]
+    sign_condition: "specific_house_placement"
+  cancellation:
+    - "Any of the three planets is debilitated or severely afflicted"
+    - "Malefics (Mars, Saturn, Rahu) occupy the 5th house, blocking Vishnu's seat"
+    - "The Lagna lord is in a dusthana, weakening the overall chart foundation"
+  effects:
+    general: "Named after Lord Vishnu, the sustainer of the universe, this yoga creates a person who preserves, nurtures, and maintains — institutions, relationships, knowledge, and dharma. The native is righteous, protective, wealthy, and devoted to preserving sacred traditions. They are natural leaders who sustain rather than destroy."
+    career: "Success in preservation-oriented fields: heritage, law, governance, religious institutions, conservation, medicine, and administrative leadership. The native maintains what others build."
+    finance: "Sustained and growing wealth. The native is excellent at preserving and growing inherited or accumulated wealth."
+    spiritual: "Deep connection to dharma and the sustaining principles of creation. The native is devoted to Vishnu or Vishnu-aspect deities."
+  strength_factors:
+    - "Strongest when Jupiter is exalted in Cancer (9th house for Scorpio lagna)"
+    - "Enhanced when Venus is in Taurus or Libra (own sign) in the 2nd"
+    - "Amplified when Mercury is exalted in Virgo in the 10th"
+    - "More powerful when the Moon is also strong and in trine with Jupiter"
+  source: "Classical Vedic texts; Vishnu references in Hora Sara and Jataka Parijata"
+  confidence: "medium"
+
+shiva_yoga:
+  name_en: "Shiva Yoga (Transformer's Yoga)"
+  name_hi: "शिव योग"
+  type: "benefic"
+  formation:
+    condition: "Jupiter is in the 5th house (place of divine intelligence and mantras), Moon is in the 9th house (dharma and guru), and Sun is in the 10th house (karma and worldly authority). Alternatively, the Sun-Moon combination creates consciousness in the dharma/karma axis while Jupiter activates the 5th house of spiritual practice."
+    planets: ["jupiter", "moon", "sun"]
+    houses_required: [5, 9, 10]
+    sign_condition: "specific_house_placement_sun_moon_jupiter"
+  cancellation:
+    - "Jupiter in the 5th is afflicted by Rahu or Ketu (eclipse of wisdom)"
+    - "Sun is in an enemy sign in the 10th, weakening authority"
+    - "Moon in the 9th is in its debilitation sign (Scorpio) — dharma weakened"
+  effects:
+    general: "Named after Lord Shiva, the transformer and destroyer-recreator, this yoga creates a person of profound spiritual depth who can transform themselves and others. The native undergoes significant personal transformations, has mastery over mantra and spiritual disciplines, and commands authority through spiritual power rather than worldly position alone."
+    spiritual: "Mastery in spiritual practice, mantra, tantra, or meditation. The native is drawn to Shaivism, Shaktism, or transformative spiritual paths. Potential for spiritual powers (siddhis)."
+    career: "Authority in spiritual leadership, healing, transformative arts, surgery, or any field requiring deep mastery and transformative capability."
+  strength_factors:
+    - "Strongest when Sun is exalted in Aries in the 10th (for Cancer lagna)"
+    - "Enhanced when Jupiter is in Sagittarius or Pisces in the 5th"
+    - "Amplified when Moon is strong (Shukla Paksha) in the 9th"
+    - "Most powerful when Shiva nakshatras (Ardra, Swati, Shatabhisha) are highlighted"
+  source: "Classical Vedic texts; Shiva yoga references in Jataka Parijata and Saravali"
+  confidence: "medium"
+
+tapasvi_yoga:
+  name_en: "Tapasvi Yoga (Ascetic's Yoga)"
+  name_hi: "तपस्वी योग"
+  type: "mixed"
+  formation:
+    condition: "Saturn is strongly placed in the 9th house (dharma/tapas) AND the 5th and 9th lords are conjunct or mutually aspecting each other in a kendra or trikona. Saturn in the 9th creates severe discipline and tapasya orientation, while the 5th-9th lord connection links past-life merit with current dharmic focus."
+    planets: ["saturn"]
+    houses_required: [9]
+    sign_condition: "saturn_in_9th_with_5th_9th_lord_connection"
+  cancellation:
+    - "Saturn in the 9th is conjunct Rahu — transforms tapasya into worldly ambition"
+    - "Venus strongly aspects the 9th house — worldly pleasures undermine ascetic focus"
+    - "The 5th lord is in a dusthana without relief — past merit undermined"
+  effects:
+    general: "The native is drawn to severe austerities, discipline, and purification practices. They may become renowned for their endurance, self-control, and capacity for sustained spiritual effort. This yoga often indicates a person who achieves great spiritual merit through disciplined practice, even if it means social hardship or solitude."
+    spiritual: "Exceptional capacity for tapas (austerities), mantra japa, fasting, and sustained meditation. The native may achieve spiritual powers through disciplined practice."
+    health: "The native's physical constitution is tested by their own austerities — they may appear thin or ascetic but possess remarkable inner endurance."
+  strength_factors:
+    - "Stronger when Saturn is exalted in Libra in the 9th"
+    - "Enhanced when Ketu also aspects or conjoins the 9th house"
+    - "More powerful when the lagna lord is also in the 9th (complete dharmic orientation)"
+    - "Amplified during Saturn's mahadasha or Ketu's mahadasha"
+  source: "Phaladeepika chapter 27; Saravali on Saturn in 9th; classical tapas yoga references"
+  confidence: "medium"
+
+parivraja_yoga_10th_12th:
+  name_en: "Parivraja Yoga — 10th Lord in 12th"
+  name_hi: "परिव्राजक योग — दशमेश द्वादश में"
+  type: "mixed"
+  formation:
+    condition: "The lord of the 10th house (karma/action/career) is placed in the 12th house (moksha/liberation/foreign lands) AND Saturn aspects either the 10th lord, the 10th house, or the Lagna. The movement of the action house lord to the liberation house indicates that the native's worldly action is oriented toward transcendence, foreign service, or renunciation."
+    planets: ["saturn"]
+    houses_required: [10, 12]
+    sign_condition: "10th_lord_in_12th_with_saturn_aspect"
+  cancellation:
+    - "Venus is strongly placed in the 10th house — worldly career maintained"
+    - "The 10th lord in the 12th is exalted — may indicate foreign success rather than renunciation"
+    - "Jupiter aspects the 10th lord in the 12th from a benefic position"
+  effects:
+    general: "The native's life work (10th) flows toward liberation, foreign lands, or spiritual service (12th). This can manifest as service in ashrams, foreign missions, hospitals, prisons, or other 12th house institutions. The native's career is oriented toward helping those who are hidden from society. Saturn's influence intensifies the sacrificial quality of the work."
+    career: "Success in areas connected to the 12th house: foreign countries, hospitals, retreat centers, religious institutions, or behind-the-scenes work. The native may work abroad or in service-oriented professions."
+    spiritual: "Strong spiritual orientation to work. The native finds dharma in selfless service rather than in worldly achievement."
+  strength_factors:
+    - "Stronger when Saturn aspects both the 10th and 12th houses"
+    - "Enhanced when the 12th lord is also in a dharmic position (5th or 9th)"
+    - "More pronounced when Ketu also influences the 10th house or its lord"
+    - "Amplified during the dasha of the 10th lord or Saturn"
+  source: "BPHS chapter 79; Parivraja yoga conditions from classical texts"
+  confidence: "medium"
+
+diksha_yoga:
+  name_en: "Diksha Yoga (Spiritual Initiation Yoga)"
+  name_hi: "दीक्षा योग"
+  type: "benefic"
+  formation:
+    condition: "Ketu is in the 1st or 5th house AND Jupiter aspects Ketu or the house Ketu occupies. Ketu in the lagna or 5th house (with Jupiter's grace) indicates a soul that has received spiritual diksha (initiation) in a past life and carries that samskara forward. The combination of Ketu's past-life attainment and Jupiter's blessings creates a naturally initiated soul."
+    planets: ["ketu", "jupiter"]
+    houses_required: [1, 5]
+    sign_condition: "ketu_in_1st_or_5th_with_jupiter_aspect"
+  cancellation:
+    - "Rahu is conjunct Jupiter, corrupting the guru energy with worldly desires"
+    - "Saturn is also in the 1st house with Ketu — delays initiation through worldly karma"
+    - "The 5th lord is in a dusthana, weakening past-life merit activation"
+  effects:
+    general: "The native is a natural spiritual seeker who responds quickly and deeply to spiritual teachers and practices. They may receive formal initiation (diksha) early in life, or find a guru spontaneously. Past-life spiritual merit (Ketu) is activated by Jupiter's grace, making the spiritual path feel natural and familiar rather than foreign."
+    spiritual: "Natural capacity for meditation, mantra, and spiritual practice. The native is drawn to initiation-based spiritual traditions (tantric, vedantic, or devotional). They are natural disciples who can also become gurus."
+  strength_factors:
+    - "Strongest when Ketu is in Ketu's own nakshatra (Ashwini, Magha, Mula)"
+    - "Enhanced when Jupiter is in a kendra or trikona while aspecting Ketu"
+    - "More powerful when the 9th lord is also involved (guru-disciple connection)"
+    - "Amplified during Ketu mahadasha with Jupiter antardasha"
+  source: "Classical texts on Ketu's spiritual significance; Hora Sara; Jataka Parijata"
+  confidence: "medium"
+
+siddha_yoga:
+  name_en: "Siddha Yoga (Spiritual Attainment Yoga)"
+  name_hi: "सिद्ध योग"
+  type: "benefic"
+  formation:
+    condition: "Jupiter is exalted or in its own sign in the 5th or 9th house AND the 9th lord is also in the 5th or 9th house creating a dharma-trikona connection. The combination of maximum Jupiter strength in the houses of spiritual wisdom creates the Siddha Yoga — potential for spiritual accomplishment (siddhi)."
+    planets: ["jupiter"]
+    houses_required: [5, 9]
+    sign_condition: "jupiter_exalted_or_own_in_5th_or_9th"
+  cancellation:
+    - "Rahu conjoins Jupiter, corrupting spiritual energy with desire"
+    - "Saturn afflicts the 5th and 9th houses without relief"
+    - "The 5th and 9th lords are both in dusthanas — dharmic foundation weakened"
+  effects:
+    general: "The native has natural spiritual ability, philosophical depth, and the capacity for spiritual accomplishment. In classical usage, siddhi refers to special abilities arising from advanced spiritual practice. The native is a natural teacher, guru, or spiritual authority who achieves recognition for their depth of knowledge and realization."
+    spiritual: "Exceptional spiritual gifts — the native may develop siddhis (powers) through practice, or simply be recognized as a realized being. Deep connection to guru lineage and wisdom traditions."
+    career: "Success in teaching, spiritual guidance, philosophy, law, or any field requiring the highest level of knowledge and ethical authority."
+  strength_factors:
+    - "Strongest when Jupiter is exalted in Cancer in the 5th (for Pisces lagna) or 9th"
+    - "Enhanced when the Moon is also strong in the 5th or 9th"
+    - "More powerful when Vargottama Jupiter is in the Rashi and Navamsha"
+    - "Amplified when the 9th lord and 5th lord are both exalted or in own signs"
+  source: "Classical Vedic texts on siddha yoga; Jataka Parijata; Saravali"
+  confidence: "medium"
+
+mumuksha_yoga:
+  name_en: "Mumuksha Yoga (Desire for Liberation Yoga)"
+  name_hi: "मुमुक्षु योग"
+  type: "mixed"
+  formation:
+    condition: "Ketu and Saturn together aspect or conjunct the Moon AND the 12th lord is in the 1st house or 5th house, indicating that the desire for liberation (mumuksha) has become the primary orientation of the soul. The Moon (mind) under Ketu (detachment) and Saturn (renunciation) combined with the liberation house lord's placement creates a consciousness oriented toward moksha."
+    planets: ["ketu", "saturn", "moon"]
+    houses_required: [1, 5, 12]
+    sign_condition: "ketu_saturn_influence_on_moon_with_12th_lord_connection"
+  cancellation:
+    - "Venus strongly aspects or conjoins the Moon — worldly desire maintained"
+    - "The 12th lord is in a dusthana or debilitated — liberation house weakened"
+    - "Rahu also aspects Moon — adds worldly obsession that counteracts the liberation orientation"
+  effects:
+    general: "The native's deepest motivation is liberation from the cycle of rebirth. They may not always recognize this intellectually, but their actions reflect a soul that is growing weary of worldly engagement and seeking transcendence. This yoga often produces mystics, sages, or deeply spiritual individuals who eventually withdraw from worldly life."
+    spiritual: "Authentic spiritual longing for liberation (moksha). The native may achieve liberation in this or future lifetimes. They are drawn to traditions that emphasize jnana (knowledge) or advaita (non-duality)."
+  strength_factors:
+    - "Stronger when Ketu is in the 12th house as well (double liberation emphasis)"
+    - "Enhanced when Jupiter also aspects Moon, indicating wise guidance on the liberation path"
+    - "More powerful when the Lagna is in a moksha sign (Cancer, Scorpio, Pisces)"
+    - "Amplified during Ketu mahadasha"
+  source: "Classical texts on moksha yoga; Jataka Parijata; BPHS chapter 79"
+  confidence: "medium"
+
+# =============================================================================
+# KALANIDHI AND CHAMARA — NAMED CLASSICAL YOGAS
+# Sources: Phaladeepika Ch.6; Brihat Jataka Ch.11
+# =============================================================================
+
+kalanidhi_yoga:
+  name_en: "Kalanidhi Yoga (Treasury of Arts)"
+  name_hi: "कलानिधि योग"
+  type: "benefic"
+  formation:
+    condition: "Jupiter is placed in the 2nd or 5th house from the Lagna AND is conjunct or aspected by Venus OR Mercury. Kalanidhi literally means 'treasure-house of arts' — Jupiter in the houses of wealth (2nd) and intelligence (5th) enhanced by Venus (arts) or Mercury (learning) creates exceptional artistic and intellectual wealth."
+    planets: ["jupiter", "venus", "mercury"]
+    houses_required: [2, 5]
+    sign_condition: "jupiter_in_2nd_or_5th_with_venus_or_mercury"
+  cancellation:
+    - "Jupiter is debilitated or severely combust in the 2nd or 5th"
+    - "Both Venus and Mercury are in dusthanas with no connection to Jupiter"
+    - "Malefics severely afflict the 2nd and 5th houses simultaneously"
+  effects:
+    general: "The native is blessed with extraordinary intellectual and artistic wealth. They possess mastery over multiple arts and sciences, have a refined aesthetic sense, and accumulate wealth through their intellectual and creative abilities. They are respected scholars, artists, or learned individuals who are sought for their expertise."
+    career: "Excellence in arts, literature, music, philosophy, education, or any creative-intellectual field. The native earns recognition and wealth through their artistic or scholarly achievements."
+    finance: "Wealth accumulated through arts, education, creative ventures, and intellectual work. The native's knowledge and skills are highly valued."
+    education: "Exceptional educational attainment and natural love of learning. Mastery over classical arts and sciences."
+  strength_factors:
+    - "Strongest when Jupiter is exalted in Cancer in the 2nd or 5th"
+    - "Enhanced when both Venus and Mercury conjunct Jupiter (triple benefic)"
+    - "More powerful when Jupiter is Vargottama"
+    - "Amplified when Mercury is also in own sign (Gemini or Virgo) aspecting Jupiter"
+  source: "Phaladeepika chapter 6, verse 22-23; Brihat Jataka chapter 11"
+  confidence: "high"
+
+chamara_yoga_complete:
+  name_en: "Chamara Yoga (Royal Fan-Bearer's Yoga)"
+  name_hi: "चामर योग (पूर्ण)"
+  type: "benefic"
+  formation:
+    condition: "The Lagna lord is exalted in a kendra house (1st, 4th, 7th, or 10th) AND Jupiter aspects the Lagna lord directly. Chamara means 'fly-whisk' — the symbol of royalty in ancient India. Having the Lagna lord exalted in a kendra and receiving Jupiter's aspect creates a person worthy of royal honors."
+    planets: ["jupiter"]
+    houses_required: [1, 4, 7, 10]
+    sign_condition: "lagna_lord_exalted_in_kendra_with_jupiter_aspect"
+  cancellation:
+    - "Jupiter is debilitated or combust when aspecting the Lagna lord"
+    - "The exalted Lagna lord is also conjunct Rahu or Ketu"
+    - "Severe malefic affliction on the Lagna makes the exaltation ineffective"
+  effects:
+    general: "The native achieves royal or celebrity status — they are honored, respected, and given positions of distinction. The Chamara (fly-whisk) symbolizes someone worthy of being attended to by others, being waited upon, and receiving royal treatment. The native commands respect and receives recognition wherever they go."
+    career: "Rise to the highest positions in their chosen field. The native achieves fame and recognition that elevates them above their peers. Often becomes a leader, authority, or celebrated personality."
+    social: "The native is honored by rulers, heads of state, or leaders. They receive titles, awards, or official recognition. Their name and fame endure beyond their lifetime."
+  strength_factors:
+    - "Strongest when Lagna lord is exalted in the 10th (career prominence)"
+    - "Enhanced when Jupiter is also in a kendra or trikona while aspecting"
+    - "More powerful when the exalted Lagna lord is also Vargottama"
+    - "Amplified when Jupiter is exalted in Cancer while aspecting the exalted Lagna lord"
+  source: "Phaladeepika chapter 6; Brihat Jataka; BPHS Raj Yoga conditions"
+  confidence: "high"
+
+# =============================================================================
+# SUNAPHA YOGA — PLANET-SPECIFIC VARIANTS (Phaladeepika Ch.7)
+# Each planet in 2nd from Moon gives distinct qualities.
+# =============================================================================
+
+sunapha_mars:
+  name_en: "Sunapha Yoga — Mars in 2nd from Moon"
+  name_hi: "सुनफा योग — चन्द्र से द्वितीय मंगल"
+  type: "benefic"
+  formation:
+    condition: "Mars (excluding Sun) is placed in the 2nd sign from the Moon's sign. Mars as the Sunapha planet gives specific qualities — the native earns through their own effort, physical work, or courage. Mars's energy in the 2nd from Moon gives self-made wealth through enterprise, real estate, or physical skills."
+    planets: ["mars"]
+    houses_required: []
+    sign_condition: "mars_in_2nd_from_moon"
+  cancellation:
+    - "Mars is debilitated in the 2nd from Moon"
+    - "Saturn conjuncts Mars in the 2nd from Moon — delays and obstacles in earning"
+    - "Moon itself is severely afflicted, weakening the Sunapha base"
+  effects:
+    general: "The native earns wealth through their own courage, enterprise, physical ability, or real estate dealings. They are self-reliant and fiercely independent. The Sunapha Mars native does not rely on others' support — they fight for their own financial security. Good for entrepreneurs, military personnel, athletes, and builders."
+    career: "Success through independent ventures, physical work, real estate, construction, military, police, or any Mars-ruled profession requiring initiative and courage."
+    finance: "Self-made wealth through Mars-ruled activities. The native builds financial security through their own enterprise rather than inheritance or luck."
+  strength_factors:
+    - "Strongest when Mars is exalted in Capricorn in the 2nd from Moon"
+    - "Enhanced when Mars is in its own sign (Aries or Scorpio) in the 2nd from Moon"
+    - "More powerful when Mars is also a yogakaraka for the Lagna"
+    - "Amplified during Mars mahadasha"
+  source: "Phaladeepika chapter 7, verse 2-8 on Sunapha planet-specific effects"
+  confidence: "high"
+
+sunapha_mercury:
+  name_en: "Sunapha Yoga — Mercury in 2nd from Moon"
+  name_hi: "सुनफा योग — चन्द्र से द्वितीय बुध"
+  type: "benefic"
+  formation:
+    condition: "Mercury (excluding Sun) is placed in the 2nd sign from the Moon's sign. Mercury as the Sunapha planet gives intellectual wealth — the native earns through intelligence, communication, writing, business, or trade. Mercury's analytical and commercial abilities positioned in the earning zone from Moon."
+    planets: ["mercury"]
+    houses_required: []
+    sign_condition: "mercury_in_2nd_from_moon"
+  cancellation:
+    - "Mercury is combust (within 14 degrees of Sun)"
+    - "Rahu conjuncts Mercury in the 2nd from Moon — creates deceptive or unstable communication"
+    - "Mercury is debilitated in Pisces in the 2nd from Moon"
+  effects:
+    general: "The native earns through intelligence, commerce, communication, and multi-tasking. They are articulate, business-minded, and skilled at trading. The Mercury Sunapha native accumulates wealth through education, writing, media, commerce, or analytical skills. They are often successful as merchants, writers, analysts, or intellectuals."
+    career: "Success in trade, business, communication, writing, education, accounting, law, or any Mercury-ruled field requiring intellectual dexterity."
+    finance: "Wealth through commerce, trade, and intellectual work. The native is skilled at identifying opportunities and multiplying resources through intelligence."
+  strength_factors:
+    - "Strongest when Mercury is exalted in Virgo in the 2nd from Moon"
+    - "Enhanced when Mercury is in own sign (Gemini or Virgo)"
+    - "More powerful when Moon and Mercury are in a favorable sign configuration"
+    - "Amplified during Mercury mahadasha"
+  source: "Phaladeepika chapter 7 on Sunapha planet-specific effects"
+  confidence: "high"
+
+sunapha_jupiter:
+  name_en: "Sunapha Yoga — Jupiter in 2nd from Moon"
+  name_hi: "सुनफा योग — चन्द्र से द्वितीय गुरु"
+  type: "benefic"
+  formation:
+    condition: "Jupiter (excluding Sun) is placed in the 2nd sign from the Moon's sign. Jupiter as the Sunapha planet creates the most auspicious and pure Sunapha — wealth comes through dharma, teaching, spirituality, and wisdom. The native earns through righteous means and is blessed with financial generosity."
+    planets: ["jupiter"]
+    houses_required: []
+    sign_condition: "jupiter_in_2nd_from_moon"
+  cancellation:
+    - "Jupiter is combust (within 11 degrees of Sun)"
+    - "Rahu conjuncts Jupiter — Guru Chandal dosha undermines Sunapha benefit"
+    - "Jupiter is debilitated in Capricorn in the 2nd from Moon"
+  effects:
+    general: "The most auspicious Sunapha variant — Jupiter in 2nd from Moon creates a person of great learning, generosity, and righteous wealth. The native earns through education, spiritual work, philosophy, and advisory roles. They accumulate wealth while maintaining their ethical principles and are known for their generosity."
+    career: "Excellence in teaching, philosophy, law, finance (particularly ethical finance), religious leadership, counseling, or any field requiring wisdom and trust."
+    finance: "Abundant wealth through dharmic means. The native may have multiple income streams from teaching, publishing, advisory work, and institutional affiliation."
+  strength_factors:
+    - "Strongest when Jupiter is exalted in Cancer in the 2nd from Moon"
+    - "Enhanced when Jupiter is in Sagittarius or Pisces (own signs)"
+    - "More powerful when Gajakesari Yoga is also present (Jupiter in kendra from Moon)"
+    - "Amplified during Jupiter mahadasha — major life peak of prosperity"
+  source: "Phaladeepika chapter 7 on Sunapha planet-specific effects"
+  confidence: "high"
+
+sunapha_venus:
+  name_en: "Sunapha Yoga — Venus in 2nd from Moon"
+  name_hi: "सुनफा योग — चन्द्र से द्वितीय शुक्र"
+  type: "benefic"
+  formation:
+    condition: "Venus (excluding Sun) is placed in the 2nd sign from the Moon's sign. Venus as the Sunapha planet creates wealth through arts, beauty, luxury goods, entertainment, or relationships. The native earns from Venus-ruled fields and is blessed with wealth, comfort, and pleasures."
+    planets: ["venus"]
+    houses_required: []
+    sign_condition: "venus_in_2nd_from_moon"
+  cancellation:
+    - "Venus is combust (within 10 degrees of Sun)"
+    - "Saturn conjuncts Venus in the 2nd from Moon — delays and austerity in pleasures"
+    - "Venus is in an enemy sign that weakens its ability to generate Sunapha prosperity"
+  effects:
+    general: "The native earns through creative arts, beauty, luxury, entertainment, relationships, or diplomatic skills. They attract wealth through their charm, taste, and aesthetic ability. The Venus Sunapha native lives comfortably, enjoys the finer things in life, and often earns from pleasure-related industries."
+    career: "Success in arts, music, cinema, fashion, luxury goods, hospitality, beauty industry, or diplomacy. The native's personal charm is their professional asset."
+    finance: "Wealth through artistic and aesthetic pursuits. The native spends generously but also earns generously from pleasure-related work."
+  strength_factors:
+    - "Strongest when Venus is exalted in Pisces in the 2nd from Moon"
+    - "Enhanced when Venus is in Taurus or Libra (own signs)"
+    - "More powerful when Moon is also strong (Malavya Yoga interaction)"
+    - "Amplified during Venus mahadasha"
+  source: "Phaladeepika chapter 7 on Sunapha planet-specific effects"
+  confidence: "high"
+
+sunapha_saturn:
+  name_en: "Sunapha Yoga — Saturn in 2nd from Moon"
+  name_hi: "सुनफा योग — चन्द्र से द्वितीय शनि"
+  type: "mixed"
+  formation:
+    condition: "Saturn (excluding Sun) is placed in the 2nd sign from the Moon's sign. Saturn as the Sunapha planet creates delayed but lasting wealth through sustained hard work, discipline, and labor-intensive fields. The native earns through perseverance rather than ease."
+    planets: ["saturn"]
+    houses_required: []
+    sign_condition: "saturn_in_2nd_from_moon"
+  cancellation:
+    - "Saturn is debilitated in Aries in the 2nd from Moon — severe financial hardship"
+    - "Rahu also conjoins Saturn — intensifies karmic delays in wealth accumulation"
+    - "Moon is also afflicted (waning, in dusthana, or debilitated) — compound difficulty"
+  effects:
+    general: "The native must work harder than most to earn wealth, but what they earn is durable and long-lasting. Saturn in 2nd from Moon delays financial security until middle age, when consistent effort pays off. The native may work in Saturn-ruled fields: real estate, agriculture, mining, government service, or labor."
+    career: "Success through sustained effort in traditional, structured, or labor-intensive fields. The native may start with few resources but builds wealth slowly through disciplined work."
+    finance: "Delayed wealth that eventually becomes stable. The native learns the value of money through early financial hardship. Good for long-term investments and conservative financial management."
+  strength_factors:
+    - "Strongest when Saturn is exalted in Libra in the 2nd from Moon"
+    - "Enhanced when Saturn is in Capricorn or Aquarius (own signs)"
+    - "Less difficult when Saturn is the yogakaraka for the native's Lagna"
+    - "Wealth manifests most clearly after Saturn's Saturn mahadasha (after 36)"
+  source: "Phaladeepika chapter 7 on Sunapha planet-specific effects"
+  confidence: "medium"
+
+# =============================================================================
+# ANAPHA YOGA — PLANET-SPECIFIC VARIANTS (Phaladeepika Ch.7)
+# Each planet in 12th from Moon gives distinct qualities.
+# =============================================================================
+
+anapha_mars:
+  name_en: "Anapha Yoga — Mars in 12th from Moon"
+  name_hi: "अनफा योग — चन्द्र से द्वादश मंगल"
+  type: "mixed"
+  formation:
+    condition: "Mars (excluding Sun) is placed in the 12th sign from the Moon's sign. Mars in the 12th from Moon as Anapha creates a personality with strong sexual energy, physical expressiveness, and spending on physical pleasures, sports, or Mars-ruled activities. The native expresses through action rather than restraint."
+    planets: ["mars"]
+    houses_required: []
+    sign_condition: "mars_in_12th_from_moon"
+  cancellation:
+    - "Mars is severely debilitated in Cancer in the 12th from Moon"
+    - "Saturn conjuncts Mars — represses the Anapha energy into frustration"
+    - "Moon is in a dusthana — weakens the base of the Anapha yoga"
+  effects:
+    general: "The native has strong physical drives and expressive energy that manifests through Mars-ruled activities — sports, physical work, sexuality, or competitive endeavors. The 12th from Moon position indicates these drives are somewhat private or internal, leading to either great physical discipline or excessive spending on Mars-ruled pleasures."
+    career: "Physical, martial, or competitive professions. The native excels when they can express raw Martian energy through sports, military, or competitive business."
+    health: "The native's physical energy is high but may be channeled in ways that cause depletion through overexertion or accidents."
+  strength_factors:
+    - "Strongest when Mars is exalted in Capricorn in the 12th from Moon"
+    - "Enhanced when Mars is in own sign (Aries, Scorpio)"
+    - "More constructive when Jupiter aspects Mars in the 12th from Moon"
+    - "Amplified during Mars mahadasha"
+  source: "Phaladeepika chapter 7 on Anapha planet-specific effects"
+  confidence: "medium"
+
+anapha_jupiter:
+  name_en: "Anapha Yoga — Jupiter in 12th from Moon"
+  name_hi: "अनफा योग — चन्द्र से द्वादश गुरु"
+  type: "benefic"
+  formation:
+    condition: "Jupiter (excluding Sun) is placed in the 12th sign from the Moon's sign. Jupiter as the Anapha planet creates one of the most spiritually auspicious configurations — the planet of wisdom in the house of liberation from Moon. The native has generous, spiritual, and philosophically expansive qualities."
+    planets: ["jupiter"]
+    houses_required: []
+    sign_condition: "jupiter_in_12th_from_moon"
+  cancellation:
+    - "Jupiter is debilitated in Capricorn in the 12th from Moon"
+    - "Rahu conjuncts Jupiter — Guru Chandal undermines the spiritual Anapha"
+    - "Moon is also in dusthana from Lagna — double weakening of the Moon base"
+  effects:
+    general: "The native is generous, spiritually oriented, and philosophically expansive. Jupiter in the 12th from Moon indicates wealth that is given away — the native spends lavishly on spiritual causes, education, and dharmic activities. They are known for their wisdom, generosity, and spiritual depth."
+    spiritual: "Natural spiritual wisdom and generosity. The native may be drawn to ashrams, religious retreats, or teaching in service of others. Their spiritual life is rich and internally fulfilling."
+    finance: "May spend generously on dharmic causes, education, and spiritual pursuits. While not accumulating wealth (Jupiter in 12th from Moon implies generosity), the native is never truly poor."
+  strength_factors:
+    - "Strongest when Jupiter is exalted in Cancer in the 12th from Moon"
+    - "Enhanced when the 12th from Moon is also a trikona from Lagna"
+    - "More powerful when Moon is also strong (full moon) in a benefic sign"
+    - "The interaction of this Anapha with Gajakesari or Hamsa creates exceptional spiritual wealth"
+  source: "Phaladeepika chapter 7 on Anapha planet-specific effects"
+  confidence: "high"
+
+anapha_venus:
+  name_en: "Anapha Yoga — Venus in 12th from Moon"
+  name_hi: "अनफा योग — चन्द्र से द्वादश शुक्र"
+  type: "benefic"
+  formation:
+    condition: "Venus (excluding Sun) is placed in the 12th sign from the Moon's sign. Venus in the 12th from Moon as Anapha creates a graceful, artistic, sensually rich personality. The native has natural charm, artistic sensitivity, and may spend lavishly on pleasures, arts, and beautiful surroundings."
+    planets: ["venus"]
+    houses_required: []
+    sign_condition: "venus_in_12th_from_moon"
+  cancellation:
+    - "Venus is combust in the 12th from Moon — charm diminished"
+    - "Saturn closely conjoins Venus — beauty and pleasures delayed or austere"
+    - "Rahu conjuncts Venus — distorted relationship with pleasures and beauty"
+  effects:
+    general: "The native has refined aesthetic taste, natural charm, and an expressive quality in artistic or social spheres. Venus in 12th from Moon indicates spending on pleasures, luxury, and beautiful experiences. The native is artistic, charming, and may have income from arts or entertainment, even though they spend generously."
+    career: "Creative arts, entertainment, fashion, beauty, luxury goods, or social work. The native's artistic sensitivity is their most distinctive quality."
+    relationships: "The native is charming and attractive, with rich inner emotional life. They may be devoted to a romantic partner or artistic ideal."
+  strength_factors:
+    - "Strongest when Venus is exalted in Pisces in the 12th from Moon"
+    - "Enhanced when Venus is in own sign (Taurus or Libra)"
+    - "More powerful when Moon is full and in a benefic sign"
+    - "Interaction with Malavya Yoga creates exceptional artistic fortune"
+  source: "Phaladeepika chapter 7 on Anapha planet-specific effects"
+  confidence: "high"
+
+# =============================================================================
+# RAHU/KETU AXIS YOGAS — SIX AXIS CONFIGURATIONS
+# Each house axis of Rahu-Ketu has distinct classical effects.
+# Sources: BPHS Ch.13; Saravali Ch.28; Phaladeepika Ch.21
+# =============================================================================
+
+rahu_ketu_axis_1_7:
+  name_en: "Rahu-Ketu Axis — 1st/7th Houses (Self-Partner Axis)"
+  name_hi: "राहु-केतु अक्ष — प्रथम-सप्तम"
+  type: "mixed"
+  formation:
+    condition: "Rahu is in the 1st house (Lagna) and Ketu is in the 7th house, OR Rahu is in the 7th house and Ketu is in the 1st house. The 1-7 axis is the self-other axis: Rahu's obsession placed on either self-identity (1st) or partnership (7th), with Ketu's detachment on the opposite end."
+    planets: ["rahu", "ketu"]
+    houses_required: [1, 7]
+    sign_condition: "rahu_in_1st_ketu_in_7th_or_reverse"
+  cancellation:
+    - "Jupiter in a kendra aspects the Rahu-Ketu axis, moderating extremes"
+    - "Lagna lord is strong and unafflicted — self-identity resists Rahu's distortion"
+    - "7th lord is strong in a kendra/trikona — partnerships maintained despite Ketu"
+  effects:
+    general: "The native's core struggle is between self-assertion (1st) and partnership (7th). Rahu in Lagna creates identity obsession, unusual appearance, or foreign-like qualities in the personality. Ketu in 7th indicates detachment from or unusual experiences in partnerships and marriage. If reversed (Rahu in 7th), the native is obsessed with relationships and partnerships to the detriment of self-development."
+    relationships: "Complex, karmic relationship patterns. Marriages may be delayed, unconventional, or with foreign/unusual partners. The native may have multiple relationships before finding lasting partnership."
+  strength_factors:
+    - "Rahu in 1st in Aries, Gemini, or Virgo — strongest for self-development"
+    - "Ketu in 7th in Libra gives detachment from societal relationship norms"
+    - "Results tempered when the Lagna or 7th lord is strongly placed"
+    - "Most intense during Rahu or Ketu mahadasha"
+  source: "BPHS chapter 13; Phaladeepika chapter 21 on Rahu-Ketu house effects"
+  confidence: "high"
+
+rahu_ketu_axis_2_8:
+  name_en: "Rahu-Ketu Axis — 2nd/8th Houses (Wealth-Transformation Axis)"
+  name_hi: "राहु-केतु अक्ष — द्वितीय-अष्टम"
+  type: "mixed"
+  formation:
+    condition: "Rahu is in the 2nd house and Ketu is in the 8th house, OR Rahu is in the 8th house and Ketu is in the 2nd house. The 2-8 axis is the wealth-death axis: Rahu in the 2nd creates obsession with accumulation; Ketu in the 8th gives spiritual or occult abilities and detachment from fear of death."
+    planets: ["rahu", "ketu"]
+    houses_required: [2, 8]
+    sign_condition: "rahu_in_2nd_ketu_in_8th_or_reverse"
+  cancellation:
+    - "Jupiter aspects the 2nd house or its lord — dharmic wealth despite Rahu"
+    - "The 2nd and 8th lords are strong and well-placed — stability in spite of nodes"
+    - "Venus in the 2nd house provides genuine aesthetic wealth alongside Rahu's accumulation drive"
+  effects:
+    general: "The native has complex karma around wealth, speech, and transformation. Rahu in 2nd creates intense focus on accumulating money, food, or speech skills — often through unconventional means. Ketu in 8th gives occult abilities, past-life karmic knowledge, and unusual relationship with death or transformation. If reversed, the native has unusual occult obsessions (Rahu 8th) and detachment from family/wealth (Ketu 2nd)."
+    finance: "Wealth through unconventional means — often gains from foreign sources, speculation, or unusual business. The native may accumulate but also experience sudden financial changes."
+  strength_factors:
+    - "Rahu in Taurus (2nd from Aries lagna) gives powerful wealth drive"
+    - "Ketu in Scorpio gives exceptional occult and research abilities"
+    - "Results intensified when 2nd or 8th lord is strong"
+    - "Most dramatic during Rahu or Ketu mahadasha"
+  source: "BPHS chapter 13; Saravali chapter 28"
+  confidence: "high"
+
+rahu_ketu_axis_3_9:
+  name_en: "Rahu-Ketu Axis — 3rd/9th Houses (Effort-Luck Axis)"
+  name_hi: "राहु-केतु अक्ष — तृतीय-नवम"
+  type: "mixed"
+  formation:
+    condition: "Rahu is in the 3rd house and Ketu is in the 9th house, OR Rahu is in the 9th house and Ketu is in the 3rd house. The 3-9 axis is the effort-dharma axis: Rahu in 3rd amplifies courage, communication, and initiative; Ketu in 9th creates unconventional or non-traditional approach to dharma, father, and guru."
+    planets: ["rahu", "ketu"]
+    houses_required: [3, 9]
+    sign_condition: "rahu_in_3rd_ketu_in_9th_or_reverse"
+  cancellation:
+    - "Jupiter aspects the 9th house or its lord — dharma restored despite Ketu"
+    - "The 9th lord is exalted or in own sign in a kendra — fortune maintained"
+    - "Sun (natural significator of 9th) is strong and unafflicted"
+  effects:
+    general: "Rahu in 3rd gives extraordinary courage, communication skills, writing ability, and restless initiative. The native is bold, enterprising, and media-savvy. Ketu in 9th creates detachment from traditional dharma, father figures, or religious norms — the native may follow an unconventional spiritual path or reject inherited traditions before finding their own dharma."
+    career: "Media, communication, writing, short travel, commerce, or entrepreneurial ventures (Rahu 3rd). Alternatively: unconventional spiritual work or philosophy (Ketu 9th)."
+  strength_factors:
+    - "Rahu in Gemini 3rd — exceptional communication and writing abilities"
+    - "Ketu in Sagittarius 9th — unconventional but deep spiritual quest"
+    - "Jupiter aspecting the 9th restores dharmic guidance despite Ketu"
+    - "Most active during Rahu or Ketu mahadasha"
+  source: "BPHS chapter 13; Phaladeepika chapter 21"
+  confidence: "high"
+
+rahu_ketu_axis_4_10:
+  name_en: "Rahu-Ketu Axis — 4th/10th Houses (Home-Career Axis)"
+  name_hi: "राहु-केतु अक्ष — चतुर्थ-दशम"
+  type: "mixed"
+  formation:
+    condition: "Rahu is in the 4th house and Ketu is in the 10th house, OR Rahu is in the 10th house and Ketu is in the 4th house. The 4-10 axis is the home-career axis: Rahu in 4th obsesses over home, mother, comforts; Ketu in 10th creates detachment from worldly fame or unconventional career paths."
+    planets: ["rahu", "ketu"]
+    houses_required: [4, 10]
+    sign_condition: "rahu_in_4th_ketu_in_10th_or_reverse"
+  cancellation:
+    - "Moon (4th significator) is strong and unafflicted despite Rahu's presence"
+    - "Saturn (10th significator) is exalted in 10th alongside Ketu — strength despite detachment"
+    - "Jupiter aspects the 4th house — emotional comfort maintained"
+  effects:
+    general: "Rahu in 4th creates obsessive focus on home, real estate, mother's affairs, or domestic comforts — often through foreign or unusual means. The native may have multiple homes or an unusually complex relationship with their birthplace. Ketu in 10th gives a detached or unconventional career — the native may work in foreign countries, spiritual roles, or behind-the-scenes work."
+    career: "Unconventional career (Ketu 10th) — often success in foreign lands, spiritual or research fields, or behind-the-scenes roles. If Rahu is in 10th: obsessive career ambition, rise through unconventional means."
+  strength_factors:
+    - "Rahu in Cancer 4th — intense emotional and domestic focus"
+    - "Ketu in Capricorn 10th — detachment from worldly success leading to spiritual authority"
+    - "Moon strong gives emotional resilience against Rahu 4th's disturbances"
+    - "Most prominent during Rahu or Ketu mahadasha"
+  source: "BPHS chapter 13; Saravali chapter 28"
+  confidence: "high"
+
+rahu_ketu_axis_5_11:
+  name_en: "Rahu-Ketu Axis — 5th/11th Houses (Children-Gains Axis)"
+  name_hi: "राहु-केतु अक्ष — पंचम-एकादश"
+  type: "mixed"
+  formation:
+    condition: "Rahu is in the 5th house and Ketu is in the 11th house, OR Rahu is in the 11th house and Ketu is in the 5th house. The 5-11 axis is the children-gains axis: Rahu in 5th creates complex karma around children, speculation, and creativity; Ketu in 11th creates detachment from materialistic gains and friend groups."
+    planets: ["rahu", "ketu"]
+    houses_required: [5, 11]
+    sign_condition: "rahu_in_5th_ketu_in_11th_or_reverse"
+  cancellation:
+    - "Jupiter aspects the 5th house — protects children and creativity from Rahu's distortion"
+    - "The 5th lord is strong and well-placed in a kendra/trikona"
+    - "Sun aspects the 5th house — divine protection for children and intelligence"
+  effects:
+    general: "Rahu in 5th creates intense focus on creativity, children, speculation, or romance — often through unconventional, foreign, or amplified means. The native may have unusual relationships with their children or creative expression. Ketu in 11th creates detachment from materialistic gains and social group dynamics — the native may reject social clubs, networking, or conventional success markers."
+    finance: "Gains come through unconventional means (Rahu 11th) or are rejected as unimportant (Ketu 11th). Rahu in 5th may give gains through speculation, entertainment, or creative fields."
+  strength_factors:
+    - "Jupiter aspecting the 5th is the most important protective factor"
+    - "Rahu in Leo 5th — dramatic creative expression and speculation"
+    - "Ketu in Aquarius 11th — spiritual networking and detachment from material gains"
+    - "Most impactful during Rahu or Ketu mahadasha regarding children and gains"
+  source: "BPHS chapter 13; Phaladeepika chapter 21"
+  confidence: "high"
+
+rahu_ketu_axis_6_12:
+  name_en: "Rahu-Ketu Axis — 6th/12th Houses (Health-Liberation Axis)"
+  name_hi: "राहु-केतु अक्ष — षष्ठ-द्वादश"
+  type: "mixed"
+  formation:
+    condition: "Rahu is in the 6th house and Ketu is in the 12th house, OR Rahu is in the 12th house and Ketu is in the 6th house. The 6-12 axis is the health-liberation axis: Rahu in 6th gives unusual enemies, competitive success, and health challenges; Ketu in 12th gives spiritual liberation and detachment from foreign lands or ashrams."
+    planets: ["rahu", "ketu"]
+    houses_required: [6, 12]
+    sign_condition: "rahu_in_6th_ketu_in_12th_or_reverse"
+  cancellation:
+    - "Mars (6th significator) is strong and well-placed — fighting ability maintained despite Rahu"
+    - "Jupiter aspects the 12th house — liberation blessings despite Ketu"
+    - "The 6th and 12th lords are both well-placed in trines or kendras"
+  effects:
+    general: "Rahu in 6th gives competitive advantage, ability to defeat enemies through unconventional means, unusual health patterns, and success in dispute resolution. Ketu in 12th gives profound spiritual orientation toward liberation, foreign meditation retreats, and past-life spiritual attainment. This is often considered a favorable axis for spiritual seekers, as Ketu in 12th is a moksha indicator."
+    spiritual: "Ketu in 12th is highly auspicious for spiritual liberation. The native may have past-life attainments in spiritual practice and finds genuine spiritual peace in retreat settings."
+  strength_factors:
+    - "Ketu in 12th in Pisces — exceptionally strong for moksha and liberation"
+    - "Rahu in 6th in Virgo — exceptional analytical and competitive abilities"
+    - "Jupiter aspecting the 12th amplifies Ketu's liberation potential"
+    - "This axis becomes spiritually transformative during Ketu mahadasha"
+  source: "BPHS chapter 13; classical texts on Ketu in 12th as moksha indicator"
+  confidence: "high"
+
+# =============================================================================
+# ADHI YOGA GRADES (Phaladeepika Ch.7; BPHS Ch.30)
+# Three grades based on quality of benefics in 6/7/8 from Moon.
+# =============================================================================
+
+adhi_yoga_purna:
+  name_en: "Adhi Yoga — Purna (Complete) Grade"
+  name_hi: "अधि योग — पूर्ण (संपूर्ण)"
+  type: "benefic"
+  formation:
+    condition: "All three natural benefics — Jupiter, Venus, AND Mercury — are placed in the 6th, 7th, and 8th houses from the Moon sign (in any combination). This is the complete form of Adhi Yoga where all three wisdom, beauty, and intelligence planets surround the Moon's opposite hemisphere, creating maximum support."
+    planets: ["jupiter", "venus", "mercury"]
+    houses_required: [6, 7, 8]
+    sign_condition: "all_three_benefics_in_6_7_8_from_moon"
+  cancellation:
+    - "Any of the three benefics is severely combust or debilitated"
+    - "Rahu conjuncts Jupiter in the 6/7/8 sector from Moon — Guru Chandal corrupts"
+    - "Saturn hemmes the benefic sector creating Papa Kartari on the Adhi Yoga"
+  effects:
+    general: "The complete and most powerful form of Adhi Yoga — all three natural benefics positioned to support the Moon creates a chart of exceptional grace. The native is a natural leader, wealthy, healthy, and blessed with wisdom, beauty, and intelligence simultaneously. Classical texts predict that such a native becomes a head of state, chief minister, or ruler."
+    career: "Rise to the highest levels of their profession. Natural leadership ability backed by wisdom (Jupiter), diplomacy (Venus), and intelligence (Mercury). The native commands institutions."
+    finance: "Exceptional financial prosperity through multiple channels. The three benefics together create abundant and multi-dimensional wealth."
+    health: "Robust health and longevity. The beneficial energy surrounding the Moon supports strong emotional and physical wellbeing."
+  strength_factors:
+    - "Strongest when all three benefics are in dignity (own, exalted, or mooltrikona)"
+    - "Enhanced when they occupy the 6th, 7th, and 8th houses of the Lagna as well"
+    - "More powerful when the Moon is also strong (waxing, in own or exalted sign)"
+    - "Amplified when this Adhi Yoga configuration is in the Navamsha as well"
+  source: "Phaladeepika chapter 7 — Adhi Yoga grades; BPHS chapter 30"
+  confidence: "high"
+
+adhi_yoga_madhya:
+  name_en: "Adhi Yoga — Madhya (Middle) Grade"
+  name_hi: "अधि योग — मध्य"
+  type: "benefic"
+  formation:
+    condition: "Any two of the three natural benefics (Jupiter, Venus, Mercury) are placed in the 6th, 7th, and 8th houses from the Moon sign. The middle grade of Adhi Yoga is still highly auspicious — two of the three wisdom planets support the Moon from the opposite hemisphere."
+    planets: ["jupiter", "venus", "mercury"]
+    houses_required: [6, 7, 8]
+    sign_condition: "two_benefics_in_6_7_8_from_moon"
+  cancellation:
+    - "Either of the two benefics is severely afflicted, combust, or debilitated"
+    - "The third benefic is in a dusthana from Lagna — partial support only"
+    - "Strong malefics occupy the 6/7/8 from Moon alongside the benefics"
+  effects:
+    general: "The middle grade of Adhi Yoga still produces notable success and prosperity. The native rises to positions of authority and leadership, though perhaps not to the absolute pinnacle of the Purna grade. Two of the three graces (wisdom, beauty, intelligence) are available in abundance."
+    career: "Leadership and authority in their chosen field. The native may reach senior positions or become a recognized expert. Less likely to become a head of state than Purna grade, but achieves significant success."
+    finance: "Good to excellent prosperity through two channels of the three Adhi Yoga benefics."
+  strength_factors:
+    - "Jupiter + Venus in 6/7/8 from Moon: most powerful Madhya (wisdom + beauty)"
+    - "Jupiter + Mercury: learning and wisdom combination is highly favorable"
+    - "Venus + Mercury: arts and commerce combination gives prosperity"
+    - "Enhanced when the two benefics are in dignity"
+  source: "Phaladeepika chapter 7; BPHS chapter 30 on Adhi Yoga grades"
+  confidence: "high"
+
+adhi_yoga_adhama:
+  name_en: "Adhi Yoga — Adhama (Lowest) Grade"
+  name_hi: "अधि योग — अधम"
+  type: "benefic"
+  formation:
+    condition: "Only one of the three natural benefics (Jupiter, Venus, or Mercury) is placed in the 6th, 7th, or 8th house from the Moon sign. The lowest grade of Adhi Yoga still gives some of the benefic qualities of the yoga, though in a diminished form. Single-benefic support from the 6/7/8 sector from Moon."
+    planets: ["jupiter", "venus", "mercury"]
+    houses_required: [6, 7, 8]
+    sign_condition: "one_benefic_in_6_7_8_from_moon"
+  cancellation:
+    - "The single benefic is severely afflicted, debilitated, or combust"
+    - "Malefics occupy the other two positions in 6/7/8 from Moon — malefic dominates"
+    - "Moon is severely afflicted (waning, debilitated, in dusthana)"
+  effects:
+    general: "The minimum form of Adhi Yoga — one benefic provides partial grace. The native shows some qualities of the Adhi Yoga but in a more modest form: moderate prosperity, some leadership ability, and one of the three graces (wisdom, beauty, or intelligence) in abundance depending on which benefic is present."
+    career: "Modest rise to authority or respect in their field. Less prominent than Madhya or Purna grades but still better than average."
+    finance: "Adequate prosperity through the channel indicated by the single benefic."
+  strength_factors:
+    - "Jupiter alone: wisdom and dharmic leadership (best single planet for Adhi)"
+    - "Venus alone: beauty, arts, and social influence"
+    - "Mercury alone: intelligence and commercial success"
+    - "Enhanced when the single benefic is in dignity or Vargottama"
+  source: "Phaladeepika chapter 7; BPHS chapter 30 on Adhi Yoga grades"
+  confidence: "medium"
+
+# =============================================================================
+# GURU CHANDAL YOGA — BENEFIC AND MALEFIC OUTCOMES
+# Depends on sign, house, and supporting conditions. BPHS + Saravali.
+# =============================================================================
+
+guru_chandal_benefic_outcome:
+  name_en: "Guru Chandal Yoga — Benefic Outcome Configuration"
+  name_hi: "गुरु चण्डाल योग — शुभ परिणाम"
+  type: "mixed"
+  formation:
+    condition: "Jupiter and Rahu are conjunct in the same sign AND one or more of the following mitigating conditions are present: (1) the conjunction is in Jupiter's own sign (Sagittarius or Pisces), (2) the conjunction is in a trikona (1st, 5th, 9th), (3) Venus aspects the conjunction, OR (4) the conjunction is in a sign where Jupiter is exalted (Cancer). Under these conditions, Rahu amplifies Jupiter's wisdom unconventionally."
+    planets: ["jupiter", "rahu"]
+    houses_required: []
+    sign_condition: "guru_chandal_in_jupiter_dignity_or_trikona"
+  cancellation:
+    - "Saturn also conjoins the Jupiter-Rahu combination — triple malefic (Shrapit aspect)"
+    - "The conjunction is in a dusthana (6th, 8th, 12th) without benefic aspects"
+    - "Mars also aspects the conjunction, adding fiery aggression to the confusion"
+  effects:
+    general: "Under mitigating conditions, Guru Chandal can produce a uniquely talented individual whose wisdom (Jupiter) is expressed through unconventional, innovative, or cross-cultural channels (Rahu). The native may be a brilliant but unorthodox spiritual teacher, reformer, or advisor. Their wisdom challenges orthodoxy and can produce revolutionary insights."
+    career: "Success in unconventional intellectual or spiritual fields. The native may be a reformist teacher, innovative philosopher, or cross-cultural expert."
+    spiritual: "Spiritual knowledge that transcends traditional boundaries. The native may blend traditions, challenge orthodox views, or receive wisdom through unusual channels."
+  strength_factors:
+    - "Strongest when conjunction is in Cancer (Jupiter exalted, Rahu gains discipline)"
+    - "Enhanced when Venus aspects — adds refinement to unconventional wisdom"
+    - "More favorable when the conjunction is in the 5th (wisdom) or 9th (dharma)"
+    - "Positive outcomes most clear during Jupiter mahadasha with Rahu antardasha"
+  source: "BPHS; Saravali on Jupiter-Rahu conjunction; classical commentary on Guru Chandal"
+  confidence: "medium"
+
+guru_chandal_malefic_outcome:
+  name_en: "Guru Chandal Yoga — Malefic Outcome Configuration"
+  name_hi: "गुरु चण्डाल योग — अशुभ परिणाम"
+  type: "malefic"
+  formation:
+    condition: "Jupiter and Rahu are conjunct in the same sign in a dusthana (6th, 8th, or 12th) OR in an enemy sign for Jupiter (Capricorn, Gemini, Virgo) without any benefic aspects on the conjunction. This is the fully malefic form where Rahu's distorting influence on Jupiter is unchecked."
+    planets: ["jupiter", "rahu"]
+    houses_required: [6, 8, 12]
+    sign_condition: "guru_chandal_in_dusthana_or_enemy_sign"
+  cancellation:
+    - "Venus aspects the conjunction — beautifies and refines the corrupted wisdom"
+    - "Moon (strong, waxing) aspects the conjunction — emotional intelligence moderates"
+    - "The conjunction is in Taurus or Libra (Venus's signs) — Venus's rule provides some order"
+  effects:
+    general: "In its fully malefic form, Guru Chandal creates a person whose wisdom is distorted by desires, illusions, or unorthodox beliefs. The native may be drawn to pseudo-spiritual teachers, get deceived by false gurus, spread misinformation, or use spiritual-sounding language to justify selfish ends. There can be ego in spiritual matters, hypocrisy in dharmic claims, or manipulation through a facade of wisdom."
+    spiritual: "False spirituality or confused dharmic understanding. The native may be easily misled by pseudo-teachers or may themselves mislead others with distorted wisdom."
+    health: "Potential liver issues (Jupiter), or health problems from overindulgence (Rahu's amplification of Jupiter's excesses)."
+  strength_factors:
+    - "Most problematic when in the 8th house (secrets, manipulation)"
+    - "Intensified when Saturn also aspects — deep karmic confusion about dharma"
+    - "More severe when the Lagna lord is also weak or afflicted"
+    - "Rahu antardasha during Jupiter mahadasha may bring these issues to the surface"
+  source: "BPHS; Saravali; classical texts on Guru Chandal malefic manifestation"
+  confidence: "high"
+
+# =============================================================================
+# SOLAR YOGA VARIANTS — VESHI/VOSHI BY PLANET TYPE
+# Phaladeepika Ch.8 — planet-specific solar adjacency yogas.
+# =============================================================================
+
+veshi_jupiter_yoga:
+  name_en: "Veshi Yoga — Jupiter in 2nd from Sun"
+  name_hi: "वेशी योग — सूर्य से द्वितीय गुरु"
+  type: "benefic"
+  formation:
+    condition: "Jupiter is placed in the 2nd sign from the Sun (excluding Moon, Rahu, Ketu). Jupiter in 2nd from Sun creates the most auspicious Veshi — wisdom follows the Sun. The native has a profound philosophical mind, learns from authority figures, and speech is elevated by Jupiterian wisdom."
+    planets: ["jupiter", "sun"]
+    houses_required: []
+    sign_condition: "jupiter_in_2nd_from_sun"
+  cancellation:
+    - "Jupiter is combust — too close to Sun diminishes Veshi's benefit (paradox: Jupiter cannot be Veshi if combust)"
+    - "Jupiter is debilitated in the 2nd from Sun — Veshi's wisdom is corrupted"
+    - "Rahu conjuncts Jupiter in the 2nd from Sun — Guru Chandal undermines"
+  effects:
+    general: "The presence of the wisdom planet in the sign following the Sun gives the native an elevated, philosophical mind that benefits from authority and father-figures. The native has natural wisdom, speaks with authority and eloquence, and tends toward philosophical or religious knowledge. They are often scholars, advisors, or wise counselors."
+    career: "Philosophy, teaching, law, administration, or advisory roles where wisdom is valued. The native's Jupiterian Veshi gives them an air of authority and wisdom beyond their apparent status."
+  strength_factors:
+    - "Strongest when Jupiter is exalted in Cancer in the 2nd from Sun"
+    - "Enhanced when Jupiter is in Sagittarius or Pisces"
+    - "More powerful when Sun is also strong (in Aries, Leo, or own sign)"
+    - "Amplified during Jupiter mahadasha"
+  source: "Phaladeepika chapter 8 on planet-specific Veshi; Saravali"
+  confidence: "high"
+
+veshi_venus_yoga:
+  name_en: "Veshi Yoga — Venus in 2nd from Sun"
+  name_hi: "वेशी योग — सूर्य से द्वितीय शुक्र"
+  type: "benefic"
+  formation:
+    condition: "Venus is placed in the 2nd sign from the Sun (excluding Moon, Rahu, Ketu). Venus in 2nd from Sun creates an artistic and beautiful Veshi. The Sun's identity is followed by Venus's grace — the native has a charming, artistic, socially refined quality and earns through creative or diplomatic work."
+    planets: ["venus", "sun"]
+    houses_required: []
+    sign_condition: "venus_in_2nd_from_sun"
+  cancellation:
+    - "Venus is combust (which is rare since Venus precedes, not follows Sun — but possible in retrograde)"
+    - "Saturn severely afflicts Venus in the 2nd from Sun"
+    - "Rahu conjuncts Venus — distorts artistic quality"
+  effects:
+    general: "Beauty, grace, and artistic ability follow the Sun's identity. The native is charming, socially adept, and has a natural talent for arts, beauty, and diplomacy. Their identity (Sun) is enhanced by Venus's charm. They are attractive personalities who succeed through social grace and aesthetic sensibility."
+    career: "Arts, entertainment, fashion, diplomacy, luxury goods, or social work."
+    relationships: "Attractive to others, with natural romantic and social charisma."
+  strength_factors:
+    - "Strongest when Venus is exalted in Pisces in the 2nd from Sun"
+    - "Enhanced when Venus is in own sign (Taurus or Libra)"
+    - "More powerful when this Veshi also creates Malavya Yoga conditions"
+    - "Amplified during Venus mahadasha"
+  source: "Phaladeepika chapter 8 on planet-specific Veshi"
+  confidence: "high"
+
+voshi_jupiter_yoga:
+  name_en: "Voshi Yoga — Jupiter in 12th from Sun"
+  name_hi: "वोशी योग — सूर्य से द्वादश गुरु"
+  type: "benefic"
+  formation:
+    condition: "Jupiter is placed in the 12th sign from the Sun (excluding Moon, Rahu, Ketu). Jupiter in 12th from Sun as Voshi creates a charitable, generous, and philanthropic quality — wisdom precedes the Sun. The native is known for giving knowledge, generosity, and dharmic service before their own recognition."
+    planets: ["jupiter", "sun"]
+    houses_required: []
+    sign_condition: "jupiter_in_12th_from_sun"
+  cancellation:
+    - "Jupiter is debilitated in Capricorn in the 12th from Sun"
+    - "Rahu conjuncts Jupiter in the 12th from Sun — corrupts the charitable wisdom"
+    - "Jupiter is combust from this position — wisdom obscured"
+  effects:
+    general: "The native is recognized for their generosity, wisdom, and charitable nature. Jupiter in 12th from Sun indicates that wisdom (Jupiter) is available before and behind the Sun's explicit identity — the native is generous with their knowledge and spiritual resources. They may donate to educational or spiritual causes, or serve as spiritual advisors."
+    spiritual: "Genuine charity and wisdom in service to others. The native's spiritual knowledge is freely shared."
+    finance: "Spending on dharmic causes, education, and spiritual pursuits. Jupiter Voshi natives are not hoarders of wealth."
+  strength_factors:
+    - "Strongest when Jupiter is exalted in Cancer in the 12th from Sun"
+    - "Enhanced when Jupiter is in own sign (Sagittarius or Pisces) in the 12th from Sun"
+    - "More powerful when this Voshi creates a beneficial house connection for the Lagna"
+    - "Amplified during Jupiter mahadasha"
+  source: "Phaladeepika chapter 8 on planet-specific Voshi"
+  confidence: "high"
+
+voshi_venus_yoga:
+  name_en: "Voshi Yoga — Venus in 12th from Sun"
+  name_hi: "वोशी योग — सूर्य से द्वादश शुक्र"
+  type: "benefic"
+  formation:
+    condition: "Venus is placed in the 12th sign from the Sun (excluding Moon, Rahu, Ketu). Venus in 12th from Sun as Voshi indicates that grace, art, and beauty precede the Sun's identity. The native is known for their artistic soul, romantic nature, and charitable approach to pleasures and beauty."
+    planets: ["venus", "sun"]
+    houses_required: []
+    sign_condition: "venus_in_12th_from_sun"
+  cancellation:
+    - "Venus is severely debilitated or afflicted in the 12th from Sun"
+    - "Saturn conjoins Venus — austerity and delays undermine Voshi's grace"
+    - "Ketu conjoins Venus — spiritual detachment from artistic/sensual expression"
+  effects:
+    general: "The native has a romantic, artistic, and aesthetically oriented identity that operates with grace and beauty. Venus in 12th from Sun softens the Sun's sometimes harsh identity with Venus's charm — the native is known for their charm, artistic sensibility, and gracious treatment of others."
+    career: "Arts, beauty, entertainment, or social harmony-creating professions. The native's artistic qualities precede their formal achievements."
+    relationships: "Natural charm and romantic sensibility. The native attracts others through genuine grace rather than status alone."
+  strength_factors:
+    - "Strongest when Venus is exalted in Pisces in the 12th from Sun"
+    - "Enhanced when Venus is in own sign"
+    - "More powerful when Moon is also strong (creating lunar-solar harmonic)"
+    - "Amplified during Venus mahadasha"
+  source: "Phaladeepika chapter 8 on planet-specific Voshi"
+  confidence: "high"
+
+voshi_saturn_yoga:
+  name_en: "Voshi Yoga — Saturn in 12th from Sun"
+  name_hi: "वोशी योग — सूर्य से द्वादश शनि"
+  type: "mixed"
+  formation:
+    condition: "Saturn is placed in the 12th sign from the Sun. Saturn as Voshi creates a difficult but ultimately disciplining energy — Saturn's karmic weight precedes the Sun's identity. The native may face early authority challenges, father-related difficulties, or harsh responsibilities that eventually build character and authority."
+    planets: ["saturn", "sun"]
+    houses_required: []
+    sign_condition: "saturn_in_12th_from_sun"
+  cancellation:
+    - "Saturn is exalted in Libra in the 12th from Sun — discipline becomes authority"
+    - "Jupiter aspects Saturn in the 12th from Sun — wisdom moderates Saturn's harshness"
+    - "Saturn is in own sign (Capricorn, Aquarius) in the 12th from Sun — controlled authority"
+  effects:
+    general: "Saturn's Voshi creates a person who must earn their Sun-identity (confidence, authority, recognition) through hard work and overcoming obstacles. The karmic weight (Saturn) precedes the light of recognition (Sun). The native may face challenges from authority figures, experience father-related difficulties, or work in structured, disciplined environments."
+    career: "Success through persistent effort in structured fields. The native earns authority through demonstrated competence and discipline rather than natural charisma."
+    health: "Some health challenges related to Saturn's significations (bones, teeth, chronic conditions)."
+  strength_factors:
+    - "Best when Saturn is exalted (Libra) or in own signs (Capricorn, Aquarius)"
+    - "Enhanced when Jupiter aspects the Saturn Voshi position"
+    - "Less challenging when Saturn is the yogakaraka for the native's Lagna"
+    - "Results become positive after Saturn's mahadasha (hard work period)"
+  source: "Phaladeepika chapter 8 on planet-specific Voshi effects"
+  confidence: "medium"
+
+# =============================================================================
+# ADDITIONAL CLASSICAL YOGAS — BPHS, PHALADEEPIKA, SARAVALI
+# =============================================================================
+
+kalpadruma_yoga:
+  name_en: "Kalpadruma Yoga (Wish-Fulfilling Tree Yoga)"
+  name_hi: "कल्पद्रुम योग"
+  type: "benefic"
+  formation:
+    condition: "The Lagna lord is in a kendra or trikona AND is in its own sign or exalted, AND the dispositor of the Lagna lord is also in a kendra or trikona, AND the dispositor of the dispositor is in a kendra or trikona or own sign. The chain of planetary strength creates a yoga where all the native's wishes (kalpas = desires) are fulfilled like the Kalpadruma (wish-fulfilling tree of heaven)."
+    planets: []
+    houses_required: [1, 4, 5, 7, 9, 10]
+    sign_condition: "lagna_lord_exalted_own_in_kendra_trikona_with_strong_dispositor_chain"
+  cancellation:
+    - "Any link in the dispositor chain is broken by debilitation or severe affliction"
+    - "The final dispositor is in a dusthana without benefic relief"
+    - "Rahu or Ketu breaks the dispositor chain by conjuncting a key planet"
+  effects:
+    general: "The native is extraordinarily fortunate — their desires materialize with unusual ease. Like the Kalpadruma tree that grants all wishes in the heavenly realms, this yoga indicates a chart where the planetary energies align so powerfully that the native's genuine desires are fulfilled in worldly life. They may be born into abundance or achieve it with remarkable ease."
+    career: "Achievement in any chosen field. The native rarely struggles to find success — opportunities come to them."
+    finance: "Substantial wealth that comes through a chain of fortunate circumstances. The native benefits from fortuitous connections and well-placed supporters."
+  strength_factors:
+    - "Strongest when the dispositor chain ends at an exalted planet in a kendra"
+    - "Enhanced when Jupiter is involved in the chain (adding divine grace)"
+    - "More powerful when the Lagna lord is exalted in the 10th (karma kendra)"
+    - "Amplified when Vargottama planets are present in the chain"
+  source: "BPHS classical combination; Phaladeepika on auspicious planetary chains"
+  confidence: "medium"
+
+rina_yoga_bphs:
+  name_en: "Rina Yoga (Debt Yoga — BPHS Conditions)"
+  name_hi: "ऋण योग (BPHS शर्तें)"
+  type: "malefic"
+  formation:
+    condition: "The 2nd lord (wealth house) is in the 6th house (debts) AND the 6th lord is in the 2nd house (creating an exchange between wealth and debt), OR the 2nd lord is debilitated in the 12th house. This specific condition from BPHS creates a Rina (debt) pattern where the wealth house and debt house are entangled."
+    planets: []
+    houses_required: [2, 6, 12]
+    sign_condition: "2nd_lord_in_6th_or_6th_lord_in_2nd_or_2nd_lord_debilitated_in_12th"
+  cancellation:
+    - "Jupiter aspects the 2nd house — dharmic wealth overcomes the debt pattern"
+    - "The exchanging planets (2nd and 6th lords) are in dignity — exchange becomes positive"
+    - "Strong Venus in the 2nd house — aesthetic wealth creates income despite debt pattern"
+  effects:
+    general: "The native tends to live with ongoing debt obligations, financial liabilities, or the pattern of earning and immediately owing. The 2nd house (earned wealth) is entangled with the 6th house (debts, enemies, service). The native may take frequent loans, struggle with credit, or face persistent financial obligations that limit wealth accumulation."
+    finance: "Persistent debt or financial obligations. The native earns but spends to service debts, creating a cycle. Careful financial management is essential. Remedies include Saturn and Mercury propitiation."
+    health: "Some tendency toward digestive or metabolic issues (6th house influence on 2nd house body matters)."
+  strength_factors:
+    - "More severe when malefics (Mars, Saturn, Rahu) also afflict the 2nd house"
+    - "Less harmful when Jupiter aspects the 2nd or 6th lords"
+    - "Intensified when the 12th lord is also in the 2nd house (spending overwhelms earning)"
+    - "Remedied through honoring financial obligations conscientiously and avoiding new debts"
+  source: "BPHS chapter 16 on Rina Yoga; Phaladeepika chapter 5"
+  confidence: "high"
+
+putrakama_yoga:
+  name_en: "Putrakama Yoga (Desire for Children Yoga)"
+  name_hi: "पुत्रकाम योग"
+  type: "benefic"
+  formation:
+    condition: "Jupiter is in the 5th house in a kendra from both the Lagna AND the Moon, AND the 5th lord is also in a kendra or trikona. Alternatively, the 5th lord and Jupiter are conjunct or in mutual aspect in benefic houses. This yoga indicates strong potential for children and happiness through progeny."
+    planets: ["jupiter"]
+    houses_required: [1, 4, 5, 7, 9, 10]
+    sign_condition: "jupiter_in_5th_or_5th_lord_strong_with_jupiter"
+  cancellation:
+    - "Ketu in the 5th house without Jupiter's aspect — indicates childlessness or adopted children"
+    - "Mars in the 5th house in enemy sign without benefic relief — children face challenges"
+    - "Saturn aspects the 5th lord and the 5th house without any benefic intervention"
+  effects:
+    general: "The native is blessed with children and finds deep joy through progeny. Jupiter in or strongly influencing the 5th house (children) creates the Putrakama Yoga — desire for children (kama) is fulfilled. The native's children may themselves be blessed with intelligence, virtue, and success."
+    family: "Happy family life centered around children. The native's children are a source of pride and joy. They may have multiple children and have a harmonious parent-child relationship."
+    spiritual: "Jupiter in the 5th gives spiritual wisdom, and the native's children carry forward dharmic traditions. The 5th house is also the house of purva punya (past-life merit), and this yoga indicates the native has earned the blessing of good children."
+  strength_factors:
+    - "Strongest when Jupiter is exalted in Cancer in the 5th (for Pisces lagna)"
+    - "Enhanced when the 5th lord is also exalted or in own sign"
+    - "More powerful when the Moon also aspects or conjoins Jupiter"
+    - "Amplified during Jupiter mahadasha — children are born or flourish"
+  source: "Classical texts on progeny yogas; BPHS chapter 72 on Putra Bhava"
+  confidence: "high"
+
+nishturabhashi_yoga:
+  name_en: "Nishturabhashi Yoga (Harsh Speech Yoga)"
+  name_hi: "निष्ठुरभाषी योग"
+  type: "malefic"
+  formation:
+    condition: "Saturn, Mars, or both are conjunct with Mercury AND the combination is in the 2nd house (house of speech and family), OR the 2nd lord (speech significator) is in mutual aspect or conjunction with Saturn and Mars simultaneously. The combination of the two greatest natural malefics (Mars — aggression, Saturn — harshness) with Mercury (speech) creates cruel, cutting, or harsh speech patterns."
+    planets: ["saturn", "mars", "mercury"]
+    houses_required: [2]
+    sign_condition: "saturn_mars_with_mercury_or_2nd_lord"
+  cancellation:
+    - "Jupiter aspects Mercury or the 2nd house — wisdom softens harsh speech"
+    - "Venus conjoins Mercury in the 2nd — grace and charm temper harshness"
+    - "Mercury is exalted in Virgo — strength partially overcomes malefic influence"
+  effects:
+    general: "The native tends toward harsh, blunt, or cutting communication. Their speech may inadvertently wound others, or they may deliberately use words as weapons. In positive expression, this yoga can manifest as directness, precision, or fearless truth-telling. In negative expression, it creates social friction, broken relationships, and enemies through speech."
+    relationships: "Family relationships may be strained through harsh speech. Partnerships may be challenged by the native's blunt communication style."
+    career: "In some fields (surgery, law, debate, crisis communication), this directness of speech is a professional asset."
+  strength_factors:
+    - "Most intense when both Saturn and Mars conjunct Mercury in the 2nd"
+    - "More severe in Scorpio or Aries (Mars-ruled signs amplifying aggression)"
+    - "Less harmful when the combination is in Saturn's own signs (Capricorn, Aquarius) — controlled harshness"
+    - "Remedied through daily speech practice: conscious communication and mantra japa"
+  source: "Classical texts on 2nd house speech yogas; Jataka Parijata; Saravali"
+  confidence: "medium"
+
+pitru_shraap_yoga:
+  name_en: "Pitru Shaap Yoga (Ancestral Curse Yoga)"
+  name_hi: "पितृ शाप योग"
+  type: "malefic"
+  formation:
+    condition: "The Sun (natural significator of father and ancestors) is afflicted in the 9th house (father, ancestors, dharma) OR the 9th lord is debilitated or conjunct Rahu/Ketu AND Saturn also aspects the 9th house or its lord. This combination indicates karmic debt from the paternal ancestral line."
+    planets: ["sun", "saturn", "rahu"]
+    houses_required: [9]
+    sign_condition: "sun_afflicted_in_9th_or_9th_lord_debilitated_with_saturn_influence"
+  cancellation:
+    - "Jupiter strongly aspects the 9th house or 9th lord — ancestral blessings restored"
+    - "The Sun is in its own sign (Leo) or exalted (Aries) in the 9th — ancestral strength"
+    - "Strong 9th lord in a kendra or trikona despite minor affliction"
+  effects:
+    general: "The native carries karma from paternal ancestors that creates obstacles in their dharmic path. This may manifest as father-related challenges, difficulty with authority figures (who represent the father archetype), blocked opportunities that seem inexplicable, or recurring patterns of effort without proportionate reward. The native is advised to perform ancestral rites (Pitru Tarpan, Shraddha ceremonies) to resolve this karma."
+    career: "Career may be blocked by hidden obstacles, authority conflicts, or government-related difficulties that trace to ancestral karma."
+    spiritual: "Strong pull toward ancestral propitiation, Pitru Puja, and resolving family karma. The native benefits greatly from these practices."
+  strength_factors:
+    - "Most intense when Sun is debilitated in Libra in the 9th with Saturn and Rahu"
+    - "More severe when the native's father also had a difficult chart (generational karma)"
+    - "Mitigated when the native sincerely performs Pitru Tarpan on Amavasya"
+    - "Intensified during Sun mahadasha or Rahu mahadasha"
+  source: "Classical texts on ancestral karma; BPHS Arishta chapter; Saravali"
+  confidence: "medium"
+
+balarishta_moon_malefic_kendra:
+  name_en: "Balarishta — Moon with Malefic in Kendra"
+  name_hi: "बालारिष्ट — केन्द्र में चन्द्र के साथ पापग्रह"
+  type: "malefic"
+  formation:
+    condition: "The Moon is in a kendra house (1st, 4th, 7th, or 10th) and is conjoined with or severely aspected by natural malefics (Saturn, Mars, or Rahu/Ketu) WITHOUT any benefic (Jupiter, Venus) aspect on the Moon. The Moon in a kendra (prominent position) under full malefic assault without protection indicates early life vulnerability."
+    planets: ["moon"]
+    houses_required: [1, 4, 7, 10]
+    sign_condition: "moon_in_kendra_with_malefic_no_benefic"
+  cancellation:
+    - "Jupiter aspects the Moon from any kendra or trikona — protection from danger"
+    - "Venus aspects the Moon — emotional protection and nourishment"
+    - "Moon is waxing (Shukla Paksha) and bright — natural strength resists malefic"
+    - "Strong Lagna lord compensates for Moon's affliction"
+  effects:
+    general: "Classical texts describe Balarishta as an early life threat indicator. Moon in a kendra (exposed, prominent position) under malefic attack creates vulnerability in the first years of life (particularly the first 3-12 years). If this yoga is sufficiently cancelled, the native survives but may face early health challenges or separation from the mother. Classical remedies include Janamakshatra puja and Moon-strengthening rituals."
+    health: "Early childhood health challenges. The mother's health may also be affected. Emotional and psychological vulnerability in early years."
+    family: "Possible early separation from or challenges related to the mother. The native may be raised with emotional instability in early childhood."
+  strength_factors:
+    - "Most severe when Moon is also waning (Krishna Paksha) or near Amavasya"
+    - "Intensified when Moon is debilitated in Scorpio with malefic influence"
+    - "Most dangerous when the malefic is Rahu or Ketu in a Gandanta degree"
+    - "Significantly reduced when Jupiter aspects Moon — Jupiter's aspect on Moon is the best Balarishta cancellation"
+  source: "BPHS chapter 40 — Arishta Adhyaya; Brihat Jataka chapter 7"
+  confidence: "high"
+
+yogini_dasha_mrityu:
+  name_en: "Yogini Dasha Mrityu Indicators"
+  name_hi: "योगिनी दशा मृत्यु संकेत"
+  type: "malefic"
+  formation:
+    condition: "The Mangala (Mars) Yogini Dasha period coincides with the native's chart having Mars in the 8th house from its natal position, AND the 8th lord is in a maraka position (2nd or 7th) in the transit chart. Additionally, Saturn transiting the 8th from Moon during Mangala Yogini Dasha intensifies the death indicator. Per classical Yogini Dasha rules, each Yogini has specific maraka potential."
+    planets: ["mars", "saturn"]
+    houses_required: [2, 7, 8]
+    sign_condition: "yogini_dasha_maraka_transit_combination"
+  cancellation:
+    - "Jupiter transiting the 1st or 5th from Moon during the Yogini Dasha period"
+    - "Benefic aspects on the natal 8th lord during the Dasha period"
+    - "Strong Lagna and Lagna lord throughout the Dasha — vitality maintained"
+  effects:
+    general: "Yogini Dasha is an 8-year cycle Dasha system where each of 8 yoginis (Mangala, Pingala, Dhanya, Bhramari, Bhadrika, Ulka, Siddha, Sankata) rules a period. Classical texts identify specific dangerous periods within Yogini Dasha for health and longevity. The Mangala (1 year) and Ulka (Saturn, 6 years) yoginis are considered most challenging for health crises."
+    health: "Health crises or surgeries during specific Yogini Dasha periods. The native should take precautions and not undertake risky activities during these periods."
+  strength_factors:
+    - "Most dangerous when combined with Vimshottari death indicators in the same period"
+    - "Intensified when Rahu or Ketu transit the 1st or 8th houses simultaneously"
+    - "Mitigated when Jupiter transits the 1st or 5th from natal Moon"
+    - "Requires concurrent malefic transits to be fully activated"
+  source: "Classical Yogini Dasha texts; Saravali on Yogini Dasha death indicators"
+  confidence: "medium"
+
+madhyayu_longevity:
+  name_en: "Madhyayu Yoga — Medium Life Indicators"
+  name_hi: "मध्यायु योग — मध्यम आयु संकेत"
+  type: "mixed"
+  formation:
+    condition: "The longevity indicators (Lagna lord, Moon, and 8th lord) are analyzed: if exactly one of the three (Lagna lord, Moon, or 8th lord) is in a dusthana (6th, 8th, 12th) while the others are in kendras or trikonas, the classical formula indicates middle longevity (40-70 years, madhyayu). This is BPHS's three-factor longevity assessment."
+    planets: []
+    houses_required: [1, 4, 5, 6, 7, 8, 9, 10, 12]
+    sign_condition: "one_of_three_longevity_factors_in_dusthana"
+  cancellation:
+    - "Multiple benefic aspects on the afflicted longevity factor — extends life"
+    - "Strong Deerghayu indicators (2 of 3 factors in kendra/trikona) — life extended"
+    - "Vargottama longevity factors add substantial strength"
+  effects:
+    general: "The classical Ayur (longevity) calculation from BPHS indicates middle lifespan when precisely one of the three longevity pillars (Lagna lord, Moon, 8th lord) is weakened while the others are strong. The native typically lives a middle lifespan with the key health challenges concentrated in specific planetary periods."
+    health: "Health is generally maintained but with notable challenges during the weakened longevity factor's mahadasha or during malefic transits to that factor."
+  strength_factors:
+    - "More toward Deerghayu (long life) when the dusthana factor is also in a benefic sign"
+    - "More toward Alpayu (short life) when the dusthana factor is also debilitated"
+    - "Ayur calculations must consider all three longevity factors together"
+    - "Saturn's exact aspects and Rahu/Ketu positions refine the calculation"
+  source: "BPHS chapter 44 — Ayur Adhyaya (Longevity Chapter); Saravali chapter 37"
+  confidence: "high"
+
+
+# =============================================================================
+# DURUDHURA YOGA VARIANTS — MOON FLANKING CONFIGURATIONS
+# Phaladeepika Ch.7; BPHS Ch.30
+# =============================================================================
+
+durudhura_full_benefic:
+  name_en: "Durudhura Yoga — Full Benefic Flanking"
+  name_hi: "दुरधुरा योग — पूर्ण शुभ परिप्राप्ति"
+  type: "benefic"
+  formation:
+    condition: "Natural benefic planets (Jupiter, Venus, Mercury — excluding Sun, Rahu, Ketu) are placed in BOTH the 2nd AND the 12th signs from the Moon simultaneously, AND both flanking planets are natural benefics. This is the most auspicious form of Durudhura where the Moon is completely embraced by beneficial energy."
+    planets: ["jupiter", "venus", "mercury"]
+    houses_required: []
+    sign_condition: "benefics_in_both_2nd_and_12th_from_moon"
+  cancellation:
+    - "Either flanking benefic is severely combust or debilitated"
+    - "Rahu or Ketu is conjunct with one of the flanking benefics"
+    - "Moon itself is debilitated or in a highly afflicted state"
+  effects:
+    general: "The Moon is perfectly supported on both sides by benevolent planetary energy — wisdom (Jupiter), beauty/pleasure (Venus), or intelligence (Mercury) before and behind the Moon. This creates an extraordinarily balanced and supported emotional life. The native has a generous, well-rounded character, blessed with support from family, community, and nature. They are prosperous, well-liked, and emotionally stable."
+    finance: "Wealth flowing from both directions — income (12th from Moon = givers) and family savings (2nd from Moon). The native is financially well-supported and generous."
+    relationships: "Exceptionally harmonious family and social relationships. The native is beloved by all who know them."
+  strength_factors:
+    - "Strongest when Jupiter flanks Moon on both sides (two Jupiter transits cannot do this natally, so Jupiter on one side and Venus on the other is the best)"
+    - "Enhanced when both flanking benefics are in dignity (own or exalted)"
+    - "More powerful when Moon is also full (Shukla Paksha) and in a benefic sign"
+    - "Creates a natural Pushkala Yoga if Moon is also strong"
+  source: "Phaladeepika chapter 7 on Durudhura; BPHS chapter 30"
+  confidence: "high"
+
+durudhura_full_malefic:
+  name_en: "Durudhura Yoga — Full Malefic Flanking"
+  name_hi: "दुरधुरा योग — पूर्ण अशुभ परिप्राप्ति"
+  type: "malefic"
+  formation:
+    condition: "Natural malefic planets (Saturn, Mars — excluding Sun and nodes in traditional Phaladeepika) are placed in BOTH the 2nd AND 12th signs from the Moon simultaneously, AND both flanking planets are natural malefics. This is the most challenging form of Durudhura where the Moon is hemmed between malefic energy from both sides."
+    planets: ["saturn", "mars"]
+    houses_required: []
+    sign_condition: "malefics_in_both_2nd_and_12th_from_moon"
+  cancellation:
+    - "Jupiter aspects Moon from a kendra or trikona — divine protection moderates malefics"
+    - "Moon is in own sign (Cancer) or exalted (Taurus) — natural strength resists"
+    - "Moon is full and bright (Purnima) — paksha bala overcomes flanking malefics"
+  effects:
+    general: "The Moon is hemmed between harsh energy on both sides. The native may face emotional challenges, family conflicts, and a life that requires constant effort to maintain stability. Saturn flanking creates delays and austerity; Mars flanking creates conflict and urgency. The native develops exceptional resilience through adversity — they are forged through difficulty."
+    emotional: "Emotional challenges throughout life. The native learns to manage their emotional life through discipline (Saturn) and courage (Mars) rather than receiving nurturing support."
+    finance: "Financial outflows from both sides — debt (12th from Moon) and family obligations (2nd from Moon) can create financial pressure."
+  strength_factors:
+    - "Most intense when both malefics are also aspecting each other (mutual malefic aspect)"
+    - "More severe when Moon is waning (Krishna Paksha) and in a malefic sign"
+    - "Jupiter's aspect on Moon is the most powerful remedy for this yoga"
+    - "Less severe when the malefics are in dignity (Saturn in Libra, Mars in Capricorn)"
+  source: "Phaladeepika chapter 7 on Durudhura malefic variants; BPHS chapter 30"
+  confidence: "high"
+
+# =============================================================================
+# KEMADRUMA BHANGA — SPECIFIC CANCELLATION CONDITIONS
+# BPHS Ch.30; Phaladeepika Ch.7
+# =============================================================================
+
+kemadruma_bhanga_moon_kendra:
+  name_en: "Kemadruma Bhanga — Moon in Kendra (Primary Cancellation)"
+  name_hi: "केमद्रुम भंग — चन्द्र केन्द्र में"
+  type: "benefic"
+  formation:
+    condition: "Kemadruma Yoga (no planet in 2nd or 12th from Moon) is present BUT the Moon is simultaneously placed in a kendra house (1st, 4th, 7th, or 10th) from the Lagna. The Moon in a kendra gains strength from the angular house position, which classical texts say cancels or significantly reduces Kemadruma's effects."
+    planets: ["moon"]
+    houses_required: [1, 4, 7, 10]
+    sign_condition: "kemadruma_present_but_moon_in_kendra"
+  cancellation:
+    - "Moon is in the 6th or 8th house from Lagna despite kendra position — dusthana weakens"
+    - "Moon is severely debilitated AND waning — natural weakness overrides kendra strength"
+    - "Malefics heavily afflict the Moon even in the kendra"
+  effects:
+    general: "The Kemadruma Bhanga through Moon in kendra gives the Moon angular strength that compensates for its isolation. While the 2nd and 12th from Moon are empty, the Moon's powerful position in a kendra from Lagna provides foundational support. The native may still experience some Kemadruma qualities (emotional periods of isolation) but these are significantly diminished by the kendra strength."
+    emotional: "Emotional resilience despite occasional isolation. The native's Moon strength from the kendra position provides a stable center even without flanking planetary support."
+  strength_factors:
+    - "Most powerful cancellation when Moon is in the 1st house (lagna itself)"
+    - "Strong cancellation when Moon is in the 10th (career kendra supports identity)"
+    - "Enhanced when Moon is also waxing and in a benefic nakshatra"
+    - "Combined with other Kemadruma Bhanga conditions for full cancellation"
+  source: "BPHS chapter 30; Phaladeepika chapter 7 on Kemadruma Bhanga conditions"
+  confidence: "high"
+
+kemadruma_bhanga_benefic_aspect:
+  name_en: "Kemadruma Bhanga — Jupiter or Venus Aspects Moon"
+  name_hi: "केमद्रुम भंग — गुरु/शुक्र चन्द्र को देखे"
+  type: "benefic"
+  formation:
+    condition: "Kemadruma Yoga (no planet in 2nd or 12th from Moon) is present BUT Jupiter or Venus (natural benefics) casts a direct aspect on the Moon. The benefic planet's aspect provides the missing supportive energy that Kemadruma lacks — a benefic 'looking after' the isolated Moon."
+    planets: ["moon", "jupiter", "venus"]
+    houses_required: []
+    sign_condition: "kemadruma_but_jupiter_or_venus_aspects_moon"
+  cancellation:
+    - "The aspecting benefic (Jupiter or Venus) is itself severely combust or debilitated"
+    - "Rahu conjuncts the aspecting benefic — corrupts its protective aspect"
+    - "Moon is in a dusthana house AND waning — compound weakness may overpower the aspect"
+  effects:
+    general: "Jupiter or Venus looking at the isolated Moon provides divine protection and nourishment to the lonely Moon. This is one of the most important Kemadruma Bhanga conditions — the benevolent gaze of the greatest benefics rescues the Moon from isolation. The native may still feel emotional sensitivity but receives important emotional and material support from beneficent sources (teachers, friends, partners)."
+    relationships: "Despite the Moon's isolation, benefic assistance comes through key relationships. A wise mentor (Jupiter) or loving partner (Venus) provides the emotional support that Kemadruma would otherwise deny."
+  strength_factors:
+    - "Jupiter's aspect is considered the most powerful Kemadruma cancellation"
+    - "Enhanced when Jupiter is exalted in Cancer while aspecting Moon — double benefic"
+    - "Venus's aspect particularly helps with relationship support for the isolated Moon"
+    - "More powerful when the aspecting benefic is also in a kendra or trikona"
+  source: "BPHS chapter 30; Phaladeepika chapter 7 on Kemadruma Bhanga"
+  confidence: "high"
+
+# =============================================================================
+# MORE CLASSICAL NAMED YOGAS — Phaladeepika and Brihat Jataka
+# =============================================================================
+
+nipuna_yoga:
+  name_en: "Nipuna Yoga (Skill and Expertise Yoga)"
+  name_hi: "निपुण योग"
+  type: "benefic"
+  formation:
+    condition: "Mercury is in the 1st, 2nd, 4th, 5th, 7th, 9th, or 10th house AND is in its own sign (Gemini or Virgo) or exalted (Virgo). The strong Mercury in a beneficial house creates Nipuna — the native is supremely skilled, expert, and proficient in their chosen field. Named from 'nipuna' meaning expert or adept."
+    planets: ["mercury"]
+    houses_required: [1, 2, 4, 5, 7, 9, 10]
+    sign_condition: "mercury_own_or_exalted_in_kendra_trikona_or_2nd"
+  cancellation:
+    - "Mercury is severely combust (within 14 degrees of Sun)"
+    - "Mercury is conjunct Rahu or Ketu — expertise becomes scattered or deceptive"
+    - "Saturn closely aspects Mercury — slows Mercury's quick intelligence"
+  effects:
+    general: "The native achieves exceptional skill and expertise in their field. Mercury's strength in a key house makes them an adept practitioner — whether in commerce, communication, craftsmanship, technology, writing, or analytical work. They are recognized as experts and may teach their skills to others. Their precision and attention to detail are legendary."
+    career: "Mastery in Mercury-ruled fields: technology, writing, accounting, mathematics, medicine, law, or any field requiring analytical precision."
+    finance: "Wealth through expert services. The native earns more than peers through superior skill."
+  strength_factors:
+    - "Strongest when Mercury is exalted in Virgo in the 2nd or 10th house"
+    - "Enhanced when Mercury is Vargottama (same sign in Rashi and Navamsha)"
+    - "More powerful when Jupiter also aspects Mercury — wisdom added to skill"
+    - "Amplified during Mercury mahadasha with Mercury antardasha"
+  source: "Phaladeepika chapter 6 on named skill yogas; Saravali"
+  confidence: "high"
+
+papaghna_jyoti_yoga:
+  name_en: "Papaghna Jyoti Yoga (Luminaries Full Aspect)"
+  name_hi: "पापघ्न ज्योति योग"
+  type: "benefic"
+  formation:
+    condition: "The Sun and Moon are in opposition (7th from each other) AND both are in kendras or trikonas from the Lagna. The full aspect between the two luminaries — the cosmic father (Sun) and mother (Moon) gazing at each other — creates a balanced chart of light. When both are in powerful positions from Lagna, the native receives the blessings of both solar and lunar energies in full."
+    planets: ["sun", "moon"]
+    houses_required: [1, 4, 5, 7, 9, 10]
+    sign_condition: "sun_moon_opposition_both_in_kendra_or_trikona"
+  cancellation:
+    - "Either the Sun or Moon is debilitated in their opposition position"
+    - "Rahu or Ketu closely conjoins either luminary — eclipse-like affliction"
+    - "Neither the Sun nor Moon is in a kendra or trikona from Lagna"
+  effects:
+    general: "The native has a powerful, balanced identity — the Sun (ego, authority, father) and Moon (mind, emotions, mother) in full mutual aspect creates someone whose intellect and emotion, father and mother influences, and day and night qualities are fully integrated. They are well-rounded, balanced, and receive support from both masculine and feminine principles."
+    career: "Leadership that combines authority (Sun) with empathy (Moon). The native excels in roles that require both decisive action and emotional intelligence."
+    relationships: "Harmonious relationship with both parents (when other indicators agree). The native often has a balanced relationship experience."
+  strength_factors:
+    - "Strongest on full moon (Purnima) — when Moon is bright and opposite Sun"
+    - "Enhanced when Sun is in Aries (exalted) and Moon is in Libra"
+    - "Or Sun in Leo (own) opposite Moon in Aquarius"
+    - "More powerful when both luminaries are in kendra positions from Lagna"
+  source: "Classical Vedic texts on luminary opposition; Saravali chapter 18"
+  confidence: "medium"
+
+chandra_surya_yoga:
+  name_en: "Chandra-Surya Yoga (Moon-Sun Mutual Aspect Yoga)"
+  name_hi: "चन्द्र-सूर्य योग"
+  type: "benefic"
+  formation:
+    condition: "The Moon aspects the Sun (or they are in conjunction) AND both are in benefic houses (1st, 2nd, 4th, 5th, 7th, 9th, 10th, 11th) from the Lagna. The combination or mutual aspect of the two luminaries in auspicious houses creates a yoga of combined luminosity — the native has a radiant, prominent personality."
+    planets: ["sun", "moon"]
+    houses_required: [1, 2, 4, 5, 7, 9, 10, 11]
+    sign_condition: "sun_moon_conjunction_or_aspect_in_benefic_houses"
+  cancellation:
+    - "Both luminaries are in dusthana houses (6th, 8th, 12th) — eclipse of dual light"
+    - "Rahu or Ketu conjoins the Sun-Moon combination — Grahan (eclipse) overrides"
+    - "Both luminaries are debilitated (Sun in Libra, Moon in Scorpio) — weakened light"
+  effects:
+    general: "The integration of the Sun (father, authority, consciousness) and Moon (mother, emotion, subconsciousness) through conjunction or aspect in benefic houses creates a person of luminous and integrated personality. The native naturally bridges masculine and feminine energies, logical and intuitive faculties, and inner and outer life."
+    personality: "The native has a radiant, magnetic personality that combines intellectual authority with emotional warmth. They are both respected (Sun) and loved (Moon)."
+  strength_factors:
+    - "Strongest when Sun is exalted in Aries and Moon is exalted in Taurus (trine relationship)"
+    - "Enhanced when the combination falls in the 1st or 10th house"
+    - "More powerful when both luminaries are in benefic nakshatras"
+    - "Amplified during Sun-Moon joint period in Vimshottari"
+  source: "Classical Vedic texts on Sun-Moon combinations; Saravali"
+  confidence: "medium"
+
+parivartana_yoga_benefic:
+  name_en: "Parivartana Yoga — Benefic House Exchange (Maha Yoga)"
+  name_hi: "परिवर्तन योग — शुभ भाव (महा योग)"
+  type: "benefic"
+  formation:
+    condition: "Lords of two kendra houses (1, 4, 7, 10) or two trikona houses (1, 5, 9) exchange signs (each placed in the other's sign). This Parivartana creates a powerful Raj Yoga-level combination because two strong house lords mutually support each other's houses through the exchange. Also applies when a kendra lord and a trikona lord exchange."
+    planets: []
+    houses_required: [1, 4, 5, 7, 9, 10]
+    sign_condition: "kendra_or_trikona_lords_in_exchange"
+  cancellation:
+    - "Either exchanging planet is debilitated, severely combust, or in a planetary war"
+    - "Either exchanging planet is conjunct Rahu or Ketu without benefic support"
+    - "The exchange creates a house connection through dusthana houses (6, 8, 12)"
+  effects:
+    general: "The mutual exchange between benefic house lords creates a powerful Raj Yoga. The two houses strengthen each other through their lord's exchange — wealth and career support each other, or dharma and intelligence reinforce each other. The native achieves success through the combined power of the two exchanging houses."
+    career: "Career success amplified by mutual house support. The native's strengths flow between the two exchanging house domains."
+    finance: "Financial prosperity when the exchange involves wealth houses (2nd, 11th, or strong kendra)."
+  strength_factors:
+    - "Most powerful when 9th and 10th lords exchange (Dharma-Karma Yoga)"
+    - "Enhanced when 1st and 5th lords exchange (self-intelligence connection)"
+    - "Stronger when the exchanging planets are in dignity in the exchanged positions"
+    - "Results are most pronounced during the dashas of either exchanging planet"
+  source: "BPHS chapter on Parivartana; classical Raj Yoga combinations"
+  confidence: "high"
+
+raja_yoga_multiple:
+  name_en: "Raja Yoga — Multiple Simultaneous Combinations"
+  name_hi: "राज योग — बहु एकसाथ योग"
+  type: "benefic"
+  formation:
+    condition: "Three or more kendra-trikona Raj Yoga combinations are simultaneously present in the chart — i.e., lords of kendra and trikona houses are in mutual conjunction, aspect, or exchange in three or more distinct pairs. When multiple Raja Yogas co-exist, they amplify each other's power."
+    planets: []
+    houses_required: [1, 4, 5, 7, 9, 10]
+    sign_condition: "three_or_more_raja_yoga_combinations"
+  cancellation:
+    - "Multiple Raja Yoga planets are simultaneously debilitated — Neech Bhanga needed"
+    - "Nodes (Rahu/Ketu) are conjunct multiple Raja Yoga planets — corruption of yogas"
+    - "The chart also has strong Papakatari on Lagna — suffering despite yogas"
+  effects:
+    general: "The native is born to greatness — multiple Raja Yogas stacking creates a chart of exceptional destiny. Each additional Raja Yoga multiplies the probability and magnitude of the native's success. Such charts are found in great leaders, successful entrepreneurs, celebrated artists, and revered spiritual figures."
+    career: "Extraordinary achievement across multiple domains simultaneously. The native may be recognized as exceptional in career, social status, and spiritual development at the same time."
+    social: "Social prominence, leadership, and lasting fame are indicated."
+  strength_factors:
+    - "Most powerful when all three Raja Yoga combinations involve the same core planets"
+    - "Enhanced when the Lagna lord participates in multiple yogas"
+    - "Stronger when three or more yogas activate during a single favorable Dasha period"
+    - "Amplified when the Navamsha confirms the Rashi Raja Yoga combinations"
+  source: "BPHS on multiple Raja Yoga assessment; classical commentaries"
+  confidence: "high"
+
+vakra_graha_yoga:
+  name_en: "Vakra Graha Yoga (Retrograde Planet in Kendra)"
+  name_hi: "वक्र ग्रह योग"
+  type: "mixed"
+  formation:
+    condition: "A slow-moving planet (Mars, Mercury, Jupiter, Venus, or Saturn) is retrograde (vakri) AND placed in a kendra house (1st, 4th, 7th, or 10th) from the Lagna. A retrograde planet in a kendra gains unusual strength — the backward motion in a prominent house creates intensified, internalized, and often unconventional expression of the planet's qualities."
+    planets: ["mars", "mercury", "jupiter", "venus", "saturn"]
+    houses_required: [1, 4, 7, 10]
+    sign_condition: "retrograde_planet_in_kendra"
+  cancellation:
+    - "The retrograde planet in kendra is also debilitated — retrograde debilitation in kendra"
+    - "The retrograde planet is also combust — retrograde combustion negates strength"
+    - "Severe malefic affliction on the retrograde kendra planet"
+  effects:
+    general: "A retrograde planet in a kendra has unusual, internalized, and often exceptionally powerful expression. The native approaches the retrograde planet's domains through unconventional or introspective means, often achieving mastery that outpaces conventional practitioners. The retrograde motion creates depth, intensity, and non-linear approaches in the kendra's domains."
+    career: "Unconventional but often highly successful career approach in the retrograde planet's domains."
+    personality: "The native has a distinctive, internally-driven approach to the retrograde planet's themes — they are often ahead of their time or work against conventional wisdom to extraordinary effect."
+  strength_factors:
+    - "Jupiter retrograde in kendra: deepest philosophical and spiritual wisdom"
+    - "Venus retrograde in kendra: unconventional artistic mastery"
+    - "Mercury retrograde in kendra: unusual intellectual depth and non-linear thinking"
+    - "Saturn retrograde in kendra: extraordinary discipline and structural mastery"
+    - "Mars retrograde in kendra: intensified courage and competitive ability"
+  source: "Classical texts on retrograde planets; Saravali chapter 17; Jataka Parijata"
+  confidence: "medium"
+
+vargottama_lagna_yoga:
+  name_en: "Vargottama Lagna Yoga (Lagna in Same Sign Rashi-Navamsha)"
+  name_hi: "वर्गोत्तम लग्न योग"
+  type: "benefic"
+  formation:
+    condition: "The Lagna (Ascendant degree) falls in the Vargottama position — the same sign in both the Rashi (D1) and Navamsha (D9) charts. A Vargottama Lagna is considered one of the most fortifying positions for the entire chart, as the native's ascendant is doubly confirmed in both the material and soul charts."
+    planets: []
+    houses_required: [1]
+    sign_condition: "lagna_vargottama"
+  cancellation:
+    - "Lagna lord is severely debilitated or afflicted despite Vargottama Lagna"
+    - "Multiple malefics are in the Lagna house itself"
+    - "The Navamsha Lagna is in an extremely challenging configuration (malefic stellium)"
+  effects:
+    general: "The Vargottama Lagna is one of the strongest possible birth chart indicators. The ascendant sign being identical in both the physical chart (D1) and soul chart (D9) creates exceptional alignment between the native's outer identity and inner soul purpose. The native has clarity of purpose, strong physical constitution, and remarkable consistency between who they appear to be and who they truly are."
+    health: "Strong physical constitution and overall longevity. The Vargottama Lagna supports the body's vitality throughout life."
+    personality: "Authentic, consistent, and powerfully expressed personality. The native is comfortable in their own skin and rarely experiences identity confusion."
+  strength_factors:
+    - "Strongest when the Lagna lord is also strong, dignified, or exalted"
+    - "Enhanced when other key planets (Moon, Sun) are also Vargottama"
+    - "More powerful when the Vargottama Lagna is in a fixed sign (stable persistence)"
+    - "Amplified when the Navamsha Lagna lord is also in a strong position in the Navamsha"
+  source: "Classical texts on Vargottama; BPHS on Navamsha strength; Saravali"
+  confidence: "high"
+
+
+# =============================================================================
+# FINAL ADDITIONAL YOGAS — BPHS AND CLASSICAL TEXTS
+# =============================================================================
+
+mahabhagya_female:
+  name_en: "Mahabhagya Yoga — Female Chart Conditions"
+  name_hi: "महाभाग्य योग — स्त्री जातक"
+  type: "benefic"
+  formation:
+    condition: "In a female nativity: the Lagna, Sun, and Moon are all in even signs (Taurus, Cancer, Virgo, Scorpio, Capricorn, Pisces) AND the birth is during the night (between sunset and sunrise). Classical BPHS conditions for Mahabhagya Yoga differ by gender: for females, even sign placement of Lagna, Sun, and Moon conjoined with night birth creates the great fortune yoga."
+    planets: ["sun", "moon"]
+    houses_required: [1]
+    sign_condition: "lagna_sun_moon_all_even_signs_night_birth"
+  cancellation:
+    - "Any of the three (Lagna, Sun, Moon) is in an odd sign — yoga broken"
+    - "Severely afflicted Lagna by malefics negates the even sign blessing"
+    - "The birth occurs during daytime — specific to nighttime birth for female chart"
+  effects:
+    general: "A woman born with all three pivotal points (Lagna, Sun, Moon) in even signs during the night is considered to have exceptionally fortunate karma. Classical texts predict she will be noble, virtuous, beautiful, prosperous, and renowned. She may outlive her husband, have many children, and be respected in society as a woman of great character and fortune."
+    social: "Recognition, respect, and admiration in social circles. The native commands esteem through her virtue and character."
+  strength_factors:
+    - "Enhanced when all three (Lagna, Sun, Moon) are also in benefic signs"
+    - "More powerful when Moon is full (Purnima) and in an even sign"
+    - "Stronger when benefics (Jupiter, Venus) also occupy even signs"
+    - "Most pronounced during Venus or Jupiter mahadasha periods"
+  source: "BPHS chapter 97 — Strī Jātaka (Female Nativity); Phaladeepika"
+  confidence: "high"
+
+mahabhagya_male:
+  name_en: "Mahabhagya Yoga — Male Chart Conditions"
+  name_hi: "महाभाग्य योग — पुरुष जातक"
+  type: "benefic"
+  formation:
+    condition: "In a male nativity: the Lagna, Sun, and Moon are all in odd signs (Aries, Gemini, Leo, Libra, Sagittarius, Aquarius) AND the birth is during the day (between sunrise and sunset). Classical BPHS conditions for Mahabhagya Yoga for males require odd sign placement of Lagna, Sun, and Moon with daytime birth."
+    planets: ["sun", "moon"]
+    houses_required: [1]
+    sign_condition: "lagna_sun_moon_all_odd_signs_day_birth"
+  cancellation:
+    - "Any of the three (Lagna, Sun, Moon) is in an even sign — yoga broken"
+    - "Severely afflicted Sun (king of planets) negates the odd sign blessing"
+    - "Birth during nighttime — specific to daytime birth for male chart"
+  effects:
+    general: "A man born with Lagna, Sun, and Moon all in odd signs during the day is considered to have extraordinary fortune. Classical texts predict he will be valiant, virtuous, prosperous, well-known, and lead a long and fulfilling life. He may achieve fame, honor, and recognition, and be blessed with family, wealth, and social standing."
+    career: "Exceptional career trajectory with recognition and authority. The native rises to prominent positions through a combination of effort and fortune."
+    social: "Wide social recognition and respect. The native is known for their character and achievement."
+  strength_factors:
+    - "Enhanced when all three (Lagna, Sun, Moon) are in strong odd signs (Aries, Leo)"
+    - "More powerful when Sun is exalted in Aries (odd sign, Mahabhagya activated)"
+    - "Stronger when benefics (Jupiter, Venus) also occupy odd signs"
+    - "Most pronounced during Sun or Jupiter mahadasha periods"
+  source: "BPHS chapter 97 — Purusha Jātaka (Male Nativity); Phaladeepika"
+  confidence: "high"
+
+ashta_lakshmi_yoga:
+  name_en: "Ashta Lakshmi Yoga (Eight-Fold Lakshmi Yoga)"
+  name_hi: "अष्ट लक्ष्मी योग"
+  type: "benefic"
+  formation:
+    condition: "Venus is in a kendra or trikona from the Lagna AND is in mutual aspect or conjunction with Jupiter AND the 2nd lord is in the 11th house (wealth to gains) OR the 11th lord is in the 2nd house (gains feeding wealth). The combination of Venus, Jupiter, and the wealth-gains axis creates Ashta Lakshmi — blessings from all eight forms of Lakshmi (eight types of wealth)."
+    planets: ["venus", "jupiter"]
+    houses_required: [1, 2, 4, 5, 7, 9, 10, 11]
+    sign_condition: "venus_jupiter_connection_with_2nd_11th_link"
+  cancellation:
+    - "Venus is severely combust or debilitated — Lakshmi's blessings diminished"
+    - "Jupiter is afflicted by Rahu (Guru Chandal) — abundance corrupted by illusion"
+    - "The 2nd and 11th lords are both in dusthanas — wealth and gains both obstructed"
+  effects:
+    general: "Named after the eight forms of the Goddess Lakshmi (Adi Lakshmi, Dhana Lakshmi, Dhanya Lakshmi, Gaja Lakshmi, Santana Lakshmi, Veera Lakshmi, Vijaya Lakshmi, Vidya Lakshmi), this yoga blesses the native with multiple dimensions of prosperity: material wealth, agricultural abundance, progeny, courage, victory, knowledge, and elephants (symbol of royal wealth)."
+    finance: "Multi-dimensional wealth across all categories — not just money but also health, children, knowledge, and social status. The native is wealthy in every sense."
+    spiritual: "Devotion to Lakshmi or Lakshmi-aspect deities. The native is naturally generous with their wealth."
+  strength_factors:
+    - "Strongest when Venus is exalted in Pisces and Jupiter is exalted in Cancer"
+    - "Enhanced when both Venus and Jupiter are in kendras simultaneously"
+    - "More powerful when the 2nd lord is also exalted or in own sign in the 11th"
+    - "Amplified during Venus-Jupiter mutual dashas"
+  source: "Classical texts on Lakshmi yogas; Saravali; Phaladeepika"
+  confidence: "medium"
+
+gaja_yoga:
+  name_en: "Gaja Yoga (Elephant Strength Yoga)"
+  name_hi: "गज योग"
+  type: "benefic"
+  formation:
+    condition: "Jupiter is in the 4th house from the Lagna AND the Moon is in the 1st or 10th house, creating a powerful Gajakesari Yoga variant in the home-career axis. Alternatively: the 4th lord and the 10th lord are both in kendra positions with Jupiter's aspect, creating elephantine strength in home and career simultaneously."
+    planets: ["jupiter", "moon"]
+    houses_required: [1, 4, 10]
+    sign_condition: "jupiter_in_4th_moon_in_1st_or_10th"
+  cancellation:
+    - "Jupiter in 4th is debilitated or severely afflicted"
+    - "Moon is waning and in an enemy sign in the 1st or 10th"
+    - "Malefics severely afflict both the 4th and the Moon"
+  effects:
+    general: "The Gaja (elephant) represents royal power, memory, wisdom, and unstoppable strength in Indian tradition. This yoga creates a person who combines the wisdom of Jupiter with the emotional power of the Moon in the home-career axis. The native has exceptional stability, memory, emotional intelligence, and quiet power that gradually achieves great things."
+    career: "Rise to prominence through steady, wise accumulation of resources and relationships. The native's career is like an elephant — slow but unstoppable."
+    finance: "Substantial and growing wealth through real estate, property, family resources, and career achievement."
+  strength_factors:
+    - "Strongest when Jupiter is exalted in Cancer in the 4th"
+    - "Enhanced when Moon is also full and strong in the 1st or 10th"
+    - "More powerful when this configuration creates a Gajakesari (Jupiter-Moon kendra)"
+    - "Amplified during Jupiter mahadasha with Moon antardasha"
+  source: "Classical texts on Gaja yoga configurations; Saravali"
+  confidence: "medium"
+
+
+shankha_bhanga_yoga:
+  name_en: "Shankha Bhanga Yoga (Conch-Breaking — Reversed Fortune)"
+  name_hi: "शंख भंग योग"
+  type: "malefic"
+  formation:
+    condition: "The 5th lord and 6th lord are in conjunction OR the 9th lord is conjunct the 8th lord in a dusthana house, reversing the fortune indicated by Shankha Yoga (the conch). When the dharma-luck houses (5th, 9th) are linked with difficulty houses (6th, 8th), the initial promise of fortune is reversed."
+    planets: []
+    houses_required: [6, 8]
+    sign_condition: "5th_lord_conjunct_6th_lord_or_9th_lord_conjunct_8th_lord_in_dusthana"
+  cancellation:
+    - "Jupiter aspects the conjunction — dharmic wisdom restores the broken luck"
+    - "The conjunction is in a benefic sign where both lords gain some dignity"
+    - "The 5th or 9th lord is exalted despite the conjunction — strength overcomes the 6th/8th lord"
+  effects:
+    general: "Fortune that seems promised (5th or 9th house) is broken by the conjunction with difficulty lords (6th or 8th). The native may experience reversal of expected luck — opportunities that evaporate, education that is interrupted, or dharmic guidance that becomes confused. The native must consciously work to rebuild the broken fortune through effort rather than relying on natural luck."
+    career: "Career opportunities may appear but face obstacles. The native learns that success requires extra effort compared to peers with similar apparent qualifications."
+  strength_factors:
+    - "More severe when both lords are also malefic planets (Mars, Saturn)"
+    - "Less severe when benefic planets (Jupiter, Venus) are involved in the conjunction"
+    - "Jupiter's aspect is the primary remedy for Shankha Bhanga"
+    - "Results most intense during the dasha of the conjunct 5th-6th or 9th-8th lords"
+  source: "Classical texts on fortune yoga reversals; Saravali; Phaladeepika"
+  confidence: "medium"
+
+mridanga_yoga_complete:
+  name_en: "Mridanga Yoga — Complete Form"
+  name_hi: "मृदंग योग — पूर्ण रूप"
+  type: "benefic"
+  formation:
+    condition: "A planet (other than Sun) is in its own sign or exalted sign in a kendra (1st, 4th, 7th, 10th) AND the Lagna lord is simultaneously in a kendra or trikona. The combination of a strong self-owned planet in a kendra with a strong Lagna lord creates the complete Mridanga (drum) Yoga — the native's life has the rhythm and resonance of the mridanga drum, producing natural harmony and fame."
+    planets: []
+    houses_required: [1, 4, 7, 10]
+    sign_condition: "planet_own_exalted_kendra_and_lagna_lord_strong"
+  cancellation:
+    - "The Lagna lord is in a dusthana without relief — drum's resonance blocked"
+    - "The strong kendra planet is combust — planet's self-possession undermined"
+    - "Multiple malefics afflict both the kendra planet and the Lagna lord"
+  effects:
+    general: "The Mridanga drum creates rhythm, celebration, and fame. This yoga indicates a life of cultural richness, artistic or musical talent, and wide recognition. The native is celebrated in their community and is known for bringing joy, rhythm, and vitality to others. They may have connections to music, arts, festivals, or any domain where natural talent creates resonance with audiences."
+    career: "Artistic, musical, cultural, or entertainment success. The native's natural talent resonates with public taste."
+    social: "Wide social recognition and celebration. The native is known for bringing joy and harmony to social gatherings."
+  strength_factors:
+    - "Strongest when the kendra planet is exalted AND Lagna lord is also exalted"
+    - "Enhanced when the planet in its own/exalted sign is a natural benefic (Jupiter, Venus)"
+    - "More powerful when this configuration also creates a Panch Mahapurush Yoga"
+    - "Amplified during the mahadasha of the strong kendra planet"
+  source: "BPHS chapter 36 — Mridanga Yoga; Phaladeepika chapter 6"
+  confidence: "medium"
+
