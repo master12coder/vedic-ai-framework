@@ -72,6 +72,11 @@ def load_gem_therapy_rules() -> dict[str, Any]:
     return _load_yaml("gem_therapy_rules.yaml")
 
 
+def load_namakarana_rules() -> dict[str, Any]:
+    """Load Namakarana (naming ceremony) rules — 108 aksharas + muhurta rules."""
+    return _load_yaml("namakarana_rules.yaml")
+
+
 def reload() -> None:
     """Clear cache and force reload."""
     global _cache
