@@ -62,6 +62,11 @@ def load_vastu_rules() -> dict[str, Any]:
     return _load_yaml("vastu_rules.yaml")
 
 
+def load_porutham_data() -> dict[str, Any]:
+    """Load South Indian 10-Porutham marriage compatibility data."""
+    return _load_yaml("porutham_data.yaml")
+
+
 def reload() -> None:
     """Clear cache and force reload."""
     global _cache
