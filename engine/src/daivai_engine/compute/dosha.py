@@ -25,39 +25,29 @@ _KSD_TYPES: dict[int, tuple[str, str]] = {
 }
 
 
-def detect_mangal_dosha(chart: ChartData) -> DoshaResult:
-    """Detect Mangal (Kuja) Dosha — Mars in 1/2/4/7/8/12 from lagna.
+def _mangal_cancellations(chart: ChartData, mars_house_from_ref: int) -> list[str]:
+    """Compute Mangal Dosha cancellation conditions for a given reference point.
 
-    Source: BPHS Ch.77, Brihat Jataka, Phaladeepika.
-    Cancellation rules from: BPHS, Muhurta Chintamani, South Indian traditions.
+    Args:
+        chart: The birth chart.
+        mars_house_from_ref: Mars's house number counted from the reference point.
+
+    Returns:
+        List of cancellation reason strings (empty = no cancellation).
     """
     mars = chart.planets["Mars"]
-    mangal_houses = {1, 2, 4, 7, 8, 12}
-
-    if mars.house not in mangal_houses:
-        return DoshaResult(
-            name="Mangal Dosha",
-            name_hindi="मंगल दोष",
-            is_present=False,
-            severity="none",
-            planets_involved=["Mars"],
-            houses_involved=[mars.house],
-            description="Mars not in 1/2/4/7/8/12 — no Mangal Dosha",
-            cancellation_reasons=[],
-        )
-
-    # Check cancellation conditions
+    moon = chart.planets["Moon"]
     cancellations: list[str] = []
 
-    # 1. Mars in own sign (Aries/Scorpio) — BPHS
+    # 1. Mars in own sign (Aries=0, Scorpio=7) — BPHS
     if mars.sign_index in (0, 7):
         cancellations.append("Mars in own sign (Aries/Scorpio)")
 
-    # 2. Mars in exaltation (Capricorn) — BPHS
+    # 2. Mars in exaltation (Capricorn=9) — BPHS
     if mars.sign_index == 9:
         cancellations.append("Mars exalted in Capricorn")
 
-    # 3. Mars in friendly Jupiter sign (Sagittarius/Pisces) — Phaladeepika
+    # 3. Mars in Jupiter's sign (Sagittarius=8, Pisces=11) — Phaladeepika
     if mars.sign_index in (8, 11):
         cancellations.append(
             "Mars in Jupiter's sign (Sagittarius/Pisces) — friendly, reduces severity"
@@ -73,41 +63,118 @@ def detect_mangal_dosha(chart: ChartData) -> DoshaResult:
     if has_aspect(chart, "Jupiter", mars.house):
         cancellations.append("Jupiter aspects Mars")
 
-    # 6. Venus aspects Mars — softens Mars
-    if has_aspect(chart, "Venus", mars.house):
-        cancellations.append("Venus aspects Mars")
+    # 6. Saturn aspects Mars — Phaladeepika
+    if has_aspect(chart, "Saturn", mars.house):
+        cancellations.append("Saturn aspects Mars")
 
-    # 7. Moon conjunct Mars (Chandra-Mangal) — Phaladeepika
-    moon = chart.planets["Moon"]
+    # 7. Mars conjunct Jupiter — Phaladeepika
+    jupiter = chart.planets.get("Jupiter")
+    if jupiter and jupiter.sign_index == mars.sign_index:
+        cancellations.append("Mars conjunct Jupiter — neutralises Kuja Dosha")
+
+    # 8. Moon conjunct Mars (Chandra-Mangal) — Phaladeepika
     if moon.sign_index == mars.sign_index:
         cancellations.append("Moon conjunct Mars — Chandra-Mangal cancels Kuja Dosha")
 
-    # 8. Mars in 2nd in Gemini or Virgo (Mercury sign) — South Indian tradition
-    if mars.house == 2 and mars.sign_index in (2, 5):
+    # 9. Mars in 2nd house from ref in Gemini or Virgo (Mercury sign) — South Indian
+    if mars_house_from_ref == 2 and mars.sign_index in (2, 5):
         cancellations.append(
-            "Mars in 2nd house in Gemini/Virgo (Mercury sign) — South Indian cancellation"
+            "Mars in 2nd in Gemini/Virgo (Mercury sign) — South Indian cancellation"
         )
 
-    # 9. Mars in 12th in Taurus or Libra (Venus sign) — South Indian tradition
-    if mars.house == 12 and mars.sign_index in (1, 6):
+    # 10. Mars in 12th house from ref in Taurus or Libra (Venus sign) — South Indian
+    if mars_house_from_ref == 12 and mars.sign_index in (1, 6):
         cancellations.append(
-            "Mars in 12th house in Taurus/Libra (Venus sign) — South Indian cancellation"
+            "Mars in 12th in Taurus/Libra (Venus sign) — South Indian cancellation"
         )
+
+    return cancellations
+
+
+def detect_mangal_dosha(chart: ChartData) -> DoshaResult:
+    """Detect Mangal (Kuja) Dosha from Lagna, Moon, and Venus.
+
+    Mars in 1/2/4/7/8/12 from ANY of the three reference points triggers the dosha:
+    - From Lagna (ascendant)
+    - From Moon's sign (Chandrama)
+    - From Venus's sign (Shukra)
+
+    The result carries lagna_dosha / moon_dosha / venus_dosha flags indicating
+    which reference points triggered.
+
+    Source: BPHS Ch.77, Phaladeepika.
+    Cancellation rules: BPHS, Muhurta Chintamani, South Indian traditions.
+    """
+    mars = chart.planets["Mars"]
+    moon = chart.planets["Moon"]
+    venus = chart.planets["Venus"]
+    mangal_houses = {1, 2, 4, 7, 8, 12}
+
+    # House of Mars from each reference point
+    lagna_mars_house: int = mars.house
+    moon_mars_house: int = (mars.sign_index - moon.sign_index) % 12 + 1
+    venus_mars_house: int = (mars.sign_index - venus.sign_index) % 12 + 1
+
+    lagna_triggered = lagna_mars_house in mangal_houses
+    moon_triggered = moon_mars_house in mangal_houses
+    venus_triggered = venus_mars_house in mangal_houses
+
+    any_triggered = lagna_triggered or moon_triggered or venus_triggered
+
+    if not any_triggered:
+        return DoshaResult(
+            name="Mangal Dosha",
+            name_hindi="मंगल दोष",
+            is_present=False,
+            severity="none",
+            lagna_dosha=False,
+            moon_dosha=False,
+            venus_dosha=False,
+            planets_involved=["Mars"],
+            houses_involved=[mars.house],
+            description="Mars not in 1/2/4/7/8/12 from Lagna, Moon, or Venus — no Mangal Dosha",
+            cancellation_reasons=[],
+        )
+
+    # Collect cancellations from all triggered reference points (union)
+    all_cancellations: set[str] = set()
+    if lagna_triggered:
+        all_cancellations.update(_mangal_cancellations(chart, lagna_mars_house))
+    if moon_triggered:
+        all_cancellations.update(_mangal_cancellations(chart, moon_mars_house))
+    if venus_triggered:
+        all_cancellations.update(_mangal_cancellations(chart, venus_mars_house))
+    cancellations = sorted(all_cancellations)
+
+    # Build triggered-point description
+    triggered_parts: list[str] = []
+    if lagna_triggered:
+        triggered_parts.append(f"Lagna (Mars in {lagna_mars_house}th)")
+    if moon_triggered:
+        triggered_parts.append(f"Moon (Mars in {moon_mars_house}th from Moon)")
+    if venus_triggered:
+        triggered_parts.append(f"Venus (Mars in {venus_mars_house}th from Venus)")
 
     is_present = len(cancellations) == 0
     severity = "cancelled" if len(cancellations) >= 2 else ("partial" if cancellations else "full")
     if severity == "cancelled":
         is_present = False
 
+    desc = "Mangal Dosha triggered from: " + ", ".join(triggered_parts)
+    if cancellations:
+        desc += f" — cancellations: {', '.join(cancellations)}"
+
     return DoshaResult(
         name="Mangal Dosha",
         name_hindi="मंगल दोष",
         is_present=is_present,
         severity=severity,
+        lagna_dosha=lagna_triggered,
+        moon_dosha=moon_triggered,
+        venus_dosha=venus_triggered,
         planets_involved=["Mars"],
         houses_involved=[mars.house],
-        description=f"Mars in {mars.house}th house from lagna"
-        + (f" — cancellations: {', '.join(cancellations)}" if cancellations else ""),
+        description=desc,
         cancellation_reasons=cancellations,
     )
 

@@ -42,7 +42,7 @@ from daivai_engine.compute.jaimini import compute_jaimini
 from daivai_engine.compute.kalachakra_dasha import compute_kalachakra_dasha
 from daivai_engine.compute.kp import compute_kp_positions
 from daivai_engine.compute.longevity import compute_longevity
-from daivai_engine.compute.namkaran import check_gand_mool
+from daivai_engine.compute.namakarana import check_gand_mool
 from daivai_engine.compute.narayana_dasha import compute_narayana_dasha
 from daivai_engine.compute.panchang import compute_panchang
 from daivai_engine.compute.saham import compute_sahams

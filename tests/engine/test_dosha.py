@@ -124,3 +124,52 @@ class TestDoshaDetection:
         result = detect_sadesati(manish_chart, transit_saturn_sign=1)  # Taurus
         assert result.is_present
         assert "Peak" in result.description
+
+    def test_mangal_dosha_has_three_reference_flags(self, manish_chart):
+        """DoshaResult for Mangal Dosha must expose lagna/moon/venus flags.
+
+        Source: BPHS Ch.77 — dosha checked from Lagna, Moon, and Venus.
+        """
+        result = detect_mangal_dosha(manish_chart)
+        assert hasattr(result, "lagna_dosha")
+        assert hasattr(result, "moon_dosha")
+        assert hasattr(result, "venus_dosha")
+        assert isinstance(result.lagna_dosha, bool)
+        assert isinstance(result.moon_dosha, bool)
+        assert isinstance(result.venus_dosha, bool)
+
+    def test_mangal_dosha_moon_check(self, manish_chart):
+        """Moon-based Mangal Dosha: Mars in 1/2/4/7/8/12 from Moon triggers moon_dosha.
+
+        Source: Phaladeepika — Mars in sensitive houses from Moon = Kuja Dosha.
+        """
+        mars = manish_chart.planets["Mars"]
+        moon = manish_chart.planets["Moon"]
+        moon_mars_house = (mars.sign_index - moon.sign_index) % 12 + 1
+        result = detect_mangal_dosha(manish_chart)
+        expected = moon_mars_house in {1, 2, 4, 7, 8, 12}
+        assert result.moon_dosha == expected, (
+            f"Mars in {moon_mars_house}th from Moon — expected moon_dosha={expected}, "
+            f"got {result.moon_dosha}"
+        )
+
+    def test_mangal_dosha_venus_check(self, manish_chart):
+        """Venus-based Mangal Dosha: Mars in 1/2/4/7/8/12 from Venus triggers venus_dosha.
+
+        Source: Phaladeepika — Venus reference used for marriage chart analysis.
+        """
+        mars = manish_chart.planets["Mars"]
+        venus = manish_chart.planets["Venus"]
+        venus_mars_house = (mars.sign_index - venus.sign_index) % 12 + 1
+        result = detect_mangal_dosha(manish_chart)
+        expected = venus_mars_house in {1, 2, 4, 7, 8, 12}
+        assert result.venus_dosha == expected, (
+            f"Mars in {venus_mars_house}th from Venus — expected venus_dosha={expected}, "
+            f"got {result.venus_dosha}"
+        )
+
+    def test_mangal_dosha_description_mentions_triggered_refs(self, manish_chart):
+        """If any reference triggers, description must mention which ones."""
+        result = detect_mangal_dosha(manish_chart)
+        if result.lagna_dosha or result.moon_dosha or result.venus_dosha:
+            assert "triggered from" in result.description.lower() or "Lagna" in result.description

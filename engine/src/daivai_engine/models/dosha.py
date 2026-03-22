@@ -11,6 +11,9 @@ class DoshaResult(BaseModel):
     Contains the dosha name, presence flag, severity level, involved planets
     and houses, a description of the finding, and any cancellation reasons
     that may mitigate the dosha's effects.
+
+    For Mangal Dosha, lagna_dosha / moon_dosha / venus_dosha indicate which
+    reference points triggered (BPHS Ch.77, Phaladeepika).
     """
 
     model_config = ConfigDict(frozen=True)
@@ -23,3 +26,7 @@ class DoshaResult(BaseModel):
     houses_involved: list[int]
     description: str
     cancellation_reasons: list[str]
+    # Mangal Dosha: which reference points triggered
+    lagna_dosha: bool = False
+    moon_dosha: bool = False
+    venus_dosha: bool = False

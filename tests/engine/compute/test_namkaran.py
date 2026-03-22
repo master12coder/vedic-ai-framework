@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from daivai_engine.compute.namkaran import (
+from daivai_engine.compute.namakarana import (
+    _GAND_MOOL_SEVERITY,
     check_gand_mool,
     compute_name_number,
     get_name_letters,
@@ -33,9 +34,6 @@ class TestGandMool:
 
     def test_severity_for_moola_pada_1(self) -> None:
         """Moola Pada 1 should be severe."""
-        # Can't easily create a chart with Moon in Moola, but test the logic
-        from daivai_engine.compute.namkaran import _GAND_MOOL_SEVERITY
-
         assert _GAND_MOOL_SEVERITY["Moola"][1] == "severe"
 
 

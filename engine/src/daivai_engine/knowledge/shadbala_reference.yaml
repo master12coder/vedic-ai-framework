@@ -55,7 +55,7 @@ dig_bala_best_house:
 kala_bala:
   source: "BPHS Ch.23 v19-30"
   confidence: scholarly_consensus
-  note: "Our implementation has 5 of 8 sub-components. Missing: Masa, Abda, Tribhaga."
+  note: "All 8 sub-components implemented. Masa, Abda, Tribhaga added in strength.py."
   components:
     nathonnatha:
       description: "Day/night strength"
@@ -86,17 +86,17 @@ kala_bala:
       description: "Monthly strength"
       rule: "Based on ruler of the Hindu month of birth."
       max: 30
-      implemented: false
+      implemented: true
     abda:
       description: "Yearly strength"
       rule: "Based on ruler of the year of birth."
       max: 15
-      implemented: false
+      implemented: true
     tribhaga:
       description: "Day/night third"
       rule: "Day divided into 3 parts; Jupiter/Mercury/Sun rule day thirds. Moon/Venus/Mars rule night thirds."
       max: 60
-      implemented: false
+      implemented: true
 
 # Cheshta Bala classifications (BPHS Ch.23 v31-35)
 cheshta_bala:
