@@ -1,0 +1,141 @@
+# South Indian 10-Porutham marriage compatibility system.
+# Source: Muhurtha Martanda, Tamil Jyotisha tradition.
+# Used in Tamil Nadu, Andhra Pradesh, Karnataka, and Kerala.
+
+metadata:
+  name: "10 Porutham System"
+  tradition: "South Indian (Tamil/Telugu/Kannada)"
+  total_poruthams: 10
+  minimum_agreed: 6
+
+poruthams:
+  dinam:
+    name_tamil: "திணம்"
+    description: "Nakshatra day compatibility — auspicious star distance from girl to boy"
+    is_eliminatory: false
+    note: "Count from girl nakshatra to boy nakshatra; mod 9 result of 2,4,6,8,0 agrees"
+
+  ganam:
+    name_tamil: "கணம்"
+    description: "Temperament compatibility — Deva, Manushya, or Rakshasa gana nature"
+    is_eliminatory: false
+    note: "Same gana or Deva-Manushya mixing agrees; Rakshasa with other ganas disagrees"
+
+  yoni:
+    name_tamil: "யோனி"
+    description: "Animal/sexual compatibility — born under same or friendly yoni nakshatra"
+    is_eliminatory: false
+    note: "Enemy yoni animals disagree; same or non-enemy agree"
+
+  rasi:
+    name_tamil: "ராசி"
+    description: "Moon sign compatibility — sign distance auspiciousness"
+    is_eliminatory: false
+    note: "Distances 2, 6, 8, 12 from girl rasi to boy rasi disagree; others agree"
+
+  rasyadhipati:
+    name_tamil: "ராசியதிபதி"
+    description: "Moon sign lord compatibility — planetary friendship of both rasi lords"
+    is_eliminatory: false
+    note: "Same lord or mutual friends agree; enemies disagree; neutral disagrees"
+
+  rajju:
+    name_tamil: "ரஜ்ஜு"
+    description: "Body cord — same Rajju body part is an eliminatory dosha"
+    is_eliminatory: true
+    note: "Most critical factor; same Rajju group = dosha regardless of other poruthams"
+
+  vedha:
+    name_tamil: "வேதை"
+    description: "Nakshatra obstruction — 13 piercing pairs create severe obstacles"
+    is_eliminatory: true
+    note: "South Indian Vedha pairs differ from North Indian; Dhanishtha has no pair"
+
+  vasya:
+    name_tamil: "வசியம்"
+    description: "Dominance/control — sign-based magnetic attraction between the pair"
+    is_eliminatory: false
+    note: "Agrees if either sign is vasya to the other; mutual vasya is best"
+
+  mahendra:
+    name_tamil: "மஹேந்திர"
+    description: "Prosperity — welfare and longevity of groom; count from girl to boy"
+    is_eliminatory: false
+    note: "Agrees if count is 4, 7, 10, 13, 16, 19, 22, or 25 from girl nakshatra"
+
+  stree_deergha:
+    name_tamil: "ஸ்திரீ தீர்க்க"
+    description: "Bride longevity — girl nakshatra must be far ahead of boy nakshatra"
+    is_eliminatory: false
+    note: "Tamil tradition: count from boy to girl must be >13 nakshatras"
+
+# Rajju body-part groups (0-indexed nakshatra indices)
+# Each group named by Sanskrit body-part term
+rajju_body_parts:
+  Paada:
+    meaning: "Feet"
+    severity: "mild"
+    effect: "wandering; couple may not settle in one place"
+    nakshatras: [0, 8, 9, 17, 18, 26]
+    # Ashwini, Ashlesha, Magha, Jyeshtha, Moola, Revati
+
+  Kati:
+    meaning: "Waist"
+    severity: "mild"
+    effect: "financial hardships and poverty"
+    nakshatras: [1, 7, 10, 16, 19, 25]
+    # Bharani, Pushya, Purva Phalguni, Anuradha, Purva Ashadha, Uttara Bhadrapada
+
+  Nabhi:
+    meaning: "Navel"
+    severity: "moderate"
+    effect: "progeny difficulties"
+    nakshatras: [2, 6, 11, 15, 20, 24]
+    # Krittika, Punarvasu, Uttara Phalguni, Vishakha, Uttara Ashadha, Purva Bhadrapada
+
+  Kantha:
+    meaning: "Neck"
+    severity: "severe"
+    effect: "danger to wife's longevity"
+    nakshatras: [3, 5, 12, 14, 21, 23]
+    # Rohini, Ardra, Hasta, Swati, Shravana, Shatabhisha
+
+  Shira:
+    meaning: "Head"
+    severity: "severe"
+    effect: "danger to husband's longevity (widowhood risk)"
+    nakshatras: [4, 13, 22]
+    # Mrigashira, Chitra, Dhanishtha
+
+# South Indian Vedha nakshatra pairs (0-indexed).
+# These 13 pairs cover 26 nakshatras; Dhanishtha (22) has no Vedha partner.
+# Note: South Indian pairs differ from North Indian Vedha pairs.
+vedha_pairs:
+  - [0, 17]   # Ashwini - Jyeshtha
+  - [1, 16]   # Bharani - Anuradha
+  - [2, 15]   # Krittika - Vishakha
+  - [3, 14]   # Rohini - Swati
+  - [4, 12]   # Mrigashira - Hasta
+  - [5, 13]   # Ardra - Chitra
+  - [6, 11]   # Punarvasu - Uttara Phalguni
+  - [7, 10]   # Pushya - Purva Phalguni
+  - [8, 9]    # Ashlesha - Magha
+  - [18, 26]  # Moola - Revati
+  - [19, 25]  # Purva Ashadha - Uttara Bhadrapada
+  - [20, 24]  # Uttara Ashadha - Purva Bhadrapada
+  - [21, 23]  # Shravana - Shatabhisha
+
+# Mahendra: agreeable count positions (1-27, from girl nakshatra to boy)
+mahendra_positions: [4, 7, 10, 13, 16, 19, 22, 25]
+
+# Stree Deergha: count from boy nakshatra to girl must be strictly greater than this
+stree_deergha_minimum: 13
+
+# Rasi Porutham: disagreeing sign distances (1-12, from girl rasi to boy rasi)
+rasi_bad_distances: [2, 6, 8, 12]
+
+# Recommendation thresholds
+thresholds:
+  excellent: 8   # 8-10 agree — highly recommended
+  good: 6        # 6-7 agree — recommended (minimum)
+  below: 5       # ≤5 — below minimum threshold
