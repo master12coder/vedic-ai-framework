@@ -1,7 +1,8 @@
 """KP (Krishnamurti Paddhati) Sub-Lord computation.
 
-The zodiac is divided into 249 sub-divisions based on Vimshottari dasha proportions.
-Each nakshatra (13°20') is divided into 9 sub-parts proportional to dasha years.
+The zodiac is divided into 243 sub-divisions based on Vimshottari dasha proportions
+(27 nakshatras x 9 dasha lords = 243). Each nakshatra (13°20') is divided into 9
+sub-parts proportional to dasha years.
 """
 
 from __future__ import annotations
@@ -19,12 +20,12 @@ from daivai_engine.models.chart import ChartData
 from daivai_engine.models.kp import KPPosition
 
 
-# Pre-compute the 249 sub-divisions
+# Pre-compute the 243 sub-divisions (27 nakshatras x 9 sub-lords)
 _SUB_TABLE: list[tuple[float, float, str, str, str]] | None = None
 
 
 def _build_sub_table() -> list[tuple[float, float, str, str, str]]:
-    """Build the 249 KP sub-division table.
+    """Build the 243 KP sub-division table.
 
     Returns list of (start_deg, end_deg, nakshatra_lord, sub_lord, sub_sub_lord).
     """

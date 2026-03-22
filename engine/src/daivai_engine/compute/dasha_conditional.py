@@ -3,16 +3,18 @@
 Each system applies only when a specific chart condition is met. When the
 condition is not met, Vimshottari (120-year cycle) remains the default.
 
-Systems implemented (with total years and applicability):
-    Dwisaptati Sama  (72 yr) — Lagna lord in 7th house
-    Shatabdika       (100 yr) — Lagna lord in lagna
-    Chaturaseeti Sama(84 yr) — Lagna lord in 10th house
-    Dwadashottari    (112 yr) — Venus in lagna
-    Panchottari      (105 yr) — Cancer lagna AND Moon in lagna
-    Shashtihayani    (60 yr)  — Sun in lagna
-    Shatrimsha Sama  (36 yr)  — Mars in lagna
+Systems implemented (with total years and applicability per BPHS):
+    Ashtottari       (108 yr) — Rahu in kendra/trikona from Lagna lord [BPHS Ch.49]
+    Shodashottari    (116 yr) — Krishna Paksha birth, Moon on Poorna Tithi [BPHS Ch.49]
+    Dwisaptati Sama  (72 yr)  — Lagna lord in 7th OR 7th lord in Lagna [BPHS Ch.50]
+    Shatabdika       (100 yr) — Born in Vargottama Lagna [BPHS Ch.51]
+    Chaturaseeti Sama(84 yr)  — Lagna lord in 10th house [BPHS Ch.52]
+    Dwadashottari    (112 yr) — Venus in lagna [BPHS Ch.53]
+    Panchottari      (105 yr) — Moon in Dhanishtha nakshatra [BPHS Ch.54]
+    Shashtihayani    (60 yr)  — Sun in lagna [BPHS Ch.55]
+    Shatrimsha Sama  (36 yr)  — Mars in lagna [BPHS Ch.56]
 
-Sources: BPHS Ch.50-56.
+Sources: BPHS Ch.49-56.
 """
 
 from __future__ import annotations
@@ -162,28 +164,100 @@ def _compute_periods(
 # ── Applicability checks ─────────────────────────────────────────────────────
 
 
+def _lagna_navamsha_sign(chart: ChartData) -> int:
+    """Compute the navamsha sign of the Lagna degree.
+
+    Each navamsha spans 3°20' (1/9 of a sign). The navamsha sign is
+    used to determine Vargottama Lagna (rashi sign == navamsha sign).
+
+    Returns:
+        Navamsha sign index (0-11).
+    """
+    lagna_deg = chart.lagna_sign_index * 30.0 + (chart.lagna_longitude % 30.0)
+    navamsha_unit = 30.0 / 9.0  # 3.3333 degrees
+    sign_navamsha_start = chart.lagna_sign_index * 9
+    degree_in_sign = chart.lagna_longitude % 30.0
+    navamsha_idx_in_sign = int(degree_in_sign / navamsha_unit)
+    _ = lagna_deg  # used in docstring context
+    return (sign_navamsha_start + navamsha_idx_in_sign) % 12
+
+
+def is_ashtottari_applicable(chart: ChartData) -> bool:
+    """Check if Ashtottari Dasha applies (Rahu in kendra/trikona from Lagna lord).
+
+    Kendra = houses 1, 4, 7, 10. Trikona = houses 1, 5, 9.
+    Combined set = {1, 4, 5, 7, 9, 10}.
+
+    Source: BPHS Ch.49.
+    """
+    lord_name = SIGN_LORDS[chart.lagna_sign_index]
+    lord = chart.planets.get(lord_name)
+    rahu = chart.planets.get("Rahu")
+    if lord is None or rahu is None:
+        return False
+    # House of Rahu counted from the lagna lord's position
+    rahu_from_lord = (rahu.sign_index - lord.sign_index) % 12 + 1
+    kendra_trikona = {1, 4, 5, 7, 9, 10}
+    return rahu_from_lord in kendra_trikona
+
+
+def is_shodashottari_applicable(chart: ChartData) -> bool:
+    """Check if Shodashottari Dasha applies (Krishna Paksha birth, Moon on Poorna Tithi).
+
+    Krishna Paksha = waning moon (Sun-Moon longitude diff > 180°).
+    Poorna Tithi = tithis 5, 10, 15, 20, 25, 30 (every fifth tithi).
+
+    Source: BPHS Ch.49.
+    """
+    sun = chart.planets.get("Sun")
+    moon = chart.planets.get("Moon")
+    if sun is None or moon is None:
+        return False
+
+    # Tithi from elongation: Moon ahead of Sun by (tithi-1)*12 degrees
+    elongation = (moon.longitude - sun.longitude) % 360.0
+    tithi = int(elongation / 12.0) + 1  # 1-30
+
+    # Krishna Paksha: tithis 16-30 (after full moon)
+    krishna_paksha = tithi > 15
+
+    # Poorna (complete) Tithi: divisible by 5
+    poorna_tithi = tithi % 5 == 0
+
+    return krishna_paksha and poorna_tithi
+
+
 def is_dwisaptati_applicable(chart: ChartData) -> bool:
-    """Check if Dwisaptati Sama Dasha applies (lagna lord in 7th house).
+    """Check if Dwisaptati Sama Dasha applies.
+
+    Condition: Lagna lord in 7th house OR 7th lord in Lagna (1st house).
 
     Source: BPHS Ch.50.
     """
     lord_name = SIGN_LORDS[chart.lagna_sign_index]
     lord = chart.planets.get(lord_name)
-    if lord is None:
-        return False
-    return lord.house == 7
+
+    # Condition 1: Lagna lord in 7th
+    lagna_lord_in_7th = lord is not None and lord.house == 7
+
+    # Condition 2: 7th lord in Lagna
+    seventh_lord_name = SIGN_LORDS[(chart.lagna_sign_index + 6) % 12]
+    seventh_lord = chart.planets.get(seventh_lord_name)
+    seventh_lord_in_1st = seventh_lord is not None and seventh_lord.house == 1
+
+    return lagna_lord_in_7th or seventh_lord_in_1st
 
 
 def is_shatabdika_applicable(chart: ChartData) -> bool:
-    """Check if Shatabdika Dasha applies (lagna lord in lagna / 1st house).
+    """Check if Shatabdika Dasha applies (Lagna is in Vargottama — same sign in D1 and D9).
+
+    A Vargottama Lagna means the Ascendant falls in the same sign in both
+    the Rashi (D1) and Navamsha (D9) charts.
 
     Source: BPHS Ch.51.
     """
-    lord_name = SIGN_LORDS[chart.lagna_sign_index]
-    lord = chart.planets.get(lord_name)
-    if lord is None:
-        return False
-    return lord.house == 1
+    navamsha_sign = _lagna_navamsha_sign(chart)
+    return navamsha_sign == chart.lagna_sign_index
 
 
 def is_chaturaseeti_applicable(chart: ChartData) -> bool:
@@ -210,16 +284,14 @@ def is_dwadashottari_applicable(chart: ChartData) -> bool:
 
 
 def is_panchottari_applicable(chart: ChartData) -> bool:
-    """Check if Panchottari Dasha applies (Cancer lagna AND Moon in lagna).
+    """Check if Panchottari Dasha applies (Moon in Dhanishtha nakshatra).
 
-    Source: BPHS Ch.54.
+    Source: BPHS Ch.54. Dhanishtha = nakshatra index 23 (0-based).
     """
-    if chart.lagna_sign_index != 3:  # 3 = Karka (Cancer)
-        return False
     moon = chart.planets.get("Moon")
     if moon is None:
         return False
-    return moon.house == 1
+    return moon.nakshatra_index == 23  # Dhanishtha
 
 
 def is_shashtihayani_applicable(chart: ChartData) -> bool:
