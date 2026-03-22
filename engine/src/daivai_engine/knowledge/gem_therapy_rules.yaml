@@ -1,0 +1,628 @@
+# Gem Therapy Rules — Complete professional-grade data for Vedic gem therapy
+#
+# Sources:
+#   - Ratna Pariksha (Gem Examination texts)
+#   - Brihat Parashara Hora Shastra (BPHS) — remedy chapters
+#   - Hora Sara by Prithuyashas
+#   - Traditional Jyotish gem therapy protocols
+#   - Mani Mala by Raja Sourindra Mohan Tagore
+
+# ── Lagna sign → knowledge key mapping ─────────────────────────────────────
+lagna_sign_to_key:
+  Aries: mesha
+  Taurus: vrishabha
+  Gemini: mithuna
+  Cancer: karka
+  Leo: simha
+  Virgo: kanya
+  Libra: tula
+  Scorpio: vrischika
+  Sagittarius: dhanu
+  Capricorn: makara
+  Aquarius: kumbha
+  Pisces: meena
+
+# ── Planet → gem stone mapping ──────────────────────────────────────────────
+planet_to_stone:
+  Sun: Ruby
+  Moon: Pearl
+  Mars: Red Coral
+  Mercury: Emerald
+  Jupiter: Yellow Sapphire
+  Venus: Diamond
+  Saturn: Blue Sapphire
+  Rahu: Hessonite
+  Ketu: Cat's Eye
+
+# ── Stone → planet mapping ──────────────────────────────────────────────────
+stone_to_planet:
+  Ruby: Sun
+  Manikya: Sun
+  माणिक्य: Sun
+  Pearl: Moon
+  Moti: Moon
+  मोती: Moon
+  Red Coral: Mars
+  Moonga: Mars
+  मूंगा: Mars
+  Emerald: Mercury
+  Panna: Mercury
+  पन्ना: Mercury
+  Yellow Sapphire: Jupiter
+  Pukhraj: Jupiter
+  पुखराज: Jupiter
+  Diamond: Venus
+  Heera: Venus
+  हीरा: Venus
+  Blue Sapphire: Saturn
+  Neelam: Saturn
+  नीलम: Saturn
+  Hessonite: Rahu
+  Gomed: Rahu
+  गोमेद: Rahu
+  Cat's Eye: Ketu
+  Lehsuniya: Ketu
+  लहसुनिया: Ketu
+
+# ── Contraindication pairs ──────────────────────────────────────────────────
+# Stones from enemy planetary pairs should NEVER be worn simultaneously
+contraindication_pairs:
+  - planets: [Sun, Saturn]
+    stones: [Ruby, Blue Sapphire]
+    severity: absolute
+    reason: >
+      Sun and Saturn are bitter natural enemies. Wearing Ruby and Blue Sapphire
+      together creates internal conflict — the solar energy and saturnine energy
+      directly oppose each other, leading to confusion, health issues, and blocked
+      outcomes. This is the most dangerous combination in gem therapy.
+
+  - planets: [Moon, Rahu]
+    stones: [Pearl, Hessonite]
+    severity: absolute
+    reason: >
+      Rahu causes solar and lunar eclipses — it literally eclipses the Moon.
+      Pearl and Hessonite together create extreme mental agitation, emotional
+      instability, and can worsen psychological conditions. Never combine.
+
+  - planets: [Moon, Ketu]
+    stones: [Pearl, "Cat's Eye"]
+    severity: high
+    reason: >
+      Ketu is the south node and represents the tail that cuts. Combined with
+      Moon (Pearl), Cat's Eye creates detachment from emotional grounding and
+      can cause sudden disorientation.
+
+  - planets: [Sun, Venus]
+    stones: [Ruby, Diamond]
+    severity: moderate
+    reason: >
+      Sun and Venus are natural enemies. Ruby and Diamond together can create
+      conflict between ego/authority (Sun) and pleasure/relationships (Venus).
+      Some traditions allow this combination if both planets are well-placed.
+
+  - planets: [Jupiter, Mercury]
+    stones: [Yellow Sapphire, Emerald]
+    severity: moderate
+    reason: >
+      Jupiter and Mercury are natural enemies. This combination creates conflict
+      between expansive Jupiter wisdom and analytical Mercury intellect. Generally
+      avoid, though some texts permit if both are functionally benefic for the lagna.
+
+  - planets: [Jupiter, Venus]
+    stones: [Yellow Sapphire, Diamond]
+    severity: moderate
+    reason: >
+      Jupiter and Venus are natural enemies — both are "gurus" (Jupiter of gods,
+      Venus of demons) in Vedic mythology. Wearing together creates subtle
+      philosophical and lifestyle conflicts. Avoid unless both are yogakarakas.
+
+  - planets: [Mars, Mercury]
+    stones: [Red Coral, Emerald]
+    severity: low
+    reason: >
+      Mars and Mercury are neutral to mild enemies. Some traditions advise against
+      this combination, others permit it. Assess individually based on lagna.
+      The conflict is primarily intellectual vs. active energy.
+
+  - planets: [Saturn, Sun]
+    stones: [Blue Sapphire, Ruby]
+    severity: absolute
+    reason: >
+      Duplicate entry for Sun-Saturn conflict (Saturn perspective). Same absolute
+      prohibition as above.
+
+# ── Favorable tithis for gem wearing ────────────────────────────────────────
+# Based on Muhurta Chintamani and traditional gem therapy texts
+favorable_tithis:
+  indices: [1, 2, 3, 5, 6, 7, 10, 11, 12, 13]  # 1-indexed tithi numbers
+  names:
+    - Pratipada (1st)
+    - Dwitiya (2nd)
+    - Tritiya (3rd)
+    - Panchami (5th)
+    - Shashthi (6th)
+    - Saptami (7th)
+    - Dashami (10th)
+    - Ekadashi (11th)
+    - Dwadashi (12th)
+    - Trayodashi (13th)
+
+unfavorable_tithis:
+  indices: [4, 8, 14, 15, 29]  # 0-indexed in panchang
+  names:
+    - Chaturthi (4th) — Rikta (empty)
+    - Ashtami (8th) — Rikta
+    - Chaturdashi (14th) — Rikta
+    - Purnima (15th) — intense, avoid gems requiring calm energy
+    - Amavasya (30th) — no lunar energy, avoid
+
+# ── Favorable nakshatras per planet for gem wearing ─────────────────────────
+# Based on planetary nakshatra lordships and sympathetic resonance
+wearing_nakshatras:
+  Sun:
+    primary: [Krittika, Uttara Phalguni, Uttara Ashadha]
+    secondary: [Pushya, Magha, Vishakha]
+    reasoning: "Nakshatras lorded by Sun or sympathetic to solar energy"
+
+  Moon:
+    primary: [Rohini, Hasta, Shravana]
+    secondary: [Mrigashira, Punarvasu, Revati]
+    reasoning: "Nakshatras lorded by Moon or harmonious with lunar sensitivity"
+
+  Mars:
+    primary: [Mrigashira, Chitra, Dhanishta]
+    secondary: [Ashwini, Bharani, Krittika]
+    reasoning: "Nakshatras lorded by Mars or energetically aligned with Martian force"
+
+  Mercury:
+    primary: [Ashlesha, Jyeshtha, Revati]
+    secondary: [Ashwini, Punarvasu, Hasta]
+    reasoning: "Nakshatras lorded by Mercury or resonant with Mercurial intellect"
+
+  Jupiter:
+    primary: [Punarvasu, Vishakha, Purva Bhadrapada]
+    secondary: [Pushya, Anuradha, Uttara Bhadrapada]
+    reasoning: "Nakshatras lorded by Jupiter or aligned with Jovian expansion"
+
+  Venus:
+    primary: [Bharani, Purva Phalguni, Purva Ashadha]
+    secondary: [Rohini, Hasta, Revati]
+    reasoning: "Nakshatras lorded by Venus or harmonious with Venusian beauty"
+
+  Saturn:
+    primary: [Pushya, Anuradha, Uttara Bhadrapada]
+    secondary: [Rohini, Uttara Phalguni, Uttara Ashadha]
+    reasoning: "Nakshatras lorded by Saturn or aligned with saturnine discipline"
+
+  Rahu:
+    primary: [Ardra, Swati, Shatabhisha]
+    secondary: [Ashlesha, Jyeshtha, Moola]
+    reasoning: "Rahu's own nakshatras and shadowy, transformative nakshatras"
+
+  Ketu:
+    primary: [Ashwini, Magha, Moola]
+    secondary: [Mrigashira, Chitra, Dhanishta]
+    reasoning: "Ketu's own nakshatras and spiritually detaching nakshatras"
+
+# ── Gem quality parameters ───────────────────────────────────────────────────
+quality_parameters:
+  Ruby:
+    color: "Pigeon blood red (deep red with blue undertone)"
+    clarity: "Eye clean preferred; minor inclusions acceptable"
+    min_weight_ratti: 3.0
+    min_weight_carat: 2.7
+    origin_preferred: [Burma, Mozambique, Tajikistan]
+    origin_acceptable: [Thailand, Madagascar, Sri Lanka]
+    avoid_if:
+      - "Milky or cloudy appearance"
+      - "Black inclusions visible to naked eye"
+      - "Cracks or fissures through the stone"
+      - "Synthetic (lab-created) unless specifically for upratna"
+      - "Glass-filled or lead-glass treated"
+    treatment_caution:
+      - "Minor heat treatment acceptable in traditional practice"
+      - "Avoid beryllium-treated rubies (drastically changes energy)"
+    lustre: "Vitreous to adamantine"
+
+  Pearl:
+    color: "White, cream, or pink overtone"
+    clarity: "High lustre (orient), smooth surface"
+    min_weight_ratti: 4.0
+    min_weight_carat: 3.6
+    origin_preferred: [Basra, Gulf, Hyderabadi (natural)]
+    origin_acceptable: [South Sea, Freshwater]
+    avoid_if:
+      - "Dull or chalky surface"
+      - "Chipped or drilled too close to edge"
+      - "Cultured pearl with plastic nucleus (use real cultured at minimum)"
+      - "Yellow or brown discoloration"
+    treatment_caution:
+      - "Never treat with chemicals"
+      - "Avoid bleached pearls"
+    lustre: "Pearlescent (orient)"
+
+  Red Coral:
+    color: "Italian red (bright red without orange)"
+    clarity: "Smooth, no pits or holes"
+    min_weight_ratti: 6.0
+    min_weight_carat: 5.4
+    origin_preferred: [Italian Mediterranean, Japanese]
+    origin_acceptable: [Australian, Pacific]
+    avoid_if:
+      - "Orange or pale pink color"
+      - "Dyed or painted coral"
+      - "Porous or chalky surface"
+      - "Chipped branches"
+    treatment_caution:
+      - "Natural coral only"
+      - "Avoid plastic simulants"
+    lustre: "Waxy to resinous"
+
+  Emerald:
+    color: "Vivid medium-dark green"
+    clarity: "Jardin (inclusions) acceptable — emeralds are never flawless"
+    min_weight_ratti: 3.5
+    min_weight_carat: 3.15
+    origin_preferred: [Colombian, Zambian]
+    origin_acceptable: [Brazilian, Afghan, Indian (Rajasthan)]
+    avoid_if:
+      - "Black inclusions dominating the stone"
+      - "Very pale or yellow-green"
+      - "Synthetic emerald without astrologer guidance"
+      - "Heavily oiled to the point of stability loss"
+    treatment_caution:
+      - "Cedar oil treatment is traditional and acceptable"
+      - "Avoid polymer resin filling"
+    lustre: "Vitreous"
+
+  Yellow Sapphire:
+    color: "Ceylon yellow (medium yellow, not orange)"
+    clarity: "Eye clean"
+    min_weight_ratti: 3.0
+    min_weight_carat: 2.7
+    origin_preferred: [Sri Lanka (Ceylon), Burma]
+    origin_acceptable: [Madagascar, Tanzania]
+    avoid_if:
+      - "Orange-yellow (Padparadscha — different stone)"
+      - "Pale or washed out yellow"
+      - "Cloudy or milky"
+      - "Synthetic"
+    treatment_caution:
+      - "Unheated preferred"
+      - "Lattice diffusion treated stones are unacceptable"
+    lustre: "Vitreous"
+
+  Diamond:
+    color: "D to J colorless/near-colorless for maximum solar resonance"
+    clarity: "VS2 or better"
+    min_weight_ratti: 1.0
+    min_weight_carat: 0.9
+    origin_preferred: [South Africa, Botswana, Canada]
+    origin_acceptable: [Russia, Australia]
+    avoid_if:
+      - "Heavily included (I1 or worse)"
+      - "Strong yellow or brown body color"
+      - "Synthetic or CVD diamond without guidance"
+      - "Fracture-filled"
+    treatment_caution:
+      - "No treatments acceptable for astrological use"
+      - "Laser drilling disqualifies the stone"
+    lustre: "Adamantine"
+
+  Blue Sapphire:
+    color: "Royal blue to cornflower blue (Kashmir blue ideal)"
+    clarity: "Eye clean"
+    min_weight_ratti: 4.0
+    min_weight_carat: 3.6
+    origin_preferred: [Kashmir, Burma, Sri Lanka]
+    origin_acceptable: [Madagascar, Tanzania, Thailand]
+    avoid_if:
+      - "Inky dark blue (too dense)"
+      - "Greenish or greyish blue"
+      - "Milky or silky (though velvety Kashmir allowed)"
+      - "Diffusion treated (surface diffusion)"
+      - "Cracked or chipped"
+    treatment_caution:
+      - "Always trial Blue Sapphire for 3 days before permanent wearing"
+      - "Heat treatment acceptable"
+      - "Beryllium treatment unacceptable"
+    special_precaution: >
+      Blue Sapphire (Neelam) is the most powerful and fast-acting gemstone.
+      Trial period of 3 consecutive nights under pillow or 3 days worn on
+      right hand index finger is MANDATORY before permanent wear.
+    lustre: "Vitreous"
+
+  Hessonite:
+    color: "Honey-orange to golden brown (hessonite garnet)"
+    clarity: "Acceptable inclusions (hessonite naturally included)"
+    min_weight_ratti: 5.0
+    min_weight_carat: 4.5
+    origin_preferred: [Sri Lanka, India (Karnataka)]
+    origin_acceptable: [Brazil, Canada]
+    avoid_if:
+      - "Red garnet (rhodolite or almandine — different stone)"
+      - "Greenish color"
+      - "Very pale or washed out"
+      - "Glass simulants"
+    treatment_caution:
+      - "Natural hessonite only"
+      - "No treatments standard"
+    lustre: "Vitreous to resinous"
+
+  Cat's Eye:
+    color: "Honey to yellowish green with sharp chatoyancy"
+    clarity: "Sharp chatoyancy (eye) essential — more important than color"
+    min_weight_ratti: 3.0
+    min_weight_carat: 2.7
+    origin_preferred: [Sri Lanka, India]
+    origin_acceptable: [Brazil, Zimbabwe]
+    avoid_if:
+      - "Weak or broken chatoyancy"
+      - "Very dark or opaque"
+      - "Quartz cat's eye (different from chrysoberyl cat's eye)"
+      - "Fibrous inclusions causing multiple eyes"
+    treatment_caution:
+      - "Natural chrysoberyl only for Ketu"
+      - "No treatments acceptable"
+    lustre: "Silky chatoyancy"
+
+# ── Pran Pratishtha (Gem Activation) procedure ──────────────────────────────
+# Traditional activation ritual before wearing a gemstone
+pran_pratishtha:
+  overview: >
+    Pran Pratishtha is the ritual that invokes the planetary energy into the
+    gemstone, linking its crystalline matrix to the intended planetary frequency.
+    Without activation, the stone is merely a beautiful object. After activation,
+    it becomes a yantra for the planet.
+
+  general_steps:
+    - step: 1
+      action: "Purchase stone on the planet's auspicious day"
+      detail: "Buy on the planet's weekday during its hora (first planetary hour after sunrise)"
+
+    - step: 2
+      action: "Setting the stone"
+      detail: "Have the stone set in the prescribed metal by a trusted jeweler. The stone should touch the skin."
+
+    - step: 3
+      action: "Purification before wearing"
+      detail: "On wearing day, wake before sunrise, take a purifying bath (add sesame or neem)"
+
+    - step: 4
+      action: "Prepare the altar"
+      detail: "Place ring/pendant on raw rice on a clean red or yellow cloth (based on planet)"
+
+    - step: 5
+      action: "Light the lamp"
+      detail: "Light a ghee lamp (diya) and incense appropriate to the planet"
+
+    - step: 6
+      action: "Panchamrit abhishek"
+      detail: "Purify the stone with panchamrit (milk, curd, honey, ghee, sugar) — wash with Gangajal after"
+
+    - step: 7
+      action: "Invoke the planet"
+      detail: "Chant the planet's Vedic mantra the specified number of times with clear intention"
+
+    - step: 8
+      action: "Wear the stone"
+      detail: "Slip the ring on the specified finger during the planet's hora. Touch to the forehead first."
+
+    - step: 9
+      action: "Salutation"
+      detail: "Offer a short prayer expressing your intention and seeking the planet's grace"
+
+  per_planet_details:
+    Sun:
+      cloth_color: Red
+      incense: Lobhan or Sandalwood
+      flower: Red flowers (hibiscus, rose)
+      diya_type: Ghee lamp
+      offering: Wheat, jaggery, red sandalwood paste
+
+    Moon:
+      cloth_color: White
+      incense: Chandan (sandalwood)
+      flower: White flowers (jasmine, white rose)
+      diya_type: Ghee lamp
+      offering: Rice pudding (kheer), white flowers
+
+    Mars:
+      cloth_color: Red
+      incense: Kesar (saffron)
+      flower: Red flowers (red rose, red lotus)
+      diya_type: Ghee lamp with red string wick
+      offering: Red lentils, jaggery, red sindoor
+
+    Mercury:
+      cloth_color: Green
+      incense: Tulsi or green sandalwood
+      flower: Green or mixed flowers
+      diya_type: Ghee lamp
+      offering: Green moong, green cloth
+
+    Jupiter:
+      cloth_color: Yellow
+      incense: Dhoop, havan samagri
+      flower: Yellow flowers (marigold, champa)
+      diya_type: Ghee lamp
+      offering: Turmeric, chana dal, yellow cloth
+
+    Venus:
+      cloth_color: White or pink
+      incense: Rose or jasmine agarbatti
+      flower: White or pink flowers
+      diya_type: Ghee lamp with cotton wick
+      offering: Rice, ghee, sugar, white sweets
+
+    Saturn:
+      cloth_color: Black or dark blue
+      incense: Gugal (myrrh)
+      flower: Blue flowers or black sesame
+      diya_type: Sesame oil lamp
+      offering: Black sesame, iron, black dal (urad)
+
+    Rahu:
+      cloth_color: Grey or dark blue
+      incense: Gugal (myrrh) or camphor
+      flower: Blue or dark flowers
+      diya_type: Sesame oil lamp
+      offering: Coconut, blue cloth, iron
+
+    Ketu:
+      cloth_color: Grey or brown
+      incense: Camphor or gugal
+      flower: Multi-colored flowers
+      diya_type: Sesame oil lamp
+      offering: Sesame seeds, woolen blanket, multi-grain
+
+# ── Gem removal conditions ───────────────────────────────────────────────────
+# When to stop wearing a gemstone
+removal_conditions:
+  universal:
+    - "If the stone develops a crack or chip (damaged stone amplifies negative energy)"
+    - "If the stone's color changes dramatically or becomes cloudy"
+    - "If severe negative events occur within 3-7 days of wearing"
+    - "If persistent bad dreams occur for 3 or more consecutive nights"
+    - "If the wearer develops unexplained physical discomfort (rash, pain) at the finger"
+    - "If income or health deteriorates sharply and consistently after wearing"
+    - "After the planet's recommended wearing period (typically 3-7 years)"
+    - "During surgery — remove all metals and stones before operating theatre"
+
+  per_planet:
+    Blue Sapphire:
+      - "MANDATORY: Remove if any negative sign appears within the 3-day trial period"
+      - "Remove during any Saturn dasha transition if planetary state changes significantly"
+      - "Remove if paralysis, nerve issues, or joint pain develops"
+    Cat's Eye:
+      - "Remove if sudden reversals of fortune occur within 7 days"
+      - "Remove during Ketu dasha transition periods"
+    Hessonite:
+      - "Remove if obsessive thoughts or mental confusion develops"
+      - "Rahu periods can shift — re-consult if chart transits change significantly"
+    Diamond:
+      - "Remove during widowhood (traditional — consult astrologer)"
+      - "Remove if relationship difficulties emerge within one month of wearing"
+    Red Coral:
+      - "Remove if surgery is planned (Mars rules blood/surgery)"
+      - "Coral can discolor in certain skin chemistry — a sign of incompatibility"
+
+# ── Upratna (substitute stones) ─────────────────────────────────────────────
+# Cheaper alternatives preserving similar planetary energy
+upratna:
+  Sun:
+    primary_stone: Ruby
+    substitute: Garnet
+    substitute_hi: "तामड़ा (Tamda)"
+    effectiveness_percent: 65
+    when_to_prefer:
+      - "Ruby is unaffordable (quality ruby costs significantly more)"
+      - "Body shows reaction to Ruby (rare)"
+      - "Trial period before investing in Ruby"
+    color_match: "Red to dark red garnets (pyrope or almandine)"
+    metal: Gold
+    caution: "Garnet should also be natural, not synthetic"
+
+  Moon:
+    primary_stone: Pearl
+    substitute: Moonstone
+    substitute_hi: "चन्द्रकान्त (Chandrakant)"
+    effectiveness_percent: 60
+    when_to_prefer:
+      - "Natural Basra pearl is unaffordable"
+      - "Moonstone for emotional sensitivity work"
+    color_match: "White or blue-white adularescence (glow)"
+    metal: Silver
+    caution: "Moonstone is more feminine in energy — can amplify emotions"
+
+  Mars:
+    primary_stone: Red Coral
+    substitute: Carnelian
+    substitute_hi: "अकीक (Aqeeq)"
+    effectiveness_percent: 55
+    when_to_prefer:
+      - "Quality Italian coral is unavailable"
+      - "Vegetarians uncomfortable with coral (organic origin)"
+    color_match: "Orange-red to blood red carnelian"
+    metal: Gold or Copper
+    caution: "Carnelian is much softer — avoid physical work while wearing"
+
+  Mercury:
+    primary_stone: Emerald
+    substitute: Green Tourmaline
+    substitute_hi: "हरा तूर्मलीन (Hara Tourmaline)"
+    effectiveness_percent: 70
+    when_to_prefer:
+      - "Colombian emerald is expensive"
+      - "Emerald is allergically reactive on skin"
+    color_match: "Vivid green to blue-green tourmaline (Paraiba-type if available)"
+    metal: Gold
+    caution: "Peridot is sometimes used but effectiveness is lower (~45%)"
+
+  Jupiter:
+    primary_stone: Yellow Sapphire
+    substitute: Yellow Topaz
+    substitute_hi: "पुखराज टोपाज़ (Pukhraj Topaz)"
+    effectiveness_percent: 60
+    when_to_prefer:
+      - "Ceylon sapphire is expensive"
+      - "Good topaz in proper weight is accessible"
+    color_match: "Clear yellow to golden yellow (avoid orange topaz)"
+    metal: Gold
+    caution: >
+      Yellow topaz (imperial topaz) is different from citrine quartz.
+      Citrine (cheap yellow quartz) has very low effectiveness.
+      Insist on actual imperial yellow topaz.
+
+  Venus:
+    primary_stone: Diamond
+    substitute: White Sapphire
+    substitute_hi: "सफेद पुखराज (Safed Pukhraj)"
+    effectiveness_percent: 75
+    when_to_prefer:
+      - "Diamond is unaffordable"
+      - "Colourless sapphire can be nearly as effective"
+    color_match: "Colourless to near-colourless"
+    metal: Platinum or Silver
+    caution: "White zircon is another option but at ~50% effectiveness"
+
+  Saturn:
+    primary_stone: Blue Sapphire
+    substitute: Amethyst
+    substitute_hi: "जामुनिया (Jamuniya)"
+    effectiveness_percent: 55
+    when_to_prefer:
+      - "Ceylon sapphire is expensive or unavailable"
+      - "Testing Saturn's energy before committing to sapphire"
+    color_match: "Medium to deep violet-purple amethyst"
+    metal: Silver or Iron (Panchdhatu)
+    caution: >
+      Blue zircon is another substitute (~60% effectiveness).
+      Amethyst requires larger weight due to lower density.
+      TRIAL PERIOD still mandatory for Saturn substitutes.
+
+  Rahu:
+    primary_stone: Hessonite
+    substitute: Zircon
+    substitute_hi: "ज़िरकन (Zircon)"
+    effectiveness_percent: 60
+    when_to_prefer:
+      - "Quality hessonite is difficult to source"
+    color_match: "Golden to honey-coloured zircon"
+    metal: Panchdhatu or Silver
+    caution: "Zircon is not cubic zirconia (CZ) — natural zircon only"
+
+  Ketu:
+    primary_stone: Cat's Eye
+    substitute: Tiger's Eye
+    substitute_hi: "बाघ की आँख (Bagh Ki Aankh)"
+    effectiveness_percent: 50
+    when_to_prefer:
+      - "Chrysoberyl cat's eye is unavailable or expensive"
+      - "Tiger's eye quartz as a mild Ketu support"
+    color_match: "Gold-brown with chatoyancy (silky eye effect)"
+    metal: Panchdhatu or Silver
+    caution: >
+      Tiger's eye is quartz with chatoyancy — significantly less potent
+      than chrysoberyl cat's eye. Use only when chrysoberyl is genuinely
+      inaccessible. Turmaline cat's eye is another ~55% substitute.
