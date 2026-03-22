@@ -1,0 +1,149 @@
+# Pancha Pakshi Shastra — Tamil 5-bird timing system rules
+#
+# Source: Classical Tamil Siddha tradition, Prasnamarga.
+# Cross-verified: DrikPanchang Pancha Pakshi calculator, Astro-Vision software,
+#   Narasimhan G.R. "A Simple Guide to Pancha Pakshi Sastra" (pdfcoffee).
+#
+# Five birds: Vulture (Gidha), Owl (Uluka), Crow (Kaka), Cock (Kukkuta), Peacock (Mayura)
+# Five activities: Rule (Rajya), Eat (Bhojana), Walk (Chara), Sleep (Nidra), Die (Marana)
+# Five Yamas per day half (sunrise→sunset and sunset→sunrise), each ~2.4 hours.
+
+birds:
+  vulture:
+    name_en: "Vulture"
+    name_tamil: "Valluru"
+    name_sanskrit: "Gidha"
+  owl:
+    name_en: "Owl"
+    name_tamil: "Aandhai"
+    name_sanskrit: "Uluka"
+  crow:
+    name_en: "Crow"
+    name_tamil: "Kaakam"
+    name_sanskrit: "Kaka"
+  cock:
+    name_en: "Cock"
+    name_tamil: "Kozhi"
+    name_sanskrit: "Kukkuta"
+  peacock:
+    name_en: "Peacock"
+    name_tamil: "Mayil"
+    name_sanskrit: "Mayura"
+
+activities:
+  rule:
+    name_en: "Rule"
+    name_tamil: "Arasu"
+    name_sanskrit: "Rajya"
+    strength: 1.0
+  eat:
+    name_en: "Eat"
+    name_tamil: "Oon"
+    name_sanskrit: "Bhojana"
+    strength: 0.75
+  walk:
+    name_en: "Walk"
+    name_tamil: "Nadai"
+    name_sanskrit: "Chara"
+    strength: 0.5
+  sleep:
+    name_en: "Sleep"
+    name_tamil: "Thuyil"
+    name_sanskrit: "Nidra"
+    strength: 0.25
+  die:
+    name_en: "Die"
+    name_tamil: "Saavu"
+    name_sanskrit: "Marana"
+    strength: 0.0
+
+# Nakshatra (0-indexed: 0=Ashwini … 26=Revati) → birth bird
+#
+# Shukla Paksha (waxing moon, Tithi 1-15):
+#   Nakshatras  0- 4 (Ashwini–Mrigashira)    → Vulture  (5 nakshatras)
+#   Nakshatras  5-10 (Ardra–Purva Phalguni)  → Owl      (6 nakshatras)
+#   Nakshatras 11-15 (Uttara Phalguni–Vishakha) → Crow  (5 nakshatras)
+#   Nakshatras 16-21 (Anuradha–Shravana)    → Cock      (6 nakshatras)
+#   Nakshatras 22-26 (Dhanishtha–Revati)    → Peacock   (5 nakshatras)
+#
+# Krishna Paksha (waning moon, Tithi 16-30): complete reversal
+#   Nakshatras  0- 4 → Peacock, 5-10 → Cock, 11-15 → Crow, 16-21 → Owl, 22-26 → Vulture
+#
+# Note on Shravana (nakshatra 21): placed with Cock group per Prasnamarga and
+# DrikPanchang; alternate school starts Peacock at Shravana (Cock = 16-20).
+# The 6+5 grouping (Cock=16-21, Peacock=22-26) is used here.
+nakshatra_bird_mapping:
+  shukla:
+    - vulture   # 0  Ashwini
+    - vulture   # 1  Bharani
+    - vulture   # 2  Krittika
+    - vulture   # 3  Rohini
+    - vulture   # 4  Mrigashira
+    - owl       # 5  Ardra
+    - owl       # 6  Punarvasu
+    - owl       # 7  Pushya
+    - owl       # 8  Ashlesha
+    - owl       # 9  Magha
+    - owl       # 10 Purva Phalguni
+    - crow      # 11 Uttara Phalguni
+    - crow      # 12 Hasta
+    - crow      # 13 Chitra
+    - crow      # 14 Swati
+    - crow      # 15 Vishakha
+    - cock      # 16 Anuradha
+    - cock      # 17 Jyeshtha
+    - cock      # 18 Mula
+    - cock      # 19 Purva Ashadha
+    - cock      # 20 Uttara Ashadha
+    - cock      # 21 Shravana
+    - peacock   # 22 Dhanishtha
+    - peacock   # 23 Shatabhisha
+    - peacock   # 24 Purva Bhadrapada
+    - peacock   # 25 Uttara Bhadrapada
+    - peacock   # 26 Revati
+  krishna:
+    - peacock   # 0  Ashwini
+    - peacock   # 1  Bharani
+    - peacock   # 2  Krittika
+    - peacock   # 3  Rohini
+    - peacock   # 4  Mrigashira
+    - cock      # 5  Ardra
+    - cock      # 6  Punarvasu
+    - cock      # 7  Pushya
+    - cock      # 8  Ashlesha
+    - cock      # 9  Magha
+    - cock      # 10 Purva Phalguni
+    - crow      # 11 Uttara Phalguni
+    - crow      # 12 Hasta
+    - crow      # 13 Chitra
+    - crow      # 14 Swati
+    - crow      # 15 Vishakha
+    - owl       # 16 Anuradha
+    - owl       # 17 Jyeshtha
+    - owl       # 18 Mula
+    - owl       # 19 Purva Ashadha
+    - owl       # 20 Uttara Ashadha
+    - owl       # 21 Shravana
+    - vulture   # 22 Dhanishtha
+    - vulture   # 23 Shatabhisha
+    - vulture   # 24 Purva Bhadrapada
+    - vulture   # 25 Uttara Bhadrapada
+    - vulture   # 26 Revati
+
+# Yama sequences — which bird governs each of the 5 equal time periods (Yamas).
+# All sequences start with Vulture in Yama 1 (classical invariant).
+# Activity for each Yama position: Yama 1=Rule, 2=Eat, 3=Walk, 4=Sleep, 5=Die.
+#
+# Shukla Paksha Day:   V → O → Cr → Ck → Pe
+# Shukla Paksha Night: V → Pe → Ck → Cr → O
+# Krishna Paksha Day:  V → Cr → Pe → O → Ck
+# Krishna Paksha Night: V → Ck → O → Pe → Cr
+yama_sequences:
+  shukla_day:    [vulture, owl, crow, cock, peacock]
+  shukla_night:  [vulture, peacock, cock, crow, owl]
+  krishna_day:   [vulture, crow, peacock, owl, cock]
+  krishna_night: [vulture, cock, owl, peacock, crow]
+
+# Activity sequence for Yama positions 1-5 (same for all paksha/day/night).
+# Within each Yama, sub-periods follow the same sequence starting from the Yama bird.
+activity_sequence: [rule, eat, walk, sleep, die]

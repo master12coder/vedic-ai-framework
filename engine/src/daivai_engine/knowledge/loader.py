@@ -62,6 +62,11 @@ def load_vastu_rules() -> dict[str, Any]:
     return _load_yaml("vastu_rules.yaml")
 
 
+def load_pancha_pakshi_rules() -> dict[str, Any]:
+    """Load Pancha Pakshi Shastra bird-nakshatra and Yama sequence rules."""
+    return _load_yaml("pancha_pakshi_rules.yaml")
+
+
 def reload() -> None:
     """Clear cache and force reload."""
     global _cache
