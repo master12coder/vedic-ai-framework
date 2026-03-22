@@ -1,0 +1,540 @@
+# =============================================================================
+# Mantra Rules — Planetary Beej Mantras, Nakshatra Deity Mantras, Gayatri
+# =============================================================================
+# Source: Brihat Parashara Hora Shastra, Muhurta Chintamani, traditional
+#         Jyotish texts on graha shanti and nakshatra devata upasana.
+# =============================================================================
+
+# ── Planetary Beej Mantras ────────────────────────────────────────────────────
+# beej = seed syllable unique to that planet's energy frequency
+# japa_daily = recommended daily repetition count (multiples of 108)
+# japa_total = total count for a complete graha shanti cycle
+# hora = planet's ruling hora (Vedic planetary hour) for maximum efficacy
+
+planets:
+
+  Sun:
+    name_hi: सूर्य
+    beej: "ह्रीं"
+    beej_mantra: "ओम् ह्रां ह्रीं ह्रौम् सः सूर्याय नमः"
+    beej_mantra_en: "Om Hraam Hreem Hraum Sah Suryaya Namaha"
+    moola_mantra: "ओम् सूर्याय नमः"
+    gayatri: "ओम् भास्कराय विद्महे महातेजाय धीमहि तन्नो सूर्यः प्रचोदयात्"
+    gayatri_en: "Om Bhaskaraya Vidmahe Mahatejaya Dhimahi Tanno Suryah Prachodayat"
+    japa_daily: 108        # minimum per session
+    japa_total: 7000       # complete graha shanti cycle
+    japa_multiplier: 7     # total = multiplier × 1000
+    timing:
+      best_day: Sunday
+      best_hora: Sun hora (1st hora after sunrise on Sunday)
+      best_time: "Sunrise to 2 hours after sunrise"
+      best_muhurta: "Brahma muhurta to Pratah Sandhya"
+      avoid: "After sunset"
+    mala: "Ruby mala, or red coral mala, or red sandalwood (rakta chandan) mala"
+    facing_direction: East
+    deity: "Surya Dev"
+    associated_deity_mantra: "ओम् आदित्याय नमः"
+    pauranik_count: 6000
+
+  Moon:
+    name_hi: चन्द्र
+    beej: "श्रीं"
+    beej_mantra: "ओम् श्रां श्रीं श्रौम् सः चन्द्राय नमः"
+    beej_mantra_en: "Om Shraam Shreem Shraum Sah Chandraya Namaha"
+    moola_mantra: "ओम् चन्द्राय नमः"
+    gayatri: "ओम् पद्मध्वजाय विद्महे हेमरूपाय धीमहि तन्नो सोमः प्रचोदयात्"
+    gayatri_en: "Om Padmadhvajaya Vidmahe Hemarupaya Dhimahi Tanno Somah Prachodayat"
+    japa_daily: 108
+    japa_total: 11000
+    japa_multiplier: 11
+    timing:
+      best_day: Monday
+      best_hora: Moon hora
+      best_time: "Evening twilight (Sayam Sandhya)"
+      best_muhurta: "Pradosha time — 1.5 hrs before sunset"
+      avoid: "During solar eclipse; Amavasya night for first recitation"
+    mala: "Pearl mala or white sandalwood mala"
+    facing_direction: North-West
+    deity: "Chandra Dev / Lord Shiva"
+    associated_deity_mantra: "ओम् नमः शिवाय"
+    pauranik_count: 10000
+
+  Mars:
+    name_hi: मंगल
+    beej: "क्रीं"
+    beej_mantra: "ओम् क्रां क्रीं क्रौम् सः भौमाय नमः"
+    beej_mantra_en: "Om Kraam Kreem Kraum Sah Bhaumaya Namaha"
+    moola_mantra: "ओम् भौमाय नमः"
+    gayatri: "ओम् वीरध्वजाय विद्महे विशालनेत्राय धीमहि तन्नो भौमः प्रचोदयात्"
+    gayatri_en: "Om Viradhvajaya Vidmahe Vishalanetraya Dhimahi Tanno Bhaumah Prachodayat"
+    japa_daily: 108
+    japa_total: 10000
+    japa_multiplier: 10
+    timing:
+      best_day: Tuesday
+      best_hora: Mars hora
+      best_time: "Morning — 2 hours after sunrise"
+      best_muhurta: "Vijaya muhurta (2nd half of day)"
+      avoid: "During Kuja dosha periods for new beginnings"
+    mala: "Red coral (moonga) mala or red sandalwood mala"
+    facing_direction: South
+    deity: "Hanuman Ji"
+    associated_deity_mantra: "ओम् हनुमते नमः"
+    pauranik_count: 8000
+
+  Mercury:
+    name_hi: बुध
+    beej: "ब्रीं"
+    beej_mantra: "ओम् ब्रां ब्रीं ब्रौम् सः बुधाय नमः"
+    beej_mantra_en: "Om Braam Breem Braum Sah Budhaya Namaha"
+    moola_mantra: "ओम् बुधाय नमः"
+    gayatri: "ओम् गजध्वजाय विद्महे शुक्लहस्ताय धीमहि तन्नो बुधः प्रचोदयात्"
+    gayatri_en: "Om Gajadhvajaya Vidmahe Suklahastaya Dhimahi Tanno Budhah Prachodayat"
+    japa_daily: 108
+    japa_total: 9000
+    japa_multiplier: 9
+    timing:
+      best_day: Wednesday
+      best_hora: Mercury hora
+      best_time: "Midday"
+      best_muhurta: "Abhijit muhurta (midday)"
+      avoid: "After sunset on Wednesday"
+    mala: "Emerald (panna) mala or green glass mala or tulsi mala"
+    facing_direction: North
+    deity: "Lord Vishnu"
+    associated_deity_mantra: "ओम् नमो भगवते वासुदेवाय"
+    pauranik_count: 8000
+
+  Jupiter:
+    name_hi: बृहस्पति
+    beej: "ग्रीं"
+    beej_mantra: "ओम् ग्रां ग्रीं ग्रौम् सः गुरवे नमः"
+    beej_mantra_en: "Om Graam Greem Graum Sah Gurave Namaha"
+    moola_mantra: "ओम् गुरवे नमः"
+    gayatri: "ओम् वृषभध्वजाय विद्महे ग्रहराजाय धीमहि तन्नो गुरुः प्रचोदयात्"
+    gayatri_en: "Om Vrishabhadhvajaya Vidmahe Graharajaya Dhimahi Tanno Guruh Prachodayat"
+    japa_daily: 108
+    japa_total: 19000
+    japa_multiplier: 19
+    timing:
+      best_day: Thursday
+      best_hora: Jupiter hora
+      best_time: "Morning — first 3 hours after sunrise"
+      best_muhurta: "Brahma muhurta"
+      avoid: "Guru Chandala yoga period; Paush month for new cycles"
+    mala: "Yellow sapphire (pukhraj) mala or gold mala or yellow glass mala"
+    facing_direction: North-East
+    deity: "Brihaspati / Dakshinamurthy"
+    associated_deity_mantra: "ओम् बृहस्पतये नमः"
+    pauranik_count: 16000
+
+  Venus:
+    name_hi: शुक्र
+    beej: "द्रीं"
+    beej_mantra: "ओम् द्रां द्रीं द्रौम् सः शुक्राय नमः"
+    beej_mantra_en: "Om Draam Dreem Draum Sah Shukraya Namaha"
+    moola_mantra: "ओम् शुक्राय नमः"
+    gayatri: "ओम् अश्वध्वजाय विद्महे धनुर्हस्ताय धीमहि तन्नो शुक्रः प्रचोदयात्"
+    gayatri_en: "Om Ashvadhvajaya Vidmahe Dhanurhashtaya Dhimahi Tanno Shukrah Prachodayat"
+    japa_daily: 108
+    japa_total: 16000
+    japa_multiplier: 16
+    timing:
+      best_day: Friday
+      best_hora: Venus hora
+      best_time: "Afternoon"
+      best_muhurta: "2 hours before sunset"
+      avoid: "During Shukra asta (combustion) period"
+    mala: "Diamond mala or white quartz mala or white sandalwood mala"
+    facing_direction: South-East
+    deity: "Devi Lakshmi"
+    associated_deity_mantra: "ओम् श्री महालक्ष्म्यै नमः"
+    pauranik_count: 12000
+
+  Saturn:
+    name_hi: शनि
+    beej: "प्रीं"
+    beej_mantra: "ओम् प्रां प्रीं प्रौम् सः शनैश्चराय नमः"
+    beej_mantra_en: "Om Praam Preem Praum Sah Shanaischaraya Namaha"
+    moola_mantra: "ओम् शं शनैश्चराय नमः"
+    gayatri: "ओम् काकध्वजाय विद्महे खड्गहस्ताय धीमहि तन्नो मन्दः प्रचोदयात्"
+    gayatri_en: "Om Kakadhvajaya Vidmahe Khadgahastaya Dhimahi Tanno Mandah Prachodayat"
+    japa_daily: 108
+    japa_total: 23000
+    japa_multiplier: 23
+    timing:
+      best_day: Saturday
+      best_hora: Saturn hora
+      best_time: "Evening — before sunset"
+      best_muhurta: "Just before Sayam Sandhya"
+      avoid: "Saturday night for first recitation; Ashtami tithi"
+    mala: "Blue sapphire (neelam) mala or iron ring mala or black sesame mala"
+    facing_direction: West
+    deity: "Shani Dev"
+    associated_deity_mantra: "ओम् शं शनिश्चराय नमः"
+    pauranik_count: 19000
+
+  Rahu:
+    name_hi: राहु
+    beej: "भ्रीं"
+    beej_mantra: "ओम् भ्रां भ्रीं भ्रौम् सः राहवे नमः"
+    beej_mantra_en: "Om Bhraam Bhreem Bhraum Sah Rahave Namaha"
+    moola_mantra: "ओम् रां राहवे नमः"
+    gayatri: "ओम् नागध्वजाय विद्महे पद्महस्ताय धीमहि तन्नो राहुः प्रचोदयात्"
+    gayatri_en: "Om Nagadhvajaya Vidmahe Padmahastaya Dhimahi Tanno Rahuh Prachodayat"
+    japa_daily: 108
+    japa_total: 18000
+    japa_multiplier: 18
+    timing:
+      best_day: Saturday
+      best_hora: Rahu hora (Rahu Kaal)
+      best_time: "During Rahu Kaal on Saturday"
+      best_muhurta: "Rahu Kaal specifically"
+      avoid: "Amavasya night; during solar eclipse for beginners"
+    mala: "Hessonite (gomed) mala or agate mala"
+    facing_direction: South-West
+    deity: "Devi Durga / Kali"
+    associated_deity_mantra: "ओम् दुं दुर्गायै नमः"
+    pauranik_count: 15000
+
+  Ketu:
+    name_hi: केतु
+    beej: "स्रीं"
+    beej_mantra: "ओम् स्रां स्रीं स्रौम् सः केतवे नमः"
+    beej_mantra_en: "Om Sraam Sreem Sraum Sah Ketave Namaha"
+    moola_mantra: "ओम् कें केतवे नमः"
+    gayatri: "ओम् अश्वध्वजाय विद्महे शूलहस्ताय धीमहि तन्नो केतुः प्रचोदयात्"
+    gayatri_en: "Om Ashvadhvajaya Vidmahe Sulahastaya Dhimahi Tanno Ketuh Prachodayat"
+    japa_daily: 108
+    japa_total: 17000
+    japa_multiplier: 17
+    timing:
+      best_day: Tuesday
+      best_hora: Ketu hora
+      best_time: "Morning — at sunrise"
+      best_muhurta: "Pratah Sandhya"
+      avoid: "Avoid combining with Rahu japa in same session"
+    mala: "Cat's eye (vaidurya) mala or kusha grass mala"
+    facing_direction: North-West
+    deity: "Lord Ganesha"
+    associated_deity_mantra: "ओम् गं गणपतये नमः"
+    pauranik_count: 14000
+
+
+# ── Nakshatra Deity Mantras ───────────────────────────────────────────────────
+# 27 nakshatras, each ruled by a cosmic deity (devata)
+# Mantra japa of nakshatra devata is prescribed when natal Moon occupies that
+# nakshatra or when one seeks blessings from that devata.
+# Source: Taittiriya Brahmana, BPHS Ch. 3 (Nakshatra Devata)
+
+nakshatra_mantras:
+
+  - number: 1
+    name_en: Ashwini
+    name_hi: अश्विनी
+    deity: Ashwini Kumaras
+    deity_hi: अश्विनी कुमार
+    mantra: "ओम् अश्विनीकुमाराभ्यां नमः"
+    mantra_en: "Om Ashwinikumarabhyam Namaha"
+    extended_mantra: "ओम् आं अश्विनीकुमाराभ्यां नमः सिद्धिं देहि देहि स्वाहा"
+    japa_count: 108
+    deity_domain: "Healing, swift action, divine medicine, new beginnings"
+
+  - number: 2
+    name_en: Bharani
+    name_hi: भरणी
+    deity: Yama
+    deity_hi: यम
+    mantra: "ओम् यमाय नमः"
+    mantra_en: "Om Yamaya Namaha"
+    extended_mantra: "ओम् यं यमाय धर्मराजाय नमः"
+    japa_count: 108
+    deity_domain: "Death, transformation, dharmic justice, karma"
+
+  - number: 3
+    name_en: Krittika
+    name_hi: कृत्तिका
+    deity: Agni
+    deity_hi: अग्नि
+    mantra: "ओम् अग्नये नमः"
+    mantra_en: "Om Agnaye Namaha"
+    extended_mantra: "ओम् अं अग्नये स्वाहा"
+    japa_count: 108
+    deity_domain: "Fire, purification, transformation, cooking, sharp intellect"
+
+  - number: 4
+    name_en: Rohini
+    name_hi: रोहिणी
+    deity: Brahma / Prajapati
+    deity_hi: ब्रह्मा / प्रजापति
+    mantra: "ओम् ब्रह्मणे नमः"
+    mantra_en: "Om Brahmanye Namaha"
+    extended_mantra: "ओम् ब्रं ब्रह्मणे प्रजापतये नमः"
+    japa_count: 108
+    deity_domain: "Creation, fertility, abundance, beauty, material prosperity"
+
+  - number: 5
+    name_en: Mrigashira
+    name_hi: मृगशिरा
+    deity: Soma (Moon / Chandra)
+    deity_hi: सोम
+    mantra: "ओम् सोमाय नमः"
+    mantra_en: "Om Somaya Namaha"
+    extended_mantra: "ओम् सं सोमाय चन्द्राय नमः"
+    japa_count: 108
+    deity_domain: "Searching, wandering, gentleness, lunar blessings, poetry"
+
+  - number: 6
+    name_en: Ardra
+    name_hi: आर्द्रा
+    deity: Rudra
+    deity_hi: रुद्र
+    mantra: "ओम् रुद्राय नमः"
+    mantra_en: "Om Rudraya Namaha"
+    extended_mantra: "ओम् रुं रुद्राय शिवाय नमः"
+    japa_count: 108
+    deity_domain: "Storms, destruction of obstacles, fierce transformation, Shiva"
+
+  - number: 7
+    name_en: Punarvasu
+    name_hi: पुनर्वसु
+    deity: Aditi
+    deity_hi: अदिति
+    mantra: "ओम् अदित्यै नमः"
+    mantra_en: "Om Aditye Namaha"
+    extended_mantra: "ओम् अं अदित्यै सर्वदेवमात्रे नमः"
+    japa_count: 108
+    deity_domain: "Renewal, return, infinity, divine mother, expansion"
+
+  - number: 8
+    name_en: Pushya
+    name_hi: पुष्य
+    deity: Brihaspati
+    deity_hi: बृहस्पति
+    mantra: "ओम् बृहस्पतये नमः"
+    mantra_en: "Om Brihaspataye Namaha"
+    extended_mantra: "ओम् ग्रं बृहस्पतये गुरवे नमः"
+    japa_count: 108
+    deity_domain: "Nourishment, abundance, spiritual growth, wisdom, teaching"
+
+  - number: 9
+    name_en: Ashlesha
+    name_hi: आश्लेषा
+    deity: Nagas (Serpent deities)
+    deity_hi: नाग देवता
+    mantra: "ओम् नागेभ्यो नमः"
+    mantra_en: "Om Nagebhyo Namaha"
+    extended_mantra: "ओम् नं नागदेवताभ्यो नमः"
+    japa_count: 108
+    deity_domain: "Serpent power, kundalini, penetrating insight, hidden knowledge"
+
+  - number: 10
+    name_en: Magha
+    name_hi: मघा
+    deity: Pitrs (Ancestors)
+    deity_hi: पितृ
+    mantra: "ओम् पितृभ्यो नमः"
+    mantra_en: "Om Pitribhyo Namaha"
+    extended_mantra: "ओम् पित् पितृभ्यः स्वधायिभ्यः स्वधा नमः"
+    japa_count: 108
+    deity_domain: "Ancestral blessings, royal heritage, dharma, past-life karma"
+
+  - number: 11
+    name_en: Purva Phalguni
+    name_hi: पूर्व फाल्गुनी
+    deity: Bhaga
+    deity_hi: भग
+    mantra: "ओम् भगाय नमः"
+    mantra_en: "Om Bhagaya Namaha"
+    extended_mantra: "ओम् भं भगाय सौभाग्याय नमः"
+    japa_count: 108
+    deity_domain: "Fortune, marital bliss, creativity, rest, enjoyment"
+
+  - number: 12
+    name_en: Uttara Phalguni
+    name_hi: उत्तर फाल्गुनी
+    deity: Aryama
+    deity_hi: आर्यमन्
+    mantra: "ओम् आर्यम्णे नमः"
+    mantra_en: "Om Aryamne Namaha"
+    extended_mantra: "ओम् आर्यम्णे मित्राय वरुणाय नमः"
+    japa_count: 108
+    deity_domain: "Contracts, social bonds, nobility, duty, prosperity"
+
+  - number: 13
+    name_en: Hasta
+    name_hi: हस्त
+    deity: Savitar (Surya / Sun)
+    deity_hi: सविता
+    mantra: "ओम् सवित्रे नमः"
+    mantra_en: "Om Savitre Namaha"
+    extended_mantra: "ओम् सं सवित्रे देवाय नमः"
+    japa_count: 108
+    deity_domain: "Skill, craftsmanship, healing hands, manifestation, dexterity"
+
+  - number: 14
+    name_en: Chitra
+    name_hi: चित्रा
+    deity: Tvashtar (Vishwakarma)
+    deity_hi: त्वष्टा / विश्वकर्मा
+    mantra: "ओम् विश्वकर्मणे नमः"
+    mantra_en: "Om Vishwakarmanye Namaha"
+    extended_mantra: "ओम् त्वं त्वष्ट्रे विश्वकर्मणे नमः"
+    japa_count: 108
+    deity_domain: "Craftsmanship, architecture, divine art, beautiful forms"
+
+  - number: 15
+    name_en: Swati
+    name_hi: स्वाती
+    deity: Vayu (Wind god)
+    deity_hi: वायु
+    mantra: "ओम् वायवे नमः"
+    mantra_en: "Om Vayave Namaha"
+    extended_mantra: "ओम् वं वायवे प्राणाय नमः"
+    japa_count: 108
+    deity_domain: "Wind, independence, flexibility, trade, breath/prana"
+
+  - number: 16
+    name_en: Vishakha
+    name_hi: विशाखा
+    deity: Indra-Agni
+    deity_hi: इन्द्राग्नी
+    mantra: "ओम् इन्द्राग्निभ्यां नमः"
+    mantra_en: "Om Indragni Bhyam Namaha"
+    extended_mantra: "ओम् इं इन्द्राग्निभ्यां शक्तिं देहि नमः"
+    japa_count: 108
+    deity_domain: "Power, ambition, achievement, dual forces, determination"
+
+  - number: 17
+    name_en: Anuradha
+    name_hi: अनुराधा
+    deity: Mitra
+    deity_hi: मित्र
+    mantra: "ओम् मित्राय नमः"
+    mantra_en: "Om Mitraya Namaha"
+    extended_mantra: "ओम् मित् मित्राय सुहृदे नमः"
+    japa_count: 108
+    deity_domain: "Friendship, devotion, alliances, balanced relationships"
+
+  - number: 18
+    name_en: Jyeshtha
+    name_hi: ज्येष्ठा
+    deity: Indra (King of Devas)
+    deity_hi: इन्द्र
+    mantra: "ओम् इन्द्राय नमः"
+    mantra_en: "Om Indraya Namaha"
+    extended_mantra: "ओम् इं इन्द्राय महेन्द्राय नमः"
+    japa_count: 108
+    deity_domain: "Leadership, seniority, power, protection, authority"
+
+  - number: 19
+    name_en: Mula
+    name_hi: मूल
+    deity: Nirriti (Goddess of destruction / dissolution)
+    deity_hi: निऋति
+    mantra: "ओम् निऋतये नमः"
+    mantra_en: "Om Nirritaye Namaha"
+    extended_mantra: "ओम् नृं निऋत्यै नमः"
+    japa_count: 108
+    deity_domain: "Root, dissolution, research, moksha, untying the bound"
+
+  - number: 20
+    name_en: Purva Ashadha
+    name_hi: पूर्वाषाढा
+    deity: Apas (Waters / Varuna)
+    deity_hi: अपः / वरुण
+    mantra: "ओम् अद्भ्यो नमः"
+    mantra_en: "Om Adbhyo Namaha"
+    extended_mantra: "ओम् अं अद्भ्यः वरुणाय नमः"
+    japa_count: 108
+    deity_domain: "Purification, invincibility, water element, emotional strength"
+
+  - number: 21
+    name_en: Uttara Ashadha
+    name_hi: उत्तराषाढा
+    deity: Vishwadevas (Universal cosmic gods)
+    deity_hi: विश्वेदेव
+    mantra: "ओम् विश्वेभ्यो देवेभ्यो नमः"
+    mantra_en: "Om Vishvebhyo Devebhyo Namaha"
+    extended_mantra: "ओम् विश्वेभ्यो देवेभ्यः सर्वशक्तिभ्यो नमः"
+    japa_count: 108
+    deity_domain: "Universal dharma, ultimate victory, righteousness, final triumph"
+
+  - number: 22
+    name_en: Shravana
+    name_hi: श्रवण
+    deity: Vishnu (Preserver)
+    deity_hi: विष्णु
+    mantra: "ओम् विष्णवे नमः"
+    mantra_en: "Om Vishnave Namaha"
+    extended_mantra: "ओम् विं विष्णवे सर्वव्यापकाय नमः"
+    japa_count: 108
+    deity_domain: "Learning, listening, Vedic knowledge, preservation, cosmic order"
+
+  - number: 23
+    name_en: Dhanishtha
+    name_hi: धनिष्ठा
+    deity: Ashta Vasus (Eight elemental deities)
+    deity_hi: अष्ट वसु
+    mantra: "ओम् वसुभ्यो नमः"
+    mantra_en: "Om Vasubhyo Namaha"
+    extended_mantra: "ओम् वं अष्टवसुभ्यः धनदाभ्यो नमः"
+    japa_count: 108
+    deity_domain: "Wealth, rhythm, music, abundance, elemental forces"
+
+  - number: 24
+    name_en: Shatabhisha
+    name_hi: शतभिषा
+    deity: Varuna (God of cosmic waters and law)
+    deity_hi: वरुण
+    mantra: "ओम् वरुणाय नमः"
+    mantra_en: "Om Varunaya Namaha"
+    extended_mantra: "ओम् वं वरुणाय पाशहस्ताय नमः"
+    japa_count: 108
+    deity_domain: "Healing, secrets, cosmic law, vast expanse, hidden knowledge"
+
+  - number: 25
+    name_en: Purva Bhadrapada
+    name_hi: पूर्वभाद्रपद
+    deity: Aja Ekapada (One-footed goat / serpent of the deep)
+    deity_hi: अज एकपाद
+    mantra: "ओम् अजैकपादाय नमः"
+    mantra_en: "Om Ajaikapadaya Namaha"
+    extended_mantra: "ओम् अजं एकपादाय अग्नये नमः"
+    japa_count: 108
+    deity_domain: "Fire sacrifice, austerity, spiritual fire, esoteric wisdom"
+
+  - number: 26
+    name_en: Uttara Bhadrapada
+    name_hi: उत्तरभाद्रपद
+    deity: Ahir Budhnya (Serpent of the deep / cosmic foundations)
+    deity_hi: अहिर्बुध्न्य
+    mantra: "ओम् अहिर्बुध्न्याय नमः"
+    mantra_en: "Om Ahirbudhnyaya Namaha"
+    extended_mantra: "ओम् अहिं बुध्न्याय नागाय नमः"
+    japa_count: 108
+    deity_domain: "Depth, stability, kundalini, watery depths, cosmic serpent"
+
+  - number: 27
+    name_en: Revati
+    name_hi: रेवती
+    deity: Pushan (Nourisher / Guide of souls)
+    deity_hi: पूषन्
+    mantra: "ओम् पूष्णे नमः"
+    mantra_en: "Om Pushne Namaha"
+    extended_mantra: "ओम् पुं पूष्णे पशुपतये नमः"
+    japa_count: 108
+    deity_domain: "Nourishment, safe passage, cattle, final journey, spiritual guidance"
+
+
+# ── Japa Rules ────────────────────────────────────────────────────────────────
+japa_rules:
+  mala_beads: 108
+  session_minimum: 1       # minimum malas per session
+  session_recommended: 3   # 3 malas = 324 japa
+  mantra_speed: "Not too fast, not too slow — approx 4–5 seconds per repetition"
+  voice: "Manasika (mental) japa is most powerful; Upamshu (whispered) is moderate; Vachika (spoken) is least but acceptable for beginners"
+  purification: "Wash hands and face before japa; sit facing prescribed direction"
+  completion: "At end of each mala, do not cross the 'Meru' bead — reverse direction"
+  continuity: "Once started, complete the session; interruptions diminish efficacy"
+  moon_phase_best: "Shukla Paksha (waxing moon) for increasing benefics; Krishna Paksha for decreasing malefics"

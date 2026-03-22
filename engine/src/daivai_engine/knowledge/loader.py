@@ -77,6 +77,36 @@ def load_namakarana_rules() -> dict[str, Any]:
     return _load_yaml("namakarana_rules.yaml")
 
 
+def load_gochara_rules() -> dict[str, Any]:
+    """Load Gochara (transit) rules including Vedha obstruction pairs."""
+    return _load_yaml("gochara_rules.yaml")
+
+
+def load_mundane_rules() -> dict[str, Any]:
+    """Load Mundane (Medini) Jyotish rules for national/world event prediction."""
+    return _load_yaml("mundane_rules.yaml")
+
+
+def load_mantra_rules() -> dict[str, Any]:
+    """Load planetary mantra assignments and japa counts."""
+    return _load_yaml("mantra_rules.yaml")
+
+
+def load_yantra_data() -> dict[str, Any]:
+    """Load yantra geometry, materials, and activation rules."""
+    return _load_yaml("yantra_data.yaml")
+
+
+def load_numerology_rules() -> dict[str, Any]:
+    """Load numerology rules: Chaldean/Pythagorean mappings and interpretations."""
+    return _load_yaml("numerology_rules.yaml")
+
+
+def load_medical_rules() -> dict[str, Any]:
+    """Load Vaidya Jyotish (medical astrology) rules for health indications."""
+    return _load_yaml("medical_rules.yaml")
+
+
 def reload() -> None:
     """Clear cache and force reload."""
     global _cache

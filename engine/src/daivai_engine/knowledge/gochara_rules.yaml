@@ -1,0 +1,268 @@
+# ═══════════════════════════════════════════════════════════════
+# GOCHARA RULES — Comprehensive Transit Analysis (108 Results)
+# ═══════════════════════════════════════════════════════════════
+# Source: Phaladeepika Ch.26, BPHS Transit Chapter, Jataka Parijata
+# Version: 1.0.0  |  Confidence: canonical
+#
+# Contents:
+#   1. Compact scores table: 9 planets × 12 houses = 108 results
+#   2. Result descriptions (short) per planet per house
+#   3. Special transit phenomena (named events)
+#   4. Vedha (obstruction) pairs
+#   5. Moorthy Nirnaya classification (Poorna/Madhya/Swalpa/Nishphala)
+#   6. Approximate transit durations per sign (days)
+# ═══════════════════════════════════════════════════════════════
+
+source: "Phaladeepika Ch.26, BPHS transit chapter, Jataka Parijata"
+version: "1.0.0"
+confidence: canonical
+
+# ── 1. COMPACT SCORES TABLE ──────────────────────────────────────────────────
+# Format: [house_1, house_2, ..., house_12] (houses counted from natal Moon)
+# Scores: +2 = very_favorable, +1 = favorable, 0 = neutral,
+#         -1 = unfavorable, -2 = very_unfavorable
+scores:
+  Saturn:  [-1, -1,  1, -1, -1,  1, -1, -2, -1, -1,  2, -1]
+  Jupiter: [-1,  1, -1, -1,  2, -1,  1, -1,  2, -1,  2, -1]
+  Mars:    [-1, -1,  2, -1, -1,  2, -1, -2, -1, -1,  2, -1]
+  Sun:     [-1, -1,  2, -1, -1,  2, -1, -2, -1,  2,  2, -1]
+  Moon:    [ 1, -1,  1, -1, -1,  1,  2, -1, -1,  2,  2, -1]
+  Mercury: [-1,  2, -1,  1, -1,  2, -1,  1, -1,  2,  2, -1]
+  Venus:   [ 1,  2,  1,  2,  2, -1, -1,  1,  2, -1,  2,  2]
+  Rahu:    [-1, -1,  1, -1, -1,  1, -1, -2, -1,  1,  2, -1]
+  Ketu:    [-1, -1,  1, -1, -1,  1, -1, -2, -1,  1,  2,  1]
+
+# ── 2. RESULT DESCRIPTIONS ───────────────────────────────────────────────────
+results:
+  Saturn:
+    1: "Obstacles, health issues, mental distress, loss of position"
+    2: "Financial strain, family disputes, speech problems"
+    3: "Success over enemies, courage, valour, short journeys"
+    4: "Mental distress, property issues, mother's health affected"
+    5: "Children issues, stomach problems, loss of intelligence"
+    6: "Victory over enemies, good health, recovery from illness"
+    7: "Travel, relationship strain, spouse health issues"
+    8: "Health crises, major losses, accidents, danger of death"
+    9: "Obstacles in fortune, father's health, loss of dharma"
+    10: "Career setbacks, public humiliation, loss of status"
+    11: "Gains, prosperity, fulfillment of desires, income increase"
+    12: "Expenses, losses, foreign travel, sleep disturbances"
+
+  Jupiter:
+    1: "Restlessness, wandering, loss of wealth, change of residence"
+    2: "Financial gains, good food, family happiness, eloquent speech"
+    3: "Obstacles in short journeys, sibling issues, loss of courage"
+    4: "Property disputes, vehicle problems, mother's health issues"
+    5: "Blessings to children, intellectual growth, spiritual inclination"
+    6: "Health issues, enemy troubles, financial disputes"
+    7: "Marriage prospects, partnerships, successful negotiations"
+    8: "Hidden troubles, health setbacks, occult involvement"
+    9: "Fortune, guru blessings, long journeys, spiritual progress"
+    10: "Career stagnation despite efforts, authority conflicts"
+    11: "Excellent gains, aspirations fulfilled, social success"
+    12: "Unnecessary expenditure, spiritual retreat"
+
+  Mars:
+    1: "Accidents, fever, conflicts, eye and head ailments"
+    2: "Financial losses, family quarrels, speech-related troubles"
+    3: "Courage, victory over enemies, sibling support, travel success"
+    4: "Property disputes, domestic quarrels, vehicle accidents"
+    5: "Children troubles, stomach issues, loss of intellectual clarity"
+    6: "Victory over enemies, improved health, athletic success"
+    7: "Marital discord, partnership conflicts, travel with difficulties"
+    8: "Accidents, surgeries, blood disorders, danger from weapons"
+    9: "Father's health issues, loss of fortune, irreligious tendencies"
+    10: "Career conflicts, disputes with authorities, professional setbacks"
+    11: "Gains, success in competitions, fulfillment of desires"
+    12: "Secret enemies, expenses, imprisonment risk, foreign troubles"
+
+  Sun:
+    1: "Health issues, eye problems, loss of energy"
+    2: "Financial losses, family disputes, speech problems"
+    3: "Courage, strength, sibling support, good health"
+    4: "Mental agitation, property issues, domestic unhappiness"
+    5: "Children troubles, stomach heat, loss of respect"
+    6: "Victory over enemies, good health, government favor"
+    7: "Marital tension, body heat, urinary issues"
+    8: "Health crises, fever, debts, danger from fire"
+    9: "Father's troubles, loss of fortune, irreligion"
+    10: "Career success, leadership recognition, authority gains"
+    11: "Financial gains, fulfillment of ambitions"
+    12: "Eye problems, expenses, foreign travel, tiredness"
+
+  Moon:
+    1: "Good health, mental clarity, comfort and peace"
+    2: "Financial fluctuation, family anxieties, food issues"
+    3: "Mental strength, travel success, sibling harmony"
+    4: "Mental unease, domestic disturbances, mother's health"
+    5: "Worries about children, stomach upset, creative blocks"
+    6: "Good health, victory over opposition, positive energy"
+    7: "Good relationships, partnership success, social ease"
+    8: "Mental depression, health concerns, emotional fatigue"
+    9: "Obstacles in fortune, father's health, dharmic doubts"
+    10: "Career success, public recognition, active work period"
+    11: "Financial gains, social popularity, wishes fulfilled"
+    12: "Expenditure, fatigue, sleep disturbances, retreat"
+
+  Mercury:
+    1: "Mental restlessness, confusion, scattered communication"
+    2: "Financial gains through trade, eloquent speech, good education"
+    3: "Sibling issues, short journey troubles, communication delays"
+    4: "Property benefits, vehicle purchase, domestic harmony"
+    5: "Children matters difficult, intellectual restlessness"
+    6: "Victory over enemies through intellect, business success"
+    7: "Partnership disputes, communication breakdowns, travel delays"
+    8: "Occult knowledge, research success, inheritance gains"
+    9: "Travel delays, teacher-student conflicts, pilgrimage troubles"
+    10: "Career success through communication, writing, trade"
+    11: "Gains through intellect, network expansion, aspirations met"
+    12: "Mental confusion, expenses on communication, misunderstandings"
+
+  Venus:
+    1: "Attractiveness, comfort, sensual pleasures, good health"
+    2: "Wealth gains, family happiness, good food, luxury items"
+    3: "Pleasant journeys, artistic expression, social success"
+    4: "Domestic happiness, vehicle purchase, property gains"
+    5: "Romance, children's blessings, creative success"
+    6: "Relationship disputes, health issues from indulgence"
+    7: "Marital difficulties, partnership strains despite Venus"
+    8: "Inheritance, sensual pleasures, occult interests"
+    9: "Fortune, guru blessings, spiritual comfort and travel"
+    10: "Career not favored, creative blocks, authority disputes"
+    11: "Excellent gains, luxury, social popularity, desires met"
+    12: "Pleasures in privacy, retreat, spiritual comfort, bed comforts"
+
+  Rahu:
+    1: "Mental confusion, identity crisis, health issues, illusions"
+    2: "Financial irregularities, family disruptions, speech issues"
+    3: "Courage through unconventional means, travel, sibling connections"
+    4: "Domestic upheaval, property disputes, mother's troubles"
+    5: "Children issues, speculative losses, obsessive thinking"
+    6: "Overcoming enemies through shrewdness, health improvement"
+    7: "Unusual partnerships, foreign connections, relationship karma"
+    8: "Accidents, chronic ailments, hidden enemies, sudden crises"
+    9: "Religious confusion, father's troubles, fortune fluctuations"
+    10: "Unconventional career success, fame through irregular means"
+    11: "Material gains, large aspirations, network through unusual channels"
+    12: "Foreign travel, hidden expenditure, subconscious fears"
+
+  Ketu:
+    1: "Health issues, spiritual seeking, identity dissolution"
+    2: "Financial losses, family detachment, speech problems"
+    3: "Spiritual journeys, detachment from siblings, courage in isolation"
+    4: "Domestic detachment, mother's health, property loss"
+    5: "Children troubles, past-life karma surfacing, creative blocks"
+    6: "Enemies subdued through karma, disease recovery"
+    7: "Relationship detachment, spouse health, spiritual partnerships"
+    8: "Occult experiences, near-death encounters, major transformation"
+    9: "Guru detachment, dharmic questioning, father's issues"
+    10: "Career through spirituality, detachment from worldly status"
+    11: "Spiritual gains, fulfillment through renunciation"
+    12: "Moksha inclinations, foreign ashrams, spiritual liberation"
+
+# ── 3. SPECIAL TRANSIT PHENOMENA ─────────────────────────────────────────────
+# Named traditional transit phenomena with descriptions
+special_names:
+  Saturn:
+    12: "Sade Sati (Rising)"
+    1: "Sade Sati (Peak)"
+    2: "Sade Sati (Setting)"
+    10: "Kantak Shani"
+    8: "Ashtama Shani"
+  Jupiter:
+    5: "Guru Bala"
+    9: "Guru Bhagya"
+    11: "Guru Labha"
+  Mars:
+    8: "Ashtama Kuja"
+  Sun:
+    8: "Surya Ashtama"
+  Rahu:
+    1: "Rahu Chandra Drishti"
+  Ketu:
+    7: "Ketu Kalatra Bhaya"
+
+# ── 4. VEDHA (OBSTRUCTION) PAIRS ─────────────────────────────────────────────
+# When a planet transits a BENEFICIAL house, another planet in the VEDHA house
+# cancels the good result (score reset to 0).
+# Vedha applies to NATAL planet positions (not transit positions).
+# MALEFIC transits are NEVER blocked by vedha.
+# Source: Phaladeepika transit chapter
+vedha_pairs:
+  # house: its_vedha_counterpart
+  1: 5
+  5: 1
+  2: 12
+  12: 2
+  3: 9
+  9: 3
+  4: 10
+  10: 4
+  6: 8
+  8: 6
+no_vedha_houses: [7, 11]
+vedha_note: >
+  Houses 7 and 11 have NO vedha — beneficial effects are always active.
+  Vedha is checked using natal chart positions, not transit positions.
+  The Sun and Moon are NEVER subject to vedha blocking each other.
+
+# ── 5. MOORTHY NIRNAYA ───────────────────────────────────────────────────────
+# Classification of transit quality based on BAV (Bhinna Ashtakavarga) bindu count
+# for the transiting planet in the transit sign.
+# Source: Phaladeepika, Mantreswara tradition
+moorthy_nirnaya:
+  poorna:
+    bindus_min: 5
+    bindus_max: 8
+    label: "Poorna"
+    label_hi: "पूर्ण"
+    label_en: "Full"
+    meaning: "Full benefit — transit results manifest completely"
+    metal: "Swarna (Gold)"
+  madhya:
+    bindus_min: 3
+    bindus_max: 4
+    label: "Madhya"
+    label_hi: "मध्य"
+    label_en: "Medium"
+    meaning: "Partial benefit — transit results manifest moderately"
+    metal: "Rajata (Silver)"
+  swalpa:
+    bindus_min: 1
+    bindus_max: 2
+    label: "Swalpa"
+    label_hi: "स्वल्प"
+    label_en: "Minimal"
+    meaning: "Minimal benefit — transit results barely manifest"
+    metal: "Tamra (Copper)"
+  nishphala:
+    bindus_min: 0
+    bindus_max: 0
+    label: "Nishphala"
+    label_hi: "निष्फल"
+    label_en: "Fruitless"
+    meaning: "No result — transit is completely ineffective"
+    metal: "Loha (Iron)"
+
+# ── 6. TRANSIT DURATIONS ─────────────────────────────────────────────────────
+# Approximate number of days each planet transits a sign
+# These are average values; actual durations vary with retrograde cycles.
+transit_duration_days:
+  Sun: 30
+  Moon: 2.5
+  Mars: 45
+  Mercury: 25
+  Jupiter: 365
+  Venus: 28
+  Saturn: 912
+  Rahu: 548
+  Ketu: 548
+
+# ── 7. FAVORABILITY LABELS ───────────────────────────────────────────────────
+# Mapping from numeric score to named favorability category
+favorability_map:
+  2: "very_favorable"
+  1: "favorable"
+  0: "neutral"
+  -1: "unfavorable"
+  -2: "very_unfavorable"

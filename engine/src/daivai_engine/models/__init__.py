@@ -31,12 +31,11 @@ from daivai_engine.models.matching import KootaScore, MatchingResult
 from daivai_engine.models.mrityu_bhaga import MrityuBhagaResult
 from daivai_engine.models.muhurta import MuhurtaCandidate
 from daivai_engine.models.namakarana import (
-    NakshtraAkshar,
-    NamakaranaMuhurta,
+    GandMoolResult,
     NamakaranaResult,
+    NameNumerology,
     NameScore,
     NameSuggestion,
-    RashiLetters,
 )
 from daivai_engine.models.panchang import PanchangData
 from daivai_engine.models.pattern import PatternResult
@@ -109,9 +108,9 @@ __all__ = [
     # muhurta.py
     "MuhurtaCandidate",
     # namakarana.py
-    "NakshtraAkshar",
-    "NamakaranaMuhurta",
+    "GandMoolResult",
     "NamakaranaResult",
+    "NameNumerology",
     "NameScore",
     "NameSuggestion",
     # panchang.py
@@ -129,7 +128,6 @@ __all__ = [
     "ProhibitedStone",
     # pushkara.py
     "PushkaraResult",
-    "RashiLetters",
     "RoomRecommendation",
     # scripture.py
     "ScriptureReference",

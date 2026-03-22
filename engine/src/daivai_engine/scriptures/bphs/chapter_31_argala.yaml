@@ -1,0 +1,137 @@
+book: BPHS
+chapter: 31
+title: "Argala (Intervention)"
+description: "Brihat Parashara Hora Shastra Chapter 31 defines Argala — the intervention or support that planets in certain positions provide to a house/sign, and the Virodha (obstruction) that can neutralize that support."
+
+rules:
+  # ============================================================
+  # PRIMARY ARGALA POSITIONS
+  # ============================================================
+  - verse: 1
+    topic: dhana_argala
+    planets: []
+    houses: [2]
+    text_english: "Planets placed in the 2nd house from any house/sign provide Dhana Argala (wealth intervention). They support and strengthen the significations of that house through matters of wealth, speech, and family."
+    text_hindi: "जिस भाव/राशि से दूसरे भाव में ग्रह हों, वे धन अर्गला देते हैं। वे उस भाव की शक्ति को धन, वाणी, परिवार के माध्यम से बढ़ाते हैं।"
+    text_sanskrit: "द्वितीये धनार्गला।"
+    rule_type: argala
+
+  - verse: 2
+    topic: sukha_argala
+    planets: []
+    houses: [4]
+    text_english: "Planets placed in the 4th house from any house/sign provide Sukha Argala (happiness/comfort intervention). They support through matters of happiness, property, mother, and domestic comforts."
+    text_hindi: "चतुर्थ भाव में स्थित ग्रह सुख अर्गला देते हैं। वे सुख, सम्पत्ति, माता के माध्यम से बल देते हैं।"
+    text_sanskrit: "चतुर्थे सुखार्गला।"
+    rule_type: argala
+
+  - verse: 3
+    topic: labha_argala
+    planets: []
+    houses: [11]
+    text_english: "Planets placed in the 11th house from any house/sign provide Labha Argala (gain intervention). This is the strongest primary argala, supporting through income, elder siblings, and material gains."
+    text_hindi: "एकादश भाव में ग्रह लाभ अर्गला देते हैं। यह सबसे प्रबल अर्गला है — लाभ, बड़े भाई-बहन, आय से बल मिलता है।"
+    text_sanskrit: "एकादशे लाभार्गला।"
+    rule_type: argala
+
+  - verse: 4
+    topic: putra_argala
+    planets: []
+    houses: [5]
+    text_english: "Planets placed in the 5th house from any house/sign provide Putra Argala (secondary/progeny intervention). This is considered a secondary argala, supporting through children, intelligence, and past merit (purva punya)."
+    text_hindi: "पंचम भाव में ग्रह पुत्र अर्गला देते हैं। यह द्वितीयक अर्गला है — पुत्र, बुद्धि, पूर्व पुण्य से बल मिलता है।"
+    text_sanskrit: "पंचमे पुत्रार्गला।"
+    rule_type: argala
+
+  # ============================================================
+  # VIRODHA ARGALA (OBSTRUCTION) POSITIONS
+  # ============================================================
+  - verse: 5
+    topic: virodha_dhana
+    planets: []
+    houses: [12]
+    text_english: "Planets in the 12th house from any house/sign provide Virodha (obstruction) to the Dhana Argala from the 2nd. The 12th obstructs the 2nd argala."
+    text_hindi: "द्वादश भाव में ग्रह, द्वितीय भाव की धन अर्गला का विरोध करते हैं।"
+    text_sanskrit: "द्वादशे विरोधो धनार्गलायाः।"
+    rule_type: virodha_argala
+
+  - verse: 6
+    topic: virodha_sukha
+    planets: []
+    houses: [10]
+    text_english: "Planets in the 10th house from any house/sign provide Virodha to the Sukha Argala from the 4th. The 10th obstructs the 4th argala."
+    text_hindi: "दशम भाव में ग्रह, चतुर्थ भाव की सुख अर्गला का विरोध करते हैं।"
+    text_sanskrit: "दशमे विरोधः सुखार्गलायाः।"
+    rule_type: virodha_argala
+
+  - verse: 7
+    topic: virodha_labha
+    planets: []
+    houses: [3]
+    text_english: "Planets in the 3rd house from any house/sign provide Virodha to the Labha Argala from the 11th. The 3rd obstructs the 11th argala."
+    text_hindi: "तृतीय भाव में ग्रह, एकादश भाव की लाभ अर्गला का विरोध करते हैं।"
+    text_sanskrit: "तृतीये विरोधो लाभार्गलायाः।"
+    rule_type: virodha_argala
+
+  - verse: 8
+    topic: virodha_putra
+    planets: []
+    houses: [9]
+    text_english: "Planets in the 9th house from any house/sign provide Virodha to the Putra Argala from the 5th. The 9th obstructs the 5th argala."
+    text_hindi: "नवम भाव में ग्रह, पंचम भाव की पुत्र अर्गला का विरोध करते हैं।"
+    text_sanskrit: "नवमे विरोधः पुत्रार्गलायाः।"
+    rule_type: virodha_argala
+
+  # ============================================================
+  # OBSTRUCTION EFFECTIVENESS RULE
+  # ============================================================
+  - verse: 9
+    topic: obstruction_count_rule
+    planets: []
+    houses: []
+    text_english: "The obstruction (Virodha Argala) is effective ONLY when the number of planets in the obstructing position is equal to or greater than the number of planets in the argala position. If argala planets outnumber obstructors, the argala stands unobstructed."
+    text_hindi: "विरोध तभी प्रभावी होता है जब विरोधी भाव में ग्रहों की संख्या अर्गला भाव के बराबर या अधिक हो। यदि अर्गला के ग्रह अधिक हों तो विरोध निष्फल होता है।"
+    text_sanskrit: "समाधिकेषु विरोधः।"
+    rule_type: obstruction_rule
+
+  # ============================================================
+  # BENEFIC AND MALEFIC ARGALA
+  # ============================================================
+  - verse: 10
+    topic: shubha_argala
+    planets: [Jupiter, Venus, Mercury, Moon]
+    houses: []
+    text_english: "When natural benefics (Jupiter, Venus, Mercury, waxing Moon) occupy argala positions, they produce Shubha Argala — a benefic intervention that grants auspicious results to the house: prosperity, happiness, and fulfilment of the house's positive significations."
+    text_hindi: "जब शुभ ग्रह (गुरु, शुक्र, बुध, शुक्ल पक्ष चन्द्र) अर्गला स्थान में हों, तो शुभ अर्गला होती है — समृद्धि, सुख और भाव के शुभ फल की प्राप्ति।"
+    text_sanskrit: "शुभग्रहैः शुभार्गला।"
+    rule_type: argala_nature
+
+  - verse: 11
+    topic: ashubha_argala
+    planets: [Sun, Mars, Saturn, Rahu, Ketu]
+    houses: []
+    text_english: "When natural malefics (Sun, Mars, Saturn, Rahu, Ketu) occupy argala positions, they produce Ashubha Argala — a malefic intervention that disturbs and harms the house's significations through obstacles, conflicts, or loss."
+    text_hindi: "जब पाप ग्रह (सूर्य, मंगल, शनि, राहु, केतु) अर्गला स्थान में हों, तो अशुभ अर्गला होती है — भाव के फलों में विघ्न, संघर्ष और हानि।"
+    text_sanskrit: "पापग्रहैः अशुभार्गला।"
+    rule_type: argala_nature
+
+  - verse: 12
+    topic: mishra_argala
+    planets: []
+    houses: []
+    text_english: "When both benefics and malefics occupy an argala position together, the result is Mishra Argala — mixed intervention that produces both good and bad effects. The net quality depends on which type predominates by number and strength."
+    text_hindi: "जब शुभ और पाप दोनों प्रकार के ग्रह एक ही अर्गला स्थान में हों, तो मिश्र अर्गला होती है — शुभ और अशुभ दोनों फल। अधिक और बलवान ग्रहों के अनुसार फल होता है।"
+    text_sanskrit: "मिश्रैः मिश्रार्गला।"
+    rule_type: argala_nature
+
+  # ============================================================
+  # JAIMINI SIGN-BASED ARGALA
+  # ============================================================
+  - verse: 13
+    topic: sign_argala
+    planets: []
+    houses: []
+    text_english: "In the Jaimini system (Upadesha Sutras 1.1.10-15), the same Argala rules apply sign-to-sign rather than house-to-house. The reference is the sign itself (rashi), independent of the Lagna. This sign-based Argala is primarily used in Chara Dasha analysis and Padakrama."
+    text_hindi: "जैमिनी पद्धति में (उपदेश सूत्र 1.1.10-15) अर्गला का नियम भाव-से-भाव की बजाय राशि-से-राशि लागू होता है। यह लग्न-निरपेक्ष है और मुख्यतः चर दशा विश्लेषण में प्रयुक्त होता है।"
+    text_sanskrit: "राश्यर्गला जैमिने।"
+    rule_type: jaimini_argala

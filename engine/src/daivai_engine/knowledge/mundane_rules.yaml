@@ -1,0 +1,417 @@
+# Mundane Astrology (Medini Jyotish) Rules
+# Sources: Brihat Samhita (Varahamihira), BPHS Chapter 71-75, Classical texts
+
+# ── Mundane House Significations ─────────────────────────────────────────────
+# Each house governs specific domains in national/world charts
+
+house_significations:
+  1:
+    rules:
+      - "Country as a whole, national identity, general condition of people"
+      - "Head of state, king/president, ruling government"
+      - "Overall prosperity and condition of the nation"
+      - "Physical geography and national boundaries"
+    karaka_planets: ["Sun", "Mars"]
+
+  2:
+    rules:
+      - "National treasury, revenue, taxation"
+      - "Economy, financial institutions, GDP"
+      - "Speech of the nation, official language"
+      - "Food production, agriculture output"
+      - "Banking system, monetary policy"
+    karaka_planets: ["Jupiter", "Venus"]
+
+  3:
+    rules:
+      - "Communication, media, press, broadcasting"
+      - "Transport, roads, railways, postal services"
+      - "Neighboring countries, diplomatic neighbors"
+      - "Army communications, intelligence services"
+    karaka_planets: ["Mercury", "Mars"]
+
+  4:
+    rules:
+      - "Land, real estate, housing, agriculture"
+      - "Opposition party, masses, common people"
+      - "Natural resources, mines, oil fields"
+      - "Weather, rainfall, crops"
+      - "Educational institutions (universities)"
+    karaka_planets: ["Moon", "Venus"]
+
+  5:
+    rules:
+      - "Children, birth rate, population growth"
+      - "Entertainment, sports, stock markets"
+      - "Creative arts, culture, diplomacy"
+      - "National pride, celebrations"
+      - "Speculative markets, gambling"
+    karaka_planets: ["Sun", "Jupiter"]
+
+  6:
+    rules:
+      - "Public health, epidemics, hospitals"
+      - "Military (soldiers, lower ranks), police"
+      - "Labor disputes, strikes, trade unions"
+      - "Debt, national deficit, loans"
+      - "Enemies of the state, criminals"
+    karaka_planets: ["Mars", "Saturn"]
+
+  7:
+    rules:
+      - "International relations, foreign policy"
+      - "War and peace, treaties, alliances"
+      - "Trade agreements, exports/imports"
+      - "Marriage laws, social morality"
+    karaka_planets: ["Venus", "Mercury"]
+
+  8:
+    rules:
+      - "Death rate, mortality, disasters"
+      - "Catastrophes, floods, earthquakes"
+      - "National debt, taxation burden"
+      - "Hidden resources, underground wealth"
+      - "Scandals, corruption"
+    karaka_planets: ["Saturn", "Mars"]
+
+  9:
+    rules:
+      - "Judiciary, courts, legal system"
+      - "Religion, temples, clergy, religious laws"
+      - "Higher education, philosophy"
+      - "Long-distance travel, aviation"
+      - "Foreign trade (long distance)"
+    karaka_planets: ["Jupiter", "Sun"]
+
+  10:
+    rules:
+      - "Government, ruling authority, executive power"
+      - "National prestige and reputation abroad"
+      - "Prime Minister/President's actions"
+      - "Industry, commerce, trade"
+    karaka_planets: ["Sun", "Saturn", "Mercury"]
+
+  11:
+    rules:
+      - "Parliament/Congress, legislative body"
+      - "National income, profits, gains"
+      - "Allies, friendly nations"
+      - "Social organizations, NGOs"
+      - "Hopes and goals of the nation"
+    karaka_planets: ["Jupiter", "Saturn"]
+
+  12:
+    rules:
+      - "Expenditure, national losses, waste"
+      - "Prisons, hospitals, asylums"
+      - "Espionage, secret enemies"
+      - "Foreign countries (distant), exiles"
+      - "Hidden enemies, terrorism"
+    karaka_planets: ["Saturn", "Ketu"]
+
+# ── Disaster Yogas from Brihat Samhita ───────────────────────────────────────
+
+disaster_yogas:
+  - name: "Sarpa Yoga (Ecliptic Snake)"
+    condition: "eclipse_in_nakshatra_of_rahu_or_ketu"
+    description: "Eclipse occurring in Rahu/Ketu ruled nakshatras — Ardra, Swati, Shatabhisha"
+    severity: "severe"
+    affected_domains: ["epidemics", "floods", "political upheaval"]
+    source: "Brihat Samhita Ch.5"
+
+  - name: "Graha Yuddha (Planetary War)"
+    condition: "two_planets_within_1_degree"
+    description: "Two planets in planetary war — the losing planet's significations suffer"
+    severity: "moderate"
+    affected_domains: ["conflict", "military", "political rivalry"]
+    source: "Brihat Samhita Ch.17"
+
+  - name: "Krurodaya (Malefic Rising)"
+    condition: "malefics_in_lagna_of_ingress"
+    description: "Saturn, Mars, or Rahu in lagna of Mesha Sankranti — national distress"
+    severity: "severe"
+    affected_domains: ["government", "law_and_order", "economic hardship"]
+    source: "Brihat Samhita Ch.3"
+
+  - name: "Chandra Graha (Moon Affliction)"
+    condition: "moon_conjunct_malefic_in_4th"
+    description: "Moon with Saturn or Mars in 4th house — drought, famine, public suffering"
+    severity: "severe"
+    affected_domains: ["agriculture", "rainfall", "public welfare"]
+    source: "Brihat Samhita Ch.4"
+
+  - name: "Vipat Yoga (Danger Yoga)"
+    condition: "8th_lord_in_lagna_conjunct_malefic"
+    description: "8th lord in lagna with malefic — disasters, high mortality"
+    severity: "severe"
+    affected_domains: ["natural_disasters", "mortality", "catastrophes"]
+    source: "BPHS Ch.72"
+
+  - name: "Shatru Yoga (Enemy Yoga)"
+    condition: "6th_lord_in_10th_or_7th"
+    description: "6th lord in 10th or 7th — military conflict, war threats"
+    severity: "moderate"
+    affected_domains: ["military", "foreign_conflict", "border_disputes"]
+    source: "BPHS Ch.73"
+
+  - name: "Rog Yoga (Disease Yoga)"
+    condition: "6th_lord_conjunct_moon_in_malefic_sign"
+    description: "6th lord with Moon in malefic sign — epidemics, public health crisis"
+    severity: "severe"
+    affected_domains: ["epidemics", "public_health", "hospitals"]
+    source: "Brihat Samhita Ch.6"
+
+  - name: "Daridrya Yoga (Poverty Yoga)"
+    condition: "2nd_and_11th_lords_afflicted_by_malefics"
+    description: "2nd and 11th lords afflicted — economic recession, unemployment"
+    severity: "moderate"
+    affected_domains: ["economy", "unemployment", "poverty"]
+    source: "BPHS Ch.74"
+
+  - name: "Rajya Bhanga (Fall of Government)"
+    condition: "10th_lord_in_6th_8th_or_12th"
+    description: "10th lord in dusthana — instability in government, fall of ruling power"
+    severity: "severe"
+    affected_domains: ["government_instability", "elections", "coup"]
+    source: "BPHS Ch.72"
+
+# ── Jupiter-Saturn Cycle Rules ───────────────────────────────────────────────
+
+jupiter_saturn_cycles:
+  conjunction_period_years: 19.859  # ~20 years
+  grand_mutation_years: 238.9      # element shift cycle
+
+  element_themes:
+    Fire:
+      - "Rise of new ideologies and religions"
+      - "Military expansion, wars of ideology"
+      - "Nationalism, identity politics"
+      - "Energy sector booms"
+    Earth:
+      - "Economic consolidation, materialism"
+      - "Agricultural and industrial growth"
+      - "Real estate booms and busts"
+      - "Environmental and resource conflicts"
+    Air:
+      - "Technological revolutions, communication"
+      - "Democratic movements, social reform"
+      - "Trade and financial innovation"
+      - "Scientific breakthroughs"
+    Water:
+      - "Spiritual and religious movements"
+      - "Immigration and refugee crises"
+      - "Emotional nationalism, tribal conflict"
+      - "Maritime and oil crises"
+
+  sign_themes:
+    Mesha: "Military action, new beginnings, conflicts"
+    Vrishabha: "Economic transformation, agriculture, banking"
+    Mithuna: "Communication, trade, diplomacy, media"
+    Karka: "Public welfare, housing, food security"
+    Simha: "Leadership, monarchy, government power"
+    Kanya: "Health reforms, labor movements, technology"
+    Tula: "Diplomacy, legal reforms, international agreements"
+    Vrischika: "Hidden power, espionage, financial crises, transformation"
+    Dhanu: "Religion, philosophy, judiciary, long-distance trade"
+    Makara: "Government authority, capitalism, institutional power"
+    Kumbha: "Social revolutions, democracy, technology, humanitarianism"
+    Meena: "Spirituality, immigration, maritime, dissolution of old order"
+
+# ── Eclipse Effects by Nakshatra (Brihat Samhita Ch. 5) ─────────────────────
+
+eclipse_nakshatra_effects:
+  Ashwini:
+    regions: ["Northwest India", "Afghanistan", "traders"]
+    effects: ["Horse traders suffer", "Military distress", "Border conflicts"]
+    duration_months: 3
+
+  Bharani:
+    regions: ["South India", "Sri Lanka"]
+    effects: ["Death of nobles", "Epidemic diseases", "Harsh weather"]
+    duration_months: 6
+
+  Krittika:
+    regions: ["East India", "Bengal"]
+    effects: ["Fire accidents", "Military conflict", "Loss of crops"]
+    duration_months: 3
+
+  Rohini:
+    regions: ["Central India", "Mathura region"]
+    effects: ["Cattle disease", "Rainfall problems", "Agricultural loss"]
+    duration_months: 6
+
+  Mrigashira:
+    regions: ["Rajasthan", "Western India"]
+    effects: ["Drought", "Famine", "Conflict in western regions"]
+    duration_months: 3
+
+  Ardra:
+    regions: ["China", "East Asia"]
+    effects: ["Severe storms", "Floods", "Epidemics"]
+    duration_months: 6
+
+  Punarvasu:
+    regions: ["Middle East", "North Africa"]
+    effects: ["Political unrest", "Economic troubles", "Religious conflict"]
+    duration_months: 3
+
+  Pushya:
+    regions: ["Magadha", "Bihar region", "Banking centers"]
+    effects: ["Economic boom or bust", "Agricultural abundance or failure"]
+    duration_months: 3
+
+  Ashlesha:
+    regions: ["Kerala", "South coastal areas", "Maritime trade"]
+    effects: ["Epidemics", "Poisoning incidents", "Sea disasters"]
+    duration_months: 6
+
+  Magha:
+    regions: ["Vindhya region", "Central power centers"]
+    effects: ["Fall of rulers", "Royal/presidential crisis", "Constitutional issues"]
+    duration_months: 6
+
+  Purva_Phalguni:
+    regions: ["Southern kingdoms", "Entertainment industry"]
+    effects: ["Social unrest", "Vice and corruption", "Economic inequality"]
+    duration_months: 3
+
+  Uttara_Phalguni:
+    regions: ["North India", "Agricultural heartland"]
+    effects: ["Good harvest", "Peace if Sun strong", "Conflict if Moon afflicted"]
+    duration_months: 3
+
+  Hasta:
+    regions: ["Trade routes", "Merchant class"]
+    effects: ["Trade disruption", "Theft and fraud", "Artisan suffering"]
+    duration_months: 3
+
+  Chitra:
+    regions: ["Western India", "Technology centers"]
+    effects: ["Industrial disputes", "Architectural damage", "Military innovation"]
+    duration_months: 3
+
+  Swati:
+    regions: ["Europe", "Western nations"]
+    effects: ["Winds, storms, hurricanes", "Trade disruption", "Social movements"]
+    duration_months: 6
+
+  Vishakha:
+    regions: ["Multiple regions", "Border areas"]
+    effects: ["Internal conflicts", "Ideological wars", "Political splits"]
+    duration_months: 3
+
+  Anuradha:
+    regions: ["Friendly nations", "Diplomatic centers"]
+    effects: ["Alliance troubles", "Betrayal by allies", "Secret conspiracies"]
+    duration_months: 3
+
+  Jyeshtha:
+    regions: ["Capital cities", "Centers of power"]
+    effects: ["Fall of leaders", "Senior official deaths", "Constitutional crisis"]
+    duration_months: 6
+
+  Mula:
+    regions: ["South India", "Deccan"]
+    effects: ["Destruction of foundations", "Religious upheaval", "Forest fires"]
+    duration_months: 6
+
+  Purva_Ashadha:
+    regions: ["Maritime regions", "Islands", "Navy"]
+    effects: ["Naval conflicts", "Storm surges", "Floods"]
+    duration_months: 3
+
+  Uttara_Ashadha:
+    regions: ["Military centers", "Rulers"]
+    effects: ["Victories in war", "Conquest", "Authoritarian actions"]
+    duration_months: 3
+
+  Shravana:
+    regions: ["North India", "Mountains", "Learning institutions"]
+    effects: ["Educational reforms or failures", "Media changes", "Communication disruption"]
+    duration_months: 3
+
+  Dhanishtha:
+    regions: ["Mining regions", "Heavy industry"]
+    effects: ["Industrial accidents", "Mining disasters", "Military spending rise"]
+    duration_months: 3
+
+  Shatabhisha:
+    regions: ["Medical centers", "Pharmaceutical industry"]
+    effects: ["Epidemics", "Water contamination", "Drug shortages"]
+    duration_months: 6
+
+  Purva_Bhadrapada:
+    regions: ["Western coastal areas", "Tech hubs"]
+    effects: ["Natural disasters", "Fire accidents", "Social violence"]
+    duration_months: 3
+
+  Uttara_Bhadrapada:
+    regions: ["Sea trade routes", "Spiritual centers"]
+    effects: ["Maritime disasters", "Religious conflicts", "Immigration surge"]
+    duration_months: 6
+
+  Revati:
+    regions: ["Island nations", "Maritime trade", "Pilgrimage centers"]
+    effects: ["Shipping disruptions", "Religious unrest", "Loss of direction"]
+    duration_months: 3
+
+# ── Solar Eclipse Sign Effects ───────────────────────────────────────────────
+
+eclipse_sign_effects:
+  Mesha: "Military conflicts, leaders face crises, fire accidents"
+  Vrishabha: "Economic downturns, agricultural problems, banking stress"
+  Mithuna: "Media disruption, communication failures, transport accidents"
+  Karka: "Flooding, public suffering, housing crises, food shortages"
+  Simha: "Government instability, leaders face challenges, royal crises"
+  Kanya: "Health epidemics, labor disputes, agricultural pest damage"
+  Tula: "Diplomatic tensions, legal system failures, trade disputes"
+  Vrischika: "Hidden disasters, terrorism, financial scandals, mass deaths"
+  Dhanu: "Religious conflicts, judicial failures, travel disruptions"
+  Makara: "Government authority challenged, economic austerity, border disputes"
+  Kumbha: "Social revolutions, technological failures, humanitarian crises"
+  Meena: "Maritime disasters, religious upheaval, immigration problems, floods"
+
+# ── Ingress Chart Ruling Planets ─────────────────────────────────────────────
+
+ingress_ruling_planets:
+  # Planet ruling each day determines the year lord for Mesha Sankranti
+  Sunday: "Sun"
+  Monday: "Moon"
+  Tuesday: "Mars"
+  Wednesday: "Mercury"
+  Thursday: "Jupiter"
+  Friday: "Venus"
+  Saturday: "Saturn"
+
+  # Effects when that planet rules the ingress year
+  Sun:
+    - "Government authority strong"
+    - "Rise of leaders, kings, executives"
+    - "Economic growth driven by government"
+  Moon:
+    - "Public welfare focus"
+    - "Agriculture and rainfall favorable"
+    - "Women gain prominence"
+  Mars:
+    - "Military conflicts, wars"
+    - "Fire accidents, violence"
+    - "Strong executive action"
+  Mercury:
+    - "Trade and communication boom"
+    - "Technology growth"
+    - "Intellectual and educational advancement"
+  Jupiter:
+    - "Overall prosperity"
+    - "Religious harmony"
+    - "Judicial fairness"
+    - "Good rainfall and crops"
+  Venus:
+    - "Arts and culture flourish"
+    - "Diplomatic successes"
+    - "Economic prosperity"
+    - "Entertainment industry growth"
+  Saturn:
+    - "Hardship, austerity measures"
+    - "Labor unrest, strikes"
+    - "Slow economic growth"
+    - "Infrastructure development"

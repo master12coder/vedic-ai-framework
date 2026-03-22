@@ -221,6 +221,11 @@ class TestDataQuality:
             "karaka_effect",
             "ashtakavarga",
             "dasha_effect",
+            "argala",
+            "virodha_argala",
+            "argala_nature",
+            "jaimini_argala",
+            "obstruction_rule",
         }
         refs = get_all_references()
         for r in refs:

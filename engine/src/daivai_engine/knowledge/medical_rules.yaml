@@ -1,0 +1,378 @@
+# ═══════════════════════════════════════════════════════════════
+# MEDICAL ASTROLOGY RULES — Vaidya Jyotish Knowledge Base
+# ═══════════════════════════════════════════════════════════════
+# Sources:
+#   BPHS:          Brihat Parashara Hora Shastra Ch.7 (Kala Purusha),
+#                  Ch.68-70 (Arishta / Roga Adhyaya)
+#   Saravali:      Ch.6 (Graha disease indicators), Ch.3 (Kala Purusha)
+#   Phaladeepika:  Ch.6 (Health from lagna/planets)
+#   Hora Sara:     Ch.8 (Trisphuta for medical prashna)
+#   Jataka Parijata: Medical chapters (disease yogas)
+#   K.S. Charak:   "Ayurvedic Astrology" (Tridosha from chart)
+#   Sarvartha Chintamani: Roga Adhyaya
+# Confidence: canonical / classical
+# ═══════════════════════════════════════════════════════════════
+
+source: "BPHS Ch.7, Ch.68-70; Saravali Ch.3, Ch.6; Hora Sara Ch.8; K.S. Charak Ayurvedic Astrology"
+confidence: classical
+
+# ── Kala Purusha Body Mapping ─────────────────────────────────
+# The 12 signs map to 12 body zones of the Cosmic Person (Kala Purusha).
+# Planets placed in or aspecting a sign afflict the corresponding body area.
+# Source: BPHS Ch.7 v.8-10; Saravali Ch.3 v.4-6
+kala_purusha_body_mapping:
+  0:  # Mesha / Aries
+    sign_en: Aries
+    sign_hi: मेष
+    body_parts: ["Head", "Skull", "Brain", "Eyes"]
+    body_parts_hi: ["सिर", "खोपड़ी", "मस्तिष्क", "आँखें"]
+    diseases: ["Headaches", "Migraines", "Brain disorders", "Head injuries", "High fever", "Insomnia"]
+
+  1:  # Vrishabha / Taurus
+    sign_en: Taurus
+    sign_hi: वृषभ
+    body_parts: ["Throat", "Neck", "Thyroid", "Larynx", "Tonsils", "Lower jaw"]
+    body_parts_hi: ["गला", "गर्दन", "थायरॉइड", "स्वरयंत्र", "टॉन्सिल"]
+    diseases: ["Throat infections", "Thyroid disorders", "Neck stiffness", "Speech disorders", "Goitre"]
+
+  2:  # Mithuna / Gemini
+    sign_en: Gemini
+    sign_hi: मिथुन
+    body_parts: ["Shoulders", "Arms", "Hands", "Lungs", "Upper respiratory tract", "Nervous pathways"]
+    body_parts_hi: ["कंधे", "बाहु", "हाथ", "फेफड़े", "श्वसन तंत्र", "तंत्रिका मार्ग"]
+    diseases: ["Bronchitis", "Asthma", "Arm fractures", "Nervous debility", "Respiratory infections"]
+
+  3:  # Karka / Cancer
+    sign_en: Cancer
+    sign_hi: कर्क
+    body_parts: ["Chest", "Breasts", "Stomach", "Pancreas", "Pleura"]
+    body_parts_hi: ["छाती", "स्तन", "पेट", "अग्न्याशय", "फुफ्फुसावरण"]
+    diseases: ["Gastritis", "Digestive disorders", "Breast conditions", "Pleurisy", "Cough"]
+
+  4:  # Simha / Leo
+    sign_en: Leo
+    sign_hi: सिंह
+    body_parts: ["Heart", "Spine", "Upper back", "Aorta", "Pericardium"]
+    body_parts_hi: ["हृदय", "मेरुदंड", "पीठ का ऊपरी भाग", "महाधमनी"]
+    diseases: ["Heart disease", "Palpitations", "Spinal disorders", "Back pain", "Pericarditis"]
+
+  5:  # Kanya / Virgo
+    sign_en: Virgo
+    sign_hi: कन्या
+    body_parts: ["Intestines", "Abdomen", "Digestive system", "Navel", "Duodenum"]
+    body_parts_hi: ["आंतें", "पेट", "पाचन तंत्र", "नाभि", "ग्रहणी"]
+    diseases: ["Constipation", "IBS", "Malabsorption", "Appendicitis", "Intestinal worms"]
+
+  6:  # Tula / Libra
+    sign_en: Libra
+    sign_hi: तुला
+    body_parts: ["Kidneys", "Lower back", "Adrenal glands", "Skin", "Waist"]
+    body_parts_hi: ["गुर्दे", "कमर", "अधिवृक्क ग्रंथि", "त्वचा", "कटि"]
+    diseases: ["Kidney stones", "Nephritis", "Lumbago", "Skin diseases", "Adrenal fatigue"]
+
+  7:  # Vrischika / Scorpio
+    sign_en: Scorpio
+    sign_hi: वृश्चिक
+    body_parts: ["Reproductive organs", "Genitals", "Bladder", "Rectum", "Colon", "Pelvis"]
+    body_parts_hi: ["प्रजनन अंग", "मूत्राशय", "मलाशय", "बृहदान्त्र", "श्रोणि"]
+    diseases: ["Reproductive disorders", "UTI", "Piles", "Fistula", "STDs", "Prostate issues"]
+
+  8:  # Dhanu / Sagittarius
+    sign_en: Sagittarius
+    sign_hi: धनु
+    body_parts: ["Hips", "Thighs", "Liver", "Sciatic nerve", "Femur", "Arterial blood"]
+    body_parts_hi: ["कूल्हे", "जांघ", "यकृत", "कटिस्नायु", "फीमर"]
+    diseases: ["Hip disorders", "Sciatica", "Liver disease", "Jaundice", "Hepatitis", "Obesity"]
+
+  9:  # Makara / Capricorn
+    sign_en: Capricorn
+    sign_hi: मकर
+    body_parts: ["Knees", "Joints", "Bones", "Teeth", "Skeletal system", "Skin"]
+    body_parts_hi: ["घुटने", "जोड़", "हड्डियाँ", "दाँत", "कंकाल तंत्र", "त्वचा"]
+    diseases: ["Arthritis", "Osteoporosis", "Knee pain", "Dental problems", "Eczema", "Psoriasis"]
+
+  10:  # Kumbha / Aquarius
+    sign_en: Aquarius
+    sign_hi: कुम्भ
+    body_parts: ["Calves", "Ankles", "Circulatory system", "Peripheral nerves", "Blood vessels"]
+    body_parts_hi: ["पिंडलियाँ", "टखने", "परिसंचरण तंत्र", "रक्त वाहिकाएँ"]
+    diseases: ["Varicose veins", "Ankle sprains", "Circulatory disorders", "Neuropathy", "Cramps"]
+
+  11:  # Meena / Pisces
+    sign_en: Pisces
+    sign_hi: मीन
+    body_parts: ["Feet", "Toes", "Lymphatic system", "Immune system", "Pineal gland"]
+    body_parts_hi: ["पाँव", "पैर की उँगलियाँ", "लसीका तंत्र", "प्रतिरक्षा तंत्र"]
+    diseases: ["Foot disorders", "Bunions", "Lymphedema", "Immune weakness", "Drug sensitivity", "Fungal infections"]
+
+
+# ── Planet-Body System Mapping ───────────────────────────────
+# Each planet governs specific physiological systems.
+# Source: BPHS Ch.66 "Graha Karakatva"; Saravali Ch.6; Hora Sara Ch.4
+planet_body_systems:
+  Sun:
+    body_systems: ["Bones", "Heart", "Right eye", "Circulatory system", "Vitality", "Bile (Pitta)"]
+    body_systems_hi: ["हड्डियाँ", "हृदय", "दाहिनी आँख", "परिसंचरण तंत्र", "प्राण"]
+    diseases: ["Heart disease", "Eye disorders", "Bone weakness", "High fever", "Vitiligo", "Alopecia"]
+    ayurveda_quality: Pitta
+
+  Moon:
+    body_systems: ["Blood", "Mind", "Left eye", "Bodily fluids", "Lungs", "Breasts", "Stomach"]
+    body_systems_hi: ["रक्त", "मन", "बायीं आँख", "शारीरिक द्रव", "फेफड़े", "पेट"]
+    diseases: ["Mental disorders", "Anaemia", "Respiratory issues", "Gastric problems", "Oedema", "Depression"]
+    ayurveda_quality: Kapha
+
+  Mars:
+    body_systems: ["Muscles", "Blood marrow", "Bile", "Energy", "Red blood cells", "Surgery"]
+    body_systems_hi: ["मांसपेशियाँ", "अस्थि मज्जा", "पित्त", "ऊर्जा", "लाल रक्त कोशिकाएँ"]
+    diseases: ["Accidents", "Inflammatory conditions", "Blood disorders", "Burns", "Fractures", "Fever"]
+    ayurveda_quality: Pitta
+
+  Mercury:
+    body_systems: ["Nervous system", "Skin", "Respiratory system", "Speech faculty", "Memory", "Motor coordination"]
+    body_systems_hi: ["तंत्रिका तंत्र", "त्वचा", "श्वसन तंत्र", "वाणी", "स्मृति"]
+    diseases: ["Nervous disorders", "Skin diseases", "Respiratory infections", "Stammering", "Anxiety", "Vertigo"]
+    ayurveda_quality: Tridosha
+
+  Jupiter:
+    body_systems: ["Liver", "Fat tissue", "Arterial blood", "Immune system", "Pancreas", "Gall bladder"]
+    body_systems_hi: ["यकृत", "वसा ऊतक", "धमनी रक्त", "प्रतिरक्षा तंत्र", "अग्न्याशय"]
+    diseases: ["Liver disorders", "Diabetes", "Obesity", "Jaundice", "Cholesterol issues", "Tumours"]
+    ayurveda_quality: Kapha
+
+  Venus:
+    body_systems: ["Reproductive system", "Kidneys", "Face", "Semen/Ovaries", "Throat", "Mucous membranes"]
+    body_systems_hi: ["प्रजनन तंत्र", "गुर्दे", "चेहरा", "वीर्य/अंडाशय", "गला"]
+    diseases: ["Kidney disease", "Reproductive disorders", "Diabetes", "Venereal diseases", "Throat conditions"]
+    ayurveda_quality: Kapha
+
+  Saturn:
+    body_systems: ["Joints", "Teeth", "Bones", "Skin", "Chronic conditions", "Peripheral nervous system", "Sinews"]
+    body_systems_hi: ["जोड़", "दाँत", "हड्डियाँ", "त्वचा", "जीर्ण रोग", "परिधीय तंत्रिका"]
+    diseases: ["Arthritis", "Chronic disease", "Dental issues", "Skin diseases", "Paralysis", "Wasting diseases"]
+    ayurveda_quality: Vata
+
+  Rahu:
+    body_systems: ["Chronic conditions", "Mysterious ailments", "Intestines", "Phobias", "Cancerous growth"]
+    body_systems_hi: ["जीर्ण रोग", "रहस्यमय बीमारी", "आंतें", "भय", "कैंसर"]
+    diseases: ["Mysterious chronic illness", "Phobias", "Poisoning", "Cancer", "Epidemic diseases", "Hysteria"]
+    ayurveda_quality: Vata
+
+  Ketu:
+    body_systems: ["Mysterious ailments", "Inflammation", "Wounds", "Occult health", "Spinal cord"]
+    body_systems_hi: ["रहस्यमय बीमारी", "सूजन", "घाव", "रीढ़ की हड्डी"]
+    diseases: ["Mysterious wounds", "Accidents", "Inflammatory conditions", "Spiritual crises", "Fevers"]
+    ayurveda_quality: Pitta
+
+
+# ── Tridosha Planetary Weights ───────────────────────────────
+# Ayurvedic constitution (Prakriti) derived from planetary placements.
+# Source: K.S. Charak "Ayurvedic Astrology" Ch.2; Jyotish-Ayurveda synthesis texts
+# Mercury is Tridoshic — contributes equally to all three doshas.
+tridosha_weights:
+  vata:
+    description: "Air + Ether humour — governs movement, dryness, nervous system"
+    description_hi: "वात — वायु और आकाश का प्रतिनिधित्व"
+    primary:
+      Saturn: 1.0   # Primary Vata planet — cold, dry, slow
+      Rahu: 0.9     # Vata-dominant shadow planet
+    secondary:
+      Mercury: 0.33  # Tridoshic — shares equally across all three
+
+  pitta:
+    description: "Fire + Water humour — governs transformation, heat, digestion"
+    description_hi: "पित्त — अग्नि और जल का प्रतिनिधित्व"
+    primary:
+      Sun: 1.0    # Primary Pitta planet — hot, sharp, light
+      Mars: 1.0   # Strong Pitta — heat, aggression, bile
+      Ketu: 0.8   # Pitta-dominant shadow planet
+    secondary:
+      Mercury: 0.33  # Tridoshic
+
+  kapha:
+    description: "Water + Earth humour — governs stability, lubrication, growth"
+    description_hi: "कफ — जल और पृथ्वी का प्रतिनिधित्व"
+    primary:
+      Moon: 1.0    # Primary Kapha planet — cool, moist, soft
+      Jupiter: 1.0  # Strong Kapha — expansion, fat, phlegm
+      Venus: 0.9    # Kapha-dominant — moist, sweet, reproductive
+    secondary:
+      Mercury: 0.33  # Tridoshic
+
+# Dignity modifiers applied to base tridosha planet weight
+# Source: Standard Jyotish dignity weights
+tridosha_dignity_modifiers:
+  exalted: 1.5       # Planet fully empowered — dosha strongly expressed
+  mooltrikona: 1.2   # Near own — strong expression
+  own: 1.2           # In own sign — clear expression
+  neutral: 1.0       # Average expression
+  debilitated: 0.7   # Weakened — dosha not fully expressed
+  combust: 0.7       # Burnt — suppressed expression
+  retrograde: 1.2    # Retrograde — intensified, internalized expression
+
+
+# ── Disease Houses ───────────────────────────────────────────
+# Three dusthanas (inauspicious houses) primarily govern disease and health.
+# Source: BPHS Ch.68 "Arishta Adhyaya" v.1-5; Saravali Ch.6 v.1-3
+disease_houses:
+  6:
+    name: "Roga Bhava"
+    name_hi: "रोग भाव"
+    role: "Acute disease, debts, enemies, litigation, service"
+    disease_type: "Acute, Recurring, Immune challenges"
+    severity: acute
+
+  8:
+    name: "Randhra / Ayur Bhava"
+    name_hi: "रन्ध्र / आयुर्भाव"
+    role: "Chronic disease, surgery, longevity, transformation, hidden"
+    disease_type: "Chronic, Surgical, Life-threatening"
+    severity: chronic
+
+  12:
+    name: "Vyaya Bhava"
+    name_hi: "व्यय भाव"
+    role: "Hospitalization, confinement, bed rest, losses, hidden ailments"
+    disease_type: "Hospitalization, Isolation, Convalescence"
+    severity: hospitalization
+
+
+# ── Disease Yogas ────────────────────────────────────────────
+# Classic planetary combinations indicating disease vulnerability.
+# Computed programmatically in medical.py; metadata stored here.
+# Source: BPHS Ch.68-70; Saravali Ch.6; Phaladeepika Ch.6; Jataka Parijata
+disease_yogas:
+
+  - name: Sun Afflicted in Dusthana
+    name_hindi: सूर्य दुस्थान में पीड़ित
+    description: "Sun in 6th, 8th, or 12th house, afflicted by malefics — heart weakness and eye disorders"
+    body_system_affected: "Heart, Right eye, Bones"
+    disease_indicated: "Heart disease, right eye weakness, bone disorders, chronic fever, vitiligo"
+    source: "BPHS Ch.68 v.12; Saravali Ch.6 v.8"
+
+  - name: Moon Afflicted in Dusthana
+    name_hindi: चन्द्र दुस्थान में पीड़ित
+    description: "Moon in 6th or 8th, afflicted — mental illness, blood disorders, anaemia"
+    body_system_affected: "Mind, Blood, Left eye, Fluids"
+    disease_indicated: "Mental disorders, depression, blood diseases, anaemia, oedema"
+    source: "BPHS Ch.68 v.15; Phaladeepika Ch.6 v.12"
+
+  - name: Mars in 6th or 8th
+    name_hindi: मंगल षष्ठ या अष्टम में
+    description: "Mars placed in 6th or 8th house — accident risk, surgical need, blood disorders"
+    body_system_affected: "Muscles, Blood, Bile"
+    disease_indicated: "Accidents, surgeries, blood disorders, inflammatory conditions, fractures"
+    source: "BPHS Ch.68 v.20; Saravali Ch.6 v.18"
+
+  - name: Saturn in Dusthana
+    name_hindi: शनि दुस्थान में
+    description: "Saturn in 6th, 8th, or 12th — chronic disease, bone, joint, and dental vulnerability"
+    body_system_affected: "Joints, Bones, Chronic conditions"
+    disease_indicated: "Arthritis, chronic disease, dental problems, paralysis risk, wasting"
+    source: "BPHS Ch.68 v.25; Saravali Ch.6 v.22"
+
+  - name: Rahu in 6th or 8th
+    name_hindi: राहु षष्ठ या अष्टम में
+    description: "Rahu in 6th or 8th — mysterious chronic illness, cancer risk, poisoning"
+    body_system_affected: "Chronic conditions, Mysterious ailments"
+    disease_indicated: "Mysterious chronic illness, phobias, poisoning, cancer risk"
+    source: "BPHS Ch.69 v.8; Jataka Parijata Medical Ch."
+
+  - name: Lagna Lord in Dusthana
+    name_hindi: लग्नेश दुस्थान में
+    description: "Lagna lord placed in 6th, 8th, or 12th — weak constitution, disease-prone life"
+    body_system_affected: "Overall constitution, Vitality"
+    disease_indicated: "Weak overall health, susceptibility to disease, poor stamina"
+    source: "BPHS Ch.68 v.5; Phaladeepika Ch.6 v.4"
+
+  - name: Both Luminaries Afflicted
+    name_hindi: दोनों ज्योतियाँ पीड़ित
+    description: "Sun and Moon both conjunct or aspected by malefics — severe systemic disease"
+    body_system_affected: "Heart, Mind, Blood, Vitality"
+    disease_indicated: "Severe systemic illness, both eyes affected, heart and blood disorders"
+    source: "BPHS Ch.68 v.18; Saravali Ch.6 v.15"
+
+  - name: Jupiter Afflicted in 8th
+    name_hindi: बृहस्पति अष्टम में पीड़ित
+    description: "Jupiter debilitated or afflicted by malefics in 8th — liver, fat metabolism, immune system"
+    body_system_affected: "Liver, Fat tissue, Immune system"
+    disease_indicated: "Liver disease, diabetes, obesity, immune disorders, jaundice"
+    source: "BPHS Ch.68 v.28; Saravali Ch.6 v.25"
+
+  - name: Mercury Heavily Afflicted
+    name_hindi: बुध अत्यधिक पीड़ित
+    description: "Mercury conjunct multiple malefics — nervous system, skin, respiratory vulnerability"
+    body_system_affected: "Nervous system, Skin, Respiratory"
+    disease_indicated: "Nervous disorders, skin diseases, speech issues, anxiety, vertigo"
+    source: "Saravali Ch.6 v.30; Hora Sara Ch.8"
+
+  - name: Venus in 6th or 8th
+    name_hindi: शुक्र षष्ठ या अष्टम में
+    description: "Venus in 6th or 8th — kidney, reproductive system, venereal disease risk"
+    body_system_affected: "Kidneys, Reproductive system"
+    disease_indicated: "Kidney disorders, reproductive issues, venereal diseases, diabetes"
+    source: "Saravali Ch.6 v.20; Phaladeepika Ch.6 v.18"
+
+  - name: 6th Lord in 8th or 12th
+    name_hindi: षष्ठेश अष्टम या द्वादश में
+    description: "Lord of disease house in chronic-disease or hospitalization house — serious health trajectory"
+    body_system_affected: "Overall health"
+    disease_indicated: "Disease requiring hospitalization or chronic management"
+    source: "BPHS Ch.68 v.30; Jataka Parijata Medical Ch."
+
+  - name: Mars-Saturn Conjunction in Dusthana
+    name_hindi: मंगल-शनि दुस्थान में युति
+    description: "Mars and Saturn conjunct in 6th, 8th, or 12th — surgical emergency, accident, fracture"
+    body_system_affected: "Muscles, Bones, Joints, Blood"
+    disease_indicated: "Severe accidents, surgical emergencies, compound fractures"
+    source: "BPHS Ch.69 v.12; Saravali Ch.6 v.35"
+
+  - name: Ketu in 6th or 8th
+    name_hindi: केतु षष्ठ या अष्टम में
+    description: "Ketu in 6th or 8th — mysterious ailments, inflammation, unexplained accidents"
+    body_system_affected: "Mysterious ailments, Inflammatory conditions, Spinal cord"
+    disease_indicated: "Mysterious accidents, inflammation, unexplained fevers, spinal issues"
+    source: "BPHS Ch.69 v.10; Jataka Parijata Medical Ch."
+
+
+# ── Trisphuta Formulas ───────────────────────────────────────
+# Three special sensitive points for medical prashna (Roga Prashna).
+# Used in Vedic medical horary to assess vitality, body affliction, and mortality risk.
+# Source: Hora Sara Ch.8; BPHS Roga Adhyaya; Jataka Parijata; Sarvartha Chintamani
+trisphuta:
+  prana_sphuta:
+    name: "Prana Sphuta"
+    name_hi: "प्राण स्फुट"
+    formula: "Lagna_lon + Sun_lon + Moon_lon (mod 360)"
+    description: "Vitality point — Sun-Moon-Lagna trinity. Indicates life force and vitality."
+    source: "Hora Sara Ch.8 v.4; Sarvartha Chintamani"
+
+  deha_sphuta:
+    name: "Deha Sphuta"
+    name_hi: "देह स्फुट"
+    formula: "Lagna_lon + Mars_lon + Moon_lon (mod 360)"
+    description: "Body point — Mars-Moon-Lagna trinity. Indicates physical body affliction."
+    source: "Hora Sara Ch.8 v.5; BPHS Roga Adhyaya"
+
+  mrityu_sphuta:
+    name: "Mrityu Sphuta"
+    name_hi: "मृत्यु स्फुट"
+    formula: "Lagna_lon + Saturn_lon + Moon_lon (mod 360)"
+    description: "Death/crisis point — Saturn-Moon-Lagna trinity. Indicates longevity stress and mortality risk."
+    source: "Hora Sara Ch.8 v.6; Jataka Parijata Medical Ch."
+
+  interpretation:
+    same_sign_critical: "Prana and Mrityu Sphuta in same sign — heightened health risk"
+    trikona_placement: "Sphuta in trikona (1/5/9) — favorable for recovery"
+    dusthana_placement: "Sphuta in dusthana (6/8/12) — challenged health, requires attention"
+    malefic_nakshatra: "Sphuta in nakshatra of malefic lord — disease-prone period"
+
+
+# ── Malefic Planets List ────────────────────────────────────
+# Used in disease yoga detection to identify "affliction" of a planet.
+# Source: BPHS Ch.3 (natural malefics)
+natural_malefics: ["Sun", "Mars", "Saturn", "Rahu", "Ketu"]
+natural_benefics: ["Moon", "Mercury", "Jupiter", "Venus"]
+
+# Affliction threshold: planet conjunct malefic within same sign = afflicted
+# (Conjunction defined as same sign in whole-sign system)

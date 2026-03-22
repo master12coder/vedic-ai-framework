@@ -1,0 +1,577 @@
+# Vedic Numerology (Anka Jyotish) knowledge rules — single source of truth.
+#
+# Sources: Bhojraj Dwivedi "Anka Jyotish", Ashok Bhatia "Lo Shu Grid Numerology",
+# K. B. Gopalakrishna "Indian Numerology", classical Chaldean letter-value tables.
+#
+# Auditable by Pandits. Do NOT hardcode these values in Python.
+
+# ── Planet-number associations (Vedic Anka Jyotish) ──────────────────────────
+# Distinct from Western/Pythagorean — Rahu holds 4, Ketu holds 7.
+
+planet_numbers:
+  1: Sun
+  2: Moon
+  3: Jupiter
+  4: Rahu
+  5: Mercury
+  6: Venus
+  7: Ketu
+  8: Saturn
+  9: Mars
+
+number_planets:
+  Sun: 1
+  Moon: 2
+  Jupiter: 3
+  Rahu: 4
+  Mercury: 5
+  Venus: 6
+  Ketu: 7
+  Saturn: 8
+  Mars: 9
+
+# ── Number attributes — lucky items per number ────────────────────────────────
+
+number_attributes:
+  1:
+    planet: Sun
+    planet_hi: "सूर्य"
+    name: "Ek"
+    name_hi: "एक"
+    lucky_days: [Sunday, Monday]
+    lucky_days_hi: ["रविवार", "सोमवार"]
+    lucky_colors: [Gold, Orange, Yellow]
+    lucky_colors_hi: ["सोना", "नारंगी", "पीला"]
+    lucky_gemstone: Ruby
+    lucky_gemstone_hi: "माणिक्य"
+    lucky_direction: East
+    lucky_direction_hi: "पूर्व"
+    friendly_numbers: [2, 4, 9]
+    neutral_numbers: [3, 5, 7]
+    enemy_numbers: [6, 8]
+    strengths: [Leadership, Ambition, Independence, Confidence, Creativity]
+    weaknesses: [Egotism, Stubbornness, Dominance, Arrogance]
+    deity: Surya
+    deity_hi: "सूर्य देव"
+    mantra: "Om Hram Hreem Hroum Sah Suryaya Namah"
+    description: "Number 1 is ruled by the Sun — the king of planets. Persons with this number are natural leaders, ambitious, and self-reliant. They shine brightest when given authority and can be intensely creative."
+
+  2:
+    planet: Moon
+    planet_hi: "चन्द्र"
+    name: "Do"
+    name_hi: "दो"
+    lucky_days: [Monday, Friday]
+    lucky_days_hi: ["सोमवार", "शुक्रवार"]
+    lucky_colors: [White, Silver, Cream]
+    lucky_colors_hi: ["सफेद", "चाँदी", "क्रीम"]
+    lucky_gemstone: Pearl
+    lucky_gemstone_hi: "मोती"
+    lucky_direction: North-West
+    lucky_direction_hi: "वायव्य"
+    friendly_numbers: [1, 4, 7]
+    neutral_numbers: [3, 6, 9]
+    enemy_numbers: [5, 8]
+    strengths: [Intuition, Empathy, Adaptability, Imagination, Diplomacy]
+    weaknesses: [Moodiness, Indecision, Over-sensitivity, Dependency]
+    deity: Chandra
+    deity_hi: "चन्द्र देव"
+    mantra: "Om Shram Shreem Shraum Sah Chandraya Namah"
+    description: "Number 2 is ruled by the Moon — the queen of planets. Persons with this number are highly intuitive, emotionally sensitive, and excellent in partnerships. They thrive in cooperative environments."
+
+  3:
+    planet: Jupiter
+    planet_hi: "गुरु"
+    name: "Teen"
+    name_hi: "तीन"
+    lucky_days: [Thursday, Friday]
+    lucky_days_hi: ["गुरुवार", "शुक्रवार"]
+    lucky_colors: [Yellow, Gold, Purple]
+    lucky_colors_hi: ["पीला", "सोना", "बैंगनी"]
+    lucky_gemstone: Yellow Sapphire
+    lucky_gemstone_hi: "पुखराज"
+    lucky_direction: North-East
+    lucky_direction_hi: "ईशान"
+    friendly_numbers: [1, 9]
+    neutral_numbers: [2, 6, 7]
+    enemy_numbers: [4, 5, 8]
+    strengths: [Wisdom, Optimism, Generosity, Spirituality, Knowledge]
+    weaknesses: [Over-indulgence, Extravagance, Self-righteousness, Procrastination]
+    deity: Brihaspati
+    deity_hi: "बृहस्पति"
+    mantra: "Om Gram Greem Graum Sah Gurave Namah"
+    description: "Number 3 is ruled by Jupiter — the great teacher and benefic. Persons with this number are wise, philosophical, and generous. They have natural teaching and advisory abilities."
+
+  4:
+    planet: Rahu
+    planet_hi: "राहु"
+    name: "Char"
+    name_hi: "चार"
+    lucky_days: [Saturday, Sunday]
+    lucky_days_hi: ["शनिवार", "रविवार"]
+    lucky_colors: [Blue, Electric Blue, Grey]
+    lucky_colors_hi: ["नीला", "इलेक्ट्रिक नीला", "धूसर"]
+    lucky_gemstone: Hessonite
+    lucky_gemstone_hi: "गोमेद"
+    lucky_direction: South-West
+    lucky_direction_hi: "नैऋत्य"
+    friendly_numbers: [1, 2, 7, 8]
+    neutral_numbers: [5, 9]
+    enemy_numbers: [3, 6]
+    strengths: [Originality, Practicality, Hard-work, Determination, Unconventionality]
+    weaknesses: [Rigidity, Eccentricity, Unpredictability, Rebellion]
+    deity: Rahu
+    deity_hi: "राहु"
+    mantra: "Om Bhram Bhreem Bhroum Sah Rahave Namah"
+    description: "Number 4 is ruled by Rahu — the shadow planet of transformation. Persons with this number are original thinkers, practical workers, and often ahead of their time. They challenge conventions."
+
+  5:
+    planet: Mercury
+    planet_hi: "बुध"
+    name: "Panch"
+    name_hi: "पाँच"
+    lucky_days: [Wednesday, Friday]
+    lucky_days_hi: ["बुधवार", "शुक्रवार"]
+    lucky_colors: [Green, Light Green, Parrot Green]
+    lucky_colors_hi: ["हरा", "हल्का हरा", "तोतिया"]
+    lucky_gemstone: Emerald
+    lucky_gemstone_hi: "पन्ना"
+    lucky_direction: North
+    lucky_direction_hi: "उत्तर"
+    friendly_numbers: [1, 4, 6]
+    neutral_numbers: [3, 7, 9]
+    enemy_numbers: [2, 8]
+    strengths: [Communication, Versatility, Intelligence, Adaptability, Commerce]
+    weaknesses: [Restlessness, Inconsistency, Nervousness, Superficiality]
+    deity: Budha
+    deity_hi: "बुध देव"
+    mantra: "Om Bram Breem Braum Sah Budhaya Namah"
+    description: "Number 5 is ruled by Mercury — the planet of intellect and communication. Persons with this number are witty, versatile, and excellent communicators. They thrive in business and trade."
+
+  6:
+    planet: Venus
+    planet_hi: "शुक्र"
+    name: "Chhah"
+    name_hi: "छह"
+    lucky_days: [Friday, Monday]
+    lucky_days_hi: ["शुक्रवार", "सोमवार"]
+    lucky_colors: [White, Pink, Light Blue]
+    lucky_colors_hi: ["सफेद", "गुलाबी", "हल्का नीला"]
+    lucky_gemstone: Diamond
+    lucky_gemstone_hi: "हीरा"
+    lucky_direction: South-East
+    lucky_direction_hi: "आग्नेय"
+    friendly_numbers: [3, 5, 9]
+    neutral_numbers: [2, 7, 8]
+    enemy_numbers: [1, 4]
+    strengths: [Harmony, Beauty, Love, Creativity, Luxury]
+    weaknesses: [Vanity, Laziness, Indulgence, Over-attachment]
+    deity: Shukra
+    deity_hi: "शुक्र देव"
+    mantra: "Om Dram Dreem Draum Sah Shukraya Namah"
+    description: "Number 6 is ruled by Venus — the planet of love and beauty. Persons with this number are artistic, harmonious, and devoted to family and loved ones. They have refined aesthetic sense."
+
+  7:
+    planet: Ketu
+    planet_hi: "केतु"
+    name: "Saat"
+    name_hi: "सात"
+    lucky_days: [Monday, Sunday]
+    lucky_days_hi: ["सोमवार", "रविवार"]
+    lucky_colors: [White, Light Yellow, Silver]
+    lucky_colors_hi: ["सफेद", "हल्का पीला", "चाँदी"]
+    lucky_gemstone: Cat's Eye
+    lucky_gemstone_hi: "लहसुनिया"
+    lucky_direction: South-West
+    lucky_direction_hi: "नैऋत्य"
+    friendly_numbers: [2, 4, 6]
+    neutral_numbers: [1, 3, 9]
+    enemy_numbers: [5, 8]
+    strengths: [Spirituality, Intuition, Mystery, Wisdom, Detachment]
+    weaknesses: [Isolation, Secrecy, Impracticality, Aloofness]
+    deity: Ketu
+    deity_hi: "केतु"
+    mantra: "Om Shram Shreem Shraum Sah Ketave Namah"
+    description: "Number 7 is ruled by Ketu — the south node of the Moon representing moksha. Persons with this number are deeply spiritual, intuitive, and philosophical. They are natural seekers of hidden truths."
+
+  8:
+    planet: Saturn
+    planet_hi: "शनि"
+    name: "Aath"
+    name_hi: "आठ"
+    lucky_days: [Saturday, Wednesday]
+    lucky_days_hi: ["शनिवार", "बुधवार"]
+    lucky_colors: [Black, Dark Blue, Indigo]
+    lucky_colors_hi: ["काला", "गहरा नीला", "नीलम"]
+    lucky_gemstone: Blue Sapphire
+    lucky_gemstone_hi: "नीलम"
+    lucky_direction: West
+    lucky_direction_hi: "पश्चिम"
+    friendly_numbers: [4, 5, 6]
+    neutral_numbers: [2, 7]
+    enemy_numbers: [1, 3, 9]
+    strengths: [Discipline, Perseverance, Responsibility, Endurance, Justice]
+    weaknesses: [Pessimism, Rigidity, Loneliness, Delays, Detachment]
+    deity: Shani
+    deity_hi: "शनि देव"
+    mantra: "Om Pram Preem Praum Sah Shanaischaraya Namah"
+    description: "Number 8 is ruled by Saturn — the great taskmaster. Persons with this number face many challenges but develop extraordinary inner strength. They achieve great material success through sustained effort."
+
+  9:
+    planet: Mars
+    planet_hi: "मंगल"
+    name: "Nau"
+    name_hi: "नौ"
+    lucky_days: [Tuesday, Thursday]
+    lucky_days_hi: ["मंगलवार", "गुरुवार"]
+    lucky_colors: [Red, Pink, Orange]
+    lucky_colors_hi: ["लाल", "गुलाबी", "नारंगी"]
+    lucky_gemstone: Red Coral
+    lucky_gemstone_hi: "मूँगा"
+    lucky_direction: South
+    lucky_direction_hi: "दक्षिण"
+    friendly_numbers: [1, 3, 6]
+    neutral_numbers: [5, 7]
+    enemy_numbers: [2, 4, 8]
+    strengths: [Courage, Energy, Ambition, Determination, Leadership]
+    weaknesses: [Aggression, Impulsiveness, Impatience, Conflict]
+    deity: Mangal
+    deity_hi: "मंगल देव"
+    mantra: "Om Kram Kreem Kraum Sah Bhaumaya Namah"
+    description: "Number 9 is ruled by Mars — the planet of energy and courage. Persons with this number are natural warriors, passionate, and driven. They have strong humanitarian impulses and fight for justice."
+
+# ── Master numbers ────────────────────────────────────────────────────────────
+
+master_numbers:
+  11:
+    name: "Master Illuminator"
+    name_hi: "गुरु प्रबोधक"
+    reduces_to: 2
+    description: "Higher vibration of 2. Spiritual insight, intuition, and illumination. Strong psychic abilities but prone to nervous tension and self-doubt."
+    strengths: [Intuition, Inspiration, Idealism, Spirituality, Psychic awareness]
+    challenges: [Nervousness, Self-doubt, Impracticality, Oversensitivity]
+  22:
+    name: "Master Builder"
+    name_hi: "महान निर्माता"
+    reduces_to: 4
+    description: "Higher vibration of 4. The ability to turn grand visions into material reality. Most powerful of all master numbers — can achieve monumental things."
+    strengths: [Vision, Practical idealism, Leadership, Large-scale achievement]
+    challenges: [Extreme pressure, Perfectionism, Overwhelm, Isolation]
+  33:
+    name: "Master Teacher"
+    name_hi: "महान गुरु"
+    reduces_to: 6
+    description: "Higher vibration of 6. Universal service, compassion, and self-sacrifice. The teacher of teachers, concerned with uplifting all of humanity."
+    strengths: [Compassion, Universal love, Teaching, Healing, Selflessness]
+    challenges: [Self-sacrifice to detriment, Martyrdom, Unrealistic expectations]
+
+# ── Chaldean letter values (English) ─────────────────────────────────────────
+# Source: Ancient Chaldean system — 9 is not assigned (sacred/divine number).
+# Letters sharing the same vibration are grouped by their phonetic sound.
+
+chaldean_values:
+  A: 1
+  B: 2
+  C: 3
+  D: 4
+  E: 5
+  F: 8
+  G: 3
+  H: 5
+  I: 1
+  J: 1
+  K: 2
+  L: 3
+  M: 4
+  N: 5
+  O: 7
+  P: 8
+  Q: 1
+  R: 2
+  S: 3
+  T: 4
+  U: 6
+  V: 6
+  W: 6
+  X: 5
+  Y: 1
+  Z: 7
+
+# ── Pythagorean letter values (English) ──────────────────────────────────────
+# Standard Western numerology system — sequential 1-9 assignment.
+
+pythagorean_values:
+  A: 1
+  B: 2
+  C: 3
+  D: 4
+  E: 5
+  F: 6
+  G: 7
+  H: 8
+  I: 9
+  J: 1
+  K: 2
+  L: 3
+  M: 4
+  N: 5
+  O: 6
+  P: 7
+  Q: 8
+  R: 9
+  S: 1
+  T: 2
+  U: 3
+  V: 4
+  W: 5
+  X: 6
+  Y: 7
+  Z: 8
+
+# ── Devanagari (Hindi) letter values (Vedic Akshar Anka system) ───────────────
+# Source: Bhojraj Dwivedi "Anka Jyotish", phonetic grouping of Sanskrit aksharas.
+# Each character is listed using its Unicode representation.
+# Vowels (Swar): mapped by fundamental sound vibration.
+# Consonants (Vyanjan): mapped by phonetic class (varga).
+
+devanagari_values:
+  # Vowels (swar)
+  "अ": 1   # a
+  "आ": 1   # aa
+  "इ": 1   # i
+  "ई": 1   # ii
+  "उ": 6   # u
+  "ऊ": 6   # uu
+  "ए": 5   # e
+  "ऐ": 5   # ai
+  "ओ": 7   # o
+  "औ": 7   # au
+  "ऋ": 2   # ri (vocalic r)
+  "अं": 1  # anusvara (nasalized a)
+  "अः": 1  # visarga
+
+  # Ka-varga (क-वर्ग): velar consonants
+  "क": 2   # ka
+  "ख": 2   # kha
+  "ग": 3   # ga
+  "घ": 3   # gha
+  "ङ": 5   # nga
+
+  # Cha-varga (च-वर्ग): palatal consonants
+  "च": 6   # cha
+  "छ": 6   # chha
+  "ज": 1   # ja
+  "झ": 1   # jha
+  "ञ": 5   # nya
+
+  # Ta-varga (ट-वर्ग): retroflex consonants
+  "ट": 4   # ṭa
+  "ठ": 4   # ṭha
+  "ड": 4   # ḍa
+  "ढ": 4   # ḍha
+  "ण": 5   # ṇa
+
+  # Ta-varga (त-वर्ग): dental consonants
+  "त": 4   # ta
+  "थ": 4   # tha
+  "द": 4   # da
+  "ध": 4   # dha
+  "न": 5   # na
+
+  # Pa-varga (प-वर्ग): labial consonants
+  "प": 8   # pa
+  "फ": 8   # pha
+  "ब": 2   # ba
+  "भ": 2   # bha
+  "म": 4   # ma
+
+  # Semi-vowels and sibilants (antastha / ushma)
+  "य": 1   # ya
+  "र": 2   # ra
+  "ल": 3   # la
+  "व": 6   # va
+  "श": 5   # sha (palatal sibilant)
+  "ष": 5   # ṣha (retroflex sibilant)
+  "स": 3   # sa (dental sibilant)
+  "ह": 5   # ha
+
+  # Nukta consonants (Hindi-specific)
+  "ड़": 4  # ṛa
+  "ढ़": 4  # ṛha
+  "ज़": 1  # za
+  "फ़": 8  # fa
+
+# ── Lo Shu grid — fixed number positions in the 3×3 grid ─────────────────────
+# The Lo Shu magic square arrangement. Each number occupies a fixed cell.
+# grid[row][col] position — 0-indexed, row 0 is top.
+#
+#   4  9  2     row 0: [4, 9, 2]
+#   3  5  7     row 1: [3, 5, 7]
+#   8  1  6     row 2: [8, 1, 6]
+
+loshu_grid_layout:
+  - [4, 9, 2]
+  - [3, 5, 7]
+  - [8, 1, 6]
+
+loshu_positions:
+  1: [2, 1]   # row 2, col 1
+  2: [0, 2]   # row 0, col 2
+  3: [1, 0]   # row 1, col 0
+  4: [0, 0]   # row 0, col 0
+  5: [1, 1]   # row 1, col 1 (center)
+  6: [2, 2]   # row 2, col 2
+  7: [1, 2]   # row 1, col 2
+  8: [2, 0]   # row 2, col 0
+  9: [0, 1]   # row 0, col 1
+
+# ── Lo Shu Arrow patterns ─────────────────────────────────────────────────────
+# Each arrow is formed when all 3 numbers in a row, column, or diagonal
+# are present (appear at least once) in the birth date.
+# "Missing arrow" = none of the 3 numbers appear.
+
+arrow_patterns:
+  thought:
+    name: Arrow of the Intellect
+    name_hi: "बुद्धि का तीर"
+    numbers: [4, 9, 2]
+    plane: Mental
+    plane_hi: "मानसिक"
+    meaning: "Strong intellect, good memory, ability to plan and strategize. Excellent mental acuity."
+    missing_meaning: "Challenges with concentration and mental planning. Benefits from structured learning."
+
+  will:
+    name: Arrow of Will
+    name_hi: "इच्छाशक्ति का तीर"
+    numbers: [3, 5, 7]
+    plane: Spiritual
+    plane_hi: "आध्यात्मिक"
+    meaning: "Strong willpower and determination. High spiritual awareness and inner strength."
+    missing_meaning: "Lack of persistence or willpower. Needs to develop inner resolve and spiritual grounding."
+
+  action:
+    name: Arrow of Practicality
+    name_hi: "व्यावहारिकता का तीर"
+    numbers: [8, 1, 6]
+    plane: Physical
+    plane_hi: "भौतिक"
+    meaning: "Practical, grounded, and materially successful. Good at turning ideas into reality."
+    missing_meaning: "Impracticality or difficulty with material matters. Needs grounding and practical focus."
+
+  memory:
+    name: Arrow of Activity
+    name_hi: "क्रियाशीलता का तीर"
+    numbers: [4, 3, 8]
+    plane: Physical-Mental
+    plane_hi: "शारीरिक-मानसिक"
+    meaning: "Strong memory, high activity level, and physical endurance. Good at sustained effort."
+    missing_meaning: "Poor memory or low energy levels. Needs memory exercises and energizing practices."
+
+  determination:
+    name: Arrow of Determination
+    name_hi: "दृढ़ संकल्प का तीर"
+    numbers: [9, 5, 1]
+    plane: Mental
+    plane_hi: "मानसिक"
+    meaning: "Powerful determination, focus, and mental fortitude. Ability to achieve goals through sheer willpower."
+    missing_meaning: "Difficulty maintaining focus or following through. Needs goal-setting discipline."
+
+  emotions:
+    name: Arrow of Emotional Balance
+    name_hi: "भावनात्मक संतुलन का तीर"
+    numbers: [2, 7, 6]
+    plane: Emotional
+    plane_hi: "भावनात्मक"
+    meaning: "Emotionally balanced, artistically gifted, and expressive. Strong capacity for love and harmony."
+    missing_meaning: "Emotional turbulence or difficulty expressing feelings. Needs emotional healing."
+
+  spirituality:
+    name: Arrow of Spirituality
+    name_hi: "आध्यात्मिकता का तीर"
+    numbers: [4, 5, 6]
+    plane: Spiritual
+    plane_hi: "आध्यात्मिक"
+    meaning: "Deep spiritual orientation, intuitive wisdom, and connection to higher realms of consciousness."
+    missing_meaning: "Material focus over spiritual. Benefits from meditation and spiritual practices."
+
+  compassion:
+    name: Arrow of Compassion
+    name_hi: "करुणा का तीर"
+    numbers: [2, 5, 8]
+    plane: Spiritual-Emotional
+    plane_hi: "आध्यात्मिक-भावनात्मक"
+    meaning: "Deeply compassionate, empathetic, and service-oriented. Natural healer and humanitarian."
+    missing_meaning: "Self-centred tendencies or difficulty empathising. Needs compassion cultivation."
+
+# ── Compatibility matrix — score 0–100 for each number pair ──────────────────
+# Based on Vedic planetary friendships (BPHS Chapter 7).
+# Symmetric: compatibility[i][j] == compatibility[j][i].
+# 80-100: Excellent | 60-79: Good | 40-59: Moderate | 0-39: Challenging
+
+compatibility_matrix:
+  1: {1: 70, 2: 80, 3: 85, 4: 30, 5: 60, 6: 35, 7: 45, 8: 30, 9: 85}
+  2: {1: 80, 2: 75, 3: 60, 4: 30, 5: 75, 6: 55, 7: 55, 8: 30, 9: 50}
+  3: {1: 85, 2: 60, 3: 75, 4: 35, 5: 55, 6: 35, 7: 50, 8: 40, 9: 80}
+  4: {1: 30, 2: 30, 3: 35, 4: 65, 5: 75, 6: 75, 7: 70, 8: 80, 9: 50}
+  5: {1: 60, 2: 75, 3: 55, 4: 75, 5: 75, 6: 80, 7: 50, 8: 75, 9: 55}
+  6: {1: 35, 2: 55, 3: 35, 4: 75, 5: 80, 6: 75, 7: 70, 8: 80, 9: 55}
+  7: {1: 45, 2: 55, 3: 50, 4: 70, 5: 50, 6: 70, 7: 65, 8: 55, 9: 70}
+  8: {1: 30, 2: 30, 3: 40, 4: 80, 5: 75, 6: 80, 7: 55, 8: 65, 9: 35}
+  9: {1: 85, 2: 50, 3: 80, 4: 50, 5: 55, 6: 55, 7: 70, 8: 35, 9: 75}
+
+# ── Compatibility categories ──────────────────────────────────────────────────
+
+compatibility_categories:
+  excellent: {min: 80, label: "Excellent", label_hi: "उत्कृष्ट"}
+  good: {min: 60, label: "Good", label_hi: "अच्छा"}
+  moderate: {min: 40, label: "Moderate", label_hi: "सामान्य"}
+  challenging: {min: 0, label: "Challenging", label_hi: "कठिन"}
+
+# ── Compound number meanings (Chaldean, 10–52) ───────────────────────────────
+# Source: Cheiro "Book of Numbers"; Bhojraj Dwivedi "Anka Jyotish".
+# 'nature': favorable / cautionary / mixed
+
+compound_numbers:
+  10: {name: "The Wheel of Fortune", nature: favorable, meaning: "Rises to prominence; associated with honor and recognition. Success that comes in cycles."}
+  11: {name: "A Lion Muzzled", nature: cautionary, meaning: "Hidden danger; risk of betrayal. Associated with treachery from trusted ones. Needs constant vigilance."}
+  12: {name: "The Sacrifice", nature: cautionary, meaning: "The victim; self-sacrifice for others. May feel exploited. Spiritual growth through suffering."}
+  13: {name: "The Reaper", nature: mixed, meaning: "Change and transformation. Not evil — signifies upheaval that leads to renewal. Great power if used wisely."}
+  14: {name: "Movement and Combination", nature: favorable, meaning: "Adventure, travel, speculation. Success through partnerships. Guard against overindulgence."}
+  15: {name: "The Magician", nature: favorable, meaning: "Magic and eloquence. Gifted communicator. Worldly success through persuasion. Can use power for good or ill."}
+  16: {name: "The Shattered Citadel", nature: cautionary, meaning: "Pride goes before a fall. Danger of self-destruction. Spiritual transformation through worldly loss."}
+  17: {name: "The Star of the Magi", nature: favorable, meaning: "Immortality of name and fame. Spiritual influence. The person's name lives on after death."}
+  18: {name: "The Materialism of Matter", nature: cautionary, meaning: "Conflict between material and spiritual. Deception and bitter quarrels. Needs higher purpose."}
+  19: {name: "The Successful Prince", nature: favorable, meaning: "Success, happiness, and fulfillment. Shines brightly. Combines power of 1 (Sun) and 9 (Mars)."}
+  20: {name: "The Awakening", nature: mixed, meaning: "New purpose and awakening. Delay before recognition. Success comes eventually with patience."}
+  21: {name: "The Crown of the Magi", nature: favorable, meaning: "Success, advancement, and triumph. Promotion and elevated position. The Universe works in favor."}
+  22: {name: "Submission and Caution", nature: cautionary, meaning: "Good intentions but poor judgment. Warns against submission to others' will. Needs independence."}
+  23: {name: "The Royal Star of the Lion", nature: favorable, meaning: "Protected by higher powers. Success, assistance from others, and rise to fame. Excellent omen."}
+  24: {name: "Love and Money", nature: favorable, meaning: "Love, assistance from superiors, and financial blessings. Help comes from unexpected sources."}
+  25: {name: "Strength from Experience", nature: mixed, meaning: "Strength gained through struggle. Obstacles are teachers. Ultimate success after testing."}
+  26: {name: "Warnings and Sorrows", nature: cautionary, meaning: "Associated with rash decisions and sorrows. Partnerships may fail. Needs careful judgment."}
+  27: {name: "The Sceptre", nature: favorable, meaning: "Authoritative command and wise decisions. Promise of authority and success in government or law."}
+  28: {name: "Promising but Difficult", nature: mixed, meaning: "Promising beginning but unfulfilled ending. Opposition from others. Needs persistence."}
+  29: {name: "Trials and Uncertainties", nature: cautionary, meaning: "Treacheries, trials, and tribulations. Disappointments in partnerships. Needs strong inner faith."}
+  30: {name: "Thoughtfulness and Solitude", nature: mixed, meaning: "Retreat and meditation. Success through solo effort rather than dependence on others."}
+  31: {name: "Self-Reliance", nature: mixed, meaning: "Solitary and self-contained. Success through independent action. Lonely but strong."}
+  32: {name: "The Magic of Communication", nature: favorable, meaning: "Like 23 — powerful communication gifts. Success through partnerships and eloquence."}
+  33: {name: "Undecided", nature: cautionary, meaning: "Vacillating between choices. Like 24 but weaker. Needs to commit to decisions."}
+  34: {name: "Like 25 — Strength", nature: mixed, meaning: "Strength gained through struggle and perseverance. Resilience as the key virtue."}
+  35: {name: "Like 29 — Caution", nature: cautionary, meaning: "Partnerships fraught with hidden dangers. Proceed cautiously in business and love."}
+  36: {name: "Like 27 — Authority", nature: favorable, meaning: "Success in positions of authority. Wisdom and command respected."}
+  37: {name: "Name and Fame", nature: favorable, meaning: "Strong personal magnetism. Fame and name through personal effort. Individual shines brilliantly."}
+  38: {name: "Like 29 — Trials", nature: cautionary, meaning: "Treacheries and disappointments. Take nothing at face value in partnerships."}
+  39: {name: "Like 30 — Solitude", nature: mixed, meaning: "Success through solo effort and contemplation."}
+  40: {name: "Like 31 — Self-Reliance", nature: mixed, meaning: "Self-contained and independent. Do not rely on others."}
+  41: {name: "Like 32 — Expression", nature: favorable, meaning: "Communication gifts and partnership success."}
+  42: {name: "Like 24 — Assistance", nature: favorable, meaning: "Help from loved ones and superiors. Financial blessings."}
+  43: {name: "Revolution", nature: cautionary, meaning: "Negative revolution, upheaval, and failure of plans. Proceed with extreme caution."}
+  44: {name: "Like 26 — Sorrows", nature: cautionary, meaning: "Associated with sorrows and rash decisions. Exercise careful judgment."}
+  45: {name: "Like 27 — Sceptre", nature: favorable, meaning: "Authoritative success and wise command."}
+  46: {name: "Like 37 — Magnetism", nature: favorable, meaning: "Personal magnetism and individual fame."}
+  47: {name: "Like 29 — Trials", nature: cautionary, meaning: "Trials and treacheries in partnerships."}
+  48: {name: "Like 30 — Contemplation", nature: mixed, meaning: "Success through meditation and solo effort."}
+  49: {name: "Like 31 — Independence", nature: mixed, meaning: "Self-reliant achievement."}
+  50: {name: "Like 32 — Expression", nature: favorable, meaning: "Communication and partnership success."}
+  51: {name: "The Lion of the Tribe", nature: favorable, meaning: "Great strength, conquest, and victory over obstacles. Powerful leadership."}
+  52: {name: "Like 43 — Revolution", nature: cautionary, meaning: "Upheaval and danger. Exercise extreme caution."}

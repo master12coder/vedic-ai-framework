@@ -1,0 +1,349 @@
+# =============================================================================
+# Yantra Data — Planetary Magic Squares (Navagraha Yantras)
+# =============================================================================
+# Each planetary yantra is a 3×3 magic square where every row, column, and
+# diagonal sums to the same "magic constant".
+#
+# Construction algorithm:
+#   Planet Vedic number k → offset = (k − 1) × 9
+#   Base Lo Shu grid (standard Vedic arrangement):
+#     2  7  6
+#     9  5  1
+#     4  3  8
+#   Add offset to every cell → planet's magic square.
+#
+# Vedic planet numbers: Sun=1, Moon=2, Jupiter=3, Rahu=4, Mercury=5,
+#                       Venus=6, Ketu=7, Saturn=8, Mars=9
+#
+# Source: Yantra Chintamani, traditional Navagraha yantra texts,
+#         and Sri Yantra Sarvasva.
+# =============================================================================
+
+# ── Lo Shu base grid ─────────────────────────────────────────────────────────
+lo_shu_base:
+  grid:
+    - [2, 7, 6]
+    - [9, 5, 1]
+    - [4, 3, 8]
+  magic_sum: 15
+  description: "Base Lo Shu magic square — foundation of all Navagraha yantras"
+
+
+# ── Planetary Yantras ─────────────────────────────────────────────────────────
+
+yantras:
+
+  Sun:
+    name_hi: सूर्य यन्त्र
+    vedic_number: 1
+    offset: 0
+    grid:
+      - [2, 7, 6]
+      - [9, 5, 1]
+      - [4, 3, 8]
+    magic_sum: 15
+    center_number: 5
+    description: >
+      Surya Yantra — embodies solar energy, authority, vitality, and the soul (Atma).
+      Energized on Sunday during Sun hora. Strengthens Leo/Simha lagna and 5th house
+      significations. Mitigates malefic effects of weak or afflicted Sun.
+    material:
+      primary: "Copper plate (tamra patra) — Sun's metal"
+      alternatives: ["Gold foil", "Saffron paste on white cloth", "Engraved gold disc"]
+    installation:
+      day: Sunday
+      time: "Sunrise — within first hora"
+      direction: "Face East during worship"
+      mantra_for_energizing: "ओम् ह्रां ह्रीं ह्रौम् सः सूर्याय नमः (108 times)"
+      puja_items: ["Red flowers (hibiscus)", "Wheat", "Jaggery", "Red sandalwood paste", "Ghee lamp"]
+    purpose:
+      - "Strengthen weak Sun in horoscope"
+      - "Overcome lack of confidence and authority"
+      - "Government service, father's health, career advancement"
+      - "Eye disorders, heart problems (Sun rules heart)"
+      - "Leo lagna or Sun mahadasha relief"
+
+  Moon:
+    name_hi: चन्द्र यन्त्र
+    vedic_number: 2
+    offset: 9
+    grid:
+      - [11, 16, 15]
+      - [18, 14, 10]
+      - [13, 12, 17]
+    magic_sum: 42
+    center_number: 14
+    description: >
+      Chandra Yantra — embodies lunar energy, mind, emotions, and maternal forces.
+      Energized on Monday. Strengthens Cancer/Karka lagna and 4th house significations.
+      Provides mental peace, emotional stability, and mother's well-being.
+    material:
+      primary: "Silver plate (rajat patra) — Moon's metal"
+      alternatives: ["White crystal disc", "Pearl placed in silver", "Silver foil"]
+    installation:
+      day: Monday
+      time: "Evening twilight (Pradosha)"
+      direction: "Face North-West"
+      mantra_for_energizing: "ओम् श्रां श्रीं श्रौम् सः चन्द्राय नमः (108 times)"
+      puja_items: ["White flowers", "Rice", "Milk", "White sandalwood", "White sweets"]
+    purpose:
+      - "Mental peace, reduce anxiety and depression"
+      - "Strengthen weak Moon — emotional intelligence"
+      - "Mother's health and relationship with mother"
+      - "Fertility, conception, childbirth blessings"
+      - "Travel over water, liquid-related businesses"
+
+  Jupiter:
+    name_hi: गुरु यन्त्र
+    vedic_number: 3
+    offset: 18
+    grid:
+      - [20, 25, 24]
+      - [27, 23, 19]
+      - [22, 21, 26]
+    magic_sum: 69
+    center_number: 23
+    description: >
+      Guru Yantra — embodies Jupiterian energy: wisdom, dharma, spiritual growth,
+      children, and wealth. Energized on Thursday. Strengthens Sagittarius/Dhanu and
+      Pisces/Meena lagnas. Most powerful yantra for knowledge and divine grace.
+    material:
+      primary: "Gold plate (suvarna patra) — Jupiter's metal"
+      alternatives: ["Yellow cloth with turmeric ink", "Copper with turmeric paste", "Gold foil"]
+    installation:
+      day: Thursday
+      time: "Morning — first 3 hours after sunrise"
+      direction: "Face North-East"
+      mantra_for_energizing: "ओम् ग्रां ग्रीं ग्रौम् सः गुरवे नमः (108 times)"
+      puja_items: ["Yellow flowers", "Turmeric", "Chana dal", "Bananas", "Yellow sweets"]
+    purpose:
+      - "Children's well-being and conception"
+      - "Higher education, wisdom, spiritual growth"
+      - "Strengthen Guru dasha, mitigate Guru curse"
+      - "Husband's health (for female natives)"
+      - "Legal matters, financial abundance"
+
+  Rahu:
+    name_hi: राहु यन्त्र
+    vedic_number: 4
+    offset: 27
+    grid:
+      - [29, 34, 33]
+      - [36, 32, 28]
+      - [31, 30, 35]
+    magic_sum: 96
+    center_number: 32
+    description: >
+      Rahu Yantra — for pacifying the shadow planet Rahu, mitigating sudden upheavals,
+      Rahu Mahadasha troubles, and protection from poison, black magic, and mysterious
+      ailments. Energized on Saturday during Rahu Kaal.
+    material:
+      primary: "Lead plate (seesa patra) — Rahu's metal"
+      alternatives: ["Ashtadhatu (8-metal alloy)", "Blue-black cloth with silver ink", "Iron with grey paint"]
+    installation:
+      day: Saturday
+      time: "During Rahu Kaal"
+      direction: "Face South-West"
+      mantra_for_energizing: "ओम् भ्रां भ्रीं भ्रौम् सः राहवे नमः (108 times)"
+      puja_items: ["Blue flowers", "Coconut", "Black sesame", "Mustard oil lamp", "Grey cloth"]
+    purpose:
+      - "Rahu Mahadasha/Antardasha peace"
+      - "Protection from hidden enemies and black magic"
+      - "Foreign travel, technology careers"
+      - "Sudden wealth — mitigate unpredictability"
+      - "Skin diseases, mysterious ailments"
+
+  Mercury:
+    name_hi: बुध यन्त्र
+    vedic_number: 5
+    offset: 36
+    grid:
+      - [38, 43, 42]
+      - [45, 41, 37]
+      - [40, 39, 44]
+    magic_sum: 123
+    center_number: 41
+    description: >
+      Budha Yantra — embodies Mercurial energy: intellect, communication, commerce,
+      and skill. Energized on Wednesday. Strengthens Gemini/Mithuna and Virgo/Kanya
+      lagnas. Benefits students, writers, traders, and mathematicians.
+    material:
+      primary: "Bronze or brass plate — Mercury's metal"
+      alternatives: ["Copper with green ink", "Green cloth with sandalwood paste", "Ashtadhatu plate"]
+    installation:
+      day: Wednesday
+      time: "Midday (Abhijit muhurta)"
+      direction: "Face North"
+      mantra_for_energizing: "ओम् ब्रां ब्रीं ब्रौम् सः बुधाय नमः (108 times)"
+      puja_items: ["Green flowers", "Green moong dal", "Green cloth", "White sandalwood", "Green cardamom"]
+    purpose:
+      - "Intellectual enhancement, learning abilities"
+      - "Business success, trade, commerce"
+      - "Speech improvement, communication skills"
+      - "Skin health (Mercury rules skin)"
+      - "Mithuna/Kanya lagna — strengthen lagnesh"
+
+  Venus:
+    name_hi: शुक्र यन्त्र
+    vedic_number: 6
+    offset: 45
+    grid:
+      - [47, 52, 51]
+      - [54, 50, 46]
+      - [49, 48, 53]
+    magic_sum: 150
+    center_number: 50
+    description: >
+      Shukra Yantra — embodies Venusian energy: love, beauty, luxury, arts, and
+      marriage. Energized on Friday. Strengthens Taurus/Vrishabha and
+      Libra/Tula lagnas. Benefits artists, lovers, and those seeking marital harmony.
+    material:
+      primary: "Silver or white metal plate — Venus's metal"
+      alternatives: ["Diamond or white quartz", "White cloth with rose petals", "Crystal glass disc"]
+    installation:
+      day: Friday
+      time: "Afternoon — 2 hours before sunset"
+      direction: "Face South-East"
+      mantra_for_energizing: "ओम् द्रां द्रीं द्रौम् सः शुक्राय नमः (108 times)"
+      puja_items: ["White flowers (jasmine, lily)", "White sweets", "Perfume/attar", "Camphor", "Silver items"]
+    purpose:
+      - "Marital happiness, attract life partner"
+      - "Arts, music, luxury career success"
+      - "Financial prosperity and comforts"
+      - "Venus Mahadasha blessings"
+      - "Reproductive health, hormonal balance"
+
+  Ketu:
+    name_hi: केतु यन्त्र
+    vedic_number: 7
+    offset: 54
+    grid:
+      - [56, 61, 60]
+      - [63, 59, 55]
+      - [58, 57, 62]
+    magic_sum: 177
+    center_number: 59
+    description: >
+      Ketu Yantra — for pacifying Ketu, enhancing spiritual growth, moksha sadhana,
+      and mitigating Ketu's separative and karmic influences. Energized on Tuesday.
+      Ketu is a spiritual planet — its yantra aids liberation and past-life karma resolution.
+    material:
+      primary: "Kusha grass mat under a bronze disc — Ketu's material"
+      alternatives: ["Iron plate", "Grey/brown cloth", "Ashtadhatu plate"]
+    installation:
+      day: Tuesday
+      time: "Early morning at sunrise"
+      direction: "Face North-West"
+      mantra_for_energizing: "ओम् स्रां स्रीं स्रौम् सः केतवे नमः (108 times)"
+      puja_items: ["Brown/grey flowers", "Sesame seeds", "Kusha grass", "Incense", "Seven grains mix"]
+    purpose:
+      - "Ketu Mahadasha/Antardasha peace"
+      - "Moksha sadhana, spiritual liberation"
+      - "Sudden loss protection"
+      - "Mystical powers, psychic abilities"
+      - "Protection from evil eye (nazar)"
+
+  Saturn:
+    name_hi: शनि यन्त्र
+    vedic_number: 8
+    offset: 63
+    grid:
+      - [65, 70, 69]
+      - [72, 68, 64]
+      - [67, 66, 71]
+    magic_sum: 204
+    center_number: 68
+    description: >
+      Shani Yantra — for appeasing Saturn, mitigating Sade Sati, Shani Mahadasha
+      troubles, delays, and karmic debts. Energized on Saturday. Most important
+      protective yantra for Shani-afflicted charts.
+    material:
+      primary: "Iron plate (lauh patra) — Saturn's metal"
+      alternatives: ["Black stone", "Lead plate", "Blue-black cloth with iron ink"]
+    installation:
+      day: Saturday
+      time: "Evening before sunset"
+      direction: "Face West"
+      mantra_for_energizing: "ओम् प्रां प्रीं प्रौम् सः शनैश्चराय नमः (108 times)"
+      puja_items: ["Blue/black flowers", "Mustard oil", "Black sesame", "Urad dal", "Iron items"]
+    purpose:
+      - "Sade Sati relief (7.5 year Saturn transit)"
+      - "Ashtama Shani (8th house transit) protection"
+      - "Shani Mahadasha/Antardasha difficulties"
+      - "Career delays, obstacles removal"
+      - "Bone health, chronic disease (Saturn rules bones)"
+
+  Mars:
+    name_hi: मंगल यन्त्र
+    vedic_number: 9
+    offset: 72
+    grid:
+      - [74, 79, 78]
+      - [81, 77, 73]
+      - [76, 75, 80]
+    magic_sum: 231
+    center_number: 77
+    description: >
+      Mangal Yantra — embodies Mars energy: courage, energy, property, siblings,
+      and martial prowess. Energized on Tuesday. Mitigates Mangal Dosha for marriage.
+      Benefits soldiers, sportspersons, engineers, and surgeons.
+    material:
+      primary: "Copper plate (tamra patra) — Mars's metal"
+      alternatives: ["Red cloth with sindoor (vermillion)", "Red coral disc", "Copper with red ink"]
+    installation:
+      day: Tuesday
+      time: "Morning — 2 hours after sunrise"
+      direction: "Face South"
+      mantra_for_energizing: "ओम् क्रां क्रीं क्रौम् सः भौमाय नमः (108 times)"
+      puja_items: ["Red flowers", "Red lentils (masoor dal)", "Jaggery", "Copper items", "Red cloth"]
+    purpose:
+      - "Mangal Dosha cancellation for marriage"
+      - "Property disputes — legal victories"
+      - "Courage, physical strength, sports"
+      - "Blood disorders, muscular health"
+      - "Siblings' well-being, younger relatives"
+
+
+# ── Yantra Installation General Rules ────────────────────────────────────────
+installation_rules:
+  preparation:
+    - "Cleanse yantra with Panchamrit (milk, curd, honey, ghee, sugar water)"
+    - "Dry with clean white cloth"
+    - "Place on clean altar facing prescribed direction"
+    - "Never touch yantra with unwashed hands"
+  energizing:
+    - "Recite prescribed mantra minimum 108 times while holding yantra"
+    - "Perform havan (fire ritual) for complete energizing — 1/10th of japa count"
+    - "Establish yantra on prescribed day and hora for maximum efficacy"
+  maintenance:
+    - "Offer incense and lamp daily"
+    - "Re-energize every 6 months with mantra recitation"
+    - "Replace copper/iron yantras every 3 years if tarnished"
+    - "Never disrespect or keep in impure location"
+  disposal:
+    - "If replacing, immerse old yantra in flowing water (river/sea)"
+    - "Never throw in garbage — always respectfully immerse"
+  placement:
+    home: "Puja room facing East, at altar height (above waist level)"
+    office: "North or East wall, above sitting level"
+    wallet: "Use small laminated yantra — copper or gold foil"
+
+
+# ── Magic Square Validation ────────────────────────────────────────────────────
+# For verifying yantra correctness:
+# magic_sum = 3 × center_number
+# Offset for planet with vedic_number k: offset = (k - 1) × 9
+# Row sums = Column sums = Diagonal sums = magic_sum
+
+validation:
+  formula: "magic_sum = 3 × center_number = 15 + 3 × offset/3"
+  magic_sums:
+    Sun: 15        # vedic 1, offset 0
+    Moon: 42       # vedic 2, offset 9
+    Jupiter: 69    # vedic 3, offset 18
+    Rahu: 96       # vedic 4, offset 27
+    Mercury: 123   # vedic 5, offset 36
+    Venus: 150     # vedic 6, offset 45
+    Ketu: 177      # vedic 7, offset 54
+    Saturn: 204    # vedic 8, offset 63
+    Mars: 231      # vedic 9, offset 72
