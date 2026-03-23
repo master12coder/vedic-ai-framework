@@ -115,19 +115,22 @@ class TestKakshaStructure:
 
 
 class TestKakshaKnownValues:
-    @pytest.mark.parametrize("degree_in_sign,expected_kaksha,expected_lord", [
-        (0.0,   1, "Saturn"),    # 0-3d45m: Saturn
-        (1.0,   1, "Saturn"),
-        (3.75,  2, "Jupiter"),   # 3d45m-7d30m: Jupiter
-        (5.0,   2, "Jupiter"),
-        (7.5,   3, "Mars"),      # 7d30m-11d15m: Mars
-        (11.25, 4, "Sun"),       # 11d15m-15d: Sun
-        (15.0,  5, "Venus"),     # 15d-18d45m: Venus
-        (18.75, 6, "Mercury"),   # 18d45m-22d30m: Mercury
-        (22.5,  7, "Moon"),      # 22d30m-26d15m: Moon
-        (26.25, 8, "Lagna"),     # 26d15m-30d: Lagna
-        (29.99, 8, "Lagna"),
-    ])
+    @pytest.mark.parametrize(
+        "degree_in_sign,expected_kaksha,expected_lord",
+        [
+            (0.0, 1, "Saturn"),  # 0-3d45m: Saturn
+            (1.0, 1, "Saturn"),
+            (3.75, 2, "Jupiter"),  # 3d45m-7d30m: Jupiter
+            (5.0, 2, "Jupiter"),
+            (7.5, 3, "Mars"),  # 7d30m-11d15m: Mars
+            (11.25, 4, "Sun"),  # 11d15m-15d: Sun
+            (15.0, 5, "Venus"),  # 15d-18d45m: Venus
+            (18.75, 6, "Mercury"),  # 18d45m-22d30m: Mercury
+            (22.5, 7, "Moon"),  # 22d30m-26d15m: Moon
+            (26.25, 8, "Lagna"),  # 26d15m-30d: Lagna
+            (29.99, 8, "Lagna"),
+        ],
+    )
     def test_kaksha_lord_for_known_degree(
         self, degree_in_sign: float, expected_kaksha: int, expected_lord: str
     ):
@@ -139,13 +142,12 @@ class TestKakshaKnownValues:
             f"got {result.kaksha_number}"
         )
         assert result.kaksha_lord == expected_lord, (
-            f"Degree {degree_in_sign}: expected lord {expected_lord}, "
-            f"got {result.kaksha_lord}"
+            f"Degree {degree_in_sign}: expected lord {expected_lord}, got {result.kaksha_lord}"
         )
 
     def test_longitude_mod_360_applied(self):
         """Longitudes ≥360 are reduced mod 360 before computation."""
         result1 = compute_kaksha(15.0)
-        result2 = compute_kaksha(375.0)   # 375 % 360 = 15
+        result2 = compute_kaksha(375.0)  # 375 % 360 = 15
         assert result1.kaksha_number == result2.kaksha_number
         assert result1.kaksha_lord == result2.kaksha_lord

@@ -2,6 +2,23 @@
 
 > Read this FIRST every session. Follow EVERY rule. No exceptions.
 
+## Research before coding (mandatory)
+
+Before starting ANY task:
+1. Run `nlm query "[main topic of task]" --top-k 5`
+2. Read the returned chunks
+3. Use that context to ground your implementation
+4. If nothing relevant found, run `nlm list` to see what's indexed
+
+Examples:
+- Task about gemstones → `nlm query "gemstone safety mithuna lagna"`
+- Task about dasha → `nlm query "dasha transit timing technique"`
+- Task about yoga → `nlm query "yoga activation timing"`
+- Task about Lal Kitab → `nlm query "lal kitab remedies rin"`
+- Unsure what exists → `nlm query "[feature name]" --top-k 8`
+
+Never start coding without querying nlm first.
+
 ## Architecture (FROZEN)
 
 ```
@@ -15,25 +32,29 @@ apps/ imports from products/ and engine/.
 Plugins NEVER import each other.
 ```
 
-## Engine Scope (131 compute modules as of March 2026)
+## Engine Scope (151 compute modules as of March 2026)
 
 ```
-Core: chart, dasha (5 types), divisional, divisional_extended, special_lagnas, upagraha
+Core: chart, dasha (5 types), divisional, divisional_extended, special_lagnas (8), upagraha
 Yogas: yoga + 13 sub-modules (284 yogas: Nabhasa, Arishta, Bandhana, Daridra,
        Kemadruma, Parivartana, Neech Bhanga, Moksha, Lunar, Solar…)
+       yoga_timing — maps all yogas to dasha activation periods
 Matching: kootas (North Indian 36-point) + porutham (South Indian 10-point)
 Dashas: Vimshottari, Narayana, Kalachakra, Mudda, Sudarshan, conditional
+        dasha_transit — #1 timing technique (dasha lords + transit + BAV + double transit)
 Strength: bhava_bala, ishta_kashta, vimshopaka, graha_yuddha, avasthas (2 modules)
 Divisional: 16 vargas, D60 Shastyamsha, Drekkana, varga analysis (deep + models)
-Jaimini: karakas, padas, rasi dashas
-KP: sub-lord tables, ruling planets
-Predictive: gochara, transit (3 modules), double_transit, sav_transit, vedha
-Muhurta: engine + lagna + panchanga, tithi_pravesh, varsha_pravesh
+Jaimini: karakas, padas, rasi dashas, bhavat_bhavam, badhaka
+KP: sub-lord tables, ruling planets, rectification (3 methods)
+Predictive: gochara, transit (3 modules), double_transit, sav_transit, vedha,
+            transit_finder (ingress/station/aspect search), eclipse_natal
+Muhurta: engine + lagna + panchanga + chandrabalam, tithi_pravesh, varsha_pravesh
 Medical: body mapping, disease, dosha constitution
-Remedies: gem_therapy (4 modules), mantra, yantra, vastu (2 modules)
+Remedies: gem_therapy (4 modules), mantra, yantra, vastu (2 modules), lal_kitab
 Prashna: prashna + helpers, Ashtamangala (2 modules)
 Specialized: Pancha Pakshi, Namakarana, numerology (3 modules), sarvatobhadra,
-             mundane (3 modules), saham, longevity
+             mundane (3 modules), saham, longevity, dispositor, nisheka, kota_chakra
+Reference: chandra_kundali, surya_kundali (lordship-aware Moon/Sun chart analysis)
 ```
 
 ## Engine Conventions (confirmed March 2026 audit)

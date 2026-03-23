@@ -444,10 +444,14 @@ class TestAdhiYogaGrades:
         results = detect_extended_yogas(chart)
         names = _yoga_names(results)
         # Existing code detects all 3 grades (Purna, Madhya, Hina) — 1 benefic gives Hina grade
-        assert "Adhi Yoga" in names, "Adhi Yoga Hina grade must be detected with 1 benefic in 6/7/8 from Moon"
+        assert "Adhi Yoga" in names, (
+            "Adhi Yoga Hina grade must be detected with 1 benefic in 6/7/8 from Moon"
+        )
         # The result should have partial strength
         adhi = next(y for y in results if y.name == "Adhi Yoga")
-        assert adhi.strength == "partial", "1-benefic Adhi Yoga must have partial strength (Hina grade)"
+        assert adhi.strength == "partial", (
+            "1-benefic Adhi Yoga must have partial strength (Hina grade)"
+        )
 
 
 # ── Durudhura Flanking Tests ─────────────────────────────────────────────────

@@ -19,6 +19,7 @@ from daivai_engine.compute.dosha import detect_all_doshas
 from daivai_engine.compute.strength import compute_planet_strengths
 from daivai_engine.compute.yoga import detect_all_yogas
 from daivai_engine.models.chart import ChartData
+from daivai_products.interpret.advanced_context import build_advanced_context
 from daivai_products.interpret.context import (
     build_gemstone_context,
     build_lordship_context,
@@ -29,7 +30,10 @@ from daivai_products.interpret.context import (
 logger = logging.getLogger(__name__)
 
 
-def build_chart_context(chart: ChartData) -> dict[str, Any]:
+def build_chart_context(
+    chart: ChartData,
+    full_analysis: Any | None = None,
+) -> dict[str, Any]:
     """Build a context dictionary from chart data for prompt rendering.
 
     Includes:
@@ -38,9 +42,11 @@ def build_chart_context(chart: ChartData) -> dict[str, Any]:
     - Gemstone logic with contraindications
     - Scripture citations for planets in their houses
     - Pandit Ji learned corrections
+    - Phase 1 advanced modules (if full_analysis provided)
 
     Args:
         chart: Computed birth chart.
+        full_analysis: Optional FullChartAnalysis with Phase 1 data.
 
     Returns:
         Dictionary ready for Jinja2 template rendering.
@@ -227,4 +233,6 @@ def build_chart_context(chart: ChartData) -> dict[str, Any]:
         # --- Scripture & Pandit Ji ---
         "scripture_citations": scripture_citations,
         "pandit_teachings": pandit_teachings,
+        # --- Phase 1 advanced modules ---
+        **(build_advanced_context(full_analysis) if full_analysis else {}),
     }

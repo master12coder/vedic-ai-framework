@@ -223,14 +223,14 @@ class TestAnalyzeD60Chart:
     def test_benefic_malefic_mixed_partition(self, manish_chart):
         """Every planet must appear in exactly one classification bucket."""
         result = analyze_d60_chart(manish_chart)
-        all_classified = set(result.benefic_planets) | set(result.malefic_planets) | set(result.mixed_planets)
+        all_classified = (
+            set(result.benefic_planets) | set(result.malefic_planets) | set(result.mixed_planets)
+        )
         assert all_classified == set(PLANETS)
 
     def test_no_duplicate_classification(self, manish_chart):
         result = analyze_d60_chart(manish_chart)
-        all_classified = (
-            result.benefic_planets + result.malefic_planets + result.mixed_planets
-        )
+        all_classified = result.benefic_planets + result.malefic_planets + result.mixed_planets
         assert len(all_classified) == len(set(all_classified))
 
     def test_vargottam_subset_of_planets(self, manish_chart):
@@ -269,16 +269,12 @@ class TestCompareD1D60:
 
     def test_every_planet_in_exactly_one_bucket(self, manish_chart):
         result = compare_d1_d60(manish_chart)
-        all_bucketed = (
-            result.certain_benefics + result.certain_malefics + result.conflicting
-        )
+        all_bucketed = result.certain_benefics + result.certain_malefics + result.conflicting
         assert set(all_bucketed) == set(PLANETS)
 
     def test_no_duplicate_in_buckets(self, manish_chart):
         result = compare_d1_d60(manish_chart)
-        all_bucketed = (
-            result.certain_benefics + result.certain_malefics + result.conflicting
-        )
+        all_bucketed = result.certain_benefics + result.certain_malefics + result.conflicting
         assert len(all_bucketed) == len(set(all_bucketed))
 
     def test_certainty_values_valid(self, manish_chart):

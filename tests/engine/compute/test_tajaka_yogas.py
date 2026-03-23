@@ -147,9 +147,7 @@ class TestTajakaYogaDetection:
         yogas = detect_all_tajaka_yogas(manish_chart)
         if len(yogas) >= 2:
             # Find first negative yoga index
-            first_neg = next(
-                (i for i, y in enumerate(yogas) if not y.is_positive), len(yogas)
-            )
+            first_neg = next((i for i, y in enumerate(yogas) if not y.is_positive), len(yogas))
             # All before first_neg should be positive
             for y in yogas[:first_neg]:
                 assert y.is_positive
@@ -300,18 +298,20 @@ class TestMusariphaYoga:
           - Sun at Taurus 10° (speed 1) — Moon applying toward Sun
         Moon sep from Saturn (Ishrafa/conjunction) + Moon appl to Sun → Musaripha.
         """
-        chart = _make_tajaka_chart({
-            "Saturn": (30.0, 0.06),   # Taurus 0° slow
-            "Moon":   (35.0, 13.0),   # Taurus 5° fast — past Saturn, approaching Sun
-            "Sun":    (40.0, 1.0),    # Taurus 10° medium — Moon approaching
-            # Add required planets with no-aspect placements
-            "Mars":    (90.0, 0.6),
-            "Mercury": (150.0, 1.5),
-            "Jupiter": (210.0, 0.15),
-            "Venus":   (270.0, 1.2),
-            "Rahu":    (330.0, -0.02),
-            "Ketu":    (150.0, -0.02),
-        })
+        chart = _make_tajaka_chart(
+            {
+                "Saturn": (30.0, 0.06),  # Taurus 0° slow
+                "Moon": (35.0, 13.0),  # Taurus 5° fast — past Saturn, approaching Sun
+                "Sun": (40.0, 1.0),  # Taurus 10° medium — Moon approaching
+                # Add required planets with no-aspect placements
+                "Mars": (90.0, 0.6),
+                "Mercury": (150.0, 1.5),
+                "Jupiter": (210.0, 0.15),
+                "Venus": (270.0, 1.2),
+                "Rahu": (330.0, -0.02),
+                "Ketu": (150.0, -0.02),
+            }
+        )
         yogas = detect_all_tajaka_yogas(chart)
         yoga_names = {y.name for y in yogas}
         assert "Musaripha" in yoga_names, (
@@ -320,17 +320,19 @@ class TestMusariphaYoga:
 
     def test_musaripha_is_not_positive(self) -> None:
         """Musaripha is a separating energy transfer — classified as not positive."""
-        chart = _make_tajaka_chart({
-            "Saturn": (30.0, 0.06),
-            "Moon":   (35.0, 13.0),
-            "Sun":    (40.0, 1.0),
-            "Mars":    (90.0, 0.6),
-            "Mercury": (150.0, 1.5),
-            "Jupiter": (210.0, 0.15),
-            "Venus":   (270.0, 1.2),
-            "Rahu":    (330.0, -0.02),
-            "Ketu":    (150.0, -0.02),
-        })
+        chart = _make_tajaka_chart(
+            {
+                "Saturn": (30.0, 0.06),
+                "Moon": (35.0, 13.0),
+                "Sun": (40.0, 1.0),
+                "Mars": (90.0, 0.6),
+                "Mercury": (150.0, 1.5),
+                "Jupiter": (210.0, 0.15),
+                "Venus": (270.0, 1.2),
+                "Rahu": (330.0, -0.02),
+                "Ketu": (150.0, -0.02),
+            }
+        )
         yogas = detect_all_tajaka_yogas(chart)
         for y in yogas:
             if y.name == "Musaripha":

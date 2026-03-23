@@ -36,6 +36,7 @@ class TestD9Deep:
         """D9 7th should be 6 signs forward from D9 lagna."""
         from daivai_engine.compute.divisional import compute_navamsha_sign
         from daivai_engine.constants import SIGNS
+
         result = analyze_d9_deep(manish_chart)
         d9_lagna = compute_navamsha_sign(manish_chart.lagna_longitude)
         expected_7th = (d9_lagna + 6) % 12
@@ -129,7 +130,9 @@ class TestD12Deep:
 
 
 class TestCrossVarga:
-    @pytest.mark.parametrize("planet", ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"])
+    @pytest.mark.parametrize(
+        "planet", ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"]
+    )
     def test_certainty_valid(self, manish_chart: ChartData, planet: str) -> None:
         result = cross_varga_confirm(manish_chart, planet)
         assert result.certainty in ("certain", "probable", "possible", "weak")

@@ -70,15 +70,20 @@ class TestPanchangaShuddhi:
         result = score_muhurta("general", _TEST_DT, _VARANASI_LAT, _VARANASI_LON)
         ps = result.panchanga_shuddhi
         assert ps is not None
-        expected = sum([
-            ps.tithi_shuddha, ps.vara_shuddha, ps.nakshatra_shuddha,
-            ps.yoga_shuddha, ps.karana_shuddha,
-        ])
+        expected = sum(
+            [
+                ps.tithi_shuddha,
+                ps.vara_shuddha,
+                ps.nakshatra_shuddha,
+                ps.yoga_shuddha,
+                ps.karana_shuddha,
+            ]
+        )
         assert ps.shuddha_count == expected
 
-    @pytest.mark.parametrize("event_type", [
-        "vivah", "griha_pravesh", "vyapara", "yatra", "vidya", "general"
-    ])
+    @pytest.mark.parametrize(
+        "event_type", ["vivah", "griha_pravesh", "vyapara", "yatra", "vidya", "general"]
+    )
     def test_different_event_types_run_without_error(self, event_type: str) -> None:
         result = score_muhurta(event_type, _TEST_DT, _VARANASI_LAT, _VARANASI_LON)
         assert result.panchanga_shuddhi is not None

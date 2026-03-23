@@ -138,10 +138,15 @@ class TestMedicalModelStructure:
         """Constitution type must be one of the 7 recognized types."""
         tridosha = compute_tridosha(manish_chart)
         valid_types = {
-            "Vata", "Pitta", "Kapha",
-            "Vata-Pitta", "Pitta-Vata",
-            "Pitta-Kapha", "Kapha-Pitta",
-            "Vata-Kapha", "Kapha-Vata",
+            "Vata",
+            "Pitta",
+            "Kapha",
+            "Vata-Pitta",
+            "Pitta-Vata",
+            "Pitta-Kapha",
+            "Kapha-Pitta",
+            "Vata-Kapha",
+            "Kapha-Vata",
             "Tridoshic",
         }
         assert tridosha.constitution_type in valid_types, (
@@ -369,7 +374,10 @@ class TestSphutalResult:
         """When Prana Sphuta falls in trikona relative to lagna, concordance is 'favorable'."""
         sphuta = compute_prana_deha_mrityu_sphuta(manish_chart)
         prana_house = ((sphuta.prana_sphuta_sign_index - manish_chart.lagna_sign_index) % 12) + 1
-        if prana_house in {1, 5, 9} and sphuta.prana_sphuta_sign_index != sphuta.mrityu_sphuta_sign_index:
+        if (
+            prana_house in {1, 5, 9}
+            and sphuta.prana_sphuta_sign_index != sphuta.mrityu_sphuta_sign_index
+        ):
             assert sphuta.prana_deha_concordance == "favorable"
 
 

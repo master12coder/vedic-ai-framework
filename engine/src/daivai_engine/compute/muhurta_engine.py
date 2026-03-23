@@ -257,6 +257,35 @@ def score_muhurta(
         if is_bad_tara:
             score -= 8
 
+    # 10. Chandrabalam — Moon strength for personalized muhurta — BPHS Ch.81,
+    #     Muhurta Chintamani: "The Moon should not be in the 4th, 8th, or 12th
+    #     house from Janma Rashi." Moon in 1,3,6,7,10,11 from natal Moon =
+    #     auspicious; in 2,5,9 = neutral; in 4,8,12 = inauspicious.
+    if natal_chart:
+        natal_moon_sign = natal_chart.planets["Moon"].sign_index
+        transit_nak_name = panchang.nakshatra_name
+        # Compute transit Moon's sign from the nakshatra (each nak spans ~13.33 deg)
+        transit_nak_i = nak_index(transit_nak_name)
+        # Each nakshatra maps to a sign: nak 0-2 → sign 0, nak 3-5 → sign 1, etc.
+        transit_moon_sign = (transit_nak_i * 4) // 9  # 27 nak / 12 signs = 2.25 nak/sign
+        house_from_moon = ((transit_moon_sign - natal_moon_sign) % 12) + 1
+        bad_chandrabalam = house_from_moon in {4, 8, 12}
+        doshas.append(
+            MuhurtaDosha(
+                name="Chandrabalam",
+                name_hi="चन्द्रबलम्",
+                is_present=bad_chandrabalam,
+                severity="moderate" if bad_chandrabalam else "none",
+                description=(
+                    f"Moon in {house_from_moon}th from Janma Rashi — inauspicious"
+                    if bad_chandrabalam
+                    else f"Moon in {house_from_moon}th from Janma Rashi — favorable"
+                ),
+            )
+        )
+        if bad_chandrabalam:
+            score -= 10
+
     doshas_present = sum(1 for d in doshas if d.is_present)
     doshas_absent = len(doshas) - doshas_present
     score = max(0, min(100, score))

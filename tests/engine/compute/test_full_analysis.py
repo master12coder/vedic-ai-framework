@@ -1,4 +1,4 @@
-"""Tests for the full chart analysis v4.0 — all modules wired in."""
+"""Tests for the full chart analysis v5.0 — all modules wired in."""
 
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ def _lordship(chart: ChartData) -> dict:
 class TestFullAnalysisV4:
     def test_version(self, manish_chart: ChartData) -> None:
         a = compute_full_analysis(manish_chart)
-        assert a.version == "4.0"
+        assert a.version == "5.0"
 
     def test_core_fields(self, manish_chart: ChartData) -> None:
         a = compute_full_analysis(manish_chart, lordship_context=_lordship(manish_chart))

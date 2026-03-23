@@ -37,8 +37,24 @@ class TestVimshopakaBala:
             assert 0.0 <= v.percentage <= 100.0
 
     def test_dignity_map_has_all_16_vargas(self, manish_chart: ChartData) -> None:
-        expected = {"D1", "D2", "D3", "D4", "D7", "D9", "D10", "D12",
-                    "D16", "D20", "D24", "D27", "D30", "D40", "D45", "D60"}
+        expected = {
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D7",
+            "D9",
+            "D10",
+            "D12",
+            "D16",
+            "D20",
+            "D24",
+            "D27",
+            "D30",
+            "D40",
+            "D45",
+            "D60",
+        }
         results = compute_vimshopaka_bala(manish_chart)
         for v in results:
             assert expected.issubset(v.dignity_in_each.keys())

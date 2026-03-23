@@ -188,8 +188,8 @@ class TestBuildPeriods:
     def _make_day_window(self) -> tuple[datetime, datetime, list[Bird]]:
         from datetime import UTC
 
-        sunrise = datetime(2024, 3, 20, 1, 0, tzinfo=UTC)   # 06:30 IST
-        sunset = datetime(2024, 3, 20, 13, 0, tzinfo=UTC)   # 18:30 IST (12 hr day)
+        sunrise = datetime(2024, 3, 20, 1, 0, tzinfo=UTC)  # 06:30 IST
+        sunset = datetime(2024, 3, 20, 13, 0, tzinfo=UTC)  # 18:30 IST (12 hr day)
         seq = get_yama_sequence("Shukla", is_day=True)
         return sunrise, sunset, seq
 
@@ -252,11 +252,16 @@ class TestSubPeriods:
         from datetime import UTC
 
         start = datetime(2024, 3, 20, 1, 0, tzinfo=UTC)
-        end = datetime(2024, 3, 20, 3, 24, tzinfo=UTC)   # 2h24m = 144min Yama
+        end = datetime(2024, 3, 20, 3, 24, tzinfo=UTC)  # 2h24m = 144min Yama
         seq = get_yama_sequence("Shukla", is_day=True)
         period = PanchaPakshiPeriod(
-            yama_index=1, bird=Bird.VULTURE, activity=Activity.RULE,
-            strength=1.0, start_time=start, end_time=end, is_daytime=True,
+            yama_index=1,
+            bird=Bird.VULTURE,
+            activity=Activity.RULE,
+            strength=1.0,
+            start_time=start,
+            end_time=end,
+            is_daytime=True,
         )
         return period, seq
 

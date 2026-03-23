@@ -34,9 +34,7 @@ class TestJaiminiRajYogas:
         yogas = detect_jaimini_raj_yogas(manish_chart, karakas, padas)
         valid_strengths = {"strong", "moderate", "weak", "none"}
         for y in yogas:
-            assert y.strength in valid_strengths, (
-                f"{y.name}: invalid strength '{y.strength}'"
-            )
+            assert y.strength in valid_strengths, f"{y.name}: invalid strength '{y.strength}'"
 
     def test_description_not_empty(self, manish_chart: ChartData) -> None:
         karakas = compute_chara_karakas(manish_chart)

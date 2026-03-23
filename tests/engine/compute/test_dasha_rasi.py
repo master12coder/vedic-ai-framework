@@ -57,7 +57,7 @@ class TestSthiraDasha:
         periods = compute_sthira_dasha(manish_chart)
         for i in range(1, len(periods)):
             gap = abs((periods[i].start - periods[i - 1].end).total_seconds())
-            assert gap < 60, f"Gap between period {i-1} and {i}: {gap}s"
+            assert gap < 60, f"Gap between period {i - 1} and {i}: {gap}s"
 
     def test_mithuna_lagna_forward_progression(self, manish_chart):
         """Mithuna lagna (index 2, even/odd) must go forward.
@@ -68,8 +68,7 @@ class TestSthiraDasha:
         periods = compute_sthira_dasha(manish_chart)
         assert manish_chart.lagna_sign_index == 2, "Expected Mithuna lagna"
         assert periods[0].sign_index == 2, (
-            f"Mithuna lagna forward: first sign should be Mithuna(2), "
-            f"got {periods[0].sign}"
+            f"Mithuna lagna forward: first sign should be Mithuna(2), got {periods[0].sign}"
         )
 
     def test_antardasha_12_sub_periods(self, manish_chart):
@@ -109,8 +108,7 @@ class TestShoolaDasha:
         for p in periods:
             expected = 7 if p.sign_index % 2 == 0 else 8
             assert p.years == expected, (
-                f"Shoola sign {p.sign} (idx {p.sign_index}): "
-                f"expected {expected} yrs, got {p.years}"
+                f"Shoola sign {p.sign} (idx {p.sign_index}): expected {expected} yrs, got {p.years}"
             )
 
     def test_total_90_years(self):
@@ -184,8 +182,7 @@ class TestMandookaDasha:
         # First 6 must be every-other-sign starting from lagna
         expected_first_six = [(lagna + 2 * i) % 12 for i in range(6)]
         assert sequence[:6] == expected_first_six, (
-            f"Mandooka first 6 signs wrong: expected {expected_first_six}, "
-            f"got {sequence[:6]}"
+            f"Mandooka first 6 signs wrong: expected {expected_first_six}, got {sequence[:6]}"
         )
         # All 12 signs appear exactly once
         assert sorted(sequence) == list(range(12))

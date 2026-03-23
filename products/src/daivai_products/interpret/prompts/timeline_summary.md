@@ -10,6 +10,20 @@ Provide a timeline forecast for {{ name }} based on upcoming dasha periods.
 ### Current Period
 - Running: {{ current_dasha.mahadasha }}-{{ current_dasha.antardasha }}
 
+{% if dasha_transit %}
+### Dasha-Transit Current Assessment
+- Overall: **{{ dasha_transit.overall_favorability }}**
+- {{ dasha_transit.summary }}
+{% if dasha_transit.event_domains %}- Active life domains: {{ dasha_transit.event_domains | join(', ') }}{% endif %}
+{% endif %}
+
+{% if yoga_timings %}
+### Yoga Activation Windows
+- {{ yoga_timings.summary }}
+{% if yoga_timings.currently_active %}- **Currently Active Yogas:** {{ yoga_timings.currently_active | join(', ') }}{% endif %}
+{% if yoga_timings.most_significant %}- Most Significant: {{ yoga_timings.most_significant }}{% endif %}
+{% endif %}
+
 ### Forecast Requirements
 
 #### Year-by-Year Summary (Next 10 Years)

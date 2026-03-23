@@ -71,6 +71,7 @@ class TestDrekkanaPositions:
 
     def test_natal_sign_matches_chart(self, manish_chart: ChartData) -> None:
         from daivai_engine.constants import SIGNS
+
         result = compute_drekkana_analysis(manish_chart)
         for pos in result.all_positions:
             chart_sign = manish_chart.planets[pos.planet].sign_index
@@ -94,14 +95,13 @@ class TestSarpaDispositor:
 
     def test_sarpa_planets_match_positions(self, manish_chart: ChartData) -> None:
         result = compute_drekkana_analysis(manish_chart)
-        sarpa_from_positions = {
-            p.planet for p in result.all_positions if p.is_sarpa_drekkana
-        }
+        sarpa_from_positions = {p.planet for p in result.all_positions if p.is_sarpa_drekkana}
         assert set(result.sarpa_drekkana_planets) == sarpa_from_positions
 
     def test_known_sarpa_drekkanas(self) -> None:
         """Test static Sarpa identification: Mesha 2nd decanate should be Sarpa."""
         from daivai_engine.compute.drekkana_analysis import _is_sarpa_drekkana
+
         # Mesha (0), part 1 = Sarpa
         assert _is_sarpa_drekkana(0, 1, 4) is True
         # Karka (3), part 0 = Sarpa
@@ -157,6 +157,7 @@ class TestSiblingAnalysis:
 
     def test_third_lord_d3_sign_is_valid_sign(self, manish_chart: ChartData) -> None:
         from daivai_engine.constants import SIGNS
+
         result = compute_drekkana_analysis(manish_chart)
         assert result.sibling_analysis.third_house_lord_d3_sign in SIGNS
 

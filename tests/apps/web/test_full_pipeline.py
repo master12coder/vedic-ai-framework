@@ -30,6 +30,7 @@ def _setup(tmp_path, monkeypatch):
 def client():
     """TestClient with auth bypass."""
     from daivai_app.web.app import create_app
+
     return TestClient(create_app())
 
 

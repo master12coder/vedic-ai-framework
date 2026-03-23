@@ -72,12 +72,33 @@ class TestNamingSyllables:
     def test_all_27_nakshatras_x_4_padas(self) -> None:
         """Verify all 108 nakshatra-pada combinations return results."""
         nakshatras = [
-            "Ashwini", "Bharani", "Krittika", "Rohini", "Mrigashira", "Ardra",
-            "Punarvasu", "Pushya", "Ashlesha", "Magha", "Purva Phalguni",
-            "Uttara Phalguni", "Hasta", "Chitra", "Swati", "Vishakha",
-            "Anuradha", "Jyeshtha", "Moola", "Purva Ashadha",
-            "Uttara Ashadha", "Shravana", "Dhanishta", "Shatabhisha",
-            "Purva Bhadrapada", "Uttara Bhadrapada", "Revati",
+            "Ashwini",
+            "Bharani",
+            "Krittika",
+            "Rohini",
+            "Mrigashira",
+            "Ardra",
+            "Punarvasu",
+            "Pushya",
+            "Ashlesha",
+            "Magha",
+            "Purva Phalguni",
+            "Uttara Phalguni",
+            "Hasta",
+            "Chitra",
+            "Swati",
+            "Vishakha",
+            "Anuradha",
+            "Jyeshtha",
+            "Moola",
+            "Purva Ashadha",
+            "Uttara Ashadha",
+            "Shravana",
+            "Dhanishta",
+            "Shatabhisha",
+            "Purva Bhadrapada",
+            "Uttara Bhadrapada",
+            "Revati",
         ]
         for nakshatra in nakshatras:
             for pada in range(1, 5):
@@ -104,8 +125,18 @@ class TestRashiLetters:
 
     def test_all_12_rashis_have_letters(self) -> None:
         rashis = [
-            "Mesha", "Vrishabha", "Mithuna", "Karka", "Simha", "Kanya",
-            "Tula", "Vrischika", "Dhanu", "Makara", "Kumbha", "Meena",
+            "Mesha",
+            "Vrishabha",
+            "Mithuna",
+            "Karka",
+            "Simha",
+            "Kanya",
+            "Tula",
+            "Vrischika",
+            "Dhanu",
+            "Makara",
+            "Kumbha",
+            "Meena",
         ]
         for rashi in rashis:
             letters = get_rashi_letters(rashi)

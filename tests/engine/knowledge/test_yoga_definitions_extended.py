@@ -169,9 +169,7 @@ class TestYamlIntegrity:
 
     def test_total_yogas_exceeds_200(self, yoga_defs):
         """The combined definitions file must now contain over 200 yogas."""
-        assert len(yoga_defs) >= 200, (
-            f"Expected 200+ yogas, found {len(yoga_defs)}"
-        )
+        assert len(yoga_defs) >= 200, f"Expected 200+ yogas, found {len(yoga_defs)}"
 
 
 # ---------------------------------------------------------------------------
@@ -183,15 +181,16 @@ class TestBalarishtagYogas:
     """Balarishta yogas must be malefic and reference childhood danger."""
 
     BALARISHTA_KEYS: ClassVar[list[str]] = [
-        "balarishta_1", "balarishta_2", "balarishta_3", "balarishta_4",
+        "balarishta_1",
+        "balarishta_2",
+        "balarishta_3",
+        "balarishta_4",
         "sutika_arishta",
     ]
 
     def test_balarishta_yogas_are_malefic(self, yoga_defs):
         for key in self.BALARISHTA_KEYS:
-            assert yoga_defs[key]["type"] == "malefic", (
-                f"{key} should be malefic"
-            )
+            assert yoga_defs[key]["type"] == "malefic", f"{key} should be malefic"
 
     def test_balarishta_yogas_reference_bphs(self, yoga_defs):
         for key in self.BALARISHTA_KEYS:
@@ -243,9 +242,7 @@ class TestAyuYogas:
         """Longevity yogas come from Brihat Jataka Ch.14."""
         for key in ("alpayu_yoga", "purnayu_yoga", "deerghayu_yoga"):
             source = yoga_defs[key]["source"].lower()
-            assert "brihat jataka" in source, (
-                f"{key} should cite Brihat Jataka: {source!r}"
-            )
+            assert "brihat jataka" in source, f"{key} should cite Brihat Jataka: {source!r}"
 
 
 class TestJaiminiYogas:
@@ -262,9 +259,7 @@ class TestJaiminiYogas:
     def test_jaimini_yogas_cite_jaimini_sutras(self, yoga_defs):
         for key in self.JAIMINI_KEYS:
             source = yoga_defs[key]["source"].lower()
-            assert "jaimini" in source, (
-                f"{key} should cite Jaimini Sutras: {source!r}"
-            )
+            assert "jaimini" in source, f"{key} should cite Jaimini Sutras: {source!r}"
 
     def test_atmakaraka_yoga_is_benefic(self, yoga_defs):
         assert yoga_defs["jaimini_raj_yoga_atmakaraka"]["type"] == "benefic"
@@ -307,8 +302,13 @@ class TestCareerYogas:
     def test_career_yogas_have_career_effects(self, yoga_defs):
         """Career yogas must mention career domain in effects."""
         career_keys = [
-            "rajseva_yoga", "vanij_yoga", "sainya_yoga", "vaidya_yoga",
-            "guru_yoga_vocation", "lekhaka_yoga", "kavi_yoga_vocation",
+            "rajseva_yoga",
+            "vanij_yoga",
+            "sainya_yoga",
+            "vaidya_yoga",
+            "guru_yoga_vocation",
+            "lekhaka_yoga",
+            "kavi_yoga_vocation",
             "shilpi_yoga",
         ]
         for key in career_keys:
@@ -403,9 +403,7 @@ class TestPhaladeeepikaYogas:
     def test_phaladeepika_yogas_cite_correct_source(self, yoga_defs):
         for key in self.PHALADEEPIKA_KEYS:
             source = yoga_defs[key]["source"].lower()
-            assert "phaladeepika" in source, (
-                f"{key} should cite Phaladeepika: {source!r}"
-            )
+            assert "phaladeepika" in source, f"{key} should cite Phaladeepika: {source!r}"
 
     def test_pravrajya_4planets_is_mixed(self, yoga_defs):
         """Four planets in one sign can give renunciation or focused achievement."""
@@ -434,9 +432,7 @@ class TestHoraSaraYogas:
     def test_hora_sara_yogas_cite_source(self, yoga_defs):
         for key in self.HORA_SARA_KEYS:
             source = yoga_defs[key]["source"].lower()
-            assert "hora sara" in source, (
-                f"{key} should cite Hora Sara: {source!r}"
-            )
+            assert "hora sara" in source, f"{key} should cite Hora Sara: {source!r}"
 
     def test_hora_sara_karma_yoga_involves_saturn(self, yoga_defs):
         """Saturn in 10th = sustained career per Hora Sara."""
@@ -496,8 +492,12 @@ class TestArishtagYogasExtended:
         assert 8 in houses
 
     def test_all_extended_arishta_are_malefic(self, yoga_defs):
-        for key in ("matru_arishta_yoga", "pitru_arishta_yoga", "putra_arishta_yoga",
-                    "papa_yoga_tri_dosham"):
+        for key in (
+            "matru_arishta_yoga",
+            "pitru_arishta_yoga",
+            "putra_arishta_yoga",
+            "papa_yoga_tri_dosham",
+        ):
             assert yoga_defs[key]["type"] == "malefic", f"{key} should be malefic"
 
     def test_arishta_yogas_have_cancellations(self, yoga_defs):
@@ -522,8 +522,7 @@ class TestYogaDefinitionsLoadWithChart:
 
     def test_manish_chart_planets_exist(self, manish_chart):
         """Reference chart has all 9 required planets."""
-        required = {"Sun", "Moon", "Mars", "Mercury", "Jupiter",
-                    "Venus", "Saturn", "Rahu", "Ketu"}
+        required = {"Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn", "Rahu", "Ketu"}
         assert required.issubset(set(manish_chart.planets.keys()))
 
     def test_yoga_defs_keys_are_valid_yaml_identifiers(self, yoga_defs):
@@ -549,6 +548,6 @@ class TestYogaDefinitionsLoadWithChart:
         assert saturn is not None
         assert rahu is not None
         # A Shrapit Yoga would be present if they're in the same house
-        is_shrapit = (saturn.house == rahu.house)
+        is_shrapit = saturn.house == rahu.house
         # We don't assert presence/absence — just that the logic can be evaluated
         assert isinstance(is_shrapit, bool)

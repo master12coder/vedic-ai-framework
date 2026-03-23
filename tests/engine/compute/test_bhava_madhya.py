@@ -107,9 +107,7 @@ class TestSripatiBhavaMadhya:
         """12 Bhava arc spans must sum to 360°."""
         result = compute_sripati_bhava_madhya(manish_chart)
         total = sum(bm.arc_span for bm in result.bhavas.values())
-        assert abs(total - FULL_CIRCLE_DEG) < 0.1, (
-            f"Arc spans sum to {total:.4f}°, expected 360°"
-        )
+        assert abs(total - FULL_CIRCLE_DEG) < 0.1, f"Arc spans sum to {total:.4f}°, expected 360°"
 
     def test_bhava_models_are_correct_type(self, manish_chart: ChartData) -> None:
         result = compute_sripati_bhava_madhya(manish_chart)

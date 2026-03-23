@@ -156,7 +156,7 @@ class TestContiguousPeriods:
     def _check_contiguous(periods) -> None:
         for i in range(1, len(periods)):
             gap = abs((periods[i].start - periods[i - 1].end).total_seconds())
-            assert gap < 60, f"Gap between period {i-1} and {i}: {gap:.1f}s"
+            assert gap < 60, f"Gap between period {i - 1} and {i}: {gap:.1f}s"
 
     def test_dwisaptati_contiguous(self, manish_chart):
         self._check_contiguous(compute_dwisaptati_dasha(manish_chart))
@@ -187,7 +187,15 @@ class TestValidPlanets:
     """All period lords must be recognized planet names."""
 
     _VALID_PLANETS: ClassVar[set[str]] = {
-        "Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn", "Rahu", "Ketu"
+        "Sun",
+        "Moon",
+        "Mars",
+        "Mercury",
+        "Jupiter",
+        "Venus",
+        "Saturn",
+        "Rahu",
+        "Ketu",
     }
 
     def _check_valid(self, periods) -> None:

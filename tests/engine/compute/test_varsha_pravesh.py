@@ -55,15 +55,24 @@ class TestVarshaPraveshResult:
     def test_year_day_name_non_empty(self, manish_chart: ChartData) -> None:
         result = compute_varsha_pravesh(manish_chart, 2026)
         assert result.year_day_name in {
-            "Sunday", "Monday", "Tuesday", "Wednesday",
-            "Thursday", "Friday", "Saturday",
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
         }
 
     def test_panchavargiya_bala_has_five_keys(self, manish_chart: ChartData) -> None:
         result = compute_varsha_pravesh(manish_chart, 2026)
         bala = result.panchavargiya_bala
         assert set(bala.keys()) == {
-            "janma_rasi_bala", "hora_bala", "weekday_bala", "masa_bala", "abda_bala"
+            "janma_rasi_bala",
+            "hora_bala",
+            "weekday_bala",
+            "masa_bala",
+            "abda_bala",
         }
 
     def test_panchavargiya_values_are_valid(self, manish_chart: ChartData) -> None:

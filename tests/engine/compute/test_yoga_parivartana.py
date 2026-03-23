@@ -25,9 +25,15 @@ from daivai_engine.models.yoga import YogaResult
 _ALL_PLANETS = ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn", "Rahu", "Ketu"]
 
 _PLANET_HI = {
-    "Sun": "सूर्य", "Moon": "चन्द्र", "Mars": "मंगल", "Mercury": "बुध",
-    "Jupiter": "गुरु", "Venus": "शुक्र", "Saturn": "शनि",
-    "Rahu": "राहु", "Ketu": "केतु",
+    "Sun": "सूर्य",
+    "Moon": "चन्द्र",
+    "Mars": "मंगल",
+    "Mercury": "बुध",
+    "Jupiter": "गुरु",
+    "Venus": "शुक्र",
+    "Saturn": "शनि",
+    "Rahu": "राहु",
+    "Ketu": "केतु",
 }
 
 
@@ -158,20 +164,26 @@ class TestDetectParivartanaYogas:
     def test_maha_parivartana_kendra_trikona_exchange(self):
         """Aries lagna: Mars (H1 lord) in H9, Jupiter (H9 lord) in H1 → Maha."""
         # Aries lagna (sign 0). H1=Aries→Mars; H9=Sagittarius(8)→Jupiter
-        chart = make_chart(0, {
-            "Mars": (8, 9),    # Mars in Sagittarius = H9
-            "Jupiter": (0, 1), # Jupiter in Aries = H1
-        })
+        chart = make_chart(
+            0,
+            {
+                "Mars": (8, 9),  # Mars in Sagittarius = H9
+                "Jupiter": (0, 1),  # Jupiter in Aries = H1
+            },
+        )
         names = self._names(chart)
         assert "Maha Parivartana Yoga" in names
 
     def test_dainya_parivartana_dusthana_exchange(self):
         """Aries lagna: Mars (H1 lord) in H6, Mercury (H6 lord) in H1 → Dainya."""
         # H6=Virgo(5)→Mercury; Mars in H6; Mercury in H1
-        chart = make_chart(0, {
-            "Mars": (5, 6),    # Mars in Virgo = H6
-            "Mercury": (0, 1), # Mercury in Aries = H1
-        })
+        chart = make_chart(
+            0,
+            {
+                "Mars": (5, 6),  # Mars in Virgo = H6
+                "Mercury": (0, 1),  # Mercury in Aries = H1
+            },
+        )
         names = self._names(chart)
         assert "Dainya Parivartana Yoga" in names
 
@@ -180,19 +192,25 @@ class TestDetectParivartanaYogas:
         # H3=Gemini(2)→Mercury; but H3 lord for Aries = sign(0+3-1)%12=2(Gemini)→Mercury
         # Let's do H3 ↔ H1: H3=Gemini→Mercury, H1=Aries→Mars
         # Mercury(lord H3) in H1(Aries); Mars(lord H1) in H3(Gemini)
-        chart = make_chart(0, {
-            "Mercury": (0, 1), # Mercury in Aries = H1 ✓ (lord H3 in H1)
-            "Mars": (2, 3),    # Mars in Gemini = H3 ✓ (lord H1 in H3)
-        })
+        chart = make_chart(
+            0,
+            {
+                "Mercury": (0, 1),  # Mercury in Aries = H1 ✓ (lord H3 in H1)
+                "Mars": (2, 3),  # Mars in Gemini = H3 ✓ (lord H1 in H3)
+            },
+        )
         names = self._names(chart)
         assert "Khala Parivartana Yoga" in names
 
     def test_same_lord_houses_skipped(self):
         """For Aries lagna, Mercury lords H3 (Gemini) and H6 (Virgo). No self-exchange."""
         # Put Mercury in any house — can't exchange with itself
-        chart = make_chart(0, {
-            "Mercury": (2, 3),  # Mercury in H3 (its own sign H3)
-        })
+        chart = make_chart(
+            0,
+            {
+                "Mercury": (2, 3),  # Mercury in H3 (its own sign H3)
+            },
+        )
         # No planet is lord of H3 and H6 simultaneously, but Mercury lords both.
         # A parivartana between H3 and H6 would require Mercury in H6 AND Mercury in H3
         # — impossible since Mercury is one planet. Should be skipped.
@@ -204,19 +222,29 @@ class TestDetectParivartanaYogas:
     def test_no_parivartana_when_no_exchange(self):
         """A chart where no lords exchange signs should return empty list."""
         # All planets in H1 — no exchanges possible
-        chart = make_chart(0, {
-            "Sun": (0, 1), "Moon": (0, 1), "Mars": (0, 1),
-            "Mercury": (0, 1), "Jupiter": (0, 1),
-            "Venus": (0, 1), "Saturn": (0, 1),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (0, 1),
+                "Moon": (0, 1),
+                "Mars": (0, 1),
+                "Mercury": (0, 1),
+                "Jupiter": (0, 1),
+                "Venus": (0, 1),
+                "Saturn": (0, 1),
+            },
+        )
         assert detect_parivartana_yogas(chart) == []
 
     def test_parivartana_result_structure(self):
         """Detected parivartana has valid YogaResult fields."""
-        chart = make_chart(0, {
-            "Mars": (8, 9),    # H1 lord → H9
-            "Jupiter": (0, 1), # H9 lord → H1
-        })
+        chart = make_chart(
+            0,
+            {
+                "Mars": (8, 9),  # H1 lord → H9
+                "Jupiter": (0, 1),  # H9 lord → H1
+            },
+        )
         yogas = detect_parivartana_yogas(chart)
         assert yogas
         y = yogas[0]
@@ -242,19 +270,25 @@ class TestDetectParivartanaYogas:
     def test_maha_parivartana_1_5_exchange(self):
         """H1 ↔ H5 is both kendra (1) and trikona (5) → Maha."""
         # Taurus lagna (sign 1). H1=Taurus→Venus; H5=Virgo(5)→Mercury
-        chart = make_chart(1, {
-            "Venus": (5, 5),   # Venus in Virgo = H5 ✓
-            "Mercury": (1, 1), # Mercury in Taurus = H1 ✓
-        })
+        chart = make_chart(
+            1,
+            {
+                "Venus": (5, 5),  # Venus in Virgo = H5 ✓
+                "Mercury": (1, 1),  # Mercury in Taurus = H1 ✓
+            },
+        )
         assert "Maha Parivartana Yoga" in self._names(chart)
 
     def test_dainya_parivartana_8_12_exchange(self):
         """H8 ↔ H12: both are dusthana → Dainya."""
         # Aries lagna. H8=Scorpio(7)→Mars; H12=Pisces(11)→Jupiter
-        chart = make_chart(0, {
-            "Mars": (11, 12),  # Mars in Pisces = H12 ✓
-            "Jupiter": (7, 8), # Jupiter in Scorpio = H8 ✓
-        })
+        chart = make_chart(
+            0,
+            {
+                "Mars": (11, 12),  # Mars in Pisces = H12 ✓
+                "Jupiter": (7, 8),  # Jupiter in Scorpio = H8 ✓
+            },
+        )
         assert "Dainya Parivartana Yoga" in self._names(chart)
 
 
@@ -276,9 +310,7 @@ class TestApplyYogaStrength:
     def test_combust_planet_downgrades_to_partial(self):
         """A combust yoga planet should downgrade strength to 'partial'."""
         chart = make_chart(0, {"Jupiter": (0, 1)})
-        chart.planets["Jupiter"] = _make_planet(
-            "Jupiter", 0, 1, is_combust=True
-        )
+        chart.planets["Jupiter"] = _make_planet("Jupiter", 0, 1, is_combust=True)
         yoga = self._simple_yoga(["Jupiter"])
         result = apply_yoga_strength([yoga], chart)
         assert result[0].strength == "partial"
@@ -305,9 +337,7 @@ class TestApplyYogaStrength:
     def test_retrograde_benefic_upgrades_to_enhanced(self):
         """A retrograde planet in a benefic yoga upgrades to 'enhanced'."""
         chart = make_chart(0, {"Jupiter": (5, 6)})
-        chart.planets["Jupiter"] = _make_planet(
-            "Jupiter", 5, 6, is_retrograde=True
-        )
+        chart.planets["Jupiter"] = _make_planet("Jupiter", 5, 6, is_retrograde=True)
         yoga = self._simple_yoga(["Jupiter"])
         result = apply_yoga_strength([yoga], chart)
         assert result[0].strength == "enhanced"
@@ -315,9 +345,7 @@ class TestApplyYogaStrength:
     def test_retrograde_malefic_yoga_not_upgraded(self):
         """Retrograde planet in a malefic yoga should NOT be upgraded."""
         chart = make_chart(0, {"Saturn": (5, 6)})
-        chart.planets["Saturn"] = _make_planet(
-            "Saturn", 5, 6, is_retrograde=True
-        )
+        chart.planets["Saturn"] = _make_planet("Saturn", 5, 6, is_retrograde=True)
         yoga = self._simple_yoga(["Saturn"], effect="malefic")
         result = apply_yoga_strength([yoga], chart)
         assert result[0].strength == "full"
@@ -340,9 +368,7 @@ class TestApplyYogaStrength:
     def test_combust_does_not_upgrade_partial(self):
         """If strength is already 'partial' from grading, combustion doesn't change it."""
         chart = make_chart(0, {"Mercury": (5, 6)})
-        chart.planets["Mercury"] = _make_planet(
-            "Mercury", 5, 6, is_combust=True
-        )
+        chart.planets["Mercury"] = _make_planet("Mercury", 5, 6, is_combust=True)
         yoga = YogaResult(
             name="Adhi Yoga",
             name_hindi="अधि योग",
@@ -375,6 +401,7 @@ class TestManishChartParivartana:
     def test_result_types_valid(self, manish_chart: ChartData) -> None:
         """All returned yoga results have valid field types."""
         from daivai_engine.compute.yoga import detect_all_yogas
+
         for y in detect_all_yogas(manish_chart):
             assert isinstance(y.name, str) and y.name
             assert isinstance(y.strength, str)

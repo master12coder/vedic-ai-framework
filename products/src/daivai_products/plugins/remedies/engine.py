@@ -1,9 +1,10 @@
-"""Remedies plugin engine — gemstone recommendations with safety checks."""
+"""Remedies plugin engine — gemstone + Lal Kitab recommendations."""
 
 from __future__ import annotations
 
 from typing import Any
 
+from daivai_engine.compute.lal_kitab import compute_lal_kitab
 from daivai_engine.models.chart import ChartData
 from daivai_products.interpret.context import build_lordship_context
 
@@ -78,5 +79,54 @@ def _format_recommendations(
                 f"  ! {m['planet']} — {m['house_str']} — "
                 f"dual-nature: acknowledge both positive and negative effects"
             )
+
+    return "\n".join(lines)
+
+
+def get_lal_kitab_assessment(chart: ChartData) -> str:
+    """Get Lal Kitab planet assessment, debts, and remedies.
+
+    Computes the full Lal Kitab analysis: Pakka Ghar positions,
+    planet strength (5-tier), Rin (debts), and matched remedies.
+
+    Source: Lal Kitab (Pandit Roop Chand Joshi, 1939-1952).
+
+    Args:
+        chart: Computed birth chart.
+
+    Returns:
+        Formatted multi-line Lal Kitab report.
+    """
+    result = compute_lal_kitab(chart)
+    return _format_lal_kitab(result, chart.name)
+
+
+def _format_lal_kitab(result: Any, name: str) -> str:
+    """Format LalKitabResult into a readable report."""
+    lines: list[str] = []
+    lines.append(f"Lal Kitab Assessment for {name}")
+    lines.append("=" * 50)
+    lines.append("")
+
+    lines.append(f"Strongest: {result.strongest_planet}")
+    lines.append(f"Weakest: {result.weakest_planet}")
+    if result.dormant_planets:
+        lines.append(f"Dormant (Soya Hua): {', '.join(result.dormant_planets)}")
+    lines.append("")
+
+    if result.rins:
+        lines.append("RINS (DEBTS):")
+        for r in result.rins:
+            lines.append(f"  - {r.rin_type}: {r.severity} — {r.description}")
+        lines.append("")
+
+    if result.remedies:
+        lines.append("REMEDIES:")
+        for r in result.remedies[:10]:
+            lines.append(f"  - {r.planet} (H{r.house}): {r.remedy_text}")
+        lines.append("")
+
+    if result.summary:
+        lines.append(result.summary)
 
     return "\n".join(lines)

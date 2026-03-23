@@ -1,15 +1,13 @@
 """Full chart analysis — compute ALL engine calculations in one call.
 
 Orchestrator that calls every engine module and returns a single typed
-FullChartAnalysis v4.0. Each module wrapped in safe_compute().
+FullChartAnalysis v5.0. Each module wrapped in safe_compute().
 
 NOTE: lordship_context must be passed in from the products layer.
 """
 
 from __future__ import annotations
 
-import logging
-from collections.abc import Callable
 from typing import Any
 
 from daivai_engine.compute.argala import compute_argala
@@ -18,8 +16,10 @@ from daivai_engine.compute.avasthas import (
     compute_deeptadi_avasthas,
     compute_lajjitadi_avasthas,
 )
+from daivai_engine.compute.badhaka import compute_badhaka
 from daivai_engine.compute.bhava_bala import compute_bhava_bala
 from daivai_engine.compute.bhava_chalit import compute_bhava_chalit
+from daivai_engine.compute.bhavat_bhavam import compute_all_bhavat_bhavam
 from daivai_engine.compute.compatibility_advanced import compute_mangal_dosha_detailed
 from daivai_engine.compute.dasha import compute_mahadashas, find_current_dasha
 from daivai_engine.compute.dasha_advanced import compute_dasha_sandhi
@@ -28,23 +28,35 @@ from daivai_engine.compute.dasha_extra import (
     compute_chara_dasha,
     compute_yogini_dasha,
 )
+from daivai_engine.compute.dasha_transit import compute_dasha_transit
+from daivai_engine.compute.datetime_utils import now_ist, to_jd
+from daivai_engine.compute.dispositor import compute_dispositor_tree
 from daivai_engine.compute.divisional import compute_navamsha, get_vargottam_planets
 from daivai_engine.compute.dosha import detect_all_doshas
 from daivai_engine.compute.double_transit import (
     check_double_transit,
     check_double_transit_from_moon,
 )
+from daivai_engine.compute.eclipse_natal import compute_upcoming_eclipse_impacts
+from daivai_engine.compute.full_analysis_utils import safe_compute
 from daivai_engine.compute.gandanta import check_gandanta
 from daivai_engine.compute.graha_yuddha import detect_planetary_war
 from daivai_engine.compute.house_comparison import compare_whole_sign_vs_chalit
 from daivai_engine.compute.ishta_kashta import compute_ishta_kashta
 from daivai_engine.compute.jaimini import compute_jaimini
 from daivai_engine.compute.kalachakra_dasha import compute_kalachakra_dasha
+from daivai_engine.compute.kota_chakra import compute_kota_chakra
 from daivai_engine.compute.kp import compute_kp_positions
+from daivai_engine.compute.lal_kitab import compute_lal_kitab
 from daivai_engine.compute.longevity import compute_longevity
 from daivai_engine.compute.namakarana import check_gand_mool
 from daivai_engine.compute.narayana_dasha import compute_narayana_dasha
+from daivai_engine.compute.nisheka import compute_nisheka
 from daivai_engine.compute.panchang import compute_panchang
+from daivai_engine.compute.reference_chart import (
+    compute_chandra_kundali,
+    compute_surya_kundali,
+)
 from daivai_engine.compute.saham import compute_sahams
 from daivai_engine.compute.special_lagnas import compute_special_lagnas
 from daivai_engine.compute.strength import compute_shadbala
@@ -65,25 +77,23 @@ from daivai_engine.compute.varga_analysis import (
 from daivai_engine.compute.verify import verify_chart_accuracy
 from daivai_engine.compute.vimshopaka import compute_vimshopaka_bala
 from daivai_engine.compute.yoga import detect_all_yogas
+from daivai_engine.compute.yoga_timing import compute_all_yoga_timings
 from daivai_engine.models.analysis import FullChartAnalysis
 from daivai_engine.models.chart import ChartData
-
-
-logger = logging.getLogger(__name__)
 
 
 def compute_full_analysis(
     chart: ChartData,
     lordship_context: dict[str, Any] | None = None,
 ) -> FullChartAnalysis:
-    """Run ALL engine computations — 50+ modules, one typed result.
+    """Run ALL engine computations — 60+ modules, one typed result.
 
     Args:
         chart: Computed birth chart.
         lordship_context: From products layer (engine can't import products).
 
     Returns:
-        FullChartAnalysis v4.0 — the complete data contract.
+        FullChartAnalysis v5.0 — the complete data contract.
     """
     if lordship_context is None:
         lordship_context = {}
@@ -126,14 +136,10 @@ def compute_full_analysis(
     upapada = compute_upapada_lagna(chart)
     argala = safe_compute(compute_argala, chart)
 
-    # KP
+    # KP + Bhava Chalit
     kp_pos = safe_compute(compute_kp_positions, chart)
-
-    # Bhava Chalit
     bhava_chalit = safe_compute(compute_bhava_chalit, chart)
     house_shifts = safe_compute(compare_whole_sign_vs_chalit, chart)
-
-    # Upagrahas
     upagrahas = safe_compute(compute_all_upagrahas, chart)
 
     # Dashas (all systems)
@@ -159,16 +165,10 @@ def compute_full_analysis(
         chart.place,
     )
 
-    # Sudarshan
+    # Misc modules
     sudarshan = safe_compute(compute_sudarshan, chart)
-
-    # Sahams
     sahams = safe_compute(compute_sahams, chart)
-
-    # Longevity
     longevity = safe_compute(compute_longevity, chart)
-
-    # Mangal dosha detailed
     mangal = safe_compute(compute_mangal_dosha_detailed, chart)
 
     # Varga analysis
@@ -182,6 +182,21 @@ def compute_full_analysis(
         result = safe_compute(fn, chart)
         if result:
             varga[key] = result
+
+    # Phase 1 advanced modules
+    dispositor = safe_compute(compute_dispositor_tree, chart)
+    badhaka = safe_compute(compute_badhaka, chart)
+    bhavat_bhavam = safe_compute(compute_all_bhavat_bhavam, chart)
+    chandra_kundali = safe_compute(compute_chandra_kundali, chart)
+    surya_kundali = safe_compute(compute_surya_kundali, chart)
+    dasha_transit = safe_compute(compute_dasha_transit, chart)
+    yoga_timings = safe_compute(compute_all_yoga_timings, chart)
+    lal_kitab = safe_compute(compute_lal_kitab, chart)
+    moon_nak = chart.planets["Moon"].nakshatra_index
+    kota_chakra = safe_compute(compute_kota_chakra, moon_nak)
+    nisheka = safe_compute(compute_nisheka, chart)
+    eclipse_jd = to_jd(now_ist())
+    eclipse_impacts = safe_compute(compute_upcoming_eclipse_impacts, chart, eclipse_jd, 1)
 
     # Verification
     verification = verify_chart_accuracy(chart)
@@ -232,13 +247,15 @@ def compute_full_analysis(
         varga_analysis=varga,
         lordship_context=lordship_context,
         verification_warnings=verification,
+        dispositor_tree=dispositor if not isinstance(dispositor, list) else None,
+        badhaka=badhaka if not isinstance(badhaka, list) else None,
+        bhavat_bhavam=bhavat_bhavam,
+        chandra_kundali=chandra_kundali if not isinstance(chandra_kundali, list) else None,
+        surya_kundali=surya_kundali if not isinstance(surya_kundali, list) else None,
+        dasha_transit=dasha_transit if not isinstance(dasha_transit, list) else None,
+        yoga_timings=yoga_timings if not isinstance(yoga_timings, list) else None,
+        lal_kitab=lal_kitab if not isinstance(lal_kitab, list) else None,
+        kota_chakra=kota_chakra if not isinstance(kota_chakra, list) else None,
+        nisheka=nisheka if not isinstance(nisheka, list) else None,
+        eclipse_impacts=eclipse_impacts,
     )
-
-
-def safe_compute(fn: Callable, *args: Any, **kwargs: Any) -> Any:
-    """Call a computation function. On crash, log and return empty list."""
-    try:
-        return fn(*args, **kwargs)
-    except Exception as e:
-        logger.warning("Computation %s failed: %s", fn.__name__, e)
-        return []

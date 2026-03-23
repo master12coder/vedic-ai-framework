@@ -61,9 +61,7 @@ class TestSBCGridStructure:
     def test_abhijit_present_exactly_once(self):
         """Abhijit (SBC nakshatra 28) must appear exactly once."""
         grid = build_sbc_grid()
-        count = sum(
-            1 for row in grid for cell in row if 28 in cell.nakshatra_nums
-        )
+        count = sum(1 for row in grid for cell in row if 28 in cell.nakshatra_nums)
         assert count == 1
 
     def test_all_12_rashis_present(self):
@@ -78,12 +76,7 @@ class TestSBCGridStructure:
     def test_all_5_tithi_groups_present(self):
         """Nanda, Bhadra, Jaya, Rikta, Purna must each appear once."""
         grid = build_sbc_grid()
-        groups = {
-            cell.tithi_group
-            for row in grid
-            for cell in row
-            if cell.tithi_group
-        }
+        groups = {cell.tithi_group for row in grid for cell in row if cell.tithi_group}
         assert groups == {"Nanda", "Bhadra", "Jaya", "Rikta", "Purna"}
 
     def test_all_7_varas_covered(self):
@@ -94,8 +87,13 @@ class TestSBCGridStructure:
             for cell in row:
                 varas.update(cell.varas)
         expected = {
-            "Sunday", "Monday", "Tuesday", "Wednesday",
-            "Thursday", "Friday", "Saturday",
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
         }
         assert varas == expected
 
@@ -291,8 +289,13 @@ class TestNakshatraStriking:
     def test_struck_varas_are_valid_day_names(self):
         """struck_varas_across must only contain valid weekday names."""
         valid = {
-            "Sunday", "Monday", "Tuesday", "Wednesday",
-            "Thursday", "Friday", "Saturday",
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
         }
         result = compute_sbc_vedha("Venus", 6)  # Punarvasu at (5,8)
         for vara in result.struck_varas_across:

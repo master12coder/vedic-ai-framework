@@ -60,6 +60,7 @@ def interpret_chart(
     chart: ChartData,
     backend: LLMBackend | None = None,
     sections: list[str] | None = None,
+    full_analysis: Any | None = None,
 ) -> dict[str, str]:
     """Generate full chart interpretation using LLM.
 
@@ -70,6 +71,7 @@ def interpret_chart(
         chart: Computed chart data
         backend: LLM backend to use (default from config)
         sections: Specific sections to interpret (default: all)
+        full_analysis: Optional FullChartAnalysis with Phase 1 data.
 
     Returns:
         Dictionary of section_name -> interpreted text
@@ -77,7 +79,7 @@ def interpret_chart(
     if backend is None:
         backend = get_backend()
 
-    context = build_chart_context(chart)
+    context = build_chart_context(chart, full_analysis=full_analysis)
     lordship_ctx = context.get("lordship", {})
     system_prompt = _render_prompt("system_prompt.md", context)
 
@@ -89,6 +91,8 @@ def interpret_chart(
         "relationship_analysis",
         "spiritual_profile",
         "remedy_generation",
+        "lal_kitab_remedies",
+        "timeline_summary",
     ]
 
     if sections:

@@ -87,8 +87,7 @@ class TestGetSignificatorsUpgraded:
         for planet in ("Sun", "Moon", "Mars", "Jupiter", "Venus"):
             sigs = get_significators(manish_chart, planet)
             all_houses = (
-                sigs["occupies"] + sigs["owns"]
-                + sigs["star_lord_houses"] + sigs["sub_lord_houses"]
+                sigs["occupies"] + sigs["owns"] + sigs["star_lord_houses"] + sigs["sub_lord_houses"]
             )
             for h in all_houses:
                 assert 1 <= h <= 12, f"{planet}: house {h} out of range"

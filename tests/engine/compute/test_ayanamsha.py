@@ -427,9 +427,7 @@ class TestDegreesToDms:
     def test_verified_lahiri_1989(self) -> None:
         """23.70617° ≈ 23°42'22\" — DMS should start with '23°42''."""
         result = _degrees_to_dms(23.70617)
-        assert result.startswith("23\u00b042'"), (
-            f"Expected '23°42'...', got: {result!r}"
-        )
+        assert result.startswith("23\u00b042'"), f"Expected '23°42'...', got: {result!r}"
 
     def test_known_value_seconds_precision(self) -> None:
         """23.70617° → seconds part is approximately 22.21\"."""

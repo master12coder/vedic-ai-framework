@@ -26,9 +26,15 @@ from daivai_engine.models.chart import ChartData, PlanetData
 _ALL_PLANETS = ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn", "Rahu", "Ketu"]
 
 _PLANET_HI = {
-    "Sun": "सूर्य", "Moon": "चन्द्र", "Mars": "मंगल", "Mercury": "बुध",
-    "Jupiter": "गुरु", "Venus": "शुक्र", "Saturn": "शनि",
-    "Rahu": "राहु", "Ketu": "केतु",
+    "Sun": "सूर्य",
+    "Moon": "चन्द्र",
+    "Mars": "मंगल",
+    "Mercury": "बुध",
+    "Jupiter": "गुरु",
+    "Venus": "शुक्र",
+    "Saturn": "शनि",
+    "Rahu": "राहु",
+    "Ketu": "केतु",
 }
 
 
@@ -122,40 +128,65 @@ class TestConsecHelper:
 class TestAshrayaYogas:
     def test_rajju_all_chara_signs(self):
         """All 7 planets in movable signs → Rajju Yoga."""
-        chart = make_chart(0, {
-            "Sun": (0, 1), "Moon": (0, 1), "Mars": (3, 4),
-            "Mercury": (3, 4), "Jupiter": (6, 7),
-            "Venus": (6, 7), "Saturn": (9, 10),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (0, 1),
+                "Moon": (0, 1),
+                "Mars": (3, 4),
+                "Mercury": (3, 4),
+                "Jupiter": (6, 7),
+                "Venus": (6, 7),
+                "Saturn": (9, 10),
+            },
+        )
         assert "Rajju Yoga" in yoga_names(chart)
         assert "Musala Yoga" not in yoga_names(chart)
         assert "Nala Yoga" not in yoga_names(chart)
 
     def test_musala_all_fixed_signs(self):
         """All 7 planets in fixed signs → Musala Yoga."""
-        chart = make_chart(1, {
-            "Sun": (1, 1), "Moon": (1, 1), "Mars": (4, 4),
-            "Mercury": (4, 4), "Jupiter": (7, 7),
-            "Venus": (7, 7), "Saturn": (10, 10),
-        })
+        chart = make_chart(
+            1,
+            {
+                "Sun": (1, 1),
+                "Moon": (1, 1),
+                "Mars": (4, 4),
+                "Mercury": (4, 4),
+                "Jupiter": (7, 7),
+                "Venus": (7, 7),
+                "Saturn": (10, 10),
+            },
+        )
         assert "Musala Yoga" in yoga_names(chart)
         assert "Rajju Yoga" not in yoga_names(chart)
 
     def test_nala_all_dual_signs(self):
         """All 7 planets in dual signs → Nala Yoga."""
-        chart = make_chart(2, {
-            "Sun": (2, 1), "Moon": (2, 1), "Mars": (5, 4),
-            "Mercury": (5, 4), "Jupiter": (8, 7),
-            "Venus": (8, 7), "Saturn": (11, 10),
-        })
+        chart = make_chart(
+            2,
+            {
+                "Sun": (2, 1),
+                "Moon": (2, 1),
+                "Mars": (5, 4),
+                "Mercury": (5, 4),
+                "Jupiter": (8, 7),
+                "Venus": (8, 7),
+                "Saturn": (11, 10),
+            },
+        )
         assert "Nala Yoga" in yoga_names(chart)
         assert "Rajju Yoga" not in yoga_names(chart)
 
     def test_mixed_signs_no_ashraya(self):
         """Mixed sign types → no Ashraya yoga."""
-        chart = make_chart(0, {
-            "Sun": (0, 1), "Moon": (1, 2),  # chara + fixed
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (0, 1),
+                "Moon": (1, 2),  # chara + fixed
+            },
+        )
         names = yoga_names(chart)
         assert "Rajju Yoga" not in names
         assert "Musala Yoga" not in names
@@ -163,13 +194,20 @@ class TestAshrayaYogas:
 
     def test_rahu_ketu_excluded_from_ashraya(self):
         """Rahu/Ketu in non-chara signs must NOT block Rajju Yoga."""
-        chart = make_chart(0, {
-            "Sun": (0, 1), "Moon": (0, 1), "Mars": (3, 4),
-            "Mercury": (3, 4), "Jupiter": (6, 7),
-            "Venus": (6, 7), "Saturn": (9, 10),
-            "Rahu": (1, 2),   # fixed sign — should be ignored
-            "Ketu": (7, 8),   # fixed sign — should be ignored
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (0, 1),
+                "Moon": (0, 1),
+                "Mars": (3, 4),
+                "Mercury": (3, 4),
+                "Jupiter": (6, 7),
+                "Venus": (6, 7),
+                "Saturn": (9, 10),
+                "Rahu": (1, 2),  # fixed sign — should be ignored
+                "Ketu": (7, 8),  # fixed sign — should be ignored
+            },
+        )
         assert "Rajju Yoga" in yoga_names(chart)
 
 
@@ -180,35 +218,59 @@ class TestDalaYogas:
     def test_maala_all_benefics_in_kendras(self):
         """All benefics in kendras → Maala Yoga."""
         # Lagna = 0 (Aries), kendras are H1,H4,H7,H10
-        chart = make_chart(0, {
-            "Jupiter": (0, 1), "Venus": (3, 4),
-            "Mercury": (6, 7), "Moon": (9, 10),
-            # Malefics anywhere
-            "Sun": (1, 2), "Mars": (2, 3), "Saturn": (5, 6),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Jupiter": (0, 1),
+                "Venus": (3, 4),
+                "Mercury": (6, 7),
+                "Moon": (9, 10),
+                # Malefics anywhere
+                "Sun": (1, 2),
+                "Mars": (2, 3),
+                "Saturn": (5, 6),
+            },
+        )
         assert "Maala Yoga" in yoga_names(chart)
 
     def test_maala_not_triggered_if_benefic_outside_kendra(self):
-        chart = make_chart(0, {
-            "Jupiter": (0, 1), "Venus": (3, 4),
-            "Mercury": (6, 7), "Moon": (2, 3),  # Moon in H3 (not kendra)
-        })
+        chart = make_chart(
+            0,
+            {
+                "Jupiter": (0, 1),
+                "Venus": (3, 4),
+                "Mercury": (6, 7),
+                "Moon": (2, 3),  # Moon in H3 (not kendra)
+            },
+        )
         assert "Maala Yoga" not in yoga_names(chart)
 
     def test_sarpa_all_malefics_in_kendras(self):
         """All malefics in kendras → Sarpa Yoga."""
-        chart = make_chart(0, {
-            "Sun": (0, 1), "Mars": (3, 4), "Saturn": (6, 7),
-            # Benefics outside kendras
-            "Jupiter": (1, 2), "Venus": (2, 3), "Mercury": (5, 6), "Moon": (8, 9),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (0, 1),
+                "Mars": (3, 4),
+                "Saturn": (6, 7),
+                # Benefics outside kendras
+                "Jupiter": (1, 2),
+                "Venus": (2, 3),
+                "Mercury": (5, 6),
+                "Moon": (8, 9),
+            },
+        )
         assert "Sarpa Yoga" in yoga_names(chart)
 
     def test_no_dala_when_mixed(self):
         """Neither Maala nor Sarpa when planets are spread."""
-        chart = make_chart(0, {
-            "Jupiter": (0, 1), "Venus": (1, 2),  # Venus in H2 (non-kendra)
-        })
+        chart = make_chart(
+            0,
+            {
+                "Jupiter": (0, 1),
+                "Venus": (1, 2),  # Venus in H2 (non-kendra)
+            },
+        )
         assert "Maala Yoga" not in yoga_names(chart)
 
 
@@ -218,175 +280,310 @@ class TestDalaYogas:
 class TestAkritiYogas:
     def test_gada_two_adjacent_kendras(self):
         """All planets in H1 and H4 → Gada Yoga."""
-        chart = make_chart(0, {
-            "Sun": (0, 1), "Moon": (0, 1), "Mars": (3, 4),
-            "Mercury": (0, 1), "Jupiter": (3, 4),
-            "Venus": (3, 4), "Saturn": (0, 1),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (0, 1),
+                "Moon": (0, 1),
+                "Mars": (3, 4),
+                "Mercury": (0, 1),
+                "Jupiter": (3, 4),
+                "Venus": (3, 4),
+                "Saturn": (0, 1),
+            },
+        )
         assert "Gada Yoga" in yoga_names(chart)
 
     def test_gada_opposite_kendras_not_triggered(self):
         """Planets in H1 and H7 only → NOT Gada (not adjacent pair) → Shakata."""
-        chart = make_chart(0, {
-            "Sun": (0, 1), "Moon": (0, 1), "Mars": (6, 7),
-            "Mercury": (6, 7), "Jupiter": (0, 1),
-            "Venus": (6, 7), "Saturn": (0, 1),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (0, 1),
+                "Moon": (0, 1),
+                "Mars": (6, 7),
+                "Mercury": (6, 7),
+                "Jupiter": (0, 1),
+                "Venus": (6, 7),
+                "Saturn": (0, 1),
+            },
+        )
         names = yoga_names(chart)
         assert "Shakata Yoga" in names
         assert "Gada Yoga" not in names
 
     def test_shringataka_all_in_trikonas(self):
         """All planets in H1, H5, H9 → Shringataka Yoga."""
-        chart = make_chart(0, {
-            "Sun": (0, 1), "Moon": (0, 1), "Mars": (4, 5),
-            "Mercury": (4, 5), "Jupiter": (8, 9),
-            "Venus": (8, 9), "Saturn": (0, 1),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (0, 1),
+                "Moon": (0, 1),
+                "Mars": (4, 5),
+                "Mercury": (4, 5),
+                "Jupiter": (8, 9),
+                "Venus": (8, 9),
+                "Saturn": (0, 1),
+            },
+        )
         assert "Shringataka Yoga" in yoga_names(chart)
 
     def test_hala_from_trikona_5(self):
         """All planets in H5, H6, H7 → Hala Yoga."""
-        chart = make_chart(0, {
-            "Sun": (4, 5), "Moon": (5, 6), "Mars": (6, 7),
-            "Mercury": (4, 5), "Jupiter": (5, 6),
-            "Venus": (6, 7), "Saturn": (4, 5),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (4, 5),
+                "Moon": (5, 6),
+                "Mars": (6, 7),
+                "Mercury": (4, 5),
+                "Jupiter": (5, 6),
+                "Venus": (6, 7),
+                "Saturn": (4, 5),
+            },
+        )
         assert "Hala Yoga" in yoga_names(chart)
 
     def test_hala_from_trikona_9(self):
         """All planets in H9, H10, H11 → Hala Yoga."""
-        chart = make_chart(0, {
-            "Sun": (8, 9), "Moon": (9, 10), "Mars": (10, 11),
-            "Mercury": (8, 9), "Jupiter": (9, 10),
-            "Venus": (10, 11), "Saturn": (8, 9),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (8, 9),
+                "Moon": (9, 10),
+                "Mars": (10, 11),
+                "Mercury": (8, 9),
+                "Jupiter": (9, 10),
+                "Venus": (10, 11),
+                "Saturn": (8, 9),
+            },
+        )
         assert "Hala Yoga" in yoga_names(chart)
 
     def test_vajra_yoga(self):
         """Benefics in H1/H7, malefics in H4/H10 → Vajra Yoga."""
-        chart = make_chart(0, {
-            "Jupiter": (0, 1), "Venus": (6, 7), "Mercury": (0, 1), "Moon": (6, 7),
-            "Sun": (3, 4), "Mars": (9, 10), "Saturn": (3, 4),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Jupiter": (0, 1),
+                "Venus": (6, 7),
+                "Mercury": (0, 1),
+                "Moon": (6, 7),
+                "Sun": (3, 4),
+                "Mars": (9, 10),
+                "Saturn": (3, 4),
+            },
+        )
         assert "Vajra Yoga" in yoga_names(chart)
 
     def test_yava_yoga(self):
         """Malefics in H1/H7, benefics in H4/H10 → Yava Yoga."""
-        chart = make_chart(0, {
-            "Sun": (0, 1), "Mars": (6, 7), "Saturn": (0, 1),
-            "Jupiter": (3, 4), "Venus": (9, 10), "Mercury": (3, 4), "Moon": (9, 10),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (0, 1),
+                "Mars": (6, 7),
+                "Saturn": (0, 1),
+                "Jupiter": (3, 4),
+                "Venus": (9, 10),
+                "Mercury": (3, 4),
+                "Moon": (9, 10),
+            },
+        )
         assert "Yava Yoga" in yoga_names(chart)
 
     def test_kamala_all_in_kendras(self):
         """All planets in 4 kendras → Kamala Yoga."""
-        chart = make_chart(0, {
-            "Sun": (0, 1), "Moon": (0, 1), "Mars": (3, 4),
-            "Mercury": (6, 7), "Jupiter": (9, 10),
-            "Venus": (0, 1), "Saturn": (3, 4),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (0, 1),
+                "Moon": (0, 1),
+                "Mars": (3, 4),
+                "Mercury": (6, 7),
+                "Jupiter": (9, 10),
+                "Venus": (0, 1),
+                "Saturn": (3, 4),
+            },
+        )
         assert "Kamala Yoga" in yoga_names(chart)
 
     def test_vaapi_panaphara(self):
         """All planets in panaphara (2,5,8,11) → Vaapi Yoga."""
-        chart = make_chart(0, {
-            "Sun": (1, 2), "Moon": (1, 2), "Mars": (4, 5),
-            "Mercury": (7, 8), "Jupiter": (10, 11),
-            "Venus": (1, 2), "Saturn": (4, 5),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (1, 2),
+                "Moon": (1, 2),
+                "Mars": (4, 5),
+                "Mercury": (7, 8),
+                "Jupiter": (10, 11),
+                "Venus": (1, 2),
+                "Saturn": (4, 5),
+            },
+        )
         assert "Vaapi Yoga" in yoga_names(chart)
 
     def test_vaapi_apoklima(self):
         """All planets in apoklima (3,6,9,12) → Vaapi Yoga."""
-        chart = make_chart(0, {
-            "Sun": (2, 3), "Moon": (5, 6), "Mars": (8, 9),
-            "Mercury": (11, 12), "Jupiter": (2, 3),
-            "Venus": (5, 6), "Saturn": (8, 9),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (2, 3),
+                "Moon": (5, 6),
+                "Mars": (8, 9),
+                "Mercury": (11, 12),
+                "Jupiter": (2, 3),
+                "Venus": (5, 6),
+                "Saturn": (8, 9),
+            },
+        )
         assert "Vaapi Yoga" in yoga_names(chart)
 
     def test_yupa_houses_1_to_4(self):
         """All planets in H1-H4 → Yupa Yoga."""
-        chart = make_chart(0, {
-            "Sun": (0, 1), "Moon": (1, 2), "Mars": (2, 3),
-            "Mercury": (3, 4), "Jupiter": (0, 1),
-            "Venus": (1, 2), "Saturn": (2, 3),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (0, 1),
+                "Moon": (1, 2),
+                "Mars": (2, 3),
+                "Mercury": (3, 4),
+                "Jupiter": (0, 1),
+                "Venus": (1, 2),
+                "Saturn": (2, 3),
+            },
+        )
         assert "Yupa Yoga" in yoga_names(chart)
 
     def test_ishu_houses_4_to_7(self):
         """All planets in H4-H7 → Ishu Yoga."""
-        chart = make_chart(0, {
-            "Sun": (3, 4), "Moon": (4, 5), "Mars": (5, 6),
-            "Mercury": (6, 7), "Jupiter": (3, 4),
-            "Venus": (4, 5), "Saturn": (5, 6),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (3, 4),
+                "Moon": (4, 5),
+                "Mars": (5, 6),
+                "Mercury": (6, 7),
+                "Jupiter": (3, 4),
+                "Venus": (4, 5),
+                "Saturn": (5, 6),
+            },
+        )
         assert "Ishu Yoga" in yoga_names(chart)
 
     def test_shakti_houses_7_to_10(self):
         """All planets in H7-H10 → Shakti Yoga."""
-        chart = make_chart(0, {
-            "Sun": (6, 7), "Moon": (7, 8), "Mars": (8, 9),
-            "Mercury": (9, 10), "Jupiter": (6, 7),
-            "Venus": (7, 8), "Saturn": (8, 9),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (6, 7),
+                "Moon": (7, 8),
+                "Mars": (8, 9),
+                "Mercury": (9, 10),
+                "Jupiter": (6, 7),
+                "Venus": (7, 8),
+                "Saturn": (8, 9),
+            },
+        )
         assert "Shakti Yoga" in yoga_names(chart)
 
     def test_danda_houses_10_to_1(self):
         """All planets in H10-H1 (wrapping) → Danda Yoga."""
-        chart = make_chart(0, {
-            "Sun": (9, 10), "Moon": (10, 11), "Mars": (11, 12),
-            "Mercury": (0, 1), "Jupiter": (9, 10),
-            "Venus": (10, 11), "Saturn": (11, 12),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (9, 10),
+                "Moon": (10, 11),
+                "Mars": (11, 12),
+                "Mercury": (0, 1),
+                "Jupiter": (9, 10),
+                "Venus": (10, 11),
+                "Saturn": (11, 12),
+            },
+        )
         assert "Danda Yoga" in yoga_names(chart)
 
     def test_naukaa_houses_1_to_7(self):
         """All planets in H1-H7 → Naukaa Yoga."""
-        chart = make_chart(0, {
-            "Sun": (0, 1), "Moon": (1, 2), "Mars": (2, 3),
-            "Mercury": (3, 4), "Jupiter": (4, 5),
-            "Venus": (5, 6), "Saturn": (6, 7),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (0, 1),
+                "Moon": (1, 2),
+                "Mars": (2, 3),
+                "Mercury": (3, 4),
+                "Jupiter": (4, 5),
+                "Venus": (5, 6),
+                "Saturn": (6, 7),
+            },
+        )
         assert "Naukaa Yoga" in yoga_names(chart)
 
     def test_chhatra_houses_7_to_1(self):
         """All planets in H7-H1 → Chhatra Yoga."""
-        chart = make_chart(0, {
-            "Sun": (6, 7), "Moon": (7, 8), "Mars": (8, 9),
-            "Mercury": (9, 10), "Jupiter": (10, 11),
-            "Venus": (11, 12), "Saturn": (0, 1),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (6, 7),
+                "Moon": (7, 8),
+                "Mars": (8, 9),
+                "Mercury": (9, 10),
+                "Jupiter": (10, 11),
+                "Venus": (11, 12),
+                "Saturn": (0, 1),
+            },
+        )
         assert "Chhatra Yoga" in yoga_names(chart)
 
     def test_ardha_chandra_start_not_kendra(self):
         """7 consecutive houses from H2 (not a named yoga) → Ardha Chandra."""
-        chart = make_chart(0, {
-            "Sun": (1, 2), "Moon": (2, 3), "Mars": (3, 4),
-            "Mercury": (4, 5), "Jupiter": (5, 6),
-            "Venus": (6, 7), "Saturn": (7, 8),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (1, 2),
+                "Moon": (2, 3),
+                "Mars": (3, 4),
+                "Mercury": (4, 5),
+                "Jupiter": (5, 6),
+                "Venus": (6, 7),
+                "Saturn": (7, 8),
+            },
+        )
         names = yoga_names(chart)
         assert "Ardha Chandra Yoga" in names
         assert "Naukaa Yoga" not in names
 
     def test_chakra_odd_houses(self):
         """All planets in odd houses → Chakra Yoga."""
-        chart = make_chart(0, {
-            "Sun": (0, 1), "Moon": (2, 3), "Mars": (4, 5),
-            "Mercury": (6, 7), "Jupiter": (8, 9),
-            "Venus": (10, 11), "Saturn": (0, 1),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (0, 1),
+                "Moon": (2, 3),
+                "Mars": (4, 5),
+                "Mercury": (6, 7),
+                "Jupiter": (8, 9),
+                "Venus": (10, 11),
+                "Saturn": (0, 1),
+            },
+        )
         assert "Chakra Yoga" in yoga_names(chart)
 
     def test_samudra_even_houses(self):
         """All planets in even houses → Samudra Yoga."""
-        chart = make_chart(0, {
-            "Sun": (1, 2), "Moon": (3, 4), "Mars": (5, 6),
-            "Mercury": (7, 8), "Jupiter": (9, 10),
-            "Venus": (11, 12), "Saturn": (1, 2),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (1, 2),
+                "Moon": (3, 4),
+                "Mars": (5, 6),
+                "Mercury": (7, 8),
+                "Jupiter": (9, 10),
+                "Venus": (11, 12),
+                "Saturn": (1, 2),
+            },
+        )
         assert "Samudra Yoga" in yoga_names(chart)
 
 
@@ -399,13 +596,16 @@ class TestSankhyaYogas:
     def _chart_for_houses(self, house_list: list[int]) -> ChartData:
         """Create chart where 7 classical planets are placed in given houses."""
         planet_names = ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"]
-        placements = {p: (i % 12, house_list[i % len(house_list)]) for i, p in enumerate(planet_names)}
+        placements = {
+            p: (i % 12, house_list[i % len(house_list)]) for i, p in enumerate(planet_names)
+        }
         # Ensure sign indices produce the right houses for lagna=0
         return make_chart(0, placements)
 
     def _sankhya_from_n(self, n: int) -> str | None:
         """Build chart with exactly n distinct houses and return Sankhya yoga detected."""
         from daivai_engine.compute.yoga_nabhasa import _sankhya_yoga
+
         result = _sankhya_yoga(n)
         return result.name if result else None
 
@@ -433,15 +633,27 @@ class TestSankhyaYogas:
     def test_sankhya_mutually_exclusive(self):
         """Only one Sankhya yoga should be in results."""
         sankhya_names = {
-            "Vallaki Yoga", "Dama Yoga", "Paasha Yoga", "Kedara Yoga",
-            "Shoola Yoga", "Yuga Yoga", "Gola Yoga",
+            "Vallaki Yoga",
+            "Dama Yoga",
+            "Paasha Yoga",
+            "Kedara Yoga",
+            "Shoola Yoga",
+            "Yuga Yoga",
+            "Gola Yoga",
         }
         # 7 planets each in a different house — Gola Yoga
-        chart = make_chart(0, {
-            "Sun": (0, 1), "Moon": (1, 2), "Mars": (2, 3),
-            "Mercury": (3, 4), "Jupiter": (4, 5),
-            "Venus": (5, 6), "Saturn": (6, 7),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (0, 1),
+                "Moon": (1, 2),
+                "Mars": (2, 3),
+                "Mercury": (3, 4),
+                "Jupiter": (4, 5),
+                "Venus": (5, 6),
+                "Saturn": (6, 7),
+            },
+        )
         names = yoga_names(chart)
         detected_sankhya = names & sankhya_names
         assert len(detected_sankhya) <= 1
@@ -457,22 +669,36 @@ class TestAkritiPrecedence:
         """Planets in H7, H9, H12 → Chhatra (Akriti), no Sankhya yoga."""
         # 3 distinct houses would normally give Paasha Yoga
         # but they all fit within H7-H1 Chhatra window
-        chart = make_chart(0, {
-            "Sun": (6, 7), "Moon": (8, 9), "Mars": (11, 12),
-            "Mercury": (6, 7), "Jupiter": (8, 9),
-            "Venus": (11, 12), "Saturn": (6, 7),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (6, 7),
+                "Moon": (8, 9),
+                "Mars": (11, 12),
+                "Mercury": (6, 7),
+                "Jupiter": (8, 9),
+                "Venus": (11, 12),
+                "Saturn": (6, 7),
+            },
+        )
         names = yoga_names(chart)
         assert "Chhatra Yoga" in names
         assert "Paasha Yoga" not in names
 
     def test_kamala_suppresses_sankhya(self):
         """All planets in kendras → Kamala (Akriti), no Sankhya yoga."""
-        chart = make_chart(0, {
-            "Sun": (0, 1), "Moon": (3, 4), "Mars": (6, 7),
-            "Mercury": (9, 10), "Jupiter": (0, 1),
-            "Venus": (3, 4), "Saturn": (6, 7),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (0, 1),
+                "Moon": (3, 4),
+                "Mars": (6, 7),
+                "Mercury": (9, 10),
+                "Jupiter": (0, 1),
+                "Venus": (3, 4),
+                "Saturn": (6, 7),
+            },
+        )
         names = yoga_names(chart)
         assert "Kamala Yoga" in names
         assert "Kedara Yoga" not in names
@@ -481,11 +707,18 @@ class TestAkritiPrecedence:
         """When no Akriti yoga applies, Sankhya yoga is returned."""
         # Place planets in 5 houses that don't form any Akriti pattern
         # H1, H2, H4, H6, H8 — not consecutive, not kendra-only, etc.
-        chart = make_chart(0, {
-            "Sun": (0, 1), "Moon": (1, 2), "Mars": (3, 4),
-            "Mercury": (5, 6), "Jupiter": (7, 8),
-            "Venus": (0, 1), "Saturn": (1, 2),
-        })
+        chart = make_chart(
+            0,
+            {
+                "Sun": (0, 1),
+                "Moon": (1, 2),
+                "Mars": (3, 4),
+                "Mercury": (5, 6),
+                "Jupiter": (7, 8),
+                "Venus": (0, 1),
+                "Saturn": (1, 2),
+            },
+        )
         names = yoga_names(chart)
         assert "Shoola Yoga" in names
 
@@ -516,8 +749,13 @@ class TestManishChart:
     def test_sankhya_suppressed_by_chhatra(self, manish_chart: ChartData) -> None:
         """Because Chhatra (Akriti) fires, no Sankhya yoga should appear."""
         sankhya = {
-            "Vallaki Yoga", "Dama Yoga", "Paasha Yoga", "Kedara Yoga",
-            "Shoola Yoga", "Yuga Yoga", "Gola Yoga",
+            "Vallaki Yoga",
+            "Dama Yoga",
+            "Paasha Yoga",
+            "Kedara Yoga",
+            "Shoola Yoga",
+            "Yuga Yoga",
+            "Gola Yoga",
         }
         names = yoga_names(manish_chart)
         assert not (names & sankhya), f"Unexpected Sankhya yoga(s): {names & sankhya}"

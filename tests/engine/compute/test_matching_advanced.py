@@ -12,10 +12,10 @@ class TestBhakootExceptions:
         # Use 2/12 axis: Aries(0) and Pisces(11) with same lord nakshatras
         # Pushya(7, Saturn) / Aries  vs  Uttara Bhadrapada(25, Saturn) / Pisces
         result2 = compute_ashtakoot(
-            person1_nakshatra_index=7,   # Pushya (lord Saturn)
-            person1_moon_sign=0,         # Aries
+            person1_nakshatra_index=7,  # Pushya (lord Saturn)
+            person1_moon_sign=0,  # Aries
             person2_nakshatra_index=25,  # Uttara Bhadrapada (lord Saturn)
-            person2_moon_sign=11,        # Pisces
+            person2_moon_sign=11,  # Pisces
         )
         bhakoot2 = next(k for k in result2.kootas if k.name == "Bhakoot")
         # Same lord (Saturn) → exception: cancelled → 7 points
@@ -28,10 +28,10 @@ class TestBhakootExceptions:
         # Pushya(7, Saturn) and Uttara Bhadrapada(25, Saturn) — same lord
         # Moon signs: Cancer(3) and Pisces(11) → 2/12 axis
         result = compute_ashtakoot(
-            person1_nakshatra_index=7,   # Pushya — Saturn
-            person1_moon_sign=3,         # Cancer
+            person1_nakshatra_index=7,  # Pushya — Saturn
+            person1_moon_sign=3,  # Cancer
             person2_nakshatra_index=25,  # Uttara Bhadrapada — Saturn
-            person2_moon_sign=11,        # Pisces → 2/12 axis with Cancer
+            person2_moon_sign=11,  # Pisces → 2/12 axis with Cancer
         )
         bhakoot = next(k for k in result.kootas if k.name == "Bhakoot")
         assert bhakoot.obtained == 7.0
@@ -44,10 +44,10 @@ class TestBhakootExceptions:
         # Purva Phalguni(10, Venus) and Purva Ashadha(19, Venus) — same lord → cancelled
         # Use Magha(9, Ketu) and Purva Ashadha(19, Venus) — different, not mutual friends
         result = compute_ashtakoot(
-            person1_nakshatra_index=9,   # Magha — Ketu
-            person1_moon_sign=4,         # Leo
+            person1_nakshatra_index=9,  # Magha — Ketu
+            person1_moon_sign=4,  # Leo
             person2_nakshatra_index=18,  # Moola — Ketu  (same lord → cancelled)
-            person2_moon_sign=8,         # Sagittarius → 5/9 axis
+            person2_moon_sign=8,  # Sagittarius → 5/9 axis
         )
         bhakoot = next(k for k in result.kootas if k.name == "Bhakoot")
         # Same lord (Ketu) → cancelled
@@ -69,10 +69,10 @@ class TestVedhaDosha:
     def test_vedha_dosha_detected(self) -> None:
         """Ashwini and Shatabhisha should trigger Vedha flag."""
         result = compute_ashtakoot(
-            person1_nakshatra_index=0,   # Ashwini
-            person1_moon_sign=0,         # Aries
+            person1_nakshatra_index=0,  # Ashwini
+            person1_moon_sign=0,  # Aries
             person2_nakshatra_index=23,  # Shatabhisha
-            person2_moon_sign=10,        # Aquarius
+            person2_moon_sign=10,  # Aquarius
         )
         assert result.has_vedha_dosha is True
         assert result.vedha_note != ""
@@ -80,10 +80,10 @@ class TestVedhaDosha:
     def test_no_vedha_for_compatible_nakshatras(self) -> None:
         """Rohini and Hasta (not a Vedha pair) should not trigger Vedha."""
         result = compute_ashtakoot(
-            person1_nakshatra_index=3,   # Rohini
-            person1_moon_sign=1,         # Taurus
+            person1_nakshatra_index=3,  # Rohini
+            person1_moon_sign=1,  # Taurus
             person2_nakshatra_index=12,  # Hasta
-            person2_moon_sign=5,         # Virgo
+            person2_moon_sign=5,  # Virgo
         )
         assert result.has_vedha_dosha is False
         assert result.vedha_note == ""
@@ -96,10 +96,10 @@ class TestVedhaDosha:
     def test_dosha_notes_empty_for_clean_match(self) -> None:
         """Compatible match with no doshas should have empty dosha_notes."""
         result = compute_ashtakoot(
-            person1_nakshatra_index=0,   # Ashwini (Aadi nadi)
-            person1_moon_sign=0,         # Aries
-            person2_nakshatra_index=3,   # Rohini (Madhya nadi) — different nadi
-            person2_moon_sign=1,         # Taurus
+            person1_nakshatra_index=0,  # Ashwini (Aadi nadi)
+            person1_moon_sign=0,  # Aries
+            person2_nakshatra_index=3,  # Rohini (Madhya nadi) — different nadi
+            person2_moon_sign=1,  # Taurus
         )
         # Rohini/Taurus and Ashwini/Aries is NOT a Vedha pair
         # Different nadi → no nadi dosha

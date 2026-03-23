@@ -32,12 +32,12 @@ from daivai_engine.models.yoga import YogaResult
 class FullChartAnalysis(BaseModel):
     """Complete pre-computed analysis — single source of truth.
 
-    v4.0: All orphaned modules wired in. 45+ fields.
+    v5.0: All Phase 1 modules wired in. 50+ fields.
     """
 
     model_config = ConfigDict(frozen=True)
 
-    version: str = "4.0"
+    version: str = "5.0"
 
     # Core
     chart: ChartData
@@ -125,3 +125,16 @@ class FullChartAnalysis(BaseModel):
 
     # Verification
     verification_warnings: list[str]
+
+    # Phase 1 advanced modules (March 2026)
+    dispositor_tree: Any | None = None  # DispositorTree — chain/tree analysis
+    badhaka: Any | None = None  # BadhakaResult — obstruction house/lord
+    bhavat_bhavam: list[Any] = []  # BhavatBhavamResult per house
+    chandra_kundali: Any | None = None  # ReferenceChartAnalysis from Moon
+    surya_kundali: Any | None = None  # ReferenceChartAnalysis from Sun
+    dasha_transit: Any | None = None  # DashaTransitAnalysis — #1 timing technique
+    yoga_timings: Any | None = None  # AllYogaTimings — activation periods
+    lal_kitab: Any | None = None  # LalKitabResult — parallel remedy system
+    kota_chakra: Any | None = None  # KotaChakraResult — fortress diagram
+    nisheka: Any | None = None  # NishekaResult — conception chart (BPHS Ch.4)
+    eclipse_impacts: list[Any] = []  # EclipseNatalResult — upcoming eclipse natal impacts

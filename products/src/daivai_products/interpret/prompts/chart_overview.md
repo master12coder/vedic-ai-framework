@@ -34,7 +34,21 @@ Explain the most significant yogas and their life impact.
 ### 4. Vargottam Planets
 {% if vargottam_planets %}Vargottam: {{ vargottam_planets | join(', ') }}{% else %}No vargottam planets.{% endif %}
 
-### 5. Overall Life Theme
+{% if dispositor %}
+### 5. Dispositor Chain (Planetary Energy Flow)
+{% if dispositor.has_final_dispositor %}- Final Dispositor: **{{ dispositor.final_dispositor }}** — all planetary energy flows to this planet{% endif %}
+{% if dispositor.mutual_receptions %}- Mutual Receptions: {{ dispositor.mutual_receptions | join(', ') }}{% endif %}
+{% if dispositor.summary %}- {{ dispositor.summary }}{% endif %}
+{% endif %}
+
+{% if badhaka %}
+### 6. Badhaka (Obstruction Analysis)
+- Badhaka house: {{ badhaka.badhaka_house }}, Lord: **{{ badhaka.badhaka_lord }}** (in house {{ badhaka.badhaka_lord_house }})
+- Severity: {{ badhaka.severity }}{% if badhaka.rahu_ketu_association %} — **Rahu/Ketu association** (past-life karmic blocks){% endif %}
+{% if badhaka.obstruction_domains %}- Obstruction domains: {{ badhaka.obstruction_domains | join(', ') }}{% endif %}
+{% endif %}
+
+### 7. Overall Life Theme
 Based on the lagna, Moon nakshatra, and dominant planetary influences, describe the overall life theme for {{ name }}. Reference the functional benefic/malefic/maraka classification for {{ lagna_en }} lagna.
 
 Format: Use both English and Hindi key terms. Be specific with house numbers and planet references.

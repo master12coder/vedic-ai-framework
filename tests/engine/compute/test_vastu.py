@@ -256,8 +256,16 @@ class TestComputeMandalaZones:
 
     def test_all_eight_compass_zones_present(self, manish_chart):
         directions = {z.direction for z in compute_mandala_zones(manish_chart)}
-        expected = {"North", "North-East", "East", "South-East",
-                    "South", "South-West", "West", "North-West"}
+        expected = {
+            "North",
+            "North-East",
+            "East",
+            "South-East",
+            "South",
+            "South-West",
+            "West",
+            "North-West",
+        }
         assert expected.issubset(directions)
 
     def test_zones_have_hindi_names(self, manish_chart):

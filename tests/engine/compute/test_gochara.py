@@ -54,7 +54,14 @@ class TestGocharaYaml:
 
     @pytest.fixture
     def yaml_data(self) -> dict[str, Any]:
-        path = Path(__file__).parents[3] / "engine" / "src" / "daivai_engine" / "knowledge" / "gochara_rules.yaml"
+        path = (
+            Path(__file__).parents[3]
+            / "engine"
+            / "src"
+            / "daivai_engine"
+            / "knowledge"
+            / "gochara_rules.yaml"
+        )
         with open(path) as f:
             return yaml.safe_load(f)
 
@@ -90,8 +97,8 @@ class TestGocharaYaml:
         assert "vedha_pairs" in yaml_data
         pairs = yaml_data["vedha_pairs"]
         assert 1 in pairs and 5 in pairs  # 1↔5 pair
-        assert 7 not in pairs              # house 7 has no vedha
-        assert 11 not in pairs             # house 11 has no vedha
+        assert 7 not in pairs  # house 7 has no vedha
+        assert 11 not in pairs  # house 11 has no vedha
 
     def test_yaml_vedha_pairs_are_symmetric(self, yaml_data: dict[str, Any]) -> None:
         pairs = yaml_data["vedha_pairs"]
@@ -138,8 +145,11 @@ class TestGocharaModels:
     def test_favorability_has_5_variants(self) -> None:
         values = {f.value for f in Favorability}
         assert values == {
-            "very_favorable", "favorable", "neutral",
-            "unfavorable", "very_unfavorable"
+            "very_favorable",
+            "favorable",
+            "neutral",
+            "unfavorable",
+            "very_unfavorable",
         }
 
     def test_gochara_vedha_frozen(self) -> None:
@@ -149,9 +159,16 @@ class TestGocharaModels:
 
     def test_gochara_planet_result_frozen(self) -> None:
         r = GocharaPlanetResult(
-            planet="Saturn", transit_sign_index=0, transit_sign="Mesha",
-            house_from_moon=1, gochara_score=-1, favorability=Favorability.unfavorable,
-            result_text="Test", bav_bindus=3, moorthy=MoorthyClass.madhya, final_score=-1,
+            planet="Saturn",
+            transit_sign_index=0,
+            transit_sign="Mesha",
+            house_from_moon=1,
+            gochara_score=-1,
+            favorability=Favorability.unfavorable,
+            result_text="Test",
+            bav_bindus=3,
+            moorthy=MoorthyClass.madhya,
+            final_score=-1,
         )
         with pytest.raises((TypeError, Exception)):
             r.planet = "Jupiter"  # type: ignore[misc]
@@ -273,9 +290,7 @@ class TestVedha:
         result = compute_gochara(manish_chart, _DATE)
         for r in result.planet_results:
             if r.vedha_active:
-                assert r.gochara_score > 0, (
-                    f"{r.planet} vedha active on non-beneficial house"
-                )
+                assert r.gochara_score > 0, f"{r.planet} vedha active on non-beneficial house"
 
     def test_house_7_never_has_vedha(self, manish_chart: ChartData) -> None:
         result = compute_gochara(manish_chart, _DATE)

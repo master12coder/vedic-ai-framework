@@ -33,9 +33,7 @@ class TestRTNStructure:
         """sign_distance must be in 0-11 (forward distance)."""
         result = compute_rtn(manish_chart)
         for p in result.planets:
-            assert 0 <= p.sign_distance <= 11, (
-                f"{p.planet}: sign_distance={p.sign_distance}"
-            )
+            assert 0 <= p.sign_distance <= 11, f"{p.planet}: sign_distance={p.sign_distance}"
 
     def test_sign_indices_valid(self, manish_chart: ChartData) -> None:
         result = compute_rtn(manish_chart)

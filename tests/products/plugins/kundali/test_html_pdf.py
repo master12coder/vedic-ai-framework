@@ -112,9 +112,7 @@ class TestGeneratePdf:
 
 
 class TestReportLabFallback:
-    def test_fallback_works_when_weasyprint_missing(
-        self, manish_chart: ChartData
-    ) -> None:
+    def test_fallback_works_when_weasyprint_missing(self, manish_chart: ChartData) -> None:
         """When WeasyPrint import fails, should fall back to ReportLab."""
         with patch(
             "daivai_products.plugins.kundali.pdf._generate_weasyprint",
@@ -124,9 +122,7 @@ class TestReportLabFallback:
             assert result is not None
             assert result[:5] == b"%PDF-"
 
-    def test_fallback_on_weasyprint_error(
-        self, manish_chart: ChartData
-    ) -> None:
+    def test_fallback_on_weasyprint_error(self, manish_chart: ChartData) -> None:
         """When WeasyPrint raises any error, should fall back to ReportLab."""
         with patch(
             "daivai_products.plugins.kundali.pdf._generate_weasyprint",

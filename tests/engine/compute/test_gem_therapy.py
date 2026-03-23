@@ -32,8 +32,6 @@ from daivai_engine.models.gem_therapy import (
 # ── fixtures ─────────────────────────────────────────────────────────────────
 
 
-
-
 # ── compute_gem_recommendation ───────────────────────────────────────────────
 
 
@@ -181,7 +179,10 @@ class TestComputeGemRecommendation:
         # Blue Sapphire always carries special precaution regardless of status
         if saturn_rec.status != "prohibited":
             assert saturn_rec.special_precaution is not None
-            assert "trial" in saturn_rec.special_precaution.lower() or "3" in saturn_rec.special_precaution
+            assert (
+                "trial" in saturn_rec.special_precaution.lower()
+                or "3" in saturn_rec.special_precaution
+            )
 
 
 # ── check_gem_contraindications ──────────────────────────────────────────────

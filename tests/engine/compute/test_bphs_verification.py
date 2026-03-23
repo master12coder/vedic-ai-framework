@@ -255,12 +255,8 @@ class TestKalaBala:
         expected_paksha_benefic = diff / 3.0
 
         # benefic paksha should be significantly less than 60
-        assert expected_paksha_benefic < 55.0, (
-            "Test assumption: Manish is not near full moon"
-        )
-        assert expected_paksha_benefic > 5.0, (
-            "Test assumption: Manish is not near new moon"
-        )
+        assert expected_paksha_benefic < 55.0, "Test assumption: Manish is not near full moon"
+        assert expected_paksha_benefic > 5.0, "Test assumption: Manish is not near new moon"
 
         # Jupiter (benefic): kala_bala must include graduated paksha, not flat 60
         # If paksha were flat 60, Jupiter's kala would include +60 from paksha;
@@ -394,9 +390,7 @@ class TestKalaBala:
         }
         for planet, exp in expected.items():
             actual = NAISARGIKA[planet]
-            assert abs(actual - exp) < 0.005, (
-                f"{planet} naisargika={actual}, expected {exp}"
-            )
+            assert abs(actual - exp) < 0.005, f"{planet} naisargika={actual}, expected {exp}"
 
     def test_naisargika_jupiter_is_4_sevenths_of_60(self):
         """Jupiter Naisargika Bala = 60 * 4/7 = 34.2857… ≈ 34.29 (not 34.28)."""
@@ -438,13 +432,16 @@ class TestKalaBala:
         results = compute_shadbala(manish_chart)
         for r in results:
             expected = round(
-                r.sthana_bala + r.dig_bala + r.kala_bala
-                + r.cheshta_bala + r.naisargika_bala + r.drik_bala + r.yuddha_bala,
+                r.sthana_bala
+                + r.dig_bala
+                + r.kala_bala
+                + r.cheshta_bala
+                + r.naisargika_bala
+                + r.drik_bala
+                + r.yuddha_bala,
                 2,
             )
-            assert abs(r.total - expected) < 0.1, (
-                f"{r.planet}: total={r.total}, sum={expected}"
-            )
+            assert abs(r.total - expected) < 0.1, f"{r.planet}: total={r.total}, sum={expected}"
 
     def test_shadbala_ratio_equals_total_over_required(self, manish_chart):
         results = compute_shadbala(manish_chart)
@@ -556,7 +553,9 @@ class TestVimshopakaBalaComputed:
             assert 0.0 <= v.shadvarga_score <= 10.0, f"{v.planet} shadvarga={v.shadvarga_score}"
             assert 0.0 <= v.saptvarga_score <= 20.0, f"{v.planet} saptvarga={v.saptvarga_score}"
             assert 0.0 <= v.dashavarga_score <= 20.0, f"{v.planet} dashavarga={v.dashavarga_score}"
-            assert 0.0 <= v.shodashavarga_score <= 20.0, f"{v.planet} shodashavarga={v.shodashavarga_score}"
+            assert 0.0 <= v.shodashavarga_score <= 20.0, (
+                f"{v.planet} shodashavarga={v.shodashavarga_score}"
+            )
 
     def test_moon_exalted_d1_for_manish(self, manish_chart):
         results = compute_vimshopaka_bala(manish_chart)
@@ -565,8 +564,22 @@ class TestVimshopakaBalaComputed:
 
     def test_all_16_vargas_present(self, manish_chart):
         expected = {
-            "D1", "D2", "D3", "D4", "D7", "D9", "D10", "D12",
-            "D16", "D20", "D24", "D27", "D30", "D40", "D45", "D60",
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D7",
+            "D9",
+            "D10",
+            "D12",
+            "D16",
+            "D20",
+            "D24",
+            "D27",
+            "D30",
+            "D40",
+            "D45",
+            "D60",
         }
         results = compute_vimshopaka_bala(manish_chart)
         for v in results:
@@ -598,8 +611,7 @@ class TestAshtakavargaInvariants:
     def test_sarva_is_sum_of_bhinna(self, manish_chart):
         av = compute_ashtakavarga(manish_chart)
         expected_sarva = [
-            sum(av.bhinna[planet][sign] for planet in av.bhinna)
-            for sign in range(12)
+            sum(av.bhinna[planet][sign] for planet in av.bhinna) for sign in range(12)
         ]
         assert av.sarva == expected_sarva
 
@@ -651,16 +663,19 @@ class TestShodhyaPinda:
     def test_rasi_gunakara_values_bphs(self):
         """BPHS Ch.71 Rasi Gunakara: Aries=7, Taurus=10, …, Pisces=12."""
         expected = [7, 10, 8, 4, 10, 6, 7, 8, 9, 5, 11, 12]
-        assert expected == RASI_GUNAKARA, (
-            f"RASI_GUNAKARA={RASI_GUNAKARA}, expected {expected}"
-        )
+        assert expected == RASI_GUNAKARA, f"RASI_GUNAKARA={RASI_GUNAKARA}, expected {expected}"
 
     def test_graha_gunakara_values_bphs(self):
         """BPHS Ch.71 Graha Gunakara: Sun=5, Moon=5, Mars=8, Mercury=5,
         Jupiter=10, Venus=7, Saturn=5."""
         expected = {
-            "Sun": 5, "Moon": 5, "Mars": 8, "Mercury": 5,
-            "Jupiter": 10, "Venus": 7, "Saturn": 5,
+            "Sun": 5,
+            "Moon": 5,
+            "Mars": 8,
+            "Mercury": 5,
+            "Jupiter": 10,
+            "Venus": 7,
+            "Saturn": 5,
         }
         assert expected == GRAHA_GUNAKARA
 
@@ -690,8 +705,9 @@ class TestShodhyaPinda:
         Graha Pinda = 5 * 3 = 15.  (Sun Gunakara=5, total bindus=3)
         Shodhya Pinda = 34.
         """
-        reduced = {p: [0] * 12 for p in
-                   ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"]}
+        reduced = {
+            p: [0] * 12 for p in ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"]
+        }
         reduced["Sun"][0] = 1  # Aries
         reduced["Sun"][3] = 1  # Cancer
         reduced["Sun"][7] = 1  # Scorpio
@@ -757,9 +773,7 @@ class TestIshtaKashtaPhala:
         sb = compute_shadbala(manish_chart)
         ik = compute_ishta_kashta(manish_chart, sb)
         for result in ik:
-            assert 0.0 <= result.ishta_phala <= 60.0, (
-                f"{result.planet} ishta={result.ishta_phala}"
-            )
+            assert 0.0 <= result.ishta_phala <= 60.0, f"{result.planet} ishta={result.ishta_phala}"
             assert 0.0 <= result.kashta_phala <= 60.0, (
                 f"{result.planet} kashta={result.kashta_phala}"
             )

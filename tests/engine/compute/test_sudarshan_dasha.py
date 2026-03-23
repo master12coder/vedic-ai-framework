@@ -142,9 +142,9 @@ class TestGetSudarshanYear:
         Same holds for Moon (Vrishabha=1) and Sun (Kumbha=10): all complete 3 cycles.
         """
         year = get_sudarshan_year(manish_chart, 37)
-        lagna_start = manish_chart.lagna_sign_index   # 2 = Mithuna
-        moon_start = manish_chart.planets["Moon"].sign_index   # 1 = Vrishabha
-        sun_start = manish_chart.planets["Sun"].sign_index    # 10 = Kumbha
+        lagna_start = manish_chart.lagna_sign_index  # 2 = Mithuna
+        moon_start = manish_chart.planets["Moon"].sign_index  # 1 = Vrishabha
+        sun_start = manish_chart.planets["Sun"].sign_index  # 10 = Kumbha
 
         assert year.lagna_period.sign_index == (lagna_start + 36) % 12
         assert year.moon_period.sign_index == (moon_start + 36) % 12

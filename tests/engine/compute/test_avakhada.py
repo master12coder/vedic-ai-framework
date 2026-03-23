@@ -53,10 +53,10 @@ class TestPayaHelper:
 
     def test_cycle_repeats_correctly(self):
         """Cycle repeats every 4 nakshatras."""
-        assert _paya(5) == "Gold"    # Mrigashira = 5, 5%4=1
+        assert _paya(5) == "Gold"  # Mrigashira = 5, 5%4=1
         assert _paya(6) == "Silver"  # Ardra = 6, 6%4=2
         assert _paya(7) == "Copper"  # Punarvasu = 7, 7%4=3
-        assert _paya(8) == "Iron"    # Pushya = 8, 8%4=0
+        assert _paya(8) == "Iron"  # Pushya = 8, 8%4=0
 
     def test_all_27_nakshatras_return_valid_metal(self):
         valid = {"Gold", "Silver", "Copper", "Iron"}
@@ -102,11 +102,11 @@ class TestYunjaHelper:
         assert _yunja(4) == "Poorva"
 
     def test_boundaries(self):
-        assert _yunja(9) == "Poorva"    # last in group 1
-        assert _yunja(10) == "Madhya"   # first in group 2
-        assert _yunja(18) == "Madhya"   # last in group 2
-        assert _yunja(19) == "Uttara"   # first in group 3
-        assert _yunja(27) == "Uttara"   # last in group 3
+        assert _yunja(9) == "Poorva"  # last in group 1
+        assert _yunja(10) == "Madhya"  # first in group 2
+        assert _yunja(18) == "Madhya"  # last in group 2
+        assert _yunja(19) == "Uttara"  # first in group 3
+        assert _yunja(27) == "Uttara"  # last in group 3
 
 
 # ---------------------------------------------------------------------------
@@ -215,9 +215,7 @@ class TestComputeAvakhada:
     def test_all_fields_populated(self, manish_chart):
         result = compute_avakhada(manish_chart)
         for field_name, value in result.model_dump().items():
-            assert value is not None and value != "", (
-                f"Field '{field_name}' is empty"
-            )
+            assert value is not None and value != "", f"Field '{field_name}' is empty"
 
 
 class TestAvakhadaEdgeCases:

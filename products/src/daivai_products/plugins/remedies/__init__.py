@@ -9,4 +9,8 @@ COMMANDS = {
         "handler": "run_gemstone",
     },
     "pooja": {"help": "Generate weekly pooja plan", "handler": "run_pooja"},
+    "lal_kitab": {
+        "help": "Lal Kitab planet assessment, debts (Rin), and remedies",
+        "handler": "run_lal_kitab",
+    },
 }

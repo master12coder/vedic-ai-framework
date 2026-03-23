@@ -86,10 +86,7 @@ class TestMuddaDashaProportions:
 
     def test_sum_of_all_proportions_equals_year(self) -> None:
         """Sum of all planet Mudda proportions must equal 365.25."""
-        total = sum(
-            (DASHA_YEARS[p] / DASHA_TOTAL_YEARS) * _SOLAR_YEAR_DAYS
-            for p in DASHA_SEQUENCE
-        )
+        total = sum((DASHA_YEARS[p] / DASHA_TOTAL_YEARS) * _SOLAR_YEAR_DAYS for p in DASHA_SEQUENCE)
         assert abs(total - _SOLAR_YEAR_DAYS) < 0.01
 
 

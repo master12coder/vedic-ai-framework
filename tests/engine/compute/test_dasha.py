@@ -59,7 +59,7 @@ class TestMahadashas:
         for i in range(len(mds) - 1):
             # End of period i should equal start of period i+1
             gap = abs((mds[i + 1].start - mds[i].end).total_seconds())
-            assert gap < 1.0, f"Gap between MD {i} and {i+1}: {gap}s"
+            assert gap < 1.0, f"Gap between MD {i} and {i + 1}: {gap}s"
 
     def test_first_md_starts_at_birth(self, manish_chart) -> None:
         mds = compute_mahadashas(manish_chart)
@@ -165,12 +165,14 @@ class TestFindCurrentDasha:
     def test_current_md_lord_is_jupiter(self, manish_chart) -> None:
         """Manish current MD = Jupiter per CLAUDE.md."""
         import pytz
+
         target = datetime(2026, 3, 22, 12, 0, tzinfo=pytz.UTC)
         md, _, _ = find_current_dasha(manish_chart, target)
         assert md.lord == "Jupiter"
 
     def test_target_date_within_md_range(self, manish_chart) -> None:
         import pytz
+
         target = datetime(2026, 3, 22, 12, 0, tzinfo=pytz.UTC)
         md, ad, _pd = find_current_dasha(manish_chart, target)
         assert md.start <= target <= md.end

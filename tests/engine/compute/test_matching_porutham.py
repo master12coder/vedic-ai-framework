@@ -261,7 +261,10 @@ class TestRajju:
         # Ashwini (0=Paada, ascending) + Jyeshtha (17=Paada, descending)
         result = _rajju(boy_nak=0, girl_nak=17)
         assert result.agrees is False
-        assert "ascending" in result.exception_note.lower() or "direction" in result.exception_note.lower()
+        assert (
+            "ascending" in result.exception_note.lower()
+            or "direction" in result.exception_note.lower()
+        )
 
     def test_rajju_nabhi_is_moderate(self):
         """Nabhi (navel) Rajju is moderate — progeny issues."""
@@ -421,10 +424,10 @@ class TestComputePorutham:
     def test_compute_returns_10_poruthams(self):
         """Result must have exactly 10 poruthams."""
         result = compute_porutham(
-            boy_nakshatra_index=3,   # Rohini
-            girl_nakshatra_index=12, # Hasta
-            boy_moon_sign=1,         # Taurus
-            girl_moon_sign=5,        # Virgo
+            boy_nakshatra_index=3,  # Rohini
+            girl_nakshatra_index=12,  # Hasta
+            boy_moon_sign=1,  # Taurus
+            girl_moon_sign=5,  # Virgo
         )
         assert len(result.poruthams) == 10
         assert result.total_count == 10
@@ -434,8 +437,16 @@ class TestComputePorutham:
         result = compute_porutham(0, 3, 0, 1)
         names = [p.name for p in result.poruthams]
         expected = [
-            "Dinam", "Ganam", "Yoni", "Rasi", "Rasyadhipati",
-            "Rajju", "Vedha", "Vasya", "Mahendra", "Stree Deergha",
+            "Dinam",
+            "Ganam",
+            "Yoni",
+            "Rasi",
+            "Rasyadhipati",
+            "Rajju",
+            "Vedha",
+            "Vasya",
+            "Mahendra",
+            "Stree Deergha",
         ]
         assert names == expected
 
@@ -481,10 +492,10 @@ class TestComputePorutham:
         # Rohini (3=Kantha) + Punarvasu (6=Nabhi) — different Rajju, no vedha
         # Vedha: {3,14}, {6,11} — Rohini-Punarvasu is {3,6} — not a Vedha pair ✓
         result = compute_porutham(
-            boy_nakshatra_index=3,   # Rohini (Kantha)
+            boy_nakshatra_index=3,  # Rohini (Kantha)
             girl_nakshatra_index=6,  # Punarvasu (Nabhi)
-            boy_moon_sign=1,         # Taurus
-            girl_moon_sign=2,        # Gemini
+            boy_moon_sign=1,  # Taurus
+            girl_moon_sign=2,  # Gemini
         )
         assert result.has_rajju_dosha is False
         assert result.has_vedha_dosha is False

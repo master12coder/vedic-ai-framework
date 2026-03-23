@@ -54,8 +54,16 @@ class TestClassifyQuery:
 
     def test_all_query_types_return_valid_house(self) -> None:
         query_types = [
-            "general", "health", "wealth", "marriage", "career",
-            "children", "enemies", "longevity", "fortune", "spirituality",
+            "general",
+            "health",
+            "wealth",
+            "marriage",
+            "career",
+            "children",
+            "enemies",
+            "longevity",
+            "fortune",
+            "spirituality",
         ]
         for qtype in query_types:
             result = classify_query(qtype)
@@ -186,13 +194,20 @@ class TestAnalyzeAshtamangala:
         result = analyze_ashtamangala(manish_chart, "career")
         assert "Ida" in result.swara_analysis or "Pingala" in result.swara_analysis
 
-    @pytest.mark.parametrize("qtype", [
-        "general", "marriage", "career", "wealth", "health",
-        "spirituality", "children", "longevity",
-    ])
-    def test_multiple_query_types(
-        self, manish_chart: ChartData, qtype: str
-    ) -> None:
+    @pytest.mark.parametrize(
+        "qtype",
+        [
+            "general",
+            "marriage",
+            "career",
+            "wealth",
+            "health",
+            "spirituality",
+            "children",
+            "longevity",
+        ],
+    )
+    def test_multiple_query_types(self, manish_chart: ChartData, qtype: str) -> None:
         result = analyze_ashtamangala(manish_chart, qtype)
         assert result.answer in ("YES", "NO", "MAYBE")
         assert 0 <= result.aroodha.aroodha_sign_index <= 11

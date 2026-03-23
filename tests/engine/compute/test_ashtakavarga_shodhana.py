@@ -73,15 +73,15 @@ def _make_chart() -> ChartData:
         lagna_degree=10.0,
     )
     positions = {
-        "Sun": 9,     # Capricorn
-        "Moon": 3,    # Cancer
-        "Mars": 0,    # Aries
+        "Sun": 9,  # Capricorn
+        "Moon": 3,  # Cancer
+        "Mars": 0,  # Aries
         "Mercury": 10,  # Aquarius
         "Jupiter": 5,  # Virgo
         "Venus": 11,  # Pisces
         "Saturn": 8,  # Sagittarius
-        "Rahu": 2,    # Gemini
-        "Ketu": 8,    # Sagittarius (Rahu + 6)
+        "Rahu": 2,  # Gemini
+        "Ketu": 8,  # Sagittarius (Rahu + 6)
     }
     for name, sign_idx in positions.items():
         chart.planets[name] = _make_planet(name, sign_idx)
@@ -174,15 +174,15 @@ class TestEkadhipatyaShodhana:
         # Mercury pair (2, 5); Rahu in sign 2 (Gemini).
         sarva = self._sarva({2: 3, 5: 7})  # sign 5 would normally be higher
         result = ekadhipatya_shodhana(sarva, rahu_sign=2, ketu_sign=8)
-        assert result[2] == 3   # Rahu sign: unchanged
-        assert result[5] == 0   # other Mercury sign: zeroed
+        assert result[2] == 3  # Rahu sign: unchanged
+        assert result[5] == 0  # other Mercury sign: zeroed
 
     def test_ketu_sign_keeps_other_becomes_zero(self):
         """Sign with Ketu keeps its value; paired sign becomes 0."""
         # Jupiter pair (8, 11); Ketu in sign 8 (Sagittarius).
         sarva = self._sarva({8: 4, 11: 6})
         result = ekadhipatya_shodhana(sarva, rahu_sign=2, ketu_sign=8)
-        assert result[8] == 4   # Ketu sign: unchanged
+        assert result[8] == 4  # Ketu sign: unchanged
         assert result[11] == 0  # other Jupiter sign: zeroed
 
     def test_higher_keeps_difference(self):
@@ -190,7 +190,7 @@ class TestEkadhipatyaShodhana:
         # Mars pair (0, 7); no node in either.
         sarva = self._sarva({0: 6, 7: 2})
         result = ekadhipatya_shodhana(sarva, rahu_sign=3, ketu_sign=9)
-        assert result[0] == 4   # 6 - 2
+        assert result[0] == 4  # 6 - 2
         assert result[7] == 0
 
     def test_lower_becomes_zero(self):
@@ -199,7 +199,7 @@ class TestEkadhipatyaShodhana:
         sarva = self._sarva({1: 3, 6: 7})
         result = ekadhipatya_shodhana(sarva, rahu_sign=4, ketu_sign=10)
         assert result[1] == 0
-        assert result[6] == 4   # 7 - 3
+        assert result[6] == 4  # 7 - 3
 
     def test_equal_no_nodes_odd_sign_keeps(self):
         """Equal bindus, no node: odd Vedic sign keeps, even becomes 0."""
@@ -207,15 +207,15 @@ class TestEkadhipatyaShodhana:
         sarva = self._sarva({9: 4, 10: 4})
         # Use nodes far from the Saturn pair so the equal-bindu rule fires.
         result2 = ekadhipatya_shodhana(sarva, rahu_sign=0, ketu_sign=6)
-        assert result2[9] == 0   # Capricorn (even Vedic sign) → 0
+        assert result2[9] == 0  # Capricorn (even Vedic sign) → 0
         assert result2[10] == 4  # Aquarius (odd Vedic sign)  → keeps
 
     def test_equal_aries_scorpio_aries_keeps(self):
         """Mars pair equal: Aries (1st Vedic=odd) keeps, Scorpio (8th=even) → 0."""
         sarva = self._sarva({0: 3, 7: 3})
         result = ekadhipatya_shodhana(sarva, rahu_sign=5, ketu_sign=11)
-        assert result[0] == 3   # Aries (odd) keeps
-        assert result[7] == 0   # Scorpio (even) → 0
+        assert result[0] == 3  # Aries (odd) keeps
+        assert result[7] == 0  # Scorpio (even) → 0
 
     def test_cancer_leo_unchanged(self):
         """Single-ruled Cancer and Leo are never modified."""
@@ -281,7 +281,7 @@ class TestEkadhipatyaShodhana:
         # Falls to equal-bindu tiebreaker: sign 10 (Aquarius = 11th Vedic = odd) keeps.
         sarva = self._sarva({9: 3, 10: 3})
         result = ekadhipatya_shodhana(sarva, rahu_sign=9, ketu_sign=10)
-        assert result[9] == 0   # Capricorn (even Vedic sign) → 0
+        assert result[9] == 0  # Capricorn (even Vedic sign) → 0
         assert result[10] == 3  # Aquarius (odd Vedic sign) → keeps
 
 
@@ -328,8 +328,7 @@ class TestComputeShodhana:
         for planet, bindus in self.shodha.reduced_bhinna.items():
             for a, b, c in [(0, 4, 8), (1, 5, 9), (2, 6, 10), (3, 7, 11)]:
                 assert min(bindus[a], bindus[b], bindus[c]) == 0, (
-                    f"{planet} group ({a},{b},{c}): "
-                    f"values {[bindus[a], bindus[b], bindus[c]]}"
+                    f"{planet} group ({a},{b},{c}): values {[bindus[a], bindus[b], bindus[c]]}"
                 )
 
     def test_trikona_groups_have_zero_in_sarva(self):
@@ -369,8 +368,9 @@ class TestShodhyaPinda:
 
     def test_all_planets_present(self):
         """All 7 planets must appear in the result."""
-        reduced = {p: [0] * 12 for p in
-                   ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"]}
+        reduced = {
+            p: [0] * 12 for p in ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"]
+        }
         results = compute_shodhya_pinda(reduced)
         expected = {"Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"}
         assert set(results.keys()) == expected
@@ -378,13 +378,13 @@ class TestShodhyaPinda:
     def test_shodhya_is_sum_of_components(self):
         """shodhya_pinda must equal rasi_pinda + graha_pinda for every planet."""
         reduced = {
-            "Sun":     [1, 0, 2, 0, 1, 0, 2, 0, 1, 0, 2, 0],
-            "Moon":    [3, 1, 0, 2, 0, 1, 0, 2, 0, 3, 0, 1],
-            "Mars":    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            "Sun": [1, 0, 2, 0, 1, 0, 2, 0, 1, 0, 2, 0],
+            "Moon": [3, 1, 0, 2, 0, 1, 0, 2, 0, 3, 0, 1],
+            "Mars": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             "Mercury": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
             "Jupiter": [0, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0],
-            "Venus":   [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            "Saturn":  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            "Venus": [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            "Saturn": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         }
         results = compute_shodhya_pinda(reduced)
         for planet, r in results.items():
@@ -394,8 +394,9 @@ class TestShodhyaPinda:
 
     def test_all_zero_input_gives_zero_pinda(self):
         """All-zero reduced BAV → all Pinda values are 0."""
-        reduced = {p: [0] * 12 for p in
-                   ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"]}
+        reduced = {
+            p: [0] * 12 for p in ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"]
+        }
         results = compute_shodhya_pinda(reduced)
         for _planet, r in results.items():
             assert r.rasi_pinda == 0
@@ -405,8 +406,10 @@ class TestShodhyaPinda:
     def test_graha_multipliers_applied(self):
         """Graha Pinda uses the correct per-planet multiplier."""
         # Each planet has exactly 1 bindu in sign 0; Graha Pinda = multiplier * 1.
-        reduced = {p: ([1] + [0] * 11) for p in
-                   ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"]}
+        reduced = {
+            p: ([1] + [0] * 11)
+            for p in ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"]
+        }
         results = compute_shodhya_pinda(reduced)
         for planet in reduced:
             assert results[planet].graha_pinda == GRAHA_GUNAKARA[planet], (
@@ -417,8 +420,9 @@ class TestShodhyaPinda:
     def test_rasi_multipliers_applied(self):
         """Rasi Pinda uses the correct per-sign multiplier."""
         # Sun has 1 bindu in each sign — Rasi Pinda = sum of all RASI_GUNAKARA.
-        reduced = {p: [0] * 12 for p in
-                   ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"]}
+        reduced = {
+            p: [0] * 12 for p in ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"]
+        }
         reduced["Sun"] = [1] * 12
         results = compute_shodhya_pinda(reduced)
         expected_rasi = sum(RASI_GUNAKARA)  # 7+10+8+4+10+6+7+8+9+5+11+12 = 97
@@ -457,9 +461,7 @@ class TestShodhanaWithManishChart:
             assert min(ts[a], ts[b], ts[c]) == 0
         for planet, bindus in self.shodha.reduced_bhinna.items():
             for a, b, c in groups:
-                assert min(bindus[a], bindus[b], bindus[c]) == 0, (
-                    f"{planet} group ({a},{b},{c})"
-                )
+                assert min(bindus[a], bindus[b], bindus[c]) == 0, f"{planet} group ({a},{b},{c})"
 
     def test_shodhya_pinda_structural_validity(self):
         """All 7 Shodhya Pinda results are non-negative and internally consistent."""

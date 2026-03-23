@@ -29,6 +29,7 @@ class TestTriPatakiChakra:
 
     def test_trikona_signs_are_valid_signs(self, manish_chart: ChartData) -> None:
         from daivai_engine.constants import SIGNS
+
         result = compute_varshphal(manish_chart, 2026)
         tp = result["tri_pataki"]
         for sector_name in ("lagna_sector", "muntha_sector", "year_lord_sector"):

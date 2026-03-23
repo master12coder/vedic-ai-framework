@@ -183,7 +183,17 @@ class TestPlanetForNumber:
         assert result == "Moon"
 
     def test_all_numbers_return_known_planet(self) -> None:
-        known_planets = {"Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn", "Rahu", "Ketu"}
+        known_planets = {
+            "Sun",
+            "Moon",
+            "Mars",
+            "Mercury",
+            "Jupiter",
+            "Venus",
+            "Saturn",
+            "Rahu",
+            "Ketu",
+        }
         for n in range(1, 10):
             p = planet_for_number(n)
             assert p in known_planets, f"Number {n}: planet '{p}' not recognized"

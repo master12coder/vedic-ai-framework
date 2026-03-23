@@ -256,6 +256,7 @@ class TestAnalyzeEclipseEffects:
     def test_eclipse_sign_matches_index(self):
         result = analyze_eclipse_effects("2024-04-08", "solar")
         from daivai_engine.constants import SIGNS
+
         assert result.eclipse_sign == SIGNS[result.eclipse_sign_index]
 
     def test_nakshatra_is_nonempty_string(self):
@@ -264,7 +265,17 @@ class TestAnalyzeEclipseEffects:
         assert len(result.nakshatra) > 0
 
     def test_nakshatra_lord_is_valid_planet(self):
-        valid_lords = {"Ketu", "Venus", "Sun", "Moon", "Mars", "Rahu", "Jupiter", "Saturn", "Mercury"}
+        valid_lords = {
+            "Ketu",
+            "Venus",
+            "Sun",
+            "Moon",
+            "Mars",
+            "Rahu",
+            "Jupiter",
+            "Saturn",
+            "Mercury",
+        }
         result = analyze_eclipse_effects("2024-04-08", "solar")
         assert result.nakshatra_lord in valid_lords
 

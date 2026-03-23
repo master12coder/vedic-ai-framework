@@ -10,12 +10,32 @@ class TestBuildKundaliContext:
     def test_context_has_all_required_keys(self, manish_chart: ChartData) -> None:
         ctx = build_kundali_context(manish_chart)
         required_keys = [
-            "chart", "lordship_ctx", "benefics", "malefics", "yogakaraka",
-            "md", "ad", "mahadashas", "antardashas", "yogas",
-            "shadbala", "avk", "d1_svg", "d9_svg",
-            "dasha_bars", "ad_bars", "shadbala_data", "avk_grid",
-            "planet_rows", "golden", "recommended_stones", "prohibited_stones",
-            "gemstone_results", "fmt", "signs_hi", "planet_hi",
+            "chart",
+            "lordship_ctx",
+            "benefics",
+            "malefics",
+            "yogakaraka",
+            "md",
+            "ad",
+            "mahadashas",
+            "antardashas",
+            "yogas",
+            "shadbala",
+            "avk",
+            "d1_svg",
+            "d9_svg",
+            "dasha_bars",
+            "ad_bars",
+            "shadbala_data",
+            "avk_grid",
+            "planet_rows",
+            "golden",
+            "recommended_stones",
+            "prohibited_stones",
+            "gemstone_results",
+            "fmt",
+            "signs_hi",
+            "planet_hi",
         ]
         for key in required_keys:
             assert key in ctx, f"Missing key '{key}' in context"

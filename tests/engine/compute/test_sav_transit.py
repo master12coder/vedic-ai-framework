@@ -118,6 +118,7 @@ class TestSavTransitScores:
 
     def test_sign_names_match_sign_index(self, manish_chart: ChartData) -> None:
         from daivai_engine.constants import SIGNS
+
         transit_map = {"Jupiter": 7, "Saturn": 3}
         scores = compute_sav_transit_scores(manish_chart, transit_map)
         for s in scores:

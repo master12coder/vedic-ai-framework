@@ -31,9 +31,7 @@ class TestHoraStructure:
         """D2 hora sign index must be 3 (Cancer) or 4 (Leo)."""
         result = analyze_hora(manish_chart)
         for p in result.planets:
-            assert p.hora_sign_index in (3, 4), (
-                f"{p.planet}.hora_sign_index = {p.hora_sign_index}"
-            )
+            assert p.hora_sign_index in (3, 4), f"{p.planet}.hora_sign_index = {p.hora_sign_index}"
 
     def test_hora_counts_sum_to_nine(self, manish_chart: ChartData) -> None:
         result = analyze_hora(manish_chart)

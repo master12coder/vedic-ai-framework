@@ -18,10 +18,21 @@ class TestPrashnaCore:
     def test_returns_all_required_keys(self, manish_chart: ChartData) -> None:
         result = compute_prashna("test", 25.3176, 83.0067)
         required = {
-            "chart", "answer", "reasoning", "lagna_lord", "relevant_house",
-            "relevant_lord", "moon_strong", "moon_waxing",
-            "arudha_sign", "arudha_sign_name", "arudha_lord", "arudha_strong",
-            "hora_lord", "swara", "is_mook_prashna",
+            "chart",
+            "answer",
+            "reasoning",
+            "lagna_lord",
+            "relevant_house",
+            "relevant_lord",
+            "moon_strong",
+            "moon_waxing",
+            "arudha_sign",
+            "arudha_sign_name",
+            "arudha_lord",
+            "arudha_strong",
+            "hora_lord",
+            "swara",
+            "is_mook_prashna",
         }
         for key in required:
             assert key in result, f"Missing key: {key}"
@@ -45,7 +56,9 @@ class TestPrashnaCore:
 
     def test_mook_prashna_flag(self) -> None:
         result = compute_prashna(
-            "test", 25.3176, 83.0067,
+            "test",
+            25.3176,
+            83.0067,
             is_mook_prashna=True,
         )
         assert result["is_mook_prashna"] is True
@@ -96,6 +109,7 @@ class TestHoraLord:
     def test_hora_lord_cycles_through_7_planets(self) -> None:
         """Over 7 consecutive hours, all hora lords should be distinct."""
         from datetime import timedelta
+
         dt = datetime(2026, 3, 22, 0, 0, tzinfo=UTC)
         lords = set()
         for h in range(7):

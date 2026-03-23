@@ -7,9 +7,18 @@ from daivai_engine.models.chart import ChartData
 
 
 _VALID_STATES = {
-    "shayana", "upavesha", "netrapani", "prakasha",
-    "gamana", "agama", "sabha", "aagama",
-    "bhojana", "nrityalipsya", "kautuka", "nidra",
+    "shayana",
+    "upavesha",
+    "netrapani",
+    "prakasha",
+    "gamana",
+    "agama",
+    "sabha",
+    "aagama",
+    "bhojana",
+    "nrityalipsya",
+    "kautuka",
+    "nidra",
 }
 
 
@@ -48,13 +57,13 @@ class TestShayanadiAvasthas:
     def test_odd_sign_zone_increases_with_degree(self) -> None:
         """For odd signs, higher degree → higher zone."""
         # Aries = sign index 0 (odd)
-        zone_low = _shayanadi_zone(0, 1.0)   # Near 0°
+        zone_low = _shayanadi_zone(0, 1.0)  # Near 0°
         zone_high = _shayanadi_zone(0, 28.0)  # Near 30°
         assert zone_low < zone_high
 
     def test_even_sign_zone_decreases_with_degree(self) -> None:
         """For even signs (Taurus=1), higher degree → lower zone (reversed sequence)."""
-        zone_low = _shayanadi_zone(1, 1.0)   # Near 0°
+        zone_low = _shayanadi_zone(1, 1.0)  # Near 0°
         zone_high = _shayanadi_zone(1, 28.0)  # Near 30°
         assert zone_low > zone_high
 

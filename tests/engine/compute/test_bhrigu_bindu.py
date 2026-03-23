@@ -81,12 +81,15 @@ class TestBhriguBinduFormula:
 
 
 class TestBhriguBinduMidpointHelper:
-    @pytest.mark.parametrize("lon_a,lon_b,expected", [
-        (0.0, 180.0, 90.0),       # simple average
-        (10.0, 50.0, 30.0),       # same-side pair
-        (350.0, 10.0, 180.0),     # across zero: (350+10)/2 = 180°
-        (44.683, 310.3, 177.49),  # Manish: (44.683+310.3)/2 ≈ 177.49° → Virgo
-    ])
+    @pytest.mark.parametrize(
+        "lon_a,lon_b,expected",
+        [
+            (0.0, 180.0, 90.0),  # simple average
+            (10.0, 50.0, 30.0),  # same-side pair
+            (350.0, 10.0, 180.0),  # across zero: (350+10)/2 = 180°
+            (44.683, 310.3, 177.49),  # Manish: (44.683+310.3)/2 ≈ 177.49° → Virgo
+        ],
+    )
     def test_midpoint_simple_average(self, lon_a: float, lon_b: float, expected: float):
         """_midpoint_longitude returns simple average mod 360."""
         result = _midpoint_longitude(lon_a, lon_b)

@@ -42,7 +42,7 @@ class TestNakshatraNadi:
         results = compute_nakshatra_nadi(manish_chart)
         for r in results:
             # Hindi names should contain Devanagari characters
-            assert any("\u0900" <= c <= "\u097F" for c in r.nadi_hi)
+            assert any("\u0900" <= c <= "\u097f" for c in r.nadi_hi)
 
     def test_planet_names_are_valid(self, manish_chart: ChartData) -> None:
         results = compute_nakshatra_nadi(manish_chart)
@@ -119,8 +119,10 @@ class TestNadiAmsha:
     def test_degree_in_sign_within_amsha_range(self, manish_chart: ChartData) -> None:
         positions = compute_nadi_amsha(manish_chart)
         for p in positions:
-            assert p.nadi_amsha_start <= p.degree_in_sign < p.nadi_amsha_end or \
-                   abs(p.degree_in_sign - p.nadi_amsha_start) < 0.001  # edge case
+            assert (
+                p.nadi_amsha_start <= p.degree_in_sign < p.nadi_amsha_end
+                or abs(p.degree_in_sign - p.nadi_amsha_start) < 0.001
+            )  # edge case
 
     def test_amsha_size_is_0_2_degrees(self, manish_chart: ChartData) -> None:
         positions = compute_nadi_amsha(manish_chart)
@@ -130,6 +132,7 @@ class TestNadiAmsha:
 
     def test_sign_names_match_sign_index(self, manish_chart: ChartData) -> None:
         from daivai_engine.constants import SIGNS
+
         positions = compute_nadi_amsha(manish_chart)
         for p in positions:
             assert p.sign == SIGNS[p.sign_index]

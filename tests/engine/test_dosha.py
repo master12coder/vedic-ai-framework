@@ -63,8 +63,18 @@ class TestDoshaDetection:
         by Rahu's house position. Source: Traditional Jyotish.
         """
         ksd_names = {
-            "Anant", "Kulik", "Vasuki", "Shankhapal", "Padma", "Mahapadma",
-            "Takshak", "Karkotak", "Shankhnaad", "Ghatak", "Vishdhar", "Sheshnag",
+            "Anant",
+            "Kulik",
+            "Vasuki",
+            "Shankhapal",
+            "Padma",
+            "Mahapadma",
+            "Takshak",
+            "Karkotak",
+            "Shankhnaad",
+            "Ghatak",
+            "Vishdhar",
+            "Sheshnag",
         }
         result = detect_kaal_sarp_dosha(manish_chart)
         if result.is_present:
@@ -96,10 +106,10 @@ class TestDoshaDetection:
         mangal_houses = {1, 2, 4, 7, 8, 12}
         if mars.house in mangal_houses and chart.lagna_sign_index in (0, 7):
             # Lagna is Aries or Scorpio → cancellation must be present
-            assert any("lagna lord" in r.lower() or "lagna is" in r.lower()
-                       for r in result.cancellation_reasons), (
-                f"Expected lagna-lord cancellation. Got: {result.cancellation_reasons}"
-            )
+            assert any(
+                "lagna lord" in r.lower() or "lagna is" in r.lower()
+                for r in result.cancellation_reasons
+            ), f"Expected lagna-lord cancellation. Got: {result.cancellation_reasons}"
 
     def test_mangal_dosha_cancellation_count(self, manish_chart):
         """Mangal Dosha cancellation reasons should be a list (may be empty)."""

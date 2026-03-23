@@ -90,8 +90,13 @@ class TestDoshaPresence:
 
     def test_severity_is_valid_string_when_present(self, manish_chart) -> None:
         valid_severities = {"full", "partial", "mild", "moderate", "severe"}
-        for detector in [detect_guru_chandal, detect_shrapit_dosha, detect_grahan_dosha,
-                         detect_angarak_dosha, detect_shakata_dosha]:
+        for detector in [
+            detect_guru_chandal,
+            detect_shrapit_dosha,
+            detect_grahan_dosha,
+            detect_angarak_dosha,
+            detect_shakata_dosha,
+        ]:
             result = detector(manish_chart)
             if result.is_present:
                 assert result.severity in valid_severities, f"{result.name}: {result.severity}"
