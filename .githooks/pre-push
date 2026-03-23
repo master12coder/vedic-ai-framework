@@ -7,7 +7,6 @@ SYNC_DIRS=""
 [ -d "docs" ]  && SYNC_DIRS="$SYNC_DIRS docs"
 [ -d "specs" ] && SYNC_DIRS="$SYNC_DIRS specs"
 [ -d "spec" ]  && SYNC_DIRS="$SYNC_DIRS spec"
-[ -d ".claude" ] && SYNC_DIRS="$SYNC_DIRS .claude"
 
 [ -z "$SYNC_DIRS" ] && exit 0
 

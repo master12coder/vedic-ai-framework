@@ -10,7 +10,6 @@ Usage:
   nlm delete <doc_id>            # Remove a document
   nlm clear                      # Wipe entire index
   nlm stats                      # Show index stats
-  nlm export <query> [--json]    # Export chunks as JSON for piping
 
 Designed for Claude Code: pipe output directly into context.
 """
@@ -31,18 +30,38 @@ INDEX_FILE = INDEX_DIR / "index.pkl"
 CHUNK_SIZE = 600       # words per chunk (tune: bigger = fewer tokens lost to overlap)
 CHUNK_OVERLAP = 80     # words overlap between chunks
 DEFAULT_TOP_K = 5      # chunks returned by default
+MAX_INDEX_MB = 100     # warn if index exceeds this size
 
 # ── Storage ────────────────────────────────────────────────────────────────
+def _fresh_index():
+    return {"docs": {}, "chunks": [], "meta": {"created": str(datetime.now())}}
+
 def load_index():
     if INDEX_FILE.exists():
-        with open(INDEX_FILE, "rb") as f:
-            return pickle.load(f)
-    return {"docs": {}, "chunks": [], "meta": {"created": str(datetime.now())}}
+        try:
+            with open(INDEX_FILE, "rb") as f:
+                data = pickle.load(f)
+            if isinstance(data, dict) and "docs" in data and "chunks" in data:
+                return data
+            print("⚠ Index has unexpected structure, creating fresh.", file=sys.stderr)
+        except (pickle.UnpicklingError, EOFError, Exception) as e:
+            print(f"⚠ Index corrupted ({e.__class__.__name__}), creating fresh.", file=sys.stderr)
+        # Back up corrupted file for debugging
+        bak = INDEX_FILE.with_suffix(".pkl.bak")
+        if not bak.exists():
+            INDEX_FILE.rename(bak)
+    return _fresh_index()
 
 def save_index(idx):
     INDEX_DIR.mkdir(parents=True, exist_ok=True)
-    with open(INDEX_FILE, "wb") as f:
+    tmp = INDEX_FILE.with_suffix(".pkl.tmp")
+    with open(tmp, "wb") as f:
         pickle.dump(idx, f)
+    size_mb = tmp.stat().st_size / (1024 * 1024)
+    if size_mb > MAX_INDEX_MB:
+        print(f"⚠ Index is {size_mb:.0f} MB — consider 'nlm clear' and re-indexing.",
+              file=sys.stderr)
+    tmp.replace(INDEX_FILE)  # atomic on POSIX
 
 # ── Text Extraction ────────────────────────────────────────────────────────
 def extract_text(path: Path) -> str:
@@ -274,13 +293,6 @@ def cmd_stats(args):
     print(f"   Index file : {INDEX_FILE}")
     print(f"   Index size : {INDEX_FILE.stat().st_size / 1024:.1f} KB" if INDEX_FILE.exists() else "")
 
-def cmd_export(args):
-    """Export query results as JSON — perfect for piping into Claude Code."""
-    args.json = True
-    args.quiet = True
-    args.top_k = args.top_k
-    cmd_query(args)
-
 # ── Main ───────────────────────────────────────────────────────────────────
 def main():
     parser = argparse.ArgumentParser(
@@ -289,22 +301,11 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=textwrap.dedent("""
         Examples:
-          nlm add ./docs/                     # Index entire folder
-          nlm add spec.pdf report.md          # Index specific files
-          nlm query "how does billing work"   # Search (plain text, for Claude Code)
-          nlm query "auth flow" --top-k 3     # Get 3 most relevant chunks
-          nlm query "HVAC modules" --json     # JSON output
-          nlm query "stripe" --doc billing    # Search within a specific doc
-          nlm list                            # Show all indexed docs
-          nlm stats                           # Index summary
-          nlm delete spec.pdf                 # Remove a doc
-          nlm clear                           # Wipe index
-        
-        Claude Code integration:
-          # In CLAUDE.md or instructions.md, add:
-          # Use `nlm query "<question>"` to search project docs before answering.
-          # This saves tokens vs pasting full docs.
+          nlm add docs/              nlm query "how does billing work"
+          nlm list                   nlm stats
+          nlm delete spec.pdf        nlm clear
         """)
+
     )
     
     sub = parser.add_subparsers(dest="command", required=True)

@@ -75,7 +75,7 @@ echo -e "${GREEN}   ✓ git will now use .githooks/ from repo${NC}"
 
 # ── 5. Initial nlm index ────────────────────────────────────
 echo -e "${YELLOW}[5/5] Building initial NLM index...${NC}"
-for dir in docs specs spec .claude; do
+for dir in docs specs spec; do
     [ -d "$dir" ] && nlm add "$dir" 2>/dev/null && echo "  ✓ indexed $dir/"
 done
 # Index root-level markdown files
