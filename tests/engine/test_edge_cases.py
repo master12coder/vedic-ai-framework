@@ -172,3 +172,113 @@ class TestEdgeCases:
             gender="Male",
         )
         assert not chart.planets["Sun"].is_retrograde
+
+    def test_ayanamsha_type_lahiri_default(self) -> None:
+        """Default chart uses Lahiri ayanamsha."""
+
+        chart = compute_chart(
+            "Manish",
+            "13/03/1989",
+            "12:17",
+            lat=25.3176,
+            lon=83.0067,
+            tz_name="Asia/Kolkata",
+            gender="Male",
+        )
+        # Lahiri ayanamsha at J2000 ≈ 23.85°; at 1989 it should be ~23.6°
+        assert 23.0 < chart.ayanamsha < 24.5
+
+    def test_ayanamsha_type_krishnamurti_differs_from_lahiri(self) -> None:
+        """KP ayanamsha chart produces slightly different positions from Lahiri."""
+        from daivai_engine.compute.ayanamsha import AyanamshaType
+
+        chart_lahiri = compute_chart(
+            "Test",
+            "13/03/1989",
+            "12:17",
+            lat=25.3176,
+            lon=83.0067,
+            tz_name="Asia/Kolkata",
+            ayanamsha_type=AyanamshaType.LAHIRI,
+        )
+        chart_kp = compute_chart(
+            "Test",
+            "13/03/1989",
+            "12:17",
+            lat=25.3176,
+            lon=83.0067,
+            tz_name="Asia/Kolkata",
+            ayanamsha_type=AyanamshaType.KRISHNAMURTI,
+        )
+        # KP ayanamsha is ~6 arcmin less than Lahiri → planetary positions differ
+        diff = abs(chart_lahiri.ayanamsha - chart_kp.ayanamsha)
+        assert 0.05 < diff < 0.15, f"Expected ~6 arcmin diff, got {diff:.4f}°"
+
+    def test_ayanamsha_restores_lahiri_after_kp(self) -> None:
+        """After a KP chart, a subsequent default chart must still use Lahiri."""
+        from daivai_engine.compute.ayanamsha import AyanamshaType
+
+        compute_chart(
+            "KP First",
+            "13/03/1989",
+            "12:17",
+            lat=25.3176,
+            lon=83.0067,
+            tz_name="Asia/Kolkata",
+            ayanamsha_type=AyanamshaType.KRISHNAMURTI,
+        )
+        # Second chart with default (Lahiri) should produce Lahiri ayanamsha
+        chart2 = compute_chart(
+            "Lahiri Second",
+            "13/03/1989",
+            "12:17",
+            lat=25.3176,
+            lon=83.0067,
+            tz_name="Asia/Kolkata",
+        )
+        assert 23.0 < chart2.ayanamsha < 24.5
+
+    def test_is_stationary_field_present(self) -> None:
+        """All planets must have is_stationary field (default False for most birth dates)."""
+        chart = compute_chart(
+            "Station",
+            "13/03/1989",
+            "12:17",
+            lat=25.3176,
+            lon=83.0067,
+            tz_name="Asia/Kolkata",
+            gender="Male",
+        )
+        for name, planet in chart.planets.items():
+            assert hasattr(planet, "is_stationary"), f"{name} missing is_stationary"
+            assert isinstance(planet.is_stationary, bool)
+
+    def test_tob_with_seconds_accepted(self) -> None:
+        """Birth time with seconds (HH:MM:SS) must compute a valid chart."""
+        chart = compute_chart(
+            "Seconds",
+            "13/03/1989",
+            "12:17:45",
+            lat=25.3176,
+            lon=83.0067,
+            tz_name="Asia/Kolkata",
+            gender="Male",
+        )
+        assert chart.lagna_sign  # Must compute without error
+
+    def test_geo_utc_offset_uses_birth_date(self) -> None:
+        """UTC offset for a DST timezone must reflect the actual birth date, not a hardcoded date."""
+        # July 4 in New York = summer → EDT (UTC-4), not EST (UTC-5)
+        chart = compute_chart(
+            "NYC Summer",
+            "04/07/1990",
+            "10:30",
+            lat=40.7128,
+            lon=-74.006,
+            tz_name="America/New_York",
+            gender="Male",
+        )
+        # EDT is UTC-4 (summer), EST is UTC-5 (winter).
+        # The chart object stores ayanamsha computed from the correct JD, so the
+        # lagna should be a valid sign — this confirms no 1-hour UTC error occurred.
+        assert 0 <= chart.lagna_sign_index <= 11

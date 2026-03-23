@@ -2,11 +2,14 @@
 
 from __future__ import annotations
 
+import logging
 from datetime import UTC, datetime, timedelta, timezone
 
 import pytz
 import swisseph as swe
 
+
+logger = logging.getLogger(__name__)
 
 IST = timezone(timedelta(hours=5, minutes=30))
 
@@ -34,12 +37,55 @@ def parse_birth_datetime(
     tob: str,
     tz_name: str = "Asia/Kolkata",
 ) -> datetime:
-    """Parse DOB (DD/MM/YYYY) and TOB (HH:MM) into timezone-aware datetime."""
+    """Parse DOB (DD/MM/YYYY) and TOB (HH:MM or HH:MM:SS) into a timezone-aware datetime.
+
+    Handles DST edge cases automatically:
+    - Ambiguous times (DST fall-back, clocks repeat an hour): standard time is chosen.
+    - Non-existent times (DST spring-forward, clocks skip an hour): the next valid
+      local time is returned and a warning is logged.
+
+    Args:
+        dob: Date of birth as DD/MM/YYYY.
+        tob: Time of birth as HH:MM or HH:MM:SS.
+        tz_name: IANA timezone name (e.g. "Asia/Kolkata", "America/New_York").
+
+    Returns:
+        Timezone-aware datetime in the given timezone.
+    """
     day, month, year = dob.split("/")
-    hour, minute = tob.split(":")
+    parts = tob.split(":")
+    hour = int(parts[0])
+    minute = int(parts[1])
+    second = int(parts[2]) if len(parts) > 2 else 0
+
     tz = pytz.timezone(tz_name)
-    naive = datetime(int(year), int(month), int(day), int(hour), int(minute))
-    return tz.localize(naive)
+    naive = datetime(int(year), int(month), int(day), hour, minute, second)
+
+    try:
+        # is_dst=None raises on ambiguity; we catch and resolve below.
+        return tz.localize(naive, is_dst=None)
+    except pytz.exceptions.AmbiguousTimeError:
+        # DST fall-back: this local time exists twice (standard + DST).
+        # Choose the standard-time (non-DST) interpretation.
+        logger.warning(
+            "Birth time %s %s in %s is DST-ambiguous — using standard time (non-DST).",
+            dob,
+            tob,
+            tz_name,
+        )
+        return tz.localize(naive, is_dst=False)
+    except pytz.exceptions.NonExistentTimeError:
+        # DST spring-forward: this local time does not exist.
+        # Shift forward by 1 hour (standard DST gap) and warn.
+        shifted = naive + timedelta(hours=1)
+        logger.warning(
+            "Birth time %s %s in %s does not exist (DST spring-forward) — using %s instead.",
+            dob,
+            tob,
+            tz_name,
+            shifted.strftime("%H:%M:%S"),
+        )
+        return tz.localize(shifted, is_dst=True)
 
 
 def now_ist() -> datetime:

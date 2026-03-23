@@ -86,6 +86,19 @@ COMBUSTION_LIMITS_RETROGRADE: dict[str, float] = {
     "Venus": 8.0,
 }
 
+# Speed threshold (degrees/day) below which a planet is considered stationary.
+# Planets near this threshold are at a retrograde or direct station — a point
+# considered extremely powerful in Vedic tradition (graha is "paused").
+# Source: Saravali Ch.4; Phala Deepika Ch.2 — stationary planets behave like
+# exalted planets and intensify significations of the house/sign they occupy.
+STATIONARY_THRESHOLDS: dict[str, float] = {
+    "Mars": 0.10,  # Normal ~0.52°/day; station when near 0
+    "Mercury": 0.10,  # Normal ~1.38°/day; frequent stations
+    "Jupiter": 0.01,  # Normal ~0.083°/day; slow mover
+    "Venus": 0.10,  # Normal ~1.2°/day
+    "Saturn": 0.005,  # Normal ~0.033°/day; very slow mover
+}
+
 # Cazimi threshold: planet within 17 arc-minutes of Sun is "in the heart of the Sun"
 # (Combust by Beams). Such planets are extremely powerful — not weakened.
 # Source: Saravali Ch.4; Phaladeepika Ch.2 v.6.

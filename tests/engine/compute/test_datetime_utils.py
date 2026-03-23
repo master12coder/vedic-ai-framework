@@ -98,6 +98,46 @@ class TestParseBirthDatetime:
         assert dt.month == 12
         assert dt.year == 1999
 
+    def test_hhmmss_format_supported(self) -> None:
+        """TOB with seconds (HH:MM:SS) must parse without error."""
+        dt = parse_birth_datetime("13/03/1989", "12:17:45", "Asia/Kolkata")
+        assert dt.hour == 12
+        assert dt.minute == 17
+        assert dt.second == 45
+
+    def test_hhmmss_converts_to_utc_correctly(self) -> None:
+        """HH:MM:SS birth time must produce the correct UTC value."""
+        dt = parse_birth_datetime("01/01/2000", "06:30:30", "Asia/Kolkata")
+        utc_dt = dt.astimezone(UTC)
+        # 06:30:30 IST = 01:00:30 UTC
+        assert utc_dt.hour == 1
+        assert utc_dt.minute == 0
+        assert utc_dt.second == 30
+
+    def test_dst_ambiguous_time_returns_standard_time(self) -> None:
+        """Fall-back DST: 01:30 AM repeated in US Eastern — must not raise, returns std time."""
+        # US Eastern fall-back: 2:00 AM → 1:00 AM on first Sunday of November.
+        # 2023-11-05 01:30 is ambiguous (exists in both EDT and EST).
+        dt = parse_birth_datetime("05/11/2023", "01:30", "America/New_York")
+        assert dt is not None
+        assert dt.tzinfo is not None
+        # Standard time (EST, UTC-5) means 01:30 EST = 06:30 UTC
+        utc_dt = dt.astimezone(UTC)
+        assert utc_dt.hour == 6
+        assert utc_dt.minute == 30
+
+    def test_dst_nonexistent_time_shifts_forward(self) -> None:
+        """Spring-forward DST: 02:30 AM does not exist in US Eastern on spring-forward day."""
+        # US Eastern spring-forward: 2:00 AM → 3:00 AM on second Sunday of March.
+        # 2024-03-10 02:30 does not exist.
+        dt = parse_birth_datetime("10/03/2024", "02:30", "America/New_York")
+        assert dt is not None
+        assert dt.tzinfo is not None
+        # Should be shifted to 03:30 EDT (UTC-4) = 07:30 UTC
+        utc_dt = dt.astimezone(UTC)
+        assert utc_dt.hour == 7
+        assert utc_dt.minute == 30
+
 
 class TestNowIst:
     """Tests for now_ist()."""

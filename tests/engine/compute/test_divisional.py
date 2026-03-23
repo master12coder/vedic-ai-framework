@@ -11,6 +11,7 @@ from daivai_engine.compute.divisional import (
     compute_varga,
     get_vargottam_planets,
 )
+from daivai_engine.compute.divisional_extended import compute_shashtyamsha_sign
 
 
 class TestVargaCharts:
@@ -93,3 +94,19 @@ class TestVargaCharts:
                 "Rahu",
                 "Ketu",
             ]
+
+    def test_d60_odd_sign_starts_from_aries(self) -> None:
+        """D60: odd signs (Aries, Gemini, ...) count from Aries — BPHS Ch.8."""
+        # Aries is sign_index 0 (odd sign). Part 0 (0-0.5°) → Aries (0).
+        assert compute_shashtyamsha_sign(0.1) == 0  # Aries, first part → Aries
+
+    def test_d60_even_sign_starts_from_libra(self) -> None:
+        """D60: even signs (Taurus, Cancer, ...) count from Libra — BPHS Ch.8."""
+        # Taurus is sign_index 1 (even sign). Part 0 (30-30.5°) → Libra (6).
+        assert compute_shashtyamsha_sign(30.1) == 6  # Taurus, first part → Libra
+
+    def test_d60_valid_range(self) -> None:
+        """D60 sign must be 0-11 for any longitude."""
+        for lon in range(0, 360, 3):
+            result = compute_shashtyamsha_sign(float(lon))
+            assert 0 <= result <= 11, f"D60 at {lon}°: {result}"

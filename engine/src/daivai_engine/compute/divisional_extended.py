@@ -220,15 +220,19 @@ def compute_akshavedamsha_sign(longitude: float) -> int:
 def compute_shashtyamsha_sign(longitude: float) -> int:
     """Compute D60 (Shashtyamsha) sign index.
 
-    Each sign divided into 60 parts of 0.5°.
-    Always counts from same sign.
+    Each sign divided into 60 parts of 0.5° (30' each).
+    BPHS Ch.8: odd signs (1st, 3rd, ...) count from Aries;
+               even signs (2nd, 4th, ...) count from Libra.
+    In 0-indexed terms: even indices = odd signs (from Aries=0),
+                        odd indices = even signs (from Libra=6).
     """
     sign_index = int(longitude / 30.0)
     degree_in_sign = longitude - sign_index * 30.0
     part = int(degree_in_sign / 0.5)
     if part > 59:
         part = 59
-    return (sign_index + part) % 12
+    start = 0 if sign_index % 2 == 0 else 6  # Aries for odd signs, Libra for even
+    return (start + part) % 12
 
 
 # VARGA_FUNCTIONS and compute_varga are defined in divisional.py (orchestrator)
