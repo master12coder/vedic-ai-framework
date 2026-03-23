@@ -29,6 +29,14 @@ Based on dasha of 6th/8th lord or afflicted planets:
 {% endfor %}
 {% endif %}
 
+{% if eclipse_impacts %}
+### Eclipse Health Impact
+{% for ei in eclipse_impacts %}{% if ei.is_significant %}
+- **{{ ei.type }}** ({{ ei.date }}): Affects **{{ ei.most_affected }}** — {{ ei.summary }}
+{% endif %}{% endfor %}
+Eclipses affecting the 6th/8th lords or lagna lord indicate periods requiring extra health vigilance.
+{% endif %}
+
 ### Current Health Focus
 - Current Mahadasha: {{ current_dasha.mahadasha }}{% if is_md_lord_maraka %} **(MARAKA — active health risk period)**{% endif %}
 - Which body systems need attention now
@@ -40,6 +48,16 @@ Based on dasha of 6th/8th lord or afflicted planets:
 {% for d in doshas %}
 - {{ d.name }}: {{ d.description }}
 {% endfor %}
+
+{% if kota_chakra %}
+### Kota Chakra (Fortress Protection Analysis)
+The 28-nakshatra fortress diagram reveals innate protective strength:
+- Kota Swami (fortress lord): **{{ kota_chakra.kota_swami }}**
+- Overall protection: **{{ kota_chakra.overall_strength }}**
+{% if kota_chakra.protective_planets %}- Protective planets (inside fortress): {{ kota_chakra.protective_planets | join(', ') }}{% endif %}
+{% if kota_chakra.threatening_planets %}- Threatening planets (outside fortress): {{ kota_chakra.threatening_planets | join(', ') }}{% endif %}
+Use fortress strength to assess resilience during vulnerable dasha periods.
+{% endif %}
 
 ### Preventive Recommendations
 Based on weak planets and vulnerable periods, suggest preventive health measures.

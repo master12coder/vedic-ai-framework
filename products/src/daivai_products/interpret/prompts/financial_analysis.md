@@ -29,6 +29,14 @@ Jupiter is the natural significator of wealth. Its placement:
 - {{ md.lord }} period ({{ md.start }} - {{ md.end }}): Financial implications{% for m in maraka_planets %}{% if m.planet == md.lord %} **[MARAKA — financial drain risk]**{% endif %}{% endfor %}
 {% endfor %}
 
+{% if bhavat_bhavam %}
+### Bhavat Bhavam — Wealth Reinforcement
+{% for bb in bhavat_bhavam %}{% if bb.house in [2, 11] %}
+- House {{ bb.house }} reinforced by **House {{ bb.derived_house }}**: {{ bb.primary_lord }} ↔ {{ bb.derived_lord }} ({{ bb.relationship }})
+{% endif %}{% endfor %}
+The 2nd-from-2nd (3rd) and 11th-from-11th (9th) houses reveal the *sustainability* of wealth — strong derived lords indicate lasting financial growth.
+{% endif %}
+
 ### Wealth-Building Advice
 Based on strong houses and planets, suggest optimal financial strategies. Reference functional benefic/malefic classification for {{ lagna_en }} lagna.
 

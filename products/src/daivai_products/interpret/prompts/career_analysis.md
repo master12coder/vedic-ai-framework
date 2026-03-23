@@ -43,6 +43,14 @@ Map the dasha periods to career phases:
 
 For each dasha, state whether the lord is a functional benefic, malefic, or maraka for {{ lagna_en }} lagna.
 
+{% if bhavat_bhavam %}
+### Bhavat Bhavam — Career Reinforcement
+{% for bb in bhavat_bhavam %}{% if bb.house == 10 %}
+- 10th house reinforced by **House {{ bb.derived_house }}** (10th from 10th): {{ bb.primary_lord }} ↔ {{ bb.derived_lord }} ({{ bb.relationship }})
+{% endif %}{% endfor %}
+The 10th-from-10th house shows the *foundation* of career success — its lord's strength directly impacts professional longevity.
+{% endif %}
+
 ### Recommended Career Fields
 Based on the chart's dominant planets and houses, suggest suitable career fields.
 

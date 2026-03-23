@@ -50,6 +50,14 @@ The 7th lord's maraka status must be acknowledged alongside marriage significati
 - {{ p.name }} in {{ p.sign }}, House {{ p.house }}, {{ p.dignity }}{% if p.name == 'Jupiter' and maraka_planets %}{% for m in maraka_planets %}{% if m.planet == 'Jupiter' %} **(MARAKA for this lagna)**{% endif %}{% endfor %}{% endif %}
 {% endif %}{% endfor %}
 
+{% if bhavat_bhavam %}
+### Bhavat Bhavam — Relationship Reinforcement
+{% for bb in bhavat_bhavam %}{% if bb.house == 7 %}
+- 7th house reinforced by **House {{ bb.derived_house }}** (7th from 7th = Lagna): {{ bb.primary_lord }} ↔ {{ bb.derived_lord }} ({{ bb.relationship }})
+{% endif %}{% endfor %}
+The 7th-from-7th is the 1st house (self) — the quality of partnerships mirrors the native's own personality strength.
+{% endif %}
+
 ### Navamsha (D9) Insights
 Navamsha is the chart of dharma and marriage. Vargottam planets: {{ vargottam_planets | join(', ') if vargottam_planets else 'None' }}
 

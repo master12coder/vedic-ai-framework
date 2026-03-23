@@ -24,6 +24,17 @@ Provide a timeline forecast for {{ name }} based on upcoming dasha periods.
 {% if yoga_timings.most_significant %}- Most Significant: {{ yoga_timings.most_significant }}{% endif %}
 {% endif %}
 
+{% if eclipse_impacts %}
+### Upcoming Eclipse Impacts
+{% for ei in eclipse_impacts %}{% if ei.is_significant %}
+- **{{ ei.type }}** on {{ ei.date }}: Most affected planet — **{{ ei.most_affected }}**. {{ ei.summary }}
+{% endif %}{% endfor %}
+{% for ei in eclipse_impacts %}{% if not ei.is_significant %}
+- {{ ei.type }} on {{ ei.date }}: {{ ei.most_affected }} — minor impact
+{% endif %}{% endfor %}
+Factor significant eclipses into the year-by-year forecast below.
+{% endif %}
+
 ### Forecast Requirements
 
 #### Year-by-Year Summary (Next 10 Years)

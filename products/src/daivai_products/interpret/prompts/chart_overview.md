@@ -48,7 +48,41 @@ Explain the most significant yogas and their life impact.
 {% if badhaka.obstruction_domains %}- Obstruction domains: {{ badhaka.obstruction_domains | join(', ') }}{% endif %}
 {% endif %}
 
-### 7. Overall Life Theme
-Based on the lagna, Moon nakshatra, and dominant planetary influences, describe the overall life theme for {{ name }}. Reference the functional benefic/malefic/maraka classification for {{ lagna_en }} lagna.
+{% if bhavat_bhavam %}
+### 7. Bhavat Bhavam (House-from-House Reinforcement)
+Key derived houses and how they strengthen or weaken primary houses:
+{% for bb in bhavat_bhavam %}{% if bb.house in [1, 2, 7, 10] %}
+- House {{ bb.house }} reinforced by House {{ bb.derived_house }}: {{ bb.primary_lord }} (primary) — {{ bb.derived_lord }} (derived) — {{ bb.relationship }}
+{% endif %}{% endfor %}
+Analyze how derived-house lords support or undermine the primary houses.
+{% endif %}
+
+{% if chandra_kundali %}
+### 8. Moon Chart Perspective (Chandra Kundali)
+From Moon as reference lagna:
+{% if chandra_kundali.kendras %}- Kendra planets: {{ chandra_kundali.kendras | join(', ') }}{% endif %}
+{% if chandra_kundali.trikonas %}- Trikona planets: {{ chandra_kundali.trikonas | join(', ') }}{% endif %}
+{% if chandra_kundali.dusthanas %}- Dusthana planets: {{ chandra_kundali.dusthanas | join(', ') }}{% endif %}
+{% if chandra_kundali.summary %}- {{ chandra_kundali.summary }}{% endif %}
+{% endif %}
+
+{% if surya_kundali %}
+### 9. Sun Chart Perspective (Surya Kundali)
+From Sun as reference lagna (career/authority/soul purpose):
+{% if surya_kundali.kendras %}- Kendra planets: {{ surya_kundali.kendras | join(', ') }}{% endif %}
+{% if surya_kundali.trikonas %}- Trikona planets: {{ surya_kundali.trikonas | join(', ') }}{% endif %}
+{% if surya_kundali.summary %}- {{ surya_kundali.summary }}{% endif %}
+{% endif %}
+
+{% if nisheka %}
+### 10. Nisheka (Conception Chart Verification)
+- Estimated conception: {{ nisheka.conception_date }}
+- Nisheka Lagna: {{ nisheka.nisheka_lagna_sign }} | Moon: {{ nisheka.nisheka_moon_sign }}
+- Birth verification: {% if nisheka.verification_passed %}**PASSED** — birth data consistent with BPHS Ch.4 rules{% else %}Inconclusive{% endif %}
+{% if nisheka.summary %}- {{ nisheka.summary }}{% endif %}
+{% endif %}
+
+### Overall Life Theme
+Based on the lagna, Moon nakshatra, and dominant planetary influences, describe the overall life theme for {{ name }}. Reference the functional benefic/malefic/maraka classification for {{ lagna_en }} lagna. Integrate dispositor flow, badhaka obstructions, and bhavat bhavam reinforcements into the synthesis.
 
 Format: Use both English and Hindi key terms. Be specific with house numbers and planet references.
