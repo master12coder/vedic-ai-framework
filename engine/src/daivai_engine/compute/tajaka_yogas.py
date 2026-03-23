@@ -143,8 +143,8 @@ def _check_pair(
             )
         )
 
-    # 3. Ikkabal — fast planet has greater degrees in sign (applying but faster)
-    if is_applying and fast.degree_in_sign < slow.degree_in_sign:
+    # 3. Ikkabal — fast planet has greater degrees in sign (applying but vigorous)
+    if is_applying and fast.degree_in_sign > slow.degree_in_sign:
         results.append(
             TajakaYoga(
                 name="Ikkabal",

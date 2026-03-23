@@ -86,12 +86,34 @@ def _is_applying(
     aspect_type: str,
     lon_diff: float,
 ) -> bool:
-    """Determine if p1 is applying to p2 for the given aspect."""
+    """Determine if p1 is applying to p2 for the given aspect.
+
+    For non-conjunction aspects, finds the nearest exact-aspect target position
+    for p1 (two positions exist: p2±exact_diff) and checks whether that target
+    is ahead of p1 in the forward (direct) direction.
+    """
     if aspect_type == "conjunction":
         return lon_diff < 0 and p1.speed > p2.speed
-    return p1.speed > 0 and abs(lon_diff) < (
-        {"sextile": 60.0, "square": 90.0, "trine": 120.0, "opposition": 180.0}.get(aspect_type, 0.0)
-    )
+    if p1.speed <= 0:
+        return False
+    exact_diff = {
+        "sextile": 60.0,
+        "square": 90.0,
+        "trine": 120.0,
+        "opposition": 180.0,
+    }.get(aspect_type, 0.0)
+    # Two exact positions for p1 to form the aspect with p2
+    t1 = (p2.longitude - exact_diff) % 360.0  # p2 is exact_diff ahead of p1
+    t2 = (p2.longitude + exact_diff) % 360.0  # p1 is exact_diff ahead of p2
+    # Forward angular distance from p1 to each target
+    d1 = (t1 - p1.longitude) % 360.0
+    d2 = (t2 - p1.longitude) % 360.0
+    # Pick the nearer target (minimum angular proximity in either direction)
+    prox1 = min(d1, 360.0 - d1)
+    prox2 = min(d2, 360.0 - d2)
+    nearest_forward = d1 if prox1 <= prox2 else d2
+    # Applying if the nearest exact-aspect position is still ahead of p1
+    return nearest_forward < 180.0
 
 
 def _fast_slow(
