@@ -76,9 +76,9 @@ def compute_special_lagnas(chart: ChartData) -> dict[str, SpecialLagna]:
     sun_lon = chart.planets["Sun"].longitude
     lagna_lon = chart.lagna_longitude
 
-    # HORA LAGNA (BPHS Ch.5): advances 1 sign per 2.5 ghatikas
-    # Hora Lagna = Sun longitude + (ghatikas x 15 deg)
-    hora_lon = (sun_lon + ghatikas * 15.0) % FULL_CIRCLE_DEG
+    # HORA LAGNA (BPHS Ch.5): advances 1 sign per 2.5 ghatikas = 12 deg/ghatika
+    # Hora Lagna = Sun longitude + (ghatikas x 12 deg)
+    hora_lon = (sun_lon + ghatikas * 12.0) % FULL_CIRCLE_DEG
 
     # BHAVA LAGNA (BPHS Ch.5): advances 1 sign per 5 ghatikas
     # Bhava Lagna = Lagna + (ghatikas x 6 deg)
