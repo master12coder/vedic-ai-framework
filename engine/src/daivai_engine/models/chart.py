@@ -29,6 +29,7 @@ class PlanetData(BaseModel):
     house: int = Field(ge=1, le=12)  # 1-12 from lagna
     is_retrograde: bool
     speed: float  # deg/day
+    is_stationary: bool = False  # |speed| below threshold — extremely powerful (paused graha)
     dignity: str  # exalted/debilitated/own/mooltrikona/neutral
     avastha: str  # Bala/Kumara/Yuva/Vriddha/Mruta
     is_combust: bool

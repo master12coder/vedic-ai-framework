@@ -237,7 +237,7 @@ def _sadesati_intensity(saturn_sign: int) -> str:
     """Sade Sati intensity based on Saturn's transit sign dignity."""
     if saturn_sign in (6, 9, 10):  # Libra (exalted), Capricorn, Aquarius (own)
         return "mild"
-    if saturn_sign in (0, 3):  # Aries (debilitated), Cancer
+    if saturn_sign == 0:  # Aries — Saturn debilitated
         return "severe"
     return "moderate"
 

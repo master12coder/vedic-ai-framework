@@ -157,8 +157,6 @@ def _detect_raj_yogas(chart: ChartData) -> list[YogaResult]:
     trikona_only = trikona_lords - kendra_lords
     for kl in kendra_only:
         for tl in trikona_only:
-            if kl == tl:
-                continue
             kp = chart.planets.get(kl)
             tp = chart.planets.get(tl)
             if kp and tp and kp.sign_index == tp.sign_index:

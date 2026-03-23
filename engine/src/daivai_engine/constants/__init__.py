@@ -92,6 +92,7 @@ from daivai_engine.constants.planets import (
     PLANETS,
     PLANETS_HI,
     SPECIAL_ASPECTS,
+    STATIONARY_THRESHOLDS,
     SWE_PLANETS,
     YONI_ENEMIES,
 )
@@ -185,6 +186,7 @@ __all__ = [
     "SIGN_LORDS",
     "SIGN_VARNA",
     "SPECIAL_ASPECTS",
+    "STATIONARY_THRESHOLDS",
     "STHIRA_DASHA_YEARS",
     "STHIRA_TOTAL_YEARS",
     "SWE_PLANETS",

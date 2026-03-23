@@ -181,7 +181,7 @@ def _gana_score(nak1: int, nak2: int) -> KootaScore:
         score = 6.0
         desc = f"Same gana: {gana1}"
     elif {gana1, gana2} == {"Deva", "Manushya"}:
-        score = 3.0
+        score = 5.0  # Muhurta Chintamani / Phala Deepika: Deva-Manushya = 5 pts
         desc = "Deva-Manushya"
     elif {gana1, gana2} == {"Manushya", "Rakshasa"}:
         score = 1.0

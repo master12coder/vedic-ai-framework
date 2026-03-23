@@ -135,3 +135,36 @@ class TestVighatiLagna:
         # Both are valid; just verify both are present and in range
         assert 0 <= result["vighati"].longitude < 360
         assert 0 <= result["ghatika"].longitude < 360
+
+    def test_hora_advances_1_sign_per_2point5_ghatikas(self, manish_chart: ChartData) -> None:
+        """Hora Lagna must advance at 12°/ghatika (= 1 sign per 2.5 ghatikas) per BPHS Ch.5.
+
+        Bhava Lagna advances at 6°/ghatika (1 sign per 5 ghatikas).
+        The Hora:Bhava ratio must be 2:1 (Hora is exactly twice as fast).
+        """
+        import math
+
+        from daivai_engine.compute.datetime_utils import compute_sunrise
+
+        result = compute_special_lagnas(manish_chart)
+        hora_lon = result["hora"].longitude
+        bhava_lon = result["bhava"].longitude
+        sun_lon = manish_chart.planets["Sun"].longitude
+        lagna_lon = manish_chart.lagna_longitude
+
+        # Both hora and bhava start from different bases, so we can't compare directly.
+        # Instead verify: (hora - sun_lon) / (bhava - lagna_lon) ≈ 2.0 when ghatikas > 0.
+        jd = manish_chart.julian_day
+        lat, lon_ = manish_chart.latitude, manish_chart.longitude
+        jd_sunrise = compute_sunrise(jd, lat, lon_)
+        elapsed_days = jd - jd_sunrise
+        ghatikas = elapsed_days * 60.0
+
+        if ghatikas > 0.1:  # only check when meaningfully after sunrise
+            hora_advance = (hora_lon - sun_lon) % 360.0
+            bhava_advance = (bhava_lon - lagna_lon) % 360.0
+            if bhava_advance > 0.01:
+                ratio = hora_advance / bhava_advance
+                assert math.isclose(ratio, 2.0, rel_tol=0.01), (
+                    f"Hora:Bhava advance ratio should be 2:1, got {ratio:.3f}"
+                )

@@ -23,19 +23,6 @@ from daivai_engine.models.upagraha import UpagrahaPosition
 
 logger = logging.getLogger(__name__)
 
-# Planet ruling each 1/8th of day (from sunrise), indexed by weekday (0=Sun)
-# Each day starts with the day lord, then follows the sequence
-DAY_HORA_SEQUENCE = ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"]
-UPAGRAHA_PLANET_ORDER = {
-    0: ["Sun", "Venus", "Mercury", "Moon", "Saturn", "Jupiter", "Mars"],  # Sunday
-    1: ["Moon", "Saturn", "Jupiter", "Mars", "Sun", "Venus", "Mercury"],  # Monday
-    2: ["Mars", "Sun", "Venus", "Mercury", "Moon", "Saturn", "Jupiter"],  # Tuesday
-    3: ["Mercury", "Moon", "Saturn", "Jupiter", "Mars", "Sun", "Venus"],  # Wednesday
-    4: ["Jupiter", "Mars", "Sun", "Venus", "Mercury", "Moon", "Saturn"],  # Thursday
-    5: ["Venus", "Mercury", "Moon", "Saturn", "Jupiter", "Mars", "Sun"],  # Friday
-    6: ["Saturn", "Jupiter", "Mars", "Sun", "Venus", "Mercury", "Moon"],  # Saturday
-}
-
 
 def compute_gulika_longitude(chart: ChartData) -> float:
     """Compute Gulika's sidereal longitude.
@@ -88,11 +75,11 @@ def compute_sun_upagrahas(chart: ChartData) -> list[UpagrahaPosition]:
     sun_lon = chart.planets["Sun"].longitude
     lagna_sign = chart.lagna_sign_index
 
-    dhuma = (sun_lon + 133.333) % 360.0
+    dhuma = (sun_lon + 133 + 1 / 3) % 360.0  # 133°20' = 133⅓°
     vyatipata = (360.0 - dhuma) % 360.0
     parivesha = (vyatipata + 180.0) % 360.0
     indrachapa = (360.0 - parivesha) % 360.0
-    upaketu = (indrachapa + 16.667) % 360.0
+    upaketu = (indrachapa + 16 + 2 / 3) % 360.0  # 16°40' = 16⅔°
 
     def _make(name: str, name_hi: str, lon: float, source: str) -> UpagrahaPosition:
         sign_idx = int(lon / 30.0)

@@ -72,7 +72,6 @@ def compute_mahadashas(chart: ChartData) -> list[DashaPeriod]:
 def compute_antardashas(md: DashaPeriod) -> list[DashaPeriod]:
     """Compute Antardasha periods within a Mahadasha."""
     md_lord = md.lord
-    md_years = DASHA_YEARS[md_lord]
     md_duration_days = (md.end - md.start).total_seconds() / 86400.0
     start_index = DASHA_SEQUENCE.index(md_lord)
 
@@ -84,8 +83,7 @@ def compute_antardashas(md: DashaPeriod) -> list[DashaPeriod]:
         ad_lord = DASHA_SEQUENCE[ad_lord_index]
         ad_years = DASHA_YEARS[ad_lord]
 
-        # AD duration = (MD_years * AD_years / 120) proportional to MD duration
-        _proportion = (md_years * ad_years) / (DASHA_TOTAL_YEARS * md_years)
+        # AD duration = (AD_years / 120) * MD duration
         ad_days = md_duration_days * (ad_years / DASHA_TOTAL_YEARS)
 
         end = current_start + timedelta(days=ad_days)
