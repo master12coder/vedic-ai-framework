@@ -15,6 +15,57 @@ apps/ imports from products/ and engine/.
 Plugins NEVER import each other.
 ```
 
+## Engine Scope (131 compute modules as of March 2026)
+
+```
+Core: chart, dasha (5 types), divisional, divisional_extended, special_lagnas, upagraha
+Yogas: yoga + 13 sub-modules (284 yogas: Nabhasa, Arishta, Bandhana, Daridra,
+       Kemadruma, Parivartana, Neech Bhanga, Moksha, Lunar, Solar…)
+Matching: kootas (North Indian 36-point) + porutham (South Indian 10-point)
+Dashas: Vimshottari, Narayana, Kalachakra, Mudda, Sudarshan, conditional
+Strength: bhava_bala, ishta_kashta, vimshopaka, graha_yuddha, avasthas (2 modules)
+Divisional: 16 vargas, D60 Shastyamsha, Drekkana, varga analysis (deep + models)
+Jaimini: karakas, padas, rasi dashas
+KP: sub-lord tables, ruling planets
+Predictive: gochara, transit (3 modules), double_transit, sav_transit, vedha
+Muhurta: engine + lagna + panchanga, tithi_pravesh, varsha_pravesh
+Medical: body mapping, disease, dosha constitution
+Remedies: gem_therapy (4 modules), mantra, yantra, vastu (2 modules)
+Prashna: prashna + helpers, Ashtamangala (2 modules)
+Specialized: Pancha Pakshi, Namakarana, numerology (3 modules), sarvatobhadra,
+             mundane (3 modules), saham, longevity
+```
+
+## Engine Conventions (confirmed March 2026 audit)
+
+```
+DST handling (datetime_utils.py):
+  AmbiguousTimeError (fall-back) → resolve to standard time
+  NonExistentTimeError (spring-forward) → shift forward 1 hour
+  Supports HH:MM:SS birth time format
+
+Ayanamsha (chart.py):
+  Configurable via ayanamsha_type param (Lahiri default)
+  Non-Lahiri computation MUST restore Lahiri in finally block
+  Available: Lahiri, KP, Raman, and all Swiss Ephemeris types
+
+Stationary planets (chart.py):
+  Detected via STATIONARY_THRESHOLDS dict in constants/planets.py
+  Per Saravali Ch.4 — threshold varies by planet
+
+D60 Shastyamsha (divisional_extended.py):
+  BPHS Ch.8 rule — odd signs count from Aries, even signs from Libra
+  NOT from own sign for all signs
+
+Hora Lagna (special_lagnas.py):
+  Rate = 12 deg/ghatika (= 1 sign per 2.5 ghatikas, BPHS Ch.5)
+  NOT 15 deg/ghatika
+
+Scripture citations:
+  Every computation fix MUST cite source (BPHS chapter, Saravali, etc.)
+  Commit messages include the citation
+```
+
 ## Decision Tree (EVERY task — follow top to bottom)
 
 ```
@@ -70,7 +121,7 @@ One file = one responsibility.
 Every public function has type hints + docstring.
 Pydantic v2 for all models (not dataclasses).
 Python 3.12+ features: match statements, type params.
-Constants in engine/constants.py. ONE file. Not scattered.
+Constants in engine/constants/ package. Organized by domain (planets.py, signs.py, etc.). Not scattered across compute modules.
 Exceptions in engine/exceptions.py. ONE file. Not scattered.
 Config in engine/knowledge/*.yaml. Not hardcoded.
 ```
