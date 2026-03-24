@@ -40,6 +40,7 @@ def build_kundali_context(
     chart: ChartData,
     fmt: str = "detailed",
     gemstone_results: list[Any] | None = None,
+    full_analysis: Any | None = None,
 ) -> dict[str, Any]:
     """Build complete template context for the HTML kundali.
 
@@ -47,6 +48,7 @@ def build_kundali_context(
         chart: Computed birth chart.
         fmt: Report format ('summary', 'detailed', 'pandit').
         gemstone_results: Pre-computed gemstone weight results.
+        full_analysis: Optional FullChartAnalysis — avoids recomputing engine modules.
 
     Returns:
         Dictionary with all template variables.
@@ -57,23 +59,32 @@ def build_kundali_context(
     yk = ctx.get("yogakaraka", {})
     yogakaraka = yk.get("planet", "") if isinstance(yk, dict) else ""
 
-    # Dasha
-    mahadashas = compute_mahadashas(chart)
-    md, ad, _pd = find_current_dasha(chart)
+    fa = full_analysis  # shorthand
+
+    # Dasha — use pre-computed if available
+    mahadashas = fa.mahadashas if fa else compute_mahadashas(chart)
+    if fa:
+        md, ad = fa.current_md, fa.current_ad
+    else:
+        md, ad, _pd = find_current_dasha(chart)
     antardashas = compute_antardashas(md)
 
     # Yogas
-    yogas = [y for y in detect_all_yogas(chart) if y.is_present]
+    yogas = (
+        [y for y in fa.yogas if y.is_present]
+        if fa
+        else [y for y in detect_all_yogas(chart) if y.is_present]
+    )
 
     # Shadbala
-    shadbala = compute_shadbala(chart)
+    shadbala = fa.shadbala if fa else compute_shadbala(chart)
 
     # Ashtakavarga
-    avk = compute_ashtakavarga(chart)
+    avk = fa.ashtakavarga if fa else compute_ashtakavarga(chart)
 
     # SVGs
     d1_svg = render_d1_svg(chart, ctx)
-    navamsha = compute_navamsha(chart)
+    navamsha = fa.navamsha_positions if fa else compute_navamsha(chart)
     d9_svg = render_divisional_svg(chart, navamsha, "D9 नवमांश", ctx)
 
     # Delegate to context_builders

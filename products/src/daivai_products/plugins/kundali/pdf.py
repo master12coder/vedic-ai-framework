@@ -29,6 +29,7 @@ def generate_html(
     fmt: str = "detailed",
     gemstone_results: list[Any] | None = None,
     standalone: bool = False,
+    full_analysis: Any | None = None,
 ) -> str:
     """Generate complete HTML kundali report.
 
@@ -37,11 +38,14 @@ def generate_html(
         fmt: 'summary', 'detailed', or 'pandit'.
         gemstone_results: Pre-computed gemstone weight results.
         standalone: If True, embed font as base64 data URI for PDF.
+        full_analysis: Optional FullChartAnalysis — avoids recomputing engine modules.
 
     Returns:
         Complete HTML string.
     """
-    ctx = build_kundali_context(chart, fmt=fmt, gemstone_results=gemstone_results)
+    ctx = build_kundali_context(
+        chart, fmt=fmt, gemstone_results=gemstone_results, full_analysis=full_analysis
+    )
 
     # Font embedding for standalone/PDF mode
     font_data_uri = ""
@@ -67,6 +71,7 @@ def generate_pdf(
     body_weight_kg: float = 0,
     chart_image_bytes: bytes | None = None,
     gemstone_results: list[Any] | None = None,
+    full_analysis: Any | None = None,
 ) -> bytes | None:
     """Generate a complete kundali PDF report.
 
@@ -86,7 +91,7 @@ def generate_pdf(
     """
     # Try WeasyPrint first
     try:
-        pdf_bytes = _generate_weasyprint(chart, fmt, gemstone_results)
+        pdf_bytes = _generate_weasyprint(chart, fmt, gemstone_results, full_analysis)
         logger.info("PDF generated via WeasyPrint (%d bytes)", len(pdf_bytes))
     except ImportError:
         logger.info("WeasyPrint not available, falling back to ReportLab")
@@ -130,11 +135,18 @@ def _generate_weasyprint(
     chart: ChartData,
     fmt: str,
     gemstone_results: list[Any] | None,
+    full_analysis: Any | None = None,
 ) -> bytes:
     """Generate PDF bytes via WeasyPrint (raises ImportError if missing)."""
     from weasyprint import HTML
 
-    html_str = generate_html(chart, fmt=fmt, gemstone_results=gemstone_results, standalone=True)
+    html_str = generate_html(
+        chart,
+        fmt=fmt,
+        gemstone_results=gemstone_results,
+        standalone=True,
+        full_analysis=full_analysis,
+    )
     result: bytes = HTML(string=html_str).write_pdf()  # type: ignore[assignment]
     return result
 

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import logging
 from enum import StrEnum
+from typing import Any
 
 from daivai_engine.compute.chart import ChartData
 from daivai_engine.compute.daily import DailySuggestion, compute_daily_suggestion
@@ -66,7 +67,9 @@ def format_medium(suggestion: DailySuggestion, chart: ChartData) -> str:
     return "\n".join(lines)
 
 
-def format_detailed(suggestion: DailySuggestion, chart: ChartData) -> str:
+def format_detailed(
+    suggestion: DailySuggestion, chart: ChartData, full_analysis: Any | None = None
+) -> str:
     """Full detailed report with transit analysis."""
     lines: list[str] = []
 
@@ -115,9 +118,12 @@ def format_detailed(suggestion: DailySuggestion, chart: ChartData) -> str:
     if suggestion.health_focus:
         lines.append(f"💪 Health Focus: {suggestion.health_focus}")
 
-    # Dasha context
+    # Dasha context (use pre-computed if available)
     try:
-        md, _ad, _pd = find_current_dasha(chart)
+        if full_analysis and hasattr(full_analysis, "current_md"):
+            md = full_analysis.current_md
+        else:
+            md, _ad, _pd = find_current_dasha(chart)
         if md:
             lines.append("")
             lines.append(f"📿 Current Dasha: {md.lord} Mahadasha")
@@ -130,12 +136,14 @@ def format_detailed(suggestion: DailySuggestion, chart: ChartData) -> str:
 def run_daily(
     chart: ChartData,
     level: DailyLevel = DailyLevel.MEDIUM,
+    full_analysis: Any | None = None,
 ) -> str:
     """Generate daily guidance at the specified level.
 
     Args:
         chart: Computed birth chart.
         level: Output detail level (simple/medium/detailed).
+        full_analysis: Optional FullChartAnalysis — uses pre-computed data if available.
 
     Returns:
         Formatted daily guidance string.
@@ -148,4 +156,4 @@ def run_daily(
         case DailyLevel.MEDIUM:
             return format_medium(suggestion, chart)
         case DailyLevel.DETAILED:
-            return format_detailed(suggestion, chart)
+            return format_detailed(suggestion, chart, full_analysis)

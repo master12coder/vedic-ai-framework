@@ -83,7 +83,7 @@ def _format_recommendations(
     return "\n".join(lines)
 
 
-def get_lal_kitab_assessment(chart: ChartData) -> str:
+def get_lal_kitab_assessment(chart: ChartData, full_analysis: Any | None = None) -> str:
     """Get Lal Kitab planet assessment, debts, and remedies.
 
     Computes the full Lal Kitab analysis: Pakka Ghar positions,
@@ -93,11 +93,15 @@ def get_lal_kitab_assessment(chart: ChartData) -> str:
 
     Args:
         chart: Computed birth chart.
+        full_analysis: Optional FullChartAnalysis — uses pre-computed lal_kitab if available.
 
     Returns:
         Formatted multi-line Lal Kitab report.
     """
-    result = compute_lal_kitab(chart)
+    if full_analysis and hasattr(full_analysis, "lal_kitab") and full_analysis.lal_kitab:
+        result = full_analysis.lal_kitab
+    else:
+        result = compute_lal_kitab(chart)
     return _format_lal_kitab(result, chart.name)
 
 

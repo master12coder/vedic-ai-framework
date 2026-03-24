@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+from typing import Any
 
 from daivai_engine.compute.ashtakavarga import compute_ashtakavarga
 from daivai_engine.compute.chart import get_house_lord
@@ -42,6 +43,7 @@ def generate_report(
     chart: ChartData,
     sections: list[str] | None = None,
     llm_backend: str = "none",
+    full_analysis: Any | None = None,
 ) -> str:
     """Generate a complete kundali report.
 
@@ -58,7 +60,7 @@ def generate_report(
 
     for section in active_sections:
         try:
-            content = _render_section(chart, section, llm_backend)
+            content = _render_section(chart, section, llm_backend, full_analysis)
             if content:
                 parts.append(content)
         except Exception as e:
@@ -68,7 +70,9 @@ def generate_report(
     return "\n\n".join(parts)
 
 
-def _render_section(chart: ChartData, section: str, llm_backend: str) -> str:
+def _render_section(
+    chart: ChartData, section: str, llm_backend: str, full_analysis: Any | None = None
+) -> str:
     """Render a single report section."""
     match section:
         case "chart_summary":
