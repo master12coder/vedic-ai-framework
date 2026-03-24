@@ -4,19 +4,13 @@ Research topics for deep-dive, ordered by priority. Each needs classical text ve
 
 ## HIGH Priority
 
-### 1. Shadbala Kala Bala (3 missing sub-components)
-- **Gap:** Masa Bala, Abda Bala, Tribhaga Bala → Shadbala off by ~10%
-- **Source:** BPHS Ch.23
-- **Research:** Month lord table, Samvat year lord, day/night third rulers
-- **Collect:** Exact formulas, Rupa values, worked example for Manish's chart
+### ~~1. Shadbala Kala Bala~~ — RESOLVED
+All 8 components implemented (Masa, Abda, Tribhaga present in kala_bala.py lines 329-339).
 
-### 2. Vimshopaka Bala (9/16 vargas)
-- **Gap:** Only 56% complete, missing 7 varga weights
-- **Source:** BPHS Ch.16-17
-- **Research:** Weight tables for Shadvarga/Saptvargaja/Dashavarga/Shodashavarga
-- **Collect:** 4 tables with weights per varga totaling 20
+### ~~2. Vimshopaka Bala~~ — RESOLVED
+4 schemes complete (Shadvarga/Saptvarga/Dashavarga/Shodashavarga). 16 vargas available.
 
-### 3. Provenance (11 unverified citations)
+### 1. Provenance (11 unverified citations)
 - **Gap:** 11 of 47 computation citations unverified against real BPHS verses
 - **Source:** scriptures/bphs/*.yaml (552 verses)
 - **Research:** Cross-check each citation against Santhanam translation

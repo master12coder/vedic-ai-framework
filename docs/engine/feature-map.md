@@ -18,12 +18,12 @@
 | 7 | Vimshottari Dasha | DONE | DONE | LOW | None |
 | 8 | Kalachakra Dasha | DONE | DONE | LOW | None |
 | 9 | Other Dasha Systems | DONE | PARTIAL | LOW | No YAML provenance |
-| 10 | Shadbala (6-fold) | PARTIAL | DONE | HIGH | Kala Bala 3 sub-components missing |
+| 10 | Shadbala (6-fold) | DONE | DONE | - | All 8 Kala Bala components implemented |
 | 11 | Ashtakavarga | DONE | DONE | LOW | Kaksha not implemented |
 | 12 | Yoga Detection | DONE | DONE | HIGH | ~40 YAML defs not coded |
 | 13 | Dosha Detection | DONE | DONE | LOW | None |
 | 14 | Divisional Charts | DONE | PARTIAL | LOW | No signification YAML |
-| 15 | Vimshopaka Bala | PARTIAL | MISSING | HIGH | 9/16 vargas only |
+| 15 | Vimshopaka Bala | DONE | MISSING | MEDIUM | 4 schemes complete, needs weight YAML |
 | 16 | Jaimini System | DONE | PARTIAL | LOW | 7vs8 karaka not documented |
 | 17 | Bhava Bala | DONE | MISSING | MEDIUM | No YAML formulas |
 | 18 | Special Lagnas | DONE | MISSING | MEDIUM | No YAML significations |
@@ -45,8 +45,8 @@
 | Category | Count |
 |----------|-------|
 | Total features | 30 |
-| Code DONE | 28 |
-| Code PARTIAL | 2 (#10 Shadbala, #15 Vimshopaka) |
+| Code DONE | 30 |
+| Code PARTIAL | 0 |
 | YAML DONE | 12 |
 | YAML PARTIAL | 10 |
 | YAML MISSING | 8 |

@@ -52,9 +52,10 @@ The intelligence layer between computation and interpretation:
 
 | Feature | Gap | Priority |
 |---------|-----|----------|
-| Shadbala | Kala Bala missing 3 sub-components (Masa/Abda/Tribhaga) ~10% off | HIGH |
-| Vimshopaka | Uses 9/16 vargas (56% complete) | HIGH |
 | Provenance | 11 unverified citations, 8 YAML files lack headers | HIGH |
 | Yoga YAML | ~40 definitions not coded | MEDIUM |
 | Ashtakavarga | Kaksha analysis (8 sub-divisions) not done | MEDIUM |
 | Aspect strength | All aspects treated as full (no partial strength) | LOW |
+| Vimshopaka YAML | Weight tables need YAML with BPHS provenance | MEDIUM |
+
+**Resolved (March 2026):** Shadbala Kala Bala (all 8 components), Vimshopaka (4 schemes complete)
