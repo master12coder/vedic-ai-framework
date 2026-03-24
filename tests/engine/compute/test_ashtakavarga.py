@@ -176,8 +176,8 @@ class TestMultipleCharts:
     )
     def test_337_invariant_across_charts(self, lagna_sign, sun_sign, moon_sign):
         """Total must be 337 regardless of planetary positions."""
-        chart = _make_chart()
-        chart.lagna_sign_index = lagna_sign
+        base = _make_chart()
+        chart = base.model_copy(update={"lagna_sign_index": lagna_sign})
         chart.planets["Sun"] = _make_planet("Sun", sun_sign)
         chart.planets["Moon"] = _make_planet("Moon", moon_sign)
         result = compute_ashtakavarga(chart)

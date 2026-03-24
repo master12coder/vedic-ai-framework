@@ -12,7 +12,7 @@ class PlanetData(BaseModel):
     avastha, retrograde/combust status, and other key attributes for one graha.
     """
 
-    model_config = ConfigDict(frozen=False)
+    model_config = ConfigDict(frozen=True)
 
     name: str
     name_hi: str
@@ -44,7 +44,7 @@ class ChartData(BaseModel):
     information, and a dictionary of all planetary positions keyed by planet name.
     """
 
-    model_config = ConfigDict(frozen=False)
+    model_config = ConfigDict(frozen=True)
 
     name: str
     dob: str
