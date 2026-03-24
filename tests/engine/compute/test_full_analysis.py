@@ -15,7 +15,7 @@ def _lordship(chart: ChartData) -> dict:
 class TestFullAnalysisV4:
     def test_version(self, manish_chart: ChartData) -> None:
         a = compute_full_analysis(manish_chart)
-        assert a.version == "5.0"
+        assert a.version == "5.1"
 
     def test_core_fields(self, manish_chart: ChartData) -> None:
         a = compute_full_analysis(manish_chart, lordship_context=_lordship(manish_chart))

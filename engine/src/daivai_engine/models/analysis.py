@@ -37,10 +37,11 @@ class FullChartAnalysis(BaseModel):
 
     model_config = ConfigDict(frozen=True)
 
-    version: str = "5.0"
+    version: str = "5.1"
 
     # Core
     chart: ChartData
+    lagna_lord: str = ""  # Planet name (e.g. "Mercury" for Mithuna lagna)
 
     # Dashas (all systems)
     mahadashas: list[DashaPeriod]
@@ -154,3 +155,4 @@ class FullChartAnalysis(BaseModel):
     current_transits: Any | None = None  # TransitData — current positions
     varga_deep: dict[str, Any] = {}  # D9/D10/D7/D12 deep analysis
     conditional_dashas: dict[str, list[Any]] = {}  # 7 conditional dasha systems
+    pancha_pakshi_bird: str = ""  # Birth bird (Vulture/Owl/Crow/Cock/Peacock)

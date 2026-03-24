@@ -78,6 +78,7 @@ from daivai_engine.compute.verify import verify_chart_accuracy
 from daivai_engine.compute.vimshopaka import compute_vimshopaka_bala
 from daivai_engine.compute.yoga import detect_all_yogas
 from daivai_engine.compute.yoga_timing import compute_all_yoga_timings
+from daivai_engine.constants import SIGN_LORDS
 from daivai_engine.models.analysis import FullChartAnalysis
 from daivai_engine.models.chart import ChartData
 
@@ -97,6 +98,9 @@ def compute_full_analysis(
     """
     if lordship_context is None:
         lordship_context = {}
+
+    # Lagna lord (every pandit's first check)
+    lagna_lord_name = SIGN_LORDS[chart.lagna_sign_index]
 
     # Core
     mahadashas = compute_mahadashas(chart)
@@ -198,6 +202,17 @@ def compute_full_analysis(
     eclipse_jd = to_jd(now_ist())
     eclipse_impacts = safe_compute(compute_upcoming_eclipse_impacts, chart, eclipse_jd, 1)
 
+    # Pancha Pakshi birth bird (pure birth chart data)
+    pp_bird = ""
+    if panchang and hasattr(panchang, "paksha"):
+        from daivai_engine.compute.pancha_pakshi import get_birth_bird
+
+        pp_bird_result = safe_compute(get_birth_bird, moon_nak, panchang.paksha)
+        if pp_bird_result and hasattr(pp_bird_result, "value"):
+            pp_bird = pp_bird_result.value
+        elif isinstance(pp_bird_result, str):
+            pp_bird = pp_bird_result
+
     # Phase 2 modules (14 previously orphaned computations)
     phase2 = compute_phase2_modules(chart)
 
@@ -206,6 +221,7 @@ def compute_full_analysis(
 
     return FullChartAnalysis(
         chart=chart,
+        lagna_lord=lagna_lord_name,
         mahadashas=mahadashas,
         current_md=md,
         current_ad=ad,
@@ -286,4 +302,5 @@ def compute_full_analysis(
         else None,
         varga_deep=phase2.get("varga_deep", {}),
         conditional_dashas=phase2.get("conditional_dashas", {}),
+        pancha_pakshi_bird=pp_bird,
     )
