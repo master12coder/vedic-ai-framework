@@ -138,3 +138,19 @@ class FullChartAnalysis(BaseModel):
     kota_chakra: Any | None = None  # KotaChakraResult — fortress diagram
     nisheka: Any | None = None  # NishekaResult — conception chart (BPHS Ch.4)
     eclipse_impacts: list[Any] = []  # EclipseNatalResult — upcoming eclipse natal impacts
+
+    # Phase 2 modules — previously orphaned computations
+    avakhada: Any | None = None  # AvakhadaChakra — birth nakshatra details
+    bhava_madhya: Any | None = None  # SripatiBhavaMadhyaResult — bhava midpoints
+    bhrigu_bindu: Any | None = None  # BhriguBinduResult — destiny point
+    drekkana: Any | None = None  # DrekkanaAnalysisResult — D3 decanate
+    gochara: Any | None = None  # GocharaAnalysis — transit effects
+    hora: Any | None = None  # HoraResult — hora chart wealth
+    medical: Any | None = None  # HealthAnalysis — body mapping/dosha
+    mrityu_bhaga: list[Any] = []  # MrityuBhagaResult — critical degrees
+    pushkara: list[Any] = []  # PushkaraResult — auspicious points
+    sav_pinda: Any | None = None  # SavPindaResult — SAV transit scores
+    d60_analysis: Any | None = None  # D60Analysis — Shastyamsha deep
+    current_transits: Any | None = None  # TransitData — current positions
+    varga_deep: dict[str, Any] = {}  # D9/D10/D7/D12 deep analysis
+    conditional_dashas: dict[str, list[Any]] = {}  # 7 conditional dasha systems

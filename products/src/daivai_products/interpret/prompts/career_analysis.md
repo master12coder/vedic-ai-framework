@@ -43,6 +43,11 @@ Map the dasha periods to career phases:
 
 For each dasha, state whether the lord is a functional benefic, malefic, or maraka for {{ lagna_en }} lagna.
 
+{% if varga_basic and varga_basic.D10 %}
+### D10 Dasamsha (Career Varga)
+- {{ varga_basic.D10 }}
+{% endif %}
+
 {% if bhavat_bhavam %}
 ### Bhavat Bhavam — Career Reinforcement
 {% for bb in bhavat_bhavam %}{% if bb.house == 10 %}

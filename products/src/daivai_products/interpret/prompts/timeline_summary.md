@@ -35,6 +35,38 @@ Provide a timeline forecast for {{ name }} based on upcoming dasha periods.
 Factor significant eclipses into the year-by-year forecast below.
 {% endif %}
 
+{% if sadesati %}
+### Sade Sati (Saturn 7.5-Year Cycle)
+{% if sadesati.is_active %}- **ACTIVE** — Phase: {{ sadesati.phase }}, Intensity: {{ sadesati.intensity }}
+- Period: {{ sadesati.start_date }} to {{ sadesati.end_date }}
+{% else %}- Currently not active{% endif %}
+{% endif %}
+
+{% if double_transit_info %}
+### Double Transit (Jupiter + Saturn)
+- Houses activated from Lagna: {{ double_transit_info.active_houses_from_lagna | join(', ') }}
+- Houses activated from Moon: {{ double_transit_info.active_houses_from_moon | join(', ') }}
+{% endif %}
+
+{% if gochara_info %}
+### Current Gochara (Transit Effects)
+{% for g in gochara_info %}- **{{ g.planet }}** in {{ g.transit_sign }} ({{ g.house_from_moon }}th from Moon) — {{ g.effect }}{% if g.is_favorable %} ✓{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if bhrigu_bindu %}
+### Bhrigu Bindu (Destiny Point)
+- Position: {{ bhrigu_bindu.sign }}, {{ bhrigu_bindu.nakshatra }} (House {{ bhrigu_bindu.house }})
+{% if bhrigu_bindu.activation_ages %}- Activation ages: {{ bhrigu_bindu.activation_ages | join(', ') }}{% endif %}
+Transit of Jupiter/Saturn over this point triggers major life events.
+{% endif %}
+
+{% if transit_info %}
+### Current Planetary Positions
+{% for t in transit_info %}- {{ t.planet }} in {{ t.sign }}{% if t.is_retrograde %} (R){% endif %}
+{% endfor %}
+{% endif %}
+
 ### Forecast Requirements
 
 #### Year-by-Year Summary (Next 10 Years)

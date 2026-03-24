@@ -33,10 +33,13 @@ def detect_all_yogas(chart: ChartData) -> list[YogaResult]:
       2. Raj Yogas (kendra-trikona lord connections)
       3. Dhan Yogas (wealth yogas)
       4. Other Yogas (Gajakesari, Budhaditya, Vipreet Raj, Neech Bhanga, etc.)
-      5. Extended Yogas (Nabhasa, lunar, solar, conjunction doshas, Kartari, etc.)
-      6. Parivartana Yogas (all 66 house-pair mutual exchanges)
-      7. Special Yogas (Chatussagara, Mahabhagya)
-      8. Strength post-processing (combustion, Vargottama, retrograde modifiers)
+      5. Arishta + Kemadruma + Bandhana (affliction, isolation, bondage)
+      6. Conjunction Yogas (11 classical pairs + Sunapha/Anapha)
+      7. Daridra Yogas (poverty patterns)
+      8. Extended Yogas (Nabhasa, lunar, solar, conjunction doshas, Kartari, etc.)
+      9. Parivartana Yogas (all 66 house-pair mutual exchanges)
+      10. Special Yogas (Chatussagara, Mahabhagya)
+      11. Strength post-processing (combustion, Vargottama, retrograde modifiers)
 
     Source: BPHS, Phaladeepika, Saravali.
 
@@ -46,6 +49,12 @@ def detect_all_yogas(chart: ChartData) -> list[YogaResult]:
     Returns:
         List of all detected YogaResults with strength fields set.
     """
+    from daivai_engine.compute.yoga_arishta import detect_arishta_yogas
+    from daivai_engine.compute.yoga_conjunctions import (
+        detect_conjunction_yogas,
+        detect_sunapha_anapha_specific,
+    )
+    from daivai_engine.compute.yoga_daridra import detect_daridra_extended
     from daivai_engine.compute.yoga_extended import detect_extended_yogas
     from daivai_engine.compute.yoga_parivartana import (
         apply_yoga_strength,
@@ -58,6 +67,10 @@ def detect_all_yogas(chart: ChartData) -> list[YogaResult]:
     yogas.extend(_detect_raj_yogas(chart))
     yogas.extend(_detect_dhan_yogas(chart))
     yogas.extend(detect_other_yogas(chart))
+    yogas.extend(detect_arishta_yogas(chart))
+    yogas.extend(detect_conjunction_yogas(chart))
+    yogas.extend(detect_sunapha_anapha_specific(chart))
+    yogas.extend(detect_daridra_extended(chart))
     yogas.extend(detect_extended_yogas(chart))
     yogas.extend(detect_parivartana_yogas(chart))
     yogas.extend(detect_special_yogas(chart))

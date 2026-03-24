@@ -29,6 +29,13 @@ Jupiter is the natural significator of wealth. Its placement:
 - {{ md.lord }} period ({{ md.start }} - {{ md.end }}): Financial implications{% for m in maraka_planets %}{% if m.planet == md.lord %} **[MARAKA — financial drain risk]**{% endif %}{% endfor %}
 {% endfor %}
 
+{% if hora_info %}
+### Hora Chart (Wealth Indicator)
+- {{ hora_info.wealth_indicator }}
+{% if hora_info.sun_hora_planets %}- Planets in Sun's Hora (self-earned wealth): {{ hora_info.sun_hora_planets | join(', ') }}{% endif %}
+{% if hora_info.moon_hora_planets %}- Planets in Moon's Hora (inherited/passive wealth): {{ hora_info.moon_hora_planets | join(', ') }}{% endif %}
+{% endif %}
+
 {% if bhavat_bhavam %}
 ### Bhavat Bhavam — Wealth Reinforcement
 {% for bb in bhavat_bhavam %}{% if bb.house in [2, 11] %}

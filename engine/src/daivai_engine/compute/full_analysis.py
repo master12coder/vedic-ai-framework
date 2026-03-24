@@ -38,7 +38,7 @@ from daivai_engine.compute.double_transit import (
     check_double_transit_from_moon,
 )
 from daivai_engine.compute.eclipse_natal import compute_upcoming_eclipse_impacts
-from daivai_engine.compute.full_analysis_utils import safe_compute
+from daivai_engine.compute.full_analysis_utils import compute_phase2_modules, safe_compute
 from daivai_engine.compute.gandanta import check_gandanta
 from daivai_engine.compute.graha_yuddha import detect_planetary_war
 from daivai_engine.compute.house_comparison import compare_whole_sign_vs_chalit
@@ -198,6 +198,9 @@ def compute_full_analysis(
     eclipse_jd = to_jd(now_ist())
     eclipse_impacts = safe_compute(compute_upcoming_eclipse_impacts, chart, eclipse_jd, 1)
 
+    # Phase 2 modules (14 previously orphaned computations)
+    phase2 = compute_phase2_modules(chart)
+
     # Verification
     verification = verify_chart_accuracy(chart)
 
@@ -258,4 +261,29 @@ def compute_full_analysis(
         kota_chakra=kota_chakra if not isinstance(kota_chakra, list) else None,
         nisheka=nisheka if not isinstance(nisheka, list) else None,
         eclipse_impacts=eclipse_impacts,
+        # Phase 2
+        avakhada=phase2.get("avakhada") if not isinstance(phase2.get("avakhada"), list) else None,
+        bhava_madhya=phase2.get("bhava_madhya")
+        if not isinstance(phase2.get("bhava_madhya"), list)
+        else None,
+        bhrigu_bindu=phase2.get("bhrigu_bindu")
+        if not isinstance(phase2.get("bhrigu_bindu"), list)
+        else None,
+        drekkana=phase2.get("drekkana") if not isinstance(phase2.get("drekkana"), list) else None,
+        gochara=phase2.get("gochara") if not isinstance(phase2.get("gochara"), list) else None,
+        hora=phase2.get("hora") if not isinstance(phase2.get("hora"), list) else None,
+        medical=phase2.get("medical") if not isinstance(phase2.get("medical"), list) else None,
+        mrityu_bhaga=phase2.get("mrityu_bhaga") or [],
+        pushkara=phase2.get("pushkara") or [],
+        sav_pinda=phase2.get("sav_pinda")
+        if not isinstance(phase2.get("sav_pinda"), list)
+        else None,
+        d60_analysis=phase2.get("d60_analysis")
+        if not isinstance(phase2.get("d60_analysis"), list)
+        else None,
+        current_transits=phase2.get("current_transits")
+        if not isinstance(phase2.get("current_transits"), list)
+        else None,
+        varga_deep=phase2.get("varga_deep", {}),
+        conditional_dashas=phase2.get("conditional_dashas", {}),
     )

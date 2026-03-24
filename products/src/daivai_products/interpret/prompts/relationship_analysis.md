@@ -50,6 +50,14 @@ The 7th lord's maraka status must be acknowledged alongside marriage significati
 - {{ p.name }} in {{ p.sign }}, House {{ p.house }}, {{ p.dignity }}{% if p.name == 'Jupiter' and maraka_planets %}{% for m in maraka_planets %}{% if m.planet == 'Jupiter' %} **(MARAKA for this lagna)**{% endif %}{% endfor %}{% endif %}
 {% endif %}{% endfor %}
 
+{% if mangal_dosha_detail %}
+### Mangal Dosha (Detailed Analysis)
+{% if mangal_dosha_detail.is_present %}- **Present** — Severity: {{ mangal_dosha_detail.severity }}
+- From Lagna: {% if mangal_dosha_detail.from_lagna %}Yes{% else %}No{% endif %} | From Moon: {% if mangal_dosha_detail.from_moon %}Yes{% else %}No{% endif %} | From Venus: {% if mangal_dosha_detail.from_venus %}Yes{% else %}No{% endif %}
+{% if mangal_dosha_detail.cancellations %}- Cancellations: {{ mangal_dosha_detail.cancellations | join(', ') }}{% endif %}
+{% else %}- Not present{% endif %}
+{% endif %}
+
 {% if bhavat_bhavam %}
 ### Bhavat Bhavam — Relationship Reinforcement
 {% for bb in bhavat_bhavam %}{% if bb.house == 7 %}

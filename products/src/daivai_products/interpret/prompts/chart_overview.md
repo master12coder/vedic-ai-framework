@@ -82,6 +82,49 @@ From Sun as reference lagna (career/authority/soul purpose):
 {% if nisheka.summary %}- {{ nisheka.summary }}{% endif %}
 {% endif %}
 
+{% if birth_panchang %}
+### Birth Panchang
+- Tithi: {{ birth_panchang.tithi }} | Yoga: {{ birth_panchang.yoga }} | Karana: {{ birth_panchang.karana }}
+- Nakshatra: {{ birth_panchang.nakshatra }} | Vara (weekday): {{ birth_panchang.vara }}
+{% endif %}
+
+{% if avakhada %}
+### Avakhada Chakra (Birth Classification)
+- Varna: {{ avakhada.varna }} | Yoni: {{ avakhada.yoni }} | Gana: {{ avakhada.gana }}
+- Nadi: {{ avakhada.nadi }} | Tattwa: {{ avakhada.tattwa }}
+{% endif %}
+
+{% if jaimini %}
+### Jaimini Karakas
+{% for k in jaimini.karakas %}- {{ k.karaka }}: **{{ k.planet }}**
+{% endfor %}
+{% if jaimini.karakamsha %}- Karakamsha sign: {{ jaimini.karakamsha }}{% endif %}
+{% endif %}
+
+{% if special_lagnas_info %}
+### Special Lagnas
+{% for sl in special_lagnas_info %}- {{ sl.name }}: {{ sl.sign }}
+{% endfor %}
+{% endif %}
+
+{% if gandanta_info %}
+### Gandanta Points
+{% for g in gandanta_info %}- **{{ g.planet }}** in {{ g.type }} gandanta — karmic knot requiring spiritual resolution
+{% endfor %}
+{% endif %}
+
+{% if graha_yuddha_info %}
+### Graha Yuddha (Planetary War)
+{% for g in graha_yuddha_info %}- **{{ g.winner }}** defeats **{{ g.loser }}** ({{ g.degree_diff }}° apart) — loser's significations weakened
+{% endfor %}
+{% endif %}
+
+{% if pushkara_info %}
+### Pushkara (Auspicious Points)
+{% for p in pushkara_info %}- **{{ p.planet }}** in {{ p.type }} — enhanced auspiciousness
+{% endfor %}
+{% endif %}
+
 ### Overall Life Theme
 Based on the lagna, Moon nakshatra, and dominant planetary influences, describe the overall life theme for {{ name }}. Reference the functional benefic/malefic/maraka classification for {{ lagna_en }} lagna. Integrate dispositor flow, badhaka obstructions, and bhavat bhavam reinforcements into the synthesis.
 

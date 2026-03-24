@@ -40,4 +40,10 @@ Based on the Moon nakshatra and dominant planets, recommend spiritual practices.
 - Align practices with functional benefics for {{ lagna_en }} lagna
 - {{ lagnesh }} mantra is always primary for self-realization
 
+{% if d60_info %}
+### D60 Shastyamsha (Past-Life Indicators)
+- {{ d60_info.summary }}
+- Benefic D60 placements: {{ d60_info.benefic_count }} | Malefic: {{ d60_info.malefic_count }}
+{% endif %}
+
 Format: Deep, introspective tone. Use both Hindi spiritual terms and English explanations.

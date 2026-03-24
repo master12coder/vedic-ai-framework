@@ -20,6 +20,7 @@ from daivai_engine.compute.strength import compute_planet_strengths
 from daivai_engine.compute.yoga import detect_all_yogas
 from daivai_engine.models.chart import ChartData
 from daivai_products.interpret.advanced_context import build_advanced_context
+from daivai_products.interpret.advanced_context_extra import build_advanced_context_extra
 from daivai_products.interpret.context import (
     build_gemstone_context,
     build_lordship_context,
@@ -235,4 +236,6 @@ def build_chart_context(
         "pandit_teachings": pandit_teachings,
         # --- Phase 1 advanced modules ---
         **(build_advanced_context(full_analysis) if full_analysis else {}),
+        # --- Phase 2 + previously-dead fields ---
+        **(build_advanced_context_extra(full_analysis) if full_analysis else {}),
     }

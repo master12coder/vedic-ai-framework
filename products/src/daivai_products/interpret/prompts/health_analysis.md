@@ -59,6 +59,34 @@ The 28-nakshatra fortress diagram reveals innate protective strength:
 Use fortress strength to assess resilience during vulnerable dasha periods.
 {% endif %}
 
+{% if medical_info %}
+### Medical Astrology (Body Mapping)
+{% if medical_info.tridosha %}- Dominant Tridosha: **{{ medical_info.tridosha }}**{% endif %}
+{% if medical_info.vulnerable_areas %}
+Vulnerable body areas based on planetary afflictions:
+{% for v in medical_info.vulnerable_areas %}- {{ v.body_part }} (ruled by {{ v.planet }})
+{% endfor %}{% endif %}
+{% endif %}
+
+{% if mrityu_bhaga_info %}
+### Mrityu Bhaga (Critical Degrees)
+{% for m in mrityu_bhaga_info %}- **{{ m.planet }}** at critical death degree — requires attention during its dasha/transit
+{% endfor %}
+{% endif %}
+
+{% if longevity_info %}
+### Longevity Assessment
+- Category: **{{ longevity_info.category }}**
+{% if longevity_info.amshayu %}- Amshayu: ~{{ longevity_info.amshayu }} years{% endif %}
+{% if longevity_info.pindayu %}- Pindayu: ~{{ longevity_info.pindayu }} years{% endif %}
+{% endif %}
+
+{% if sadesati %}
+### Sade Sati Health Impact
+{% if sadesati.is_active %}- **ACTIVE** — Phase: {{ sadesati.phase }}, Intensity: {{ sadesati.intensity }}
+- Saturn's 7.5-year cycle adds chronic health pressure during active phases{% else %}- Not currently active{% endif %}
+{% endif %}
+
 ### Preventive Recommendations
 Based on weak planets and vulnerable periods, suggest preventive health measures.
 {% if lagnesh_stone %}
