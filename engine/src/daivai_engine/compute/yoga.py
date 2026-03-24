@@ -75,6 +75,13 @@ def detect_all_yogas(chart: ChartData) -> list[YogaResult]:
     yogas.extend(detect_parivartana_yogas(chart))
     yogas.extend(detect_special_yogas(chart))
 
+    # YAML-driven detection: covers 344 definitions not handled by specialized code
+    from daivai_engine.compute.yoga_yaml_driven import detect_yaml_driven_yogas
+
+    already_detected = {y.name for y in yogas if y.is_present}
+    yaml_yogas = detect_yaml_driven_yogas(chart, skip_names=already_detected)
+    yogas.extend(yaml_yogas)
+
     # Apply combustion / Vargottama / retrograde strength modifiers
     return apply_yoga_strength(yogas, chart)
 
