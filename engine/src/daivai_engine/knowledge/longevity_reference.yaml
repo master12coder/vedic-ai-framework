@@ -1,0 +1,75 @@
+# Longevity Analysis Reference — Pindayu, Amshayu, Naisargika
+# Source: BPHS Ch.40-42 (Ayurdaya Adhyaya)
+# Confidence: high
+# Last verified: March 2026
+
+description: "Three classical methods to assess longevity. BPHS recommends comparing all three and taking the middle value."
+
+source:
+  text: "Brihat Parashara Hora Shastra"
+  chapters: [40, 41, 42]
+
+longevity_categories:
+  balarishta:
+    range: "0-8 years"
+    description: "Childhood danger. Check Moon strength, 8th house, gandanta."
+    source: "BPHS Ch.40 v1-5"
+  alpayu:
+    range: "8-32 years"
+    description: "Short life. Multiple malefic indicators."
+    source: "BPHS Ch.40 v6-8"
+  madhyayu:
+    range: "32-75 years"
+    description: "Medium life. Mixed planetary strength."
+    source: "BPHS Ch.40 v9-10"
+  purnayu:
+    range: "75-120 years"
+    description: "Full life. Strong lagna lord, benefics in kendras."
+    source: "BPHS Ch.40 v11-12"
+
+methods:
+  pindayu:
+    source: "BPHS Ch.41"
+    description: "Sum of planet contributions based on dignity and position"
+    formula:
+      - "Each planet contributes years based on its sign position"
+      - "Exalted planet: maximum contribution"
+      - "Debilitated planet: zero contribution"
+      - "Own/friend sign: proportional reduction"
+      - "Combust: lose half contribution"
+      - "Retrograde: gain additional years"
+    max_years_per_planet:
+      Sun: 19
+      Moon: 25
+      Mars: 15
+      Mercury: 12
+      Jupiter: 15
+      Venus: 21
+      Saturn: 20
+    total_max: 127
+
+  amshayu:
+    source: "BPHS Ch.42 (alternative interpretation)"
+    description: "Based on Navamsha position and lagna strength"
+    method:
+      - "Assess lagna lord dignity in D1 and D9"
+      - "Count benefics in kendras from lagna"
+      - "Count malefics in dusthanas"
+      - "Strong lagna lord + benefic kendras → Purnayu"
+      - "Weak lagna lord + malefic kendras → Alpayu"
+
+  jaimini_pairs:
+    source: "Jaimini Sutras 2.1"
+    description: "Compare pairs of references to determine longevity band"
+    pairs:
+      - ["Lagna", "Hora Lagna"]
+      - ["Moon", "Ghatika Lagna"]
+      - ["Lagna lord", "8th lord"]
+    rule: "If both in movable signs → Purnayu. If both in fixed → Alpayu. If dual → Madhyayu. Mixed → take average."
+
+ethical_guidelines:
+  - "Never share exact death timing with client"
+  - "Focus on health periods and preventive care"
+  - "Use longevity to determine if long-term dashas are relevant"
+  - "Balarishta check is critical for infant charts — advise health precautions"
+  - "Engine computes for analysis; products layer decides what to show"

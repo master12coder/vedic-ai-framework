@@ -1,0 +1,72 @@
+# Jaimini System Rules — Chara Karakas, Rasi Dasha, Arudha
+# Source: Jaimini Sutras (Adhyaya 1-2), BPHS Ch.32-33
+# Confidence: high
+# Last verified: March 2026
+
+chara_karakas:
+  description: "Variable significators based on planetary longitude (highest degree = Atmakaraka)"
+  source: "Jaimini Sutras 1.1.10-21"
+  debate:
+    seven_karaka:
+      description: "Original Jaimini — 7 karakas (Sun to Saturn), Rahu excluded"
+      proponents: ["PVR Narasimha Rao", "Traditional Jaimini commentators"]
+      planets: ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn"]
+    eight_karaka:
+      description: "Extended — 8 karakas including Rahu as DaraKaraka"
+      proponents: ["Sanjay Rath", "Sri Jagannath Center"]
+      planets: ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn", "Rahu"]
+  engine_uses: "seven_karaka"
+  karaka_names:
+    - name: "Atmakaraka (AK)"
+      significance: "Soul, self, king of the chart"
+      determination: "Planet with highest degree in any sign"
+    - name: "Amatyakaraka (AmK)"
+      significance: "Minister, career, profession"
+      determination: "Second highest degree"
+    - name: "Bhratrukaraka (BK)"
+      significance: "Siblings, courage, co-borns"
+      determination: "Third highest degree"
+    - name: "Matrukaraka (MK)"
+      significance: "Mother, happiness, education"
+      determination: "Fourth highest degree"
+    - name: "Putrakaraka (PK)"
+      significance: "Children, creativity, intelligence"
+      determination: "Fifth highest degree"
+    - name: "Gnatikaraka (GK)"
+      significance: "Rivals, diseases, obstacles"
+      determination: "Sixth highest degree"
+    - name: "Darakaraka (DK)"
+      significance: "Spouse, partnerships"
+      determination: "Lowest degree (7-karaka) or Rahu (8-karaka)"
+
+arudha_padas:
+  description: "Worldly projection of each house — how the world perceives vs reality"
+  source: "Jaimini Sutras 1.1.30-32"
+  computation: "Count from house lord to its sign, count same from that sign"
+  exception: "If pada falls in own house or 7th from it, move to 10th/4th sign respectively"
+  key_padas:
+    A1: "Arudha Lagna (AL) — public image, worldly status"
+    A2: "Dhana Pada — perceived wealth"
+    A7: "Darapada — spouse perception"
+    A10: "Rajya Pada — career status"
+    A12: "Upapada (UL) — marriage indicator, spouse nature"
+
+karakamsha:
+  description: "Atmakaraka's Navamsha sign — soul's deepest desire"
+  source: "Jaimini Sutras 1.2.1"
+  usage: "Read houses from Karakamsha for spiritual/career direction"
+
+rasi_drishti:
+  description: "Sign-based aspects (not planet-based like Parashari)"
+  source: "Jaimini Sutras 1.1.25-27"
+  rules:
+    - "Movable signs aspect Fixed signs (except adjacent)"
+    - "Fixed signs aspect Movable signs (except adjacent)"
+    - "Dual signs aspect each other"
+
+argala:
+  description: "Support/obstruction from planets in specific houses"
+  source: "Jaimini Sutras 1.1.5-9"
+  support_houses: [2, 4, 11]
+  obstruction_houses: [12, 10, 3]
+  special: "Malefic in 3rd = additional support (virodha argala)"

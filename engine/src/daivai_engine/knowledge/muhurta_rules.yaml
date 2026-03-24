@@ -1,0 +1,89 @@
+# Muhurta Rules — Event-Specific Auspicious Timing
+# Source: Muhurta Chintamani, BPHS Ch.78-81
+# Confidence: high
+# Last verified: March 2026
+
+description: "Electional astrology rules for selecting auspicious times. Each event type has specific nakshatra, tithi, yoga, and karana requirements."
+
+source:
+  primary: "Muhurta Chintamani (Daivagya Acharya Ram)"
+  secondary: "BPHS Ch.78-81 (Shubha-Ashubha Viveka)"
+
+general_rules:
+  avoid_always:
+    - "Rahu Kaal"
+    - "Yamaghanda"
+    - "Gulika Kaal"
+    - "Vishti Karana (Bhadra)"
+    - "Gandanta zones (water-fire junction)"
+  prefer:
+    - "Shukla Paksha (waxing moon) for growth activities"
+    - "Krishna Paksha (waning moon) for ending/releasing"
+    - "Benefic hora matching the purpose"
+    - "Strong Tarabala from natal Moon"
+    - "Favorable Chandrabala (Moon not in 4/8/12 from natal)"
+
+event_rules:
+  wedding:
+    name_hi: "विवाह मुहूर्त"
+    auspicious_nakshatras: ["Rohini", "Mrigashira", "Magha", "Uttara Phalguni", "Hasta", "Swati", "Anuradha", "Mula", "Uttarashada", "Uttara Bhadra", "Revati"]
+    auspicious_tithis: [2, 3, 5, 7, 10, 11, 13]
+    avoid_months: ["Ashada", "Bhadrapada"]
+    lagna_preference: "Fixed or dual signs preferred (Taurus, Leo, Scorpio, Aquarius, Gemini, Virgo, Sagittarius, Pisces)"
+    source: "Muhurta Chintamani Ch.7"
+
+  business_start:
+    name_hi: "व्यापार आरम्भ"
+    auspicious_nakshatras: ["Ashwini", "Rohini", "Mrigashira", "Pushya", "Hasta", "Chitra", "Swati", "Anuradha", "Shravana", "Dhanishta", "Revati"]
+    auspicious_tithis: [1, 2, 3, 5, 7, 10, 11, 13]
+    preferred_weekdays: ["Wednesday", "Thursday", "Friday"]
+    source: "Muhurta Chintamani Ch.10"
+
+  property_purchase:
+    name_hi: "भूमि क्रय"
+    auspicious_nakshatras: ["Rohini", "Uttara Phalguni", "Uttarashada", "Uttara Bhadra"]
+    required: "Strong 4th house in muhurta chart"
+    avoid: "Mars combust or retrograde"
+    source: "Muhurta Chintamani Ch.11"
+
+  gemstone_wearing:
+    name_hi: "रत्न धारण"
+    rule: "Wear on the day of the planet's weekday, in that planet's hora"
+    day_mapping:
+      Sun: "Sunday"
+      Moon: "Monday"
+      Mars: "Tuesday"
+      Mercury: "Wednesday"
+      Jupiter: "Thursday"
+      Venus: "Friday"
+      Saturn: "Saturday"
+    additional: "Shukla Paksha preferred. Planet should not be combust or retrograde at wearing time."
+    source: "Traditional practice + gem therapy texts"
+
+  journey:
+    name_hi: "यात्रा"
+    auspicious_nakshatras: ["Ashwini", "Mrigashira", "Pushya", "Hasta", "Anuradha", "Shravana", "Revati"]
+    avoid_weekdays: ["Tuesday", "Saturday"]
+    direction_rule: "Avoid travel in the direction of the day's Rahu Kaal"
+    source: "Muhurta Chintamani Ch.8"
+
+  medical_procedure:
+    name_hi: "चिकित्सा"
+    avoid: "Mars hora, Saturn hora, Rahu Kaal"
+    prefer: "Jupiter hora, Venus hora"
+    moon_rule: "Moon should not be in 6th, 8th, or 12th from natal"
+    source: "Muhurta Chintamani Ch.14"
+
+chandrabalam:
+  description: "Moon's position relative to natal Moon must be favorable"
+  source: "BPHS Ch.81"
+  favorable_houses: [1, 2, 3, 5, 6, 7, 9, 10, 11]
+  unfavorable_houses: [4, 8, 12]
+  note: "Transit Moon in 4/8/12 from birth Moon = inauspicious. Avoid."
+
+tarabala:
+  description: "Count nakshatra from birth to transit nakshatra, divide by 9"
+  source: "Muhurta Chintamani"
+  favorable_taras: [1, 2, 4, 6, 8]
+  unfavorable_taras: [3, 5, 7]
+  tara_names: ["Janma", "Sampat", "Vipat", "Kshema", "Pratyari", "Sadhaka", "Vadha", "Mitra", "Atimitra"]

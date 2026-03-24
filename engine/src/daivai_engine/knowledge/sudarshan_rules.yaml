@@ -1,0 +1,54 @@
+# Sudarshan Chakra Rules — Triple Chart Overlay
+# Source: BPHS Ch.65 (Sudarshan Adhyaya)
+# Confidence: high
+# Last verified: March 2026
+
+description: "Sudarshan Chakra reads houses from 3 references simultaneously: Lagna, Moon, Sun. Where all 3 agree = strongest indication."
+
+source:
+  text: "Brihat Parashara Hora Shastra"
+  chapter: 65
+  verse_range: "1-15"
+
+methodology:
+  three_charts:
+    lagna_chart: "Standard birth chart — physical body, external life"
+    chandra_chart: "Moon as lagna — mind, emotions, perception"
+    surya_chart: "Sun as lagna — soul, authority, career (father's perspective)"
+
+  interpretation_rules:
+    triple_agreement: "All 3 charts show same result → HIGH confidence (certainty)"
+    double_agreement: "2 of 3 agree → MEDIUM confidence (likely)"
+    single_only: "Only 1 chart shows → LOW confidence (possible but uncertain)"
+    contradiction: "Charts contradict → conflicting karmas, nuanced interpretation needed"
+
+  house_analysis:
+    example: "5th house analysis for children:"
+    steps:
+      - "5th from Lagna = physical children, creativity"
+      - "5th from Moon = emotional bond with children, mental joy"
+      - "5th from Sun = dharmic merit, past-life connection to children"
+      - "If all 3 are strong → blessed with children"
+      - "If Lagna 5th weak but Moon 5th strong → children bring emotional joy but physical challenges"
+
+sudarshan_dasha:
+  description: "Year-by-year progression through signs"
+  source: "BPHS Ch.65 v12-15"
+  method:
+    - "Each sign = 1 year of life"
+    - "Start from Lagna sign for year 1"
+    - "Progress through zodiac: year 1 = Lagna sign, year 2 = 2nd sign, etc."
+    - "After 12 years, cycle repeats"
+    - "Simultaneously progress from Moon sign and Sun sign"
+  interpretation:
+    - "Events of that year influenced by planets in the progressed sign"
+    - "Transits of major planets to progressed sign trigger events"
+
+practical_usage:
+  when_to_use:
+    - "Confirming major life predictions (marriage, career change)"
+    - "Resolving ambiguity when single-chart analysis is unclear"
+    - "Providing year-by-year forecast (Sudarshan Dasha)"
+  when_not_useful:
+    - "Quick daily predictions (too macro-level)"
+    - "Specific timing within a month (use transits/dasha instead)"
