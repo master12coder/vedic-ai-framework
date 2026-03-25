@@ -40,7 +40,7 @@ _PLANET_HI = {
 }
 
 _YOGA_YAML_PATH = (
-    "/Users/manish/Documents/AI/daiv-ai/.claude/worktrees/crazy-mendel"
+    "/Users/manish/Documents/AI/daiv-ai"
     "/engine/src/daivai_engine/knowledge/yoga_definitions.yaml"
 )
 

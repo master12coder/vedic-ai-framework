@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Any
 
+from daivai_engine.compute.functional_nature import get_shadow_planet_nature
 from daivai_engine.compute.gem_therapy_utils import (
     _ACTIVATION_MANTRA_COUNT,
     _ACTIVATION_STEPS,
@@ -120,9 +121,43 @@ def compute_gem_recommendation(chart: ChartData) -> list[GemTherapyRecommendatio
             )
         )
 
+    # Rashyadhipati: resolve Rahu/Ketu via sign lord's functional nature.
+    # lordship_rules.yaml has no Rahu/Ketu entries, so they default to "neutral".
+    # BPHS: shadow planets give results of the lord of the sign they occupy.
+    results = _resolve_shadow_planets(results, chart)
+
     order = {"recommended": 0, "test_with_caution": 1, "neutral": 2, "prohibited": 3}
     results.sort(key=lambda r: order.get(r.status, 9))
     return results
+
+
+_SAFETY_TO_STATUS = {
+    "safe": "recommended",
+    "test_with_caution": "test_with_caution",
+    "unsafe": "prohibited",
+}
+
+
+def _resolve_shadow_planets(
+    results: list[GemTherapyRecommendation], chart: ChartData
+) -> list[GemTherapyRecommendation]:
+    """Override neutral Rahu/Ketu recommendations using rashyadhipati analysis."""
+    resolved: list[GemTherapyRecommendation] = []
+    for rec in results:
+        if rec.planet in ("Rahu", "Ketu") and rec.status == "neutral":
+            shadow = get_shadow_planet_nature(rec.planet, chart)
+            new_status = _SAFETY_TO_STATUS.get(shadow.gemstone_safety, "neutral")
+            resolved.append(
+                rec.model_copy(
+                    update={
+                        "status": new_status,
+                        "lordship_reason": shadow.reasoning,
+                    }
+                )
+            )
+        else:
+            resolved.append(rec)
+    return resolved
 
 
 def _build_quality(stone_name: str, quality_data: dict[str, Any]) -> GemQualitySpec | None:
