@@ -43,9 +43,9 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
             return RedirectResponse(url="/dashboard", status_code=302)
         error = request.query_params.get("error", "")
         return templates.TemplateResponse(
+            request,
             "login.html",
-            {
-                "request": request,
+            context={
                 "error": error,
             },
         )
@@ -69,9 +69,9 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
                 }
             )
         return templates.TemplateResponse(
+            request,
             "dashboard.html",
-            {
-                "request": request,
+            context={
                 "user": user,
                 "clients": client_data,
             },
@@ -82,9 +82,9 @@ def register_routes(app: FastAPI, templates: Jinja2Templates) -> None:
         """Show the birth data input form."""
         user = require_auth(request)
         return templates.TemplateResponse(
+            request,
             "input_form.html",
-            {
-                "request": request,
+            context={
                 "user": user,
             },
         )

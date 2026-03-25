@@ -7,7 +7,7 @@ import os
 import time
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, cast
 from zoneinfo import ZoneInfo
 
 
@@ -40,7 +40,7 @@ def _load_chart(chart_path: str = "charts/manish.json") -> ChartData | None:
     if not path.exists():
         logger.error("Chart not found: %s", path)
         return None
-    return ChartData.model_validate_json(path.read_text())
+    return cast("ChartData", ChartData.model_validate_json(path.read_text()))
 
 
 def _send_telegram_message(token: str, chat_id: str, message: str) -> bool:

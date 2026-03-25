@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import logging
 from pathlib import Path
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, cast
 
 
 if TYPE_CHECKING:
@@ -58,7 +58,7 @@ def _load_chart(chart_path: str | None = None) -> ChartData | None:
     if not path.exists():
         return None
 
-    return ChartData.model_validate_json(path.read_text())
+    return cast("ChartData", ChartData.model_validate_json(path.read_text()))
 
 
 async def handle_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:

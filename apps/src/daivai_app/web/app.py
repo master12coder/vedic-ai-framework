@@ -92,14 +92,14 @@ def create_app() -> Any:
     @app.exception_handler(404)
     async def not_found(request: Request, exc: Exception) -> Response:
         return templates.TemplateResponse(
-            "error.html", {"request": request, "code": 404}, status_code=404
+            request, "error.html", context={"code": 404}, status_code=404
         )
 
     @app.exception_handler(500)
     async def server_error(request: Request, exc: Exception) -> Response:
         logger.exception("Internal server error: %s", exc)
         return templates.TemplateResponse(
-            "error.html", {"request": request, "code": 500}, status_code=500
+            request, "error.html", context={"code": 500}, status_code=500
         )
 
     # ── Register routes ──

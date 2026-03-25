@@ -12,7 +12,7 @@ from __future__ import annotations
 
 import logging
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 from jinja2 import Template
 
@@ -44,7 +44,7 @@ def _render_prompt(template_name: str, context: dict[str, Any]) -> str:
     """Load and render a Jinja2 prompt template."""
     raw = _load_prompt(template_name)
     template = Template(raw)
-    return template.render(**context)
+    return cast(str, template.render(**context))
 
 
 # Keep internal alias for callers that may import the private name

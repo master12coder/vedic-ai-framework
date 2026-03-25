@@ -48,9 +48,9 @@ def register_client_routes(
         ctx = build_chart_context(chart_data)
 
         return templates.TemplateResponse(
+            request,
             "overview.html",
-            {
-                "request": request,
+            context={
                 "user": user,
                 "client": client,
                 "chart": chart_data,
@@ -70,9 +70,9 @@ def register_client_routes(
         ctx = build_chart_context(chart_data)
 
         return templates.TemplateResponse(
+            request,
             "dasha.html",
-            {
-                "request": request,
+            context={
                 "user": user,
                 "client": client,
                 "chart": chart_data,
@@ -92,9 +92,9 @@ def register_client_routes(
         ctx = build_chart_context(chart_data)
 
         return templates.TemplateResponse(
+            request,
             "ratna.html",
-            {
-                "request": request,
+            context={
                 "user": user,
                 "client": client,
                 "chart": chart_data,
@@ -155,9 +155,9 @@ def register_client_routes(
         suggestion = compute_daily_suggestion(chart)
 
         return templates.TemplateResponse(
+            request,
             "daily.html",
-            {
-                "request": request,
+            context={
                 "user": user,
                 "client": client,
                 "chart": chart_data,
@@ -187,9 +187,9 @@ def register_client_routes(
         vargottam = get_vargottam_planets(chart)
 
         return templates.TemplateResponse(
+            request,
             "navamsha.html",
-            {
-                "request": request,
+            context={
                 "user": user,
                 "client": client,
                 "chart": chart_data,

@@ -37,9 +37,9 @@ def register_standalone_routes(app: FastAPI, templates: Jinja2Templates) -> None
         """Show the two-person compatibility form."""
         user = require_auth(request)
         return templates.TemplateResponse(
+            request,
             "match_form.html",
-            {
-                "request": request,
+            context={
                 "user": user,
             },
         )
@@ -94,9 +94,9 @@ def register_standalone_routes(app: FastAPI, templates: Jinja2Templates) -> None
         )
 
         return templates.TemplateResponse(
+            request,
             "match_result.html",
-            {
-                "request": request,
+            context={
                 "user": user,
                 "name1": name1,
                 "name2": name2,
@@ -111,9 +111,9 @@ def register_standalone_routes(app: FastAPI, templates: Jinja2Templates) -> None
         """Show the muhurta search form."""
         user = require_auth(request)
         return templates.TemplateResponse(
+            request,
             "muhurta_form.html",
-            {
-                "request": request,
+            context={
                 "user": user,
             },
         )
@@ -149,9 +149,9 @@ def register_standalone_routes(app: FastAPI, templates: Jinja2Templates) -> None
         purpose_hi = _PURPOSE_HINDI.get(purpose, purpose)
 
         return templates.TemplateResponse(
+            request,
             "muhurta_result.html",
-            {
-                "request": request,
+            context={
                 "user": user,
                 "results": results,
                 "purpose_hi": purpose_hi,

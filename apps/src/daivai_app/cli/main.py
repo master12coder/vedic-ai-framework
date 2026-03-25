@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import logging
 import sys
+from typing import cast
 
 import click
 from rich.console import Console
@@ -34,7 +35,7 @@ def _load_chart_from_args(
             console.print(f"[red]Chart file not found: {chart}[/red]")
             sys.exit(1)
         data = json.loads(path.read_text())
-        return ChartData.model_validate(data)
+        return cast(ChartData, ChartData.model_validate(data))
 
     if not all([name, dob, tob]):
         console.print("[red]Provide --name, --dob, --tob (and --place or --chart)[/red]")

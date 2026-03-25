@@ -18,6 +18,8 @@ Source: Yantra Chintamani, Sri Yantra Sarvasva, traditional Navagraha texts.
 
 from __future__ import annotations
 
+from typing import cast
+
 from daivai_engine.constants import SIGN_LORDS
 from daivai_engine.knowledge.loader import load_yantra_data
 from daivai_engine.models.chart import ChartData
@@ -134,7 +136,7 @@ def get_yantra_data(planet: str) -> YantraRecommendation | None:
 
 def _with_reason(rec: YantraRecommendation, reason: str) -> YantraRecommendation:
     """Return a copy of YantraRecommendation with a specific reason set."""
-    return rec.model_copy(update={"reason": reason})
+    return cast(YantraRecommendation, rec.model_copy(update={"reason": reason}))
 
 
 def compute_remedy_yantras(chart: ChartData) -> list[YantraRecommendation]:

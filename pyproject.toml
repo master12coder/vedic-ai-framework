@@ -5,6 +5,11 @@ description = "AI-powered Vedic astrology — engine, products, and apps"
 requires-python = ">=3.12"
 license = "MIT"
 authors = [{name = "Manish Chaurasia"}]
+dependencies = [
+    "daivai-engine",
+    "daivai-products[all]",
+    "daivai-apps[all]",
+]
 
 [tool.uv.workspace]
 members = ["engine", "products", "apps"]
@@ -12,6 +17,7 @@ members = ["engine", "products", "apps"]
 [tool.uv.sources]
 daivai-engine = { workspace = true }
 daivai-products = { workspace = true }
+daivai-apps = { workspace = true }
 
 [dependency-groups]
 dev = [
@@ -19,6 +25,8 @@ dev = [
     "pytest-cov>=5.0",
     "ruff>=0.4",
     "mypy>=1.10",
+    "types-pyyaml>=6.0.12.20250915",
+    "types-pytz>=2026.1.1.20260304",
 ]
 
 # ---------------------------------------------------------------------------
@@ -59,6 +67,10 @@ disallow_untyped_defs = true
 warn_return_any = true
 warn_unused_configs = true
 ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "daivai_app.web.*"
+disable_error_code = ["arg-type"]
 
 # ---------------------------------------------------------------------------
 # Pytest

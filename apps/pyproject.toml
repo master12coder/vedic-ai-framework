@@ -1,5 +1,5 @@
 [project]
-name = "daivai"
+name = "daivai-apps"
 version = "1.0.0"
 description = "AI-powered Vedic astrology — CLI, Web, and Telegram."
 requires-python = ">=3.12"
@@ -23,7 +23,7 @@ web = [
     "sqlmodel>=0.0.22",
 ]
 telegram = ["python-telegram-bot>=21.0"]
-all = ["daivai[web,telegram]"]
+all = ["daivai-apps[web,telegram]"]
 
 [project.scripts]
 daivai = "daivai_app.cli.main:cli"

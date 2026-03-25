@@ -1,7 +1,7 @@
 .PHONY: help install test lint typecheck format audit all clean run backup backup-gdrive backup-setup
 
-PYTHON ?= python3
 UV ?= uv
+PYTHON ?= $(UV) run python3
 
 help: ## Show this help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \

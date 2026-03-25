@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import logging
 from pathlib import Path
+from typing import cast
 
 from daivai_engine.compute.chart import compute_chart
 from daivai_engine.models.chart import ChartData
@@ -99,7 +100,7 @@ def load_member(name: str, family_dir: Path | None = None) -> ChartData | None:
         if m["name"].lower() == name.lower():
             chart_path = Path(m["chart_file"])
             if chart_path.exists():
-                return ChartData.model_validate_json(chart_path.read_text())
+                return cast(ChartData, ChartData.model_validate_json(chart_path.read_text()))
     return None
 
 

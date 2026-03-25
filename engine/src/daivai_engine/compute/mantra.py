@@ -11,6 +11,8 @@ Source: BPHS, Muhurta Chintamani, traditional graha shanti vidhi.
 
 from __future__ import annotations
 
+from typing import cast
+
 from daivai_engine.constants import PLANETS_HI, SIGN_LORDS
 from daivai_engine.knowledge.loader import load_mantra_rules
 from daivai_engine.models.chart import ChartData
@@ -121,7 +123,7 @@ def get_nakshatra_mantra_by_number(number: int) -> NakshatraMantra | None:
 
 def _with_reason(rec: MantraRecommendation, reason: str) -> MantraRecommendation:
     """Return a copy of MantraRecommendation with a specific reason set."""
-    return rec.model_copy(update={"reason": reason})
+    return cast(MantraRecommendation, rec.model_copy(update={"reason": reason}))
 
 
 def compute_remedy_mantras(chart: ChartData) -> list[MantraRecommendation]:

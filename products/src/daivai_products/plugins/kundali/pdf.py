@@ -10,7 +10,7 @@ from __future__ import annotations
 import base64
 import logging
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 from jinja2 import Environment, FileSystemLoader
 
@@ -57,10 +57,13 @@ def generate_html(
         autoescape=False,
     )
     template = env.get_template("kundali.html")
-    return template.render(
-        standalone=standalone,
-        font_data_uri=font_data_uri,
-        **ctx,
+    return cast(
+        str,
+        template.render(
+            standalone=standalone,
+            font_data_uri=font_data_uri,
+            **ctx,
+        ),
     )
 
 

@@ -9,12 +9,12 @@ from __future__ import annotations
 import os
 from datetime import datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 from sqlmodel import Field, Session, SQLModel, create_engine, select
 
 
-class User(SQLModel, table=True):
+class User(SQLModel, table=True):  # type: ignore[call-arg]
     """Google OAuth user."""
 
     id: int | None = Field(default=None, primary_key=True)
@@ -27,7 +27,7 @@ class User(SQLModel, table=True):
     last_login: datetime = Field(default_factory=datetime.now)
 
 
-class Client(SQLModel, table=True):
+class Client(SQLModel, table=True):  # type: ignore[call-arg]
     """A person whose chart has been computed."""
 
     id: int | None = Field(default=None, primary_key=True)
@@ -45,7 +45,7 @@ class Client(SQLModel, table=True):
     updated_at: datetime = Field(default_factory=datetime.now)
 
 
-class DailyCache(SQLModel, table=True):
+class DailyCache(SQLModel, table=True):  # type: ignore[call-arg]
     """Cached daily guidance to avoid recomputation."""
 
     id: int | None = Field(default=None, primary_key=True)
@@ -98,7 +98,7 @@ def get_or_create_user(
             session.add(user)
             session.commit()
             session.refresh(user)
-            return user
+            return cast(User, user)
 
         user = User(
             google_id=google_id,
@@ -119,7 +119,7 @@ def get_or_create_user(
 def get_user_by_id(user_id: int) -> User | None:
     """Fetch a user by primary key."""
     with get_session() as session:
-        return session.get(User, user_id)
+        return cast(User | None, session.get(User, user_id))
 
 
 # ── Client CRUD ──────────────────────────────────────────────────────────
@@ -158,7 +158,7 @@ def create_client(
 def get_client(client_id: int) -> Client | None:
     """Fetch a client by ID."""
     with get_session() as session:
-        return session.get(Client, client_id)
+        return cast(Client | None, session.get(Client, client_id))
 
 
 def get_clients_for_user(user_id: int) -> list[Client]:

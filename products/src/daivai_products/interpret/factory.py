@@ -151,7 +151,8 @@ class ClaudeBackend:
             messages=[{"role": "user", "content": user_prompt}],
             temperature=temperature,
         )
-        return str(response.content[0].text)
+        block = response.content[0]
+        return block.text if hasattr(block, "text") else str(block)
 
     def name(self) -> str:
         """Return backend identifier."""
