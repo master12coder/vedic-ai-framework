@@ -10,5 +10,19 @@
       "Agent(*)",
       "Skill(*)"
     ]
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash tools/nlm/auto-query.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
   }
 }
