@@ -16,6 +16,7 @@ data/
 
 # ── Generated outputs ──
 output/
+exports/
 *.pdf
 *.log
 /tmp/

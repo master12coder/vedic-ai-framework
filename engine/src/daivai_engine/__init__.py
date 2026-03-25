@@ -12,6 +12,7 @@ from daivai_engine.compute.full_analysis import compute_full_analysis
 from daivai_engine.models.analysis import FullChartAnalysis
 from daivai_engine.models.chart import ChartData, PlanetData
 
+
 __all__ = [
     "ChartData",
     "FullChartAnalysis",
