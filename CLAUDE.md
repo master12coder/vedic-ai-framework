@@ -19,6 +19,18 @@ Examples:
 
 Never start coding without querying nlm first.
 
+## Documentation research
+
+An auto-query hook (tools/nlm/auto-query.sh) silently injects relevant documentation context on every prompt. This is handled automatically — no action needed for most tasks.
+
+For architecture or spec-heavy tasks, manually query for deeper context:
+- `nlm query "[topic]" --top-k 5` — search indexed documentation
+- `nlm query "[topic]" --doc "spec-name"` — search specific document
+- `nlm list` — see all indexed documents
+- `nlm stats` — check index health
+
+Do NOT use nlm for code search — Claude Code's native codebase reading is better for that. nlm is for documentation, specs, and architecture decision records only.
+
 ## Architecture (FROZEN)
 
 ```

@@ -2,11 +2,12 @@
 # Auto-query NLM on every user prompt submission.
 # Called by Claude Code UserPromptSubmit hook.
 # Reads user prompt from stdin, extracts keywords, queries nlm, injects results.
+# Fail-safe: exits silently on any error. Never blocks the user.
 
 set -e
 
-PROJECT_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
-PHASE_FILE="$PROJECT_DIR/docs/architecture/phase-status.md"
+# Bail out if nlm not available
+command -v nlm >/dev/null 2>&1 || exit 0
 
 # Read user prompt from stdin (JSON: {"user_message": "..."})
 INPUT=$(cat)
@@ -19,8 +20,8 @@ except:
     print('')
 " 2>/dev/null || echo "")
 
-# Skip if empty or very short prompt (greetings, etc.)
-if [ ${#USER_MSG} -lt 10 ]; then
+# Skip if empty or very short prompt (greetings, yes/no, etc.)
+if [ ${#USER_MSG} -lt 15 ]; then
     exit 0
 fi
 
@@ -42,36 +43,26 @@ keywords = [w for w in words if w not in stop and len(w) > 2][:8]
 print(' '.join(keywords))
 " 2>/dev/null || echo "")
 
-if [ -z "$KEYWORDS" ]; then
+# Need at least 2 keywords for a meaningful query
+WORD_COUNT=$(echo "$KEYWORDS" | wc -w | tr -d ' ')
+if [ "$WORD_COUNT" -lt 2 ]; then
     exit 0
 fi
 
 # Query nlm with extracted keywords
 NLM_RESULT=$(nlm query "$KEYWORDS" --top-k 2 --quiet 2>/dev/null || echo "")
 
-# Get current phase from phase-status.md
-PHASE_LINE=""
-if [ -f "$PHASE_FILE" ]; then
-    PHASE_LINE=$(grep "NOT STARTED\|PARTIAL\|DONE" "$PHASE_FILE" | head -5 2>/dev/null || echo "")
+if [ -z "$NLM_RESULT" ]; then
+    exit 0
 fi
 
-# Build system message
-if [ -n "$NLM_RESULT" ] || [ -n "$PHASE_LINE" ]; then
-    # Truncate nlm result to save tokens (max 1500 chars)
-    NLM_SHORT=$(echo "$NLM_RESULT" | head -40)
+# Truncate to save tokens (max ~1500 chars / 40 lines)
+NLM_SHORT=$(echo "$NLM_RESULT" | head -40)
 
-    MSG="[NLM Auto-Query: '$KEYWORDS']"
-    if [ -n "$NLM_SHORT" ]; then
-        MSG="$MSG\n$NLM_SHORT"
-    fi
-    if [ -n "$PHASE_LINE" ]; then
-        MSG="$MSG\n\n[Phase Status]\n$PHASE_LINE"
-    fi
-
-    # Output as JSON systemMessage (Claude Code injects this into context)
-    python3 -c "
-import json, sys
-msg = '''$MSG'''
+# Output as JSON systemMessage (Claude Code injects this into context)
+python3 -c "
+import json
+msg = '''[NLM Auto-Query: '$KEYWORDS']
+$NLM_SHORT'''
 print(json.dumps({'systemMessage': msg}))
-" 2>/dev/null
-fi
+" 2>/dev/null || exit 0

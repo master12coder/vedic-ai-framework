@@ -1,20 +1,16 @@
 #!/bin/bash
 # .githooks/pre-push
-# Full re-index of docs/specs before every push
-# Catches renames, moves, deletions missed by commit hook
+# Full re-index of docs before every push.
+# Catches renames/moves missed by commit hook.
 
-SYNC_DIRS=""
-[ -d "docs" ]  && SYNC_DIRS="$SYNC_DIRS docs"
-[ -d "specs" ] && SYNC_DIRS="$SYNC_DIRS specs"
-[ -d "spec" ]  && SYNC_DIRS="$SYNC_DIRS spec"
+command -v nlm >/dev/null 2>&1 || exit 0
 
-[ -z "$SYNC_DIRS" ] && exit 0
-
-echo ""
-echo "🔄 NLM: full sync before push..."
-for dir in $SYNC_DIRS; do
-    nlm add "$dir" --force --quiet
-    echo "  ✓ synced: $dir/"
+# Re-index doc directories
+for dir in docs specs wiki architecture; do
+    [ -d "$dir" ] && nlm add "$dir" --force --quiet 2>/dev/null || true
 done
 
-echo "✅ NLM fully synced — $(nlm stats 2>/dev/null | grep Chunks | tr -d ' ')"
+# Re-index root-level .md files
+for f in *.md; do
+    [ -f "$f" ] && nlm add "$f" --force --quiet 2>/dev/null || true
+done

@@ -1,25 +1,24 @@
 #!/bin/bash
 # .githooks/post-commit
-# Auto re-indexes only the files changed in this commit
-# Committed to repo — works on every machine after setup.sh
+# Auto re-indexes only DOCUMENTATION files changed in this commit.
+# Source code is NOT indexed — Claude Code reads that natively.
 
-WATCHED_EXTS="pdf|md|txt|docx|dart|js|ts|py|yaml|yml|json|sql|html|rst"
+command -v nlm >/dev/null 2>&1 || exit 0
 
-CHANGED=$(git diff-tree --no-commit-id -r --name-only HEAD 2>/dev/null \
-    | grep -E "\.(${WATCHED_EXTS})$" || true)
+# Only doc-relevant extensions
+DOC_EXTS="md|txt|rst|pdf|docx|html|yaml|yml"
+
+# Only doc-relevant paths (docs/, root *.md, specs/, wiki/, architecture/)
+CHANGED=$(git diff-tree --no-commit-id -r --name-status HEAD 2>/dev/null \
+    | grep -E "\.(${DOC_EXTS})$" \
+    | grep -E "^[AMD]\s+(docs/|specs/|wiki/|architecture/|[^/]+\.md$)" || true)
 
 [ -z "$CHANGED" ] && exit 0
 
-COUNT=$(echo "$CHANGED" | wc -l | tr -d ' ')
-echo ""
-echo "🔄 NLM: syncing $COUNT changed file(s)..."
-
-while IFS= read -r file; do
-    if [ -f "$file" ]; then
-        nlm add "$file" --force --quiet && echo "  ✓ $file"
-    else
-        nlm delete "$file" 2>/dev/null && echo "  🗑 removed: $file"
+while IFS=$'\t' read -r status file; do
+    if [ "$status" = "D" ]; then
+        nlm delete "$file" --quiet 2>/dev/null || true
+    elif [ -f "$file" ]; then
+        nlm add "$file" --force --quiet 2>/dev/null || true
     fi
 done <<< "$CHANGED"
-
-echo "✅ NLM index up to date"
