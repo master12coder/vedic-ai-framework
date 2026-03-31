@@ -14,77 +14,24 @@ import matplotlib
 
 
 matplotlib.use("Agg")
-import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch
 
 from daivai_engine.models.chart import ChartData
 from daivai_engine.models.dasha import DashaPeriod
+from daivai_products.plugins.kundali.dasha_gantt_data import (
+    PLANET_NAME_HI,
+    date_label,
+    draw_ad_row,
+    extract_sets,
+    get_font_props,
+    planet_color,
+)
 from daivai_products.plugins.kundali.theme import (
     MPL_CREAM,
-    MPL_GOLD,
-    MPL_GRAY,
-    MPL_GREEN,
     MPL_INDIGO,
-    MPL_RED,
     MPL_SAFFRON,
-    PLANET_HI,
-    get_font_path,
 )
-
-
-# Full Hindi planet names for bar labels
-_PLANET_NAME_HI: dict[str, str] = {
-    "Sun": "सूर्य",
-    "Moon": "चन्द्र",
-    "Mars": "मंगल",
-    "Mercury": "बुध",
-    "Jupiter": "गुरु",
-    "Venus": "शुक्र",
-    "Saturn": "शनि",
-    "Rahu": "राहु",
-    "Ketu": "केतु",
-}
-
-
-def _get_font_props() -> fm.FontProperties | None:
-    """Load Devanagari font for matplotlib labels."""
-    fpath = get_font_path()
-    if fpath and fpath.exists():
-        return fm.FontProperties(fname=str(fpath))
-    return None
-
-
-def _planet_color(
-    planet: str,
-    benefics: set[str],
-    malefics: set[str],
-    yogakaraka: str,
-    maraka: set[str],
-) -> str:
-    """Return the bar color based on functional classification."""
-    if planet == yogakaraka:
-        return MPL_GOLD
-    if planet in benefics:
-        return MPL_GREEN
-    if planet in malefics or planet in maraka:
-        return MPL_RED
-    return MPL_GRAY
-
-
-def _extract_sets(lordship_ctx: dict[str, Any]) -> tuple[set[str], set[str], str, set[str]]:
-    """Extract functional classification sets from lordship context."""
-    benefics = {e["planet"] for e in lordship_ctx.get("functional_benefics", [])}
-    malefics = {e["planet"] for e in lordship_ctx.get("functional_malefics", [])}
-    yk = lordship_ctx.get("yogakaraka", {})
-    yogakaraka = yk.get("planet", "") if isinstance(yk, dict) else ""
-    maraka = {m["planet"] for m in lordship_ctx.get("maraka", [])}
-    return benefics, malefics, yogakaraka, maraka
-
-
-def _date_label(dt: datetime) -> str:
-    """Short date string for bar labels."""
-    return dt.strftime("%Y")
 
 
 def render_dasha_gantt(
@@ -113,8 +60,8 @@ def render_dasha_gantt(
     if not mahadashas:
         return None
 
-    benefics, malefics, yogakaraka, maraka = _extract_sets(lordship_ctx)
-    font_props = _get_font_props()
+    benefics, malefics, yogakaraka, maraka = extract_sets(lordship_ctx)
+    font_props = get_font_props()
 
     # Timeline bounds
     timeline_start = mahadashas[0].start
@@ -186,7 +133,7 @@ def render_dasha_gantt(
     for i, md in enumerate(mahadashas):
         x_start = (md.start - timeline_start).total_seconds() / 86400.0
         width = (md.end - md.start).total_seconds() / 86400.0
-        color = _planet_color(md.lord, benefics, malefics, yogakaraka, maraka)
+        color = planet_color(md.lord, benefics, malefics, yogakaraka, maraka)
 
         # Draw MD bar
         bar = FancyBboxPatch(
@@ -202,9 +149,9 @@ def render_dasha_gantt(
         ax.add_patch(bar)
 
         # Label: Hindi name + English + year range
-        hi_name = _PLANET_NAME_HI.get(md.lord, md.lord)
+        hi_name = PLANET_NAME_HI.get(md.lord, md.lord)
         label = f"{hi_name} ({md.lord})"
-        date_range = f"{_date_label(md.start)}-{_date_label(md.end)}"
+        date_range = f"{date_label(md.start)}-{date_label(md.end)}"
 
         label_kw: dict[str, Any] = {
             "ha": "center",
@@ -247,7 +194,7 @@ def render_dasha_gantt(
         # Insert AD sub-row after current MD
         if i == current_md_index and has_ads and not ad_inserted:
             ad_inserted = True
-            _draw_ad_row(
+            draw_ad_row(
                 ax,
                 antardashas,
                 current_ad,
@@ -285,50 +232,3 @@ def render_dasha_gantt(
     plt.close(fig)
     buf.seek(0)
     return buf.read()
-
-
-def _draw_ad_row(
-    ax: plt.Axes,
-    antardashas: list[DashaPeriod],
-    current_ad: DashaPeriod,
-    timeline_start: datetime,
-    row_y: float,
-    row_h: float,
-    benefics: set[str],
-    malefics: set[str],
-    yogakaraka: str,
-    maraka: set[str],
-    font_props: fm.FontProperties | None,
-) -> None:
-    """Draw Antardasha sub-bars within the expanded current MD row."""
-    for ad in antardashas:
-        x_start = (ad.start - timeline_start).total_seconds() / 86400.0
-        width = (ad.end - ad.start).total_seconds() / 86400.0
-        color = _planet_color(ad.lord, benefics, malefics, yogakaraka, maraka)
-        is_current = ad.lord == current_ad.lord and ad.start == current_ad.start
-
-        bar = FancyBboxPatch(
-            (x_start, row_y),
-            width,
-            row_h,
-            boxstyle="round,pad=0.01",
-            facecolor=color,
-            edgecolor=MPL_INDIGO,
-            linewidth=1.5 if is_current else 0.5,
-            alpha=1.0 if is_current else 0.6,
-        )
-        ax.add_patch(bar)
-
-        hi_abbr = PLANET_HI.get(ad.lord, ad.lord[:2])
-        label_kw: dict[str, Any] = {
-            "ha": "center",
-            "va": "center",
-            "fontsize": 6,
-            "color": "white",
-            "fontweight": "bold" if is_current else "normal",
-        }
-        if font_props:
-            label_kw["fontproperties"] = font_props
-
-        cx = x_start + width / 2
-        ax.text(cx, row_y + row_h / 2, hi_abbr, **label_kw)

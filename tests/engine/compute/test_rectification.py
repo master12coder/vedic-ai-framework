@@ -12,13 +12,15 @@ from __future__ import annotations
 import swisseph as swe
 
 from daivai_engine.compute.rectification import (
-    _compute_lagna_for_time,
     _expected_lords_for_event,
     _house_lord,
+    rectify_birth_time,
+)
+from daivai_engine.compute.rectification_ruling import (
+    _compute_lagna_for_time,
     _nak_index_from_longitude,
     _weekday_lord,
     get_ruling_planets,
-    rectify_birth_time,
 )
 from daivai_engine.constants import DAY_PLANET, NAKSHATRA_LORDS, SIGN_LORDS
 from daivai_engine.models.chart import ChartData

@@ -14,7 +14,13 @@ from pathlib import Path
 
 import yaml
 
-from daivai_engine.constants import EXALTATION, PLANETS
+from daivai_engine.compute.lal_kitab_constants import (
+    EXALT_HOUSE,
+    LK_ENEMIES,
+    LK_FRIENDS,
+    PAKKA_GHAR,
+)
+from daivai_engine.constants import PLANETS
 from daivai_engine.models.chart import ChartData
 from daivai_engine.models.lal_kitab import (
     LalKitabPlanetAssessment,
@@ -23,50 +29,6 @@ from daivai_engine.models.lal_kitab import (
     LalKitabRin,
 )
 
-
-# ── Lal Kitab Constants ─────────────────────────────────────────────────────
-
-# Pakka Ghar (permanent house) for each planet — fixed regardless of chart
-PAKKA_GHAR: dict[str, int] = {
-    "Sun": 1,
-    "Moon": 4,
-    "Mars": 3,
-    "Mercury": 7,
-    "Jupiter": 2,
-    "Venus": 7,
-    "Saturn": 8,
-    "Rahu": 12,
-    "Ketu": 6,
-}
-
-# Lal Kitab friendships (different from Parashari)
-LK_FRIENDS: dict[str, list[str]] = {
-    "Sun": ["Moon", "Mars", "Jupiter"],
-    "Moon": ["Sun", "Mercury"],
-    "Mars": ["Sun", "Moon", "Jupiter"],
-    "Mercury": ["Venus", "Saturn", "Moon"],
-    "Jupiter": ["Sun", "Moon", "Mars"],
-    "Venus": ["Mercury", "Saturn"],
-    "Saturn": ["Mercury", "Venus"],
-    "Rahu": ["Mercury", "Venus", "Saturn"],
-    "Ketu": ["Mars", "Jupiter"],
-}
-
-LK_ENEMIES: dict[str, list[str]] = {
-    "Sun": ["Saturn", "Venus", "Rahu", "Ketu"],
-    "Moon": ["Rahu", "Ketu"],
-    "Mars": ["Mercury", "Ketu"],
-    "Mercury": ["Moon"],
-    "Jupiter": ["Mercury", "Venus", "Rahu"],
-    "Venus": ["Sun", "Moon", "Rahu"],
-    "Saturn": ["Sun", "Moon", "Mars"],
-    "Rahu": ["Sun", "Moon", "Mars"],
-    "Ketu": ["Mercury", "Venus"],
-}
-
-# Exalted house mapping (sign index → house number, 1-indexed)
-# In Lal Kitab the exaltation sign index maps to a house
-_EXALT_HOUSE: dict[str, int] = {p: idx + 1 for p, idx in EXALTATION.items()}
 
 _REMEDIES_PATH = Path(__file__).resolve().parents[1] / "scriptures" / "lal_kitab" / "remedies.yaml"
 
@@ -119,7 +81,7 @@ def _assess_planet(planet_name: str, chart: ChartData) -> LalKitabPlanetAssessme
     friends_present = [p for p in occupants if p in friends_list and p != planet_name]
     enemies_present = [p for p in occupants if p in enemies_list and p != planet_name]
 
-    exalt_house = _EXALT_HOUSE.get(planet_name, -1)
+    exalt_house = EXALT_HOUSE.get(planet_name, -1)
 
     # Determine strength
     if rahu_ketu_present and planet_name not in ("Rahu", "Ketu"):

@@ -44,7 +44,7 @@ apps/ imports from products/ and engine/.
 Plugins NEVER import each other.
 ```
 
-## Engine Scope (151 compute modules as of March 2026)
+## Engine Scope (173 compute modules as of March 2026)
 
 ```
 Core: chart, dasha (5 types), divisional, divisional_extended, special_lagnas (8), upagraha

@@ -102,3 +102,52 @@ def compute_phase2_modules(chart: ChartData) -> dict[str, Any]:
     result["conditional_dashas"] = cond
 
     return result
+
+
+def compute_phase1_advanced(chart: ChartData, panchang: Any, moon_nak: int) -> dict[str, Any]:
+    """Compute Phase 1 advanced modules — dispositor, badhaka, reference charts, etc."""
+    from daivai_engine.compute.badhaka import compute_badhaka
+    from daivai_engine.compute.bhavat_bhavam import compute_all_bhavat_bhavam
+    from daivai_engine.compute.dasha_transit import compute_dasha_transit
+    from daivai_engine.compute.datetime_utils import now_ist, to_jd
+    from daivai_engine.compute.dispositor import compute_dispositor_tree
+    from daivai_engine.compute.eclipse_natal import compute_upcoming_eclipse_impacts
+    from daivai_engine.compute.kota_chakra import compute_kota_chakra
+    from daivai_engine.compute.lal_kitab import compute_lal_kitab
+    from daivai_engine.compute.nisheka import compute_nisheka
+    from daivai_engine.compute.reference_chart import (
+        compute_chandra_kundali,
+        compute_surya_kundali,
+    )
+    from daivai_engine.compute.yoga_timing import compute_all_yoga_timings
+
+    result: dict[str, Any] = {
+        "dispositor_tree": safe_compute(compute_dispositor_tree, chart),
+        "badhaka": safe_compute(compute_badhaka, chart),
+        "bhavat_bhavam": safe_compute(compute_all_bhavat_bhavam, chart),
+        "chandra_kundali": safe_compute(compute_chandra_kundali, chart),
+        "surya_kundali": safe_compute(compute_surya_kundali, chart),
+        "dasha_transit": safe_compute(compute_dasha_transit, chart),
+        "yoga_timings": safe_compute(compute_all_yoga_timings, chart),
+        "lal_kitab": safe_compute(compute_lal_kitab, chart),
+        "kota_chakra": safe_compute(compute_kota_chakra, moon_nak),
+        "nisheka": safe_compute(compute_nisheka, chart),
+    }
+
+    # Eclipse impacts
+    eclipse_jd = to_jd(now_ist())
+    result["eclipse_impacts"] = safe_compute(compute_upcoming_eclipse_impacts, chart, eclipse_jd, 1)
+
+    # Pancha Pakshi birth bird
+    pp_bird = ""
+    if panchang and hasattr(panchang, "paksha"):
+        from daivai_engine.compute.pancha_pakshi import get_birth_bird
+
+        pp_bird_result = safe_compute(get_birth_bird, moon_nak, panchang.paksha)
+        if pp_bird_result and hasattr(pp_bird_result, "value"):
+            pp_bird = pp_bird_result.value
+        elif isinstance(pp_bird_result, str):
+            pp_bird = pp_bird_result
+    result["pancha_pakshi_bird"] = pp_bird
+
+    return result

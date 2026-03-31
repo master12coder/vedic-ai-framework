@@ -1,10 +1,10 @@
-"""Prashna helper functions: hora, swara, arudha, moon checks."""
+"""Prashna helper functions: hora, swara, arudha, moon checks, reasoning."""
 
 from __future__ import annotations
 
 from datetime import datetime
 
-from daivai_engine.constants import SIGN_LORDS
+from daivai_engine.constants import SIGN_LORDS, SIGNS
 from daivai_engine.models.chart import ChartData
 
 
@@ -119,3 +119,86 @@ def _compute_swara(dt: datetime) -> str:
     if hour % 2 == 0:
         return "ida"
     return "pingala"
+
+
+def build_reasoning(
+    *,
+    lagna_lord: str,
+    ll_strong: bool,
+    ll_in_dusthana: bool,
+    relevant_lord: str,
+    rl_strong: bool,
+    rl_in_dusthana: bool,
+    rl_combust: bool,
+    moon_strong: bool,
+    moon_waxing: bool,
+    moon_dignified: bool,
+    arudha_sign: int,
+    arudha_strong: bool,
+    hora_lord: str,
+    swara: str,
+    house: int,
+    qtype: str,
+    is_mook: bool,
+) -> str:
+    """Build human-readable reasoning for the Prashna verdict."""
+    parts: list[str] = []
+
+    # Lagna lord
+    if ll_strong:
+        parts.append(f"Lagna lord {lagna_lord} is strong in kendra/trikona (positive).")
+    elif ll_in_dusthana:
+        parts.append(f"Lagna lord {lagna_lord} is in a dusthana (negative).")
+    else:
+        parts.append(f"Lagna lord {lagna_lord} is moderately placed.")
+
+    # Relevant house lord
+    if rl_strong:
+        parts.append(
+            f"House {house} lord {relevant_lord} is strong in kendra/trikona (positive for {qtype})."
+        )
+    elif rl_combust:
+        parts.append(
+            f"House {house} lord {relevant_lord} is combust — weakened (negative for {qtype})."
+        )
+    elif rl_in_dusthana:
+        parts.append(f"House {house} lord {relevant_lord} is in dusthana (negative for {qtype}).")
+    else:
+        parts.append(f"House {house} lord {relevant_lord} is moderately placed.")
+
+    # Moon
+    moon_parts: list[str] = []
+    if moon_strong:
+        moon_parts.append("well-placed")
+    if moon_waxing:
+        moon_parts.append("waxing")
+    if moon_dignified:
+        moon_parts.append("dignified")
+    if moon_parts:
+        parts.append(f"Moon is {', '.join(moon_parts)} (positive).")
+    else:
+        parts.append("Moon is weak or waning (may indicate delays).")
+
+    # Arudha (worldly image)
+    parts.append(
+        f"Arudha of house {house} falls in {SIGNS[arudha_sign]}; "
+        f"its lord is {'strong' if arudha_strong else 'weak'} — "
+        f"worldly manifestation of the matter is {'favored' if arudha_strong else 'challenged'}."
+    )
+
+    # Hora lord
+    parts.append(f"Hora lord at question time: {hora_lord}.")
+
+    # Swara
+    swara_desc = {
+        "ida": "Ida (Moon) swara active — favorable for stable/peaceful matters.",
+        "pingala": "Pingala (Sun) swara active — favorable for active/aggressive pursuits.",
+        "sushumna": "Sushumna (transition) — swara is indeterminate.",
+    }
+    parts.append(swara_desc.get(swara, ""))
+
+    # Mook prashna note
+    if is_mook:
+        parts.append("Mook Prashna (silent query): Moon's condition carries primary weight.")
+
+    return " ".join(p for p in parts if p)

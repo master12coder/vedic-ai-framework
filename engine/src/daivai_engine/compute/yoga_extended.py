@@ -9,6 +9,15 @@ Source: BPHS, Phaladeepika, Saravali.
 from __future__ import annotations
 
 from daivai_engine.compute.chart import ChartData
+from daivai_engine.compute.yoga_extended_life import (
+    detect_marriage_yogas as _detect_marriage_yogas,
+)
+from daivai_engine.compute.yoga_extended_life import (
+    detect_spiritual_yogas as _detect_spiritual_yogas,
+)
+from daivai_engine.compute.yoga_extended_life import (
+    detect_wealth_yogas as _detect_wealth_yogas,
+)
 from daivai_engine.compute.yoga_extended_lunar_solar import (
     detect_lunar_yogas as _detect_lunar_yogas,
 )
@@ -25,19 +34,10 @@ from daivai_engine.compute.yoga_extended_misc import (
     detect_kartari_yogas as _detect_kartari_yogas,
 )
 from daivai_engine.compute.yoga_extended_misc import (
-    detect_marriage_yogas as _detect_marriage_yogas,
-)
-from daivai_engine.compute.yoga_extended_misc import (
     detect_nabhasa_extended as _detect_nabhasa_yogas,
 )
 from daivai_engine.compute.yoga_extended_misc import (
-    detect_spiritual_yogas as _detect_spiritual_yogas,
-)
-from daivai_engine.compute.yoga_extended_misc import (
     detect_vipreet_detailed as _detect_vipreet_detailed,
-)
-from daivai_engine.compute.yoga_extended_misc import (
-    detect_wealth_yogas as _detect_wealth_yogas,
 )
 from daivai_engine.models.yoga import YogaResult
 

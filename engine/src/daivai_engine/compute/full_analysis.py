@@ -16,10 +16,8 @@ from daivai_engine.compute.avasthas import (
     compute_deeptadi_avasthas,
     compute_lajjitadi_avasthas,
 )
-from daivai_engine.compute.badhaka import compute_badhaka
 from daivai_engine.compute.bhava_bala import compute_bhava_bala
 from daivai_engine.compute.bhava_chalit import compute_bhava_chalit
-from daivai_engine.compute.bhavat_bhavam import compute_all_bhavat_bhavam
 from daivai_engine.compute.compatibility_advanced import compute_mangal_dosha_detailed
 from daivai_engine.compute.dasha import compute_mahadashas, find_current_dasha
 from daivai_engine.compute.dasha_advanced import compute_dasha_sandhi
@@ -28,35 +26,28 @@ from daivai_engine.compute.dasha_extra import (
     compute_chara_dasha,
     compute_yogini_dasha,
 )
-from daivai_engine.compute.dasha_transit import compute_dasha_transit
-from daivai_engine.compute.datetime_utils import now_ist, to_jd
-from daivai_engine.compute.dispositor import compute_dispositor_tree
 from daivai_engine.compute.divisional import compute_navamsha, get_vargottam_planets
 from daivai_engine.compute.dosha import detect_all_doshas
 from daivai_engine.compute.double_transit import (
     check_double_transit,
     check_double_transit_from_moon,
 )
-from daivai_engine.compute.eclipse_natal import compute_upcoming_eclipse_impacts
-from daivai_engine.compute.full_analysis_utils import compute_phase2_modules, safe_compute
+from daivai_engine.compute.full_analysis_utils import (
+    compute_phase1_advanced,
+    compute_phase2_modules,
+    safe_compute,
+)
 from daivai_engine.compute.gandanta import check_gandanta
 from daivai_engine.compute.graha_yuddha import detect_planetary_war
 from daivai_engine.compute.house_comparison import compare_whole_sign_vs_chalit
 from daivai_engine.compute.ishta_kashta import compute_ishta_kashta
 from daivai_engine.compute.jaimini import compute_jaimini
 from daivai_engine.compute.kalachakra_dasha import compute_kalachakra_dasha
-from daivai_engine.compute.kota_chakra import compute_kota_chakra
 from daivai_engine.compute.kp import compute_kp_positions
-from daivai_engine.compute.lal_kitab import compute_lal_kitab
 from daivai_engine.compute.longevity import compute_longevity
 from daivai_engine.compute.namakarana import check_gand_mool
 from daivai_engine.compute.narayana_dasha import compute_narayana_dasha
-from daivai_engine.compute.nisheka import compute_nisheka
 from daivai_engine.compute.panchang import compute_panchang
-from daivai_engine.compute.reference_chart import (
-    compute_chandra_kundali,
-    compute_surya_kundali,
-)
 from daivai_engine.compute.saham import compute_sahams
 from daivai_engine.compute.special_lagnas import compute_special_lagnas
 from daivai_engine.compute.strength import compute_shadbala
@@ -77,7 +68,6 @@ from daivai_engine.compute.varga_analysis import (
 from daivai_engine.compute.verify import verify_chart_accuracy
 from daivai_engine.compute.vimshopaka import compute_vimshopaka_bala
 from daivai_engine.compute.yoga import detect_all_yogas
-from daivai_engine.compute.yoga_timing import compute_all_yoga_timings
 from daivai_engine.constants import SIGN_LORDS
 from daivai_engine.models.analysis import FullChartAnalysis
 from daivai_engine.models.chart import ChartData
@@ -188,30 +178,8 @@ def compute_full_analysis(
             varga[key] = result
 
     # Phase 1 advanced modules
-    dispositor = safe_compute(compute_dispositor_tree, chart)
-    badhaka = safe_compute(compute_badhaka, chart)
-    bhavat_bhavam = safe_compute(compute_all_bhavat_bhavam, chart)
-    chandra_kundali = safe_compute(compute_chandra_kundali, chart)
-    surya_kundali = safe_compute(compute_surya_kundali, chart)
-    dasha_transit = safe_compute(compute_dasha_transit, chart)
-    yoga_timings = safe_compute(compute_all_yoga_timings, chart)
-    lal_kitab = safe_compute(compute_lal_kitab, chart)
     moon_nak = chart.planets["Moon"].nakshatra_index
-    kota_chakra = safe_compute(compute_kota_chakra, moon_nak)
-    nisheka = safe_compute(compute_nisheka, chart)
-    eclipse_jd = to_jd(now_ist())
-    eclipse_impacts = safe_compute(compute_upcoming_eclipse_impacts, chart, eclipse_jd, 1)
-
-    # Pancha Pakshi birth bird (pure birth chart data)
-    pp_bird = ""
-    if panchang and hasattr(panchang, "paksha"):
-        from daivai_engine.compute.pancha_pakshi import get_birth_bird
-
-        pp_bird_result = safe_compute(get_birth_bird, moon_nak, panchang.paksha)
-        if pp_bird_result and hasattr(pp_bird_result, "value"):
-            pp_bird = pp_bird_result.value
-        elif isinstance(pp_bird_result, str):
-            pp_bird = pp_bird_result
+    p1 = compute_phase1_advanced(chart, panchang, moon_nak)
 
     # Phase 2 modules (14 previously orphaned computations)
     phase2 = compute_phase2_modules(chart)
@@ -266,17 +234,21 @@ def compute_full_analysis(
         varga_analysis=varga,
         lordship_context=lordship_context,
         verification_warnings=verification,
-        dispositor_tree=dispositor if not isinstance(dispositor, list) else None,
-        badhaka=badhaka if not isinstance(badhaka, list) else None,
-        bhavat_bhavam=bhavat_bhavam,
-        chandra_kundali=chandra_kundali if not isinstance(chandra_kundali, list) else None,
-        surya_kundali=surya_kundali if not isinstance(surya_kundali, list) else None,
-        dasha_transit=dasha_transit if not isinstance(dasha_transit, list) else None,
-        yoga_timings=yoga_timings if not isinstance(yoga_timings, list) else None,
-        lal_kitab=lal_kitab if not isinstance(lal_kitab, list) else None,
-        kota_chakra=kota_chakra if not isinstance(kota_chakra, list) else None,
-        nisheka=nisheka if not isinstance(nisheka, list) else None,
-        eclipse_impacts=eclipse_impacts,
+        dispositor_tree=p1["dispositor_tree"]
+        if not isinstance(p1["dispositor_tree"], list)
+        else None,
+        badhaka=p1["badhaka"] if not isinstance(p1["badhaka"], list) else None,
+        bhavat_bhavam=p1["bhavat_bhavam"],
+        chandra_kundali=p1["chandra_kundali"]
+        if not isinstance(p1["chandra_kundali"], list)
+        else None,
+        surya_kundali=p1["surya_kundali"] if not isinstance(p1["surya_kundali"], list) else None,
+        dasha_transit=p1["dasha_transit"] if not isinstance(p1["dasha_transit"], list) else None,
+        yoga_timings=p1["yoga_timings"] if not isinstance(p1["yoga_timings"], list) else None,
+        lal_kitab=p1["lal_kitab"] if not isinstance(p1["lal_kitab"], list) else None,
+        kota_chakra=p1["kota_chakra"] if not isinstance(p1["kota_chakra"], list) else None,
+        nisheka=p1["nisheka"] if not isinstance(p1["nisheka"], list) else None,
+        eclipse_impacts=p1["eclipse_impacts"],
         # Phase 2
         avakhada=phase2.get("avakhada") if not isinstance(phase2.get("avakhada"), list) else None,
         bhava_madhya=phase2.get("bhava_madhya")
@@ -302,5 +274,5 @@ def compute_full_analysis(
         else None,
         varga_deep=phase2.get("varga_deep", {}),
         conditional_dashas=phase2.get("conditional_dashas", {}),
-        pancha_pakshi_bird=pp_bird,
+        pancha_pakshi_bird=p1["pancha_pakshi_bird"],
     )

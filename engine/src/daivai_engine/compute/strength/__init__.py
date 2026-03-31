@@ -28,7 +28,8 @@ from daivai_engine.compute.strength.composite import (
     get_strongest_planet,
     get_weakest_planet,
 )
-from daivai_engine.compute.strength.kala_bala import (
+from daivai_engine.compute.strength.kala_bala import compute_kala_bala
+from daivai_engine.compute.strength.kala_bala_helpers import (
     _CHALDEAN_ORDER,
     _abda_masa_cache,
     _compute_abda_masa_lords,
@@ -36,7 +37,6 @@ from daivai_engine.compute.strength.kala_bala import (
     _find_solar_ingress,
     _jd_to_day_planet,
     _tribhaga_bala,
-    compute_kala_bala,
 )
 from daivai_engine.compute.strength.sthana_bala import (
     _APOKLIMA,
