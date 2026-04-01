@@ -1,52 +1,71 @@
 # DaivAI Phase Status Tracker
 
-Last updated: March 24, 2026
+Last updated: April 1, 2026
 
 ## Phase Completion Status
 
 | Phase | Name | Status | Key Deliverable | Tests |
 |-------|------|--------|----------------|-------|
-| 1 | Computation Engine | **DONE** | 100 modules, FullChartAnalysis v5.1 | 3643 |
-| 2 | Unified Data Model | **DONE** | 67 fields, compute_full_analysis() | 3643 |
-| 3 | Decision Engine | NOT STARTED | Chart Selector, Confidence Scorer | - |
-| 4 | AI Interpretation | PARTIAL | 14 prompts, LLM backends, validator | - |
-| 5 | Learning System | PARTIAL | PanditCorrectionStore exists | - |
-| 6 | Web UI Rebuild | NOT STARTED | Basic templates only | - |
-| 7 | Predictions | PARTIAL | PredictionTracker exists | - |
+| 1 | Computation Engine | **DONE** | 173 modules, FullChartAnalysis v5.1 | 3807 |
+| 2 | Unified Data Model | **DONE** | 67 fields, compute_full_analysis() | 3807 |
+| 3 | Decision Engine | **DONE** | Chart Selector, Confidence, Gemstone Weight, Cross-Validator | 3807 |
+| 4 | AI Interpretation | **DONE** | Decision context bridge, 14 prompts, LLM backends, validator | 3807 |
+| 5 | Learning System | **DONE** | Trust scoring, 6-layer validation, PanditCorrectionStore | 3807 |
+| 6 | Web UI | PARTIAL | 20 routes, 16 templates, auth, database | 3807 |
+| 7 | Predictions | **DONE** | Dasha-event matcher, accuracy engine, credibility scoring | 3807 |
 | 8 | Deployment | PARTIAL | Live on Oracle VM | - |
-| 9 | Content Automation | NOT STARTED | - | - |
+| 9 | Content Automation | **DONE** | Daily rashifal (12 signs), social media cards | 3807 |
 
-## Phase 1 Details (DONE)
+## Phase 3 Details (DONE — April 2026)
 
-Engine computes everything a Pandit needs:
-- 320+ yogas (incl. Kemadruma, Arishta, Bandhana, Daridra)
-- 12+ dasha systems (Vimshottari + 5 alternative + 7 conditional)
-- Shadbala, Ashtakavarga, Vimshopaka, Ishta-Kashta
-- Jaimini, KP, Special Lagnas (8 types)
-- Gochara, Sade Sati, Double Transit
-- Medical, Longevity, Mrityu Bhaga
-- Bhrigu Bindu, Avakhada, Pushkara
-- Lal Kitab, Kota Chakra, Nisheka
-- Eclipse Natal Impact
-- Pancha Pakshi (birth bird)
-- lagna_lord explicit field
+Decision Engine at `products/src/daivai_products/decision/`:
+- **Chart Selector** — query-based divisional chart selection (10 query types)
+- **House Highlighter** — relevant houses + karaka planets per domain
+- **Cross-Chart Validator** — D1 vs D9 consistency check (7 planets, 6 patterns)
+- **Confidence Scorer** — per-section 0-100 scoring (9 life areas, weighted overall)
+- **Gemstone Weight Engine** — 10-factor ratti computation with safety enforcement
+- 9 files, ~1,860 LOC, 59 tests
 
-## Phase 2 Details (DONE)
+## Phase 4 Details (DONE — April 2026)
 
-Products layer consumes FullChartAnalysis:
-- 5 plugins accept optional full_analysis parameter
-- advanced_context.py extracts Phase 1 fields → prompts
-- advanced_context_extra.py extracts Phase 2 + dead fields → prompts
-- Backward compatible (works with or without full_analysis)
+AI Interpretation fully wired:
+- Decision context bridge (`decision_context.py`) — runs all Phase 3 modules per query
+- Decision prompt fragment injection into all LLM calls
+- Confidence narrative, house highlights, cross-chart summary in prompts
+- Gemstone guidance injected for remedy queries
+- 5 LLM backends: Ollama, Groq, Claude, OpenAI, NoLLM
 
-## What's Next: Phase 3 — Decision Engine
+## Phase 5 Details (DONE — April 2026)
 
-The intelligence layer between computation and interpretation:
-1. **Chart Selector** — query + age + flags → which charts to show
-2. **House Highlighter** — which houses are relevant for this question
-3. **Cross-Chart Validator** — D1 vs D9 consistency check
-4. **Confidence Scorer** — 0-100 score for predictions
-5. **Progressive Input** — ask for more data only when needed
+Learning System expanded:
+- **Trust scoring** (`trust.py`) — scripture citation, multi-pandit agreement, contradiction penalty, age-based, application success
+- **6-layer validation** (`validation.py`) — format → scripture → computation → safety → cross-reference → trust threshold
+- Corrections filtered by minimum trust score (default 0.5)
+
+## Phase 7 Details (DONE — April 2026)
+
+Predictions complete:
+- **Dasha-event matcher** — matches life events to MD/AD periods, scores match quality
+- **Accuracy engine** — per-category accuracy rates, correct/incorrect/pending classification
+- **Credibility scoring** — 5 tiers (novice → master), based on accuracy + volume
+
+## Phase 9 Details (DONE — April 2026)
+
+Content Automation:
+- **Daily Rashifal** — transit-based predictions for all 12 Moon signs, no LLM needed
+- **Social media cards** — Hindi headlines, star ratings, one-liner templates
+- **Gochara scoring** — weighted planet scores from Phaladeepika Ch.26
+- Domain predictions (career/finance/health/love) from house activations
+
+## Remaining Work
+
+### Phase 6: Web UI Rebuild (PARTIAL)
+- 20 routes, 16 templates exist
+- Needs: Phase 3 integration in UI, advanced chart selection, swipeable charts, Pandit toggle
+
+### Phase 8: Deployment Hardening (PARTIAL)
+- Live on Oracle VM at 92.4.89.82
+- Needs: SSL/domain, systemd hardening, log rotation, monitoring
 
 ## Known Gaps (Research Needed)
 
@@ -56,6 +75,5 @@ The intelligence layer between computation and interpretation:
 | Yoga YAML | ~40 definitions not coded | MEDIUM |
 | Ashtakavarga | Kaksha analysis (8 sub-divisions) not done | MEDIUM |
 | Aspect strength | All aspects treated as full (no partial strength) | LOW |
-| Vimshopaka YAML | Weight tables need YAML with BPHS provenance | MEDIUM |
 
-**Resolved (March 2026):** Shadbala Kala Bala (all 8 components), Vimshopaka (4 schemes complete)
+**Resolved:** Shadbala Kala Bala (all 8 components), Vimshopaka (4 schemes complete)

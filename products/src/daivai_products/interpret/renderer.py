@@ -18,7 +18,9 @@ from jinja2 import Template
 
 from daivai_engine.models.chart import ChartData
 from daivai_products.interpret._renderer_context import build_chart_context
+from daivai_products.interpret.decision_context import build_decision_context
 from daivai_products.interpret.factory import LLMBackend, get_backend
+from daivai_products.interpret.prompts.decision_prompt import render_decision_fragment
 from daivai_products.interpret.validator import validate_interpretation
 
 
@@ -81,7 +83,7 @@ def interpret_chart(
 
     context = build_chart_context(chart, full_analysis=full_analysis)
     lordship_ctx = context.get("lordship", {})
-    system_prompt = _render_prompt("system_prompt.md", context)
+    base_system_prompt = _render_prompt("system_prompt.md", context)
 
     all_sections = [
         "chart_overview",
@@ -103,6 +105,20 @@ def interpret_chart(
     for section in all_sections:
         template_name = f"{section}.md"
         try:
+            # Build decision context if full_analysis is available (Phase 3)
+            decision_fragment = ""
+            if full_analysis is not None:
+                try:
+                    decision_ctx = build_decision_context(section, full_analysis)
+                    decision_fragment = render_decision_fragment(section, decision_ctx)
+                    context.update(decision_ctx)
+                except Exception:
+                    logger.debug("Decision context unavailable for %s", section)
+
+            system_prompt = base_system_prompt
+            if decision_fragment:
+                system_prompt = base_system_prompt + "\n\n" + decision_fragment
+
             user_prompt = _render_prompt(template_name, context)
             response = backend.generate(system_prompt, user_prompt)
 
